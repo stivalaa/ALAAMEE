@@ -1,0 +1,28 @@
+sample-n500_bin_cont6700000.txt is just copy of
+sample-n500_bin_cont6700000.clu (a single outcome from the ALAAM
+simulation detailed below) with first line replaced with attr name,
+simiarly for the binary and continuous attribute files, and
+n500_kstar_simulate12750000.txt is just the
+n500_kstar_simulate1275000_matrix.txt converted to Pajek edgelist
+format using igraph in R).
+
+ADS
+Fri, Feb 14, 2020  3:32:29 PM
+
+------------------------------------------------------------------------------
+
+Example for simulating from 500 node network (the n500_kstar_simulate1275000_matrix.txt
+network is extracted using extractnetwork.sh script from sample 1275000
+of the  /home/projects/pMelb0110/n500_kstar_simulation/ 
+networks with parameters Edge=-4, AS=0.2, AT=1.0, A2P=0.2)
+
+binary attributes file binaryAttribute_50_50_n500.txt copied from 
+Snowball/examples/attr500/binaryAttribute_50_50_n500.txt
+
+continuousAttributes_n500.txt normal(0,1) generated with
+Snowball/scripts/genrandomContinuousAttributes.py 500  > continuousAttributes_n500.txt
+
+
+
+ADS
+Fri Sep  4 16:46:03 EST 2015
