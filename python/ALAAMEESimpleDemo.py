@@ -19,11 +19,11 @@
 
   G. Daraganova and G. Robins. Autologistic actor attribute models. In
   D. Lusher, J. Koskinen, and G. Robins, editors, Exponential Random
-  Graph Models for Social Networks, chapter 9, pages 102–114. Cambridge
+  Graph Models for Social Networks, chapter 9, pages 102-114. Cambridge
   University Press, New York, 2013.
 
   G. Robins, P. Pattison, and P. Elliott. Network models for social
-  influence processes. Psychometrika, 66(2):161–189, 2001.
+  influence processes. Psychometrika, 66(2):161-189, 2001.
 
 
  The example data is described in:
