@@ -47,7 +47,8 @@ from Graph import Graph
 from changeStatisticsALAAM import *
 from basicALAAMsampler import basicALAAMsampler,sampler_m
 from initialEstimator import algorithm_S
-from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
+#OLD:from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
+from equilibriumExpectationBorisenko import algorithm_EE,THETA_PREFIX,DZA_PREFIX
 
 
 
@@ -96,12 +97,12 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     # steps of Alg 1    
     M1 = 100
 
-    Mouter = 500 # outer iterations of Algorithm EE
-    Msteps = 100 # multiplier for number of inner steps of Algorithm EE
-    print 'M1 = ', M1, ' Mouter = ', Mouter, ' Msteps = ', Msteps
+    #OLD: Mouter = 500 # outer iterations of Algorithm EE
+    #OLD: Msteps = 100 # multiplier for number of inner steps of Algorithm EE
+    #OLD: print 'M1 = ', M1, ' Mouter = ', Mouter, ' Msteps = ', Msteps
 
-    #NEW: M = 50000 #  iterations of Algorithm EE
-    #NEW: print 'M1 = ', M1, ' M = ', M, 
+    M = 50000 #  iterations of Algorithm EE
+    print 'M1 = ', M1, ' M = ', M, 
     
     theta_outfile = open(THETA_OUTFILENAME, 'w',1) # 1 means line buffering
     theta_outfile.write('t ' + ' '.join(labels) + ' ' + 'AcceptanceRate' + '\n')
@@ -116,10 +117,10 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     dzA_outfile.write('t ' + ' '.join(labels) + '\n')
     print 'Running Algorithm EE...',
     start = time.time()
-    theta = algorithm_EE(G, A, param_func_list, theta, Dmean,
-                         Mouter, Msteps, theta_outfile, dzA_outfile)
-    #NEW: theta = algorithm_EE(G, A, param_func_list, theta, 
-    #NEW:                      M, theta_outfile, dzA_outfile)
+    #OLD: theta = algorithm_EE(G, A, param_func_list, theta, Dmean,
+    #OLD:                     Mouter, Msteps, theta_outfile, dzA_outfile)
+    theta = algorithm_EE(G, A, param_func_list, theta, 
+                         M, theta_outfile, dzA_outfile)
 
     print time.time() - start, 's'
     theta_outfile.close()
