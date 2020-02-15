@@ -96,10 +96,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     # steps of Alg 1    
     M1 = 20
 
-    Mouter = 500 #  iterations of Algorithm EE
-    #OLD:Msteps = 100 # number of inner steps of Algorithm EE
+    M = 50000 #  iterations of Algorithm EE
 
-    print 'M1 = ', M1, ' Mouter = ', Mouter, 
+    print 'M1 = ', M1, ' M = ', M, 
     
     theta_outfile = open(THETA_OUTFILENAME, 'w',1) # 1 means line buffering
     theta_outfile.write('t ' + ' '.join(labels) + ' ' + 'AcceptanceRate' + '\n')
@@ -117,7 +116,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     #OLD:    theta = algorithm_EE(G, A, param_func_list, theta, Dmean,
     #                         Mouter, Msteps, theta_outfile, dzA_outfile)
     theta = algorithm_EE(G, A, param_func_list, theta, 
-                         Mouter, theta_outfile, dzA_outfile)
+                         M, theta_outfile, dzA_outfile)
 
     print time.time() - start, 's'
     theta_outfile.close()
