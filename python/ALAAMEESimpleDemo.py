@@ -47,66 +47,8 @@ from Graph import Graph
 from changeStatisticsALAAM import *
 from basicALAAMsampler import basicALAAMsampler,sampler_m
 from initialEstimator import algorithm_S
+from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
 
-#
-# Constants
-#
-THETA_PREFIX = 'theta_values_' # prefix for theta output filename
-DZA_PREFIX = 'dzA_values_'     # prefix for dzA output filename
-
-
-def algorithm_EE(G, A, changestats_func_list, theta, D0,
-                 Mouter, M, theta_outfile, dzA_outfile):
-    """
-    Algorithm EE
-
-    Parameters:
-       G                   - Graph object for graph to estimate
-       A                   - vector of 0/1 outcome variables for ALAAM
-       changestats_func_list-list of change statistics funcions
-       theta               - corresponding vector of initial theta values
-       D0                  - corresponding vector of inital D0 from Algorithm S
-       Mouter              - iterations of Algorithm EE (outer loop)
-       M                   - iterations of Algorithm EE (inner loop)
-       theta_outfile       - open for write file to write theta values
-       dzA_outfile         - open for write file to write dzA values
-
-     Returns:
-         numpy vector of theta values at end
-
-    """
-    ACA = 1e-09    # multiplier of D0 to get step size multiplier da (K_A)
-    compC = 1e-02  # multiplier of sd(theta)/mean(theta) to limit theta variance
-    n = len(changestats_func_list)
-    dzA = np.zeros(n)  # zero outside loop, dzA accumulates in loop
-    t = 0
-    for touter in xrange(Mouter):
-        thetamatrix = np.empty((M, n)) # rows theta vectors, 1 per inner iter
-        for tinner in xrange(M):
-            accepted = 0
-            (acceptance_rate,
-             changeTo1ChangeStats,
-             changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                                  changestats_func_list, theta,
-                                                  performMove = True)
-            dzA += changeTo1ChangeStats - changeTo0ChangeStats  # dzA accumulates here
-            da = D0 * ACA
-            theta_step = -np.sign(dzA) * da * dzA**2
-            theta += theta_step
-            thetamatrix[tinner,] = theta
-            t += 1
-        theta_outfile.write(str(t) + ' ' + ' '.join([str(x) for x in theta]) + 
-                                ' ' + str(acceptance_rate) + '\n')
-        dzA_outfile.write(str(t) + ' ' + ' '.join([str(x) for x in dzA]) + '\n')
-        thetamean = np.mean(thetamatrix, axis = 0) # mean theta over inner loop
-        thetasd   = np.std(thetamatrix, axis = 0)  # standard deviation
-        thetamean = np.where(np.abs(thetamean) < 1, np.ones(n), thetamean) # enforce minimum magnitude 1 to stop sticking at zero
-        DD = thetasd / np.abs(thetamean)
-        D0 *= compC / DD # to limit size of fluctuations in theta (see S.I.)
-        
-    return theta
-
-#-------------------------------------------------------------------------------
 
 
 def run_on_network_attr(edgelist_filename, param_func_list, labels,
