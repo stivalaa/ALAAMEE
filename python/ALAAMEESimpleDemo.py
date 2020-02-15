@@ -212,11 +212,11 @@ def algorithm_EE(G, A, changestats_func_list, theta, D0,
             da = D0 * ACA
             theta_step = -np.sign(dzA) * da * dzA**2
             theta += theta_step
-            theta_outfile.write(str(t) + ' ' + ' '.join([str(x) for x in theta]) + 
-                                ' ' + str(acceptance_rate) + '\n')
-            dzA_outfile.write(str(t) + ' ' + ' '.join([str(x) for x in dzA]) + '\n')
             thetamatrix[tinner,] = theta
             t += 1
+        theta_outfile.write(str(t) + ' ' + ' '.join([str(x) for x in theta]) + 
+                                ' ' + str(acceptance_rate) + '\n')
+        dzA_outfile.write(str(t) + ' ' + ' '.join([str(x) for x in dzA]) + '\n')
         thetamean = np.mean(thetamatrix, axis = 0) # mean theta over inner loop
         thetasd   = np.std(thetamatrix, axis = 0)  # standard deviation
         thetamean = np.where(np.abs(thetamean) < 1, np.ones(n), thetamean) # enforce minimum magnitude 1 to stop sticking at zero
