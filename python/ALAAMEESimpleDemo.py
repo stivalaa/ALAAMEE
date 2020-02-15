@@ -94,7 +94,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     print 'positive outcome attribute = ', (float(sum(A))/len(A))*100.0, '%'
     
     # steps of Alg 1    
-    M1 = 20
+    M1 = 500
 
     M = 50000 #  iterations of Algorithm EE
 
