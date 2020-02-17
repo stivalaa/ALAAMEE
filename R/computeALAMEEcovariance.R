@@ -16,7 +16,7 @@
 ## well as error due to MCMC, we also have the covariance due to use
 ## of MLE; this is estimated from the Fisher information matrix as per
 ## Snijders (2002) [see also Hunter & Handcock (2006)]; the inverse of
-## this covariance matrix is then the covariance due to ERGM MLE of
+## this covariance matrix is then the covariance due to ERGM (ALAAM) MLE of
 ## the parameter esetimate.  These two sources of uncertainty are
 ## combined by adding the covariance matrices to get the total
 ## uncertainty in our theta estimates.  From this we then get a
@@ -239,7 +239,7 @@ if (keptcount > 0 ) {
       ## of \Sigma and not \Sigma/n." (p. 8)
       mcmc_cov <- mcerror$cov / Nmcmc  # covariance matrix
   
-      ## covariance matrix for ERGM MLE error
+      ## covariance matrix for ERGM (ALAAM) MLE error
       mcerror_dz <- mcse.multi(x = this_dzA, method="bm")
       stopifnot(mcerror_dz$nsim == Nmcmc)
       acov <- mcerror_dz$cov / Nmcmc
