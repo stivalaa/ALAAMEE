@@ -84,6 +84,21 @@ all the networks statistics as can be seen in the GoF output). And
 more particularly the model does not capture the obvious (from the
 figure) property that the factions are network communities.
 
+Karate club data citation:
+
+ Zachary, W. W. (1977). An information flow model for conflict and
+ fission in small groups. Journal of anthropological research,
+ 33(4), 452-473.
+
+igraph citations:
+
+ Gabor Csardi (2015). igraphdata: A Collection of Network Data Sets
+ for the 'igraph' Package. R package version 1.0.1.
+ https://CRAN.R-project.org/package=igraphdata
+
+ Csardi G, Nepusz T: The igraph software package for complex network
+ research, InterJournal, Complex Systems 1695. 2006. http://igraph.org
+
 
 ADS
 Mon, Feb 17, 2020  1:00:18 PM
