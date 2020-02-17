@@ -9,6 +9,7 @@
  Model (ALAAM) parameters on the Zachary Karate Club example.
 """
 
+
 import  ALAAMEESimpleDemo
 from changeStatisticsALAAM import *
 
