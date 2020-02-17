@@ -1,5 +1,89 @@
 Example using Zachary Karate Club network with the faction as the outcome
 binary variable.
 
+Results should resemble these (from MPNet):
+
+The faction (colour coded in the karate.pdf, which the
+script generates) isx the outcome attribute, as well as some randomly
+generated other node attributes. 'H' is Mr Hi and 'A' is John A, so
+faction 1 (Mr Hi's faction) is orange and faction 2 (John A.'s
+faction) is blue.
+
+First, a very simple model with just density, activity, and contagion,
+shows that (as we might expect from the figure), the outcome attribute
+(faction as recorded by Zachary) is 'contagious' - which is just to
+say an actor is more likely to be in faction 2 (recoded for the ALAAM
+as faction1 = 0, faction2 = 1) if his/her neighbours are.:
+
+   Effects    Lambda  Parameter Stderr  t-ratio  SACF
+   DensityA   2.0000  0.3809    0.906   0.080    0.675
+   ActivityA  2.0000 -0.7975    0.292   0.069    0.692 *
+   ContagionA 2.0000  1.4523    0.400   0.068    0.689 *
+
+Note that Activity is also significant (and negative) indicating that
+members of John A.'s faction are more likely to be connected to others
+(this probably isn't that meaningful in this context, but it is needed
+as a baseline in the model).)  Next I tried blindly putting all the
+structural configurations in the model (not generally a good idea). I
+have to update/start a few times and it takes a while, but after a few
+goes we can see it still hasn't converged and the estimates are moving
+towards infinity so that model is no good - unsurprisingly perhaps
+that was not a good idea.  However if we just add T3 (contagion within
+triangles) only, we get another converged model (but nothing else
+significant - apparently there is no effect of contagion within groups
+significantly above that of simple contagion - or we haven't the power
+to detect it if there is):
+
+   Effects    Lambda   Parameter Stderr  t-ratio  SACF
+   DensityA    2.0000   1.2707   2.096   0.018    0.544
+   ActivityA   2.0000  -1.3135   0.936   0.018    0.548
+   ContagionA  2.0000   1.9696   0.653   0.025    0.541 *
+   Ego-2StarA  2.0000   0.0596   0.124   0.021    0.547
+   TA3A        2.0000  -0.4894   0.487   0.035    0.506
+
+
+Doing a goodness-of-fit this looks good (all the t-ratios, the last
+column, are smaller than .3 in magnitude)
+
+  DensityA       18.0000 18.7050   12.820 -0.055
+  ActivityA      80.0000 83.6010   65.335 -0.055
+  ContagionA     35.0000 36.7290   32.525 -0.053
+  Ego-2StarA    271.0000 282.9350 244.567 -0.049
+  Alter-2Star1A 566.0000 566.5240 423.733 -0.001
+  Alter-2Star2A 219.0000 237.3880 213.137 -0.086
+  TA1A           57.0000 69.9890   57.867 -0.224
+  TA2A           55.0000 61.7950   55.942 -0.121
+  TA3A           18.0000 18.8110   17.690 -0.046
+  Mahalanobis distance = 503
+  Maximum qasi-autocorrelation in absolute value = 12785552.008
+
+
+
+Notice however that the standard deviation of these network statistics
+(second-last column) is very large, indicating that although the
+simulated networks have a distribution that includes the observed
+statistic in the confidence interval, the confidence interval is very
+large, a hint that maybe this model is not so good, and/or we have
+very low power...  something we should in this case not really be
+surprised by, as we have used the faction as our outcome, and (as is
+very obvious from the figure, and the whole point that this example is
+usually used for) the two factions form quite distinct network
+communities - while we have tried to predict the outcome (faction)
+purely from local network structures - something that seems unlikely
+to succeed. So although our model correctly concludes that being in
+John A.'s faction (the outcome here) is 'contagious', there really is
+a lot more going on at a structural level that our model does not
+capture. So using the simulation mode to simulate outcome attributes
+from the model, we find for example that the density statistic (count
+of nodes with outcome attribute 1, which is the nodes in John A.'s
+faction in our example), ranges from 0 to 34 with std. deviation 12.2
+- so although the mean is near the true value (18), the error is huge,
+and indeed the 95% confidence interval includes the entire possible
+range of values (0 to 34, the number of nodes). (Similar is true for
+all the networks statistics as can be seen in the GoF output). And
+more particularly the model does not capture the obvious (from the
+figure) property that the factions are network communities.
+
+
 ADS
 Mon, Feb 17, 2020  1:00:18 PM
