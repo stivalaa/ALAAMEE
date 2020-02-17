@@ -63,7 +63,8 @@ class Graph:
         while l.rstrip().lower() != "*edges":
             l = f.readline()
         lsplit = f.readline().split()
-        while len(lsplit) == 2:
+        while len(lsplit) >= 2:
+            lsplit = lsplit[:2]  # only used first two (i,j) ignore weight
             (i, j) = map(int, lsplit)
             assert(i >= 1 and i <= n and j >= 1 and j <= n)
             self.insertEdge(i-1, j-1)    # input is 1-based but we are 0-based
