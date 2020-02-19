@@ -23,15 +23,17 @@
 
 """
 import getopt
+import sys
 
 import  ALAAMEESimpleDemo
+from changeStatisticsALAAM import *
 
 
 def usage(progname):
     """
     print usage msg and exit
     """
-    sys.stderr.write("usage: " + progname + " runNumber\n"
+    sys.stderr.write("usage: " + progname + " runNumber\n")
     sys.exit(1)
 
 
@@ -53,14 +55,18 @@ def main():
     runNumber = int(args[0])
 
 
-    run_on_network_attr(
+    ALAAMEESimpleDemo.run_on_network_attr(
         '../examples/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
         [changeDensity, changeActivity, changeContagion, changeoOb, changeoOc],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],
         '../examples/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
         '../examples/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
-        '../examples/simulated_n500_bin_cont2/continuousAttributes_n500.txt'
+        '../examples/simulated_n500_bin_cont2/continuousAttributes_n500.txt',
         runNumber
     )
+
+
+if __name__ == "__main__":
+    main()
 
 
