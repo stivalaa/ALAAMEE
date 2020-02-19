@@ -54,7 +54,8 @@ from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
 def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         outcome_bin_filename,
                         binattr_filename=None,
-                        catattr_filename=None):
+                        catattr_filename=None,
+                        run = None):
     """
     Run on specified network with binary and/or categorical attributes.
     
@@ -70,17 +71,25 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                             Default None, in which case no binary attr.
          catattr_filename - filename of categorical attributes (node per line)
                             Default None, in which case no categorical attr.
-    Write output to ifd_theta_values_<basename>.txt and
-                    ifd_dzA_values_<basename>.txt
+         run              - run number for parallel runs, used as suffix on 
+                            output filenames. Default None
+                            in which case no suffix added to output files.
+    Write output to ifd_theta_values_<basename>_<run>.txt and
+                    ifd_dzA_values_<basename>_<run>.txt
     where <basename> is the baesname of edgelist filename e..g
-    if edgelist_filename is edges.txt then ifd_theta_values_edges.txt
-    and ifd_dzA_values_edges.txt
+    if edgelist_filename is edges.txt then ifd_theta_values_edges_0.txt
+    and ifd_dzA_values_edges_0.txt etc.
     WARNING: these files are overwritten.
     """
     assert(len(param_func_list) == len(labels))
     basename = os.path.splitext(os.path.basename(edgelist_filename))[0]
-    THETA_OUTFILENAME = THETA_PREFIX + basename + os.extsep + 'txt'
-    DZA_OUTFILENAME = DZA_PREFIX + basename  + os.extsep + 'txt'
+    THETA_OUTFILENAME = THETA_PREFIX + basename
+    DZA_OUTFILENAME = DZA_PREFIX + basename
+    if run is not None:
+        THETA_OUTFILENAME += '_' + str(run)
+        DZA_OUTFILENAME += '_' + str(run)
+    THETA_OUTFILENAME += os.extsep + 'txt'
+    DZA_OUTFILENAME   += os.extsep + 'txt'
 
     G = Graph(edgelist_filename, binattr_filename, catattr_filename)
 

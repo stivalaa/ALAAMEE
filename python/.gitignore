@@ -1,3 +1,4 @@
+*.sh~
 *.py~
 dzA_values_*.txt
 dzA_values_*.eps
