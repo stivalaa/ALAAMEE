@@ -11,7 +11,8 @@
 #SBATCH --output=alaamee_simexample-%A_%a.out
 #SBATCH --error=alaamee_simexample-%A_%a.err
 #SBATCH --ntasks=1
-#SBATCH --array=1-4
+#SBATCH --mem=100MB
+#SBATCH --array=0-31
 
 
 
