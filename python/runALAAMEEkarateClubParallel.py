@@ -62,7 +62,7 @@ def main():
         ["Density", "Activity", "Contagion"],
         '../examples/karate_club/karate_outcome.txt',
         '../examples/karate_club/karate_binattr.txt',
-        '../examples/karate_club/karate_contattr.txt'
+        '../examples/karate_club/karate_contattr.txt',
         runNumber
     )
 
