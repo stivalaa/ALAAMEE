@@ -22,10 +22,10 @@ CPUS_MINUS_ONE=`expr ${SLURM_CPUS_PER_TASK} - 1`
 
 seq 0 ${CPUS_MINUS_ONE} | parallel -j ${SLURM_CPUS_PER_TASK} --progress --joblog parallel.log ./runALAAMEESimpleDemoParallel.py
 
+Rscript ../R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000 dzA_values_n500_kstar_simulate12750000
+
 
 Rscript ../R/computeALAMEEcovariance.R theta_values_n500_kstar_simulate12750000 dzA_values_n500_kstar_simulate12750000
-
-Rscript ../R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000 dzA_values_n500_kstar_simulate12750000
 
 times
 echo -n "ended at: "; date
