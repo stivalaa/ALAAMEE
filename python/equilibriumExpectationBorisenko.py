@@ -66,7 +66,7 @@ def algorithm_EE(G, A, changestats_func_list, theta,
 
     """
     # Constants
-    learningRate = 0.1     # learning rate
+    learningRate = 0.01   # learning rate
     minTheta     = 0.01    # min abs value of theta to prevent zero update step
 
     n = len(changestats_func_list)
