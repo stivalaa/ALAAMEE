@@ -12,7 +12,7 @@
 #SBATCH --error=alaamee_simexample-%A_%a.err
 #SBATCH --ntasks=1
 #SBATCH --mem=100MB
-#SBATCH --array=0-31
+#SBATCH --array=0-99
 
 
 
