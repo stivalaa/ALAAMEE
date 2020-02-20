@@ -18,7 +18,7 @@
 
 echo SLURM_ARRAY_TASK_ID = ${SLURM_ARRAY_TASK_ID}
 
-python ./runALAAMEESimpleDemoParallel.py ${SLURM_ARRAY_TASK_ID}
+python ../../python/runALAAMEESimpleDemoParallel.py ${SLURM_ARRAY_TASK_ID}
 
 
 times

@@ -20,12 +20,12 @@ echo -n "started at: "; date
 
 CPUS_MINUS_ONE=`expr ${SLURM_CPUS_PER_TASK} - 1`
 
-seq 0 ${CPUS_MINUS_ONE} | parallel -j ${SLURM_CPUS_PER_TASK} --progress --joblog parallel.log ./runALAAMEEkarateClubParallel.py
+seq 0 ${CPUS_MINUS_ONE} | parallel -j ${SLURM_CPUS_PER_TASK} --progress --joblog parallel.log ../../python/runALAAMEEkarateClubParallel.py
 
-Rscript ../R/plotALAAMEEResults.R theta_values_karate dzA_values_karate
+Rscript ../../R/plotALAAMEEResults.R theta_values_karate dzA_values_karate
 
 
-Rscript ../R/computeALAMEEcovariance.R theta_values_karate dzA_values_karate
+Rscript ../../R/computeALAMEEcovariance.R theta_values_karate dzA_values_karate
 
 times
 echo -n "ended at: "; date

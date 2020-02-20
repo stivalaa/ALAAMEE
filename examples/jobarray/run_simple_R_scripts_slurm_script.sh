@@ -15,10 +15,10 @@ module load R/3.2.5
 
 uname -a
 
-time Rscript ../R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000 dzA_values_n500_kstar_simulate12750000
+time Rscript ../..//R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000 dzA_values_n500_kstar_simulate12750000
 
 
-time Rscript ../R/computeALAMEEcovariance.R theta_values_n500_kstar_simulate12750000 dzA_values_n500_kstar_simulate12750000
+time Rscript ../..//R/computeALAMEEcovariance.R theta_values_n500_kstar_simulate12750000 dzA_values_n500_kstar_simulate12750000
 
 times
 echo -n "ended at: "; date
