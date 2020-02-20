@@ -1,0 +1,13 @@
+run_submit_simple_example_process_jobarray.sh
+   Run this script to submit the job array to do parallel estimations and
+   also submit a job that waits for those all to finish and then runs the R
+   scripts to process results (plot trace and estimate standard errors etc.)
+
+run_simple_example_jobarray_slurm_script.sh
+    Slurm batch job to run the job array.
+
+run_simple_R_scripts_slurm_script.sh
+    Slurm batch job to run the R scripts.
+
+ADS
+Thu Feb 20 01:34:08 CET 2020
