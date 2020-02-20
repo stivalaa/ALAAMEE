@@ -1,0 +1,5 @@
+*.sh~
+dzA_values_*.txt
+dzA_values_*.eps
+theta_values_*.txt
+theta_values_*.eps

@@ -14,12 +14,12 @@ import  ALAAMEESimpleDemo
 from changeStatisticsALAAM import *
 
 ALAAMEESimpleDemo.run_on_network_attr(
-    '../examples/karate_club/karate.net',
+    '../data/karate_club/karate.net',
     [changeDensity, changeActivity, changeContagion],
     ["Density", "Activity", "Contagion"],
-    '../examples/karate_club/karate_outcome.txt',
-    '../examples/karate_club/karate_binattr.txt',
-    '../examples/karate_club/karate_contattr.txt'
+    '../data/karate_club/karate_outcome.txt',
+    '../data/karate_club/karate_binattr.txt',
+    '../data/karate_club/karate_contattr.txt'
     )
 
 

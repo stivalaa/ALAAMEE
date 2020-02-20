@@ -1,0 +1,9 @@
+Example data and scripts to run examples.
+
+data/      contains data for examples
+simple/    simple (not parallel etc.) example scripts
+parallel/  examples run using GNU parallel
+jobarray/  examples run using slurm job arrays
+
+ADS
+Thu Feb 20 01:23:09 CET 2020

@@ -56,12 +56,12 @@ def main():
 
 
     ALAAMEESimpleDemo.run_on_network_attr(
-        '../examples/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
+        '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
         [changeDensity, changeActivity, changeContagion, changeoOb, changeoOc],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],
-        '../examples/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
-        '../examples/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
-        '../examples/simulated_n500_bin_cont2/continuousAttributes_n500.txt',
+        '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
+        '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
+        '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt',
         runNumber
     )
 
