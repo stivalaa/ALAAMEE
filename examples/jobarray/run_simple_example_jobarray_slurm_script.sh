@@ -2,7 +2,7 @@
 
 
 # use the 
-# run_simple_example_process_jobarray_slurm_script.sh
+# run_submit_simple_example_process_jobarray_slurm_script.sh
 # job to submit this job and then process output with R scripts 
 # on completion
 
