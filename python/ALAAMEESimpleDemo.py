@@ -45,7 +45,6 @@ import numpy as np         # used for matrix & vector data types and functions
 
 from Graph import Graph
 from changeStatisticsALAAM import *
-from basicALAAMsampler import basicALAAMsampler,sampler_m
 from initialEstimator import algorithm_S
 #OLD:from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
 from equilibriumExpectationBorisenko import algorithm_EE,THETA_PREFIX,DZA_PREFIX

@@ -43,7 +43,7 @@ from basicALAAMsampler import basicALAAMsampler
 #
 THETA_PREFIX = 'theta_values_' # prefix for theta output filename
 DZA_PREFIX = 'dzA_values_'     # prefix for dzA output filename
-
+sampler_m  = 1000              # number of sampler iterations
 
 def algorithm_EE(G, A, changestats_func_list, theta,
                  M, theta_outfile, dzA_outfile):
@@ -81,8 +81,10 @@ def algorithm_EE(G, A, changestats_func_list, theta,
         (acceptance_rate,
          changeTo1ChangeStats,
          changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                              changestats_func_list, theta,
-                                              performMove = True)
+                                                   changestats_func_list,
+                                                   theta,
+                                                   performMove = True,
+                                                   sampler_m = sampler_m)
         dzA += changeTo1ChangeStats - changeTo0ChangeStats  # dzA accumulates here
         theta_step = -np.sign(dzA) * learningRateVec * np.maximum(minThetaVec,
                                                                  np.abs(theta))

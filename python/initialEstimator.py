@@ -24,7 +24,7 @@ import numpy as np         # used for matrix & vector data types and functions
 
 from Graph import Graph
 from changeStatisticsALAAM import *
-from basicALAAMsampler import basicALAAMsampler,sampler_m
+from basicALAAMsampler import basicALAAMsampler
 
 
 #
@@ -32,6 +32,7 @@ from basicALAAMsampler import basicALAAMsampler,sampler_m
 #
 THETA_PREFIX = 'theta_values_' # prefix for theta output filename
 DZA_PREFIX = 'dzA_values_'     # prefix for dzA output filename
+sampler_m  = 1000              # number of sampler iterations
 
 
 
@@ -62,8 +63,10 @@ def algorithm_S(G, A, changestats_func_list, M1, theta_outfile):
         (acceptance_rate,
          changeTo1ChangeStats,
          changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                              changestats_func_list, theta,
-                                              performMove = False)
+                                                   changestats_func_list,
+                                                   theta,
+                                                   performMove = False,
+                                                   sampler_m = sampler_m)
         dzA = changeTo0ChangeStats - changeTo1ChangeStats
         dzAmean = dzA / sampler_m
         sumChangeStats = changeTo1ChangeStats + changeTo0ChangeStats

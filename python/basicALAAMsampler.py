@@ -34,13 +34,8 @@ from changeStatisticsALAAM import *
 
 
 
-#
-# Constants
-#
-sampler_m = 1000   # number of proposals per iteration
-
-
-def basicALAAMsampler(G, A, changestats_func_list, theta, performMove):
+def basicALAAMsampler(G, A, changestats_func_list, theta, performMove,
+                      sampler_m):
     """
     basicALAAMsampler - sample from ALAAM distribution with basic sampler,
                    returning estimate of E(Delta_z(x_obs))
@@ -58,6 +53,7 @@ def basicALAAMsampler(G, A, changestats_func_list, theta, performMove):
        performMove         - if True, actually do the MC move,
                              updating the outcome vector A
                              (otherwise are not modified)
+       sampler_m           - number of proposals (iterations of sampler)
 
     Returns:
         acceptance_rate     - sampler acceptance rate
