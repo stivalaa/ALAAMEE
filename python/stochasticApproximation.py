@@ -65,7 +65,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
     # phase 2 constants
     numSubphases  = 5
-    a_initial     = 0.01
+    a_initial     = 0.01  # initial value of Robbins-Monro step size
 
     # phase 3 constants
     phase3steps = 1000
@@ -97,7 +97,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         Z = Zobs + changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
-    print 'Zmatrix = ',Zmatrix
+    ##print 'Zmatrix = ',Zmatrix
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
     theta = np.reshape(theta, (1, len(theta)))
@@ -107,10 +107,11 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # print 'Dcov = ', Dcov
 
     Zmatrix -= Zmean
-    print 'Zmatrix = ',Zmatrix
+    ##print 'Zmatrix = ',Zmatrix
     D = (1.0/phase1steps) * np.matmul(np.transpose(Zmatrix), Zmatrix)
 
-    print 'D = ',D
+    print 'D = '
+    print D
 
     # ######### checking manual loop gets same answer as np matrix #########
     # Dloop = np.zeros((n,n))
@@ -148,8 +149,6 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     print 'Phase 2 subphases = ',numSubphases, ' iters per step = ', iterationInStep
     a = a_initial
     for k in xrange(numSubphases):
-        if k == 1:
-            a *= 2   # use initial value of a in first two subphases
         NkMin  = 2**(4 * k / 3) * (7 + n)
         NkMax  = NkMin + 200
         print 'subphase', k, 'a = ', a, 'NkMin = ',NkMin,'NkMax = ',NkMax, 'theta = ', theta
@@ -157,7 +156,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         sumSuccessiveProducts = np.zeros(n)
         thetaSum = np.zeros((1,n))
         while i < NkMax and (i < NkMax or np.all(sumSuccessiveProducts < 0)):
-            print '  subphase', k, 'iteration', i, 'a = ', a , 'theta = ', theta
+            print '  subphase', k, 'iteration', i, 'theta =', theta
             oldZ = np.copy(Z)
             for j in xrange(iterationInStep):
                 (acceptance_rate,
@@ -168,10 +167,10 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
                                                            performMove = True,
                                                            sampler_m = iterationInStep)
                 Z += changeTo1ChangeStats - changeTo0ChangeStats
-            print 'XXX Z = ',Z, 'acceptance rate=',acceptance_rate
+            ##print 'XXX Z = ',Z, 'acceptance rate=',acceptance_rate
 
             theta_step = a * np.matmul(Dinv, Z - Zobs)
-            print 'XXX      theta_step = ', theta_step
+            ##print 'XXX      theta_step = ', theta_step
             # ######## checking manual loop gets same as numpy ########
             # loop_theta_step = np.zeros(n)
             # for x in xrange(n):
@@ -186,8 +185,10 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
             thetaSum += theta
             oldSumSuccessiveProducts = np.copy(sumSuccessiveProducts)
             sumSuccessiveProducts += (Z * oldZ)
+            print '    sumSuccessiveProducts =',sumSuccessiveProducts
             i += 1
-        a /= 2.0
+        if k > 1:     # use initial value of a in first two subphases
+            a /= 2.0  # otherwise halve a for next subphase (gain sequence)
         theta = thetaSum / i # average theta
 
     #
