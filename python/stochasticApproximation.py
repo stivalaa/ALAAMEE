@@ -85,6 +85,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # Phase 1: estimate covariance matrix
     #
     print 'Phase 1 steps = ', phase1steps, 'iters per step = ',iterationInStep
+    Z = np.copy(Zobs)  # start at observed statistics vector
     Zmatrix = np.empty((phase1steps, n)) # rows statistics Z vectors, 1 per step
     for i in xrange(phase1steps):
         (acceptance_rate,
@@ -94,7 +95,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
                                                    theta,
                                                    performMove = True,
                                                    sampler_m = iterationInStep)
-        Z = Zobs + changeTo1ChangeStats - changeTo0ChangeStats
+        Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
     ##print 'Zmatrix = ',Zmatrix
