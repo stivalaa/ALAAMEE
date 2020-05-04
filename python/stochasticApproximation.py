@@ -185,7 +185,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
             thetaSum += theta
             oldSumSuccessiveProducts = np.copy(sumSuccessiveProducts)
-            sumSuccessiveProducts += (Z * oldZ)
+            sumSuccessiveProducts += ((Z - Zobs) * (oldZ - Zobs))
             print '    sumSuccessiveProducts =',sumSuccessiveProducts
             i += 1
         if k > 1:     # use initial value of a in first two subphases
