@@ -58,18 +58,29 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     n = len(changestats_func_list)
 
     # constants used in multiple phases
-    iterationInStep = 10 * G.numNodes()
+    #iterationInStep = 10 * G.numNodes()
+    iterationInStep =  100
 
     # phase 1 constants
     phase1steps     = 7 + 3*n
 
     # phase 2 constants
-    numSubphases = 5
+    numSubphases  = 4
+    a_initial     = 0.01
 
     # phase 3 constants
     phase3steps = 1000
 
-    Zobs = np.zeros(n) # FIXME observed statistics
+    # Calculate observed statistics by summing change stats for each 1 variable
+    Zobs = np.zeros(n)
+    Acopy = np.zeros(len(A))
+    for i in xrange(len(A)):
+        if A[i] == 1:
+            for l in xrange(n):
+                Zobs[l] += changestats_func_list[l](G, Acopy, i)
+            Acopy[i] = 1
+    assert(np.all(Acopy == A))
+    print 'Zobs = ', Zobs
     
     #
     # Phase 1: estimate covariance matrix
@@ -84,9 +95,17 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
                                                    theta,
                                                    performMove = True,
                                                    sampler_m = iterationInStep)
-        Z = changeTo1ChangeStats - changeTo0ChangeStats
+        Z = Zobs + changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
-    D = (1.0/iterationInStep) * np.cov(np.transpose(Zmatrix))
+
+    Zmean = np.mean(Zmatrix, axis=0)
+    Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
+    theta = np.reshape(theta, (1, len(theta)))
+    print 'Zmean = ', Zmean
+        
+    #D = (1.0/phase1steps) * np.cov(np.transpose(Zmatrix))
+    D = (1.0/phase1steps) * np.matmul(np.transpose(Zmatrix), Zmatrix) - np.matmul(Zmean, np.transpose(Zmean))
+
     if 1.0/np.linalg.cond(D) < epsilon:
         sys.stdout.write("Covariance matrix is singular: degenerate model\n")
         return None
@@ -97,6 +116,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     print D #XXX
     print D0 #XXX
     print D0inv #XXX
+
+    theta -= np.transpose(a_initial * np.matmul(Dinv, np.transpose(Zmean - Zobs)))
     
     #
     # Phase 2 (main phase): In each subphase, generate simulated
@@ -108,7 +129,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # new theta value. Value of Robbins-Monro multiplier a is halved
     # between each subphase.
     #
-    a = 0.1
+    a = a_initial
     for k in xrange(numSubphases):
         NkMin  = 2**(4 * k / 3) * (7 + n)
         NkMax  = NkMin + 200
@@ -116,7 +137,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         i = 0
         Z = np.zeros(n)
         sumSuccessiveProducts = np.zeros(n)
-        thetaSum = np.zeros(n)
+        thetaSum = np.zeros((1,n))
         while i < NkMax and (i < NkMax or np.all(sumSuccessiveProducts < 0)):
             print '  subphase', k, 'iteration', i, 'a = ', a, 'theta = ', theta
             oldZ = np.copy(Z)
@@ -130,7 +151,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
                                                            performMove = True,
                                                            sampler_m = iterationInStep)
                 Z += changeTo1ChangeStats - changeTo0ChangeStats
-            theta -= a * D0inv * (Z - Zobs)
+            print 'XXX Z = ',Z, 'acceptance rate=',acceptance_rate
+            theta -= a * np.matmul(D0inv, Z - Zobs)
             thetaSum += theta
             oldSumSuccessiveProducts = np.copy(sumSuccessiveProducts)
             sumSuccessiveProducts += (Z * oldZ)

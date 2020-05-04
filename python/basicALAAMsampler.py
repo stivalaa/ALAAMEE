@@ -64,7 +64,7 @@ def basicALAAMsampler(G, A, changestats_func_list, theta, performMove,
     otherwise unchanged
     """
     n = len(changestats_func_list)
-    assert(len(theta) == n)
+#    assert(len(theta) == n)
     accepted = 0
     changeTo1ChangeStats = np.zeros(n)
     changeTo0ChangeStats = np.zeros(n)
