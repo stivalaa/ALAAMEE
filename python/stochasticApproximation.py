@@ -173,8 +173,9 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
             loop_theta_step = np.zeros(n)
             for x in xrange(n):
                 for y in xrange(n):
-                    loop_theta_step[x] += a * (Z[x] - Zobs[x]) * Dinv[y][x]
+                    loop_theta_step[x] += a * (Z[y] - Zobs[y]) * Dinv[y][x]
             print 'XXX loop_theta_step = ',loop_theta_step
+            assert(np.all(loop_theta_step - theta_step < 1e-10))
             #########################################################
 
             theta -= theta_step
