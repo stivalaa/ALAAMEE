@@ -156,10 +156,10 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         i = 0
         sumSuccessiveProducts = np.zeros(n)
         thetaSum = np.zeros((1,n))
+        Z = np.copy(Zobs)
         while i < NkMax and (i < NkMax or np.all(sumSuccessiveProducts < 0)):
             print '  subphase', k, 'iteration', i, 'a = ', a , 'theta = ', theta
             oldZ = np.copy(Z)
-            Z = np.copy(Zobs)
             for j in xrange(iterationInStep):
                 (acceptance_rate,
                  changeTo1ChangeStats,
