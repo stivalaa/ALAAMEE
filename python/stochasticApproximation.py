@@ -97,6 +97,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         Z = Zobs + changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
+    print 'Zmatrix = ',Zmatrix
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
     theta = np.reshape(theta, (1, len(theta)))
@@ -106,6 +107,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # print 'Dcov = ', Dcov
 
     Zmatrix -= Zmean
+    print 'Zmatrix = ',Zmatrix
     D = (1.0/phase1steps) * np.matmul(np.transpose(Zmatrix), Zmatrix)
 
     print 'D = ',D
