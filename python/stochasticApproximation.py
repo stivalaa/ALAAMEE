@@ -167,7 +167,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
                 Z += changeTo1ChangeStats - changeTo0ChangeStats
             print 'XXX Z = ',Z, 'acceptance rate=',acceptance_rate
 
-            theta_step = a * np.matmul(Z - Zobs, np.transpose(Dinv))
+            theta_step = a * np.matmul(Dinv, Z - Zobs)
             print 'XXX      theta_step = ', theta_step
             ######## checking manual loop gets same as numpy ########
             loop_theta_step = np.zeros(n)
