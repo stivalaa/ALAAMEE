@@ -58,8 +58,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     n = len(changestats_func_list)
 
     # constants used in multiple phases
-    #iterationInStep = 10 * G.numNodes()
-    iterationInStep =  100
+    iterationInStep = 10 * G.numNodes()
 
     # phase 1 constants
     phase1steps     = 7 + 3*n
@@ -117,7 +116,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     print D #XXX
     print D0inv #XXX
 
-    theta -= np.transpose(a_initial * np.matmul(Dinv, np.transpose(Zmean - Zobs)))
+#    theta -= np.transpose(a_initial * np.matmul(Dinv, np.transpose(Zmean - Zobs)))
     
     #
     # Phase 2 (main phase): In each subphase, generate simulated
@@ -152,7 +151,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
                                                            sampler_m = iterationInStep)
                 Z += changeTo1ChangeStats - changeTo0ChangeStats
             print 'XXX Z = ',Z, 'acceptance rate=',acceptance_rate
-            theta -= a * np.matmul(D0inv, Z - Zobs)
+            theta -= a * np.matmul(Dinv, Z - Zobs)
             thetaSum += theta
             oldSumSuccessiveProducts = np.copy(sumSuccessiveProducts)
             sumSuccessiveProducts += (Z * oldZ)
