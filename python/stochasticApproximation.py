@@ -147,7 +147,6 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     #
     print 'Phase 2 subphases = ',numSubphases, ' iters per step = ', iterationInStep
     a = a_initial
-    Z = np.copy(Zobs)
     for k in xrange(numSubphases):
         if k == 1:
             a *= 2   # use initial value of a in first two subphases
