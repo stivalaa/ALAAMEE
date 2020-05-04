@@ -102,8 +102,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     theta = np.reshape(theta, (1, len(theta)))
     print 'Zmean = ', Zmean
 
-    Dcov = np.cov(np.transpose(Zmatrix))
-    print 'Dcov = ', Dcov
+    # Dcov = np.cov(np.transpose(Zmatrix))
+    # print 'Dcov = ', Dcov
 
     Zmatrix -= Zmean
     D = (1.0/phase1steps) * np.matmul(np.transpose(Zmatrix), Zmatrix)
@@ -133,8 +133,6 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     D0inv = 1.0/D0
 
 
-#    theta -= np.transpose(a_initial * np.matmul(Dinv, np.transpose(Zmean - Zobs)))
-    
     #
     # Phase 2 (main phase): In each subphase, generate simulated
     # networks according to current parameter (theta) value, and
@@ -155,7 +153,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         sumSuccessiveProducts = np.zeros(n)
         thetaSum = np.zeros((1,n))
         while i < NkMax and (i < NkMax or np.all(sumSuccessiveProducts < 0)):
-            print '  subphase', k, 'iteration', i, 'a = ', a, 'theta = ', theta
+            print '  subphase', k, 'iteration', i, 'a = ', a , 'theta = ', theta
             oldZ = np.copy(Z)
             Z = np.zeros(n)
             for j in xrange(iterationInStep):
@@ -168,7 +166,19 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
                                                            sampler_m = iterationInStep)
                 Z += changeTo1ChangeStats - changeTo0ChangeStats
             print 'XXX Z = ',Z, 'acceptance rate=',acceptance_rate
-            theta -= a * np.matmul(Dinv, Z - Zobs)
+
+            theta_step = a * np.matmul(Dinv, Z - Zobs)
+            print 'XXX      theta_step = ', theta_step
+            ######## checking manual loop gets same as numpy ########
+            loop_theta_step = np.zeros(n)
+            for x in xrange(n):
+                for y in xrange(n):
+                    loop_theta_step[x] = a * (Z[x] - Zobs[x]) * Dinv[y][x]
+            print 'XXX loop_theta_step = ',loop_theta_step
+            #########################################################
+
+            theta -= theta_step
+
             thetaSum += theta
             oldSumSuccessiveProducts = np.copy(sumSuccessiveProducts)
             sumSuccessiveProducts += (Z * oldZ)
