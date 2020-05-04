@@ -31,10 +31,7 @@ from Graph import Graph
 from changeStatisticsALAAM import *
 from basicALAAMsampler import basicALAAMsampler
 
-#
-# Constants
-#
-sampler_m  = 1000              # number of sampler iterations
+
 
 def stochasticApproximation(G, A, changestats_func_list, theta):
     """
@@ -56,20 +53,23 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
          numpy vector of theta values at end (or None if degenerate model)
 
     """
-    #epsilon = np.finfo(float).eps
-    epsilon = 1e-08
+    epsilon = np.finfo(float).eps
     
     n = len(changestats_func_list)
 
-    # phase 1 constants
-    phase1steps     = 7 + 3*n
+    # constants used in multiple phases
     iterationInStep = 10 * G.numNodes()
 
-    # phase 2 constants
-    
-    
-    # phase 3 constants
+    # phase 1 constants
+    phase1steps     = 7 + 3*n
 
+    # phase 2 constants
+    numSubphases = 5
+
+    # phase 3 constants
+    phase3steps = 1000
+
+    Zobs = np.zeros(n) # FIXME observed statistics
     
     #
     # Phase 1: estimate covariance matrix
@@ -92,21 +92,51 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         return None
     D0 = np.diag(D)
     Dinv = np.linalg.inv(D)
-    
+    D0inv = 1.0 / D0
+
     print D #XXX
     print D0 #XXX
+    print D0inv #XXX
     
     #
     # Phase 2 (main phase): In each subphase, generate simulated
     # networks according to current parameter (theta) value, and
-    # update theta according to Robbins-Monro formula between
-    # subphases. Terminate when sum within subphase of successive
+    # update theta according to Robbins-Monro formula.
+    # Terminate when sum within subphase of successive
     # products of statistics is non-negative (or iteration limit).
     # At end of each subphase average theta over subphase is used as
     # new theta value. Value of Robbins-Monro multiplier a is halved
     # between each subphase.
     #
-
+    a = 0.1
+    for k in xrange(numSubphases):
+        NkMin  = 2**(4 * k / 3) * (7 + n)
+        NkMax  = NkMin + 200
+        print 'subphase', k, 'a = ', a, 'NkMin = ',NkMin,'NkMax = ',NkMax, 'theta = ', theta
+        i = 0
+        Z = np.zeros(n)
+        sumSuccessiveProducts = np.zeros(n)
+        thetaSum = np.zeros(n)
+        while i < NkMax and (i < NkMax or np.all(sumSuccessiveProducts < 0)):
+            print '  subphase', k, 'iteration', i, 'a = ', a, 'theta = ', theta
+            oldZ = np.copy(Z)
+            Z = np.zeros(n)
+            for j in xrange(iterationInStep):
+                (acceptance_rate,
+                 changeTo1ChangeStats,
+                 changeTo0ChangeStats) = basicALAAMsampler(G, A,
+                                                           changestats_func_list,
+                                                           theta,
+                                                           performMove = True,
+                                                           sampler_m = iterationInStep)
+                Z += changeTo1ChangeStats - changeTo0ChangeStats
+            theta -= a * D0inv * (Z - Zobs)
+            thetaSum += theta
+            oldSumSuccessiveProducts = np.copy(sumSuccessiveProducts)
+            sumSuccessiveProducts += (Z * oldZ)
+            i += 1
+        a /= 2.0
+        theta = thetaSum / i # average theta
 
     #
     # Phase 3: Used only to estimate covariance matrix of estimator and
