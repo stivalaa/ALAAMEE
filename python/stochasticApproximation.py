@@ -64,8 +64,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     phase1steps     = 7 + 3*n
 
     # phase 2 constants
-    numSubphases  = 4
-    a_initial     = 0.1
+    numSubphases  = 5
+    a_initial     = 0.01
 
     # phase 3 constants
     phase3steps = 1000
@@ -87,7 +87,6 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     print 'Phase 1 steps = ', phase1steps, 'iters per step = ',iterationInStep
     Zmatrix = np.empty((phase1steps, n)) # rows statistics Z vectors, 1 per step
     for i in xrange(phase1steps):
-        accepted = 0
         (acceptance_rate,
          changeTo1ChangeStats,
          changeTo0ChangeStats) = basicALAAMsampler(G, A,
@@ -147,6 +146,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     print 'Phase 2 subphases = ',numSubphases, ' iters per step = ', iterationInStep
     a = a_initial
     for k in xrange(numSubphases):
+        if k == 1:
+            a *= 2   # use initial value of a in first two subphases
         NkMin  = 2**(4 * k / 3) * (7 + n)
         NkMax  = NkMin + 200
         print 'subphase', k, 'a = ', a, 'NkMin = ',NkMin,'NkMax = ',NkMax, 'theta = ', theta
