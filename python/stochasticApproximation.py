@@ -104,17 +104,17 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     print 'Zmean = ', Zmean
         
     #D = (1.0/phase1steps) * np.cov(np.transpose(Zmatrix))
-    D = (1.0/phase1steps) * np.matmul(np.transpose(Zmatrix), Zmatrix) - np.matmul(Zmean, np.transpose(Zmean))
+    Zmatrix -= Zmean
+    D = (1.0/phase1steps) * np.matmul(np.transpose(Zmatrix), Zmatrix)
 
     if 1.0/np.linalg.cond(D) < epsilon:
         sys.stdout.write("Covariance matrix is singular: degenerate model\n")
         return None
-    D0 = np.diag(D)
+    D0 = np.copy(np.diag(D))
     Dinv = np.linalg.inv(D)
-    D0inv = 1.0 / D0
+    D0inv = 1.0/D0
 
     print D #XXX
-    print D0 #XXX
     print D0inv #XXX
 
     theta -= np.transpose(a_initial * np.matmul(Dinv, np.transpose(Zmean - Zobs)))
