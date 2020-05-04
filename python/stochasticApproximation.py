@@ -65,7 +65,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
     # phase 2 constants
     numSubphases  = 4
-    a_initial     = 0.01
+    a_initial     = 0.1
 
     # phase 3 constants
     phase3steps = 1000
@@ -84,6 +84,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     #
     # Phase 1: estimate covariance matrix
     #
+    print 'Phase 1 steps = ', phase1steps, 'iters per step = ',iterationInStep
     Zmatrix = np.empty((phase1steps, n)) # rows statistics Z vectors, 1 per step
     for i in xrange(phase1steps):
         accepted = 0
@@ -110,19 +111,19 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
     print 'D = ',D
 
-    ######### checking manual loop gets same answer as np matrix #########
-    Dloop = np.zeros((n,n))
-    for i in xrange(phase1steps):
-        for k in xrange(n):
-            for l in xrange(n):
-                Dloop[k,l] += Zmatrix[i,k] * Zmatrix[i,l]
-    for k in xrange(n):
-        for l in xrange(n):
-            Dloop[k,l] /= float(phase1steps)
+    # ######### checking manual loop gets same answer as np matrix #########
+    # Dloop = np.zeros((n,n))
+    # for i in xrange(phase1steps):
+    #     for k in xrange(n):
+    #         for l in xrange(n):
+    #             Dloop[k,l] += Zmatrix[i,k] * Zmatrix[i,l]
+    # for k in xrange(n):
+    #     for l in xrange(n):
+    #         Dloop[k,l] /= float(phase1steps)
 
-    print 'Dloop = ',Dloop
-    assert(np.all(np.abs(D - Dloop) < 1e-10))
-    #####################################################################
+    # print 'Dloop = ',Dloop
+    # assert(np.all(np.abs(D - Dloop) < 1e-10))
+    # #####################################################################
 
             
     if 1.0/np.linalg.cond(D) < epsilon:
@@ -143,6 +144,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # new theta value. Value of Robbins-Monro multiplier a is halved
     # between each subphase.
     #
+    print 'Phase 2 subphases = ',numSubphases, ' iters per step = ', iterationInStep
     a = a_initial
     for k in xrange(numSubphases):
         NkMin  = 2**(4 * k / 3) * (7 + n)
@@ -169,14 +171,14 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
             theta_step = a * np.matmul(Dinv, Z - Zobs)
             print 'XXX      theta_step = ', theta_step
-            ######## checking manual loop gets same as numpy ########
-            loop_theta_step = np.zeros(n)
-            for x in xrange(n):
-                for y in xrange(n):
-                    loop_theta_step[x] += a * (Z[y] - Zobs[y]) * Dinv[y][x]
-            print 'XXX loop_theta_step = ',loop_theta_step
-            assert(np.all(loop_theta_step - theta_step < 1e-10))
-            #########################################################
+            # ######## checking manual loop gets same as numpy ########
+            # loop_theta_step = np.zeros(n)
+            # for x in xrange(n):
+            #     for y in xrange(n):
+            #         loop_theta_step[x] += a * (Z[y] - Zobs[y]) * Dinv[y][x]
+            # print 'XXX loop_theta_step = ',loop_theta_step
+            # assert(np.all(loop_theta_step - theta_step < 1e-10))
+            # #########################################################
 
             theta -= theta_step
 
