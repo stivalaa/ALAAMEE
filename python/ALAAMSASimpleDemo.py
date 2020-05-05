@@ -81,16 +81,17 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
     theta = np.zeros(len(param_func_list))
     
-    print 'Running stochastic approximation...',
+    print 'Running stochastic approximation...'
     start = time.time()
     (theta, std_error, t_ratio) = stochasticApproximation(G, A,
                                                           param_func_list,
                                                           theta) 
 
-    print time.time() - start, 's'
-    print 'at end theta     =', theta
-    print '       std_error =', std_error
-    print '       t_ratio   =', t_ratio
+    print 'Stochastic approximation took',time.time() - start, 's'
+    print '           ',labels
+    print 'theta     =', theta
+    print 'std_error =', std_error
+    print 't_ratio   =', t_ratio
     
 
 def run_example():

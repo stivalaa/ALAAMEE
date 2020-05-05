@@ -229,8 +229,9 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
-    print 'Z=',Z#XXX
-    print 'Zmatrix=',Zmatrix#XXX
+    ##print 'Z=',Z#XXX
+    ##print 'Zmatrix=',Zmatrix#XXX
+    
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
     print 'Phase 3 Zmean = ', Zmean
