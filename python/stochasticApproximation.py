@@ -102,7 +102,6 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
-    ##print 'Zmatrix = ',Zmatrix
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
     theta = np.reshape(theta, (1, len(theta)))
@@ -112,27 +111,11 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # print 'Dcov = ', Dcov
 
     Zmatrix -= Zmean
-    ##print 'Zmatrix = ',Zmatrix
     D = (1.0/phase1steps) * np.matmul(np.transpose(Zmatrix), Zmatrix)
 
     print 'D = '
     print D
 
-    # ######### checking manual loop gets same answer as np matrix #########
-    # Dloop = np.zeros((n,n))
-    # for i in xrange(phase1steps):
-    #     for k in xrange(n):
-    #         for l in xrange(n):
-    #             Dloop[k,l] += Zmatrix[i,k] * Zmatrix[i,l]
-    # for k in xrange(n):
-    #     for l in xrange(n):
-    #         Dloop[k,l] /= float(phase1steps)
-
-    # print 'Dloop = ',Dloop
-    # assert(np.all(np.abs(D - Dloop) < 1e-10))
-    # #####################################################################
-
-            
     if 1.0/np.linalg.cond(D) < epsilon:
         sys.stdout.write("Covariance matrix is singular: degenerate model\n")
         return (None, None, None)
@@ -162,7 +145,6 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         sumSuccessiveProducts = np.zeros(n)
         thetaSum = np.zeros((1,n))
         while i < NkMax and (i < NkMax or np.all(sumSuccessiveProducts < 0)):
-            ##print '  subphase', k, 'iteration', i, 'theta =', theta
             oldZ = np.copy(Z)
             for j in xrange(iterationInStep):
                 (acceptance_rate,
@@ -175,18 +157,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
                 Z += changeTo1ChangeStats - changeTo0ChangeStats
 
             theta_step = a * np.matmul(Dinv, Z - Zobs)
-            ##print 'XXX      theta_step = ', theta_step
-            # ######## checking manual loop gets same as numpy ########
-            # loop_theta_step = np.zeros(n)
-            # for x in xrange(n):
-            #     for y in xrange(n):
-            #         loop_theta_step[x] += a * (Z[y] - Zobs[y]) * Dinv[y][x]
-            # print 'XXX loop_theta_step = ',loop_theta_step
-            # assert(np.all(loop_theta_step - theta_step < 1e-10))
-            # #########################################################
-
             theta -= theta_step
-
             thetaSum += theta
             oldSumSuccessiveProducts = np.copy(sumSuccessiveProducts)
             sumSuccessiveProducts += ((Z - Zobs) * (oldZ - Zobs))
@@ -228,9 +199,6 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
-    ##print 'Z=',Z#XXX
-    ##print 'Zmatrix=',Zmatrix#XXX
-    
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
     print 'Phase 3 Zmean = ', Zmean
