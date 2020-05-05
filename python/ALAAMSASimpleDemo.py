@@ -34,6 +34,7 @@
 
 import time
 import os
+import sys
 import random
 import math
 import numpy as np         # used for matrix & vector data types and functions
@@ -103,6 +104,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         converged = np.all(np.abs(t_ratio) < 0.1)
         if converged:
             print 'CONVERGED.'
+        sys.stdout.flush()
         i += 1
     
 
