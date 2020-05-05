@@ -137,9 +137,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     if 1.0/np.linalg.cond(D) < epsilon:
         sys.stdout.write("Covariance matrix is singular: degenerate model\n")
         return (None, None, None)
-    D0 = np.copy(np.diag(D))
     Dinv = np.linalg.inv(D)
-    D0inv = 1.0/D0
+
 
     print 'Phase 1 took', time.time() - start, 's'
 
@@ -164,7 +163,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         sumSuccessiveProducts = np.zeros(n)
         thetaSum = np.zeros((1,n))
         while i < NkMax and (i < NkMax or np.all(sumSuccessiveProducts < 0)):
-            print '  subphase', k, 'iteration', i, 'theta =', theta
+            ##print '  subphase', k, 'iteration', i, 'theta =', theta
             oldZ = np.copy(Z)
             for j in xrange(iterationInStep):
                 (acceptance_rate,
@@ -193,10 +192,11 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
             thetaSum += theta
             oldSumSuccessiveProducts = np.copy(sumSuccessiveProducts)
             sumSuccessiveProducts += ((Z - Zobs) * (oldZ - Zobs))
-            print '    sumSuccessiveProducts =',sumSuccessiveProducts
+            ##print '    sumSuccessiveProducts =',sumSuccessiveProducts
             i += 1
         if k > 1:     # use initial value of a in first two subphases
             a /= 2.0  # otherwise halve a for next subphase (gain sequence)
+        print '  subphase',k,'finished after',i,'iterations'
         theta = thetaSum / i # average theta
 
     print 'Phase 2 took', time.time() - start, 's'
@@ -254,6 +254,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
     std_error = np.sqrt(np.diag(Dinv))
     t_ratio = (Z - Zobs) * np.sqrt(D0inv)
+
 
     print 'Phase 3 took', time.time() - start, 's'
     theta = np.reshape(theta, (n ,)) # plain np array again
