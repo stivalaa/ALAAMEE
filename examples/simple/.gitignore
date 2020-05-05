@@ -5,3 +5,5 @@ theta_values_*.txt
 theta_values_*.eps
 alaam_sa_karate-*.err
 alaam_sa_karate-*.out
+alaam_sa_simn500-*.err
+alaam_sa_simn500-*.out
