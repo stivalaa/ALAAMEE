@@ -33,7 +33,7 @@ from basicALAAMsampler import basicALAAMsampler
 
 
 
-def stochasticApproximation(G, A, changestats_func_list, theta0):
+def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
     """
     Robbins-Monro stochastic approximation to estimate ALAAM parameers.
 
@@ -45,8 +45,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta0):
 
     Parameters:
        G                   - Graph object for graph to estimate
-       A                   - vector of 0/1 outcome variables for ALAAM
-                             NB this is updated (but G is not)
+       Aobs                - vector of 0/1 outcome variables for ALAAM
        changestats_func_list-list of change statistics funcions
        theta0              - corresponding vector of initial theta values
 
@@ -60,6 +59,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta0):
     
     n = len(changestats_func_list)
 
+    # copy input parameter vectors so input vectors not modified
+    A     = np.copy(Aobs)
     theta = np.copy(theta0)
     
     # constants used in multiple phases
