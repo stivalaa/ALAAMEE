@@ -174,7 +174,6 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
                                                            performMove = True,
                                                            sampler_m = iterationInStep)
                 Z += changeTo1ChangeStats - changeTo0ChangeStats
-            ##print 'XXX Z = ',Z, 'acceptance rate=',acceptance_rate
 
             theta_step = a * np.matmul(Dinv, Z - Zobs)
             ##print 'XXX      theta_step = ', theta_step
@@ -196,7 +195,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
             i += 1
         if k > 1:     # use initial value of a in first two subphases
             a /= 2.0  # otherwise halve a for next subphase (gain sequence)
-        print '  subphase',k,'finished after',i,'iterations'
+        print '  subphase',k,'finished after',i,'iterations (acceptance rate =',acceptance_rate,')'
         theta = thetaSum / i # average theta
 
     print 'Phase 2 took', time.time() - start, 's'
