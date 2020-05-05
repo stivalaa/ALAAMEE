@@ -1,7 +1,8 @@
 Simple python implementation of Equilibrium Expectation estimation of ALAAM
 parameters.
 
-Note using Python 2 (NOT Python 3).
+Note using Python 2 (NOT Python 3). Tested with Python 2.7 and Numpy
+version 1.16.3 on Linux.
 
 ADS
 Fri, Feb 14, 2020 11:33:58 AM
