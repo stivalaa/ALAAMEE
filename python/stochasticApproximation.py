@@ -50,7 +50,9 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
        theta               - corresponding vector of initial theta values
 
      Returns:
-         numpy vector of theta values at end (or None if degenerate model)
+         tuple (theta, std_error, t_ratio) of numpy vectors for
+         parameter values, standard error estimates, t-ratios, respectively,
+         or None if degenerate model
 
     """
     epsilon = np.finfo(float).eps
@@ -69,6 +71,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
     # phase 3 constants
     phase3steps = 1000
+    burnin       = 0.1 * phase3steps * iterationInStep
 
     # Calculate observed statistics by summing change stats for each 1 variable
     Zobs = np.zeros(n)
@@ -131,7 +134,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
             
     if 1.0/np.linalg.cond(D) < epsilon:
         sys.stdout.write("Covariance matrix is singular: degenerate model\n")
-        return None
+        return (None, None, None)
     D0 = np.copy(np.diag(D))
     Dinv = np.linalg.inv(D)
     D0inv = 1.0/D0
@@ -196,7 +199,55 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # Phase 3: Used only to estimate covariance matrix of estimator and
     # check for approximate validity of solution of moment equation.
     # 
+    print 'Phase 3 steps = ', phase3steps, 'iters per step = ',iterationInStep, 'burnin = ', burnin
+    Z = np.zeros(n) # start statistics at zero
+    Zmatrix = np.empty((phase3steps, n)) # rows statistics Z vectors, 1 per step
 
-    return theta
+    # burn-in iterations
+    (acceptance_rate,
+     changeTo1ChangeStats,
+     changeTo0ChangeStats) = basicALAAMsampler(G, A,
+                                               changestats_func_list,
+                                               theta,
+                                               performMove = True,
+                                               sampler_m = burnin)
+
+    
+    for i in xrange(phase3steps):
+        (acceptance_rate,
+         changeTo1ChangeStats,
+         changeTo0ChangeStats) = basicALAAMsampler(G, A,
+                                                   changestats_func_list,
+                                                   theta,
+                                                   performMove = True,
+                                                   sampler_m = iterationInStep)
+        Z += changeTo1ChangeStats - changeTo0ChangeStats
+        Zmatrix[i, ] = Z
+
+    Zmean = np.mean(Zmatrix, axis=0)
+    Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
+    print 'Phase 3 Zmean = ', Zmean
+
+    # Dcov = np.cov(np.transpose(Zmatrix))
+    # print 'Dcov = ', Dcov
+
+    Zmatrix -= Zmean
+    D = (1.0/phase3steps) * np.matmul(np.transpose(Zmatrix), Zmatrix)
+
+    print 'Phase 3 covariance matrix D = '
+    print D
+    
+    if 1.0/np.linalg.cond(D) < epsilon:
+        sys.stdout.write("Phase 3 covariance matrix is singular: degenerate model\n")
+        return (None, None, None)
+
+    D0 = np.copy(np.diag(D))
+    Dinv = np.linalg.inv(D)
+    D0inv = 1.0/D0
+
+    std_error = np.sqrt(np.diag(Dinv))
+    t_ratio = (Z - Zobs) * np.sqrt(D0inv)
+
+    return (theta, std_error, t_ratio)
 
 
