@@ -61,6 +61,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
     # constants used in multiple phases
     iterationInStep = 10 * G.numNodes()
+    iterationInStep = 10#XXX
 
     # phase 1 constants
     phase1steps     = 7 + 3*n
@@ -206,7 +207,6 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # 
     print 'Phase 3 steps = ', phase3steps, 'iters per step = ',iterationInStep, 'burnin = ', burnin
     start = time.time()
-    Z = np.zeros(n) # start statistics at zero
     Zmatrix = np.empty((phase3steps, n)) # rows statistics Z vectors, 1 per step
 
     # burn-in iterations
@@ -230,6 +230,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
+    print 'Z=',Z#XXX
+    print 'Zmatrix=',Zmatrix#XXX
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
     print 'Phase 3 Zmean = ', Zmean
