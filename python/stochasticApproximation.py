@@ -64,7 +64,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta0):
     
     # constants used in multiple phases
     iterationInStep = 10 * G.numNodes()
-
+    ## for testing: iterationInStep = 50#XXX
+    
     # phase 1 constants
     phase1steps     = 7 + 3*n
 
@@ -202,7 +203,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta0):
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
-    print 'XXX Zmatrix = ',Zmatrix
+    print 'XXX Zmatrix = '
+    print Zmatrix #XXX
 
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector

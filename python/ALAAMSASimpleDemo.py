@@ -80,18 +80,30 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     print 'positive outcome attribute = ', (float(sum(A))/len(A))*100.0, '%'
 
     theta = np.zeros(len(param_func_list))
-    
-    print 'Running stochastic approximation...'
-    start = time.time()
-    (theta, std_error, t_ratio) = stochasticApproximation(G, A,
-                                                          param_func_list,
-                                                          theta) 
 
-    print 'Stochastic approximation took',time.time() - start, 's'
-    print '           ',labels
-    print 'theta     =', theta
-    print 'std_error =', std_error
-    print 't_ratio   =', t_ratio
+    max_runs = 10
+    i = 0
+    converged = False
+    while i < max_runs and not converged:
+        print 'Running stochastic approximation (run', i+1,' of at most',max_runs,')...'
+        start = time.time()
+        (theta, std_error, t_ratio) = stochasticApproximation(G, A,
+                                                              param_func_list,
+                                                              theta) 
+
+        print 'Stochastic approximation took',time.time() - start, 's'
+        if theta is None:
+            print 'Failed.'
+            break
+        print '           ',labels
+        print 'theta     =', theta
+        print 'std_error =', std_error
+        print 't_ratio   =', t_ratio
+
+        converged = np.all(np.abs(t_ratio) < 0.1)
+        if converged:
+            print 'CONVERGED.'
+        i += 1
     
 
 def run_example():
