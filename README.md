@@ -1,7 +1,9 @@
 # ALAAMEE
 
 Autologistic Actor Attribute Model (ALAAM) parameter estimation using
-Equilibrium Expectation (EE) algorithm.
+Equilibrium Expectation (EE) algorithm. Also includes an implementation
+of the Robbins-Monro stochastic approximation algorithm for estimating
+ALAAM parameters.
 
 This a simple Python demonstration implementation. The Python
 implementation uses the NumPy library for vector and matrix data types
@@ -18,4 +20,8 @@ Daraganova, G., & Robins, G. (2013). Autologistic actor attribute models. In D. 
 
 Robins, G., Pattison, P., & Elliott, P. (2001). Network models for social influence processes. *Psychometrika*, 66(2), 161-189. https://link.springer.com/article/10.1007/BF02294834
 
+Snijders, T. A. (2002). Markov chain Monte Carlo estimation of exponential random graph models. Journal of Social Structure, 3(2), 1-40.
+
 Stivala, A. D., Gallagher, H. C., Rolls, D. A., Wang, P., & Robins, G. L. (2020). Using Sampled Network Data With The Autologistic Actor Attribute Model. arXiv preprint arXiv:2002.00849. https://arxiv.org/abs/2002.00849
+
+Stivala, A., Robins, G., & Lomi, A. (2020). Exponential random graph model parameter estimation for very large directed networks. PloS ONE, 15(1), e0227804. https://arxiv.org/abs/1904.08063
