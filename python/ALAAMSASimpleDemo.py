@@ -102,7 +102,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         print 't_ratio   =', t_ratio
 
         converged = np.all(np.abs(t_ratio) < 0.1)
-        if not converged:
+        if converged:
             print 'Converged.'
             significant = np.abs(theta) > 2 * std_error
             sys.stdout.write(20*' ' + '  Parameter Std.Error t-ratio\n')

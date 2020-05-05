@@ -65,7 +65,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
     
     # constants used in multiple phases
     iterationInStep = 10 * G.numNodes()
-    iterationInStep = 50#XXX
+    #XXX testing:iterationInStep = 50#XXX
     
     # phase 1 constants
     phase1steps     = 7 + 3*n
