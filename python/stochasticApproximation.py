@@ -202,6 +202,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta0):
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
+    print 'XXX Zmatrix = ',Zmatrix
+
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
     print 'Phase 3 Zmean = ', Zmean
