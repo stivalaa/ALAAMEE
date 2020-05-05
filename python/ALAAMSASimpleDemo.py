@@ -83,11 +83,14 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     
     print 'Running stochastic approximation...',
     start = time.time()
-    theta = stochasticApproximation(G, A, param_func_list, theta) 
+    (theta, std_error, t_ratio) = stochasticApproximation(G, A,
+                                                          param_func_list,
+                                                          theta) 
 
     print time.time() - start, 's'
-    print 'at end theta = ', theta
-
+    print 'at end theta     =', theta
+    print '       std_error =', std_error
+    print '       t_ratio   =', t_ratio
     
 
 def run_example():

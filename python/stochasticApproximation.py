@@ -24,7 +24,7 @@
   influence processes. Psychometrika, 66(2):161-189, 2001.
 
 """
-import sys
+import sys, time
 import numpy as np         # used for matrix & vector data types and functions
 
 from Graph import Graph
@@ -61,6 +61,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
     # constants used in multiple phases
     iterationInStep = 10 * G.numNodes()
+    iterationInStep = 10#XXX
 
     # phase 1 constants
     phase1steps     = 7 + 3*n
@@ -71,7 +72,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
 
     # phase 3 constants
     phase3steps = 1000
-    burnin       = 0.1 * phase3steps * iterationInStep
+    burnin       = int(round(0.1 * phase3steps * iterationInStep))
 
     # Calculate observed statistics by summing change stats for each 1 variable
     Zobs = np.zeros(n)
@@ -88,6 +89,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # Phase 1: estimate covariance matrix
     #
     print 'Phase 1 steps = ', phase1steps, 'iters per step = ',iterationInStep
+    start = time.time()
     Z = np.copy(Zobs)  # start at observed statistics vector
     Zmatrix = np.empty((phase1steps, n)) # rows statistics Z vectors, 1 per step
     for i in xrange(phase1steps):
@@ -139,6 +141,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     Dinv = np.linalg.inv(D)
     D0inv = 1.0/D0
 
+    print 'Phase 1 took', time.time() - start, 's'
 
     #
     # Phase 2 (main phase): In each subphase, generate simulated
@@ -151,6 +154,7 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     # between each subphase.
     #
     print 'Phase 2 subphases = ',numSubphases, ' iters per step = ', iterationInStep
+    start = time.time()
     a = a_initial
     for k in xrange(numSubphases):
         NkMin  = 2**(4 * k / 3) * (7 + n)
@@ -195,11 +199,14 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
             a /= 2.0  # otherwise halve a for next subphase (gain sequence)
         theta = thetaSum / i # average theta
 
+    print 'Phase 2 took', time.time() - start, 's'
+    
     #
     # Phase 3: Used only to estimate covariance matrix of estimator and
     # check for approximate validity of solution of moment equation.
     # 
     print 'Phase 3 steps = ', phase3steps, 'iters per step = ',iterationInStep, 'burnin = ', burnin
+    start = time.time()
     Z = np.zeros(n) # start statistics at zero
     Zmatrix = np.empty((phase3steps, n)) # rows statistics Z vectors, 1 per step
 
@@ -248,6 +255,8 @@ def stochasticApproximation(G, A, changestats_func_list, theta):
     std_error = np.sqrt(np.diag(Dinv))
     t_ratio = (Z - Zobs) * np.sqrt(D0inv)
 
+    print 'Phase 3 took', time.time() - start, 's'
+    theta = np.reshape(theta, (n ,)) # plain np array again
     return (theta, std_error, t_ratio)
 
 
