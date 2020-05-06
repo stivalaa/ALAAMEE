@@ -82,7 +82,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
     theta = np.zeros(len(param_func_list))
 
-    max_runs = 10
+    max_runs = 20
     i = 0
     converged = False
     while i < max_runs and not converged:
