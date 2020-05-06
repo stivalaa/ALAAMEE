@@ -7,3 +7,5 @@ alaam_sa_karate-*.err
 alaam_sa_karate-*.out
 alaam_sa_simn500-*.err
 alaam_sa_simn500-*.out
+alaam_sa_intel_python_karate-*.out
+alaam_sa_intel_python_karate-*.err
