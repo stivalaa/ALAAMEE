@@ -232,7 +232,8 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
 
 
     print 'Phase 3 took', time.time() - start, 's'
-    theta = np.reshape(theta, (n ,)) # plain np array again
+    theta = np.reshape(theta, (n ,))     # plain np array again
+    t_ratio = np.reshape(t_ratio, (n ,))
     return (theta, std_error, t_ratio)
 
 
