@@ -122,7 +122,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
     print D
 
     if 1.0/np.linalg.cond(D) < epsilon:
-        sys.stdout.write("Covariance matrix is singular: degenerate model\n")
+        sys.stdout.write("Covariance matrix is singular: may be degenerate model\n")
         return (None, None, None)
     Dinv = np.linalg.inv(D)
 
@@ -220,7 +220,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
     print D
     
     if 1.0/np.linalg.cond(D) < epsilon:
-        sys.stdout.write("Phase 3 covariance matrix is singular: degenerate model\n")
+        sys.stdout.write("Phase 3 covariance matrix is singular: may be degenerate model\n")
         return (None, None, None)
 
     D0 = np.copy(np.diag(D))
