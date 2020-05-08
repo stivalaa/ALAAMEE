@@ -191,6 +191,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
                                                theta,
                                                performMove = True,
                                                sampler_m = burnin)
+    Z += changeTo1ChangeStats - changeTo0ChangeStats
 
     
     for i in xrange(phase3steps):
