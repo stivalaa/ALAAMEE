@@ -151,20 +151,18 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
         thetaSum = np.zeros((1,n))
         while i < NkMax and (i < NkMax or np.all(sumSuccessiveProducts < 0)):
             oldZ = np.copy(Z)
-            for j in xrange(iterationInStep):
-                (acceptance_rate,
-                 changeTo1ChangeStats,
-                 changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                                           changestats_func_list,
-                                                           theta,
-                                                           performMove = True,
-                                                           sampler_m = iterationInStep)
-                Z += changeTo1ChangeStats - changeTo0ChangeStats
+            (acceptance_rate,
+             changeTo1ChangeStats,
+             changeTo0ChangeStats) = basicALAAMsampler(G, A,
+                                                       changestats_func_list,
+                                                       theta,
+                                                       performMove = True,
+                                                       sampler_m = iterationInStep)
+            Z += changeTo1ChangeStats - changeTo0ChangeStats
 
             theta_step = a * np.matmul(Dinv, Z - Zobs)
             theta -= theta_step
             thetaSum += theta
-            oldSumSuccessiveProducts = np.copy(sumSuccessiveProducts)
             sumSuccessiveProducts += ((Z - Zobs) * (oldZ - Zobs))
             ##print '    sumSuccessiveProducts =',sumSuccessiveProducts
             i += 1
