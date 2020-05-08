@@ -228,7 +228,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
     D0inv = 1.0/D0
 
     std_error = np.sqrt(np.diag(Dinv))
-    t_ratio = (Z - Zobs) * np.sqrt(D0inv)
+    t_ratio = (Zmean - Zobs) * np.sqrt(D0inv)
 
 
     print 'Phase 3 took', time.time() - start, 's'
