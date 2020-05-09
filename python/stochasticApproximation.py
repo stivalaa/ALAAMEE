@@ -163,7 +163,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
             theta_step = a * np.matmul(Dinv, Z - Zobs)
             theta -= theta_step
             thetaSum += theta
-            sumSuccessiveProducts = ((Z - Zobs) * (oldZ - Zobs))
+            sumSuccessiveProducts += ((Z - Zobs) * (oldZ - Zobs))
             ##print '    sumSuccessiveProducts =',sumSuccessiveProducts
             i += 1
         if k > 1:     # use initial value of a in first two subphases
