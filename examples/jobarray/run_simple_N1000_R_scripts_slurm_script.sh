@@ -4,8 +4,8 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=0-01:00:00
-#SBATCH --output=alaamee_covariance_simexample-%j.out
-#SBATCH --error=alaamee_covariance_simexample-%j.err
+#SBATCH --output=alaamee_covariance_simexampleN1000-%j.out
+#SBATCH --error=alaamee_covariance_simexampleN1000-%j.err
 
 
 # Remember must 'module load R/3.2.5' to get Microsoft R Open 3.2.5 
