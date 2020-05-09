@@ -1,0 +1,10 @@
+* Simulation result for network with 1000 of vertices.
+* Parameter Values of:
+#Attribute-Density	-8.05000
+#Activity	 0.55000
+#Contagion	 1.00000
+#oOb of Binary Attr1:1.20000
+#oOc of Continuous Attr1:1.15000
+* There are 10000000 proposed graphs.
+* Statistic samples are picked up at 1 per 100000 graphs.
+* Accepted 1956757 proposed graphs.
