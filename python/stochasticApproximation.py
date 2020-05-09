@@ -149,7 +149,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
         i = 0
         sumSuccessiveProducts = np.zeros(n)
         thetaSum = np.zeros((1,n))
-        while i < NkMax and (i < NkMax or np.all(sumSuccessiveProducts < 0)):
+        while i < NkMax and (i <= NkMin or not np.all(sumSuccessiveProducts < 0)):
             oldZ = np.copy(Z)
             (acceptance_rate,
              changeTo1ChangeStats,
