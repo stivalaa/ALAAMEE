@@ -143,7 +143,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
     start = time.time()
     a = a_initial
     for k in xrange(numSubphases):
-        NkMin  = 2**(4 * k / 3) * (7 + n)
+        NkMin  = int(round(2.0**(4.0 * k / 3.0) * (7 + n)))
         NkMax  = NkMin + 200
         print 'subphase', k, 'a = ', a, 'NkMin = ',NkMin,'NkMax = ',NkMax, 'theta = ', theta
         i = 0
