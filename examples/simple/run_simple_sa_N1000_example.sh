@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=2G
-#SBATCH --time=0-12:00:00
+#SBATCH --time=0-02:00:00
 #SBATCH --output=alaam_sa_simn1000-%j.out
 #SBATCH --error=alaam_sa_simn1000-%j.err
 
