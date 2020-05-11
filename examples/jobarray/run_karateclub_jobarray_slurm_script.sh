@@ -7,7 +7,7 @@
 # on completion
 
 #SBATCH --job-name="ALAAMEE_jobarray_parallel_sim"
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-06:00:00
 #SBATCH --output=alaamee_karate-%A_%a.out
 #SBATCH --error=alaamee_karate-%A_%a.err
 #SBATCH --ntasks=1
