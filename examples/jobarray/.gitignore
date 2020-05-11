@@ -11,3 +11,5 @@ alaamee_covariance_simexample-*.out
 alaamee_covariance_simexample-*.err
 alaamee_simexampleN1000-*.err
 alaamee_simexampleN1000-*.out
+alaamee_covariance_karate-*.out
+alaamee_covariance_karate-*.err
