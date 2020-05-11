@@ -55,6 +55,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         outcome_bin_filename,
                         binattr_filename=None,
                         catattr_filename=None,
+                        EEiterations    = 50000,
                         run = None):
     """
     Run on specified network with binary and/or categorical attributes.
@@ -71,6 +72,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                             Default None, in which case no binary attr.
          catattr_filename - filename of categorical attributes (node per line)
                             Default None, in which case no categorical attr.
+         EEiterations     - Number of iterations of the EE algorithm.
+                            Default 50000.
          run              - run number for parallel runs, used as suffix on 
                             output filenames. Default None
                             in which case no suffix added to output files.
@@ -109,8 +112,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     #OLD: Msteps = 100 # multiplier for number of inner steps of Algorithm EE
     #OLD: print 'M1 = ', M1, ' Mouter = ', Mouter, ' Msteps = ', Msteps
 
-    M = 50000 #  iterations of Algorithm EE
-    print 'M1 = ', M1, ' M = ', M, 
+    print 'M1 = ', M1, ' EEiterations = ', EEiterations, 
     
     theta_outfile = open(THETA_OUTFILENAME, 'w',1) # 1 means line buffering
     theta_outfile.write('t ' + ' '.join(labels) + ' ' + 'AcceptanceRate' + '\n')
@@ -128,7 +130,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     #OLD: theta = algorithm_EE(G, A, param_func_list, theta, Dmean,
     #OLD:                     Mouter, Msteps, theta_outfile, dzA_outfile)
     theta = algorithm_EE(G, A, param_func_list, theta, 
-                         M, theta_outfile, dzA_outfile)
+                         EEiterations, theta_outfile, dzA_outfile)
 
     print time.time() - start, 's'
     theta_outfile.close()

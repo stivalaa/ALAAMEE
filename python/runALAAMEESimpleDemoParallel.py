@@ -62,7 +62,7 @@ def main():
         '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
         '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
         '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt',
-        runNumber
+        run = runNumber
     )
 
 
