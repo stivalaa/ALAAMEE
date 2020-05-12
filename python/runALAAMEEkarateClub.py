@@ -20,6 +20,7 @@ ALAAMEESimpleDemo.run_on_network_attr(
     '../data/karate_club/karate_outcome.txt',
     '../data/karate_club/karate_binattr.txt',
     '../data/karate_club/karate_contattr.txt',
+    '../data/karate_club/karate_cattattr.txt',
     EEiterations = 100000
     )
 

@@ -281,7 +281,7 @@ def changeoO_Odiff(G, A, i):
     oO_Odiff (outcome attribtue related to mismatching categorical
     exogenous attributes on this and partner node)
 
-    {*}--{o}
+    {*}--<o>
 
     """
     delta = 0

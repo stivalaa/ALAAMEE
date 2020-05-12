@@ -55,6 +55,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         outcome_bin_filename,
                         binattr_filename=None,
                         contattr_filename=None,
+                        catattr_filename=None,
                         EEiterations    = 50000,
                         run = None):
     """Run on specified network with binary and/or continuous
@@ -72,6 +73,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                             Default None, in which case no binary attr.
          contattr_filename - filename of continuous attributes (node per line)
                             Default None, in which case no continuous attr.
+         catattr_filename - filename of categorical attributes (node per line)
+                            Default None, in which case no categorical attr.
          EEiterations     - Number of iterations of the EE algorithm.
                             Default 50000.
          run              - run number for parallel runs, used as suffix on 
@@ -95,7 +98,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     THETA_OUTFILENAME += os.extsep + 'txt'
     DZA_OUTFILENAME   += os.extsep + 'txt'
 
-    G = Graph(edgelist_filename, binattr_filename, contattr_filename)
+    G = Graph(edgelist_filename, binattr_filename, contattr_filename,
+              catattr_filename)
 
     outcome_binvar = map(int, open(outcome_bin_filename).read().split()[1:])
     assert(len(outcome_binvar) == G.numNodes())
