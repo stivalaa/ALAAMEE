@@ -63,6 +63,7 @@ def main():
         '../data/karate_club/karate_outcome.txt',
         '../data/karate_club/karate_binattr.txt',
         '../data/karate_club/karate_contattr.txt',
+        '../data/karate_club/karate_catattr.txt',        
         EEiterations = 200000,
         run = runNumber
     )
