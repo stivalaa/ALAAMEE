@@ -3,7 +3,7 @@
 #SBATCH --job-name="ALAAMEE_parallel_karate"
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=20
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-02:00:00
 #SBATCH --output=alaamee_karate-%j.out
 #SBATCH --error=alaamee_karate-%j.err
 
