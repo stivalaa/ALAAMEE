@@ -234,7 +234,7 @@ def changeo_Ob(G, A, i):
     *--[o]
     """
     delta = 0
-    for u in G.neibhbourIterator(i):
+    for u in G.neighbourIterator(i):
         delta += G.binattr[u]
     return delta
 
