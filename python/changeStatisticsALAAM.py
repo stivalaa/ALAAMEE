@@ -155,25 +155,25 @@ def changePartnerAttributeActivity(G, A, i):
     return delta
     
 
-def changePartnerPartnerAttribute_OLD(G, A, i):
-    """
-    Change statistic for partner-partner-attribute (partner-resource)
+# def changePartnerPartnerAttribute_OLD(G, A, i):
+#     """
+#     Change statistic for partner-partner-attribute (partner-resource)
 
-    *--*--*
-    """
-    delta = 0
-    for u in G.neighbourIterator(i):
-        if A[u] != 0:
-            # FIXME this is inefficient, iterating over all nodes
-            for v in range(G.numNodes()):
-                if v == i or v == u:
-                    continue
-                if A[v] != 0:
-                    if G.isEdge(u, v):
-                        delta += 2
-                    if G.isEdge(i, v):
-                        delta += 1
-    return delta
+#     *--*--*
+#     """
+#     delta = 0
+#     for u in G.neighbourIterator(i):
+#         if A[u] != 0:
+#             # FIXME this is inefficient, iterating over all nodes
+#             for v in range(G.numNodes()):
+#                 if v == i or v == u:
+#                     continue
+#                 if A[v] != 0:
+#                     if G.isEdge(u, v):
+#                         delta += 2
+#                     if G.isEdge(i, v):
+#                         delta += 1
+#     return delta
 
 
 def changePartnerPartnerAttribute(G, A, i):
@@ -182,7 +182,7 @@ def changePartnerPartnerAttribute(G, A, i):
 
     *--*--*
     """
-    delta_OLD = changePartnerPartnerAttribute_OLD(G, A, i)
+#    delta_OLD = changePartnerPartnerAttribute_OLD(G, A, i)
     
     delta = 0
     for u in G.neighbourIterator(i):
@@ -194,7 +194,7 @@ def changePartnerPartnerAttribute(G, A, i):
                 if A[v] != 0 and v != u:
                     delta += 1
                     
-    assert delta == delta_OLD
+#    assert delta == delta_OLD
     return delta
 
 
