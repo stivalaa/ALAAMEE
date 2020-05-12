@@ -38,7 +38,7 @@ class Graph:
     """
 
     def __init__(self, pajek_edgelist_filename, binattr_filename=None,
-                 contattr_filename=None):
+                 contattr_filename=None, catattr_filename=None):
         """
         Construct graph from Pajek format network and binary attributes.
 
@@ -52,6 +52,7 @@ class Graph:
         self.G = None  # dict of dicts as described above
         self.binattr = None # binary attributes: list by node (int not boolean)
         self.contattr = None # continuous attributes: list by node
+        self.catattr = None  # categocial attributes: list by node
 
         f =  open(pajek_edgelist_filename)
         l = f.readline() # first line must be e.g. "*vertices 500"
@@ -78,6 +79,9 @@ class Graph:
             self.contattr = map(float, open(contattr_filename).read().split()[1:])
             assert(len(self.contattr) == n)
 
+        if catattr_filename is not None:
+            self.catattr = map(int, open(catattr_filename).read().split()[1:])
+            assert(len(self.catattr) == n)
 
     def numNodes(self):
         """
