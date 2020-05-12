@@ -9,12 +9,12 @@ G and outcome vector A and returns the change statistic for changing
 outcome of node i to 1.
 
 The change statistics here are documented in Daraganova & Robins
-(2013) Tables 9.1 - 9.3 (pp. 110-112) and the PNet manual Appendix B
+(2013) Tables 9.1-9.3 (pp. 110-112) and the PNet manual Appendix B
 "IPNet Graph Statistics" (pp. 42-43), and here I use a similar naming
 convention to the latter. Similarly, the diagrams will follow a
 similar convention where a black or solid node, shown as an asterisk
 "*" here, denotes an actor with the outcome attribute, while a hollow
-or white node, shown as an uppercase "O" here, denotes an actor with
+or white node, shown as an lowercase "o" here, denotes an actor with
 or without the attribute.
 
 See
@@ -51,10 +51,62 @@ def changeActivity(G, A, i):
     """
     change statistic for Activity
 
-    *--O
+    *--o
     """
     return G.degree(i)
 
+
+def changeTwoStar(G, A, i):
+    """
+    Change statistic for two-star
+
+    *--o
+     \
+      o
+    """
+    return (G.degree(i) * (G.degree(i) - 1))/2.0 if G.degree(i) > 1 else 0
+
+
+def changeThreeStar(G, A, i):
+    """
+    Change statistic for three-star
+
+      o
+     /
+    *--o
+     \
+      o
+    """
+    return ( G.degree(i) * (G.degree(i) - 1) * (G.degree(i) - 2) / 6.0
+             if G.degree(i) > 2 else 0 )
+        
+
+def changePartnerActivityTwoPath(G, A, i):
+    """
+    Change statistic for partner activity actor two-path (Alter-2Star1A)
+
+    *--o--o
+    """
+    XXX
+
+def changeTriangleT1(G, A, i):
+    """
+    Change statistic for actor triangle (T1)
+
+      o
+     / \
+    *---o
+    """
+    delta = 0
+    if G.degree(i) < 2:
+        return 0
+    else:
+        for u in G.neighbourIterator(i):
+            for v in G.neighbourIterator(u):
+                if v != i and G.isEdge(i, v):
+                    delta += 1
+    return delta
+        
 
 def changeContagion(G, A, i):
     """
@@ -69,6 +121,90 @@ def changeContagion(G, A, i):
     return delta
 
 
+def changeIndirectPartnerAttribute(G, A, i):
+    """
+    Change statistic for indirect partner attribute (Alter-2Star2A);
+    structural equivalence between actors with attribute (two-path equivalence)
+
+    *--o--*
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        for v in G.neighbourIterator(u):
+            if v != i and A[v] != 0:
+                delta += 1
+    return delta
+
+
+def changePartnerAttributeActivity(G, A, i):
+    """
+    Change statistic for partner attribute activity
+
+    *--*--o
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        if A[u] != 0:
+            delta += G.degree(i) + G.degree[u] - 2
+    return delta
+    
+
+def changePartnerPartnerAttribute(G, A, i):
+    """
+    Change statistic for partner-partner-attribute (partner-resource)
+
+    *--*--*
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        if A[u] != 0:
+            for v in G.neighbourIterator(u):
+                if v != i and A[v] != 0:
+                    delta += 1
+    return delta
+
+
+def changeTriangleT2(G, A, i):
+    """
+    Change statistic for partner attribute triangle (T2)
+
+      *
+     / \
+    *---o
+    """
+    delta = 0
+    if G.degree(i) < 2:
+        return 0
+    else:
+        for u in G.neighbourIterator(i):
+            if A[u] != 0:
+                for v in G.neighbourIterator(u):
+                    if v != i and G.isEdge(i, v):
+                        delta += 1
+    return delta
+        
+
+def changeTriangleT3(G, A, i):
+    """
+    Change statistic for partner-partner attribute triangle (T3)
+
+      *
+     / \
+    *---*
+    """
+    delta = 0
+    if G.degree(i) < 2:
+        return 0
+    else:
+        for u in G.neighbourIterator(i):
+            if A[u] != 0:
+                for v in G.neighbourIterator(u):
+                    if v != i and A[v] != 0 and G.isEdge(i, v):
+                        delta += 1
+    return delta
+        
+
+
 def changeoOb(G, A, i):
     """change statistic for binary exogenous attribute oOb (outcome
     attribute related to binary attribute on same node)
@@ -76,6 +212,18 @@ def changeoOb(G, A, i):
     [*]
     """
     return G.binattr[i]
+
+
+def changeo_Ob(G, A, i):
+    """change statistic for binary exogenous partner attribute o_Ob (outcome
+    attribute related to binary attribute on partner node)
+
+    *--[o]
+    """
+    delta = 0
+    for u in G.neibhbourIterator(i):
+        delta += G.binattr[u]
+    return delta
 
 
 def changeoOc(G, A, i):
@@ -87,4 +235,44 @@ def changeoOc(G, A, i):
     return G.contattr[i]
 
 
+def changeo_Oc(G, A, i):
+    """change statistic for continuous exogenous partner attribute o_Oc (outcome
+    attribute related to continuous attribute on partner node)
 
+    *--(o)
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        delta += G.contattr[u]
+    return delta
+
+
+
+def changeoO_Osame(G, A, i):
+    """
+    Change statistic for categorical matching exogenous attributes oO_Osame
+    (outcome attribtue related to matching categorical exogenous attributes on
+    this and partner node)
+
+    {*}--{o}
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        if G.catattr[u] == G.catattr[i]:
+            delta += 1
+    return delta
+
+
+def changeoO_Odiff(G, A, i):
+    """Change statistic for categorical mismatching exogenous attributes
+    oO_Odiff (outcome attribtue related to mismatching categorical
+    exogenous attributes on this and partner node)
+
+    {*}--{o}
+
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        if G.catattr[u] != G.catattr[i]:
+            delta += 1
+    return delta
