@@ -54,11 +54,11 @@ from equilibriumExpectationBorisenko import algorithm_EE,THETA_PREFIX,DZA_PREFIX
 def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         outcome_bin_filename,
                         binattr_filename=None,
-                        catattr_filename=None,
+                        contattr_filename=None,
                         EEiterations    = 50000,
                         run = None):
-    """
-    Run on specified network with binary and/or categorical attributes.
+    """Run on specified network with binary and/or continuous
+    and categorical attributes.
     
     Parameters:
          edgelist_filename - filename of Pajek format edgelist 
@@ -70,8 +70,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                 of outcome variable for ALAAM
          binattr_filename - filename of binary attributes (node per line)
                             Default None, in which case no binary attr.
-         catattr_filename - filename of categorical attributes (node per line)
-                            Default None, in which case no categorical attr.
+         contattr_filename - filename of continuous attributes (node per line)
+                            Default None, in which case no continuous attr.
          EEiterations     - Number of iterations of the EE algorithm.
                             Default 50000.
          run              - run number for parallel runs, used as suffix on 
@@ -83,6 +83,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     if edgelist_filename is edges.txt then ifd_theta_values_edges_0.txt
     and ifd_dzA_values_edges_0.txt etc.
     WARNING: these files are overwritten.
+
     """
     assert(len(param_func_list) == len(labels))
     basename = os.path.splitext(os.path.basename(edgelist_filename))[0]
@@ -94,7 +95,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     THETA_OUTFILENAME += os.extsep + 'txt'
     DZA_OUTFILENAME   += os.extsep + 'txt'
 
-    G = Graph(edgelist_filename, binattr_filename, catattr_filename)
+    G = Graph(edgelist_filename, binattr_filename, contattr_filename)
 
     outcome_binvar = map(int, open(outcome_bin_filename).read().split()[1:])
     assert(len(outcome_binvar) == G.numNodes())

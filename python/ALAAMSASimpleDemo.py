@@ -48,9 +48,9 @@ from stochasticApproximation import stochasticApproximation
 def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         outcome_bin_filename,
                         binattr_filename=None,
-                        catattr_filename=None):
-    """
-    Run on specified network with binary and/or categorical attributes.
+                        contattr_filename=None):
+    """Run on specified network with binary and/or continuous and
+    categorical attributes.
     
     Parameters:
          edgelist_filename - filename of Pajek format edgelist 
@@ -62,14 +62,15 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                 of outcome variable for ALAAM
          binattr_filename - filename of binary attributes (node per line)
                             Default None, in which case no binary attr.
-         catattr_filename - filename of categorical attributes (node per line)
-                            Default None, in which case no categorical attr.
+         contattr_filename - filename of continuous attributes (node per line)
+                            Default None, in which case no continuous attr.
 
     Write output to stdout.
+
     """
     assert(len(param_func_list) == len(labels))
 
-    G = Graph(edgelist_filename, binattr_filename, catattr_filename)
+    G = Graph(edgelist_filename, binattr_filename, contattr_filename)
 
     outcome_binvar = map(int, open(outcome_bin_filename).read().split()[1:])
     assert(len(outcome_binvar) == G.numNodes())
