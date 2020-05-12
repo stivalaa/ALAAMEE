@@ -87,7 +87,11 @@ def changePartnerActivityTwoPath(G, A, i):
 
     *--o--o
     """
-    XXX
+    delta = 0
+    for u in G.neighbourIterator(i):
+        delta += G.degree(i) + G.degree(u) - 2
+    return delta
+    
 
 def changeTriangleT1(G, A, i):
     """
@@ -105,7 +109,8 @@ def changeTriangleT1(G, A, i):
             for v in G.neighbourIterator(u):
                 if v != i and G.isEdge(i, v):
                     delta += 1
-    return delta
+    assert delta % 2 == 0
+    return delta / 2.0
         
 
 def changeContagion(G, A, i):
@@ -137,15 +142,16 @@ def changeIndirectPartnerAttribute(G, A, i):
 
 
 def changePartnerAttributeActivity(G, A, i):
-    """
-    Change statistic for partner attribute activity
+    """Change statistic for partner attribute activity (NB called
+    "Partner-Activity" in PNet manual IPNet graph statistics (p. 42))
 
     *--*--o
+
     """
     delta = 0
     for u in G.neighbourIterator(i):
         if A[u] != 0:
-            delta += G.degree(i) + G.degree[u] - 2
+            delta += G.degree(i) + G.degree(u) - 2
     return delta
     
 
@@ -158,9 +164,15 @@ def changePartnerPartnerAttribute(G, A, i):
     delta = 0
     for u in G.neighbourIterator(i):
         if A[u] != 0:
-            for v in G.neighbourIterator(u):
-                if v != i and A[v] != 0:
-                    delta += 1
+            # FIXME this is inefficient, iterating over all nodes
+            for v in range(G.numNodes()):
+                if v == i or v == u:
+                    continue
+                if A[v] != 0:
+                    if G.isEdge(u, v):
+                        delta += 2
+                    if G.isEdge(i, v):
+                        delta += 1
     return delta
 
 
@@ -201,7 +213,8 @@ def changeTriangleT3(G, A, i):
                 for v in G.neighbourIterator(u):
                     if v != i and A[v] != 0 and G.isEdge(i, v):
                         delta += 1
-    return delta
+    assert delta % 2 == 0
+    return delta / 2.0
         
 
 
