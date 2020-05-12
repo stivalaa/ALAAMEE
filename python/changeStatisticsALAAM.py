@@ -155,7 +155,7 @@ def changePartnerAttributeActivity(G, A, i):
     return delta
     
 
-def changePartnerPartnerAttribute(G, A, i):
+def changePartnerPartnerAttribute_OLD(G, A, i):
     """
     Change statistic for partner-partner-attribute (partner-resource)
 
@@ -173,6 +173,28 @@ def changePartnerPartnerAttribute(G, A, i):
                         delta += 2
                     if G.isEdge(i, v):
                         delta += 1
+    return delta
+
+
+def changePartnerPartnerAttribute(G, A, i):
+    """
+    Change statistic for partner-partner-attribute (partner-resource)
+
+    *--*--*
+    """
+    delta_OLD = changePartnerPartnerAttribute_OLD(G, A, i)
+    
+    delta = 0
+    for u in G.neighbourIterator(i):
+        if A[u] != 0:
+            for v in G.neighbourIterator(u):
+                if A[v] != 0:
+                    delta += 2
+            for v in G.neighbourIterator(i):
+                if A[v] != 0 and v != u:
+                    delta += 1
+                    
+    assert delta == delta_OLD
     return delta
 
 
