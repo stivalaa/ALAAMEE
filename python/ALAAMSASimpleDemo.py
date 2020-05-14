@@ -81,7 +81,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     A = outcome_binvar
 
     assert( all([x in [0,1] for x in A]) )
-    
+
+    print 'graph nodes = ', G.numNodes()
+    print 'graph edges = ', G.numEdges()
     print 'graph density = ', G.density()
     print 'positive outcome attribute = ', (float(sum(A))/len(A))*100.0, '%'
 
