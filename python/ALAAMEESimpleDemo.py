@@ -43,7 +43,7 @@ import random
 import math
 import numpy as np         # used for matrix & vector data types and functions
 
-from Graph import Graph
+from Graph import Graph,NA_VALUE
 from changeStatisticsALAAM import *
 from initialEstimator import algorithm_S
 #OLD:from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
@@ -109,7 +109,21 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     
     print 'graph density = ', G.density()
     print 'positive outcome attribute = ', (float(sum(A))/len(A))*100.0, '%'
-    
+
+    if G.binattr is not None:
+        print 'Binary attributes have', G.binattr.count(NA_VALUE), 'NA values'
+    else:
+        print 'No binary attributes'
+    if G.contattr is not None:
+        print 'Continuous attributes have', sum([math.isnan(x) for x in G.contattr]), 'NA values'
+    else:
+        print 'No continuous attributes'
+    if G.catattr is not None:
+        print 'Categorical attributes have', G.catattr.count(NA_VALUE), 'NA values'
+    else:
+        print 'No categorical attributes'
+
+        
     # steps of Alg 1    
     M1 = 100
 

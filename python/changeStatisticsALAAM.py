@@ -35,7 +35,7 @@ See
 
 import math
 
-from Graph import Graph
+from Graph import Graph,NA_VALUE
 
 
 def changeDensity(G, A, i):
