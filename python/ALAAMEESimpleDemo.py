@@ -43,7 +43,7 @@ import random
 import math
 import numpy as np         # used for matrix & vector data types and functions
 
-from Graph import Graph,NA_VALUE
+from Graph import Graph,NA_VALUE,int_or_na
 from changeStatisticsALAAM import *
 from initialEstimator import algorithm_S
 #OLD:from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
@@ -101,17 +101,19 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     G = Graph(edgelist_filename, binattr_filename, contattr_filename,
               catattr_filename)
 
-    outcome_binvar = map(int, open(outcome_bin_filename).read().split()[1:])
+    outcome_binvar = map(int_or_na, open(outcome_bin_filename).read().split()[1:])
     assert(len(outcome_binvar) == G.numNodes())
     A = outcome_binvar
 
-    assert( all([x in [0,1] for x in A]) )
+    assert( all([x in [0,1,NA_VALUE] for x in A]) )
     
     print 'graph nodes = ', G.numNodes()
     print 'graph edges = ', G.numEdges()
     print 'graph density = ', G.density()
-    print 'positive outcome attribute = ', (float(sum(A))/len(A))*100.0, '%'
+    print 'positive outcome attribute = ', (float(sum([1 if x == 1 else 0 for x in A]))/len(A))*100.0, '%'
 
+    if NA_VALUE in A:
+        print 'Warning: outcome variable has', A.count(NA_VALUE), 'NA values'
     if G.binattr is not None:
         print 'Binary attributes have', G.binattr.count(NA_VALUE), 'NA values'
     else:
