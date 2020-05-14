@@ -7,6 +7,37 @@
 # representation
 #
 
+# NA values for categorical and binary attributes (continuous uses float("nan"))
+NA_VALUE = -1
+
+def int_or_na(s):
+    """
+    Convert string to integer or NA value for "NA" for missing data
+    
+    Parameters:
+       s  - string representation of integer or "NA" 
+
+    Return value:
+      integer value of s or NA_VALUE
+    """
+    return NA_VALUE if s == "NA" else int(s)
+
+
+def float_or_na(s):
+    """
+    Convert string to float or NaN for "NA" for missing data
+    
+    Parameters:
+       s  - string representation of integer or "NA"
+
+    Return value:
+      integer value of s or NA_VALUE
+    """
+    return float("NaN") if s == "NA" else float(s)
+
+
+
+
 class Graph:
     """
     The network is represented as a dictionary of dictionaries.
@@ -52,7 +83,7 @@ class Graph:
         self.G = None  # dict of dicts as described above
         self.binattr = None # binary attributes: list by node (int not boolean)
         self.contattr = None # continuous attributes: list by node
-        self.catattr = None  # categocial attributes: list by node
+        self.catattr = None  # categorical attributes: list by node
 
         f =  open(pajek_edgelist_filename)
         l = f.readline() # first line must be e.g. "*vertices 500"
@@ -72,15 +103,15 @@ class Graph:
             lsplit = f.readline().split()
 
         if binattr_filename is not None:
-            self.binattr = map(int, open(binattr_filename).read().split()[1:]) 
+            self.binattr = map(int_or_na, open(binattr_filename).read().split()[1:]) 
             assert(len(self.binattr) == n)
 
         if contattr_filename is not None:
-            self.contattr = map(float, open(contattr_filename).read().split()[1:])
+            self.contattr = map(float_or_na, open(contattr_filename).read().split()[1:])
             assert(len(self.contattr) == n)
 
         if catattr_filename is not None:
-            self.catattr = map(int, open(catattr_filename).read().split()[1:])
+            self.catattr = map(int_or_na, open(catattr_filename).read().split()[1:])
             assert(len(self.catattr) == n)
 
     def numNodes(self):

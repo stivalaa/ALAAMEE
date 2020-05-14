@@ -121,7 +121,7 @@ def changeContagion(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        if A[u] != 0:
+        if A[u] == 1:
             delta += 1
     return delta
 
@@ -136,7 +136,7 @@ def changeIndirectPartnerAttribute(G, A, i):
     delta = 0
     for u in G.neighbourIterator(i):
         for v in G.neighbourIterator(u):
-            if v != i and A[v] != 0:
+            if v != i and A[v] == 1:
                 delta += 1
     return delta
 
@@ -150,7 +150,7 @@ def changePartnerAttributeActivity(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        if A[u] != 0:
+        if A[u] == 1:
             delta += G.degree(i) + G.degree(u) - 2
     return delta
     
@@ -163,12 +163,12 @@ def changePartnerAttributeActivity(G, A, i):
 #     """
 #     delta = 0
 #     for u in G.neighbourIterator(i):
-#         if A[u] != 0:
+#         if A[u] == 1:
 #             # FIXME this is inefficient, iterating over all nodes
 #             for v in range(G.numNodes()):
 #                 if v == i or v == u:
 #                     continue
-#                 if A[v] != 0:
+#                 if A[v] == 1:
 #                     if G.isEdge(u, v):
 #                         delta += 2
 #                     if G.isEdge(i, v):
@@ -186,12 +186,12 @@ def changePartnerPartnerAttribute(G, A, i):
     
     delta = 0
     for u in G.neighbourIterator(i):
-        if A[u] != 0:
+        if A[u] == 1:
             for v in G.neighbourIterator(u):
-                if A[v] != 0:
+                if A[v] == 1:
                     delta += 2
             for v in G.neighbourIterator(i):
-                if A[v] != 0 and v != u:
+                if A[v] == 1 and v != u:
                     delta += 1
                     
 #    assert delta == delta_OLD
@@ -211,7 +211,7 @@ def changeTriangleT2(G, A, i):
         return 0
     else:
         for u in G.neighbourIterator(i):
-            if A[u] != 0:
+            if A[u] == 1:
                 for v in G.neighbourIterator(u):
                     if v != i and G.isEdge(i, v):
                         delta += 1
@@ -231,9 +231,9 @@ def changeTriangleT3(G, A, i):
         return 0
     else:
         for u in G.neighbourIterator(i):
-            if A[u] != 0:
+            if A[u] == 1:
                 for v in G.neighbourIterator(u):
-                    if v != i and A[v] != 0 and G.isEdge(i, v):
+                    if v != i and A[v] == 1 and G.isEdge(i, v):
                         delta += 1
     assert delta % 2 == 0
     return delta / 2.0
@@ -246,7 +246,7 @@ def changeoOb(G, A, i):
 
     [*]
     """
-    return G.binattr[i]
+    return 0 if G.binattr[i] == NA_VALUE else G.binattr[i]
 
 
 def changeo_Ob(G, A, i):
@@ -257,7 +257,7 @@ def changeo_Ob(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        delta += G.binattr[u]
+        delta += 0 if G.binattr[i] == NA_VALUE else G.binattr[u]
     return delta
 
 
@@ -267,7 +267,7 @@ def changeoOc(G, A, i):
 
     (*)
     """
-    return G.contattr[i]
+    return 0 if math.isnan(G.contattr[i]) else G.contattr[i]
 
 
 def changeo_Oc(G, A, i):
@@ -278,7 +278,7 @@ def changeo_Oc(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        delta += G.contattr[u]
+        delta += 0 if math.isnan(G.contattr[u]) else G.contattr[u]
     return delta
 
 
@@ -293,7 +293,8 @@ def changeoO_Osame(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        if G.catattr[u] == G.catattr[i]:
+        if (G.catattr[u] != NA_VALUE and G.catattr[i] != NA_VALUE and
+            G.catattr[u] == G.catattr[i]):
             delta += 1
     return delta
 
@@ -308,6 +309,7 @@ def changeoO_Odiff(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        if G.catattr[u] != G.catattr[i]:
+        if (G.catattr[u] != NA_VALUE and G.catattr[i] != NA_VALUE and
+            G.catattr[u] != G.catattr[i]):
             delta += 1
     return delta
