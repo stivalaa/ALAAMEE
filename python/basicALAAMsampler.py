@@ -83,7 +83,7 @@ def basicALAAMsampler(G, A, changestats_func_list, theta, performMove,
             changestats[l] = changestats_func_list[l](G, A, i)
         changeSignMul = -1 if isChangeToZero else +1
         total = np.sum(theta * changeSignMul * changestats)
-        if random.uniform(0, 1) < math.exp(total):
+        if random.uniform(0, 1) < np.exp(total): #np.exp gives inf not overflow
             accepted += 1
             if performMove:
                 # actually accept the move.
