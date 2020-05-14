@@ -85,6 +85,20 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     print 'graph density = ', G.density()
     print 'positive outcome attribute = ', (float(sum(A))/len(A))*100.0, '%'
 
+    if G.binattr is not None:
+        print 'Binary attributes have', G.binattr.count(NA_VALUE), 'NA values'
+    else:
+        print 'No binary attributes'
+    if G.contattr is not None:
+        print 'Continuous attributes have', sum([math.isnan(x) for x in G.contattr]), 'NA values'
+    else:
+        print 'No continuous attributes'
+    if G.catattr is not None:
+        print 'Categorical attributes have', G.catattr.count(NA_VALUE), 'NA values'
+    else:
+        print 'No categorical attributes'
+
+
     theta = np.zeros(len(param_func_list))
 
     max_runs = 20
