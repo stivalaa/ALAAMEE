@@ -29,7 +29,7 @@ import random
 import math
 import numpy as np         # used for matrix & vector data types and functions
 
-from Graph import Graph
+from Graph import Graph,NA_VALUE
 from changeStatisticsALAAM import *
 
 
@@ -72,7 +72,9 @@ def basicALAAMsampler(G, A, changestats_func_list, theta, performMove,
         # basic sampler: select a node  i uniformly at random
         # and toggle outcome variable for it
         i = random.randint(0, G.numNodes()-1)
-        isChangeToZero = (A[i] != 0)
+        while A[i] == NA_VALUE:  # keep going until we get one that is not NA
+            i = random.randint(0, G.numNodes()-1)
+        isChangeToZero = (A[i] == 1)
         if isChangeToZero:
             A[i] = 0
 
