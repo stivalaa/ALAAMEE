@@ -27,7 +27,7 @@
 import sys, time
 import numpy as np         # used for matrix & vector data types and functions
 
-from Graph import Graph
+from Graph import Graph,NA_VALUE
 from changeStatisticsALAAM import *
 from basicALAAMsampler import basicALAAMsampler
 
@@ -82,6 +82,8 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
     Zobs = np.zeros(n)
     Acopy = np.zeros(len(A))
     for i in xrange(len(A)):
+        if A[i] == NA_VALUE:
+            Acopy[i] = NA_VALUE
         if A[i] == 1:
             for l in xrange(n):
                 Zobs[l] += changestats_func_list[l](G, Acopy, i)
