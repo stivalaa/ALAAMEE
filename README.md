@@ -10,6 +10,10 @@ implementation uses the NumPy library for vector and matrix data types
 and functions. In addition, there are R scripts for estimating
 standard errors and plotting results from the output.
 
+## Funding
+
+Development of the EstimNetDirected software was funded by the Swiss National Science Foundation NRP 75 project number 167326.
+
 ## References
 
 Borisenko, A., Byshkin, M., & Lomi, A. (2019). A Simple Algorithm for Scalable Monte Carlo Inference. arXiv preprint arXiv:1901.00533. https://arxiv.org/abs/1901.00533
