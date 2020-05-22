@@ -28,4 +28,4 @@ Snijders, T. A. B. (2002). [Markov chain Monte Carlo estimation of exponential r
 
 Stivala, A. D., Gallagher, H. C., Rolls, D. A., Wang, P., & Robins, G. L. (2020). Using Sampled Network Data With The Autologistic Actor Attribute Model. arXiv preprint arXiv:2002.00849. https://arxiv.org/abs/2002.00849
 
-Stivala, A., Robins, G., & Lomi, A. (2020). Exponential random graph model parameter estimation for very large directed networks. PloS ONE, 15(1), e0227804. https://arxiv.org/abs/1904.08063
+Stivala, A., Robins, G., & Lomi, A. (2020). Exponential random graph model parameter estimation for very large directed networks. *PloS ONE*, 15(1), e0227804. https://arxiv.org/abs/1904.08063
