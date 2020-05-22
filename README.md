@@ -24,7 +24,7 @@ Daraganova, G., & Robins, G. (2013). Autologistic actor attribute models. In D. 
 
 Robins, G., Pattison, P., & Elliott, P. (2001). Network models for social influence processes. *Psychometrika*, 66(2), 161-189. https://link.springer.com/article/10.1007/BF02294834
 
-Snijders, T. A. (2002). [Markov chain Monte Carlo estimation of exponential random graph models](https://www.cmu.edu/joss/content/articles/volume3/Snijders.pdf). *Journal of Social Structure*, 3(2), 1-40.
+Snijders, T. A. B. (2002). [Markov chain Monte Carlo estimation of exponential random graph models](https://www.cmu.edu/joss/content/articles/volume3/Snijders.pdf). *Journal of Social Structure*, 3(2), 1-40.
 
 Stivala, A. D., Gallagher, H. C., Rolls, D. A., Wang, P., & Robins, G. L. (2020). Using Sampled Network Data With The Autologistic Actor Attribute Model. arXiv preprint arXiv:2002.00849. https://arxiv.org/abs/2002.00849
 
