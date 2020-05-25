@@ -76,31 +76,16 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     G = Graph(edgelist_filename, binattr_filename, contattr_filename,
               catattr_filename)
 
+    G.printSummary()
+
     outcome_binvar = map(int_or_na, open(outcome_bin_filename).read().split()[1:])
     assert(len(outcome_binvar) == G.numNodes())
     A = outcome_binvar
 
     assert( all([x in [0,1,NA_VALUE] for x in A]) )
-
-    print 'graph nodes = ', G.numNodes()
-    print 'graph edges = ', G.numEdges()
-    print 'graph density = ', G.density()
     print 'positive outcome attribute = ', (float(A.count(1))/len(A))*100.0, '%'
-
     if NA_VALUE in A:
         print 'Warning: outcome variable has', A.count(NA_VALUE), 'NA values'
-    if G.binattr is not None:
-        print 'Binary attributes have', G.binattr.count(NA_VALUE), 'NA values'
-    else:
-        print 'No binary attributes'
-    if G.contattr is not None:
-        print 'Continuous attributes have', sum([math.isnan(x) for x in G.contattr]), 'NA values'
-    else:
-        print 'No continuous attributes'
-    if G.catattr is not None:
-        print 'Categorical attributes have', G.catattr.count(NA_VALUE), 'NA values'
-    else:
-        print 'No categorical attributes'
 
 
     theta = np.zeros(len(param_func_list))

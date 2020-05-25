@@ -7,6 +7,8 @@
 # representation
 #
 
+import math
+
 # NA values for categorical and binary attributes (continuous uses float("nan"))
 NA_VALUE = -1
 
@@ -39,8 +41,7 @@ def float_or_na(s):
 
 
 class Graph:
-    """
-    The network is represented as a dictionary of dictionaries.
+    """The network is represented as a dictionary of dictionaries.
     Nodes are indexed by integers 0..n-1. The outermost dictionary has the node
     v as a key, and dictionary as value. Then this dictionary has the neighbours
     of v as the keys, and here simply 1 as value (there are no edge weights).
@@ -63,9 +64,29 @@ class Graph:
     For simplicity in undirected graph, we always store both the edge i -- j
     and the edge j -- i.
 
-    Node attributes are stored in a separate list, which is simply
+    The format of the attributes files is header line with
+    whitespace-delimited attribute names, followed by (whitespace
+    delimited) attributes one line per node (corresponding to node
+    number order, i.e the first non-header line is for node is 0, the
+    second for 1, etc.). E.g. (categorical):
+
+    gender   class
+    1        1
+    0        2
+    0        3
+
+    Binary attributes must be 0 or 1; categorical positive integers, and
+    continuous floating point. For NA values -1 is used for binary and
+    categorical, and NaN for continuous.
+
+    Node attributes (binary, continuous, categorical; separately)
+    are each stored in a dictionary of lists. The key of the dictionary
+    is the attribute name, and the value is a list which is simply
     indexed by node id i.e. a simple list of the attribute values in
-    node id order.
+    node id order. So e.g. the categorical attribute 'class' for node id 2
+    (the third node, so row 4 in data which has header)
+    would be catattr['class'][2]
+
     """
 
     def __init__(self, pajek_edgelist_filename, binattr_filename=None,
@@ -79,11 +100,13 @@ class Graph:
                                 Default None: no binary attributes loaded
             contattr_filename - continuous attributes
                                 Default None: no continuous attributes loaded
+            catattr_filename - categorical attributes
+                                Default None: no categorical attributes loaded
         """
         self.G = None  # dict of dicts as described above
-        self.binattr = None # binary attributes: list by node (int not boolean)
-        self.contattr = None # continuous attributes: list by node
-        self.catattr = None  # categorical attributes: list by node
+        self.binattr = None # binary attributes: dict name, list by node (int not boolean)
+        self.contattr = None # continuous attributes: dict name, list by node
+        self.catattr = None  # categorical attributes: dict name, list by node
 
         f =  open(pajek_edgelist_filename)
         l = f.readline() # first line must be e.g. "*vertices 500"
@@ -102,17 +125,28 @@ class Graph:
             self.insertEdge(i-1, j-1)    # input is 1-based but we are 0-based
             lsplit = f.readline().split()
 
+        # Note in the following,
+        #  map(list, zip(*[row.split() for row in open(filename).readlines()]))
+        # reads the data and transposes it so we have a list of columns
+        # not a list of rows, which then makes it easy to convert to
+        # the dict where key is column header and value is list of values
+        # (converted to the appropraite data type from sting with int_or_na()
+        # etc.)
+        # https://stackoverflow.com/questions/6473679/transpose-list-of-lists#
+        
         if binattr_filename is not None:
-            self.binattr = map(int_or_na, open(binattr_filename).read().split()[1:]) 
-            assert(len(self.binattr) == n)
+            self.binattr = dict([(col[0], map(int_or_na, col[1:])) for col in map(list, zip(*[row.split() for row in open(catattr_filename).readlines()]))])
+            assert(all([len(v) == n for v in self.binattr.itervalues()]))
 
         if contattr_filename is not None:
-            self.contattr = map(float_or_na, open(contattr_filename).read().split()[1:])
-            assert(len(self.contattr) == n)
+            self.contattr = dict([(col[0], map(float_or_na, col[1:])) for col in map(list, zip(*[row.split() for row in open(contattr_filename).readlines()]))])
+            assert(all([len(v) == n for v in self.contattr.itervalues()]))
 
         if catattr_filename is not None:
-            self.catattr = map(int_or_na, open(catattr_filename).read().split()[1:])
-            assert(len(self.catattr) == n)
+            self.catattr = dict([(col[0], map(int_or_na, col[1:])) for col in map(list, zip(*[row.split() for row in open(catattr_filename).readlines()]))])
+            assert(all([len(v) == n for v in self.catattr.itervalues()]))
+
+
 
     def numNodes(self):
         """
@@ -167,4 +201,29 @@ class Graph:
         self.G[i].pop(j)
         self.G[j].pop(i)
 
+
+    def printSummary(self):
+        """
+        Print summary of Graph object
+        """
+        print 'graph nodes = ', self.numNodes()
+        print 'graph edges = ', self.numEdges()
+        print 'graph density = ', self.density()
+
+
+        if self.binattr is not None:
+            for attrname in self.binattr.iterkeys():
+                print 'Binary attribute', attrname, 'has', self.binattr[attrname].count(NA_VALUE), 'NA values'
+        else:
+            print 'No binary attributes'
+        if self.contattr is not None:
+            for attrname in self.contattr.iterkeys():
+                print 'Continuous attribute', attrname, 'has', sum([math.isnan(x) for x in self.contattr[attrname]]), 'NA values'
+        else:
+            print 'No continuous attributes'
+        if self.catattr is not None:
+            for attrname in self.catattr.iterkeys():
+                print 'Categorical attribute', attrname, 'has', self.catattr[attrname].count(NA_VALUE), 'NA values'
+        else:
+            print 'No categorical attributes'
 
