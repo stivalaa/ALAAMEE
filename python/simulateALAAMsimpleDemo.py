@@ -26,7 +26,7 @@
 """
 
 import time
-import os
+import os,sys
 import math
 import numpy as np         # used for matrix & vector data types and functions
 from functools import partial
@@ -64,9 +64,13 @@ def simulate_from_network_attr(edgelist_filename, param_func_list, labels,
               catattr_filename)
 
     G.printSummary()
-    
-    for simvec in simulateALAAM(G, param_func_list, theta, numSamples = 100):
-        print simvec #XXX
+
+    sys.stdout.write(' '.join(labels + ['acceptance_rate']) + '\n')
+    for (simvec,stats,acceptance_rate) in simulateALAAM(G, param_func_list,
+                                                        theta,
+                                                        numSamples = 100):
+        sys.stdout.write(' '.join([str(x) for x in list(stats)] +
+                                  [str(acceptance_rate)]) + '\n')
     
 
 def run_example():
@@ -77,7 +81,7 @@ def run_example():
         '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
         [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],
-        np.array([-7.2, 0.55, 1.0, 1.2, 1.5]),
+        np.array([-7.2, 0.55, 1.0, 1.2, 1.15]),
         '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
         '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt'
     )

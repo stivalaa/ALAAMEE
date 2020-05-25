@@ -49,7 +49,11 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                              (or 10*numNodes if None)
 
      Returns:
-       This is a generator function that yields vector of 0/1 ALAAM outcome
+       This is a generator function that yields tuple
+        (A, stats, acceptance_Rate) where
+          A is vector of 0/1 ALAAM outcome and
+          stats is vector of the model sufficient statistics
+          acceptance_rate is the sampler acceptance rate
        values on each call.
     """
     assert len(theta) == len(changestats_func_list)
@@ -69,4 +73,4 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                                                    performMove = True,
                                                    sampler_m = iterationInStep)
         dzA += changeTo1ChangeStats - changeTo0ChangeStats
-        yield A
+        yield (A, dzA, acceptance_rate)
