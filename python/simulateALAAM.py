@@ -48,7 +48,7 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                              i.e. the number of iterations between samples
                              (or 10*numNodes if None)
        burnIn              - number of samples to discard at start
-                             (or same as iterationInStep if None)
+                             (or 10*iterationInStep if None)
 
      Returns:
        This is a generator function that yields tuple
@@ -64,7 +64,7 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
         iterationInStep = 10 * G.numNodes()
 
     if burnIn is None:
-        burnIn = iterationInStep
+        burnIn = 10*iterationInStep
 
     A = np.zeros(G.numNodes())  # initial outcome vector
     Z = np.zeros(len(theta))  # accumulated change statistics
