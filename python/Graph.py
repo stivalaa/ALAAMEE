@@ -135,7 +135,7 @@ class Graph:
         # https://stackoverflow.com/questions/6473679/transpose-list-of-lists#
         
         if binattr_filename is not None:
-            self.binattr = dict([(col[0], map(int_or_na, col[1:])) for col in map(list, zip(*[row.split() for row in open(catattr_filename).readlines()]))])
+            self.binattr = dict([(col[0], map(int_or_na, col[1:])) for col in map(list, zip(*[row.split() for row in open(binattr_filename).readlines()]))])
             assert(all([len(v) == n for v in self.binattr.itervalues()]))
 
         if contattr_filename is not None:
