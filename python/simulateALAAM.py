@@ -32,7 +32,7 @@ from basicALAAMsampler import basicALAAMsampler
 
 
 def simulateALAAM(G, changestats_func_list, theta, numSamples,
-                  iterationInStep = None):
+                  iterationInStep = None, burnIn = None):
     """
     Simulate ALAAM (generate binary outcome vector) given model parameters
     and network (including node attributes).
@@ -40,13 +40,15 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
 
 
     Parameters:
-       G                   - Graph object for graph to simlulate ALAAM on
+       G                   - Graph object for graph to simulate ALAAM on
        changestats_func_list-list of change statistics funcions
        theta               - corresponding vector of theta values
        numSamples          - number of samples to yield
        iterationInStep     - number of sampler iterations 
                              i.e. the number of iterations between samples
                              (or 10*numNodes if None)
+       burnIn              - number of samples to discard at start
+                             (or same as iterationInStep if None)
 
      Returns:
        This is a generator function that yields tuple
@@ -61,8 +63,20 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
     if iterationInStep is None:
         iterationInStep = 10 * G.numNodes()
 
+    if burnIn is None:
+        burnIn = iterationInStep
+
     A = np.zeros(G.numNodes())  # initial outcome vector
-    dzA = np.zeros(len(theta))  # accumulated change statistics
+    Z = np.zeros(len(theta))  # accumulated change statistics
+
+    (acceptance_rate,
+     changeTo1ChangeStats,
+     changeTo0ChangeStats) = basicALAAMsampler(G, A,
+                                               changestats_func_list,
+                                               theta,
+                                               performMove = True,
+                                               sampler_m = burnIn)
+    Z += changeTo1ChangeStats - changeTo0ChangeStats
 
     for i in xrange(numSamples):
         (acceptance_rate,
@@ -72,5 +86,5 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                                                    theta,
                                                    performMove = True,
                                                    sampler_m = iterationInStep)
-        dzA += changeTo1ChangeStats - changeTo0ChangeStats
-        yield (A, dzA, acceptance_rate)
+        Z += changeTo1ChangeStats - changeTo0ChangeStats
+        yield (A, Z, acceptance_rate)
