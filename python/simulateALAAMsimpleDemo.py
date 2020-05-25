@@ -63,7 +63,7 @@ def simulate_from_network_attr(edgelist_filename, param_func_list, labels,
     G = Graph(edgelist_filename, binattr_filename, contattr_filename,
               catattr_filename)
 
-    G.printSummary()
+    #G.printSummary()
 
     sys.stdout.write(' '.join(labels + ['acceptance_rate']) + '\n')
     for (simvec,stats,acceptance_rate) in simulateALAAM(G, param_func_list,
