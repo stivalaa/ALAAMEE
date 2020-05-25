@@ -8,6 +8,12 @@
 G and outcome vector A and returns the change statistic for changing
 outcome of node i to 1.
 
+The attribute statistics take also as their first parameter the name of 
+the attribute to use, used as the key in the relevant attribute dictionary
+in the Graph object. So that these functions have the same signature as
+the structural statistics, use functools.partial() to create a function
+with the (G, A, i) signature, e.g. partial(changeo_Oc, "age").
+
 The change statistics here are documented in Daraganova & Robins
 (2013) Tables 9.1-9.3 (pp. 110-112) and the PNet manual Appendix B
 "IPNet Graph Statistics" (pp. 42-43), and here I use a similar naming
@@ -240,16 +246,16 @@ def changeTriangleT3(G, A, i):
         
 
 
-def changeoOb(G, A, i):
+def changeoOb(attrname, G, A, i):
     """change statistic for binary exogenous attribute oOb (outcome
     attribute related to binary attribute on same node)
 
     [*]
     """
-    return 0 if G.binattr[i] == NA_VALUE else G.binattr[i]
+    return 0 if G.binattr[attrname][i] == NA_VALUE else G.binattr[attrname][i]
 
 
-def changeo_Ob(G, A, i):
+def changeo_Ob(attrname, G, A, i):
     """change statistic for binary exogenous partner attribute o_Ob (outcome
     attribute related to binary attribute on partner node)
 
@@ -257,20 +263,20 @@ def changeo_Ob(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        delta += 0 if G.binattr[i] == NA_VALUE else G.binattr[u]
+        delta += 0 if G.binattr[attrname][i] == NA_VALUE else G.binattr[attrname][u]
     return delta
 
 
-def changeoOc(G, A, i):
+def changeoOc(attrname, G, A, i):
     """change statistic for continuous exogenous attribute oOc (outcome
     attribute related to continuous attribute on same node)
 
     (*)
     """
-    return 0 if math.isnan(G.contattr[i]) else G.contattr[i]
+    return 0 if math.isnan(G.contattr[attrname][i]) else G.contattr[attrname][i]
 
 
-def changeo_Oc(G, A, i):
+def changeo_Oc(attrname, G, A, i):
     """change statistic for continuous exogenous partner attribute o_Oc (outcome
     attribute related to continuous attribute on partner node)
 
@@ -278,12 +284,12 @@ def changeo_Oc(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        delta += 0 if math.isnan(G.contattr[u]) else G.contattr[u]
+        delta += 0 if math.isnan(G.contattr[attrname][u]) else G.contattr[attrname][u]
     return delta
 
 
 
-def changeoO_Osame(G, A, i):
+def changeoO_Osame(attrname, G, A, i):
     """
     Change statistic for categorical matching exogenous attributes oO_Osame
     (outcome attribtue related to matching categorical exogenous attributes on
@@ -293,13 +299,13 @@ def changeoO_Osame(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        if (G.catattr[u] != NA_VALUE and G.catattr[i] != NA_VALUE and
-            G.catattr[u] == G.catattr[i]):
+        if (G.catattr[attrname][u] != NA_VALUE and G.catattr[attrname][i] != NA_VALUE and
+            G.catattr[attrname][u] == G.catattr[attrname][i]):
             delta += 1
     return delta
 
 
-def changeoO_Odiff(G, A, i):
+def changeoO_Odiff(attrname, G, A, i):
     """Change statistic for categorical mismatching exogenous attributes
     oO_Odiff (outcome attribtue related to mismatching categorical
     exogenous attributes on this and partner node)
@@ -309,7 +315,7 @@ def changeoO_Odiff(G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        if (G.catattr[u] != NA_VALUE and G.catattr[i] != NA_VALUE and
-            G.catattr[u] != G.catattr[i]):
+        if (G.catattr[attrname][u] != NA_VALUE and G.catattr[attrname][i] != NA_VALUE and
+            G.catattr[attrname][u] != G.catattr[attrname][i]):
             delta += 1
     return delta
