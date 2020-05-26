@@ -65,11 +65,11 @@ def simulate_from_network_attr(edgelist_filename, param_func_list, labels,
 
     #G.printSummary()
 
-    sys.stdout.write(' '.join(labels + ['acceptance_rate']) + '\n')
-    for (simvec,stats,acceptance_rate) in simulateALAAM(G, param_func_list,
-                                                        theta,
-                                                        numSamples = 100):
-        sys.stdout.write(' '.join([str(x) for x in list(stats)] +
+    sys.stdout.write(' '.join(['t'] + labels + ['acceptance_rate']) + '\n')
+    for (simvec,stats,acceptance_rate,t) in simulateALAAM(G, param_func_list,
+                                                         theta,
+                                                         numSamples = 100):
+        sys.stdout.write(' '.join([str(t)] + [str(x) for x in list(stats)] +
                                   [str(acceptance_rate)]) + '\n')
     
 

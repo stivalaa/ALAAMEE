@@ -11,3 +11,6 @@ alaam_sa_intel_python_karate-*.out
 alaam_sa_intel_python_karate-*.err
 alaam_sa_simn1000-*.out
 alaam_sa_simn1000-*.err
+stats_sim_n500-plots.eps
+stats_sim_n500.txt
+
