@@ -115,6 +115,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         print 't_ratio   =', t_ratio
 
         converged = np.all(np.abs(t_ratio) < 0.1)
+        i += 1
+
         if converged:
             print 'Converged.'
             significant = np.abs(theta) > 2 * std_error
@@ -122,8 +124,15 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             for j in xrange(len(theta)):
                 sys.stdout.write('%20.20s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
         print
-        i += 1
-    
+
+    if converged:
+        print 'Converged.'
+        significant = np.abs(theta) > 2 * std_error
+        sys.stdout.write(20*' ' + '  Parameter Std.Error t-ratio\n')
+        for j in xrange(len(theta)):
+            sys.stdout.write('%20.20s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
+    print
+
 
 def run_example():
     """
