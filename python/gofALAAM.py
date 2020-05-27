@@ -62,9 +62,15 @@ def gof(G, Aobs, changestats_func_list, theta_est, numSamples = 100):
     # convert to matrix where each row is sample, each column is statistic
     Zmatrix = np.stack([r[1] for r in sim_results])
     assert(np.shape(Zmatrix) == (numSamples, n))
-
+    Zmean = np.mean(Zmatrix, axis=0)
+    Zsd = np.std(Zmatrix, axis=0)
+    print Zmatrix #XXX
+    print 'obs stats  =', Zobs
+    print 'mean stats =', Zmean
+    print 'sd stats   =', Zsd
+    
     # compute t-statistics
-    tratio = (np.mean(Zmatrix) - Zobs) / (np.std(Zmatrix))
+    tratio = (Zmean - Zobs) / Zsd
 
     return tratio
 
