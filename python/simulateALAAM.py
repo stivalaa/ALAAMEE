@@ -88,4 +88,4 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                                                    performMove = True,
                                                    sampler_m = iterationInStep)
         Z += changeTo1ChangeStats - changeTo0ChangeStats
-        yield (A, Z, acceptance_rate, (i+1)*iterationInStep+burnIn)
+        yield (np.array(A), np.array(Z), acceptance_rate, (i+1)*iterationInStep+burnIn)
