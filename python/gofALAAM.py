@@ -38,6 +38,10 @@ def gof(G, Aobs, changestats_func_list, theta_est, numSamples = 100):
        changestats_func_list-list of change statistics functions
        theta_est            - corresponding vector of estimated theta values
        numSamples           - number of simulations, default 100
+
+    Return value:
+       vector of t-ratios
+    FIXME also return stats and names of parameters included
     """
     # change stats functions to add to GoF if not already in estimation
     statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,

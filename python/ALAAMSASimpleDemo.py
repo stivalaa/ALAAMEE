@@ -44,7 +44,7 @@ from Graph import Graph,int_or_na,NA_VALUE
 from changeStatisticsALAAM import *
 from stochasticApproximation import stochasticApproximation
 from computeObservedStatistics import computeObservedStatistics
-
+from gofALAAM import gof
 
 
 def run_on_network_attr(edgelist_filename, param_func_list, labels,
@@ -124,9 +124,14 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         sys.stdout.write(20*' ' + '  Parameter Std.Error t-ratio\n')
         for j in xrange(len(theta)):
             sys.stdout.write('%20.20s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
-    print
 
+        # Do goodness-of-fit test
+        start = time.time()
+        gofresult = gof(G, A, param_func_list, theta)
+        print 'GoF took',time.time() - start, 's'
+        print gofresult #XXX
 
+    
 def run_example():
     """
     example run on simulated 500 node network
