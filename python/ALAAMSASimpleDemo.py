@@ -43,6 +43,7 @@ from functools import partial
 from Graph import Graph,int_or_na,NA_VALUE
 from changeStatisticsALAAM import *
 from stochasticApproximation import stochasticApproximation
+from computeObservedStatistics import computeObservedStatistics
 
 
 
@@ -88,6 +89,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     if NA_VALUE in A:
         print 'Warning: outcome variable has', A.count(NA_VALUE), 'NA values'
 
+    # Calculate observed statistics by summing change stats for each 1 variable
+    Zobs = computeObservedStatistics(G, A, param_func_list)
+    print 'Zobs = ', Zobs
 
     theta = np.zeros(len(param_func_list))
 
@@ -99,7 +103,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         start = time.time()
         (theta, std_error, t_ratio) = stochasticApproximation(G, A,
                                                               param_func_list,
-                                                              theta) 
+                                                              theta, Zobs) 
 
         print 'Stochastic approximation took',time.time() - start, 's'
         if theta is None:
