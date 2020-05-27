@@ -30,7 +30,7 @@ import numpy as np         # used for matrix & vector data types and functions
 from Graph import Graph,NA_VALUE
 from changeStatisticsALAAM import *
 from basicALAAMsampler import basicALAAMsampler
-
+from computeObservedStatistics import computeObservedStatistics
 
 
 def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
@@ -79,16 +79,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0):
     burnin       = int(round(0.1 * phase3steps * iterationInStep))
 
     # Calculate observed statistics by summing change stats for each 1 variable
-    Zobs = np.zeros(n)
-    Acopy = np.zeros(len(A))
-    for i in xrange(len(A)):
-        if A[i] == NA_VALUE:
-            Acopy[i] = NA_VALUE
-        if A[i] == 1:
-            for l in xrange(n):
-                Zobs[l] += changestats_func_list[l](G, Acopy, i)
-            Acopy[i] = 1
-    assert(np.all(Acopy == A))
+    Zobs = computeObservedStatistics(G, A, changestats_func_list)
     print 'Zobs = ', Zobs
     
     #
