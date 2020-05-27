@@ -126,10 +126,11 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             sys.stdout.write('%20.20s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
 
         # Do goodness-of-fit test
+        print 'Running goodness-of-fit test...'
         start = time.time()
         gofresult = gof(G, A, param_func_list, theta)
         print 'GoF took',time.time() - start, 's'
-        print gofresult #XXX
+        print 't_ratios = ',gofresult #XXX
 
     
 def run_example():
