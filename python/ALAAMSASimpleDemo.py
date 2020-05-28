@@ -95,11 +95,13 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
     theta = np.zeros(len(param_func_list))
 
+    estimation_start = time.time()
     max_runs = 20
     i = 0
     converged = False
     while i < max_runs and not converged:
-        print 'Running stochastic approximation (run', i+1,' of at most',max_runs,')...'
+        i += 1
+        print 'Running stochastic approximation (run', i,' of at most',max_runs,')...'
         start = time.time()
         (theta, std_error, t_ratio) = stochasticApproximation(G, A,
                                                               param_func_list,
@@ -115,9 +117,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         print 't_ratio   =', t_ratio
 
         converged = np.all(np.abs(t_ratio) < 0.1)
-        i += 1
 
-
+    print 'Total estimation time (',i,'runs) was',time.time() - estimation_start, 's'
     if converged:
         print 'Converged.'
         significant = np.abs(theta) > 2 * std_error
