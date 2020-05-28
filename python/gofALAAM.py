@@ -46,19 +46,26 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 100):
     n = len(changestats_func_list)
     assert len(theta) == n
 
+    numSamples      = 1000    # number of samples (outcome vecgors)
+    iterationInStep = 1000    # number of MCMC steps between each sample
+    burnIn          = 10000   # number of iterations to discard at start
+
+
+    print 'Gof numSamples =', numSamples, 'iterationInStep =', iterationInStep, 'burnIn = ', burnIn
+
     # Calculate observed statistics by summing change stats for each 1 variable
     Zobs = computeObservedStatistics(G, Aobs, changestats_func_list)
 
     # Compute simulated outcome vector statistics from MCMC
     sim_results = simulateALAAM(G, changestats_func_list,  theta,
-                                numSamples = 100)
+                                numSamples, iterationInStep, burnIn)
     #simulateALAAM() return list of tuples (simvec,stats,acceptance_rate,t)
     # convert to matrix where each row is sample, each column is statistic
     Zmatrix = np.stack([r[1] for r in sim_results])
     assert(np.shape(Zmatrix) == (numSamples, n))
     Zmean = np.mean(Zmatrix, axis=0)
     Zsd = np.std(Zmatrix, axis=0)
-    print Zmatrix #XXX
+    print 'Zmatrix = ',Zmatrix #XXX
     print 'obs stats  =', Zobs
     print 'mean stats =', Zmean
     print 'sd stats   =', Zsd
