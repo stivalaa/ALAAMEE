@@ -124,13 +124,37 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         sys.stdout.write(20*' ' + '  Parameter Std.Error t-ratio\n')
         for j in xrange(len(theta)):
             sys.stdout.write('%20.20s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
+        print
 
         # Do goodness-of-fit test
+
+        # change stats functions to add to GoF if not already in estimation
+        statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
+                     changeTriangleT1, changeContagion,
+                     changeIndirectPartnerAttribute,
+                     changePartnerAttributeActivity, 
+                     changePartnerPartnerAttribute,
+                     changeTriangleT2,
+                     changeTriangleT3]
+        statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1A',
+                      'T1', 'Contagion', 'Alter-2Star2A', 'Partner-Activity',
+                      'Partner-Resource','T2', 'T3']
+        gof_param_func_list = (list(param_func_list) +
+                               [f for f in statfuncs
+                                if f not in param_func_list])
+        goflabels = (list(labels) + [f for f in statlabels
+                                     if f not in labels])
+        n = len(gof_param_func_list)
+        assert len(goflabels) == n
+        # pad theta vector with zeros for the added parameters
+        gof_theta = np.array(list(theta) + (n-len(theta))*[0])
+
         print 'Running goodness-of-fit test...'
         start = time.time()
-        gofresult = gof(G, A, param_func_list, theta)
+        gofresult = gof(G, A, gof_param_func_list, gof_theta)
         print 'GoF took',time.time() - start, 's'
-        print 't_ratios = ',gofresult #XXX
+        print '           ',goflabels
+        print 't_ratios = ',gofresult
 
     
 def run_example():

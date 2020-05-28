@@ -26,7 +26,7 @@ from simulateALAAM import simulateALAAM
 from computeObservedStatistics import computeObservedStatistics
 
 
-def gof(G, Aobs, changestats_func_list, theta_est, numSamples = 100):
+def gof(G, Aobs, changestats_func_list, theta, numSamples = 100):
     """
     ALAAM goodness-of-fit by simulating from estimated parameters, and 
     comparing observed statistics to statistics of simulated outcome vectors,
@@ -36,31 +36,21 @@ def gof(G, Aobs, changestats_func_list, theta_est, numSamples = 100):
        G                    - Graph object of observed network
        Aobs                 - vector of 0/1 observed outcome variables for ALAAM
        changestats_func_list-list of change statistics functions
-       theta_est            - corresponding vector of estimated theta values
+       theta                - corresponding vector of estimated theta values
+                              (0 for those not included in estiamted model)
        numSamples           - number of simulations, default 100
 
     Return value:
        vector of t-ratios
-    FIXME also return stats and names of parameters included
     """
-    # change stats functions to add to GoF if not already in estimation
-    statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
-                 changeTriangleT1, changeContagion,
-                 changeIndirectPartnerAttribute,
-                 changePartnerAttributeActivity, changeTriangleT2,
-                 changeTriangleT3]
-    gof_param_func_list = (list(changestats_func_list) +
-                           [f for f in statfuncs
-                            if f not in changestats_func_list])
-    n = len(gof_param_func_list)
-    # pad theta vector with zeros for the added parameters
-    gof_theta = np.array(list(theta_est) + (n-len(theta_est))*[0])
+    n = len(changestats_func_list)
+    assert len(theta) == n
 
     # Calculate observed statistics by summing change stats for each 1 variable
-    Zobs = computeObservedStatistics(G, Aobs, gof_param_func_list)
+    Zobs = computeObservedStatistics(G, Aobs, changestats_func_list)
 
     # Compute simulated outcome vector statistics from MCMC
-    sim_results = simulateALAAM(G, gof_param_func_list,  gof_theta,
+    sim_results = simulateALAAM(G, changestats_func_list,  theta,
                                 numSamples = 100)
     #simulateALAAM() return list of tuples (simvec,stats,acceptance_rate,t)
     # convert to matrix where each row is sample, each column is statistic
