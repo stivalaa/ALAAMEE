@@ -26,7 +26,7 @@ from simulateALAAM import simulateALAAM
 from computeObservedStatistics import computeObservedStatistics
 
 
-def gof(G, Aobs, changestats_func_list, theta, numSamples = 100):
+def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000):
     """
     ALAAM goodness-of-fit by simulating from estimated parameters, and 
     comparing observed statistics to statistics of simulated outcome vectors,
@@ -38,7 +38,7 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 100):
        changestats_func_list-list of change statistics functions
        theta                - corresponding vector of estimated theta values
                               (0 for those not included in estiamted model)
-       numSamples           - number of simulations, default 100
+       numSamples           - number of simulations, default 1000
 
     Return value:
        vector of t-ratios
@@ -46,7 +46,6 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 100):
     n = len(changestats_func_list)
     assert len(theta) == n
 
-    numSamples      = 1000    # number of samples (outcome vecgors)
     iterationInStep = 1000    # number of MCMC steps between each sample
     burnIn          = 10000   # number of iterations to discard at start
 
