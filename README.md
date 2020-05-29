@@ -3,7 +3,7 @@
 Autologistic Actor Attribute Model (ALAAM) parameter estimation using
 Equilibrium Expectation (EE) algorithm. Also includes an implementation
 of the Robbins-Monro stochastic approximation algorithm for estimating
-ALAAM parameters.
+ALAAM parameters, and functions for simulation and goodness-of-fit tests.
 
 This a simple Python demonstration implementation. The Python
 implementation uses the NumPy library for vector and matrix data types
