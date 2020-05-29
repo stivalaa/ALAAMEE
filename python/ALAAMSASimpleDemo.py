@@ -156,6 +156,11 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         print 'GoF took',time.time() - start, 's'
         print '           ',goflabels
         print 't_ratios = ',gofresult
+        
+        sys.stdout.write(20*' ' + '  t-ratio\n')
+        for j in xrange(n):
+            sys.stdout.write('%20.20s % 6.3f\n' % (goflabels[j], gofresult[j]))
+        print
 
     
 def run_example():
