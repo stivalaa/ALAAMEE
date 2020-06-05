@@ -23,12 +23,17 @@
 ## If the optional observed stats filename is specified, then the
 ## observed stats of a single network are read from this and plotted
 ## in red on the plots for comparison to the simulated stats.
-## These observed stats are from the output of EstimNetDirected with
-## computeStats = TRUE in file specified by observedStatsFilePrefix.
+## These observed stats are from the output of e.g.
+## compuateALAAMstatisticsSimpleDemo.py, which is just two white-space
+## deliited lines with names of stats as first (header) line and the
+## values as the second line, e.g.:
+##
+##
+##
 ## The t-ratios of the statistics are also computed and written to stdout.
 ##
 ## Output is postscrpt file basename.eps where basename is from the input
-## file e.g. stats_sim_n2000_sample-plots.eps
+## file e.g. stats_sim_n1000_binattr_sample-plots.eps
 ##
 ##
 library(grid)
