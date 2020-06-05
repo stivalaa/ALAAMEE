@@ -63,11 +63,23 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
 ##
 ## main
 ##
+
+## 500 node example:
 get_observed_stats_from_network_attr(
-    '../data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt',    
+    '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
     [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
-    ["Density", "Activity", "Contagion", "Binary", "Continuous"],
-    '../data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt',
-    '../data/simulated_n1000_bin_cont/binaryAttribute_50_50_n1000.txt',
-    '../data/simulated_n1000_bin_cont/continuousAttributes_n1000.txt'
+["Density", "Activity", "Contagion", "Binary", "Continuous"],
+    '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
+    '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
+    '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt'
 )
+
+### 1000 node example:
+# get_observed_stats_from_network_attr(
+#    '../data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt',    
+#     [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
+#     ["Density", "Activity", "Contagion", "Binary", "Continuous"],
+#     '../data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt',
+#     '../data/simulated_n1000_bin_cont/binaryAttribute_50_50_n1000.txt',
+#     '../data/simulated_n1000_bin_cont/continuousAttributes_n1000.txt'
+# )
