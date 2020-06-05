@@ -28,6 +28,8 @@
 ## deliited lines with names of stats as first (header) line and the
 ## values as the second line, e.g.:
 ##
+## Density Activity Contagion Binary Continuous
+## 80.0 526.0 95.0 58.0 47.54103699999999
 ##
 ##
 ## The t-ratios of the statistics are also computed and written to stdout.
@@ -78,7 +80,7 @@ for (statname in statnames) {
     p <- p + geom_point()
     p <- p + geom_smooth(method = loess, color = "blue", linetype = "dashed",
                          se = FALSE)
-    if (do_obs && statname != "AcceptanceRate") {
+    if (do_obs && !(statname %in% c("AcceptanceRate", "acceptance_rate"))) {
       p <- p + geom_hline(yintercept = obsstats[1,statname],
                           color = "red")
     }
@@ -96,7 +98,7 @@ for (statname in statnames) {
     p <- p + geom_vline(aes(xintercept = mean(value) +
                             zSigma*sd(value)), 
                         colour='blue', linetype='dotted')
-    if (do_obs && statname != "AcceptanceRate") {
+    if (do_obs &&  !(statname %in% c("AcceptanceRate", "acceptance_rate"))) {
       p <- p + geom_vline(xintercept = obsstats[1,statname],
                           color = "red")
     }
@@ -104,7 +106,7 @@ for (statname in statnames) {
     plotlist <- c(plotlist, list(p))
 
     ## compute t-ratio
-    if (do_obs && statname != "AcceptanceRate") {
+    if (do_obs && !(statname %in% c("AcceptanceRate", "acceptance_rate"))) {
       simstatvalues<- simstats[which(simstats$variable == statname),"value"]
       t_ratio <- (mean(simstatvalues) - obsstats[1,statname])/sd(simstatvalues)
       cat(statname, obsstats[1,statname], mean(simstatvalues),
