@@ -13,6 +13,9 @@ the attribute to use, used as the key in the relevant attribute dictionary
 in the Graph object. So that these functions have the same signature as
 the structural statistics, use functools.partial() to create a function
 with the (G, A, i) signature, e.g. partial(changeo_Oc, "age").
+Similarly for the use of the setting network (another fixed graph for
+different relationships than the main graph G) the setting-homophily
+change statistic is used as e.g. partial(changeSettingHomophily, Gsetting).
 
 The change statistics here are documented in Daraganova & Robins
 (2013) Tables 9.1-9.3 (pp. 110-112) and the PNet manual Appendix B
@@ -317,5 +320,20 @@ def changeoO_Odiff(attrname, G, A, i):
     for u in G.neighbourIterator(i):
         if (G.catattr[attrname][u] != NA_VALUE and G.catattr[attrname][i] != NA_VALUE and
             G.catattr[attrname][u] != G.catattr[attrname][i]):
+            delta += 1
+    return delta
+
+def changeSettingHomophily(settingGraph, G, A, i):
+    """Change statistic for Setting-Homophily, outcome attribute on two actors
+    connected in the setting network.
+    
+    *...*
+    
+    (where '...' denotes an edge in the setting network (settingGraph) rather
+    than the main network G denoted '--')
+    """
+    delta = 0
+    for u in settingGraph.neighbourIterator(i): #note settingGraph not G
+        if A[u] == 1:
             delta += 1
     return delta
