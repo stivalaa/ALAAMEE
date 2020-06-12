@@ -46,7 +46,7 @@ DZA_PREFIX = 'dzA_values_'     # prefix for dzA output filename
 sampler_m  = 1000              # number of sampler iterations
 
 def algorithm_EE(G, A, changestats_func_list, theta,
-                 M, theta_outfile, dzA_outfile):
+                 M, theta_outfile, dzA_outfile, learningRate = 0.01):
     """
     Algorithm EE (Equilibrium Expectation).
     Version from Borisenko et al. (2019) with only learning rate
@@ -60,13 +60,14 @@ def algorithm_EE(G, A, changestats_func_list, theta,
        M                   - iterations of Algorithm EE (inner loop)
        theta_outfile       - open for write file to write theta values
        dzA_outfile         - open for write file to write dzA values
+       learningRate        - learning rate (step size multiplier, a)
+                             defult 0.01
 
      Returns:
          numpy vector of theta values at end
 
     """
     # Constants
-    learningRate = 0.01   # learning rate
     minTheta     = 0.01    # min abs value of theta to prevent zero update step
 
     n = len(changestats_func_list)

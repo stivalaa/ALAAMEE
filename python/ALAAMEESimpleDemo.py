@@ -58,7 +58,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         contattr_filename=None,
                         catattr_filename=None,
                         EEiterations    = 50000,
-                        run = None):
+                        run = None,
+                        learningRate = 0.01):
     """Run on specified network with binary and/or continuous
     and categorical attributes.
     
@@ -81,6 +82,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
          run              - run number for parallel runs, used as suffix on 
                             output filenames. Default None
                             in which case no suffix added to output files.
+       learningRate        - learning rate (step size multiplier, a)
+                             defult 0.01
+
     Write output to ifd_theta_values_<basename>_<run>.txt and
                     ifd_dzA_values_<basename>_<run>.txt
     where <basename> is the baesname of edgelist filename e..g
@@ -121,6 +125,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     #OLD: print 'M1 = ', M1, ' Mouter = ', Mouter, ' Msteps = ', Msteps
 
     print 'M1 = ', M1, ' EEiterations = ', EEiterations, 
+    print 'learningRate = ', learningRate,
     
     theta_outfile = open(THETA_OUTFILENAME, 'w',1) # 1 means line buffering
     theta_outfile.write('t ' + ' '.join(labels) + ' ' + 'AcceptanceRate' + '\n')
@@ -138,7 +143,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     #OLD: theta = algorithm_EE(G, A, param_func_list, theta, Dmean,
     #OLD:                     Mouter, Msteps, theta_outfile, dzA_outfile)
     theta = algorithm_EE(G, A, param_func_list, theta, 
-                         EEiterations, theta_outfile, dzA_outfile)
+                         EEiterations, theta_outfile, dzA_outfile, learningRate)
 
     print time.time() - start, 's'
     theta_outfile.close()
