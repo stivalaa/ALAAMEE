@@ -85,7 +85,7 @@ alpha = 0.05  # for 95% confidence interval
 t_ratio_threshold <- 0.3 # abs t-ratio must be <= this value for convergence
 
 ## First iteration number to use, to skip over initial burn-in
-firstiter = 10000 # skip first 10000 iterations. FIXME some way to determine properly
+firstiter = 1000 # skip first 1000 iterations. FIXME some way to determine properly
 
 ##
 ## inverse-variance weighting to combine estimates and standard error estimates
