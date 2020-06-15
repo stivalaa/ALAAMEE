@@ -18,6 +18,9 @@
 # supplied .txt files (WARNING: overwritten)
 #
 
+#zSigma <- 2.00 # number of standard deviations for 95% confidence interval
+zSigma <- 1.96 # number of standard deviations for nominal 95% confidence interval
+
 firstiter = 1000 # XXX skip first 1000 iterations
 
 args <- commandArgs(trailingOnly=TRUE)
@@ -39,7 +42,11 @@ postscript(theta_outfile)
 par(mfrow=c(3,4))
 for (i in names(theta)[2:length(names(theta))]) {
   plot(theta[,"t"], theta[,i], xlab="t", ylab=i)
-  abline(h = mean(theta[which(theta$t > firstiter),i]), col = 'red')
+  abline(h = mean(theta[which(theta$t > firstiter),i]), col = 'blue')
+  abline(h = mean(theta[which(theta$t > firstiter),i]) + sd(theta[which(theta$t > firstiter),i]), col = 'blue', lty='longdash')
+  abline(h = mean(theta[which(theta$t > firstiter),i]) - sd(theta[which(theta$t > firstiter),i]), col = 'blue', lty='longdash')
+
+
 }
 
 dev.off()
@@ -48,7 +55,9 @@ postscript(dzA_outfile)
 par(mfrow=c(3,3))
 for (i in names(dzA)[2:length(names(dzA))]) {
   plot(dzA[,"t"], dzA[,i], xlab="t", ylab=i, main="dzA")
-  abline(h = mean(dzA[which(dzA$t > firstiter),i]), col = 'red')
+  abline(h = mean(dzA[which(dzA$t > firstiter),i]), col = 'blue')
+  abline(h = mean(dzA[which(dzA$t > firstiter),i]) + sd(dzA[which(dzA$t > firstiter),i]), col = 'blue', lty='longdash')
+  abline(h = mean(dzA[which(dzA$t > firstiter),i]) - sd(dzA[which(dzA$t > firstiter),i]), col = 'blue', lty='longdash')
 }
 dev.off()
 
