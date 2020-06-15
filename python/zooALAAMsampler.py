@@ -71,6 +71,7 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
     n = len(changestats_func_list)
 
     # number of elements of A that are not NA (so 0 or 1)
+    numNodes = len(A)
     num_not_na = len(A) - len(np.where(A == NA_VALUE))
 
     accepted = 0
@@ -105,8 +106,15 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
             changestats[l] = changestats_func_list[l](G, A, i)
         changeSignMul = -1 if isChangeToZero else +1
         total = np.sum(theta * changeSignMul * changestats)
-        # FIXME need to adjust acceptance probability if exactly 1
-        # (if isChangeToZero) or 0 (if not isChangeToZero) 1 values in A
+
+        # adjust acceptance probability as for TNT sampler
+        # FIXME correct for special cases where A is all zero or all one
+        numOutcome1 = len(np.where(A == 1))
+        if isChangeToZero:
+            total += np.log(numOutcome1 / (odds * numNodes + numOutcome1))
+        else:
+            total += np.log(1 + (odds * numNodes) / (numOutcome1 + 1))
+
         if random.uniform(0, 1) < np.exp(total): #np.exp gives inf not overflow
             accepted += 1
             if performMove:
