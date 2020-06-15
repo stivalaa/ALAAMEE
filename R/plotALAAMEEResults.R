@@ -34,7 +34,7 @@ library(scales)
 #zSigma <- 2.00 # number of standard deviations for 95% confidence interval
 zSigma <- 1.96 # number of standard deviations for nominal 95% confidence interval
 
-firstiter = 10000 # XXX skip first 10000 iterations
+firstiter = 1000 # XXX skip first 1000 iterations
 
 # http://stackoverflow.com/questions/10762287/how-can-i-format-axis-labels-with-exponents-with-ggplot2-and-scales
 orig_scientific_10 <- function(x) {

@@ -18,7 +18,7 @@
 # supplied .txt files (WARNING: overwritten)
 #
 
-firstiter = 10000 # XXX skip first 10000 iterations
+firstiter = 1000 # XXX skip first 1000 iterations
 
 args <- commandArgs(trailingOnly=TRUE)
 if (length(args) != 2) {
