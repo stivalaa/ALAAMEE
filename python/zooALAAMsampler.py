@@ -72,7 +72,7 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
 
     # number of elements of A that are not NA (so 0 or 1)
     numNodes = len(A)
-    num_not_na = len(A) - len(np.where(A == NA_VALUE))
+    num_not_na = len(A) - len(np.where(A == NA_VALUE)[0])
 
     accepted = 0
     changeTo1ChangeStats = np.zeros(n)
@@ -97,8 +97,13 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
             i = np.random.choice(np.where(A == (1 if isChangeToZero else 0))[0])
         
         if isChangeToZero:
+            assert(A[i] == 1)
             A[i] = 0
 
+        assert(A[i] == 0)
+
+###        print performMove,numNodes,num_not_na,isChangeToZero, i, len(np.where(A==1)[0]) #XXX
+        
         # compute change statistics for each of the n statistics using the
         # list of change statistic functions
         changestats = np.zeros(n)
@@ -109,7 +114,7 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
 
         # adjust acceptance probability as for TNT sampler
         # FIXME correct for special cases where A is all zero or all one
-        numOutcome1 = len(np.where(A == 1))
+        numOutcome1 = len(np.where(A == 1)[0])
         if isChangeToZero:
             total += np.log(numOutcome1 / (odds * numNodes + numOutcome1))
         else:
