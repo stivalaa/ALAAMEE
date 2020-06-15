@@ -49,7 +49,7 @@ from changeStatisticsALAAM import *
 from initialEstimator import algorithm_S
 #OLD:from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
 from equilibriumExpectationBorisenko import algorithm_EE,THETA_PREFIX,DZA_PREFIX
-
+from basicALAAMsampler import basicALAAMsampler
 
 
 def run_on_network_attr(edgelist_filename, param_func_list, labels,
@@ -59,7 +59,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         catattr_filename=None,
                         EEiterations    = 50000,
                         run = None,
-                        learningRate = 0.01):
+                        learningRate = 0.01,
+                        sampler_func = basicALAAMsampler):
     """Run on specified network with binary and/or continuous
     and categorical attributes.
     
@@ -82,8 +83,14 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
          run              - run number for parallel runs, used as suffix on 
                             output filenames. Default None
                             in which case no suffix added to output files.
-       learningRate        - learning rate (step size multiplier, a)
-                             defult 0.01
+         learningRate        - learning rate (step size multiplier, a)
+                               defult 0.01
+         sampler_func        - ALAAM sampler function with signature
+                               (G, A, changestats_func_list, theta, performMove,
+                                sampler_m); see basicALAAMsampler.py
+                               default basicALAAMsampler
+
+
 
     Write output to ifd_theta_values_<basename>_<run>.txt and
                     ifd_dzA_values_<basename>_<run>.txt
@@ -116,7 +123,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
     if NA_VALUE in A:
         print 'Warning: outcome variable has', A.count(NA_VALUE), 'NA values'
-        
+
+    A = np.array(A) # convert list to numpy vector
+    
     # steps of Alg 1    
     M1 = 100
 
@@ -131,7 +140,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     theta_outfile.write('t ' + ' '.join(labels) + ' ' + 'AcceptanceRate' + '\n')
     print 'Running Algorithm S...',
     start = time.time()
-    (theta, Dmean) = algorithm_S(G, A, param_func_list, M1, theta_outfile)
+    (theta, Dmean) = algorithm_S(G, A, param_func_list, M1, theta_outfile,
+                                 sampler_func)
     print time.time() - start, 's'
     print 'after Algorithm S:'
     print 'theta = ', theta
@@ -143,7 +153,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     #OLD: theta = algorithm_EE(G, A, param_func_list, theta, Dmean,
     #OLD:                     Mouter, Msteps, theta_outfile, dzA_outfile)
     theta = algorithm_EE(G, A, param_func_list, theta, 
-                         EEiterations, theta_outfile, dzA_outfile, learningRate)
+                         EEiterations, theta_outfile, dzA_outfile, learningRate,
+                         sampler_func)
 
     print time.time() - start, 's'
     theta_outfile.close()

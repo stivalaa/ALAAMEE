@@ -44,7 +44,8 @@ DZA_PREFIX = 'dzA_values_'     # prefix for dzA output filename
 sampler_m  = 1000              # number of sampler iterations
 
 def algorithm_EE(G, A, changestats_func_list, theta, D0,
-                 Mouter, M, theta_outfile, dzA_outfile):
+                 Mouter, M, theta_outfile, dzA_outfile,
+                 sampler_func = basicALAAMsampler):
     """
     Algorithm EE
 
@@ -58,6 +59,10 @@ def algorithm_EE(G, A, changestats_func_list, theta, D0,
        M                   - iterations of Algorithm EE (inner loop)
        theta_outfile       - open for write file to write theta values
        dzA_outfile         - open for write file to write dzA values
+       sampler_func        - ALAAM sampler function with signature
+                             (G, A, changestats_func_list, theta, performMove,
+                              sampler_m); see basicALAAMsampler.py
+                             default basicALAAMsampler
 
      Returns:
          numpy vector of theta values at end
@@ -74,11 +79,11 @@ def algorithm_EE(G, A, changestats_func_list, theta, D0,
             accepted = 0
             (acceptance_rate,
              changeTo1ChangeStats,
-             changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                                       changestats_func_list,
-                                                       theta,
-                                                       performMove = True,
-                                                       sampler_m = sampler_m)
+             changeTo0ChangeStats) = sampler_func(G, A,
+                                                  changestats_func_list,
+                                                  theta,
+                                                  performMove = True,
+                                                  sampler_m = sampler_m)
             dzA += changeTo1ChangeStats - changeTo0ChangeStats  # dzA accumulates here
             da = D0 * ACA
             theta_step = -np.sign(dzA) * da * dzA**2

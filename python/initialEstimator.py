@@ -36,7 +36,8 @@ sampler_m  = 1000              # number of sampler iterations
 
 
 
-def algorithm_S(G, A, changestats_func_list, M1, theta_outfile):
+def algorithm_S(G, A, changestats_func_list, M1, theta_outfile,
+                sampler_func = basicALAAMsampler):
     """
 
      Algorithm S
@@ -47,6 +48,11 @@ def algorithm_S(G, A, changestats_func_list, M1, theta_outfile):
         changestat_func_v   - vector of change statistics funcions
         M1                  - number of iterations of Algorithm S
         theta_outfile       - open for write file to write theta values
+        sampler_func        - ALAAM sampler function with signature
+                             (G, A, changestats_func_list, theta, performMove,
+                              sampler_m); see basicALAAMsampler.py
+                             default basicALAAMsampler
+
 
      Returns:
        tuple with:
@@ -62,11 +68,11 @@ def algorithm_S(G, A, changestats_func_list, M1, theta_outfile):
         accepted = 0
         (acceptance_rate,
          changeTo1ChangeStats,
-         changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                                   changestats_func_list,
-                                                   theta,
-                                                   performMove = False,
-                                                   sampler_m = sampler_m)
+         changeTo0ChangeStats) = sampler_func(G, A,
+                                              changestats_func_list,
+                                              theta,
+                                              performMove = False,
+                                              sampler_m = sampler_m)
         dzA = changeTo0ChangeStats - changeTo1ChangeStats
         dzAmean = dzA / sampler_m
         sumChangeStats = changeTo1ChangeStats + changeTo0ChangeStats

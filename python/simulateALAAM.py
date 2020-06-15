@@ -32,7 +32,8 @@ from basicALAAMsampler import basicALAAMsampler
 
 
 def simulateALAAM(G, changestats_func_list, theta, numSamples,
-                  iterationInStep = None, burnIn = None):
+                  iterationInStep = None, burnIn = None,
+                  sampler_func = basicALAAMsampler):
     """
     Simulate ALAAM (generate binary outcome vector) given model parameters
     and network (including node attributes).
@@ -49,6 +50,12 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                              (or 10*numNodes if None)
        burnIn              - number of samples to discard at start
                              (or 10*iterationInStep if None)
+       sampler_func        - ALAAM sampler function with signature
+                             (G, A, changestats_func_list, theta, performMove,
+                              sampler_m); see basicALAAMsampler.py
+                             default basicALAAMsampler
+
+
 
      Returns:
        This is a generator function that yields tuple
@@ -72,20 +79,20 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
 
     (acceptance_rate,
      changeTo1ChangeStats,
-     changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                               changestats_func_list,
-                                               theta,
-                                               performMove = True,
-                                               sampler_m = burnIn)
+     changeTo0ChangeStats) = sampler_func(G, A,
+                                          changestats_func_list,
+                                          theta,
+                                          performMove = True,
+                                          sampler_m = burnIn)
     Z += changeTo1ChangeStats - changeTo0ChangeStats
 
     for i in xrange(numSamples):
         (acceptance_rate,
          changeTo1ChangeStats,
-         changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                                   changestats_func_list,
-                                                   theta,
-                                                   performMove = True,
-                                                   sampler_m = iterationInStep)
+         changeTo0ChangeStats) = sampler_func(G, A,
+                                              changestats_func_list,
+                                              theta,
+                                              performMove = True,
+                                              sampler_m = iterationInStep)
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         yield (np.array(A), np.array(Z), acceptance_rate, (i+1)*iterationInStep+burnIn)

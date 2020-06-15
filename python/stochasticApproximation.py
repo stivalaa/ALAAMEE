@@ -33,7 +33,7 @@ from basicALAAMsampler import basicALAAMsampler
 
 
 def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
-                            Zobs):
+                            Zobs, sampler_func=basicALAAMsampler):
     """
     Robbins-Monro stochastic approximation to estimate ALAAM parameers.
 
@@ -50,6 +50,11 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
        theta0              - corresponding vector of initial theta values
        Zobs                - vector of observed statistics
                              (from computeObservedStatistics)
+       sampler_func        - ALAAM sampler function with signature
+                             (G, A, changestats_func_list, theta, performMove,
+                              sampler_m); see basicALAAMsampler.py
+                             default basicALAAMsampler
+
 
      Returns:
          tuple (theta, std_error, t_ratio) of numpy vectors for
@@ -90,11 +95,11 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     for i in xrange(phase1steps):
         (acceptance_rate,
          changeTo1ChangeStats,
-         changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                                   changestats_func_list,
-                                                   theta,
-                                                   performMove = True,
-                                                   sampler_m = iterationInStep)
+         changeTo0ChangeStats) = sampler_func(G, A,
+                                              changestats_func_list,
+                                              theta,
+                                              performMove = True,
+                                              sampler_m = iterationInStep)
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
@@ -144,11 +149,11 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
             oldZ = np.copy(Z)
             (acceptance_rate,
              changeTo1ChangeStats,
-             changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                                       changestats_func_list,
-                                                       theta,
-                                                       performMove = True,
-                                                       sampler_m = iterationInStep)
+             changeTo0ChangeStats) = sampler_func(G, A,
+                                                  changestats_func_list,
+                                                  theta,
+                                                  performMove = True,
+                                                  sampler_m = iterationInStep)
             Z += changeTo1ChangeStats - changeTo0ChangeStats
 
             theta_step = a * np.matmul(Dinv, Z - Zobs)
@@ -175,22 +180,22 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     # burn-in iterations
     (acceptance_rate,
      changeTo1ChangeStats,
-     changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                               changestats_func_list,
-                                               theta,
-                                               performMove = True,
-                                               sampler_m = burnin)
+     changeTo0ChangeStats) = sampler_func(G, A,
+                                          changestats_func_list,
+                                          theta,
+                                          performMove = True,
+                                          sampler_m = burnin)
     Z += changeTo1ChangeStats - changeTo0ChangeStats
 
     
     for i in xrange(phase3steps):
         (acceptance_rate,
          changeTo1ChangeStats,
-         changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                                   changestats_func_list,
-                                                   theta,
-                                                   performMove = True,
-                                                   sampler_m = iterationInStep)
+         changeTo0ChangeStats) = sampler_func(G, A,
+                                              changestats_func_list,
+                                              theta,
+                                              performMove = True,
+                                              sampler_m = iterationInStep)
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 

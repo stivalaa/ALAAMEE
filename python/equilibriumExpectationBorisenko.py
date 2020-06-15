@@ -46,7 +46,8 @@ DZA_PREFIX = 'dzA_values_'     # prefix for dzA output filename
 sampler_m  = 1000              # number of sampler iterations
 
 def algorithm_EE(G, A, changestats_func_list, theta,
-                 M, theta_outfile, dzA_outfile, learningRate = 0.01):
+                 M, theta_outfile, dzA_outfile, learningRate = 0.01,
+                 sampler_func = basicALAAMsampler):
     """
     Algorithm EE (Equilibrium Expectation).
     Version from Borisenko et al. (2019) with only learning rate
@@ -62,6 +63,11 @@ def algorithm_EE(G, A, changestats_func_list, theta,
        dzA_outfile         - open for write file to write dzA values
        learningRate        - learning rate (step size multiplier, a)
                              defult 0.01
+       sampler_func        - ALAAM sampler function with signature
+                             (G, A, changestats_func_list, theta, performMove,
+                              sampler_m); see basicALAAMsampler.py
+                             default basicALAAMsampler
+
 
      Returns:
          numpy vector of theta values at end
@@ -81,11 +87,11 @@ def algorithm_EE(G, A, changestats_func_list, theta,
         accepted = 0
         (acceptance_rate,
          changeTo1ChangeStats,
-         changeTo0ChangeStats) = basicALAAMsampler(G, A,
-                                                   changestats_func_list,
-                                                   theta,
-                                                   performMove = True,
-                                                   sampler_m = sampler_m)
+         changeTo0ChangeStats) = sampler_func(G, A,
+                                              changestats_func_list,
+                                              theta,
+                                              performMove = True,
+                                              sampler_m = sampler_m)
         dzA += changeTo1ChangeStats - changeTo0ChangeStats  # dzA accumulates here
         theta_step = -np.sign(dzA) * learningRateVec * np.maximum(minThetaVec,
                                                                  np.abs(theta))

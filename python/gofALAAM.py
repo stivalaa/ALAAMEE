@@ -24,9 +24,11 @@ from Graph import Graph,NA_VALUE,int_or_na
 from changeStatisticsALAAM import *
 from simulateALAAM import simulateALAAM
 from computeObservedStatistics import computeObservedStatistics
+from basicALAAMsampler import basicALAAMsampler
 
 
-def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000):
+def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
+        sampler_func = basicALAAMsampler):
     """
     ALAAM goodness-of-fit by simulating from estimated parameters, and 
     comparing observed statistics to statistics of simulated outcome vectors,
@@ -39,6 +41,10 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000):
        theta                - corresponding vector of estimated theta values
                               (0 for those not included in estiamted model)
        numSamples           - number of simulations, default 1000
+       sampler_func        - ALAAM sampler function with signature
+                               (G, A, changestats_func_list, theta, performMove,
+                                sampler_m); see basicALAAMsampler.py
+                               default basicALAAMsampler
 
     Return value:
        vector of t-ratios
@@ -57,7 +63,8 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000):
 
     # Compute simulated outcome vector statistics from MCMC
     sim_results = simulateALAAM(G, changestats_func_list,  theta,
-                                numSamples, iterationInStep, burnIn)
+                                numSamples, iterationInStep, burnIn,
+                                sampler_func)
     #simulateALAAM() return list of tuples (simvec,stats,acceptance_rate,t)
     # convert to matrix where each row is sample, each column is statistic
     Zmatrix = np.stack([r[1] for r in sim_results])

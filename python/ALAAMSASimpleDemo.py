@@ -45,13 +45,15 @@ from changeStatisticsALAAM import *
 from stochasticApproximation import stochasticApproximation
 from computeObservedStatistics import computeObservedStatistics
 from gofALAAM import gof
+from basicALAAMsampler import basicALAAMsampler
 
 
 def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         outcome_bin_filename,
                         binattr_filename=None,
                         contattr_filename=None,
-                        catattr_filename=None):
+                        catattr_filename=None,
+                        sampler_func = basicALAAMsampler):
     """Run on specified network with binary and/or continuous and
     categorical attributes.
     
@@ -69,6 +71,10 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                             Default None, in which case no continuous attr.
          catattr_filename - filename of continuous attributes (node per line)
                             Default None, in which case no categorical attr.
+         sampler_func        - ALAAM sampler function with signature
+                               (G, A, changestats_func_list, theta, performMove,
+                                sampler_m); see basicALAAMsampler.py
+                               default basicALAAMsampler
 
     Write output to stdout.
 
@@ -105,7 +111,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         start = time.time()
         (theta, std_error, t_ratio) = stochasticApproximation(G, A,
                                                               param_func_list,
-                                                              theta, Zobs) 
+                                                              theta, Zobs,
+                                                              sampler_func) 
 
         print 'Stochastic approximation took',time.time() - start, 's'
         if theta is None:
@@ -152,7 +159,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
         print 'Running goodness-of-fit test...'
         start = time.time()
-        gofresult = gof(G, A, gof_param_func_list, gof_theta)
+        gofresult = gof(G, A, gof_param_func_list, gof_theta, sampler_func)
         print 'GoF took',time.time() - start, 's'
         print '           ',goflabels
         print 't_ratios = ',gofresult
