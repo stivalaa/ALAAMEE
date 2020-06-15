@@ -63,7 +63,6 @@ def basicALAAMsampler(G, A, changestats_func_list, theta, performMove,
     Note A is updated in place if performMove is True
     otherwise unchanged
     """
-    assert(FALSE)#XXX testingx
     n = len(changestats_func_list)
 #    assert(len(theta) == n)
     accepted = 0
