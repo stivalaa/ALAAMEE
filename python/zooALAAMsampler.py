@@ -109,15 +109,14 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
 
         Dmax = float(num_not_na)                # max possible outcome=1 nodes
         Dy   = float(len(np.where(A == 1)[0]))  # number of outcome=1 nodes now
-        # proposal_ratio = (Dmax - Dy) / (Dy + 1) # q(y|y') / q(y'|y)
-        # changestats_ratio = np.exp(total) #np.exp gives inf not overflow
-        # alpha = proposal_ratio * changestats_ratio
+        proposal_ratio = (Dmax - Dy) / (Dy + 1) # q(y|y') / q(y'|y)
+        alpha = proposal_ratio * np.exp(total) #np.exp gives inf not overflow
 
-        if isChangeToZero:
-            total += np.log(Dy / (Dmax + Dy))
-        else:
-            total += np.log(1.0 + Dmax / (Dy + 1))
-        alpha = np.exp(total) #np.exp gives inf not overflow
+        # if isChangeToZero:
+        #     total += np.log(Dy / (Dmax + Dy))
+        # else:
+        #     total += np.log(1.0 + Dmax / (Dy + 1))
+        # alpha = np.exp(total) #np.exp gives inf not overflow
         
         if random.uniform(0, 1) < alpha:
             accepted += 1
