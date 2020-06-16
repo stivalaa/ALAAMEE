@@ -30,24 +30,6 @@ from Graph import Graph,NA_VALUE
 from changeStatisticsALAAM import *
 
 
-def rand_bin_array(K, N):
-    """rand_bin_array - binary vector of length N with exactly K ones 
-                        at random indices
-    
-    Parameters:
-        K  - number of ones
-        N  - length of vector
-
-    Return value:
-       numpy array of length N with K ones at random positions (others 0)
-
-    https://stackoverflow.com/questions/19597473/binary-random-array-with-a-specific-proportion-of-ones
-    """
-    arr = np.zeros(N)
-    arr[:K]  = 1
-    np.random.shuffle(arr)
-    return arr
-
 
 def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
                       sampler_m):
