@@ -30,6 +30,24 @@ from Graph import Graph,NA_VALUE
 from changeStatisticsALAAM import *
 
 
+def rand_bin_array(K, N):
+    """rand_bin_array - binary vector of length N with exactly K ones 
+                        at random indices
+    
+    Parameters:
+        K  - number of ones
+        N  - length of vector
+
+    Return value:
+       numpy array of length N with K ones at random positions (others 0)
+
+    https://stackoverflow.com/questions/19597473/binary-random-array-with-a-specific-proportion-of-ones
+    """
+    arr = np.zeros(N)
+    arr[:K]  = 1
+    np.random.shuffle(arr)
+    return arr
+
 
 def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
                       sampler_m):
@@ -65,9 +83,6 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
     Note A is updated in place if performMove is True
     otherwise unchanged
     """
-    prob  = 0.5                  # equal probability of 0 to 1 or 1 to 0
-    odds  = prob / (1.0 - prob)  # odds corresponding to prob
-    
     n = len(changestats_func_list)
 
     # number of elements of A that are not NA (so 0 or 1)
@@ -90,7 +105,7 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
         elif len(np.where(A == 0)[0]) == num_not_na:
             isChangeToZero = False
         else:
-            isChangeToZero = (random.uniform(0, 1) < prob)
+            isChangeToZero = (random.uniform(0, 1) < 0.5)
 
         i = np.random.choice(np.where(A == (1 if isChangeToZero else 0))[0])
         while A[i] == NA_VALUE:  # keep going until we get one that is not NA
@@ -102,8 +117,6 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
 
         assert(A[i] == 0)
 
-###        print performMove,numNodes,num_not_na,isChangeToZero, i, len(np.where(A==1)[0]) #XXX
-        
         # compute change statistics for each of the n statistics using the
         # list of change statistic functions
         changestats = np.zeros(n)
@@ -111,21 +124,12 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
             changestats[l] = changestats_func_list[l](G, A, i)
         changeSignMul = -1 if isChangeToZero else +1
         total = np.sum(theta * changeSignMul * changestats)
-
-        # adjust acceptance probability as for TNT sampler
-        numOutcome1 = len(np.where(A == 1)[0])
-        if isChangeToZero:
-            if numOutcome1 == 1:
-                total += np.log(1.0 / (prob * numNodes + (1.0 - prob)))
-            else:
-                total += np.log(numOutcome1 / (odds * numNodes + numOutcome1))
-        else:
-            if numOutcome1 == 0:
-                total += np.log(prob * numNodes + (1.0 - prob))
-            else:
-                total += np.log(1 + (odds * numNodes) / (numOutcome1 + 1))
-
-        if random.uniform(0, 1) < np.exp(total): #np.exp gives inf not overflow
+        Dmax = float(num_not_na)                # max possible outcome=1 nodes
+        Dy   = float(len(np.where(A == 1)[0]))  # number of outcome=1 nodes now
+        proposal_ratio = (Dmax - Dy) / (Dy + 1) # q(y|y') / q(y'|y)
+        changestats_ratio = np.exp(total) #np.exp gives inf not overflow
+        alpha = proposal_ratio * changestats_ratio
+        if random.uniform(0, 1) < alpha:
             accepted += 1
             if performMove:
                 # actually accept the move.

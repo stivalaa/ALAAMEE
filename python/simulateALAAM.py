@@ -29,6 +29,26 @@ import numpy as np         # used for matrix & vector data types and functions
 from Graph import Graph,NA_VALUE
 from changeStatisticsALAAM import *
 from basicALAAMsampler import basicALAAMsampler
+from computeObservedStatistics import computeObservedStatistics
+
+def rand_bin_array(K, N):
+    """rand_bin_array - binary vector of length N with exactly K ones
+                        at random indices
+
+    Parameters:
+        K  - number of ones
+        N  - length of vector
+
+    Return value:
+       numpy array of length N with K ones at random positions (others 0)
+
+    https://stackoverflow.com/questions/19597473/binary-random-array-with-a-specific-proportion-of-ones
+    """
+    arr = np.zeros(N)
+    arr[:K]  = 1
+    np.random.shuffle(arr)
+    return arr
+
 
 
 def simulateALAAM(G, changestats_func_list, theta, numSamples,
@@ -55,8 +75,6 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                               sampler_m); see basicALAAMsampler.py
                              default basicALAAMsampler
 
-
-
      Returns:
        This is a generator function that yields tuple
         (A, stats, acceptance_Rate, t) where
@@ -74,8 +92,15 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
     if burnIn is None:
         burnIn = 10*iterationInStep
 
-    A = np.zeros(G.numNodes())  # initial outcome vector
-    Z = np.zeros(len(theta))  # accumulated change statistics
+    # initialize outcome vector to 50% ones
+    A = rand_bin_array(int(0.5*G.numNodes()), G.numNodes())
+
+    # And compute observed statistics by summing change stats for each
+    # 1 variable (note if instead starting at all zero A vector don't
+    # have to do this as then Z is zero vector)
+    Z = computeObservedStatistics(G, A, changestats_func_list)
+
+    burnIn = 1#XXX testing
 
     (acceptance_rate,
      changeTo1ChangeStats,
