@@ -42,7 +42,10 @@ def simulate_from_network_attr(edgelist_filename, param_func_list, labels,
                                binattr_filename=None,
                                contattr_filename=None,
                                catattr_filename=None,
-                               sampler_func = basicALAAMsampler):
+                               sampler_func = basicALAAMsampler,
+                               numSamples = 100,
+                               iterationInStep = None,
+                               burnIn = None):
     """Simulate ALAAM from on specified network with binary and/or continuous
     and categorical attributes.
     
@@ -63,10 +66,17 @@ def simulate_from_network_attr(edgelist_filename, param_func_list, labels,
                                (G, A, changestats_func_list, theta, performMove,
                                 sampler_m); see basicALAAMsampler.py
                                default basicALAAMsampler
+         iterationInStep  - number of sampler iterations
+                             i.e. the number of iterations between samples
+                             (or 10*numNodes if None)
+         numSamples       - Number of samples (default 100)
+         burnIn           - Number of sampels to discard at start
+                            (or 10*iterationInStep if None)
 
 
     """
     assert(len(param_func_list) == len(labels))
+
 
     G = Graph(edgelist_filename, binattr_filename, contattr_filename,
               catattr_filename)
@@ -76,7 +86,9 @@ def simulate_from_network_attr(edgelist_filename, param_func_list, labels,
     sys.stdout.write(' '.join(['t'] + labels + ['acceptance_rate']) + '\n')
     for (simvec,stats,acceptance_rate,t) in simulateALAAM(G, param_func_list,
                                                           theta,
-                                                          numSamples = 100,
+                                                          numSamples,
+                                                          iterationInStep,
+                                                          burnIn,
                                                           sampler_func = sampler_func):
         sys.stdout.write(' '.join([str(t)] + [str(x) for x in list(stats)] +
                                   [str(acceptance_rate)]) + '\n')

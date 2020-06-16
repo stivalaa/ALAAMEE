@@ -95,7 +95,7 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
         burnIn = 10*iterationInStep
 
     # initialize outcome vector to 50% ones
-    A = rand_bin_array(int(0.16*G.numNodes()), G.numNodes())
+    A = rand_bin_array(int(1.0*G.numNodes()), G.numNodes())
 
     # And compute observed statistics by summing change stats for each
     # 1 variable (note if instead starting at all zero A vector don't
