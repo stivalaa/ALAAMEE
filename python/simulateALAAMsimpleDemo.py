@@ -34,12 +34,15 @@ from functools import partial
 from Graph import Graph,NA_VALUE,int_or_na
 from changeStatisticsALAAM import *
 from simulateALAAM import simulateALAAM
+from basicALAAMsampler import basicALAAMsampler
+
 
 def simulate_from_network_attr(edgelist_filename, param_func_list, labels,
                                theta,
                                binattr_filename=None,
                                contattr_filename=None,
-                               catattr_filename=None):
+                               catattr_filename=None,
+                               sampler_func = basicALAAMsampler):
     """Simulate ALAAM from on specified network with binary and/or continuous
     and categorical attributes.
     
@@ -56,6 +59,11 @@ def simulate_from_network_attr(edgelist_filename, param_func_list, labels,
                             Default None, in which case no continuous attr.
          catattr_filename - filename of categorical attributes (node per line)
                             Default None, in which case no categorical attr.
+         sampler_func        - ALAAM sampler function with signature
+                               (G, A, changestats_func_list, theta, performMove,
+                                sampler_m); see basicALAAMsampler.py
+                               default basicALAAMsampler
+
 
     """
     assert(len(param_func_list) == len(labels))
@@ -67,8 +75,9 @@ def simulate_from_network_attr(edgelist_filename, param_func_list, labels,
 
     sys.stdout.write(' '.join(['t'] + labels + ['acceptance_rate']) + '\n')
     for (simvec,stats,acceptance_rate,t) in simulateALAAM(G, param_func_list,
-                                                         theta,
-                                                         numSamples = 100):
+                                                          theta,
+                                                          numSamples = 100,
+                                                          sampler_func = sampler_func):
         sys.stdout.write(' '.join([str(t)] + [str(x) for x in list(stats)] +
                                   [str(acceptance_rate)]) + '\n')
     
