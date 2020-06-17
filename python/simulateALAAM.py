@@ -94,13 +94,17 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
     if burnIn is None:
         burnIn = 10*iterationInStep
 
-    # initialize outcome vector to 50% ones
-    A = rand_bin_array(int(1.0*G.numNodes()), G.numNodes())
+    START_FROM_ZERO = False 
+    if START_FROM_ZERO: # start from zero vector
+        A = np.zeros(G.numNodes())  # initialize outcmoe vector to zero
+    else:   # do not use all zero,to avoid special case of proposal probability
+        # initialize outcome vector to 50% ones
+        A = rand_bin_array(int(0.5*G.numNodes()), G.numNodes())
 
-    # And compute observed statistics by summing change stats for each
-    # 1 variable (note if instead starting at all zero A vector don't
-    # have to do this as then Z is zero vector)
-    Z = computeObservedStatistics(G, A, changestats_func_list)
+        # And compute observed statistics by summing change stats for each
+        # 1 variable (note if instead starting at all zero A vector don't
+        # have to do this as then Z is zero vector)
+        Z = computeObservedStatistics(G, A, changestats_func_list)
 
     (acceptance_rate,
      changeTo1ChangeStats,

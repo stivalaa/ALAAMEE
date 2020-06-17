@@ -109,6 +109,7 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
 
         Dmax = float(num_not_na)                # max possible outcome=1 nodes
         Dy   = float(len(np.where(A == 1)[0]))  # number of outcome=1 nodes now
+        # TODO should handle special cases for all zero and all one
         if isChangeToZero:
             log_proposal_ratio = np.log(Dy / (Dmax - Dy))
         else:
