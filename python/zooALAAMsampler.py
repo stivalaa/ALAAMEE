@@ -118,12 +118,6 @@ def zooALAAMsampler(G, A, changestats_func_list, theta, performMove,
 
         alpha = np.exp(log_proposal_ratio + total)#np.exp gives inf not overflow
 
-        # if isChangeToZero:
-        #     total += np.log(Dy / (Dmax + Dy))
-        # else:
-        #     total += np.log(1.0 + Dmax / (Dy + 1))
-        # alpha = np.exp(total) #np.exp gives inf not overflow
-        
         if random.uniform(0, 1) < alpha:
             accepted += 1
             if performMove:
