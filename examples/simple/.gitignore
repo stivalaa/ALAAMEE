@@ -18,3 +18,5 @@ stats_sim_gof_n500-plots.eps
 stats_sim_gof_n500.txt
 stats_sim_n500_zoo-plots.eps
 stats_sim_n500_zoo.txt
+alaam_sa_simn500_zoo-*.err
+alaam_sa_simn500_zoo-*.out
