@@ -159,7 +159,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
         print 'Running goodness-of-fit test...'
         start = time.time()
-        gofresult = gof(G, A, gof_param_func_list, gof_theta, sampler_func)
+        gofresult = gof(G, A, gof_param_func_list, gof_theta,
+                        sampler_func = sampler_func)
         print 'GoF took',time.time() - start, 's'
         print '           ',goflabels
         print 't_ratios = ',gofresult
