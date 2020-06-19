@@ -67,8 +67,14 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
 ## 500 node example:
 get_observed_stats_from_network_attr(
     '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
-    [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
-["Density", "Activity", "Contagion", "Binary", "Continuous"],
+    [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")] + [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
+             changeTriangleT1, changeContagion,
+             changeIndirectPartnerAttribute,
+             changePartnerAttributeActivity, 
+             changePartnerPartnerAttribute,
+             changeTriangleT2,
+             changeTriangleT3],
+    ["Density", "Activity", "Contagion", "Binary", "Continuous"] + ['Two-Star', 'Three-Star', 'Alter-2Star1A', 'T1', 'Contagion', 'Alter-2Star2A', 'Partner-Activity', 'Partner-Resource','T2', 'T3'],
     '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
     '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
     '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt'

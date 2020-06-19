@@ -4,7 +4,7 @@
 #SBATCH --output=gof_alaam_sim_example-%j.out
 #SBATCH --error=gof_alaam_sim_example-%j.err
 #SBATCH --ntasks=1
-#SBATCH --mem=100MB
+#SBATCH --mem=2GB
 
 
 # example to run simulation from parameters and plot observed
