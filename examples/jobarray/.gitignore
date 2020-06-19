@@ -1,3 +1,4 @@
+*.py~
 *.sh~
 dzA_values_*.txt
 theta_values_*.txt
@@ -15,3 +16,9 @@ alaamee_covariance_karate-*.out
 alaamee_covariance_karate-*.err
 alaamee_covariance_simexampleN1000-*.out
 alaamee_covariance_simexampleN1000-*.err
+gof_alaam_sim_example-*.err
+gof_alaam_sim_example-*.out
+obs_stats_sim_n500.txt
+stats_sim_gof_n500-plots.eps
+stats_sim_gof_n500.txt
+
