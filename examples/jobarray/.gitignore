@@ -21,4 +21,4 @@ gof_alaam_sim_example-*.out
 obs_stats_sim_n500.txt
 stats_sim_gof_n500-plots.eps
 stats_sim_gof_n500.txt
-
+slurm-*.out
