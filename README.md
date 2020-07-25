@@ -5,10 +5,9 @@ Equilibrium Expectation (EE) algorithm. Also includes an implementation
 of the Robbins-Monro stochastic approximation algorithm for estimating
 ALAAM parameters, and functions for simulation and goodness-of-fit tests.
 
-This a simple Python demonstration implementation. The Python
-implementation uses the NumPy library for vector and matrix data types
-and functions. In addition, there are R scripts for estimating
-standard errors and plotting results from the output.
+This Python implementation uses the NumPy library for vector and 
+matrix data types and functions. In addition, there are R scripts for
+estimating standard errors and plotting results from the output.
 
 ## Funding
 
