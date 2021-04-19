@@ -4,6 +4,7 @@ data/      contains data for examples
 simple/    simple (not parallel etc.) example scripts
 parallel/  examples run using GNU parallel
 jobarray/  examples run using slurm job arrays
+conditional/ examples using conditional estimation with snowball samples
 
 ADS
 Thu Feb 20 01:23:09 CET 2020

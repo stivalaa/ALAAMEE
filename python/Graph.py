@@ -1,4 +1,4 @@
-#
+>#
 # File:    Graph.py
 # Author:  Alex Stivala
 # Created: Feburary 2020
@@ -248,4 +248,11 @@ class Graph:
                 print 'Categorical attribute', attrname, 'has', self.catattr[attrname].count(NA_VALUE), 'NA values'
         else:
             print 'No categorical attributes'
+
+        if self.zone is not None:
+            print 'There are', self.max_zone, 'snowball sample waves, with', len(self.inner_nodes), 'nodes in inner waves'
+        else:
+            print 'No snowball zones'
+            
+            
 

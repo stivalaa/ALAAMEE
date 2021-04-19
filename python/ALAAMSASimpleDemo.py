@@ -75,6 +75,13 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                (G, A, changestats_func_list, theta, performMove,
                                 sampler_m); see basicALAAMsampler.py
                                default basicALAAMsampler
+         zone_filename   - filename of snowball sampling zone file 
+                           (header line 'zone' then zone number for nodes,
+                           one per line)
+                           Default None, in which case no snowball zones.
+                           If not None then the sampler_func should take
+                           account of snowball sample zones i.e.
+                           conditionalALAAMsampler()
 
     Write output to stdout.
 
@@ -82,7 +89,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     assert(len(param_func_list) == len(labels))
 
     G = Graph(edgelist_filename, binattr_filename, contattr_filename,
-              catattr_filename)
+              catattr_filename, zone_filename)
 
     G.printSummary()
 
