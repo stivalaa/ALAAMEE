@@ -75,9 +75,9 @@ def conditionalALAAMsampler(G, A, changestats_func_list, theta, performMove,
         # basic sampler, conditional on snowball sampling zone: select
         # a node in the inner waves (i.e. in any but the outermost
         # wave) uniformly at random and toggle outcome variable for it
-        i = random.ample(G.inner_nodes, 1)
+        i = random.sample(G.inner_nodes, 1)
         while A[i] == NA_VALUE:  # keep going until we get one that is not NA
-            i = random.ample(G.inner_nodes, 1)            
+            i = random.sample(G.inner_nodes, 1)            
         isChangeToZero = (A[i] == 1)
         if isChangeToZero:
             A[i] = 0
