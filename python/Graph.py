@@ -87,10 +87,18 @@ class Graph:
     (the third node, so row 4 in data which has header)
     would be catattr['class'][2]
 
+    Also there can be optionally be a 'zone' for each node, which is
+    the snowball sampling zone: 0 for the seed nodes, 1 for nodes
+    reached directly from those in zone 0, and so on. These are read
+    from a text file with zone number one per line for each node in
+    order, with a header line that must just be one column name "zone", and
+    stored simply as a list (in node id order just as for attributes).
+
     """
 
     def __init__(self, pajek_edgelist_filename, binattr_filename=None,
-                 contattr_filename=None, catattr_filename=None):
+                 contattr_filename=None, catattr_filename=None,
+                 zone_filename=None):
         """
         Construct graph from Pajek format network and binary attributes.
 
@@ -102,11 +110,18 @@ class Graph:
                                 Default None: no continuous attributes loaded
             catattr_filename - categorical attributes
                                 Default None: no categorical attributes loaded
+            zone_filename    - snowball sample zone for each node
+                                Deafult None: no zone information loaded
         """
         self.G = None  # dict of dicts as described above
         self.binattr = None # binary attributes: dict name, list by node (int not boolean)
         self.contattr = None # continuous attributes: dict name, list by node
         self.catattr = None  # categorical attributes: dict name, list by node
+
+        # for conditional estimation on snowball sampling structure
+        self.zone    = None  # node snowball zone, list by node
+        self.max_zone= None  # maximum snowball zone number
+        self.inner_nodes = None # list of nodes with zone < max_zone
 
         f =  open(pajek_edgelist_filename)
         l = f.readline() # first line must be e.g. "*vertices 500"
@@ -146,7 +161,14 @@ class Graph:
             self.catattr = dict([(col[0], map(int_or_na, col[1:])) for col in map(list, zip(*[row.split() for row in open(catattr_filename).readlines()]))])
             assert(all([len(v) == n for v in self.catattr.itervalues()]))
 
-
+        if zone_filename is not None:
+            self.zone = [int(s) for s in open(zone_filename).readlines()[1:]]
+            assert(len(self.zone) == n)
+            self.max_zone = max(self.zone)
+            assert(min(self.zone) == 0)
+            assert(len(set(l)) == self.max_zone + 1) # zones must be 0,1,..,max
+            # get list of nodes in inner waves, i.e. with zone < max_zone
+            self.inner_nodes = [i for (i, z) in enumerate(self.zone) if z < self.max_zone]
 
     def numNodes(self):
         """
