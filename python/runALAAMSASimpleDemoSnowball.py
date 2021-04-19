@@ -8,20 +8,21 @@
  Approximation algorithm for estimation of Autologistic Actor Attribute
  Model (ALAAM) parameters, on snowball sampled network data.
 """
+from functools import partial
 
+from conditionalALAAMsampler import conditionalALAAMsampler
+from changeStatisticsALAAM import *
 import  ALAAMSASimpleDemo
 
 ALAAMSASimpleDemo.run_on_network_attr(
-        '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
+        'n500_kstar_simulate12750000_waves2_seeds3_num6700000.txt',
         [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],
-        '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
-        '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
-        '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt',
+        'sample-n500_bin_cont6700000_waves2_seeds3.txt',
+        'binaryAttribute_50_50_n500_waves2_seeds3_num6700000.txt',
+        'continuousAttributes_n500_waves2_seeds3_num6700000.txt',
+        catattr_filename = None,
         sampler_func = conditionalALAAMsampler,
-        zone_filenme = 'zonefile')
-
-
-
+        zone_filename = 'snowball_zonefile_waves2_seeds3_num6700000.txt')
 
 

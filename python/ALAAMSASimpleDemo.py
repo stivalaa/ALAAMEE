@@ -53,7 +53,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         binattr_filename=None,
                         contattr_filename=None,
                         catattr_filename=None,
-                        sampler_func = basicALAAMsampler):
+                        sampler_func = basicALAAMsampler,
+                        zone_filename = None):
     """Run on specified network with binary and/or continuous and
     categorical attributes.
     
@@ -88,6 +89,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     """
     assert(len(param_func_list) == len(labels))
 
+    print 'XXX zone_filename = ', zone_filename
     G = Graph(edgelist_filename, binattr_filename, contattr_filename,
               catattr_filename, zone_filename)
 
