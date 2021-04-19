@@ -89,7 +89,6 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     """
     assert(len(param_func_list) == len(labels))
 
-    print 'XXX zone_filename = ', zone_filename
     G = Graph(edgelist_filename, binattr_filename, contattr_filename,
               catattr_filename, zone_filename)
 

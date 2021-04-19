@@ -162,12 +162,10 @@ class Graph:
             assert(all([len(v) == n for v in self.catattr.itervalues()]))
 
         if zone_filename is not None:
-            print 'ZZZ zone_filename = ', zone_filename
             self.zone = [int(s) for s in open(zone_filename).readlines()[1:]]
             assert(len(self.zone) == n)
             self.max_zone = max(self.zone)
             assert(min(self.zone) == 0)
-            print 'XXX', set(self.zone), len(set(l))
             assert(len(set(self.zone)) == self.max_zone + 1) # zones must be 0,1,..,max
             # get list of nodes in inner waves, i.e. with zone < max_zone
             self.inner_nodes = [i for (i, z) in enumerate(self.zone) if z < self.max_zone]
