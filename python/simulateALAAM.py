@@ -55,7 +55,7 @@ def rand_bin_array(K, N):
 
 def simulateALAAM(G, changestats_func_list, theta, numSamples,
                   iterationInStep = None, burnIn = None,
-                  sampler_func = basicALAAMsampler):
+                  sampler_func = basicALAAMsampler, Ainitial = None):
     """
     Simulate ALAAM (generate binary outcome vector) given model parameters
     and network (including node attributes).
@@ -76,6 +76,11 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                              (G, A, changestats_func_list, theta, performMove,
                               sampler_m); see basicALAAMsampler.py
                              default basicALAAMsampler
+       Ainitial              - vector of 0/1 outcome variables to initialize
+                               the outcome vector to before simulation process,
+                               rather than starting from all 0 or random.
+                               Default None, for random initialization here.
+
 
      Returns:
        This is a generator function that yields tuple
@@ -94,17 +99,21 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
     if burnIn is None:
         burnIn = 10*iterationInStep
 
-    START_FROM_ZERO = False 
-    if START_FROM_ZERO: # start from zero vector
-        A = np.zeros(G.numNodes())  # initialize outcmoe vector to zero
-    else:   # do not use all zero,to avoid special case of proposal probability
-        # initialize outcome vector to 50% ones
-        A = rand_bin_array(int(0.5*G.numNodes()), G.numNodes())
+    if Ainitial is not None:
+        A = np.copy(Ainitial)
+    else:
+        START_FROM_ZERO = False 
+        if START_FROM_ZERO: # start from zero vector
+            A = np.zeros(G.numNodes())  # initialize outcmoe vector to zero
+        else:   # do not use all zero,to avoid special case of proposal probability
+            # initialize outcome vector to 50% ones
+            A = rand_bin_array(int(0.5*G.numNodes()), G.numNodes())
 
-        # And compute observed statistics by summing change stats for each
-        # 1 variable (note if instead starting at all zero A vector don't
-        # have to do this as then Z is zero vector)
-        Z = computeObservedStatistics(G, A, changestats_func_list)
+            # And compute observed statistics by summing change stats for each
+            # 1 variable (note if instead starting at all zero A vector don't
+            # have to do this as then Z is zero vector)
+
+    Z = computeObservedStatistics(G, A, changestats_func_list)
 
     (acceptance_rate,
      changeTo1ChangeStats,

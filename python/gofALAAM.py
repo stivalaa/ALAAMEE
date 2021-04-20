@@ -28,7 +28,7 @@ from basicALAAMsampler import basicALAAMsampler
 
 
 def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
-        sampler_func = basicALAAMsampler):
+        sampler_func = basicALAAMsampler, Ainitial = None):
     """
     ALAAM goodness-of-fit by simulating from estimated parameters, and 
     comparing observed statistics to statistics of simulated outcome vectors,
@@ -45,6 +45,10 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
                                (G, A, changestats_func_list, theta, performMove,
                                 sampler_m); see basicALAAMsampler.py
                                default basicALAAMsampler
+       Ainitial              - vector of 0/1 outcome variables to initialize
+                               the outcome vector to before simulation process,
+                               rather than starting from all 0 or random.
+                               Default None, for random initialization.
 
     Return value:
        vector of t-ratios
@@ -64,7 +68,7 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
     # Compute simulated outcome vector statistics from MCMC
     sim_results = simulateALAAM(G, changestats_func_list,  theta,
                                 numSamples, iterationInStep, burnIn,
-                                sampler_func)
+                                sampler_func, Ainitial)
     #simulateALAAM() return list of tuples (simvec,stats,acceptance_rate,t)
     # convert to matrix where each row is sample, each column is statistic
     Zmatrix = np.stack([r[1] for r in sim_results])

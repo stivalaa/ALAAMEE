@@ -165,10 +165,17 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         # pad theta vector with zeros for the added parameters
         gof_theta = np.array(list(theta) + (n-len(theta))*[0])
 
+        Ainitial = None # default: use random intialization
+        if zone_filename is not None: # conditional estimation
+            # For snowball conditional estimation, we must not start with
+            # random initial outcome vector, but rather make sure the
+            # nodes in the outermost zone have the same outcome attributes
+            # as the obseved vector
+            Ainitial = np.copy(A)
         print 'Running goodness-of-fit test...'
         start = time.time()
         gofresult = gof(G, A, gof_param_func_list, gof_theta,
-                        sampler_func = sampler_func)
+                        sampler_func = sampler_func, Ainitial = Ainitial)
         print 'GoF took',time.time() - start, 's'
         print '           ',goflabels
         print 't_ratios = ',gofresult
