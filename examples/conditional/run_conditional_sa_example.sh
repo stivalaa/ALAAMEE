@@ -10,10 +10,13 @@
 
 module load r
 
-time Rscript ../../R/snowballSampleFromExampleData.R 3 10 ../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt ../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt ../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt  ../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt
+num_waves=2
+num_seeds=5
+
+time Rscript ../../R/snowballSampleFromExampleData.R $num_waves $num_seeds ../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt ../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt ../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt  ../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
-time python ../../python/runALAAMSASimpleDemoSnowball.py
+time python ../../python/runALAAMSASimpleDemoSnowball.py $num_waves $num_seeds
 
 
