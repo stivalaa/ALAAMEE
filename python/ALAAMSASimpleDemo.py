@@ -46,6 +46,7 @@ from stochasticApproximation import stochasticApproximation
 from computeObservedStatistics import computeObservedStatistics
 from gofALAAM import gof
 from basicALAAMsampler import basicALAAMsampler
+from simulateALAAM import rand_bin_array
 
 
 def run_on_network_attr(edgelist_filename, param_func_list, labels,
@@ -171,7 +172,12 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             # random initial outcome vector, but rather make sure the
             # nodes in the outermost zone have the same outcome attributes
             # as the obseved vector
-            Ainitial = np.copy(A)
+            Ainitial = np.copy(A) # copy of observed vector
+            # make vector of 50% ones, size of number of inner nodes
+            Arandom_inner = rand_bin_array(int(0.5*len(G.inner_nodes)), len(G.inner_nodes))
+            # set the outcome for inner nodes to random values, leaving
+            # value of outermost nodes at the original observed values
+            Ainitial[G.inner_nodes] = Arandom_inner
         print 'Running goodness-of-fit test...'
         start = time.time()
         gofresult = gof(G, A, gof_param_func_list, gof_theta,
