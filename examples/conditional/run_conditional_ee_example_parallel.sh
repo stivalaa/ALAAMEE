@@ -10,13 +10,15 @@ echo -n "started at: "; date
 CPUS_MINUS_ONE=`expr ${NUM_CPUS} - 1`
 
 
-num_waves=2
-num_seeds=10
+num_waves=3
+num_seeds=5
 
 time Rscript ../../R/snowballSampleFromExampleData.R $num_waves $num_seeds ../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt ../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt ../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt  ../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt
 
+export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
+# use with --keep-order and --line-buffer on GNU parallel
 
-seq 0 ${CPUS_MINUS_ONE} | parallel -j ${NUM_CPUS} --progress --joblog parallel.log ../../python/runALAAMEESimpleDemoSnowballParallel.py ${num_waves} ${num_seeds}
+seq 0 ${CPUS_MINUS_ONE} | parallel -j ${NUM_CPUS} --progress --joblog parallel.log --keep-order --line-buffer ../../python/runALAAMEESimpleDemoSnowballParallel.py ${num_waves} ${num_seeds}
 
 Rscript ../../R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000 dzA_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000
 
