@@ -18,10 +18,10 @@ time Rscript ../../R/snowballSampleFromExampleData.R $num_waves $num_seeds ../da
 
 seq 0 ${CPUS_MINUS_ONE} | parallel -j ${NUM_CPUS} --progress --joblog parallel.log ../../python/runALAAMEESimpleDemoSnowballParallel.py ${num_waves} ${num_seeds}
 
-Rscript ../../R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000.txt dzA_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000.txt
+Rscript ../../R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000 dzA_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000
 
 
-Rscript ../../R/computeALAMEEcovariance.R  theta_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000.txt dzA_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000.txt
+Rscript ../../R/computeALAMEEcovariance.R  theta_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000 dzA_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000
 
 times
 echo -n "ended at: "; date
