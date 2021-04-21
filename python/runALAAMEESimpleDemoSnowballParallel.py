@@ -28,8 +28,19 @@
 
  Citation for GNU parallel:
 
-  O. Tange (2018): GNU Parallel 2018, Mar 2018, ISBN 9781387509881,
-  DOI https://doi.org/10.5281/zenodo.11460
+@software{tange_2021_4628277,
+      author       = {Tange, Ole},
+      title        = {GNU Parallel 20210322 ('2002-01-06')},
+      month        = Mar,
+      year         = 2020,
+      note         = {{GNU Parallel is a general parallelizer to run
+                       multiple serial command line programs in parallel
+                       without changing them.}},
+      publisher    = {Zenodo},
+      doi          = {10.5281/zenodo.4628277},
+      url          = {https://doi.org/10.5281/zenodo.4628277}
+}
+
 
 
 """
