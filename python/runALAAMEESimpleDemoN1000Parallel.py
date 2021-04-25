@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 #
 # File:    run ALAAMEESimpleDemoN1000Parallel.py
 # Author:  Alex Stivala

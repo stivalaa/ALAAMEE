@@ -10,6 +10,6 @@
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
-time python ../../python/runALAAMSASimpleDemo.py
+time python2 ../../python/runALAAMSASimpleDemo.py
 
 

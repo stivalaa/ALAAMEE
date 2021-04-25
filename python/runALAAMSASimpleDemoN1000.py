@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 #
 # File:    run ALAAMSASimpleDemoN1000.py
 # Author:  Alex Stivala
