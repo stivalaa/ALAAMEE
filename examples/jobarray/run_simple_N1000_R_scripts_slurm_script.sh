@@ -8,9 +8,7 @@
 #SBATCH --error=alaamee_covariance_simexampleN1000-%j.err
 
 
-# Remember must 'module load R/3.2.5' to get Microsoft R Open 3.2.5 
-# otherwise nothing in R works! 
-module load R/3.2.5
+module load r
 
 
 uname -a
