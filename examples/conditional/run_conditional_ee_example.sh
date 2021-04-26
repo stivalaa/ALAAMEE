@@ -17,6 +17,6 @@ time Rscript ../../R/snowballSampleFromExampleData.R $num_waves $num_seeds ../da
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
-time python2 ../../python/runALAAMEESimpleDemoSnowball.py $num_waves $num_seeds
+time python3 ../../python/runALAAMEESimpleDemoSnowball.py $num_waves $num_seeds
 
 

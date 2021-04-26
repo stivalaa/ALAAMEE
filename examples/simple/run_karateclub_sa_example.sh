@@ -10,5 +10,5 @@
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
-time python2 ../../python/runALAAMSAkarateClub.py
+time python3 ../../python/runALAAMSAkarateClub.py
 
