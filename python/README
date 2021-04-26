@@ -5,5 +5,9 @@ stochastic approximation algorithm for estimating ALAAM parameters.
 Note using Python 2 (NOT Python 3). Tested with Python 2.7 and Numpy
 version 1.16.3 on Linux.
 
+Now using Python 3 (no longer Python 2.7). Tested with Python 3.8.9 and
+Numpy 1.19.4 on Cygwin under Windows 10, and Python 3.8.5 and Numpy 1.19.2
+on Linux (CentOS).
+
 ADS
-Fri, Feb 14, 2020 11:33:58 AM
+Tue Apr 27 09:40:21 AEST 2021
