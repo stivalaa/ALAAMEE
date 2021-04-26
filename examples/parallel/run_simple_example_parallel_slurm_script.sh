@@ -8,19 +8,21 @@
 #SBATCH --error=alaamee_simexample-%j.err
 
 
-# Remember must 'module load R/3.2.5' to get Microsoft R Open 3.2.5 
-# otherwise nothing in R works! 
-module load R/3.2.5
-#module load parallel
-
 
 uname -a
 echo SLURM_CPUS_PER_TASK = $SLURM_CPUS_PER_TASK
 echo -n "started at: "; date
 
-CPUS_MINUS_ONE=`expr ${SLURM_CPUS_PER_TASK} - 1`
+NUM_RUNS=100
 
-seq 0 ${CPUS_MINUS_ONE} | parallel -j ${SLURM_CPUS_PER_TASK} --progress --joblog parallel.log ../../python/runALAAMEESimpleDemoParallel.py
+echo NUM_RUNS = $NUM_RUNS
+NUM_RUNS_MINUS_ONE=`expr ${NUM_RUNS} - 1`
+
+# use default (no --jobs option) jobs in parallel (one per CPU default)
+seq 0 ${NUM_RUNS_MINUS_ONE} | parallel --progress --joblog parallel.log ../../python/runALAAMEESimpleDemoParallel.py
+
+
+module load r
 
 Rscript ../../R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000 dzA_values_n500_kstar_simulate12750000
 
