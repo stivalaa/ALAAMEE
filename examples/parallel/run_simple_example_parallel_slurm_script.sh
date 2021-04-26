@@ -3,7 +3,7 @@
 #SBATCH --job-name="ALAAMEE_parallel_sim"
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=20
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-05:00:00
 #SBATCH --output=alaamee_simexample-%j.out
 #SBATCH --error=alaamee_simexample-%j.err
 
