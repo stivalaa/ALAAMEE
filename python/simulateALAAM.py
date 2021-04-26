@@ -124,7 +124,7 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                                           sampler_m = burnIn)
     Z += changeTo1ChangeStats - changeTo0ChangeStats
 
-    for i in xrange(numSamples):
+    for i in range(numSamples):
         (acceptance_rate,
          changeTo1ChangeStats,
          changeTo0ChangeStats) = sampler_func(G, A,

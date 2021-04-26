@@ -73,9 +73,9 @@ def algorithm_EE(G, A, changestats_func_list, theta, D0,
     n = len(changestats_func_list)
     dzA = np.zeros(n)  # zero outside loop, dzA accumulates in loop
     t = 0
-    for touter in xrange(Mouter):
+    for touter in range(Mouter):
         thetamatrix = np.empty((M, n)) # rows theta vectors, 1 per inner iter
-        for tinner in xrange(M):
+        for tinner in range(M):
             accepted = 0
             (acceptance_rate,
              changeTo1ChangeStats,

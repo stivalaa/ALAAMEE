@@ -64,7 +64,7 @@ def algorithm_S(G, A, changestats_func_list, M1, theta_outfile,
     n = len(changestats_func_list)
     theta = np.zeros(n)
     D0 = np.zeros(n)
-    for t in xrange(M1):
+    for t in range(M1):
         accepted = 0
         (acceptance_rate,
          changeTo1ChangeStats,
@@ -78,7 +78,7 @@ def algorithm_S(G, A, changestats_func_list, M1, theta_outfile,
         sumChangeStats = changeTo1ChangeStats + changeTo0ChangeStats
         D0 += dzA**2 # 1/D0 is squared derivative
         da = np.zeros(n)
-        for l in xrange(n):
+        for l in range(n):
             if (sumChangeStats[l] != 0):
                 da[l] = ACA  / sumChangeStats[l]**2
         theta_step = np.sign(dzAmean) * da * dzA**2

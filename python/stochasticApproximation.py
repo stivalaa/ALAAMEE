@@ -88,11 +88,11 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     #
     # Phase 1: estimate covariance matrix
     #
-    print 'Phase 1 steps = ', phase1steps, 'iters per step = ',iterationInStep
+    print('Phase 1 steps = ', phase1steps, 'iters per step = ',iterationInStep)
     start = time.time()
     Z = np.copy(Zobs)  # start at observed statistics vector
     Zmatrix = np.empty((phase1steps, n)) # rows statistics Z vectors, 1 per step
-    for i in xrange(phase1steps):
+    for i in range(phase1steps):
         (acceptance_rate,
          changeTo1ChangeStats,
          changeTo0ChangeStats) = sampler_func(G, A,
@@ -106,7 +106,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
     theta = np.reshape(theta, (1, len(theta)))
-    print 'Zmean = ', Zmean
+    print('Zmean = ', Zmean)
 
     # Dcov = np.cov(np.transpose(Zmatrix))
     # print 'Dcov = ', Dcov
@@ -114,8 +114,8 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     Zmatrix -= Zmean
     D = (1.0/phase1steps) * np.matmul(np.transpose(Zmatrix), Zmatrix)
 
-    print 'D = '
-    print D
+    print('D = ')
+    print(D)
 
     if 1.0/np.linalg.cond(D) < epsilon:
         sys.stdout.write("Covariance matrix is singular: may be degenerate model\n")
@@ -123,7 +123,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     Dinv = np.linalg.inv(D)
 
 
-    print 'Phase 1 took', time.time() - start, 's'
+    print('Phase 1 took', time.time() - start, 's')
 
     #
     # Phase 2 (main phase): In each subphase, generate simulated
@@ -135,13 +135,13 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     # new theta value. Value of Robbins-Monro multiplier a is halved
     # between each subphase.
     #
-    print 'Phase 2 subphases = ',numSubphases, ' iters per step = ', iterationInStep
+    print('Phase 2 subphases = ',numSubphases, ' iters per step = ', iterationInStep)
     start = time.time()
     a = a_initial
-    for k in xrange(numSubphases):
+    for k in range(numSubphases):
         NkMin  = int(round(2.0**(4.0 * k / 3.0) * (7 + n)))
         NkMax  = NkMin + 200
-        print 'subphase', k, 'a = ', a, 'NkMin = ',NkMin,'NkMax = ',NkMax, 'theta = ', theta
+        print('subphase', k, 'a = ', a, 'NkMin = ',NkMin,'NkMax = ',NkMax, 'theta = ', theta)
         i = 0
         sumSuccessiveProducts = np.zeros(n)
         thetaSum = np.zeros((1,n))
@@ -164,16 +164,16 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
             i += 1
         if k > 1:     # use initial value of a in first two subphases
             a /= 2.0  # otherwise halve a for next subphase (gain sequence)
-        print '  subphase',k,'finished after',i,'iterations (acceptance rate =',acceptance_rate,')'
+        print('  subphase',k,'finished after',i,'iterations (acceptance rate =',acceptance_rate,')')
         theta = thetaSum / i # average theta
 
-    print 'Phase 2 took', time.time() - start, 's'
+    print('Phase 2 took', time.time() - start, 's')
     
     #
     # Phase 3: Used only to estimate covariance matrix of estimator and
     # check for approximate validity of solution of moment equation.
     # 
-    print 'Phase 3 steps = ', phase3steps, 'iters per step = ',iterationInStep, 'burnin = ', burnin
+    print('Phase 3 steps = ', phase3steps, 'iters per step = ',iterationInStep, 'burnin = ', burnin)
     start = time.time()
     Zmatrix = np.empty((phase3steps, n)) # rows statistics Z vectors, 1 per step
 
@@ -188,7 +188,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     Z += changeTo1ChangeStats - changeTo0ChangeStats
 
     
-    for i in xrange(phase3steps):
+    for i in range(phase3steps):
         (acceptance_rate,
          changeTo1ChangeStats,
          changeTo0ChangeStats) = sampler_func(G, A,
@@ -199,12 +199,12 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         Zmatrix[i, ] = Z
 
-    print 'XXX Zmatrix = '
-    print Zmatrix #XXX
+    print('XXX Zmatrix = ')
+    print(Zmatrix) #XXX
 
     Zmean = np.mean(Zmatrix, axis=0)
     Zmean = np.reshape(Zmean, (1, len(Zmean))) # make it a row vector
-    print 'Phase 3 Zmean = ', Zmean
+    print('Phase 3 Zmean = ', Zmean)
 
     # Dcov = np.cov(np.transpose(Zmatrix))
     # print 'Dcov = ', Dcov
@@ -212,8 +212,8 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     Zmatrix -= Zmean
     D = (1.0/phase3steps) * np.matmul(np.transpose(Zmatrix), Zmatrix)
 
-    print 'Phase 3 covariance matrix D = '
-    print D
+    print('Phase 3 covariance matrix D = ')
+    print(D)
     
     if 1.0/np.linalg.cond(D) < epsilon:
         sys.stdout.write("Phase 3 covariance matrix is singular: may be degenerate model\n")
@@ -227,7 +227,7 @@ def stochasticApproximation(G, Aobs, changestats_func_list, theta0,
     t_ratio = (Zmean - Zobs) * np.sqrt(D0inv)
 
 
-    print 'Phase 3 took', time.time() - start, 's'
+    print('Phase 3 took', time.time() - start, 's')
     theta = np.reshape(theta, (n ,))     # plain np array again
     t_ratio = np.reshape(t_ratio, (n ,))
     return (theta, std_error, t_ratio)

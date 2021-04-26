@@ -95,18 +95,18 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
     G.printSummary()
 
-    outcome_binvar = map(int_or_na, open(outcome_bin_filename).read().split()[1:])
+    outcome_binvar = list(map(int_or_na, open(outcome_bin_filename).read().split()[1:]))
     assert(len(outcome_binvar) == G.numNodes())
     A = outcome_binvar
 
     assert( all([x in [0,1,NA_VALUE] for x in A]) )
-    print 'positive outcome attribute = ', (float(A.count(1))/len(A))*100.0, '%'
+    print('positive outcome attribute = ', (float(A.count(1))/len(A))*100.0, '%')
     if NA_VALUE in A:
-        print 'Warning: outcome variable has', A.count(NA_VALUE), 'NA values'
+        print('Warning: outcome variable has', A.count(NA_VALUE), 'NA values')
 
     # Calculate observed statistics by summing change stats for each 1 variable
     Zobs = computeObservedStatistics(G, A, param_func_list)
-    print 'Zobs = ', Zobs
+    print('Zobs = ', Zobs)
 
     theta = np.zeros(len(param_func_list))
 
@@ -116,32 +116,32 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     converged = False
     while i < max_runs and not converged:
         i += 1
-        print 'Running stochastic approximation (run', i,' of at most',max_runs,')...'
+        print('Running stochastic approximation (run', i,' of at most',max_runs,')...')
         start = time.time()
         (theta, std_error, t_ratio) = stochasticApproximation(G, A,
                                                               param_func_list,
                                                               theta, Zobs,
                                                               sampler_func) 
 
-        print 'Stochastic approximation took',time.time() - start, 's'
+        print('Stochastic approximation took',time.time() - start, 's')
         if theta is None:
-            print 'Failed.'
+            print('Failed.')
             break
-        print '           ',labels
-        print 'theta     =', theta
-        print 'std_error =', std_error
-        print 't_ratio   =', t_ratio
+        print('           ',labels)
+        print('theta     =', theta)
+        print('std_error =', std_error)
+        print('t_ratio   =', t_ratio)
 
         converged = np.all(np.abs(t_ratio) < 0.1)
 
-    print 'Total estimation time (',i,'runs) was',time.time() - estimation_start, 's'
+    print('Total estimation time (',i,'runs) was',time.time() - estimation_start, 's')
     if converged:
-        print 'Converged.'
+        print('Converged.')
         significant = np.abs(theta) > 2 * std_error
         sys.stdout.write(20*' ' + '  Parameter Std.Error t-ratio\n')
-        for j in xrange(len(theta)):
+        for j in range(len(theta)):
             sys.stdout.write('%20.20s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
-        print
+        print()
 
         # Do goodness-of-fit test
 
@@ -178,18 +178,18 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             # set the outcome for inner nodes to random values, leaving
             # value of outermost nodes at the original observed values
             Ainitial[G.inner_nodes] = Arandom_inner
-        print 'Running goodness-of-fit test...'
+        print('Running goodness-of-fit test...')
         start = time.time()
         gofresult = gof(G, A, gof_param_func_list, gof_theta,
                         sampler_func = sampler_func, Ainitial = Ainitial)
-        print 'GoF took',time.time() - start, 's'
-        print '           ',goflabels
-        print 't_ratios = ',gofresult
+        print('GoF took',time.time() - start, 's')
+        print('           ',goflabels)
+        print('t_ratios = ',gofresult)
         
         sys.stdout.write(20*' ' + '  t-ratio\n')
-        for j in xrange(n):
+        for j in range(n):
             sys.stdout.write('%20.20s % 6.3f\n' % (goflabels[j], gofresult[j]))
-        print
+        print()
 
     
 def run_example():

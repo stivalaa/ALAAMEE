@@ -128,14 +128,14 @@ class Graph:
         n = int(l.split()[1])
 
         # empty graph n nodes        
-        self.G = dict(zip(range(n), [dict() for i in range(n)]))
+        self.G = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
 
         while l.rstrip().lower() != "*edges":
             l = f.readline()
         lsplit = f.readline().split()
         while len(lsplit) >= 2:
             lsplit = lsplit[:2]  # only used first two (i,j) ignore weight
-            (i, j) = map(int, lsplit)
+            (i, j) = list(map(int, lsplit))
             assert(i >= 1 and i <= n and j >= 1 and j <= n)
             self.insertEdge(i-1, j-1)    # input is 1-based but we are 0-based
             lsplit = f.readline().split()
@@ -150,16 +150,16 @@ class Graph:
         # https://stackoverflow.com/questions/6473679/transpose-list-of-lists#
         
         if binattr_filename is not None:
-            self.binattr = dict([(col[0], map(int_or_na, col[1:])) for col in map(list, zip(*[row.split() for row in open(binattr_filename).readlines()]))])
-            assert(all([len(v) == n for v in self.binattr.itervalues()]))
+            self.binattr = dict([(col[0], list(map(int_or_na, col[1:]))) for col in map(list, list(zip(*[row.split() for row in open(binattr_filename).readlines()])))])
+            assert(all([len(v) == n for v in self.binattr.values()]))
 
         if contattr_filename is not None:
-            self.contattr = dict([(col[0], map(float_or_na, col[1:])) for col in map(list, zip(*[row.split() for row in open(contattr_filename).readlines()]))])
-            assert(all([len(v) == n for v in self.contattr.itervalues()]))
+            self.contattr = dict([(col[0], list(map(float_or_na, col[1:]))) for col in map(list, list(zip(*[row.split() for row in open(contattr_filename).readlines()])))])
+            assert(all([len(v) == n for v in self.contattr.values()]))
 
         if catattr_filename is not None:
-            self.catattr = dict([(col[0], map(int_or_na, col[1:])) for col in map(list, zip(*[row.split() for row in open(catattr_filename).readlines()]))])
-            assert(all([len(v) == n for v in self.catattr.itervalues()]))
+            self.catattr = dict([(col[0], list(map(int_or_na, col[1:]))) for col in map(list, list(zip(*[row.split() for row in open(catattr_filename).readlines()])))])
+            assert(all([len(v) == n for v in self.catattr.values()]))
 
         if zone_filename is not None:
             self.zone = [int(s) for s in open(zone_filename).readlines()[1:]]
@@ -180,7 +180,7 @@ class Graph:
         """
         Return number of edges in graph
         """
-        return sum([len(v.keys()) for v in self.G.itervalues()])/2
+        return sum([len(list(v.keys())) for v in self.G.values()])/2
     
     def density(self):
         """
@@ -206,7 +206,7 @@ class Graph:
         """
         Return iterator over neighbours of i
         """
-        return self.G[i].iterkeys()
+        return iter(self.G[i].keys())
 
     def insertEdge(self, i, j):
         """
@@ -228,31 +228,31 @@ class Graph:
         """
         Print summary of Graph object
         """
-        print 'graph nodes = ', self.numNodes()
-        print 'graph edges = ', self.numEdges()
-        print 'graph density = ', self.density()
+        print('graph nodes = ', self.numNodes())
+        print('graph edges = ', self.numEdges())
+        print('graph density = ', self.density())
 
 
         if self.binattr is not None:
-            for attrname in self.binattr.iterkeys():
-                print 'Binary attribute', attrname, 'has', self.binattr[attrname].count(NA_VALUE), 'NA values'
+            for attrname in self.binattr.keys():
+                print('Binary attribute', attrname, 'has', self.binattr[attrname].count(NA_VALUE), 'NA values')
         else:
-            print 'No binary attributes'
+            print('No binary attributes')
         if self.contattr is not None:
-            for attrname in self.contattr.iterkeys():
-                print 'Continuous attribute', attrname, 'has', sum([math.isnan(x) for x in self.contattr[attrname]]), 'NA values'
+            for attrname in self.contattr.keys():
+                print('Continuous attribute', attrname, 'has', sum([math.isnan(x) for x in self.contattr[attrname]]), 'NA values')
         else:
-            print 'No continuous attributes'
+            print('No continuous attributes')
         if self.catattr is not None:
-            for attrname in self.catattr.iterkeys():
-                print 'Categorical attribute', attrname, 'has', self.catattr[attrname].count(NA_VALUE), 'NA values'
+            for attrname in self.catattr.keys():
+                print('Categorical attribute', attrname, 'has', self.catattr[attrname].count(NA_VALUE), 'NA values')
         else:
-            print 'No categorical attributes'
+            print('No categorical attributes')
 
         if self.zone is not None:
-            print 'There are', self.max_zone, 'snowball sample waves, with', len(self.inner_nodes), 'nodes in inner waves'
+            print('There are', self.max_zone, 'snowball sample waves, with', len(self.inner_nodes), 'nodes in inner waves')
         else:
-            print 'No snowball zones'
+            print('No snowball zones')
             
             
 

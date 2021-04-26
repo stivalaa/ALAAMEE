@@ -124,14 +124,14 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
     G.printSummary()
     
-    outcome_binvar = map(int_or_na, open(outcome_bin_filename).read().split()[1:])
+    outcome_binvar = list(map(int_or_na, open(outcome_bin_filename).read().split()[1:]))
     assert(len(outcome_binvar) == G.numNodes())
     A = outcome_binvar
-    print 'positive outcome attribute = ', (float(A.count(1))/len(A))*100.0, '%'
+    print('positive outcome attribute = ', (float(A.count(1))/len(A))*100.0, '%')
     assert( all([x in [0,1,NA_VALUE] for x in A]) )
 
     if NA_VALUE in A:
-        print 'Warning: outcome variable has', A.count(NA_VALUE), 'NA values'
+        print('Warning: outcome variable has', A.count(NA_VALUE), 'NA values')
 
     A = np.array(A) # convert list to numpy vector
     
@@ -142,22 +142,22 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     #OLD: Msteps = 100 # multiplier for number of inner steps of Algorithm EE
     #OLD: print 'M1 = ', M1, ' Mouter = ', Mouter, ' Msteps = ', Msteps
 
-    print 'M1 = ', M1, ' EEiterations = ', EEiterations, 
-    print 'learningRate = ', learningRate,
+    print('M1 = ', M1, ' EEiterations = ', EEiterations, end=' ') 
+    print('learningRate = ', learningRate, end=' ')
     
     theta_outfile = open(THETA_OUTFILENAME, 'w',1) # 1 means line buffering
     theta_outfile.write('t ' + ' '.join(labels) + ' ' + 'AcceptanceRate' + '\n')
-    print 'Running Algorithm S...',
+    print('Running Algorithm S...', end=' ')
     start = time.time()
     (theta, Dmean) = algorithm_S(G, A, param_func_list, M1, theta_outfile,
                                  sampler_func)
-    print time.time() - start, 's'
-    print 'after Algorithm S:'
-    print 'theta = ', theta
-    print 'Dmean = ', Dmean
+    print(time.time() - start, 's')
+    print('after Algorithm S:')
+    print('theta = ', theta)
+    print('Dmean = ', Dmean)
     dzA_outfile = open(DZA_OUTFILENAME, 'w',1)
     dzA_outfile.write('t ' + ' '.join(labels) + '\n')
-    print 'Running Algorithm EE...',
+    print('Running Algorithm EE...', end=' ')
     start = time.time()
     #OLD: theta = algorithm_EE(G, A, param_func_list, theta, Dmean,
     #OLD:                     Mouter, Msteps, theta_outfile, dzA_outfile)
@@ -165,10 +165,10 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                          EEiterations, theta_outfile, dzA_outfile, learningRate,
                          sampler_func)
 
-    print time.time() - start, 's'
+    print(time.time() - start, 's')
     theta_outfile.close()
     dzA_outfile.close()
-    print 'at end theta = ', theta
+    print('at end theta = ', theta)
 
     
 

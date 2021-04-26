@@ -32,11 +32,11 @@ def computeObservedStatistics(G, Aobs, changestats_func_list):
     n = len(changestats_func_list)
     Zobs = np.zeros(n)
     Acopy = np.zeros(len(Aobs))
-    for i in xrange(len(Aobs)):
+    for i in range(len(Aobs)):
         if Aobs[i] == NA_VALUE:
             Acopy[i] = NA_VALUE
         if Aobs[i] == 1:
-            for l in xrange(n):
+            for l in range(n):
                 Zobs[l] += changestats_func_list[l](G, Acopy, i)
             Acopy[i] = 1
     assert(np.all(Acopy == Aobs))

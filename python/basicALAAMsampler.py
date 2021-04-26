@@ -68,7 +68,7 @@ def basicALAAMsampler(G, A, changestats_func_list, theta, performMove,
     accepted = 0
     changeTo1ChangeStats = np.zeros(n)
     changeTo0ChangeStats = np.zeros(n)
-    for k in xrange(sampler_m):
+    for k in range(sampler_m):
         # basic sampler: select a node  i uniformly at random
         # and toggle outcome variable for it
         i = random.randint(0, G.numNodes()-1)
@@ -81,7 +81,7 @@ def basicALAAMsampler(G, A, changestats_func_list, theta, performMove,
         # compute change statistics for each of the n statistics using the
         # list of change statistic functions
         changestats = np.zeros(n)
-        for l in xrange(n):
+        for l in range(n):
             changestats[l] = changestats_func_list[l](G, A, i)
         changeSignMul = -1 if isChangeToZero else +1
         total = np.sum(theta * changeSignMul * changestats)

@@ -60,7 +60,7 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
     burnIn          = 10000   # number of iterations to discard at start
 
 
-    print 'Gof numSamples =', numSamples, 'iterationInStep =', iterationInStep, 'burnIn = ', burnIn
+    print('Gof numSamples =', numSamples, 'iterationInStep =', iterationInStep, 'burnIn = ', burnIn)
 
     # Calculate observed statistics by summing change stats for each 1 variable
     Zobs = computeObservedStatistics(G, Aobs, changestats_func_list)
@@ -75,10 +75,10 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
     assert(np.shape(Zmatrix) == (numSamples, n))
     Zmean = np.mean(Zmatrix, axis=0)
     Zsd = np.std(Zmatrix, axis=0)
-    print 'Zmatrix = ',Zmatrix #XXX
-    print 'obs stats  =', Zobs
-    print 'mean stats =', Zmean
-    print 'sd stats   =', Zsd
+    print('Zmatrix = ',Zmatrix) #XXX
+    print('obs stats  =', Zobs)
+    print('mean stats =', Zmean)
+    print('sd stats   =', Zsd)
     
     # compute t-statistics
     tratio = (Zmean - Zobs) / Zsd

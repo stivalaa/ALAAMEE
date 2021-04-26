@@ -47,7 +47,7 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
     G = Graph(edgelist_filename, binattr_filename, contattr_filename,
               catattr_filename)
 
-    outcome_binvar = map(int_or_na, open(outcome_bin_filename).read().split()[1:])
+    outcome_binvar = list(map(int_or_na, open(outcome_bin_filename).read().split()[1:]))
     assert(len(outcome_binvar) == G.numNodes())
     A = outcome_binvar
 

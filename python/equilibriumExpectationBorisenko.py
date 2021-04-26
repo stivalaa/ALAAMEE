@@ -83,7 +83,7 @@ def algorithm_EE(G, A, changestats_func_list, theta,
     minThetaVec = minTheta * np.ones(n)
 
     dzA = np.zeros(n)  # zero outside loop, dzA accumulates in loop
-    for t in xrange(M):
+    for t in range(M):
         accepted = 0
         (acceptance_rate,
          changeTo1ChangeStats,

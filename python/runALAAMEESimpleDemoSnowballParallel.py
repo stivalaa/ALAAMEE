@@ -79,7 +79,7 @@ def main():
     seeds = int(args[1])
     runNumber = int(args[2])
 
-    print 'Conditional estimation on snowball sample with ' + str(waves) + ' waves and ' + str(seeds) + ' seeds'
+    print('Conditional estimation on snowball sample with ' + str(waves) + ' waves and ' + str(seeds) + ' seeds')
 
     sampled_filenames_part = "_waves" + str(waves) + "_seeds" + str(seeds)
 

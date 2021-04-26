@@ -54,7 +54,7 @@ def main():
     waves = int(args[0])
     seeds = int(args[1])
 
-    print 'Conditional estimation on snowball sample with ' + str(waves) + ' waves and ' + str(seeds) + ' seeds'
+    print('Conditional estimation on snowball sample with ' + str(waves) + ' waves and ' + str(seeds) + ' seeds')
 
     sampled_filenames_part = "_waves" + str(waves) + "_seeds" + str(seeds)
 
