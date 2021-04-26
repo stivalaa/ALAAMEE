@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 #
 # File:    run runALAAMsimualteGoFexample.py
 # Author:  Alex Stivala
