@@ -21,3 +21,5 @@ stats_sim_n500_zoo.txt
 alaam_sa_simn500_zoo-*.err
 alaam_sa_simn500_zoo-*.out
 slurm-*.out
+alaam_sa_python_karate-*.err
+alaam_sa_python_karate-*.out
