@@ -8,8 +8,8 @@
 #SBATCH --error=alaamee_covariance_simexample-%j.err
 
 
-#module load R/3.2.5
-module load r  #r/4.0.2-gcc-10.1.0-4w3buai
+module unload python # must do this otherwise module load r fails on cluster
+module load r 
 
 uname -a
 
