@@ -12,7 +12,7 @@
 #
 
 import math
-from utils import int_or_na,float_or_na
+from utils import int_or_na,float_or_na,NA_VALUE
 
 
 
