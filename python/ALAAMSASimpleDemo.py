@@ -156,20 +156,25 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         # Do goodness-of-fit test
 
         # change stats functions to add to GoF if not already in estimation
-        statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
-                     changeTriangleT1, changeContagion,
-                     changeIndirectPartnerAttribute,
-                     changePartnerAttributeActivity, 
-                     changePartnerPartnerAttribute,
-                     changeTriangleT2,
-                     changeTriangleT3]
-        statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1A',
-                      'T1', 'Contagion', 'Alter-2Star2A', 'Partner-Activity',
-                      'Partner-Resource','T2', 'T3']
-        gof_param_func_list = (list(param_func_list) +
-                               [f for f in statfuncs
+        if directed:
+            # TODO GoF statistics for directed
+            gof_param_func_list = list(param_func_list)
+            goflabels = list(labels)
+        else:
+            statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
+                         changeTriangleT1, changeContagion,
+                         changeIndirectPartnerAttribute,
+                         changePartnerAttributeActivity, 
+                         changePartnerPartnerAttribute,
+                         changeTriangleT2,
+                         changeTriangleT3]
+            statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1A',
+                          'T1', 'Contagion', 'Alter-2Star2A', 'Partner-Activity',
+                          'Partner-Resource','T2', 'T3']
+            gof_param_func_list = (list(param_func_list) +
+                                   [f for f in statfuncs
                                 if f not in param_func_list])
-        goflabels = (list(labels) + [f for f in statlabels
+            goflabels = (list(labels) + [f for f in statlabels
                                      if f not in labels])
         n = len(gof_param_func_list)
         assert len(goflabels) == n
