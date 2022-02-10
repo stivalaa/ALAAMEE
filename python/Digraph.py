@@ -215,3 +215,32 @@ class Digraph:
         self.G[i].pop(j)
         self.Grev[j].pop(i)
 
+    def printSummary(self):
+        """
+        Print summary of Digraph object
+        """
+        print('Digraph nodes = ', self.numNodes())
+        print('Digraph arcs = ', self.numArcs())
+        print('Digraph density = ', self.density())
+
+
+        if self.binattr is not None:
+            for attrname in self.binattr.keys():
+                print('Binary attribute', attrname, 'has', self.binattr[attrname].count(NA_VALUE), 'NA values')
+        else:
+            print('No binary attributes')
+        if self.contattr is not None:
+            for attrname in self.contattr.keys():
+                print('Continuous attribute', attrname, 'has', sum([math.isnan(x) for x in self.contattr[attrname]]), 'NA values')
+        else:
+            print('No continuous attributes')
+        if self.catattr is not None:
+            for attrname in self.catattr.keys():
+                print('Categorical attribute', attrname, 'has', self.catattr[attrname].count(NA_VALUE), 'NA values')
+        else:
+            print('No categorical attributes')
+
+        if self.zone is not None:
+            print('There are', self.max_zone, 'snowball sample waves, with', len(self.inner_nodes), 'nodes in inner waves')
+        else:
+            print('No snowball zones')
