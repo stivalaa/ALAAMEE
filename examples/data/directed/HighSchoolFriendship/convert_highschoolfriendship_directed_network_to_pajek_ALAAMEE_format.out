@@ -1,0 +1,18 @@
+[1] "2BIO1" "2BIO2" "2BIO3" "MP"    "MP*1"  "MP*2"  "PC"    "PC*"   "PSI*" 
+[1] "F" "M"
+     class      sex    
+ 2BIO3  :28   F   :79  
+ MP     :21   M   :54  
+ PC     :21   NA's: 1  
+ 2BIO2  :19            
+ PSI*   :15            
+ 2BIO1  :10            
+ (Other):20            
+     class            sex       
+ Min.   :1.000   Min.   :1.000  
+ 1st Qu.:3.000   1st Qu.:1.000  
+ Median :4.000   Median :1.000  
+ Mean   :4.739   Mean   :1.406  
+ 3rd Qu.:7.000   3rd Qu.:2.000  
+ Max.   :9.000   Max.   :2.000  
+                 NA's   :1      
