@@ -1,7 +1,7 @@
 ###
-### File:    load_highschoolfriendship_directed_network.R
+### File:    convert_highschoolfriendship_directed_network_to_pajek_ALAAMEE_format.R
 ### Author:  Alex Stivala
-### Created: September 2019
+### Created: February 2022
 ###
 ### Load the SocioPatterns high school friendship network.
 ### This is a directed network of reported friendships.
