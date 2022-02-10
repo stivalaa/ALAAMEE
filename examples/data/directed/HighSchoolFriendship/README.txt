@@ -32,6 +32,11 @@ convert_highschoolfriendship_directed_network_to_pajek_ALAAMEE_format.out
 to facilitate converting integer sex and class attributes back to original
 if needed).
 
+highschool_friendship_binattr.txt has 1 for male, created from
+highschool_friendship_catattr.txt with:
+
+cat highschool_friendship_catattr.txt | awk '{if (NR == 1) {print "male"} else {if ($2 == "NA") {print 0} else {print $2 - 1}}}' > highschool_friendship_binattr.txt
+
 Citation:
 
 Mastrandrea, R., Fournet, J., & Barrat, A. (2015). Contact patterns in a high school: a comparison between data collected using wearable sensors, contact diaries and friendship surveys. PloS one, 10(9), e0136497.
