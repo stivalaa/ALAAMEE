@@ -43,6 +43,28 @@ class '2BIO3' created with:
 cat highschool_friendship_catattr.txt | awk '{if (NR == 1) {print "2BIO3"} else {if ($1 == 3) {print 1} else {print 0}}}' > highschool_friendship_class2BIO3.txt
 
 
+Results for ALAAM estimation with male as outcome attribute should look 
+something like this (from MPNet):
+
+Effects	Lambda	Parameter	Stderr	t-ratio	SACF
+DensityA	2.0000	-0.6577	0.327	0.081	-0.050	*
+SenderAttrA	2.0000	-0.0212	0.100	0.083	-0.058	
+ReceiverAttrA	2.0000	-0.1415	0.104	0.083	-0.042	
+ContagionArcA	2.0000	0.2433	0.068	0.082	-0.071	*
+
+
+And results for ALAAM estimation with clas 2BIO3 as outcmoe attribute should
+look something like this:
+
+
+Effects	Lambda	Parameter	Stderr	t-ratio	SACF
+DensityA	2.0000	-2.1949	0.702	-0.005	0.713	*
+SenderAttrA	2.0000	-0.1929	0.225	0.067	0.764	
+ReceiverAttrA	2.0000	-0.1796	0.269	0.068	0.760	
+ContagionArcA	2.0000	0.6997	0.122	0.073	0.760	*
+
+
+
 Citation:
 
 Mastrandrea, R., Fournet, J., & Barrat, A. (2015). Contact patterns in a high school: a comparison between data collected using wearable sensors, contact diaries and friendship surveys. PloS one, 10(9), e0136497.
