@@ -53,7 +53,7 @@ ReceiverAttrA	2.0000	-0.1415	0.104	0.083	-0.042
 ContagionArcA	2.0000	0.2433	0.068	0.082	-0.071	*
 
 
-And results for ALAAM estimation with clas 2BIO3 as outcmoe attribute should
+And results for ALAAM estimation with clas 2BIO3 as outcome attribute should
 look something like this:
 
 
