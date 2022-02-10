@@ -1,10 +1,14 @@
 #
-# File:    Graph.py
+# File:    Digraph.py
 # Author:  Alex Stivala
-# Created: Feburary 2020
+# Created: October 2017
 #
-# Defines the undirected graph structure Graph with edge list graph
-# representation
+#
+#
+# Defines the directed graph structure Digraph with arc list graph
+# representations including forward and reverse arc lists for
+# fast traversal in computing change statistics.
+#
 #
 
 import math
@@ -12,30 +16,30 @@ from utils import int_or_na,float_or_na
 
 
 
-
-class Graph:
-    """The network is represented as a dictionary of dictionaries.
+class Digraph:
+    """
+    The network is represented as a dictionary of dictionaries.
     Nodes are indexed by integers 0..n-1. The outermost dictionary has the node
     v as a key, and dictionary as value. Then this dictionary has the neighbours
-    of v as the keys, and here simply 1 as value (there are no edge weights).
-
+    of v as the keys, with the values as arc weights (or labels).
+    This is the structure suggested by David Eppstein (UC Irvine) in
+    http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/117228
+    and as noted there it supprts easy modification by edge addition and
+    removal, which is required by Algorithm EE.
     So G[i] is a dictionary with k entries, where k is the degree of node i.
-    and G[i][j] exists (and has value 1) exactly when j is a neighbour of i.
+    and G[i][j] exists exactly when j is a neighbour of i.
     And simple operations are:
-      degree of node i:                      len(G[i])
-      does edge i--j exist?:                 j in G[i]                 
-      dict where keys are  neighbours of i:  G[i]
-      iterator over neighbourhood of i       G[i].iterkeys()
-      in-place insert edge i--j:             G[i][j] = 1
-      in-place remove edge i--j:             G[i].pop(j) 
+      outdegree of node i:                   len(G[i])
+      does arc i->j exist?:                  j in G[i]                 
+      dict where keys are out-neighbours of i:  G[i]
+      iterator over out-neighbourhood of i   G[i].iterkeys()
+      in-place insert edge i->j:             G[i][j] = w [for some value w]
+      in-place remove edge i->j:             G[i].pop(j) 
       copy of G (not modified when G is):    deepcopy(G)
-      number of edges:              sum([len(v.keys()) for v in G.itervalues()])
+      number of arcs:              sum([len(v.keys()) for v in G.itervalues()])
     To make these operations simple (no special cases for nodes with no
     neighbours),  the graph is initialized so that G[i] = dict() for
     all 0 <= i < n: dict(zip(range(n), [dict() for i in range(n)]))
-
-    For simplicity in undirected graph, we always store both the edge i -- j
-    and the edge j -- i.
 
     The format of the attributes files is header line with
     whitespace-delimited attribute names, followed by (whitespace
@@ -68,7 +72,6 @@ class Graph:
     stored simply as a list (in node id order just as for attributes).
 
     """
-
     def __init__(self, pajek_edgelist_filename, binattr_filename=None,
                  contattr_filename=None, catattr_filename=None,
                  zone_filename=None):
@@ -87,6 +90,8 @@ class Graph:
                                 Deafult None: no zone information loaded
         """
         self.G = None  # dict of dicts as described above
+        self.Grev = None # version with all arcs reversed to get in-neighbours
+        
         self.binattr = None # binary attributes: dict name, list by node (int not boolean)
         self.contattr = None # continuous attributes: dict name, list by node
         self.catattr = None  # categorical attributes: dict name, list by node
@@ -102,15 +107,16 @@ class Graph:
 
         # empty graph n nodes        
         self.G = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
+        self.Grev = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
 
-        while l.rstrip().lower() != "*edges":
+        while l.rstrip().lower() != "*arcs":
             l = f.readline()
         lsplit = f.readline().split()
         while len(lsplit) >= 2:
             lsplit = lsplit[:2]  # only used first two (i,j) ignore weight
             (i, j) = list(map(int, lsplit))
             assert(i >= 1 and i <= n and j >= 1 and j <= n)
-            self.insertEdge(i-1, j-1)    # input is 1-based but we are 0-based
+            self.insertArc(i-1, j-1)    # input is 1-based but we are 0-based
             lsplit = f.readline().split()
 
         # Note in the following,
@@ -143,89 +149,69 @@ class Graph:
             # get list of nodes in inner waves, i.e. with zone < max_zone
             self.inner_nodes = [i for (i, z) in enumerate(self.zone) if z < self.max_zone]
 
+
+
     def numNodes(self):
         """
-        Return number of nodes in graph
+        Return number of nodes in digraph
         """
         return len(self.G)
     
-    def numEdges(self):
+    def numArcs(self):
         """
-        Return number of edges in graph
+        Return number of arcs in digraph
         """
-        return sum([len(list(v.keys())) for v in self.G.values()])/2
+        return sum([len(list(v.keys())) for v in self.G.values()])
     
     def density(self):
         """
-        Return the graph density 
+        Return the digraph density 
         """
-        edges = self.numEdges()
+        edges = self.numArcs()
         nodes = self.numNodes()
-        return float(edges) / (float(nodes*(nodes-1)) / 2.0)
+        return float(edges) / float(nodes*(nodes-1))
 
-    def degree(self, i):
+    def outdegree(self, i):
         """
-        Return degree of node i
+        Return Out-degree of node i
         """
         return len(self.G[i])
 
-    def isEdge(self, i, j):
+    def indegree(self, i):
         """
-        Return True iff edge i -- j in graph
+        Return In-degree of node i
+        """
+        return len(self.Grev[i])
+
+    def isArc(self, i, j):
+        """
+        Return True iff arc i -> j in digraph
         """
         return j in self.G[i]
 
-    def neighbourIterator(self, i):
+    def outIterator(self, i):
         """
-        Return iterator over neighbours of i
+        Return iterator over out-neighbours of i
         """
         return iter(self.G[i].keys())
 
-    def insertEdge(self, i, j):
+    def inIterator(self, i):
         """
-        Insert edge i -- j in place
+        Return iterator over in-neighbours of i
         """
-        self.G[i][j] = 1
-        self.G[j][i] = 1
+        return iter(self.Grev[i].keys())
 
-
-    def removeEdge(self, i, j):
+    def insertArc(self, i, j, w = 1):
         """
-        Delete edge i -- j in place
+        Insert arc i -> j with arc weight (or label) w, in place
+        """
+        self.G[i][j] = w
+        self.Grev[j][i] = w
+
+    def removeArc(self, i, j):
+        """
+        Delete arc i -> j in place
         """
         self.G[i].pop(j)
-        self.G[j].pop(i)
-
-
-    def printSummary(self):
-        """
-        Print summary of Graph object
-        """
-        print('graph nodes = ', self.numNodes())
-        print('graph edges = ', self.numEdges())
-        print('graph density = ', self.density())
-
-
-        if self.binattr is not None:
-            for attrname in self.binattr.keys():
-                print('Binary attribute', attrname, 'has', self.binattr[attrname].count(NA_VALUE), 'NA values')
-        else:
-            print('No binary attributes')
-        if self.contattr is not None:
-            for attrname in self.contattr.keys():
-                print('Continuous attribute', attrname, 'has', sum([math.isnan(x) for x in self.contattr[attrname]]), 'NA values')
-        else:
-            print('No continuous attributes')
-        if self.catattr is not None:
-            for attrname in self.catattr.keys():
-                print('Categorical attribute', attrname, 'has', self.catattr[attrname].count(NA_VALUE), 'NA values')
-        else:
-            print('No categorical attributes')
-
-        if self.zone is not None:
-            print('There are', self.max_zone, 'snowball sample waves, with', len(self.inner_nodes), 'nodes in inner waves')
-        else:
-            print('No snowball zones')
-            
-            
+        self.Grev[j].pop(i)
 
