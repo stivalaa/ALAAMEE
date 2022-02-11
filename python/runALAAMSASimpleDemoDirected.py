@@ -10,6 +10,7 @@
 """
 import  ALAAMSASimpleDemo
 from changeStatisticsALAAMdirected import *
+from changeStatisticsALAAM import changeDensity
 
 ALAAMSASimpleDemo. run_on_network_attr(
         '../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net',

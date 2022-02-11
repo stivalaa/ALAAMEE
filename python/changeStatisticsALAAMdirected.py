@@ -46,14 +46,6 @@ from utils import NA_VALUE
 from Digraph import Digraph
 
 
-def changeDensity(G, A, i):
-    """
-    change statistic for [outcome attribute] Density
-
-    *
-    """
-    return 1
-
 
 def changeSender(G, A, i):
     """
