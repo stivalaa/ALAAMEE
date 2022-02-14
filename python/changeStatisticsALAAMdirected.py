@@ -31,6 +31,11 @@ See
   Graph Models for Social Networks, chapter 9, pages 102-114. Cambridge
   University Press, New York, 2013.
 
+  Parker, A., Pallotti, F., & Lomi, A. (2021). New network models for the
+  analysis of social contagion in organizations: an introduction to
+  autologistic actor attribute models.
+  Organizational Research Methods, 10944281211005167.
+
   G. Robins, P. Pattison, and P. Elliott. Network models for social
   influence processes. Psychometrika, 66(2):161-189, 2001.
 
