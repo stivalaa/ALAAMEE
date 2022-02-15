@@ -44,7 +44,9 @@ import math
 import numpy as np         # used for matrix & vector data types and functions
 from functools import partial
 
-from Graph import Graph,NA_VALUE,int_or_na
+from utils import NA_VALUE,int_or_na
+from Graph import Graph
+from Digraph import Digraph
 from changeStatisticsALAAM import *
 from initialEstimator import algorithm_S
 #OLD:from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
@@ -61,7 +63,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         run = None,
                         learningRate = 0.01,
                         sampler_func = basicALAAMsampler,
-                        zone_filename= None):
+                        zone_filename= None,
+                        directed = False):
     """Run on specified network with binary and/or continuous
     and categorical attributes.
     
@@ -97,7 +100,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                            If not None then the sampler_func should take
                            account of snowball sample zones i.e.
                            conditionalALAAMsampler()
-
+         directed        - Default False.
+                           True for directed network else undirected.
 
 
 
@@ -119,8 +123,12 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     THETA_OUTFILENAME += os.extsep + 'txt'
     DZA_OUTFILENAME   += os.extsep + 'txt'
 
-    G = Graph(edgelist_filename, binattr_filename, contattr_filename,
-              catattr_filename, zone_filename)
+    if directed:
+        G = Digraph(edgelist_filename, binattr_filename, contattr_filename,
+                    catattr_filename, zone_filename)
+    else:
+        G = Graph(edgelist_filename, binattr_filename, contattr_filename,
+                  catattr_filename, zone_filename)
 
     G.printSummary()
     
