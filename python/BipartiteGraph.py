@@ -7,9 +7,7 @@
 # with edge list graph, as a subclass of Graph
 #
 
-import math
-from utils import int_or_na,float_or_na,NA_VALUE
-
+from Graph import Graph
 
 
 
