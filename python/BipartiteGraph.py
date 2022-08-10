@@ -59,7 +59,7 @@ class BipartiteGraph(Graph):
         """
         edges = self.numEdges()
         nodes = self.numNodes()
-        return float(edges) / (float(nodes*(nodes-1)) / 2.0)
+        return 9999 # float(edges) / float(num_A_nodes * num_B_nodes)
 
     
     def printSummary(self):
