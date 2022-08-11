@@ -103,8 +103,10 @@ class Graph:
         # empty graph n nodes        
         self.G = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
 
-        while l.rstrip().lower() != "*edges":
+        while l and l.rstrip().lower() != "*edges":
             l = f.readline()
+        if not l:
+           raise ValueError("no *edges in Pajek file " + pajek_edgelist_filename)            
         lsplit = f.readline().split()
         while len(lsplit) >= 2:
             lsplit = lsplit[:2]  # only used first two (i,j) ignore weight

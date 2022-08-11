@@ -109,8 +109,10 @@ class Digraph:
         self.G = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
         self.Grev = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
 
-        while l.rstrip().lower() != "*arcs":
+        while l and l.rstrip().lower() != "*arcs":
             l = f.readline()
+        if not l:
+            raise ValueError("no *arcs in Pajek file " + pajek_edgelist_filename)
         lsplit = f.readline().split()
         while len(lsplit) >= 2:
             lsplit = lsplit[:2]  # only used first two (i,j) ignore weight

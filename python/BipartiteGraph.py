@@ -56,6 +56,7 @@ class BipartiteGraph(Graph):
         f =  open(pajek_edgelist_filename)
         l = f.readline() # first line must be e.g. "*vertices 500 200"
         n = int(l.split()[1])
+        f.close()
         try:
             self.num_A_nodes = int(l.split()[2])
         except IndexError:
