@@ -153,7 +153,8 @@ class Graph:
         """
         Return number of edges in graph
         """
-        return sum([len(list(v.keys())) for v in self.G.values()])/2
+        # using // for integer (floor) division to keep result as int
+        return sum([len(list(v.keys())) for v in self.G.values()])//2
     
     def density(self):
         """
