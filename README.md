@@ -11,7 +11,7 @@ estimating standard errors and plotting results from the output.
 
 ## Funding
 
-Development of the ALAAMEE software was funded by the Swiss National Science Foundation NRP 75 project number 167326.
+Development of the ALAAMEE software was funded by the Swiss National Science Foundation project numbers numbers 167326 (NRP 75) and 200778.
 
 ## References
 
