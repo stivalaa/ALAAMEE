@@ -1,7 +1,7 @@
 #
 # File:    BipartiteGraph.py
 # Author:  Alex Stivala
-# Created: August 2020
+# Created: August 2022
 #
 # Defines the bipartite undirected graph structure BipartiteGraph
 # with edge list graph, as a subclass of Graph
