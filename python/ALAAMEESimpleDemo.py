@@ -47,6 +47,7 @@ from functools import partial
 from utils import NA_VALUE,int_or_na
 from Graph import Graph
 from Digraph import Digraph
+from BipartiteGraph import BipartiteGraph
 from changeStatisticsALAAM import *
 from initialEstimator import algorithm_S
 #OLD:from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
@@ -64,7 +65,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         learningRate = 0.01,
                         sampler_func = basicALAAMsampler,
                         zone_filename= None,
-                        directed = False):
+                        directed = False,
+                        bipartite = False):
     """Run on specified network with binary and/or continuous
     and categorical attributes.
     
@@ -102,6 +104,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                            conditionalALAAMsampler()
          directed        - Default False.
                            True for directed network else undirected.
+         bipartite       - Default False.
+                           True for two-mode network else one-mode.
 
 
 
@@ -124,11 +128,18 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     DZA_OUTFILENAME   += os.extsep + 'txt'
 
     if directed:
+        if bipartite:
+            raise Exception("directed bipartite network not suppored")
         G = Digraph(edgelist_filename, binattr_filename, contattr_filename,
                     catattr_filename, zone_filename)
     else:
-        G = Graph(edgelist_filename, binattr_filename, contattr_filename,
-                  catattr_filename, zone_filename)
+        if bipartite:
+            G = BipartiteGraph(edgelist_filename, binattr_filename,
+                               contattr_filename, catattr_filename,
+                               zone_filename)
+        else:
+            G = Graph(edgelist_filename, binattr_filename,
+                      contattr_filename, catattr_filename, zone_filename)
 
     G.printSummary()
     
