@@ -43,6 +43,7 @@ from functools import partial
 from utils import int_or_na,NA_VALUE
 from Graph import Graph
 from Digraph import Digraph
+from BipartiteGraph import BipartiteGraph
 from changeStatisticsALAAM import *
 from stochasticApproximation import stochasticApproximation
 from computeObservedStatistics import computeObservedStatistics
@@ -58,7 +59,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         catattr_filename=None,
                         sampler_func = basicALAAMsampler,
                         zone_filename = None,
-                        directed = False):
+                        directed = False,
+                        bipartite = False):
     """Run on specified network with binary and/or continuous and
     categorical attributes.
     
@@ -89,6 +91,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                            conditionalALAAMsampler()
          directed        - Default False. 
                            True for directed network else undirected.
+         bipartite       - Default False.
+                           True for two-mode network else one-mode.
 
     Write output to stdout.
 
@@ -96,11 +100,18 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     assert(len(param_func_list) == len(labels))
 
     if directed:
+        if bipartite:
+            raise Exception("directed bipartite network not suppored")
         G = Digraph(edgelist_filename, binattr_filename, contattr_filename,
                     catattr_filename, zone_filename)
     else:
-        G = Graph(edgelist_filename, binattr_filename, contattr_filename,
-                  catattr_filename, zone_filename)
+        if bipartite:
+            G = BipartiteGraph(edgelist_filename, binattr_filename,
+                               contattr_filename, catattr_filename,
+                               zone_filename)
+        else:
+            G = Graph(edgelist_filename, binattr_filename,
+                      contattr_filename, catattr_filename, zone_filename)
         
 
     G.printSummary()
