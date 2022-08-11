@@ -53,19 +53,19 @@ class BipartiteGraph(Graph):
             zone_filename    - snowball sample zone for each node
                                 Deafult None: no zone information loaded
         """
-        super().__init__(pajek_edgelist_filename, binattr_filename,
-                         contattr_filename, catattr_filename, zone_filename)
-
         f =  open(pajek_edgelist_filename)
         l = f.readline() # first line must be e.g. "*vertices 500 200"
         n = int(l.split()[1])
-        assert(n == self.numNodes())
         try:
             self.num_A_nodes = int(l.split()[2])
         except IndexError:
-            raise Exception('expecting "*vertices num_nodes num_A_nodes" for two-mode network')
-        assert(self.num_A_nodes <= self.numNodes())
+            raise ValueError('expecting "*vertices num_nodes num_A_nodes" for two-mode network')
+        super().__init__(pajek_edgelist_filename, binattr_filename,
+                         contattr_filename, catattr_filename, zone_filename)
         self.num_B_nodes = self.numNodes() - self.num_A_nodes
+        assert(self.num_A_nodes <= self.numNodes())
+        assert(n == self.numNodes())
+
 
         
     def density(self):
@@ -90,3 +90,10 @@ class BipartiteGraph(Graph):
         """
         return MODE_A if i < self.num_A_nodes else MODE_B
                             
+    def insertEdge(self, i, j):
+        """
+        Insert edge i -- j in place
+        """
+        if self.bipartite_node_mode(i) != self.bipartite_node_mode(j):
+            raise ValueError("edge in bipartite graph inserted between nodes in same mode")
+        super().insertEdge(i, j)
