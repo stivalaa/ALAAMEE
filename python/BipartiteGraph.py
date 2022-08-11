@@ -7,8 +7,13 @@
 # with edge list graph, as a subclass of Graph
 #
 
+import sys
 from Graph import Graph
 
+
+# Mode (node type) of a node for bipartite (two-mode) networks
+MODE_A = 0
+MODE_B = 1
 
 
 class BipartiteGraph(Graph):
@@ -50,16 +55,25 @@ class BipartiteGraph(Graph):
         """
         super().__init__(pajek_edgelist_filename, binattr_filename,
                          contattr_filename, catattr_filename, zone_filename)
-        
 
-    
+        f =  open(pajek_edgelist_filename)
+        l = f.readline() # first line must be e.g. "*vertices 500 200"
+        n = int(l.split()[1])
+        assert(n == self.numNodes())
+        try:
+            self.num_A_nodes = int(l.split()[2])
+        except IndexError:
+            raise Exception('expecting "*vertices num_nodes num_A_nodes" for two-mode network')
+        assert(self.num_A_nodes <= self.numNodes())
+        self.num_B_nodes = self.numNodes() - self.num_A_nodes
+
+        
     def density(self):
         """
         Return the graph density 
         """
         edges = self.numEdges()
-        nodes = self.numNodes()
-        return 9999 # float(edges) / float(num_A_nodes * num_B_nodes)
+        return float(edges) / float(self.num_A_nodes * self.num_B_nodes)
 
     
     def printSummary(self):
@@ -68,3 +82,11 @@ class BipartiteGraph(Graph):
         """
         print('Bipartite graph')
         super().printSummary()
+
+
+    def bipartite_node_mode(self, i):
+        """
+        Return ndode type (mode) of node i
+        """
+        return MODE_A if i < self.num_A_nodes else MODE_B
+                            
