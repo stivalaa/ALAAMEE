@@ -94,6 +94,6 @@ class BipartiteGraph(Graph):
         """
         Insert edge i -- j in place
         """
-        if self.bipartite_node_mode(i) != self.bipartite_node_mode(j):
+        if self.bipartite_node_mode(i) == self.bipartite_node_mode(j):
             raise ValueError("edge in bipartite graph inserted between nodes in same mode")
         super().insertEdge(i, j)
