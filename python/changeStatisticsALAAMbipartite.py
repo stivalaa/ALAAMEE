@@ -22,10 +22,10 @@ changeStatisticsALAAM.py, functools.partial() is also used to create a
 function wih the (G, A, i) signature. Similarly for functions that
 take a setting network, as also described in changeStatisticsALAAM.py.
 
-In the function documentation here, a nodeshown as an asterisk "*"
-here, denotes a node of the specified mode with the outcome
-attribute, and if shown as plus sign "+" is a node of the other mode
-with the outcome attibute.
+In the function documentation here, a node shown as an asterisk "*"
+here, denotes a node of the specified mode with the outcome attribute,
+and if shown as plus sign "+" is a node of the other mode with the
+outcome attibute.
 
 A node shown as an lowercase "o" here, denotes a node of the other
 (non-reference) node with or without the attribute, and a node shown
@@ -46,6 +46,21 @@ Note since the network is bipartite, only nodes of different modes can
 have an edge between them, i.e. we can have *--o, *--@, x--o, and
 x--@, but not *--*, *--x, o--o, or o--@.
 
+So in the functions, a node denoted * is the node i, which has the
+supplied (reference) mode and is being changed from 0 to 1 on the
+outcome variable. (Note there may be more than one such node, in which
+case they will be structurally equivalent). So all the functions will
+return 0 if the mode of node i is not equal to the supplied reference
+mode.
+
+The use of the mode parameter and functools.partial() avoids having to
+implement two versions of every funciton, one for each mode. E.g.
+instead of having to define both changeBipartiteActivityA(G, A, i) and
+changeActivityB(G, A, i) which check that G.bipartite_node_mode(i) ==
+MODE_A and G.bipartite_node_mode(i) == MODE_B, respectively, we just
+have the single function changeBipartiteActivity(mode, G, A, i), which
+we can use via partial(changeBipartiteActivity, MODE_A) or
+partial(changeBipartiteActivity, MODE_B).
 
 The function documentaiton also shows the MPNet name for the
 statistic, with [mode] for the relevant mode.
@@ -124,8 +139,9 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
     Change statistic for bipartite alter two-star 1
     AlterX-2Star1[mode]
 
-    x--@
+    o--*
      \
-      o
+      x
     """
-    pass #TODO
+    return (999 #TODO
+            if G.bipartite_node_mode(i) == mode else 0)
