@@ -39,6 +39,9 @@ outcome attribute. In summary:
  != mode    0 or 1                 o
  != mode    1                      @
 
+(The symbols are chosen so that * is a bit like a 'filled' x, and @ is a
+bit like a 'filled' o).
+
 Note since the network is bipartite, only nodes of different modes can
 have an edge between them, i.e. we can have *--o, *--@, x--o, and
 x--@, but not *--*, *--x, o--o, or o--@.
