@@ -4,10 +4,9 @@
 # Author:  Alex Stivala
 # Created: February 2022
 #
-"""Functions to compute change statistics for ALAAM on directed graphs. 
-Each function takes a Digraph
-G and outcome vector A and returns the change statistic for changing
-outcome of node i to 1.
+"""Functions to compute change statistics for ALAAM on directed
+graphs.  Each function takes a Digraph G and outcome vector A and
+returns the change statistic for changing outcome of node i to 1.
 
 The attribute statistics take also as their first parameter the name of 
 the attribute to use, used as the key in the relevant attribute dictionary
@@ -44,8 +43,6 @@ See
   models. University of Melbourne.
 
 """
-
-import math
 
 from utils import NA_VALUE
 from Digraph import Digraph

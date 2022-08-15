@@ -4,9 +4,9 @@
 # Author:  Alex Stivala
 # Created: February 2020
 #
-"""Functions to compute change statistics for ALAAM. Each function takes a Graph
-G and outcome vector A and returns the change statistic for changing
-outcome of node i to 1.
+"""Functions to compute change statistics for ALAAM. Each function
+takes a Graph G and outcome vector A and returns the change statistic
+for changing outcome of node i to 1.
 
 The attribute statistics take also as their first parameter the name of 
 the attribute to use, used as the key in the relevant attribute dictionary
@@ -44,7 +44,8 @@ See
 
 import math
 
-from Graph import Graph,NA_VALUE
+from utils import NA_VALUE
+from Graph import Graph
 
 
 def changeDensity(G, A, i):

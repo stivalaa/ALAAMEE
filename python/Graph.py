@@ -155,6 +155,8 @@ class Graph:
         """
         Return number of edges in graph
         """
+        # Since or simplicity in undirected graph, we always store both the
+        # edge i -- j and the edge j -- i we have to divide by 2 here.
         # using // for integer (floor) division to keep result as int
         return sum([len(list(v.keys())) for v in self.G.values()])//2
     
