@@ -97,7 +97,7 @@ See
 import math
 
 from utils import NA_VALUE
-from BipartieGraph import BipartiteGraph
+from BipartiteGraph import BipartiteGraph
 import changeStatisticsALAAM
 
 
