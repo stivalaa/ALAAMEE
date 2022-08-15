@@ -130,7 +130,6 @@ def changeBipartiteEgoTwoStar(mode, G, A, i):
      \
       o
     """
-    #FIXME not getting same result as MPNet on Inouye-Pyke example (8867 instead of 1258)
     return (changeStatisticsALAAM.changeTwoStar(G, A, i)
             if G.bipartite_node_mode(i) == mode else 0)
 
@@ -144,6 +143,7 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
      \
       x
     """
+    #FIXME not getting same result as MPNet on Inouye-Pyke example (8867 instead of 1258)    
     return (sum([changeStatisticsALAAM.changeTwoStar(G, A, v)
                  for v in G.neighbourIterator(i)])
             if G.bipartite_node_mode(i) == mode else 0)
