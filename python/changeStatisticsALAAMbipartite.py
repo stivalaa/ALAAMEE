@@ -13,7 +13,7 @@ These functions take as their first parameter the type (mode) of the
 node, either MODE_A or MODE_B (defined in BipartiteGraph.py).  So that
 these functions have the same signature as the structural statistics,
 use functools.partial() to create a function with the (G, A, i)
-signature, e.g. partial(changeBipartiteDensity(MODE_B).
+signature, e.g. partial(changeBipartiteDensity, MODE_B).
 
 The attribute statistics take also as their second parameter the name
 of the attribute to use, used as the key in the relevant attribute
@@ -25,7 +25,13 @@ take a setting network, as also described in changeStatisticsALAAM.py.
 In the function documentation here, a black or solid node, shown as an
 asterisk "*" here, denotes an actor with the outcome attribute, while
 a hollow or white node, shown as an lowercase "o" here, denotes an
-actor with or without the attribute.
+actor with or without the attribute. Note that the change statistic
+value is 0 unless the relevant outcome positive node (denoted "*") is
+the mode supplied to the function.
+
+E.g. partial(changeBipartiteDensity, MODE_A) means density for node
+type A, DesnityXA in MPNet.
+
 
 See
 
@@ -57,10 +63,13 @@ import math
 
 from utils import NA_VALUE
 from BipartieGraph import BipartiteGraph
+import changeStatisticsALAAM
+
 
 def changeBipartiteDensity(mode, G, A, i):
     """
-    change statistic for [outcome attribute] Density
+    change statistic for bipartite [outcome attribute] Density
+    DensityX[mode]
 
     *
     """
@@ -69,9 +78,23 @@ def changeBipartiteDensity(mode, G, A, i):
 
 def changeBipartiteActivity(mode, G, A, i):
     """
-    change statistic for Activity
+    change statistic for bipartite Activity
+    ActivityX[mode]
 
     *--o
     """
     return G.degree(i) if G.bipartite_node_mode(i) == mode else 0
+
+
+def changeBipartiteEgoTwoStar(mode, G, A, i):
+    """
+    Change statistic for bipartite ego two-star
+    EgoX-2Star[mode]
+
+    *--o
+     \
+      o
+    """
+    return (changeStatisticsALAAM.changeTwoStar(G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
 
