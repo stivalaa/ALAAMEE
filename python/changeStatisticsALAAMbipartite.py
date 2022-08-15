@@ -22,13 +22,30 @@ changeStatisticsALAAM.py, functools.partial() is also used to create a
 function wih the (G, A, i) signature. Similarly for functions that
 take a setting network, as also described in changeStatisticsALAAM.py.
 
-In the function documentation here, a black or solid node, shown as an
-asterisk "*" here, denotes an actor with the outcome attribute, while
-a hollow or white node, shown as an lowercase "o" here, denotes an
-actor with or without the attribute. Note that the change statistic
-value is 0 unless the relevant outcome positive node (denoted "*") is
-the mode supplied to the function.
+In the function documentation here, a nodeshown as an asterisk "*"
+here, denotes a node of the specified mode with the outcome
+attribute, and if shown as plus sign "+" is a node of the other mode
+with the outcome attibute.
 
+A node shown as an lowercase "o" here, denotes a node of the other
+(non-reference) node with or without the attribute, and a node shown
+as lowercase "x" is an actor of the reference mode with or without the
+outcome attribute. In summary:
+
+
+ Mode       Outcome variable       Symbol
+ =  mode    0 or 1                 x
+ =  mode    1                      *
+ != mode    0 or 1                 o
+ != mode    1                      @
+
+Note since the network is bipartite, only nodes of different modes can
+have an edge between them, i.e. we can have *--o, *--@, x--o, and
+x--@, but not *--*, *--x, o--o, or o--@.
+
+
+The function documentaiton also shows the MPNet name for the
+statistic, with [mode] for the relevant mode.
 E.g. partial(changeBipartiteDensity, MODE_A) means density for node
 type A, DesnityXA in MPNet.
 
@@ -98,3 +115,14 @@ def changeBipartiteEgoTwoStar(mode, G, A, i):
     return (changeStatisticsALAAM.changeTwoStar(G, A, i)
             if G.bipartite_node_mode(i) == mode else 0)
 
+
+def changeBipartiteAlterTwoStar1(mode, G, A, i):
+    """
+    Change statistic for bipartite alter two-star 1
+    AlterX-2Star1[mode]
+
+    x--@
+     \
+      o
+    """
+    pass #TODO
