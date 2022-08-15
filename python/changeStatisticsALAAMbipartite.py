@@ -146,3 +146,14 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
     return (sum([changeStatisticsALAAM.changeTwoStar(G, A, v)
                  for v in G.neighbourIterator(i)])
             if G.bipartite_node_mode(i) == mode else 0)
+
+def changeBipartiteAlterTwoStar2(mode, G, A, i):
+    """
+    Change statistic for bipartite alter two-star 2
+    AlterX-2Star2[mode]
+
+    o--*
+     \
+      *
+    """
+    pass #TODO
