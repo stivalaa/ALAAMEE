@@ -143,5 +143,5 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
      \
       x
     """
-    return (999 #TODO
+    return (sum([G.degree(v)-1 for v in G.neighbourIterator(i)])
             if G.bipartite_node_mode(i) == mode else 0)
