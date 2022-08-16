@@ -241,10 +241,12 @@ def run_bipartite_example():
                         [partial(changeBipartiteDensity, MODE_A),
                          partial(changeBipartiteActivity, MODE_A),
                          partial(changeBipartiteEgoTwoStar, MODE_A),
-                         partial(changeBipartiteAlterTwoStar1,MODE_A)],
-                        ['densityA',
-                         'ActivityA',
-                         'EgoTwoStarA',
-                         'AlterTwoStar1A'],
+                         partial(changeBipartiteAlterTwoStar1,MODE_A),
+                         partial(changeBipartiteAlterTwoStar2,MODE_A)],
+                        ['bipartiteDensityA',
+                         'bipartiteActivityA',
+                         'bipartiteEgoTwoStarA',
+                         'bipartiteAlterTwoStar1A',
+                         'bipartiteAlterTwoStar2A'],
                         '/cygdrive/C/Users/alexd/switchdrive/Institution/USI/shared/ERGMXL/example_bipartite_networks/MPNet_estimations/ALAAM/Inouye_Pyke_pollinator_web/inouye_outcome.txt',
-                        bipartite=True)    
+                        bipartite=True)

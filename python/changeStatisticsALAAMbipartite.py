@@ -149,4 +149,6 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
 
     *--o--*
     """
-    pass #TODO
+    return (changeStatisticsALAAM.changeIndirectPartnerAttribute(G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
+
