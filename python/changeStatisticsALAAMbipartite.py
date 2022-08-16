@@ -139,7 +139,7 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
 
     x--o--*
     """
-    return (sum([G.degree(v) - 1 for v in G.neighbourIterator(i)])
+    return (changeStatisticsALAAM.changePartnerActivitytwoPath(G, A, i)
             if G.bipartite_node_mode(i) == mode else 0)
 
 def changeBipartiteAlterTwoStar2(mode, G, A, i):
