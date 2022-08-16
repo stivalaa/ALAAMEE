@@ -45,6 +45,7 @@ from Graph import Graph
 from Digraph import Digraph
 from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
 from changeStatisticsALAAM import *
+from changeStatisticsALAAMbipartite import *
 from stochasticApproximation import stochasticApproximation
 from computeObservedStatistics import computeObservedStatistics
 from gofALAAM import gof
