@@ -43,7 +43,7 @@ from functools import partial
 from utils import int_or_na,NA_VALUE
 from Graph import Graph
 from Digraph import Digraph
-from BipartiteGraph import BipartiteGraph
+from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
 from changeStatisticsALAAM import *
 from stochasticApproximation import stochasticApproximation
 from computeObservedStatistics import computeObservedStatistics
@@ -230,3 +230,20 @@ def run_example():
         '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
         '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt'
     )
+
+
+def run_bipartite_example():
+    """
+    example run on bipartite network
+    """
+    run_on_network_attr('/cygdrive/C/Users/alexd/switchdrive/Institution/USI/shared/ERGMXL/example_bipartite_networks/MPNet_estimations/ALAAM/Inouye_Pyke_pollinator_web/inouye_bipartite.net',
+                        [partial(changeBipartiteDensity, MODE_A),
+                         partial(changeBipartiteActivity, MODE_A),
+                         partial(changeBipartiteEgoTwoStar, MODE_A),
+                         partial(changeBipartiteAlterTwoStar1,MODE_A)],
+                        ['densityA',
+                         'ActivityA',
+                         'EgoTwoStarA',
+                         'AlterTwoStar1A'],
+                        '/cygdrive/C/Users/alexd/switchdrive/Institution/USI/shared/ERGMXL/example_bipartite_networks/MPNet_estimations/ALAAM/Inouye_Pyke_pollinator_web/inouye_outcome.txt',
+                        bipartite=True)    
