@@ -97,10 +97,7 @@ def changePartnerActivityTwoPath(G, A, i):
 
     *--o--o
     """
-    delta = 0
-    for u in G.neighbourIterator(i):
-        delta += G.degree(i) + G.degree(u) - 2
-    return delta
+    return sum([G.degree(v) - 1 for v in G.neighbourIterator(i)])
     
 
 def changeTriangleT1(G, A, i):
