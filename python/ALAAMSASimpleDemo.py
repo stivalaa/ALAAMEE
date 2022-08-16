@@ -172,6 +172,10 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             # TODO GoF statistics for directed
             gof_param_func_list = list(param_func_list)
             goflabels = list(labels)
+        elif bipartite:
+            # TODO GoF statistics for bipartite
+            gof_param_func_list = list(param_func_list)
+            goflabels = list(labels)
         else:
             statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
                          changeTriangleT1, changeContagion,
@@ -180,8 +184,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                          changePartnerPartnerAttribute,
                          changeTriangleT2,
                          changeTriangleT3]
-            statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1A',
-                          'T1', 'Contagion', 'Alter-2Star2A', 'Partner-Activity',
+            statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1',
+                          'T1', 'Contagion', 'Alter-2Star2', 'Partner-Activity',
                           'Partner-Resource','T2', 'T3']
             gof_param_func_list = (list(param_func_list) +
                                    [f for f in statfuncs
@@ -215,7 +219,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         
         sys.stdout.write(20*' ' + '  t-ratio\n')
         for j in range(n):
-            sys.stdout.write('%20.20s % 6.3f\n' % (goflabels[j], gofresult[j]))
+            sys.stdout.write('%30.30s % 6.3f\n' % (goflabels[j], gofresult[j]))
         print()
 
     
