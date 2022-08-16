@@ -126,9 +126,7 @@ def changeBipartiteEgoTwoStar(mode, G, A, i):
     Change statistic for bipartite ego two-star
     EgoX-2Star[mode]
 
-    *--o
-     \
-      o
+    o--*--o
     """
     return (changeStatisticsALAAM.changeTwoStar(G, A, i)
             if G.bipartite_node_mode(i) == mode else 0)
@@ -139,9 +137,7 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
     Change statistic for bipartite alter two-star 1
     AlterX-2Star1[mode]
 
-    o--*
-     \
-      x
+    x--o--*
     """
     return (sum([G.degree(v) - 1 for v in G.neighbourIterator(i)])
             if G.bipartite_node_mode(i) == mode else 0)
@@ -151,8 +147,6 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
     Change statistic for bipartite alter two-star 2
     AlterX-2Star2[mode]
 
-    o--*
-     \
-      *
+    *--o--*
     """
     pass #TODO

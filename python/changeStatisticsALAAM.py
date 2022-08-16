@@ -93,7 +93,7 @@ def changeThreeStar(G, A, i):
 
 def changePartnerActivityTwoPath(G, A, i):
     """
-    Change statistic for partner activity actor two-path (Alter-2Star1A)
+    Change statistic for partner activity actor two-path (Alter-2Star1)
 
     *--o--o
     """
@@ -138,7 +138,7 @@ def changeContagion(G, A, i):
 
 def changeIndirectPartnerAttribute(G, A, i):
     """
-    Change statistic for indirect partner attribute (Alter-2Star2A);
+    Change statistic for indirect partner attribute (Alter-2Star2);
     structural equivalence between actors with attribute (two-path equivalence)
 
     *--o--*
