@@ -241,7 +241,7 @@ def run_bipartite_example():
     """
     example run on bipartite network
     """
-    run_on_network_attr('/cygdrive/C/Users/alexd/switchdrive/Institution/USI/shared/ERGMXL/example_bipartite_networks/MPNet_estimations/ALAAM/Inouye_Pyke_pollinator_web/inouye_bipartite.net',
+    run_on_network_attr('../data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net',
                         [partial(changeBipartiteDensity, MODE_A),
                          partial(changeBipartiteActivity, MODE_A),
                          partial(changeBipartiteEgoTwoStar, MODE_A),
@@ -252,5 +252,5 @@ def run_bipartite_example():
                          'bipartiteEgoTwoStarA',
                          'bipartiteAlterTwoStar1A',
                          'bipartiteAlterTwoStar2A'],
-                        '/cygdrive/C/Users/alexd/switchdrive/Institution/USI/shared/ERGMXL/example_bipartite_networks/MPNet_estimations/ALAAM/Inouye_Pyke_pollinator_web/inouye_outcome.txt',
+                        '../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt',
                         bipartite=True)
