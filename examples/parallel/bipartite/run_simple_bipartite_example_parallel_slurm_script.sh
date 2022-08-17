@@ -31,7 +31,7 @@ module load r
 Rscript ../../../R/plotALAAMEEResults.R theta_values_inouye_bipartite dzA_values_inouye_bipartite
 
 
-Rscript ../../R/../computeALAMEEcovariance.R theta_values_inouye_bipartite dzA_values_inouye_bipartite
+Rscript ../../../R/computeALAMEEcovariance.R theta_values_inouye_bipartite dzA_values_inouye_bipartite
 
 times
 echo -n "ended at: "; date
