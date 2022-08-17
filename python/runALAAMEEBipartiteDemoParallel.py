@@ -2,7 +2,7 @@
 #
 # File:    run ALAAMEEBipartiteDemoParallel.py
 # Author:  Alex Stivala
-# Created: Februrary 2020
+# Created: August 2022
 #
 """Run the simple demonstration implementation of the Equilibrium
  Expectation algorithm for estimation of Autologistic Actor Attribute
@@ -18,15 +18,34 @@
 
  Citation for GNU parallel:
 
+  [from --help]
+
   O. Tange (2018): GNU Parallel 2018, Mar 2018, ISBN 9781387509881,
   DOI https://doi.org/10.5281/zenodo.11460
+
+  [from --citation]:
+
+  @software{tange_2021_4628277,
+      author       = {Tange, Ole},
+      title        = {GNU Parallel 20210322 ('2002-01-06')},
+      month        = Mar,
+      year         = 2020,
+      note         = {{GNU Parallel is a general parallelizer to run
+                       multiple serial command line programs in parallel
+                       without changing them.}},
+      publisher    = {Zenodo},
+      doi          = {10.5281/zenodo.4628277},
+      url          = {https://doi.org/10.5281/zenodo.4628277}
+}
+
 
 """
 import getopt
 import sys
 from functools import partial
 import  ALAAMEESimpleDemo
-from changeStatisticsALAAM import *
+from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
+from changeStatisticsALAAMbipartite import *
 
 
 def usage(progname):
@@ -54,7 +73,7 @@ def main():
 
     runNumber = int(args[0])
 
-    ALAAMEESimpleDemo.run_on_network_attr('../data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net',
+    ALAAMEESimpleDemo.run_on_network_attr('../../data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net',
             [partial(changeBipartiteDensity, MODE_A),
              partial(changeBipartiteActivity, MODE_A),
              partial(changeBipartiteEgoTwoStar, MODE_A),
@@ -65,7 +84,7 @@ def main():
              'bipartiteEgoTwoStarA',
              'bipartiteAlterTwoStar1A',
              'bipartiteAlterTwoStar2A'],
-             '../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt',
+             '../../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt',
             bipartite=True,
             run = runNumber
     )
