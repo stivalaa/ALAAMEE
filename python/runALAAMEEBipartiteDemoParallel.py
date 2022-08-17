@@ -13,7 +13,7 @@
 
   E.g. for 16 parallel runs:
 
-  seq 0 15 |  parallel -j 16 --progress --joblog parallel.log run ALAAMEEBipartiteDemoParallel.py
+  seq 0 15 |  parallel -j 16 --progress --joblog parallel.log runALAAMEEBipartiteDemoParallel.py
 
 
  Citation for GNU parallel:
