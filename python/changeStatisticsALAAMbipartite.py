@@ -24,8 +24,8 @@ take a setting network, as also described in changeStatisticsALAAM.py.
 
 In the function documentation here, a node shown as an asterisk "*"
 here, denotes a node of the specified mode with the outcome attribute,
-and if shown as plus sign "+" is a node of the other mode with the
-outcome attibute.
+and if shown as "@" is a node of the other mode with the outcome
+attibute.
 
 A node shown as an lowercase "o" here, denotes a node of the other
 (non-reference) node with or without the attribute, and a node shown
@@ -56,7 +56,7 @@ mode.
 The use of the mode parameter and functools.partial() avoids having to
 implement two versions of every funciton, one for each mode. E.g.
 instead of having to define both changeBipartiteActivityA(G, A, i) and
-changeActivityB(G, A, i) which check that G.bipartite_node_mode(i) ==
+changeBipartiteActivityB(G, A, i) which check that G.bipartite_node_mode(i) ==
 MODE_A and G.bipartite_node_mode(i) == MODE_B, respectively, we just
 have the single function changeBipartiteActivity(mode, G, A, i), which
 we can use via partial(changeBipartiteActivity, MODE_A) or
