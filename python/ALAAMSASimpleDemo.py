@@ -162,7 +162,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         significant = np.abs(theta) > 2 * std_error
         sys.stdout.write(20*' ' + '  Parameter Std.Error t-ratio\n')
         for j in range(len(theta)):
-            sys.stdout.write('%20.20s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
+            sys.stdout.write('%30.30s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
         print()
 
         # Do goodness-of-fit test

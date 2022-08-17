@@ -34,6 +34,11 @@ files:
   
 
 
+Note that ActivityXA was found to be significant in an MPNet converged
+model (and also sometimes by the ALAAMEE bipartite example using the
+same data) - but this is actually an example of a false positive, in
+that since the outcome variable was actually randomly generated, this
+"statistically significant" effect is spurious.
 
 
 https://www.nceas.ucsb.edu/interactionweb/html/inouye_1988.html
