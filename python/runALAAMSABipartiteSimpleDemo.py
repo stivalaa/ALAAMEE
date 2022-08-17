@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    run ALAAMSABipartiteSimpleDemo.py
+# File:    runALAAMSABipartiteSimpleDemo.py
 # Author:  Alex Stivala
 # Created: August 2022
 #

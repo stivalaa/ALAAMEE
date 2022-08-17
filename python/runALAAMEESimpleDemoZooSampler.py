@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    run ALAAMEESimpleDemoZooSampler.py
+# File:    runALAAMEESimpleDemoZooSampler.py
 # Author:  Alex Stivala
 # Created: June 2020
 #

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    run ALAAMSAkarateClub.py
+# File:    runALAAMSAkarateClub.py
 # Author:  Alex Stivala
 # Created: Februrary 2020
 #

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    run ALAAMEEKarateClubParallel.py
+# File:    runALAAMEEKarateClubParallel.py
 # Author:  Alex Stivala
 # Created: Februrary 2020
 #
@@ -13,7 +13,7 @@
 
   E.g. for 16 parallel runs:
 
-  seq 0 15 |  parallel -j 16 --progress --joblog parallel.log run ALAAMEEKarateClubParallel.py
+  seq 0 15 |  parallel -j 16 --progress --joblog parallel.log runALAAMEEKarateClubParallel.py
 
 
  Citation for GNU parallel:

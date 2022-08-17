@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    run ALAAMEEBipartiteDemoParallel.py
+# File:    runALAAMEEBipartiteDemoParallel.py
 # Author:  Alex Stivala
 # Created: August 2022
 #

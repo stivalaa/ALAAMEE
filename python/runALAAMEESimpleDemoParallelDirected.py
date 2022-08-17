@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    run ALAAMEESimpleDemoParallelDirected.py
+# File:    runALAAMEESimpleDemoParallelDirected.py
 # Author:  Alex Stivala
 # Created: Februrary 2022
 #
@@ -14,7 +14,7 @@
 
   E.g. for 16 parallel runs:
 
-  seq 0 15 |  parallel -j 16 --progress --joblog parallel.log run ALAAMEESimpleDemoParallel.py
+  seq 0 15 |  parallel -j 16 --progress --joblog parallel.log runALAAMEESimpleDemoParallel.py
 
 
  Citation for GNU parallel:

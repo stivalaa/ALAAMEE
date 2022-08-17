@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    run ALAAMSASimpleDemoN1000.py
+# File:    runALAAMSASimpleDemoN1000.py
 # Author:  Alex Stivala
 # Created: May 2020
 #

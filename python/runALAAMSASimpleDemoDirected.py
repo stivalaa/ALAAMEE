@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    run ALAAMSASimpleDemoDirected.py
+# File:    runALAAMSASimpleDemoDirected.py
 # Author:  Alex Stivala
 # Created: February 2022
 #

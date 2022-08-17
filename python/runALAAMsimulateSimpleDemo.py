@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    run ALAAMsimulateSimpleDemo.py
+# File:    runALAAMsimulateSimpleDemo.py
 # Author:  Alex Stivala
 # Created: May 2020
 #
