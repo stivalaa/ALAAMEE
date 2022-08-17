@@ -1,0 +1,427 @@
+*vertices 133 91
+1 "" box ic Blue bc Black
+2 "" box ic Blue bc Black
+3 "" box ic Blue bc Black
+4 "" box ic Blue bc Black
+5 "" box ic Blue bc Black
+6 "" box ic Blue bc Black
+7 "" box ic Blue bc Black
+8 "" box ic Blue bc Black
+9 "" box ic Blue bc Black
+10 "" box ic Blue bc Black
+11 "" box ic Blue bc Black
+12 "" box ic Blue bc Black
+13 "" box ic Blue bc Black
+14 "" box ic Blue bc Black
+15 "" box ic Blue bc Black
+16 "" box ic Blue bc Black
+17 "" box ic Blue bc Black
+18 "" box ic Blue bc Black
+19 "" box ic Blue bc Black
+20 "" box ic Blue bc Black
+21 "" box ic Blue bc Black
+22 "" box ic Blue bc Black
+23 "" box ic Blue bc Black
+24 "" box ic Blue bc Black
+25 "" box ic Blue bc Black
+26 "" box ic Blue bc Black
+27 "" box ic Blue bc Black
+28 "" box ic Blue bc Black
+29 "" box ic Blue bc Black
+30 "" box ic Blue bc Black
+31 "" box ic Blue bc Black
+32 "" box ic Blue bc Black
+33 "" box ic Blue bc Black
+34 "" box ic Blue bc Black
+35 "" box ic Blue bc Black
+36 "" box ic Blue bc Black
+37 "" box ic Blue bc Black
+38 "" box ic Blue bc Black
+39 "" box ic Blue bc Black
+40 "" box ic Blue bc Black
+41 "" box ic Blue bc Black
+42 "" box ic Blue bc Black
+43 "" box ic Blue bc Black
+44 "" box ic Blue bc Black
+45 "" box ic Blue bc Black
+46 "" box ic Blue bc Black
+47 "" box ic Blue bc Black
+48 "" box ic Blue bc Black
+49 "" box ic Blue bc Black
+50 "" box ic Blue bc Black
+51 "" box ic Blue bc Black
+52 "" box ic Blue bc Black
+53 "" box ic Blue bc Black
+54 "" box ic Blue bc Black
+55 "" box ic Blue bc Black
+56 "" box ic Blue bc Black
+57 "" box ic Blue bc Black
+58 "" box ic Blue bc Black
+59 "" box ic Blue bc Black
+60 "" box ic Blue bc Black
+61 "" box ic Blue bc Black
+62 "" box ic Blue bc Black
+63 "" box ic Blue bc Black
+64 "" box ic Blue bc Black
+65 "" box ic Blue bc Black
+66 "" box ic Blue bc Black
+67 "" box ic Blue bc Black
+68 "" box ic Blue bc Black
+69 "" box ic Blue bc Black
+70 "" box ic Blue bc Black
+71 "" box ic Blue bc Black
+72 "" box ic Blue bc Black
+73 "" box ic Blue bc Black
+74 "" box ic Blue bc Black
+75 "" box ic Blue bc Black
+76 "" box ic Blue bc Black
+77 "" box ic Blue bc Black
+78 "" box ic Blue bc Black
+79 "" box ic Blue bc Black
+80 "" box ic Blue bc Black
+81 "" box ic Blue bc Black
+82 "" box ic Blue bc Black
+83 "" box ic Blue bc Black
+84 "" box ic Blue bc Black
+85 "" box ic Blue bc Black
+86 "" box ic Blue bc Black
+87 "" box ic Blue bc Black
+88 "" box ic Blue bc Black
+89 "" box ic Blue bc Black
+90 "" box ic Blue bc Black
+91 "" box ic Blue bc Black
+92 "" ellipse ic Red bc Black
+93 "" ellipse ic Red bc Black
+94 "" ellipse ic Red bc Black
+95 "" ellipse ic Red bc Black
+96 "" ellipse ic Red bc Black
+97 "" ellipse ic Red bc Black
+98 "" ellipse ic Red bc Black
+99 "" ellipse ic Red bc Black
+100 "" ellipse ic Red bc Black
+101 "" ellipse ic Red bc Black
+102 "" ellipse ic Red bc Black
+103 "" ellipse ic Red bc Black
+104 "" ellipse ic Red bc Black
+105 "" ellipse ic Red bc Black
+106 "" ellipse ic Red bc Black
+107 "" ellipse ic Red bc Black
+108 "" ellipse ic Red bc Black
+109 "" ellipse ic Red bc Black
+110 "" ellipse ic Red bc Black
+111 "" ellipse ic Red bc Black
+112 "" ellipse ic Red bc Black
+113 "" ellipse ic Red bc Black
+114 "" ellipse ic Red bc Black
+115 "" ellipse ic Red bc Black
+116 "" ellipse ic Red bc Black
+117 "" ellipse ic Red bc Black
+118 "" ellipse ic Red bc Black
+119 "" ellipse ic Red bc Black
+120 "" ellipse ic Red bc Black
+121 "" ellipse ic Red bc Black
+122 "" ellipse ic Red bc Black
+123 "" ellipse ic Red bc Black
+124 "" ellipse ic Red bc Black
+125 "" ellipse ic Red bc Black
+126 "" ellipse ic Red bc Black
+127 "" ellipse ic Red bc Black
+128 "" ellipse ic Red bc Black
+129 "" ellipse ic Red bc Black
+130 "" ellipse ic Red bc Black
+131 "" ellipse ic Red bc Black
+132 "" ellipse ic Red bc Black
+133 "" ellipse ic Red bc Black
+*edges
+1 96
+1 97
+1 101
+1 105
+1 107
+1 110
+2 96
+3 120
+4 97
+4 107
+5 96
+5 107
+6 112
+7 103
+8 104
+9 96
+10 92
+10 94
+10 96
+10 97
+10 98
+10 100
+10 101
+10 103
+10 106
+10 107
+10 113
+11 97
+11 98
+11 100
+11 101
+11 103
+12 103
+13 96
+13 115
+14 96
+15 94
+15 98
+15 99
+15 100
+15 101
+15 103
+15 108
+16 112
+17 99
+17 107
+18 96
+18 97
+19 98
+19 100
+19 127
+20 92
+20 94
+20 96
+20 97
+20 98
+20 100
+20 103
+20 105
+20 106
+20 107
+20 108
+20 112
+20 114
+21 107
+22 94
+22 97
+22 98
+22 105
+22 107
+23 94
+23 101
+24 99
+24 112
+25 112
+26 113
+27 127
+28 93
+28 94
+28 96
+28 97
+28 98
+28 100
+28 105
+28 106
+28 107
+28 108
+28 114
+28 115
+29 108
+30 93
+30 108
+31 111
+32 94
+32 99
+32 100
+32 104
+33 93
+33 94
+33 104
+33 106
+34 94
+34 106
+34 107
+34 113
+34 120
+35 104
+35 106
+35 119
+36 106
+37 93
+38 93
+38 96
+39 119
+39 125
+40 98
+41 99
+41 100
+41 104
+41 130
+42 111
+42 116
+43 97
+43 100
+43 106
+43 111
+44 115
+45 96
+46 118
+47 98
+47 120
+48 96
+48 97
+48 100
+48 101
+48 111
+48 115
+48 116
+49 96
+50 100
+50 104
+51 132
+52 93
+52 98
+52 111
+53 94
+53 98
+53 102
+53 122
+54 117
+55 93
+55 94
+55 96
+55 98
+55 99
+55 100
+55 101
+55 102
+55 103
+55 104
+55 105
+55 108
+55 109
+55 114
+55 115
+55 116
+55 117
+55 118
+55 120
+55 122
+55 123
+55 128
+56 106
+57 93
+57 96
+57 99
+57 101
+57 104
+57 108
+57 109
+57 114
+57 117
+57 118
+57 121
+57 124
+57 126
+57 131
+58 97
+58 98
+58 118
+59 104
+60 93
+60 124
+61 93
+62 109
+63 121
+63 124
+64 104
+65 96
+65 106
+66 104
+66 119
+67 98
+68 93
+68 96
+68 99
+68 105
+68 106
+68 117
+69 94
+69 99
+69 104
+69 106
+69 110
+69 111
+69 114
+69 117
+70 96
+71 115
+72 115
+73 96
+74 96
+75 96
+75 99
+75 101
+75 104
+75 106
+75 111
+75 113
+75 114
+75 115
+75 116
+75 118
+75 128
+76 96
+76 97
+76 115
+77 98
+77 112
+78 97
+79 97
+79 98
+79 101
+79 105
+79 111
+79 112
+79 118
+79 126
+79 133
+80 96
+81 111
+82 98
+82 101
+83 98
+83 111
+83 119
+84 115
+84 118
+84 129
+85 101
+85 104
+85 111
+85 119
+86 96
+86 104
+87 98
+87 116
+88 104
+88 129
+89 95
+90 95
+91 101
+91 102
+91 105
+91 108
+91 111
+91 116
+91 118
+91 122
+91 123
+91 127
+
+Density	0.0735
+Degree Distribution(s)
+Mean degree A	3.0879
+Stddev A	3.6014
+Skewness A	2.6834
+Mean degree B	6.6905
+Stddev B	5.5765
+Skewness B	1.1396
+Clustering coefficent
+Global	0.2086
