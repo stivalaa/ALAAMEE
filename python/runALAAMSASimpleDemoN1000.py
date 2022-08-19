@@ -12,7 +12,7 @@ from functools import partial
 import  ALAAMSASimpleDemo
 from changeStatisticsALAAM import *
 
-ALAAMSASimpleDemo. run_on_network_attr(
+ALAAMSASimpleDemo.run_on_network_attr(
         '../data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt',
         [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],

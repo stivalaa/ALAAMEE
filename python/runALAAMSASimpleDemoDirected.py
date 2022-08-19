@@ -12,7 +12,7 @@ import  ALAAMSASimpleDemo
 from changeStatisticsALAAMdirected import *
 from changeStatisticsALAAM import changeDensity
 
-ALAAMSASimpleDemo. run_on_network_attr(
+ALAAMSASimpleDemo.run_on_network_attr(
         '../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net',
         [changeDensity, changeSender, changeReceiver, changeContagion],
         ["Density", "Sender", "Receiver", "Contagion"],
