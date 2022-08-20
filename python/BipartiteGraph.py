@@ -82,6 +82,8 @@ class BipartiteGraph(Graph):
         Print summary of Graph object
         """
         print('Bipartite graph')
+        print('number of mode A nodes = ', self.num_A_nodes)
+        print('number of mode B nodes = ', self.num_B_nodes)
         super().printSummary()
 
 
