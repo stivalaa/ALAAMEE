@@ -247,12 +247,13 @@ class Graph:
         """
         count = 0
         for v in self.neighbourIterator(i):
-            if v != i and v != j:
-                for u in self.neighbourIterator(v):
-                    if u == j:
-                        count += 1
+            if v == i or v == j:
+                continue
+            for u in self.neighbourIterator(j):
+                if u == v:
+                    count += 1
 
-        count2 = sum([(j in list(self.neighbourIterator(v))) for v in self.neighbourIterator(i)])
+        count2 = sum([(v in list(self.neighbourIterator(j))) for v in self.neighbourIterator(i)])
         assert(count == count2)
         #TODO remove loop version after testing list comprehension version
         #TODO iterate over smaller degree of i and j not just always i
