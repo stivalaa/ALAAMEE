@@ -89,10 +89,11 @@ class BipartiteGraph(Graph):
 
     def bipartite_node_mode(self, i):
         """
-        Return ndode type (mode) of node i
+        Return node type (mode) of node i
         """
         return MODE_A if i < self.num_A_nodes else MODE_B
                             
+
     def insertEdge(self, i, j):
         """
         Insert edge i -- j in place
@@ -100,3 +101,12 @@ class BipartiteGraph(Graph):
         if self.bipartite_node_mode(i) == self.bipartite_node_mode(j):
             raise ValueError("edge in bipartite graph inserted between nodes in same mode")
         super().insertEdge(i, j)
+
+
+    def nodeModeIterator(self, mode):
+        """
+        Return iterator over nodes of graph with supplied mode
+        (MODE_A or MODE_B)
+        """
+        return filter(
+            lambda v: self.bipartite_node_mode(v) == mode, self.G.keys())

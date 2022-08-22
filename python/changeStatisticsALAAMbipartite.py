@@ -152,3 +152,23 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
     return (changeStatisticsALAAM.changeIndirectPartnerAttribute(G, A, i)
             if G.bipartite_node_mode(i) == mode else 0)
 
+
+def changeBipartiteFourCycle1(mode, G, A, i):
+    """
+    Change setatistic for bipartite four-cycle 1
+    C4X-1[mode]
+
+        o
+       / \
+      x   *
+       \ /
+        o
+    """
+    if G.bipartite_node_mode(i) == mode:
+        delta = 0
+        for v in G.nodeModeIterator(mode):
+            twoPathCount = G.twoPaths(i, v)
+            delta += twoPathCount * (twoPathCount - 1) / 2
+        return delta
+    else:
+        return 0

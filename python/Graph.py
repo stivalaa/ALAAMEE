@@ -232,5 +232,26 @@ class Graph:
         else:
             print('No snowball zones')
             
-            
 
+    def nodeIterator(self):
+        """
+        Return iterator over nodes of graph
+        """
+        return iter(self.G.keys())
+
+
+    def twoPaths(self, i, j):
+        """
+        Count undirected two-paths for (i, j): paths i -- v -- j for some v
+        (where v is distinct from both i and j, which are also distinct)
+        """
+        count = 0
+        for v in self.neighbourIterator(i):
+            if v != i and v != j:
+                count += (j in list(self.neighbourIterator(v)))
+
+        count2 = sum([(j in list(self.neighbourIterator(v))) for v in self.neighbourIterator(i)])
+        assert(count == count2)
+        #TODO remove loop version after testing list comprehension version
+        #TODO iterate over smaller degree of i and j not just always i
+        return count
