@@ -172,3 +172,25 @@ def changeBipartiteFourCycle1(mode, G, A, i):
         return delta
     else:
         return 0
+
+def changeBipartiteFourCycle2(mode, G, A, i):
+    """
+    Change setatistic for bipartite four-cycle 1
+    C4X-1[mode]
+
+        o
+       / \
+      *   *
+       \ /
+        o
+    """
+    if G.bipartite_node_mode(i) == mode:
+        delta = 0
+        for v in G.nodeModeIterator(mode):
+            if (A[v] == 1):
+                twoPathCount = G.twoPaths(i, v)
+                delta += twoPathCount * (twoPathCount - 1) / 2
+        return delta
+    else:
+        return 0
+    

@@ -248,7 +248,9 @@ class Graph:
         count = 0
         for v in self.neighbourIterator(i):
             if v != i and v != j:
-                count += (j in list(self.neighbourIterator(v)))
+                for u in self.neighbourIterator(v):
+                    if u == j:
+                        count += 1
 
         count2 = sum([(j in list(self.neighbourIterator(v))) for v in self.neighbourIterator(i)])
         assert(count == count2)
