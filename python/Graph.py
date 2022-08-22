@@ -250,7 +250,7 @@ class Graph:
             if v == i or v == j:
                 continue
             for u in self.neighbourIterator(j):
-                if u == v:
+                if u == v and u != i:
                     count += 1
 
         count2 = sum([(v in list(self.neighbourIterator(j))) for v in self.neighbourIterator(i)])
