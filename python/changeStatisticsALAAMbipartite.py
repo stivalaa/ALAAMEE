@@ -155,7 +155,7 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
 
 def changeBipartiteFourCycle1(mode, G, A, i):
     """
-    Change setatistic for bipartite four-cycle 1
+    Change statistic for bipartite four-cycle 1
     C4X-1[mode]
 
         o
@@ -164,7 +164,7 @@ def changeBipartiteFourCycle1(mode, G, A, i):
        \ /
         o
     """
-    # FIXME getting 1065 on obs stats for test case but MPNet gets 612
+    # FIXME getting 718 on obs stats for test case but MPNet gets 612
     # TODO rewrite so no inefficient loop over all mode nodes
     if G.bipartite_node_mode(i) == mode:
         delta = 0
@@ -178,7 +178,7 @@ def changeBipartiteFourCycle1(mode, G, A, i):
 
 def changeBipartiteFourCycle2(mode, G, A, i):
     """
-    Change setatistic for bipartite four-cycle 2
+    Change statistic for bipartite four-cycle 2
     C4X-2[mode]
 
         o
