@@ -178,8 +178,8 @@ def changeBipartiteFourCycle1(mode, G, A, i):
 
 def changeBipartiteFourCycle2(mode, G, A, i):
     """
-    Change setatistic for bipartite four-cycle 1
-    C4X-1[mode]
+    Change setatistic for bipartite four-cycle 2
+    C4X-2[mode]
 
         o
        / \
