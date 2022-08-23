@@ -165,11 +165,12 @@ def changeBipartiteFourCycle1(mode, G, A, i):
         o
     """
     # FIXME getting 1065 on obs stats for test case but MPNet gets 612
-    # TODO rewrite so no inefficient loop over all mode nodes    
+    # TODO rewrite so no inefficient loop over all mode nodes
     if G.bipartite_node_mode(i) == mode:
         delta = 0
         for v in G.nodeModeIterator(mode):
             twoPathCount = G.twoPaths(i, v)
+            #print('XXX',i,v,twoPathCount)
             delta += twoPathCount * (twoPathCount - 1) / 2
         return delta
     else:
