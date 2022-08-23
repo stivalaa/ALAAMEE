@@ -160,7 +160,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     if converged:
         print('Converged.')
         significant = np.abs(theta) > 2 * std_error
-        sys.stdout.write(20*' ' + '  Parameter Std.Error t-ratio\n')
+        sys.stdout.write(30*' ' + '  Parameter Std.Error t-ratio\n')
         for j in range(len(theta)):
             sys.stdout.write('%30.30s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
         print()
@@ -217,7 +217,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         print('           ',goflabels)
         print('t_ratios = ',gofresult)
         
-        sys.stdout.write(20*' ' + '  t-ratio\n')
+        sys.stdout.write(30*' ' + '  t-ratio\n')
         for j in range(n):
             sys.stdout.write('%30.30s % 6.3f\n' % (goflabels[j], gofresult[j]))
         print()
