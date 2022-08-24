@@ -12,9 +12,10 @@
 ### Rscript generateTinyBipartiteExample.py
 ###
 ### Output files (WARNING overwritten)
-###    tiny_bipartite.net       - network in Pajek format
-###    tiny_outcome.txt         - outcome binary variable
-###    tiny.pdf                 - plot of network coloured by outcome variable
+###    tiny_biparti   te.net       - network in Pajek format
+###    tiny_biadjacency_matrix.txt - biadjacency matrix for MPNet
+###    tiny_outcome.txt            - outcome binary variable
+###    tiny.pdf                    - plot of network coloured by outcome var
 ###
 ### Note that the variables and their types to write to the output files
 ### are hardcoded in this script.
@@ -50,10 +51,12 @@ if (length(args) != 0) {
 network_name <- 'tiny'
 
 # Create bipartite graph
-g <- make_bipartite_graph(types = c(FALSE, FALSE, FALSE, TRUE, TRUE),
+m <- 3
+n <- 2
+g <- make_bipartite_graph(types = c(rep(FALSE, m), rep(TRUE, n)),
                           edges = c(1,4, 1,5, 2,4, 2,5, 3,5, 3,4),
                           directed = FALSE)
-
+stopifnot(vcount(g) == m + n)
  
 ##  binary outcome variable
 V(g)$outcome <- c(0, 0, 0, 0, 1)
@@ -62,12 +65,31 @@ print(g)
 
 
 ##
+## get biadjacency matrix
+##
+
+A <- as.matrix(get.adjacency(g))
+print(A)
+B <- A[1:m, (m+1):(m+n)]
+print(B)
+tB <- A[(m+1):(m+n), 1:m]
+stopifnot(all(t(B) == tB))
+
+##
 ## write graph
 ##
 
 write.graph(g, paste(network_name, "_bipartite.net", sep=''),
                  format = "pajek")
 
+
+##
+## write biadjacency matrix
+##
+
+write.table(B, paste(network_name, "_biadjacency_matrix.txt", sep=''),
+            row.names = FALSE, col.names = FALSE)
+            
 ##
 ## write binary outcome attribute 
 ##
