@@ -139,8 +139,19 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
 
     x--o--*
     """
-    return (changeStatisticsALAAM.changePartnerActivityTwoPath(G, A, i)
-            if G.bipartite_node_mode(i) == mode else 0)
+    delta =  (changeStatisticsALAAM.changePartnerActivityTwoPath(G, A, i)
+              if G.bipartite_node_mode(i) == mode else 0)
+
+    # different (less efficient) implementation using twoPath as done in MPNet
+    # TODO remove when testing done (move to pytest tests?)
+    delta2 = 0
+    if G.bipartite_node_mode(i) == mode:
+        for v in G.nodeModeIterator(mode):
+            delta2 += G.twoPaths(i, v)
+
+    assert delta == delta2
+    
+    return delta
 
 def changeBipartiteAlterTwoStar2(mode, G, A, i):
     """
@@ -149,8 +160,20 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
 
     *--o--*
     """
-    return (changeStatisticsALAAM.changeIndirectPartnerAttribute(G, A, i)
-            if G.bipartite_node_mode(i) == mode else 0)
+    delta = (changeStatisticsALAAM.changeIndirectPartnerAttribute(G, A, i)
+             if G.bipartite_node_mode(i) == mode else 0)
+
+    # different (less efficient) implementation using twoPath as done in MPNet
+    # TODO remove when testing done (move to pytest tests?)    
+    delta2 = 0
+    if G.bipartite_node_mode(i) == mode:
+        for v in G.nodeModeIterator(mode):
+            if A[v] == 1:
+                delta2 += G.twoPaths(i, v)
+
+    assert delta == delta2
+    
+    return delta
 
 
 def changeBipartiteFourCycle1(mode, G, A, i):
