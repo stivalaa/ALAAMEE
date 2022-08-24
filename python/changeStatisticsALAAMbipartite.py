@@ -149,7 +149,11 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
         for v in G.nodeModeIterator(mode):
             delta2 += G.twoPaths(i, v)
 
+    # one-liner more elegant but still inefficient version:
+    delta3 = sum([G.twoPaths(i, v)  for v in G.nodeModeIterator(mode)]) if G.bipartite_node_mode(i) == mode else 0
+            
     assert delta == delta2
+    assert delta2 == delta3
     
     return delta
 
@@ -171,7 +175,11 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
             if A[v] == 1:
                 delta2 += G.twoPaths(i, v)
 
+    # one-liner more elegant but still inefficient version:
+    delta3 = sum([G.twoPaths(i, v) if A[v] == 1 else 0  for v in G.nodeModeIterator(mode)]) if G.bipartite_node_mode(i) == mode else 0
+    
     assert delta == delta2
+    assert delta2 == delta3
     
     return delta
 
