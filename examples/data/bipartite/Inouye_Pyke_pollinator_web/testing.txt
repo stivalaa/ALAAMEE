@@ -1,0 +1,64 @@
+# Python run from directory: ALAAMEE/python
+Python 3.9.10 (main, Jan 20 2022, 21:37:52)
+[GCC 11.2.0] on cygwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from BipartiteGraph import *
+>>> g = BipartiteGraph("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net")
+>>> g.printSummary()
+Bipartite graph
+number of mode A nodes =  91
+number of mode B nodes =  42
+graph nodes =  133
+graph edges =  281
+graph density =  0.07352171637885924
+No binary attributes
+No continuous attributes
+No categorical attributes
+No snowball zones
+>>> sum([(g.twoPaths(i, j) if i < j else 0) for i in g.nodeModeIterator(MODE_A) for j in g.nodeModeIterator(MODE_A)])
+1437
+>>> sum([(g.twoPaths(i, j) if i < j else 0) for i in g.nodeModeIterator(MODE_B) for j in g.nodeModeIterator(MODE_B)])
+877
+>>> sum([(g.twoPaths(i, j) if i < j else 0) for i in g.nodeIterator() for j in g.nodeIterator()])
+2314
+
+
+>>> outcome_binvar = list(map(int, open("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt").read().split()[1:]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+# R run from directory: ALAAMEE/examples/data/bipartite/Inouye_Pyke_pollinator_web
+library(igraph)
+library(statnet)
+B <- as.matrix(read.table('inouye_matrix.txt', header=F))
+m = dim(B)[1]
+n = dim(B)[2]
+cat('m = ', m, '\n')
+cat('n = ', n, '\n')
+# Convert biadjacency matrix to adjacency matrix
+A <- rbind(cbind(matrix(0, m, m), B), cbind(t(B), matrix(0, n,n)))
+g <- graph_from_adjacency_matrix(A, mode='undirected')
+V(g)[1:m]$type <- FALSE
+V(g)[(m+1):(m+n)]$type <- TRUE
+gn <- as.network.matrix(as.matrix(get.adjacency(g)), bipartite = m, directed=FALSE)
+outcome_binvar <- read.table('inouye_outcome.txt', header=TRUE,stringsAsFactors=FALSE)
+gn %v% "outcome_binvar" <- outcome_binvar$outcome
+
+
+
+
+> summary(gn ~ edges + twopath +b1star(2) + b2star(2))
+  edges twopath b1star2 b2star2
+    281    2314     877    1437
+
+
