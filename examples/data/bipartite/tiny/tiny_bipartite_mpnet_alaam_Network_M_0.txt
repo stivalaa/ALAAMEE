@@ -1,0 +1,13 @@
+*vertices 5
+1 "" box ic Blue bc Black
+2 "" box ic Blue bc Black
+3 "" box ic Blue bc Black
+4 "" ellipse ic Red bc Black
+5 "" ellipse ic Red bc Black
+*arcs
+1 4 1 c Black
+1 5 1 c Black
+2 4 1 c Black
+2 5 1 c Black
+3 4 1 c Black
+3 5 1 c Black

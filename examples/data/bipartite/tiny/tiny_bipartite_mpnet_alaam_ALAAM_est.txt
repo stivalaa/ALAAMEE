@@ -1,0 +1,7 @@
+Estimation
+Observed graph statistics:
+1.00	3.00	3.00	3.00	0.00	3.00	0.00	
+Phase1 simulation:
+Mean statistics:
+0.86	2.57	2.57	2.57	0.86	2.57	0.86	
+Degenerate ergm!
