@@ -1,0 +1,60 @@
+Python 3.9.10 (main, Jan 20 2022, 21:37:52) 
+[GCC 11.2.0] on cygwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from BipartiteGraph import *
+>>> g = BipartiteGraph("../examples/data/bipartite/tiny/tiny_bipartite.net")
+>>> g
+<BipartiteGraph.BipartiteGraph object at 0x6fffffe22eb0>
+>>> g.printSummary() 
+Bipartite graph
+number of mode A nodes =  3
+number of mode B nodes =  2
+graph nodes =  5
+graph edges =  5
+graph density =  0.8333333333333334
+No binary attributes
+No continuous attributes
+No categorical attributes
+No snowball zones
+>>> outcome_binvar = list(map(int, open("../examples/data/bipartite/tiny/tiny_outcome.txt").read().split()[1:]))
+>>> outcome_binvar
+[0, 0, 0, 0, 1]
+>>> from computeObservedStatistics import *
+>>> help(computeObservedStatistics)
+Help on function computeObservedStatistics in module computeObservedStatistics:
+
+computeObservedStatistics(G, Aobs, changestats_func_list)
+    Compute the observed values of ALAAM statistics by summing the change
+    statistics for each 1 variable in the outcome variable vector.
+    
+    Parameters:
+       G                   - Graph object for graph to compute stats in
+       Aobs                - vector of 0/1 outcome variables for ALAAM
+       changestats_func_list-list of change statistics funcions
+    
+     Returns:
+        numpy vector of observed statistics corresponding to the 
+        cangestats_func_list
+
+>>> 
+o  C-c C-c
+KeyboardInterrupt
+>>> outcome_binvar
+[0, 0, 0, 0, 1]
+>>> computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteDensity, MODE_A), partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteEgoTwoStar, MODE_A), partial(changeBipartiteAlterTwoStar1,MODE_A), partial(changeBipartiteAlterTwoStar2,MODE_A), partial(changeBipartiteFourCycle1, MODE_A),partial(changeBipartiteFourCycle2, MODE_A)])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'partial' is not defined
+>>> from functools import partial
+>>> computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteDensity, MODE_A), partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteEgoTwoStar, MODE_A), partial(changeBipartiteAlterTwoStar1,MODE_A), partial(changeBipartiteAlterTwoStar2,MODE_A), partial(changeBipartiteFourCycle1, MODE_A),partial(changeBipartiteFourCycle2, MODE_A)])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'changeBipartiteDensity' is not defined
+>>> from changeStatisticsALAAMbipartite import *
+>>> computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteDensity, MODE_A), partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteEgoTwoStar, MODE_A), partial(changeBipartiteAlterTwoStar1,MODE_A), partial(changeBipartiteAlterTwoStar2,MODE_A), partial(changeBipartiteFourCycle1, MODE_A),partial(changeBipartiteFourCycle2, MODE_A)])
+array([0., 0., 0., 0., 0., 0., 0.])
+>>> computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteDensity, MODE_A), partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteEgoTwoStar, MODE_A), partial(changeBipartiteAlterTwoStar1,MODE_A), partial(changeBipartiteAlterTwoStar2,MODE_A), partial(changeBipartiteFourCycle1, MODE_A),partial(changeBipartiteFourCycle2, MODE_A)])
+array([0., 0., 0., 0., 0., 0., 0.])
+>>> computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteDensity, MODE_B), partial(changeBipartiteActivity, MODE_B), partial(changeBipartiteEgoTwoStar, MODE_B), partial(changeBipartiteAlterTwoStar1,MODE_B), partial(changeBipartiteAlterTwoStar2,MODE_B), partial(changeBipartiteFourCycle1, MODE_B),partial(changeBipartiteFourCycle2, MODE_B)])
+array([1., 2., 1., 2., 0., 1., 0.])
+>>> 

@@ -1,0 +1,6 @@
+Label	Node_Set
+A1	1
+A2	1
+A3	1
+B1	2
+B2	2
