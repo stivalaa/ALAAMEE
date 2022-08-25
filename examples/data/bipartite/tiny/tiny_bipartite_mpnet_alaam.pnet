@@ -20,11 +20,15 @@ Net_A
 
 0
 
+0
+
 Net_B
 0
 0
 0
 0
+0
+
 0
 
 0
@@ -37,7 +41,11 @@ Net_X
 0
 0
 0
+0
 C:\Users\user\Documents\USI\ALAAMEE\examples\data\bipartite\tiny\tiny_biadjacency_matrix.txt
+
+0
+
 0
 
 0
@@ -64,11 +72,6 @@ ContagionA
 2
 0
 Ego-2StarA
-0
-0
-2
-0
-Ego-3StarA
 0
 0
 2
@@ -114,11 +117,6 @@ ContagionB
 2
 0
 Ego-2StarB
-0
-0
-2
-0
-Ego-3StarB
 0
 0
 2
@@ -457,7 +455,15 @@ Dy_Attr_X
 0
 0
 
-Snowball_Options
+Snowball_A_Options
+0
+0
+0
+1
+1
+0
+
+Snowball_X_Options
 0
 1
 0
