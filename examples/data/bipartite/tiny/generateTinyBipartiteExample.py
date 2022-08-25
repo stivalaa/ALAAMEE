@@ -54,7 +54,7 @@ network_name <- 'tiny'
 m <- 3
 n <- 2
 g <- make_bipartite_graph(types = c(rep(FALSE, m), rep(TRUE, n)),
-                          edges = c(1,4, 1,5, 2,4, 2,5, 3,5, 3,4),
+                          edges = c(1,4, 1,5, 2,4, 3,5, 3,4),
                           directed = FALSE)
 stopifnot(vcount(g) == m + n)
  

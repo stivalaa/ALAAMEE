@@ -1,21 +1,19 @@
 Session_Name
 tiny_bipartite_mpnet_alaam
 Session_Folder
-D:\Documents\USI\ALAAMEE\examples\data\bipartite\tiny
+C:\Users\user\Documents\USI\ALAAMEE\examples\data\bipartite\tiny
 Num_nodes_A
 3
 Num_nodes_P
 2
 ALAAM
 1
-D:\Documents\USI\ALAAMEE\examples\data\bipartite\tiny\tiny_outcome.txt
+C:\Users\user\Documents\USI\ALAAMEE\examples\data\bipartite\tiny\tiny_outcome.txt
 Net_A
 0
 0
 0
 0
-0
-
 0
 
 0
@@ -33,19 +31,13 @@ Net_B
 
 0
 
-0
-
 Net_X
 1
 0
 0
 0
 0
-0
-D:\Documents\USI\ALAAMEE\examples\data\bipartite\tiny\tiny_biadjacency_matrix.txt
-
-0
-
+C:\Users\user\Documents\USI\ALAAMEE\examples\data\bipartite\tiny\tiny_biadjacency_matrix.txt
 0
 
 0
@@ -72,6 +64,11 @@ ContagionA
 2
 0
 Ego-2StarA
+0
+0
+2
+0
+Ego-3StarA
 0
 0
 2
@@ -117,6 +114,11 @@ ContagionB
 2
 0
 Ego-2StarB
+0
+0
+2
+0
+Ego-3StarB
 0
 0
 2
@@ -179,7 +181,7 @@ C4X-1A
 C4X-2A
 0
 0
-1
+2
 0
 DensityXB
 1
@@ -455,15 +457,7 @@ Dy_Attr_X
 0
 0
 
-Snowball_A_Options
-0
-0
-0
-1
-1
-0
-
-Snowball_X_Options
+Snowball_Options
 0
 1
 0

@@ -8,6 +8,5 @@
 1 4 1 c Black
 1 5 1 c Black
 2 4 1 c Black
-2 5 1 c Black
 3 4 1 c Black
 3 5 1 c Black
