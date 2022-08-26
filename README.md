@@ -21,7 +21,7 @@ Byshkin, M., Stivala, A., Mira, A., Robins, G., & Lomi, A. (2018). [Fast Maximum
 
 Daraganova, G., & Robins, G. (2013). Autologistic actor attribute models. In D. Lusher, J. Koskinen, and G. Robins, editors, Exponential Random Graph Models for Social Networks, chapter 9, pages 102-114. Cambridge University Press, New York.
 
-Parker, A., Pallotti, F., & Lomi, A. (2021). New network models for the analysis of social contagion in organizations: an introduction to autologistic actor attribute models. Organizational Research Methods, 10944281211005167. https://doi.org/10.1177%2F10944281211005167
+Parker, A., Pallotti, F., & Lomi, A. (2022). New network models for the analysis of social contagion in organizations: an introduction to autologistic actor attribute models. *Organizational Research Methods*, 25(3), 513–540. https://doi.org/10.1177/10944281211005167
 
 Robins, G., Pattison, P., & Elliott, P. (2001). Network models for social influence processes. *Psychometrika*, 66(2), 161-189. https://link.springer.com/article/10.1007/BF02294834
 
