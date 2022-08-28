@@ -195,7 +195,6 @@ def changeBipartiteFourCycle1(mode, G, A, i):
        \ /
         o
     """
-    # FIXME getting 718 on obs stats for test case but MPNet gets 612
     # TODO rewrite so no inefficient loop over all mode nodes
     if G.bipartite_node_mode(i) == mode:
         delta = 0
@@ -218,7 +217,6 @@ def changeBipartiteFourCycle2(mode, G, A, i):
        \ /
         o
     """
-    # FIXME getting 122 on obs stats for test case but MPNet gets 141
     # TODO rewrite so no inefficient loop over all mode nodes
     if G.bipartite_node_mode(i) == mode:
         delta = 0
