@@ -415,13 +415,13 @@
 91 123
 91 127
 
-Density	0.0735
+Density	0.07352172
 Degree Distribution(s)
-Mean degree A	3.0879
-Stddev A	3.6014
-Skewness A	2.6834
-Mean degree B	6.6905
-Stddev B	5.5765
-Skewness B	1.1396
+Mean degree A	3.08791209
+Stddev A	3.60138354
+Skewness A	2.68340908
+Mean degree B	6.69047619
+Stddev B	5.57646665
+Skewness B	1.13961833
 Clustering coefficent
-Global	0.2086
+Global	0.20855581
