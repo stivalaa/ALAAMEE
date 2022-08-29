@@ -247,21 +247,7 @@ class Graph:
         Count undirected two-paths for (i, j): paths i -- v -- j for some v
         (where v is distinct from both i and j, which are also distinct)
         """
-        if i == j:
-            return 0
+        assert(len(list(self.neighbourIterator(i))) == len(set(self.neighbourIterator(i)))) # check no repeated neighbours in iterator
+        assert(len(list(self.neighbourIterator(j))) == len(set(self.neighbourIterator(j)))) # check no repeated neighbours in iterator        
+        return sum([(v in list(self.neighbourIterator(j))) for v in self.neighbourIterator(i)]) if i != j else 0
 
-        count = 0
-        assert(len(list(self.neighbourIterator(i))) == len(set(self.neighbourIterator(i)))) #XXX check no repeated neighbours in iterator
-        assert(len(list(self.neighbourIterator(j))) == len(set(self.neighbourIterator(j)))) #XXX check no repeated neighbours in iterator        
-        for v in self.neighbourIterator(i):
-            if v == i or v == j:
-                continue
-            for u in self.neighbourIterator(j):
-                if u == v and u != i:
-                    count += 1
-
-        count2 = sum([(v in list(self.neighbourIterator(j))) for v in self.neighbourIterator(i)])
-        assert(count == count2)
-        #TODO remove loop version after testing list comprehension version
-        #TODO iterate over smaller degree of i and j not just always i
-        return count
