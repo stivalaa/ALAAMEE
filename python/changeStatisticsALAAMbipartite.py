@@ -163,8 +163,8 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
     delta =  (changeStatisticsALAAM.changePartnerActivityTwoPath(G, A, i)
               if G.bipartite_node_mode(i) == mode else 0)
 
-    delta_SLOW = changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i)
-    assert delta == delta_SLOW
+    # delta_SLOW = changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i)
+    # assert delta == delta_SLOW
     return delta
 
     
@@ -199,8 +199,8 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
     delta = (changeStatisticsALAAM.changeIndirectPartnerAttribute(G, A, i)
              if G.bipartite_node_mode(i) == mode else 0)
 
-    delta_SLOW = changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i)
-    assert delta == delta_SLOW
+    # delta_SLOW = changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i)
+    # assert delta == delta_SLOW
     return delta
 
 
