@@ -8,6 +8,7 @@
 #
 
 import math
+import functools
 from utils import int_or_na,float_or_na,NA_VALUE
 
 
@@ -240,6 +241,7 @@ class Graph:
         return iter(self.G.keys())
 
 
+    @functools.cache # Memoize the twoPaths function (Python 3.9)
     def twoPaths(self, i, j):
         """
         Count undirected two-paths for (i, j): paths i -- v -- j for some v
