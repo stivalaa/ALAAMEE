@@ -222,6 +222,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             sys.stdout.write('%30.30s % 6.3f\n' % (goflabels[j], gofresult[j]))
         print()
 
+        print(G.twoPaths.cache_info()) # functools.cache stats for twoPath
+
     
 def run_example():
     """
