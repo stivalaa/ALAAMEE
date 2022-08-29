@@ -132,16 +132,13 @@ def changeBipartiteEgoTwoStar(mode, G, A, i):
             if G.bipartite_node_mode(i) == mode else 0)
 
 
-def changeBipartiteAlterTwoStar1(mode, G, A, i):
+def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
     """
     Change statistic for bipartite alter two-star 1
     AlterX-2Star1[mode]
 
     x--o--*
     """
-    delta =  (changeStatisticsALAAM.changePartnerActivityTwoPath(G, A, i)
-              if G.bipartite_node_mode(i) == mode else 0)
-
     # different (less efficient) implementation using twoPath as done in MPNet
     # TODO remove when testing done (move to pytest tests?)
     delta2 = 0
@@ -152,21 +149,32 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
     # one-liner more elegant but still inefficient version:
     delta3 = sum([G.twoPaths(i, v)  for v in G.nodeModeIterator(mode)]) if G.bipartite_node_mode(i) == mode else 0
             
-    assert delta == delta2
     assert delta2 == delta3
-    
+    return delta2
+
+
+def changeBipartiteAlterTwoStar1(mode, G, A, i):
+    """
+    Change statistic for bipartite alter two-star 1
+    AlterX-2Star1[mode]
+
+    x--o--*
+    """
+    delta =  (changeStatisticsALAAM.changePartnerActivityTwoPath(G, A, i)
+              if G.bipartite_node_mode(i) == mode else 0)
+
+    delta_SLOW = changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i)
+    assert delta == delta_SLOW
     return delta
 
-def changeBipartiteAlterTwoStar2(mode, G, A, i):
+    
+def changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i):
     """
     Change statistic for bipartite alter two-star 2
     AlterX-2Star2[mode]
 
     *--o--*
     """
-    delta = (changeStatisticsALAAM.changeIndirectPartnerAttribute(G, A, i)
-             if G.bipartite_node_mode(i) == mode else 0)
-
     # different (less efficient) implementation using twoPath as done in MPNet
     # TODO remove when testing done (move to pytest tests?)    
     delta2 = 0
@@ -178,9 +186,21 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
     # one-liner more elegant but still inefficient version:
     delta3 = sum([G.twoPaths(i, v) if A[v] == 1 else 0  for v in G.nodeModeIterator(mode)]) if G.bipartite_node_mode(i) == mode else 0
     
-    assert delta == delta2
     assert delta2 == delta3
-    
+    return delta2
+
+def changeBipartiteAlterTwoStar2(mode, G, A, i):
+    """
+    Change statistic for bipartite alter two-star 2
+    AlterX-2Star2[mode]
+
+    *--o--*
+    """
+    delta = (changeStatisticsALAAM.changeIndirectPartnerAttribute(G, A, i)
+             if G.bipartite_node_mode(i) == mode else 0)
+
+    delta_SLOW = changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i)
+    assert delta == delta_SLOW
     return delta
 
 
