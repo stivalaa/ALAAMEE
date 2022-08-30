@@ -190,7 +190,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     print('at end theta = ', theta)
 
     print
-    print(G.twoPaths.cache_info()) # functools.cache stats for twoPath
+    #commented out to stop "AttributeError: 'Digraph' object has no attribute 'twoPaths'":
+    #print(G.twoPaths.cache_info()) # functools.cache stats for twoPath
 
     
 
