@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=100M
-#SBATCH --time=0-00:20:00
+#SBATCH --time=0-00:40:00
 #SBATCH --output=alaam_sa_inouye-%j.out
 #SBATCH --error=alaam_sa_inouye-%j.err
 

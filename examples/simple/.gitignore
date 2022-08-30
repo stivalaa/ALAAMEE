@@ -23,3 +23,5 @@ alaam_sa_simn500_zoo-*.out
 slurm-*.out
 alaam_sa_python_karate-*.err
 alaam_sa_python_karate-*.out
+alaam_sa_inouye-*.err
+alaam_sa_inouye-*.out
