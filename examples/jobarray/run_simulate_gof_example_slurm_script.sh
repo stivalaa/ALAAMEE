@@ -27,6 +27,7 @@ time ../../python/computeALAAMstatisticsSimpleDemo.py | tee ${OBSTATS_FILE}
 time ./runALAAMsimulateGoFexample.py  | tee ${SIMSTATS_FILE}
 
 
+module unload python # otherwise module load r fails
 module load r
 Rscript ../../R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
