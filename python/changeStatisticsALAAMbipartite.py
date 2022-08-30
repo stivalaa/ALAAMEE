@@ -215,7 +215,7 @@ def changeBipartiteFourCycle1_OLD(mode, G, A, i):
        \ /
         o
     """
-    # different (less efficient) implementation using twoPath as done in MPNet
+    # different mplementation using twoPath as done in MPNet
     # TODO remove when testing done (move to pytest tests?)    
     if G.bipartite_node_mode(i) == mode:
         delta = 0
@@ -248,6 +248,29 @@ def changeBipartiteFourCycle1(mode, G, A, i):
     return delta
 
 
+def changeBipartiteFourCycle2_OLD(mode, G, A, i):
+    """
+    Change statistic for bipartite four-cycle 2
+    C4X-2[mode]
+
+        o
+       / \
+      *   *
+       \ /
+        o
+    """
+    # different mplementation using twoPath as done in MPNet
+    # TODO remove when testing done (move to pytest tests?)    
+    if G.bipartite_node_mode(i) == mode:
+        delta = 0
+        for v in G.nodeModeIterator(mode):
+            if (A[v] == 1):
+                twoPathCount = G.twoPaths(i, v)
+                delta += twoPathCount * (twoPathCount - 1) / 2
+        return delta
+    else:
+        return 0
+    
 def changeBipartiteFourCycle2(mode, G, A, i):
     """
     Change statistic for bipartite four-cycle 2
@@ -259,14 +282,12 @@ def changeBipartiteFourCycle2(mode, G, A, i):
        \ /
         o
     """
-    # TODO rewrite so no inefficient loop over all mode nodes
-    if G.bipartite_node_mode(i) == mode:
-        delta = 0
-        for v in G.nodeModeIterator(mode):
-            if (A[v] == 1):
-                twoPathCount = G.twoPaths(i, v)
-                delta += twoPathCount * (twoPathCount - 1) / 2
-        return delta
-    else:
-        return 0
-    
+    # TODO rewrite so no inefficient loop (here implicit in list comprehension) over all mode nodes    
+    # uses assignment operator := introduced in Pyton 3.8
+    delta = sum(
+        [(twoPathCount := G.twoPaths(i,v)) * (twoPathCount - 1) / 2 for
+         v in G.nodeModeIterator(mode) if A[v] == 1]
+    ) if G.bipartite_node_mode(i) == mode else 0
+    delta_OLD = changeBipartiteFourCycle2_OLD(mode, G, A, i)
+    assert delta == delta_OLD
+    return delta
