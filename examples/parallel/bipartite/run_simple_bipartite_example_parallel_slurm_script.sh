@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem-per-cpu=100M
-#SBATCH --time=0-02:00:00
+#SBATCH --time=0-04:00:00
 #SBATCH --output=alaamee_bipartite_inouye-%j.out
 #SBATCH --error=alaamee_bipartite_inouye-%j.err
 
