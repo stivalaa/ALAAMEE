@@ -116,6 +116,10 @@ class Graph:
             self.insertEdge(i-1, j-1)    # input is 1-based but we are 0-based
             lsplit = f.readline().split()
 
+        # TODO move this to unit tests instead
+        for i in self.nodeIterator():
+            assert(len(list(self.neighbourIterator(i))) == len(set(self.neighbourIterator(i)))) # check no repeated neighbours in iterator
+            
         # Note in the following,
         #  map(list, zip(*[row.split() for row in open(filename).readlines()]))
         # reads the data and transposes it so we have a list of columns
@@ -247,7 +251,5 @@ class Graph:
         Count undirected two-paths for (i, j): paths i -- v -- j for some v
         (where v is distinct from both i and j, which are also distinct)
         """
-        assert(len(list(self.neighbourIterator(i))) == len(set(self.neighbourIterator(i)))) # check no repeated neighbours in iterator
-        assert(len(list(self.neighbourIterator(j))) == len(set(self.neighbourIterator(j)))) # check no repeated neighbours in iterator        
         return sum([(v in self.neighbourIterator(j)) for v in self.neighbourIterator(i)]) if i != j else 0
 
