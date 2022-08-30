@@ -249,5 +249,5 @@ class Graph:
         """
         assert(len(list(self.neighbourIterator(i))) == len(set(self.neighbourIterator(i)))) # check no repeated neighbours in iterator
         assert(len(list(self.neighbourIterator(j))) == len(set(self.neighbourIterator(j)))) # check no repeated neighbours in iterator        
-        return sum([(v in list(self.neighbourIterator(j))) for v in self.neighbourIterator(i)]) if i != j else 0
+        return sum([(v in self.neighbourIterator(j)) for v in self.neighbourIterator(i)]) if i != j else 0
 
