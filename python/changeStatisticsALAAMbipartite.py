@@ -243,8 +243,8 @@ def changeBipartiteFourCycle1(mode, G, A, i):
         [(twoPathCount := G.twoPaths(i,v)) * (twoPathCount - 1) / 2 for
          v in G.nodeModeIterator(mode)]
     ) if G.bipartite_node_mode(i) == mode else 0
-    delta_OLD = changeBipartiteFourCycle1_OLD(mode, G, A, i)
-    assert delta == delta_OLD
+    # delta_OLD = changeBipartiteFourCycle1_OLD(mode, G, A, i)
+    # assert delta == delta_OLD
     return delta
 
 
