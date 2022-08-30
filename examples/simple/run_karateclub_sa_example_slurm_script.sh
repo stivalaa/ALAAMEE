@@ -8,7 +8,7 @@
 #SBATCH --output=alaam_sa_python_karate-%j.out
 #SBATCH --error=alaam_sa_python_karate-%j.err
 
-module load python/3.8.5
+module load python/3.9.0
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 

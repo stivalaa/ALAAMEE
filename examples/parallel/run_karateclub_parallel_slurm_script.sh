@@ -12,7 +12,7 @@ uname -a
 echo SLURM_CPUS_PER_TASK = $SLURM_CPUS_PER_TASK
 echo -n "started at: "; date
 
-module load python/3.8.5
+module load python/3.9.0
 
 NUM_RUNS=40
 NUM_RUNS_MINUS_ONE=`expr ${NUM_RUNS} - 1`
