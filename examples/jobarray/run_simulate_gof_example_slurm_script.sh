@@ -6,6 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --mem=2GB
 
+module load python/3.9.0
 
 # example to run simulation from parameters and plot observed
 # statistics of network frmo which the parmeters were estimated as
@@ -24,6 +25,9 @@ time ../../python/computeALAAMstatisticsSimpleDemo.py | tee ${OBSTATS_FILE}
 # TODO parse parameters for simulation from estimation output (currently 
 #      hardcoded in ./runALAAMsimulateGoFexample.py  script)
 time ./runALAAMsimulateGoFexample.py  | tee ${SIMSTATS_FILE}
+
+
+module load r
 Rscript ../../R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
 
