@@ -18,6 +18,7 @@
 
 echo SLURM_ARRAY_TASK_ID = ${SLURM_ARRAY_TASK_ID}
 
+module load python/3.9.0
 python3 ../../python/runALAAMEESimpleDemoN1000Parallel.py ${SLURM_ARRAY_TASK_ID}
 
 
