@@ -16,7 +16,7 @@ echo -n "started at: "; date
 
 module load python/3.8.5
 
-NUM_RUNS=40
+NUM_RUNS=20
 
 echo NUM_RUNS = $NUM_RUNS
 NUM_RUNS_MINUS_ONE=`expr ${NUM_RUNS} - 1`

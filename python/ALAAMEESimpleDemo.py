@@ -189,6 +189,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     dzA_outfile.close()
     print('at end theta = ', theta)
 
+    print
+    print(G.twoPaths.cache_info()) # functools.cache stats for twoPath
+
     
 
 def run_example():
