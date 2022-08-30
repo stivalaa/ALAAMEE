@@ -2,9 +2,15 @@ Simple python implementation of Equilibrium Expectation estimation of
 ALAAM parameters. Also includes an implementation of the Robbins-Monro
 stochastic approximation algorithm for estimating ALAAM parameters.
 
-Now using Python 3 (no longer Python 2.7). Tested with Python 3.8.9 and
-Numpy 1.19.4 on Cygwin under Windows 10, and Python 3.8.5 and Numpy 1.19.2
-on Linux (CentOS).
+Now using Python 3 (no longer Python 2.7). Requires Python 3.9.0 or above
+to use functools.cache (but if @functools.cache is removed, works on 
+earlier Python versions).
+
+Originally tested with Python 3.8.9 and Numpy 1.19.4 on Cygwin under
+Windows 10, and Python 3.8.5 and Numpy 1.19.2 on Linux (CentOS).
+
+With @functools.cache tested with Python 3.9.10 and Numpy 1.22.1 on Cygwin
+under Windows 10, and Python 3.9.0 and Numpy 1.19.4 on Linux (CentOS).
 
 ADS
-Tue Apr 27 09:40:21 AEST 2021
+Tue Aug 30 12:13:22 AEST 2022
