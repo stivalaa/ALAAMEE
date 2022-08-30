@@ -204,7 +204,7 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
     return delta
 
 
-def changeBipartiteFourCycle1_SLOW(mode, G, A, i):
+def changeBipartiteFourCycle1_OLD(mode, G, A, i):
     """
     Change statistic for bipartite four-cycle 1
     C4X-1[mode]
@@ -237,18 +237,16 @@ def changeBipartiteFourCycle1(mode, G, A, i):
        \ /
         o
     """
-    # TODO rewrite so no inefficient loop over all mode nodes    
-    if G.bipartite_node_mode(i) == mode:
-        delta = 0
-        for v in G.nodeModeIterator(mode):
-            twoPathCount = G.twoPaths(i, v)
-            delta += twoPathCount * (twoPathCount - 1) / 2
-        # delta_SLOW = changeBipartiteFourCycle1_SLOW(mode, G, A, i)
-        # print ("XXX", delta_SLOW, delta)
-        # assert delta == delta_SLOW
-        return delta
-    else:
-        return 0
+    # TODO rewrite so no inefficient loop (here implicit in list comprehension) over all mode nodes    
+    # uses assignment operator := introduced in Pyton 3.8
+    delta = sum(
+        [(twoPathCount := G.twoPaths(i,v)) * (twoPathCount - 1) / 2 for
+         v in G.nodeModeIterator(mode)]
+    ) if G.bipartite_node_mode(i) == mode else 0
+    delta_OLD = changeBipartiteFourCycle1_OLD(mode, G, A, i)
+    assert delta == delta_OLD
+    return delta
+
 
 def changeBipartiteFourCycle2(mode, G, A, i):
     """
