@@ -226,8 +226,12 @@ def changeBipartiteFourCycle1_OLD(mode, G, A, i):
     else:
         return 0
 
-def changeBipartiteFourCycle1(mode, G, A, i):
+
+def changeBipartiteFourCycle1_helper(mode, G, i):
     """
+    Does not have numpy array A as parameter (not hashable), so we
+    can use functools.cache
+    
     Change statistic for bipartite four-cycle 1
     C4X-1[mode]
 
@@ -246,6 +250,20 @@ def changeBipartiteFourCycle1(mode, G, A, i):
     # delta_OLD = changeBipartiteFourCycle1_OLD(mode, G, A, i)
     # assert delta == delta_OLD
     return delta
+
+    
+def changeBipartiteFourCycle1(mode, G, A, i):
+    """
+    Change statistic for bipartite four-cycle 1
+    C4X-1[mode]
+
+        o
+       / \
+      x   *
+       \ /
+        o
+    """
+    return changeBipartiteFourCycle1_helper(mode, G, i);
 
 
 def changeBipartiteFourCycle2_OLD(mode, G, A, i):
