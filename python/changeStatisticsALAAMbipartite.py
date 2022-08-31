@@ -95,6 +95,7 @@ See
 """
 
 import math
+import functools
 
 from utils import NA_VALUE
 from BipartiteGraph import BipartiteGraph
@@ -227,6 +228,7 @@ def changeBipartiteFourCycle1_OLD(mode, G, A, i):
         return 0
 
 
+@functools.cache # Memoize the following function (Python 3.9)
 def changeBipartiteFourCycle1_helper(mode, G, i):
     """
     Does not have numpy array A as parameter (not hashable), so we
