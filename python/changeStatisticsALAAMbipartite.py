@@ -302,7 +302,7 @@ def changeBipartiteFourCycle2(mode, G, A, i):
        \ /
         o
     """
-    # TODO rewrite so no inefficient loop (here implicit in list comprehension) over all mode nodes    
+    # TODO rewrite so no inefficient loop (here implicit in list comprehension) over all mode nodes (maybe try building twoPaths hash table and iterating over that instead of nodes, so as to only iterate over nodes with nonzero twopaths - but this would require splitting it into one table for each node [e.g. table of tables where array is indexed by node and hash table by node, rather htan hash table indexed by pair of nodes - just like the Graph struture itself] in order to be more efficient than ust iterating over al lnodes)
     # uses assignment operator := introduced in Pyton 3.8
     delta = sum(
         [(twoPathCount := G.twoPaths(i,v)) * (twoPathCount - 1) / 2 for
