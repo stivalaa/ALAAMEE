@@ -222,9 +222,11 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             sys.stdout.write('%30.30s % 6.3f\n' % (goflabels[j], gofresult[j]))
         print()
 
-        #commented out to stop "AttributeError: 'Digraph' object has no attribute 'twoPaths'":
-        #print(G.twoPaths.cache_info()) # functools.cache stats for twoPath
-
+        if isinstance(G, BipartiteGraph):
+            print("twoPaths cache info: ", G.twoPaths.cache_info())
+            print("changeBipartiteFourCycle1_helper cache info: ", 
+                   changeBipartiteFourCycle1_helper.cache_info())
+    
     
 def run_example():
     """
