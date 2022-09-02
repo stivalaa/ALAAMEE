@@ -1,16 +1,12 @@
 # ALAAMEE
 
-Autologistic Actor Attribute Model (ALAAM) parameter estimation using
-Equilibrium Expectation (EE) algorithm. Also includes an implementation
-of the Robbins-Monro stochastic approximation algorithm for estimating
-ALAAM parameters, and functions for simulation and goodness-of-fit tests.
+Autologistic Actor Attribute Model (ALAAM) parameter estimation using Equilibrium Expectation (EE) algorithm. Also includes an implementation of the Robbins-Monro stochastic approximation algorithm for estimating ALAAM parameters, and functions for simulation and goodness-of-fit tests.
 
-This software is applicable to one-mode networks (directed or undirected),
-and undirected two-mode (bipartite) networks.
+The ALAAM is a social influence model. Parameters of the model are estimated that maximize the likelihood of an observed binary outcome for each node, given a social network and nodal attributes, allowing the outcome on other nodes to influence a node's outcome.
 
-This Python implementation uses the NumPy library for vector and 
-matrix data types and functions. In addition, there are R scripts for
-estimating standard errors and plotting results from the output.
+This software is applicable to one-mode networks (directed or undirected), and undirected two-mode (bipartite) networks. It allows for estimation from network snowball samples (Stivala et al., 2020).
+
+This Python implementation uses the NumPy library for vector and matrix data types and functions. In addition, there are R scripts for estimating standard errors and plotting results from the output.
 
 ## Other software
 
