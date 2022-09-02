@@ -8,7 +8,7 @@ This software is applicable to one-mode networks (directed or undirected), and u
 
 This Python implementation uses the NumPy library for vector and matrix data types and functions. In addition, there are R scripts for estimating standard errors and plotting results from the output.
 
-## Other software
+## Other ALAAM software
 
 * For the original Windows GUI implementation using stochastic approximation, for one-mode, two-mode, and multilevel networks, [MPNet](http://www.melnet.org.au/pnet).
 * For a Bayesian version handling missing ties and sampled networks (Koskinen & Daraganova, 2022), implemented in R, https://github.com/johankoskinen/ALAAM
