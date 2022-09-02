@@ -10,7 +10,7 @@ This Python implementation uses the NumPy library for vector and matrix data typ
 
 ## Other software
 
-* For the original Windows GUI implementation using stochastic appromximation, for one-mode, two-mode, and multievel networks, [MPNet](http://www.melnet.org.au/pnet).
+* For the original Windows GUI implementation using stochastic approximation, for one-mode, two-mode, and multilevel networks, [MPNet](http://www.melnet.org.au/pnet).
 * For a Bayesian version handling missing ties and sampled networks (Koskinen & Daraganova, 2022), implemented in R, https://github.com/johankoskinen/ALAAM
 
 ## Funding
