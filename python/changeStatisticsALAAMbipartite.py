@@ -264,11 +264,11 @@ def changeBipartiteFourCycle1(mode, G, A, i):
        \ /
         o
     """
-    delta_OLD = changeBipartiteFourCycle1_OLD2(mode, G, i);
+    #delta_OLD = changeBipartiteFourCycle1_OLD2(mode, G, i);
     delta = (sum([(p := G.twoPathsMatrix.getValue(i, j)) * (p - 1) / 2
                  for j in G.twoPathsMatrix.rowNonZeroColumnsIterator(i)])
              if G.bipartite_node_mode(i) == mode else 0)
-    assert delta_OLD == delta
+    #assert delta_OLD == delta
     return delta
 
 

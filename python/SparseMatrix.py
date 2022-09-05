@@ -33,7 +33,7 @@ class SparseMatrix:
 
     def __init__(self, n):
         """
-        Construct sparse square matrix with n rows, all zero.
+        Construct sparse matrix with n rows, all zero.
 
         Parameters:
             n                  - number of rows
