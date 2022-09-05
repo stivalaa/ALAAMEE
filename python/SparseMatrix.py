@@ -44,6 +44,11 @@ class SparseMatrix:
         # empty sparse matrix n rows        
         self.A = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
 
+    def getValue(self, i, j):
+        """
+        Return value A(i, j)
+        """
+        return self.A[i][j] if j in self.A[i] else 0
 
     def numRows(self):
         """
