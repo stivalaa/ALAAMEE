@@ -27,7 +27,6 @@ def test_undirected_change_stats_karate():
     assert g.numNodes() == 34
     assert g.numEdges() == 78
     assert round(g.density(), 7) == 0.1390374 # from R/igraph
-    print(time.time() - start, "s")
     g.printSummary()
     outcome_binvar = list(map(int, open("../examples/data/karate_club/karate_outcome.txt").read().split()[1:]))
     obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changeContagion, changeTriangleT1, changeTriangleT2, changeTriangleT3, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute, partial(changeoOb, "senior"), partial(changeo_Ob, "senior"), partial(changeoOc, "age"), partial(changeo_Oc, "age"), partial(changeoO_Osame, "gender")])
@@ -37,6 +36,8 @@ def test_undirected_change_stats_karate():
                                                 [changePartnerActivityTwoPath])
     print (obs_alter2star1)
     assert obs_alter2star1 == [566] # verified on MPNet
+    print("OK,", time.time() - start, "s")
+
 
 def main():
     """main: run all tests
