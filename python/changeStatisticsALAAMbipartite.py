@@ -229,7 +229,7 @@ def changeBipartiteFourCycle1_OLD(mode, G, A, i):
 
 
 @functools.cache # Memoize the following function (Python 3.9)
-def changeBipartiteFourCycle1_helper(mode, G, i):
+def changeBipartiteFourCycle1_OLD2(mode, G, i):
     """
     Does not have numpy array A as parameter (not hashable), so we
     can use functools.cache
@@ -243,7 +243,6 @@ def changeBipartiteFourCycle1_helper(mode, G, i):
        \ /
         o
     """
-    # TODO rewrite so no inefficient loop (here implicit in list comprehension) over all mode nodes    
     # uses assignment operator := introduced in Pyton 3.8
     delta = sum(
         [(twoPathCount := G.twoPaths(i,v)) * (twoPathCount - 1) / 2 for
@@ -265,7 +264,12 @@ def changeBipartiteFourCycle1(mode, G, A, i):
        \ /
         o
     """
-    return changeBipartiteFourCycle1_helper(mode, G, i);
+    delta_OLD = changeBipartiteFourCycle1_OLD2(mode, G, i);
+    delta = (sum([(p := G.twoPathsMatrix.getValue(i, j)) * (p - 1) / 2
+                 for j in G.twoPathsMatrix.rowNonZeroColumnsIterator(i)])
+             if G.bipartite_node_mode(i) == mode else 0)
+    assert delta_OLD == delta
+    return delta
 
 
 def changeBipartiteFourCycle2_OLD(mode, G, A, i):
