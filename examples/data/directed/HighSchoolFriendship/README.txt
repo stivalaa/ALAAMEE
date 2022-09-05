@@ -46,6 +46,11 @@ cat highschool_friendship_catattr.txt | awk '{if (NR == 1) {print "2BIO3"} else 
 Results for ALAAM estimation with male as outcome attribute should look 
 something like this (from MPNet):
 
+Estimation
+Observed graph statistics:
+54.00	293.00	285.00	156.00	
+...
+
 Effects	Lambda	Parameter	Stderr	t-ratio	SACF
 DensityA	2.0000	-0.6577	0.327	0.081	-0.050	*
 SenderAttrA	2.0000	-0.0212	0.100	0.083	-0.058	
