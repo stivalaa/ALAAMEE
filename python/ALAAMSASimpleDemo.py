@@ -257,6 +257,6 @@ def run_bipartite_example():
                          'bipartiteAlterTwoStar1A',
                          'bipartiteAlterTwoStar2A',
                          'bipartiteFourCycle1A',
-                          'bipartiteFourCycle2A'],
+                         'bipartiteFourCycle2A'],
                         '../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt',
                         bipartite=True)
