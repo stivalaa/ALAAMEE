@@ -302,16 +302,15 @@ def changeBipartiteFourCycle2(mode, G, A, i):
        \ /
         o
     """
-    # TODO rewrite so no inefficient loop (here implicit in list comprehension) over all mode nodes (maybe try building twoPaths hash table and iterating over that instead of nodes, so as to only iterate over nodes with nonzero twopaths - but this would require splitting it into one table for each node [e.g. table of tables where array is indexed by node and hash table by node, rather htan hash table indexed by pair of nodes - just like the Graph struture itself] in order to be more efficient than ust iterating over al lnodes)
     # uses assignment operator := introduced in Pyton 3.8
-    delta = sum(
-        [(twoPathCount := G.twoPaths(i,v)) * (twoPathCount - 1) / 2 for
-         v in G.nodeModeIterator(mode) if A[v] == 1]
-    ) if G.bipartite_node_mode(i) == mode else 0
+
+    # delta = sum(
+    #     [(twoPathCount := G.twoPaths(i,v)) * (twoPathCount - 1) / 2 for
+    #      v in G.nodeModeIterator(mode) if A[v] == 1]
+    # ) if G.bipartite_node_mode(i) == mode else 0
     # delta_OLD = changeBipartiteFourCycle2_OLD(mode, G, A, i)
     # assert delta == delta_OLD
 
     delta_NEW =  sum([(p := G.twoPathsMatrix.getValue(i, j)) * (p - 1) / 2 for j in G.twoPathsMatrix.rowNonZeroColumnsIterator(i) if A[j] == 1]) if G.bipartite_node_mode(i) == mode else 0
-
-    assert delta_NEW == delta
-    return delta
+    #assert delta_NEW == delta
+    return delta_NEW
