@@ -49,7 +49,6 @@ from Graph import Graph
 from Digraph import Digraph
 from BipartiteGraph import BipartiteGraph
 from changeStatisticsALAAM import *
-from changeStatisticsALAAMbipartite import changeBipartiteFourCycle1_helper
 from initialEstimator import algorithm_S
 #OLD:from equilibriumExpectation import algorithm_EE,THETA_PREFIX,DZA_PREFIX
 from equilibriumExpectationBorisenko import algorithm_EE,THETA_PREFIX,DZA_PREFIX
@@ -193,9 +192,6 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     print
     if isinstance(G, BipartiteGraph):
         print("twoPaths cache info: ", G.twoPaths.cache_info())
-        print("changeBipartiteFourCycle1_helper cache info: ", 
-               changeBipartiteFourCycle1_helper.cache_info())
-        
 
     
 
