@@ -310,4 +310,8 @@ def changeBipartiteFourCycle2(mode, G, A, i):
     ) if G.bipartite_node_mode(i) == mode else 0
     # delta_OLD = changeBipartiteFourCycle2_OLD(mode, G, A, i)
     # assert delta == delta_OLD
+
+    delta_NEW =  sum([(p := G.twoPathsMatrix.getValue(i, j)) * (p - 1) / 2 for j in G.twoPathsMatrix.rowNonZeroColumnsIterator(i) if A[j] == 1]) if G.bipartite_node_mode(i) == mode else 0
+
+    assert delta_NEW == delta
     return delta
