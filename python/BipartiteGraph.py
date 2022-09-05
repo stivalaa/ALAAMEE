@@ -9,6 +9,7 @@
 
 import sys
 from Graph import Graph
+from SparseMatrix import SparseMatrix
 
 
 # Mode (node type) of a node for bipartite (two-mode) networks
@@ -57,6 +58,10 @@ class BipartiteGraph(Graph):
         l = f.readline() # first line must be e.g. "*vertices 500 200"
         n = int(l.split()[1])
         f.close()
+
+        # sparse matrix of two-path counts
+        self.twoPathsMatrix = SparseMatrix(n)
+
         try:
             self.num_A_nodes = int(l.split()[2])
         except IndexError:
@@ -101,6 +106,7 @@ class BipartiteGraph(Graph):
         if self.bipartite_node_mode(i) == self.bipartite_node_mode(j):
             raise ValueError("edge in bipartite graph inserted between nodes in same mode")
         super().insertEdge(i, j)
+        self.updateTwoPathsMatrix(i, j)
 
 
     def nodeModeIterator(self, mode):
@@ -110,3 +116,20 @@ class BipartiteGraph(Graph):
         """
         return filter(
             lambda v: self.bipartite_node_mode(v) == mode, self.G.keys())
+
+    def updateTwoPathsMatrix(self, i, j):
+        """
+        Update the two-paths sparse matrix used for fast computation
+        of some change statistics (specifically 4-cycles), for addition
+        of the edge i -- j.
+        """
+        for u in self.neighbourIterator(i):
+            if u == i or u == j:
+                continue
+            self.twoPathsMatrix.incrementValue(u, j)
+            self.twoPathsMatrix.incrementValue(j, u)
+        for u in self.neighbourIterator(j):
+            if u == i or u == j:
+                continue
+            self.twoPathsMatrix.incrementValue(u, i)
+            self.twoPathsMatrix.incrementValue(i, u)

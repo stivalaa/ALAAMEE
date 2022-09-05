@@ -75,6 +75,15 @@ class SparseMatrix:
         """
         self.A[i][j] = v
 
+    def incrementValue(self, i, j):
+        """
+        Increment (add 1) to A(i,j) in place
+        """
+        if j in self.A[i]:
+            self.A[i][j] += 1
+        else:
+            self.insertValue(i, j, 1)
+
     def removeValue(self, i, j):
         """
         Remove value for A(i,j) in place
