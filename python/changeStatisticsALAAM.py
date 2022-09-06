@@ -239,7 +239,7 @@ def changeo_Ob(attrname, G, A, i):
     """
     delta = 0
     for u in G.neighbourIterator(i):
-        delta += 0 if G.binattr[attrname][i] == NA_VALUE else G.binattr[attrname][u]
+        delta += 0 if G.binattr[attrname][u] == NA_VALUE else G.binattr[attrname][u]
     return delta
 
 
