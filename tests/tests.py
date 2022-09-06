@@ -32,7 +32,7 @@ def get_random_nodelist(G, A):
 
     Return value: list of nodes in A (with replacement)
     """
-    NUM_TESTS = 1000
+    NUM_TESTS = 10000
     nodelist = [None] * NUM_TESTS
     for k in range(NUM_TESTS):
         # select a node  i uniformly at random
