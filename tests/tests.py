@@ -291,7 +291,7 @@ def main():
     test_bipartite_change_stats_tiny()
     test_bipartite_change_stats_inouye()
     test_regression_bipartite_change_stats("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net", "../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt")
-    #too slow (several minutes) even with only 100 tests: test_regression_bipartite_change_stats("../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_bipartite.net", "../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_outcome.txt")
+    #too slow (and data large for GitHub): test_regression_bipartite_change_stats("../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_bipartite.net", "../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_outcome.txt", 10)
 
 if __name__ == "__main__":
     main()
