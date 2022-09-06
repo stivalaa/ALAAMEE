@@ -264,6 +264,26 @@ def test_regression_twopaths(netfilename):
     for i in g.nodeModeIterator(MODE_A):
         for j in g.nodeModeIterator(MODE_B):
             assert g.twoPathsMatrix.getValue(i, j) == g.twoPaths(i, j)
+
+    print("OK,", time.time() - start, "s")
+    print()
+
+def test_regression_twopaths_iterators(netfilename):
+    """
+    test iterator fuinctions for two-paths sparse matrix.
+    For bipartite only, since only build matrix for bipartite
+
+    Parameters:
+           netfile      - filename bipartite network in Pajek format
+    """
+    print("testing two-paths sparse matrix iterators for ", netfilename)
+    start = time.time()
+    g = BipartiteGraph(netfilename)
+    g.printSummary()
+    for i in range(g.numNodes()):
+        for j in g.twoPathsMatrix.rowNonZeroColumnsIterator(i):
+            assert g.twoPathsMatrix.getValue(i, j) != 0
+            assert g.twoPathsMatrix.getValue(i, j) == g.twoPaths(i, j)
     print("OK,", time.time() - start, "s")
     print()
 
@@ -312,6 +332,7 @@ def main():
     test_bipartite_change_stats_tiny()
     test_bipartite_change_stats_inouye()
     test_regression_twopaths("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net")
+    test_regression_twopaths_iterators("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net")
     test_regression_bipartite_change_stats("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net", "../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt")
     #too slow (and data large for GitHub): test_regression_bipartite_change_stats("../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_bipartite.net", "../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_outcome.txt", 10)
 
