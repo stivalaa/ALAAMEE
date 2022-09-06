@@ -12,7 +12,7 @@ import random
 from functools import partial
 import numpy
 
-from Graph import Graph
+from Graph import Graph,int_or_na
 from Digraph import Digraph
 from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
 from computeObservedStatistics import computeObservedStatistics
@@ -32,7 +32,7 @@ def get_random_nodelist(G, A):
 
     Return value: list of nodes in A (with replacement)
     """
-    NUM_TESTS = 10000
+    NUM_TESTS = 100
     nodelist = [None] * NUM_TESTS
     for k in range(NUM_TESTS):
         # select a node  i uniformly at random
@@ -114,7 +114,7 @@ def test_undirected_change_stats_karate():
     assert g.numEdges() == 78
     assert round(g.density(), 7) == 0.1390374 # from R/igraph
     g.printSummary()
-    outcome_binvar = list(map(int, open("../examples/data/karate_club/karate_outcome.txt").read().split()[1:]))
+    outcome_binvar = list(map(int_or_na, open("../examples/data/karate_club/karate_outcome.txt").read().split()[1:]))
     obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changeContagion, changeTriangleT1, changeTriangleT2, changeTriangleT3, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute, partial(changeoOb, "senior"), partial(changeo_Ob, "senior"), partial(changeoOc, "age"), partial(changeo_Oc, "age"), partial(changeoO_Osame, "gender")])
     print(obs_stats)
     assert all(numpy.round(obs_stats, 3) == numpy.array([18, 80, 271, 955, 35, 57, 55, 18, 219, 477, 416, 12, 49, 578.407, 2537.189, 20])) # verified on IPNet 1.5  (nb IPNet 1.5 uses binattr not contattr on matching hence 20 not 40 for oO_Osame_gender)
@@ -162,7 +162,7 @@ def test_regression_undirected_change_stats():
     assert g.numEdges() == 3001
     assert round(g.density(), 9) == 0.006008008 # from R/igraph
     g.printSummary()
-    outcome_binvar = list(map(int, open("../examples/data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt").read().split()[1:]))
+    outcome_binvar = list(map(int_or_na, open("../examples/data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt").read().split()[1:]))
 
     nodelist = get_random_nodelist(g, outcome_binvar)
     outcome_binvar_orig = numpy.copy(outcome_binvar)
@@ -227,7 +227,7 @@ def test_bipartite_change_stats_inouye():
     twopaths = sum([(g.twoPaths(i, j) if i < j else 0) for i in g.nodeIterator() for j in g.nodeIterator()])    
     assert twopaths == 2314 # verified in statnet (see ../examples/data/bipartite/Inouye_Pyke_pollinator_web/testing.txt)
 
-    outcome_binvar = list(map(int, open("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt").read().split()[1:]))
+    outcome_binvar = list(map(int_or_na, open("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt").read().split()[1:]))
     obs_stats = computeObservedStatistics(g, outcome_binvar,
                         [partial(changeBipartiteDensity, MODE_A),
                          partial(changeBipartiteActivity, MODE_A),
@@ -255,7 +255,7 @@ def test_regression_bipartite_change_stats(netfilename, outcomefilename):
     start = time.time()
     g = BipartiteGraph(netfilename)
     g.printSummary()
-    outcome_binvar = list(map(int, open(outcomefilename).read().split()[1:]))
+    outcome_binvar = list(map(int_or_na, open(outcomefilename).read().split()[1:]))
 
     print("changeBipartiteAlterTwoStar1")
     compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteAlterTwoStar1_SLOW, MODE_A), partial(changeBipartiteAlterTwoStar1, MODE_A))
@@ -283,6 +283,7 @@ def main():
     test_bipartite_change_stats_tiny()
     test_bipartite_change_stats_inouye()
     test_regression_bipartite_change_stats("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net", "../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt")
+    test_regression_bipartite_change_stats("../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_bipartite.net", "../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_outcome.txt")
 
 if __name__ == "__main__":
     main()
