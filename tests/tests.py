@@ -182,6 +182,29 @@ def test_bipartite_change_stats_tiny():
     print("OK,", time.time() - start, "s")
     print()
 
+def test_bipartite_change_stats_inouye():
+    """ test BipartiteGraph object and bipartite undirected change stats on
+    Inouye-Pyke pollinator web example
+    """
+    print("testing bipartrite change stats on Inouye-Pyke example...")
+    start = time.time()
+    g = BipartiteGraph("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net")
+    assert g.numNodes() == 133
+    assert g.numEdges() == 281
+    assert len(list(g.nodeModeIterator(MODE_A))) == 91
+    assert len(list(g.nodeModeIterator(MODE_B))) == 42
+    g.printSummary()
+    b2star2 = sum([(g.twoPaths(i, j) if i < j else 0) for i in g.nodeModeIterator(MODE_A) for j in g.nodeModeIterator(MODE_A)])
+    assert b2star2 == 1437 # verified in statnet (see ../examples/data/bipartite/Inouye_Pyke_pollinator_web/testing.txt)
+    b1star2 = sum([(g.twoPaths(i, j) if i < j else 0) for i in g.nodeModeIterator(MODE_B) for j in g.nodeModeIterator(MODE_B)])
+    assert b1star2 == 877 # verified in statnet (see ../examples/data/bipartite/Inouye_Pyke_pollinator_web/testing.txt)
+    twopaths = sum([(g.twoPaths(i, j) if i < j else 0) for i in g.nodeIterator() for j in g.nodeIterator()])    
+    assert twopaths == 2314 # verified in statnet (see ../examples/data/bipartite/Inouye_Pyke_pollinator_web/testing.txt)
+
+    outcome_binvar = list(map(int, open("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt").read().split()[1:]))
+
+    print("OK,", time.time() - start, "s")
+    print()
     
 ############################### main #########################################
 
@@ -192,6 +215,7 @@ def main():
     test_directed_change_stats_highschool()
     test_regression_undirected_change_stats()
     test_bipartite_change_stats_tiny()
+    test_bipartite_change_stats_inouye()
 
 if __name__ == "__main__":
     main()
