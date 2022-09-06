@@ -177,6 +177,7 @@ def test_bipartite_change_stats_tiny():
     obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteDensity, MODE_A), partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteEgoTwoStar, MODE_A), partial(changeBipartiteAlterTwoStar1,MODE_A), partial(changeBipartiteAlterTwoStar2,MODE_A), partial(changeBipartiteFourCycle1, MODE_A),partial(changeBipartiteFourCycle2, MODE_A)])
     assert all(obs_stats == numpy.array([0, 0, 0, 0, 0, 0, 0])) #mode A all zero
     obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteDensity, MODE_B), partial(changeBipartiteActivity, MODE_B), partial(changeBipartiteEgoTwoStar, MODE_B), partial(changeBipartiteAlterTwoStar1,MODE_B), partial(changeBipartiteAlterTwoStar2,MODE_B), partial(changeBipartiteFourCycle1, MODE_B),partial(changeBipartiteFourCycle2, MODE_B)])
+    print(obs_stats)
     assert all(obs_stats == numpy.array([1, 2, 1, 2, 0, 1, 0])) #manually verified and also used to fix MPNet (see ../examples/data/bipartite/tiny/)
 
     print("OK,", time.time() - start, "s")
@@ -210,6 +211,7 @@ def test_bipartite_change_stats_inouye():
                          partial(changeBipartiteAlterTwoStar2,MODE_A),
                          partial(changeBipartiteFourCycle1, MODE_A),
                          partial(changeBipartiteFourCycle2, MODE_A)])
+    print(obs_stats)
     assert all(obs_stats == numpy.array([39, 129, 347, 1258, 266, 718, 122])) # verified against corrected version of MPNet (After manually checking tiny example)
 
     print("OK,", time.time() - start, "s")
