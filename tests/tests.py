@@ -94,6 +94,7 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
     newstart = time.time()
     new_deltas = basic_sampler_test(g, outcome_binvar_orig, changestats_func_2, nodelist)
     print("new version: ", time.time() - newstart, "s")
+    #print(new_deltas)
     assert new_deltas == old_deltas
 
 
@@ -256,8 +257,18 @@ def test_regression_bipartite_change_stats(netfilename, outcomefilename):
     g.printSummary()
     outcome_binvar = list(map(int, open(outcomefilename).read().split()[1:]))
 
+    print("changeBipartiteAlterTwoStar1")
     compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteAlterTwoStar1_SLOW, MODE_A), partial(changeBipartiteAlterTwoStar1, MODE_A))
 
+    print("changeBipartiteAlterTwoStar2")
+    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteAlterTwoStar2_SLOW, MODE_A), partial(changeBipartiteAlterTwoStar2, MODE_A))
+
+    print("changeBipartiteFourCycle1")
+    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteFourCycle1_OLD, MODE_A), partial(changeBipartiteFourCycle1, MODE_A))    
+
+    print("changeBipartiteFourCycle2")
+    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteFourCycle2_OLD, MODE_A), partial(changeBipartiteFourCycle2, MODE_A))    
+    
     print("OK,", time.time() - start, "s")
     print()
     
