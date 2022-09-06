@@ -137,6 +137,7 @@ def test_regression_undirected_change_stats():
     assert g.numNodes() == 1000
     assert g.numEdges() == 3001
     assert round(g.density(), 9) == 0.006008008 # from R/igraph
+    g.printSummary()
     outcome_binvar = list(map(int, open("../examples/data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt").read().split()[1:]))
 
     nodelist = get_random_nodelist(g, outcome_binvar)
