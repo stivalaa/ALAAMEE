@@ -217,6 +217,34 @@ def test_bipartite_change_stats_inouye():
 
     print("OK,", time.time() - start, "s")
     print()
+
+
+def test_regression_bipartite_change_stats(netfilename, outcomefilename):
+    """
+    test new against old version of bipartite undirected ALAAM change stats
+
+    Parameters:
+           netfile      - filename bipartite network in Pajek format
+           outcomefile  - filename of binary outcome file
+    """
+    print("testing bipartite change stats for ", netfilename, "...")
+    start = time.time()
+    g = BipartiteGraph(netfilename)
+    g.printSummary()
+    outcome_binvar = list(map(int, open(outcomefilename).read().split()[1:]))
+
+    nodelist = get_random_nodelist(g, outcome_binvar)
+    outcome_binvar_orig = numpy.copy(outcome_binvar)
+    oldstart = time.time()
+    old_deltas = basic_sampler_test(g, outcome_binvar, partial(changeBipartiteAlterTwoStar1_SLOW, MODE_A), nodelist)
+    print("old version: ", time.time() - oldstart, "s")
+    newstart = time.time()
+    new_deltas = basic_sampler_test(g, outcome_binvar_orig, partial(changeBipartiteAlterTwoStar1, MODE_A), nodelist)
+    print("new version: ", time.time() - newstart, "s")
+    assert new_deltas == old_deltas
+
+    print("OK,", time.time() - start, "s")
+    print()
     
 ############################### main #########################################
 
@@ -228,6 +256,7 @@ def main():
     test_regression_undirected_change_stats()
     test_bipartite_change_stats_tiny()
     test_bipartite_change_stats_inouye()
+    test_regression_bipartite_change_stats("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net", "../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt")
 
 if __name__ == "__main__":
     main()
