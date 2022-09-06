@@ -20,21 +20,23 @@ from changeStatisticsALAAM import *
 import changeStatisticsALAAMdirected
 from changeStatisticsALAAMbipartite import *
 
+DEFAULT_NUM_TESTS = 10000 # number of random node samples
+
 ####################### utililty functions ###################################
 
-def get_random_nodelist(G, A):
+def get_random_nodelist(G, A, num_tests):
     """
     Return a list of random nodes in G for usin in basic_sampler_test
 
     Parameters:
        G                   - Graph object for network (fixed)
        A                   - vector of 0/1 outcome variables for ALAAM
+       num_tests           - number of nodes to sample
 
     Return value: list of nodes in A (with replacement)
     """
-    NUM_TESTS = 10000
-    nodelist = [None] * NUM_TESTS
-    for k in range(NUM_TESTS):
+    nodelist = [None] * num_tests
+    for k in range(num_tests):
         # select a node  i uniformly at random
         i = random.randint(0, G.numNodes()-1)
         while A[i] == NA_VALUE:  # keep going until we get one that is not NA
@@ -75,7 +77,7 @@ def basic_sampler_test(G, A, changestats_func, nodelist):
     return deltas
 
 def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
-                                        changestats_func_2):
+                                        changestats_func_2, num_tests):
     """
     compare two change statistics functions, verify they get the same
     results and show times
@@ -85,8 +87,9 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
         outcome_binvar     - vector of 0/1 outcome variables for ALAAM
         changestats_func_1 - old implementation of change stats function
         changestats_func_2 - new implementation of chage stats function
+        num_tests          - number of nodes to randomly sample
     """ 
-    nodelist = get_random_nodelist(g, outcome_binvar)
+    nodelist = get_random_nodelist(g, outcome_binvar, num_tests)
     outcome_binvar_orig = numpy.copy(outcome_binvar)
     oldstart = time.time()
     old_deltas = basic_sampler_test(g, outcome_binvar, changestats_func_1, nodelist)
@@ -153,7 +156,8 @@ def test_regression_undirected_change_stats():
     test new against old version of undirected ALAAM change stats on
     simmulated 1000 node example
     """
-    print("testing undirected change stats on 1000 node simulated example...")
+    print("testing undirected change stats on 1000 node simulated example")
+    print("for ", DEFAULT_NUM_TESTS, "iterations...")    
     start = time.time()
     g = Graph("../examples/data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt",
               "../examples/data/simulated_n1000_bin_cont/binaryAttribute_50_50_n1000.txt",
@@ -164,7 +168,7 @@ def test_regression_undirected_change_stats():
     g.printSummary()
     outcome_binvar = list(map(int_or_na, open("../examples/data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt").read().split()[1:]))
 
-    nodelist = get_random_nodelist(g, outcome_binvar)
+    nodelist = get_random_nodelist(g, outcome_binvar, DEFAULT_NUM_TESTS)
     outcome_binvar_orig = numpy.copy(outcome_binvar)
     oldstart = time.time()
     old_deltas = basic_sampler_test(g, outcome_binvar, changePartnerPartnerAttribute_OLD, nodelist)
@@ -243,31 +247,35 @@ def test_bipartite_change_stats_inouye():
     print()
 
 
-def test_regression_bipartite_change_stats(netfilename, outcomefilename):
+def test_regression_bipartite_change_stats(netfilename, outcomefilename,
+                                           num_tests = DEFAULT_NUM_TESTS):
     """
     test new against old version of bipartite undirected ALAAM change stats
 
     Parameters:
            netfile      - filename bipartite network in Pajek format
            outcomefile  - filename of binary outcome file
+           num_tests    - number of nodes to sample (number of times
+                          the change statistic is computed)
     """
-    print("testing bipartite change stats for ", netfilename, "...")
+    print("testing bipartite change stats for ", netfilename)
+    print("for ", num_tests, "iterations...")
     start = time.time()
     g = BipartiteGraph(netfilename)
     g.printSummary()
     outcome_binvar = list(map(int_or_na, open(outcomefilename).read().split()[1:]))
 
     print("changeBipartiteAlterTwoStar1")
-    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteAlterTwoStar1_SLOW, MODE_A), partial(changeBipartiteAlterTwoStar1, MODE_A))
+    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteAlterTwoStar1_SLOW, MODE_A), partial(changeBipartiteAlterTwoStar1, MODE_A), num_tests)
 
     print("changeBipartiteAlterTwoStar2")
-    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteAlterTwoStar2_SLOW, MODE_A), partial(changeBipartiteAlterTwoStar2, MODE_A))
+    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteAlterTwoStar2_SLOW, MODE_A), partial(changeBipartiteAlterTwoStar2, MODE_A), num_tests)
 
     print("changeBipartiteFourCycle1")
-    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteFourCycle1_OLD, MODE_A), partial(changeBipartiteFourCycle1, MODE_A))    
+    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteFourCycle1_OLD, MODE_A), partial(changeBipartiteFourCycle1, MODE_A), num_tests)
 
     print("changeBipartiteFourCycle2")
-    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteFourCycle2_OLD, MODE_A), partial(changeBipartiteFourCycle2, MODE_A))    
+    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteFourCycle2_OLD, MODE_A), partial(changeBipartiteFourCycle2, MODE_A), num_tests)
     
     print("OK,", time.time() - start, "s")
     print()
