@@ -74,6 +74,29 @@ def basic_sampler_test(G, A, changestats_func, nodelist):
             A[i] = 1
     return deltas
 
+def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
+                                        changestats_func_2):
+    """
+    compare two change statistics functions, verify they get the same
+    results and show times
+
+    Parameters:
+        g                  - Graph object
+        outcome_binvar     - vector of 0/1 outcome variables for ALAAM
+        changestats_func_1 - old implementation of change stats function
+        changestats_func_2 - new implementation of chage stats function
+    """ 
+    nodelist = get_random_nodelist(g, outcome_binvar)
+    outcome_binvar_orig = numpy.copy(outcome_binvar)
+    oldstart = time.time()
+    old_deltas = basic_sampler_test(g, outcome_binvar, changestats_func_1, nodelist)
+    print("old version: ", time.time() - oldstart, "s")
+    newstart = time.time()
+    new_deltas = basic_sampler_test(g, outcome_binvar_orig, changestats_func_2, nodelist)
+    print("new version: ", time.time() - newstart, "s")
+    assert new_deltas == old_deltas
+
+
 ######################## test functions #####################################
 
 def test_undirected_change_stats_karate():
@@ -233,15 +256,7 @@ def test_regression_bipartite_change_stats(netfilename, outcomefilename):
     g.printSummary()
     outcome_binvar = list(map(int, open(outcomefilename).read().split()[1:]))
 
-    nodelist = get_random_nodelist(g, outcome_binvar)
-    outcome_binvar_orig = numpy.copy(outcome_binvar)
-    oldstart = time.time()
-    old_deltas = basic_sampler_test(g, outcome_binvar, partial(changeBipartiteAlterTwoStar1_SLOW, MODE_A), nodelist)
-    print("old version: ", time.time() - oldstart, "s")
-    newstart = time.time()
-    new_deltas = basic_sampler_test(g, outcome_binvar_orig, partial(changeBipartiteAlterTwoStar1, MODE_A), nodelist)
-    print("new version: ", time.time() - newstart, "s")
-    assert new_deltas == old_deltas
+    compare_changestats_implementations(g, outcome_binvar, partial(changeBipartiteAlterTwoStar1_SLOW, MODE_A), partial(changeBipartiteAlterTwoStar1, MODE_A))
 
     print("OK,", time.time() - start, "s")
     print()
