@@ -282,8 +282,13 @@ def test_regression_twopaths_iterators(netfilename):
     g.printSummary()
     for i in range(g.numNodes()):
         for j in g.twoPathsMatrix.rowNonZeroColumnsIterator(i):
-            assert g.twoPathsMatrix.getValue(i, j) != 0
+            assert g.twoPathsMatrix.getValue(i, j) > 0
             assert g.twoPathsMatrix.getValue(i, j) == g.twoPaths(i, j)
+    for i in range(g.numNodes()):
+        for (j, p) in zip(g.twoPathsMatrix.rowNonZeroColumnsIterator(i),
+                          g.twoPathsMatrix.rowNonZeroValuesIterator(i)):
+            assert p > 0
+            assert p == g.twoPaths(i, j)
     print("OK,", time.time() - start, "s")
     print()
 
