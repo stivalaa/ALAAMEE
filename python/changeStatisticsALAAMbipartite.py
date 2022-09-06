@@ -200,17 +200,17 @@ def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
 
     x--o--*
     """
-    # different (less efficient) implementation using twoPath as done in MPNet
-    delta2 = 0
-    if G.bipartite_node_mode(i) == mode:
-        for v in G.nodeModeIterator(mode):
-            delta2 += G.twoPaths(i, v)
+    # # different (less efficient) implementation using twoPath as done in MPNet
+    # delta2 = 0
+    # if G.bipartite_node_mode(i) == mode:
+    #     for v in G.nodeModeIterator(mode):
+    #         delta2 += G.twoPaths(i, v)
 
     # one-liner more elegant but still inefficient version:
     delta3 = sum([G.twoPaths(i, v)  for v in G.nodeModeIterator(mode)]) if G.bipartite_node_mode(i) == mode else 0
             
-    assert delta2 == delta3
-    return delta2
+    # assert delta2 == delta3
+    return delta3
 
 def changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i):
     """
@@ -221,16 +221,16 @@ def changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i):
     """
     # different (less efficient) implementation using twoPath as done in MPNet
     delta2 = 0
-    if G.bipartite_node_mode(i) == mode:
-        for v in G.nodeModeIterator(mode):
-            if A[v] == 1:
-                delta2 += G.twoPaths(i, v)
+    # if G.bipartite_node_mode(i) == mode:
+    #     for v in G.nodeModeIterator(mode):
+    #         if A[v] == 1:
+    #             delta2 += G.twoPaths(i, v)
 
     # one-liner more elegant but still inefficient version:
     delta3 = sum([G.twoPaths(i, v) if A[v] == 1 else 0  for v in G.nodeModeIterator(mode)]) if G.bipartite_node_mode(i) == mode else 0
     
-    assert delta2 == delta3
-    return delta2
+    #assert delta2 == delta3
+    return delta3
 
 def changeBipartiteFourCycle1_OLD(mode, G, A, i):
     """
