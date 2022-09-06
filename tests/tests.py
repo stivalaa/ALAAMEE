@@ -14,9 +14,11 @@ import numpy
 
 from Graph import Graph
 from Digraph import Digraph
+from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
 from computeObservedStatistics import computeObservedStatistics
 from changeStatisticsALAAM import *
 import changeStatisticsALAAMdirected
+from changeStatisticsALAAMbipartite import *
 
 ####################### utililty functions ###################################
 
@@ -149,8 +151,38 @@ def test_regression_undirected_change_stats():
 
     print("OK,", time.time() - start, "s")
     print()
+
+
+def test_bipartite_change_stats_tiny():
+    """ test BipartiteGraph object and bipartite undirected change stats on
+    tiny example (manually verified)
+    """
+    print("testing bipartrite change stats on tiny example...")
+    start = time.time()
+    g = BipartiteGraph("../examples/data/bipartite/tiny/tiny_bipartite.net")
+    assert g.numNodes() == 5
+    assert g.numEdges() == 5
+    assert round(g.density(), 5) == 0.83333 # 5/(3*2)
+    assert g.bipartite_node_mode(0) == MODE_A
+    assert g.bipartite_node_mode(1) == MODE_A
+    assert g.bipartite_node_mode(2) == MODE_A
+    assert g.bipartite_node_mode(3) == MODE_B
+    assert g.bipartite_node_mode(4) == MODE_B
+    assert len(list(g.nodeModeIterator(MODE_A))) == 3
+    assert len(list(g.nodeModeIterator(MODE_B))) == 2
+    assert list(g.nodeModeIterator(MODE_A)) == [0, 1, 2]
+    assert list(g.nodeModeIterator(MODE_B)) == [3, 4]
+    g.printSummary()
+    outcome_binvar = list(map(int, open("../examples/data/bipartite/tiny/tiny_outcome.txt").read().split()[1:]))
+    obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteDensity, MODE_A), partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteEgoTwoStar, MODE_A), partial(changeBipartiteAlterTwoStar1,MODE_A), partial(changeBipartiteAlterTwoStar2,MODE_A), partial(changeBipartiteFourCycle1, MODE_A),partial(changeBipartiteFourCycle2, MODE_A)])
+    assert all(obs_stats == numpy.array([0, 0, 0, 0, 0, 0, 0])) #mode A all zero
+    obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteDensity, MODE_B), partial(changeBipartiteActivity, MODE_B), partial(changeBipartiteEgoTwoStar, MODE_B), partial(changeBipartiteAlterTwoStar1,MODE_B), partial(changeBipartiteAlterTwoStar2,MODE_B), partial(changeBipartiteFourCycle1, MODE_B),partial(changeBipartiteFourCycle2, MODE_B)])
+    assert all(obs_stats == numpy.array([1, 2, 1, 2, 0, 1, 0])) #manually verified and also used to fix MPNet (see ../examples/data/bipartite/tiny/)
+
+    print("OK,", time.time() - start, "s")
+    print()
+
     
-              
 ############################### main #########################################
 
 def main():
@@ -159,7 +191,7 @@ def main():
     test_undirected_change_stats_karate()
     test_directed_change_stats_highschool()
     test_regression_undirected_change_stats()
-    
+    test_bipartite_change_stats_tiny()
 
 if __name__ == "__main__":
     main()
