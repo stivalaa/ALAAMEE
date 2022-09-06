@@ -162,35 +162,12 @@ def changePartnerAttributeActivity(G, A, i):
     return delta
     
 
-# def changePartnerPartnerAttribute_OLD(G, A, i):
-#     """
-#     Change statistic for partner-partner-attribute (partner-resource)
-
-#     *--*--*
-#     """
-#     delta = 0
-#     for u in G.neighbourIterator(i):
-#         if A[u] == 1:
-#             # FIXME this is inefficient, iterating over all nodes
-#             for v in range(G.numNodes()):
-#                 if v == i or v == u:
-#                     continue
-#                 if A[v] == 1:
-#                     if G.isEdge(u, v):
-#                         delta += 2
-#                     if G.isEdge(i, v):
-#                         delta += 1
-#     return delta
-
-
 def changePartnerPartnerAttribute(G, A, i):
     """
     Change statistic for partner-partner-attribute (partner-resource)
 
     *--*--*
     """
-#    delta_OLD = changePartnerPartnerAttribute_OLD(G, A, i)
-    
     delta = 0
     for u in G.neighbourIterator(i):
         if A[u] == 1:
@@ -200,8 +177,6 @@ def changePartnerPartnerAttribute(G, A, i):
             for v in G.neighbourIterator(i):
                 if A[v] == 1 and v != u:
                     delta += 1
-                    
-#    assert delta == delta_OLD
     return delta
 
 
@@ -335,3 +310,28 @@ def changeSettingHomophily(settingGraph, G, A, i):
         if A[u] == 1:
             delta += 1
     return delta
+
+
+# ================== old versions for regression testing ======================
+
+def changePartnerPartnerAttribute_OLD(G, A, i):
+    """
+    Change statistic for partner-partner-attribute (partner-resource)
+
+    *--*--*
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        if A[u] == 1:
+            # FIXME this is inefficient, iterating over all nodes
+            for v in range(G.numNodes()):
+                if v == i or v == u:
+                    continue
+                if A[v] == 1:
+                    if G.isEdge(u, v):
+                        delta += 2
+                    if G.isEdge(i, v):
+                        delta += 1
+    return delta
+
+
