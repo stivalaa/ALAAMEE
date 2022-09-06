@@ -133,7 +133,7 @@ def test_directed_change_stats_highschool():
     """
     test Digraph object and directed ALAAM change stats on SocioPatterns data
     """
-    print("testing directed change setats on SocioPatterns example...")
+    print("testing directed change stats on SocioPatterns example...")
     start = time.time()
     g = Digraph("../examples/data/directed/HighSchoolFriendship/highschool_friendship_arclist.net",
                 "../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt",
