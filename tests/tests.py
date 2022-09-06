@@ -32,7 +32,7 @@ def get_random_nodelist(G, A):
 
     Return value: list of nodes in A (with replacement)
     """
-    NUM_TESTS = 100
+    NUM_TESTS = 10000
     nodelist = [None] * NUM_TESTS
     for k in range(NUM_TESTS):
         # select a node  i uniformly at random
@@ -283,7 +283,7 @@ def main():
     test_bipartite_change_stats_tiny()
     test_bipartite_change_stats_inouye()
     test_regression_bipartite_change_stats("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net", "../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt")
-    test_regression_bipartite_change_stats("../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_bipartite.net", "../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_outcome.txt")
+    #too slow (several minutes) even with only 100 tests: test_regression_bipartite_change_stats("../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_bipartite.net", "../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_outcome.txt")
 
 if __name__ == "__main__":
     main()
