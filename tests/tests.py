@@ -10,9 +10,12 @@
 import time
 from functools import partial
 import numpy
+
 from Graph import Graph
+from Digraph import Digraph
 from computeObservedStatistics import computeObservedStatistics
 from changeStatisticsALAAM import *
+import changeStatisticsALAAMdirected
 
 def test_undirected_change_stats_karate():
     """
@@ -37,12 +40,36 @@ def test_undirected_change_stats_karate():
     print (obs_alter2star1)
     assert obs_alter2star1 == [566] # verified on MPNet
     print("OK,", time.time() - start, "s")
+    print()
+
+
+def test_directed_change_stats_highschool():
+    """
+    test Digraph object and directed ALAAM change stats on SocioPatterns data
+    """
+    print("testing directed change setats on SocioPatterns example...")
+    start = time.time()
+    g = Digraph("../examples/data/directed/HighSchoolFriendship/highschool_friendship_arclist.net",
+                "../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt",
+                None, # continuous attributes
+                "../examples/data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt")
+    assert g.numNodes() == 134
+    assert g.numArcs() == 668
+    assert round(g.density(), 8) == 0.03748176 # from R/igraph
+    g.printSummary()
+    outcome_binvar = list(map(int, open("../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt").read().split()[1:])) # male
+    obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeStatisticsALAAMdirected.changeSender, changeStatisticsALAAMdirected.changeReceiver, changeStatisticsALAAMdirected.changeContagion])
+    print(obs_stats)
+    assert all(obs_stats == [54, 293, 285, 156]) # verified on MPNet
+    print("OK,", time.time() - start, "s")
+    print()
 
 
 def main():
     """main: run all tests
     """
     test_undirected_change_stats_karate()
+    test_directed_change_stats_highschool()
     
 
 if __name__ == "__main__":
