@@ -133,6 +133,66 @@ def changeBipartiteEgoTwoStar(mode, G, A, i):
             if G.bipartite_node_mode(i) == mode else 0)
 
 
+
+def changeBipartiteAlterTwoStar1(mode, G, A, i):
+    """
+    Change statistic for bipartite alter two-star 1
+    AlterX-2Star1[mode]
+
+    x--o--*
+    """
+    return (changeStatisticsALAAM.changePartnerActivityTwoPath(G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
+
+
+def changeBipartiteAlterTwoStar2(mode, G, A, i):
+    """
+    Change statistic for bipartite alter two-star 2
+    AlterX-2Star2[mode]
+
+    *--o--*
+    """
+    return (changeStatisticsALAAM.changeIndirectPartnerAttribute(G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
+
+
+
+def changeBipartiteFourCycle1(mode, G, A, i):
+    """
+    Change statistic for bipartite four-cycle 1
+    C4X-1[mode]
+
+        o
+       / \
+      x   *
+       \ /
+        o
+    """
+    return (sum([(p := G.twoPathsMatrix.getValue(i, j)) * (p - 1) / 2
+                 for j in G.twoPathsMatrix.rowNonZeroColumnsIterator(i)])
+            if G.bipartite_node_mode(i) == mode else 0)
+
+
+def changeBipartiteFourCycle2(mode, G, A, i):
+    """
+    Change statistic for bipartite four-cycle 2
+    C4X-2[mode]
+
+        o
+       / \
+      *   *
+       \ /
+        o
+    """
+    # uses assignment operator := introduced in Pyton 3.8
+
+    return sum([(p := G.twoPathsMatrix.getValue(i, j)) * (p - 1) / 2
+                for j in G.twoPathsMatrix.rowNonZeroColumnsIterator(i)
+                if A[j] == 1]) if G.bipartite_node_mode(i) == mode else 0
+
+
+# ================== old versions for regression testing ======================
+
 def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
     """
     Change statistic for bipartite alter two-star 1
@@ -141,7 +201,6 @@ def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
     x--o--*
     """
     # different (less efficient) implementation using twoPath as done in MPNet
-    # TODO remove when testing done (move to pytest tests?)
     delta2 = 0
     if G.bipartite_node_mode(i) == mode:
         for v in G.nodeModeIterator(mode):
@@ -153,22 +212,6 @@ def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
     assert delta2 == delta3
     return delta2
 
-
-def changeBipartiteAlterTwoStar1(mode, G, A, i):
-    """
-    Change statistic for bipartite alter two-star 1
-    AlterX-2Star1[mode]
-
-    x--o--*
-    """
-    delta =  (changeStatisticsALAAM.changePartnerActivityTwoPath(G, A, i)
-              if G.bipartite_node_mode(i) == mode else 0)
-
-    # delta_SLOW = changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i)
-    # assert delta == delta_SLOW
-    return delta
-
-    
 def changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i):
     """
     Change statistic for bipartite alter two-star 2
@@ -177,7 +220,6 @@ def changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i):
     *--o--*
     """
     # different (less efficient) implementation using twoPath as done in MPNet
-    # TODO remove when testing done (move to pytest tests?)    
     delta2 = 0
     if G.bipartite_node_mode(i) == mode:
         for v in G.nodeModeIterator(mode):
@@ -189,21 +231,6 @@ def changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i):
     
     assert delta2 == delta3
     return delta2
-
-def changeBipartiteAlterTwoStar2(mode, G, A, i):
-    """
-    Change statistic for bipartite alter two-star 2
-    AlterX-2Star2[mode]
-
-    *--o--*
-    """
-    delta = (changeStatisticsALAAM.changeIndirectPartnerAttribute(G, A, i)
-             if G.bipartite_node_mode(i) == mode else 0)
-
-    # delta_SLOW = changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i)
-    # assert delta == delta_SLOW
-    return delta
-
 
 def changeBipartiteFourCycle1_OLD(mode, G, A, i):
     """
@@ -217,7 +244,6 @@ def changeBipartiteFourCycle1_OLD(mode, G, A, i):
         o
     """
     # different mplementation using twoPath as done in MPNet
-    # TODO remove when testing done (move to pytest tests?)    
     if G.bipartite_node_mode(i) == mode:
         delta = 0
         for v in G.nodeModeIterator(mode):
@@ -226,7 +252,6 @@ def changeBipartiteFourCycle1_OLD(mode, G, A, i):
         return delta
     else:
         return 0
-
 
 @functools.cache # Memoize the following function (Python 3.9)
 def changeBipartiteFourCycle1_OLD2(mode, G, i):
@@ -251,26 +276,7 @@ def changeBipartiteFourCycle1_OLD2(mode, G, i):
     # delta_OLD = changeBipartiteFourCycle1_OLD(mode, G, A, i)
     # assert delta == delta_OLD
     return delta
-
     
-def changeBipartiteFourCycle1(mode, G, A, i):
-    """
-    Change statistic for bipartite four-cycle 1
-    C4X-1[mode]
-
-        o
-       / \
-      x   *
-       \ /
-        o
-    """
-    #delta_OLD = changeBipartiteFourCycle1_OLD2(mode, G, i);
-    delta = (sum([(p := G.twoPathsMatrix.getValue(i, j)) * (p - 1) / 2
-                 for j in G.twoPathsMatrix.rowNonZeroColumnsIterator(i)])
-             if G.bipartite_node_mode(i) == mode else 0)
-    #assert delta_OLD == delta
-    return delta
-
 
 def changeBipartiteFourCycle2_OLD(mode, G, A, i):
     """
@@ -284,7 +290,6 @@ def changeBipartiteFourCycle2_OLD(mode, G, A, i):
         o
     """
     # different mplementation using twoPath as done in MPNet
-    # TODO remove when testing done (move to pytest tests?)    
     if G.bipartite_node_mode(i) == mode:
         delta = 0
         for v in G.nodeModeIterator(mode):
@@ -295,28 +300,3 @@ def changeBipartiteFourCycle2_OLD(mode, G, A, i):
     else:
         return 0
     
-def changeBipartiteFourCycle2(mode, G, A, i):
-    """
-    Change statistic for bipartite four-cycle 2
-    C4X-2[mode]
-
-        o
-       / \
-      *   *
-       \ /
-        o
-    """
-    # uses assignment operator := introduced in Pyton 3.8
-
-    # delta = sum(
-    #     [(twoPathCount := G.twoPaths(i,v)) * (twoPathCount - 1) / 2 for
-    #      v in G.nodeModeIterator(mode) if A[v] == 1]
-    # ) if G.bipartite_node_mode(i) == mode else 0
-    # delta_OLD = changeBipartiteFourCycle2_OLD(mode, G, A, i)
-    # assert delta == delta_OLD
-
-    delta_NEW =  sum([(p := G.twoPathsMatrix.getValue(i, j)) * (p - 1) / 2
-                      for j in G.twoPathsMatrix.rowNonZeroColumnsIterator(i)
-                      if A[j] == 1]) if G.bipartite_node_mode(i) == mode else 0
-    #assert delta_NEW == delta
-    return delta_NEW
