@@ -107,7 +107,6 @@ class BipartiteGraph(Graph):
             raise ValueError("edge in bipartite graph inserted between nodes in same mode")
         super().insertEdge(i, j)
         self.updateTwoPathsMatrix(i, j)
-        #SLOW (add to tests, not here): assert(self.twoPathsMatrix.getValue(i, j) == self.twoPaths(i, j))
 
     def nodeModeIterator(self, mode):
         """
