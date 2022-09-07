@@ -288,6 +288,7 @@ contattr$birank <- c(bprank$rows$rank, bprank$columns$rank)
 ## WARNNG: This takes about 3 hours
 ##
 
+cat("Computing betweeneess centrality...\n")
 system.time( contattr$betweenness <- betweenness(g, directed = FALSE, 
                                                     normalized = FALSE) )
 
