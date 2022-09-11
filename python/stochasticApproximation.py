@@ -3,7 +3,7 @@
 # Author:  Alex Stivala
 # Created: May 2020
 #
-"""Simple demonstration implementation of the Robbins-Monro stochastic
+"""Python implementation of the Robbins-Monro stochastic
  approximatino algorithm for estimation of Autologistic Actor
  Attribute Model (ALAAM) parameters. 
 

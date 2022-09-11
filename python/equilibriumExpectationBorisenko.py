@@ -3,7 +3,7 @@
 # Author:  Alex Stivala
 # Created: Februrary 2020
 #
-"""Simple demonstration implementation of the Equilibrium Expectation algorithm
+"""Python implementation of the Equilibrium Expectation algorithm
  for estimation of Autologistic Actor Attribute Model (ALAAM) parameters.
  This is the simplified (Borisenko et al. 2019) version that has only the
  learning rate and not the other hyper-parameters.

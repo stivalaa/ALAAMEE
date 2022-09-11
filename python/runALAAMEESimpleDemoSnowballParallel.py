@@ -4,7 +4,7 @@
 # Author:  Alex Stivala
 # Created: March 2021
 #
-"""Run the simple demonstration implementation of the Equilibrium 
+"""Run the python implementation of the Equilibrium 
  Expecttation (EE) algorithm for estimation of Autologistic Actor Attribute
  Model (ALAAM) parameters, on snowball sampled network data.
 

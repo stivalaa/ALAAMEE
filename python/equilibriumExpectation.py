@@ -3,7 +3,7 @@
 # Author:  Alex Stivala
 # Created: Februrary 2020
 #
-"""Simple demonstration implementation of the Equilibrium Expectation algorithm
+"""Python implementation of the Equilibrium Expectation algorithm
  for estimation of Autologistic Actor Attribute Model (ALAAM) parameters.
 
  The EE algorithm is described in:

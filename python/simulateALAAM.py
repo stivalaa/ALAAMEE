@@ -3,7 +3,7 @@
 # Author:  Alex Stivala
 # Created: May 2020
 #
-"""Simple demonstration of ALAAM simulation (generating binary outcome
+"""Python implementation of ALAAM simulation (generating binary outcome
    vectors given network, node attributes, ALAAM mode parmaters).
 
  The ALAAM is described in:

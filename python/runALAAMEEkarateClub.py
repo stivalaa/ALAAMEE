@@ -4,7 +4,7 @@
 # Author:  Alex Stivala
 # Created: Februrary 2020
 #
-"""Run the simple demonstration implementation of the Equilibrium
+"""Run the python implementation of the Equilibrium
  Expectation algorithm for estimation of Autologistic Actor Attribute
  Model (ALAAM) parameters on the Zachary Karate Club example.
 """

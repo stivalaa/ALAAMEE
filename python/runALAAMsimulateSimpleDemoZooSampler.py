@@ -4,7 +4,7 @@
 # Author:  Alex Stivala
 # Created: June 2020
 #
-"""Run the simple demonstration implementation simulation from
+"""Run the python implementation simulation from
    Autologistic Actor Attribute Model (ALAAM) parameters using the 
    Zero-Or-One (ZOO) ALAAM sampler.
 """
