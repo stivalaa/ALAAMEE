@@ -25,7 +25,7 @@
 import getopt
 import sys
 from functools import partial
-import  ALAAMEESimpleDemo
+import  estimateALAAMEE
 from changeStatisticsALAAM import *
 
 
@@ -55,7 +55,7 @@ def main():
     runNumber = int(args[0])
 
 
-    ALAAMEESimpleDemo.run_on_network_attr(
+    estimateALAAMEE.run_on_network_attr(
         '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
         [changeDensity, changeActivity, changeContagion, partial(changeoOb,"binaryAttribute"), partial(changeoOc, "continuousAttribute")],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],

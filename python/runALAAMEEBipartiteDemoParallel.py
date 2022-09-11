@@ -43,7 +43,7 @@
 import getopt
 import sys
 from functools import partial
-import  ALAAMEESimpleDemo
+import  estimateALAAMEE
 from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
 from changeStatisticsALAAMbipartite import *
 
@@ -73,7 +73,7 @@ def main():
 
     runNumber = int(args[0])
 
-    ALAAMEESimpleDemo.run_on_network_attr('../../data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net',
+    estimateALAAMEE.run_on_network_attr('../../data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net',
             [partial(changeBipartiteDensity, MODE_A),
              partial(changeBipartiteActivity, MODE_A),
              partial(changeBipartiteEgoTwoStar, MODE_A),

@@ -1,9 +1,9 @@
 #
-# File:    ALAAMEESimpleDemo.py
+# File:    estimatieALAAMEE.py
 # Author:  Alex Stivala
 # Created: Februrary 2020
 #
-"""Simple demonstration implementation of the Equilibrium Expectation algorithm
+"""Python implementation of the Equilibrium Expectation algorithm
  for estimation of Autologistic Actor Attribute Model (ALAAM) parameters.
 
  The EE algorithm is described in:
@@ -67,8 +67,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         zone_filename= None,
                         directed = False,
                         bipartite = False):
-    """Run on specified network with binary and/or continuous
-    and categorical attributes.
+    """Run estimation using EE algorithm on specified network with binary 
+    and/or continuous and categorical attributes.
     
     Parameters:
          edgelist_filename - filename of Pajek format edgelist 

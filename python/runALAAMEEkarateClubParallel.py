@@ -25,7 +25,7 @@
 import getopt
 import sys
 
-import  ALAAMEESimpleDemo
+import  estimateALAAMEE
 from changeStatisticsALAAM import *
 
 
@@ -56,7 +56,7 @@ def main():
 
 
 
-    ALAAMEESimpleDemo.run_on_network_attr(
+    estimateALAAMEE.run_on_network_attr(
         '../data/karate_club/karate.net',
         [changeDensity, changeActivity, changeContagion],
         ["Density", "Activity", "Contagion"],

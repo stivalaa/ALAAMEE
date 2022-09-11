@@ -1,9 +1,9 @@
 #
-# File:    ALAAMSASimpleDemo.py
+# File:    estimateALAAMSA.py
 # Author:  Alex Stivala
 # Created: May 2020
 #
-"""Simple demonstration implementation of the Robbins-Monro Stochastic
+"""Python implementation of the Robbins-Monro Stochastic
  Approximation algorithm for estimation of Autologistic Actor
  Attribute Model (ALAAM) parameters.
 
@@ -62,7 +62,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         zone_filename = None,
                         directed = False,
                         bipartite = False):
-    """Run on specified network with binary and/or continuous and
+    """Run estimation using stochastic approximation algorithm
+    on specified network with binary and/or continuous and
     categorical attributes.
     
     Parameters:

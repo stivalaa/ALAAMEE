@@ -26,7 +26,7 @@
 import getopt
 import sys
 from functools import partial
-import  ALAAMEESimpleDemo
+import  estimateALAAMEE
 from changeStatisticsALAAMdirected import *
 from changeStatisticsALAAM import changeDensity
 
@@ -58,7 +58,7 @@ def main():
     runNumber = int(args[0])
 
 
-    ALAAMEESimpleDemo.run_on_network_attr(
+    estimateALAAMEE.run_on_network_attr(
         '../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net',
         [changeDensity, changeSender, changeReceiver, changeContagion],
         ["Density", "Sender", "Receiver", "Contagion"],

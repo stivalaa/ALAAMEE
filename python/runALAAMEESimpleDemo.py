@@ -9,9 +9,9 @@
  Model (ALAAM) parameters.
 """
 
-import  ALAAMEESimpleDemo
+import  estimateALAAMEE
 
-ALAAMEESimpleDemo.run_example()
+estimateALAAMEE.run_example()
 
 
 

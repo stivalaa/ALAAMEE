@@ -9,9 +9,9 @@
  Model (ALAAM) parameters on a bipartite network.
 """
  
-import  ALAAMSASimpleDemo
+import  estimateALAAMSA
 
-ALAAMSASimpleDemo.run_bipartite_example()
+estimateALAAMSA.run_bipartite_example()
 
 
 

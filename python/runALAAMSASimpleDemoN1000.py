@@ -9,10 +9,10 @@
  Model (ALAAM) parameters with simualted 1000 node network.
 """
 from functools import partial
-import  ALAAMSASimpleDemo
+import  estimateALAAMSA
 from changeStatisticsALAAM import *
 
-ALAAMSASimpleDemo.run_on_network_attr(
+estimateALAAMSA.run_on_network_attr(
         '../data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt',
         [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],

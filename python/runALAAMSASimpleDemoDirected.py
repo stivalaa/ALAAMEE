@@ -8,11 +8,11 @@
  Approximation algorithm for estimation of Autologistic Actor Attribute
  Model (ALAAM) parameters on a directed network.
 """
-import  ALAAMSASimpleDemo
+import  estimateALAAMSA
 from changeStatisticsALAAMdirected import *
 from changeStatisticsALAAM import changeDensity
 
-ALAAMSASimpleDemo.run_on_network_attr(
+estimateALAAMSA.run_on_network_attr(
         '../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net',
         [changeDensity, changeSender, changeReceiver, changeContagion],
         ["Density", "Sender", "Receiver", "Contagion"],

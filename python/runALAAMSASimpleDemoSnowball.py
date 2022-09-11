@@ -26,7 +26,7 @@ from functools import partial
 
 from conditionalALAAMsampler import conditionalALAAMsampler
 from changeStatisticsALAAM import *
-import  ALAAMSASimpleDemo
+import  estimateALAAMSA
 
 
 def usage(progname):
@@ -58,7 +58,7 @@ def main():
 
     sampled_filenames_part = "_waves" + str(waves) + "_seeds" + str(seeds)
 
-    ALAAMSASimpleDemo.run_on_network_attr(
+    estimateALAAMSA.run_on_network_attr(
         'n500_kstar_simulate12750000' + sampled_filenames_part + '_num6700000.txt',
         [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],

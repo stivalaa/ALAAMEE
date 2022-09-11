@@ -12,9 +12,9 @@ from functools import partial
 
 from zooALAAMsampler import zooALAAMsampler
 from changeStatisticsALAAM import *
-import  ALAAMEESimpleDemo
+import  estimateALAAMEE
 
-ALAAMEESimpleDemo.run_on_network_attr(
+estimateALAAMEE.run_on_network_attr(
         '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
         [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],
