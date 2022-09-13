@@ -108,17 +108,11 @@ def changeTriangleT1(G, A, i):
      / \
     *---o
     """
-    delta = 0
-    if G.degree(i) < 2:
-        return 0
-    else:
-        for u in G.neighbourIterator(i):
-            for v in G.neighbourIterator(u):
-                if v != i and G.isEdge(i, v):
-                    delta += 1
-    assert delta % 2 == 0
-    return delta / 2.0
-        
+    return (0 if G.degree(i) < 2 else
+            sum([int(G.isEdge(i, v))
+                 for u in G.neighbourIterator(i)
+                 for v in G.neighbourIterator(u)]) // 2)
+
 
 def changeContagion(G, A, i):
     """
@@ -335,3 +329,21 @@ def changePartnerPartnerAttribute_OLD(G, A, i):
     return delta
 
 
+def changeTriangleT1_OLD(G, A, i):
+    """
+    Change statistic for actor triangle (T1)
+
+      o
+     / \
+    *---o
+    """
+    delta = 0
+    if G.degree(i) < 2:
+        return 0
+    else:
+        for u in G.neighbourIterator(i):
+            for v in G.neighbourIterator(u):
+                if v != i and G.isEdge(i, v):
+                    delta += 1
+    assert delta % 2 == 0
+    return delta / 2.0

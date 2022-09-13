@@ -103,6 +103,30 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
 
 ######################## test functions #####################################
 
+def test_undirected_graph():
+    """
+    test Graph object
+    """
+    print("testing Graph object...")
+    start = time.time()
+    g = Graph("../examples/data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt",
+              "../examples/data/simulated_n1000_bin_cont/binaryAttribute_50_50_n1000.txt",
+              "../examples/data/simulated_n1000_bin_cont/continuousAttributes_n1000.txt")
+    # specific to this graph
+    assert g.numNodes() == 1000
+    assert g.numEdges() == 3001
+    assert round(g.density(), 9) == 0.006008008 # from R/igraph
+    g.printSummary()
+
+    # following must be true for any Graph
+    assert len(list(g.nodeIterator())) == g.numNodes()
+    assert all([g.isEdge(i, j) for i in g.nodeIterator() for j in g.neighbourIterator(i)])
+    assert all([len(list(g.neighbourIterator(i))) == g.degree(i) for i in g.nodeIterator()])
+
+    print("OK,", time.time() - start, "s")
+    print()
+
+
 def test_undirected_change_stats_karate():
     """
     test Graph object and undirected ALAAM change stats on karate club example
@@ -151,32 +175,33 @@ def test_directed_change_stats_highschool():
     print()
 
 
-def test_regression_undirected_change_stats():
+def test_regression_undirected_change_stats(netfilename, outcomefilename,
+                                            binattrfilename, contattrfilename,
+                                            num_tests = DEFAULT_NUM_TESTS):
     """
-    test new against old version of undirected ALAAM change stats on
-    simmulated 1000 node example
+    test new against old version of undirected ALAAM change stats
+
+    Parameters:
+           netfilename     - filename bipartite network in Pajek format
+           outcomefilename - filename of binary outcome file
+           binattrfilename - filename of binary attributes
+           contattrfilename- fiename of continuous attributes
+           num_tests       - number of nodes to sample (number of times
+                            the change statistic is computed)
+    
     """
     print("testing undirected change stats on 1000 node simulated example")
     print("for ", DEFAULT_NUM_TESTS, "iterations...")    
     start = time.time()
-    g = Graph("../examples/data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt",
-              "../examples/data/simulated_n1000_bin_cont/binaryAttribute_50_50_n1000.txt",
-              "../examples/data/simulated_n1000_bin_cont/continuousAttributes_n1000.txt")
-    assert g.numNodes() == 1000
-    assert g.numEdges() == 3001
-    assert round(g.density(), 9) == 0.006008008 # from R/igraph
+    g = Graph(netfilename, binattrfilename, contattrfilename)
     g.printSummary()
     outcome_binvar = list(map(int_or_na, open("../examples/data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt").read().split()[1:]))
 
-    nodelist = get_random_nodelist(g, outcome_binvar, DEFAULT_NUM_TESTS)
-    outcome_binvar_orig = numpy.copy(outcome_binvar)
-    oldstart = time.time()
-    old_deltas = basic_sampler_test(g, outcome_binvar, changePartnerPartnerAttribute_OLD, nodelist)
-    print("old version: ", time.time() - oldstart, "s")
-    newstart = time.time()
-    new_deltas = basic_sampler_test(g, outcome_binvar_orig, changePartnerPartnerAttribute, nodelist)
-    print("new version: ", time.time() - newstart, "s")
-    assert new_deltas == old_deltas
+    print("changePartnerPartnerAttribute")
+    compare_changestats_implementations(g, outcome_binvar, changePartnerPartnerAttribute_OLD, changePartnerPartnerAttribute, num_tests)
+
+    print("changeTriangleT1")
+    compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_OLD, changeTriangleT1, num_tests)
 
     print("OK,", time.time() - start, "s")
     print()
@@ -299,7 +324,7 @@ def test_regression_bipartite_change_stats(netfilename, outcomefilename,
     test new against old version of bipartite undirected ALAAM change stats
 
     Parameters:
-           netfile      - filename bipartite network in Pajek format
+           netfilename  - filename bipartite network in Pajek format
            outcomefile  - filename of binary outcome file
            num_tests    - number of nodes to sample (number of times
                           the change statistic is computed)
@@ -325,15 +350,18 @@ def test_regression_bipartite_change_stats(netfilename, outcomefilename,
     
     print("OK,", time.time() - start, "s")
     print()
+
+
     
 ############################### main #########################################
 
 def main():
     """main: run all tests
     """
+    test_undirected_graph()
     test_undirected_change_stats_karate()
     test_directed_change_stats_highschool()
-    test_regression_undirected_change_stats()
+    test_regression_undirected_change_stats("../examples/data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt", "../examples/data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt", "../examples/data/simulated_n1000_bin_cont/binaryAttribute_50_50_n1000.txt", "../examples/data/simulated_n1000_bin_cont/continuousAttributes_n1000.txt")
     test_bipartite_change_stats_tiny()
     test_bipartite_change_stats_inouye()
     test_regression_twopaths("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net")
