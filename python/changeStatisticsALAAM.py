@@ -120,11 +120,7 @@ def changeContagion(G, A, i):
 
     *--*
     """
-    delta = 0
-    for u in G.neighbourIterator(i):
-        if A[u] == 1:
-            delta += 1
-    return delta
+    return sum([A[u] for u in G.neighbourIterator(i)])
 
 
 def changeIndirectPartnerAttribute(G, A, i):
@@ -347,3 +343,15 @@ def changeTriangleT1_OLD(G, A, i):
                     delta += 1
     assert delta % 2 == 0
     return delta / 2.0
+
+def changeContagion_OLD(G, A, i):
+    """
+    change statistic for Contagion (partner attribute)
+
+    *--*
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        if A[u] == 1:
+            delta += 1
+    return delta

@@ -177,6 +177,7 @@ def test_directed_change_stats_highschool():
 
 def test_regression_undirected_change_stats(netfilename, outcomefilename,
                                             binattrfilename, contattrfilename,
+                                            catattrfilename = None,
                                             num_tests = DEFAULT_NUM_TESTS):
     """
     test new against old version of undirected ALAAM change stats
@@ -185,13 +186,14 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
            netfilename     - filename bipartite network in Pajek format
            outcomefilename - filename of binary outcome file
            binattrfilename - filename of binary attributes
-           contattrfilename- fiename of continuous attributes
+           contattrfilename- filename of continuous attributes
+           catattrfilename - filename of categorical attributes
            num_tests       - number of nodes to sample (number of times
                             the change statistic is computed)
     
     """
-    print("testing undirected change stats on 1000 node simulated example")
-    print("for ", DEFAULT_NUM_TESTS, "iterations...")    
+    print("testing undirected change stats for ", netfilename)
+    print("for ", num_tests, "iterations...")
     start = time.time()
     g = Graph(netfilename, binattrfilename, contattrfilename)
     g.printSummary()
@@ -202,6 +204,9 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
 
     print("changeTriangleT1")
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_OLD, changeTriangleT1, num_tests)
+
+    print("changeContagion")
+    compare_changestats_implementations(g, outcome_binvar, changeContagion_OLD, changeContagion, num_tests)
 
     print("OK,", time.time() - start, "s")
     print()
@@ -361,6 +366,8 @@ def main():
     test_undirected_graph()
     test_undirected_change_stats_karate()
     test_directed_change_stats_highschool()
+    test_regression_undirected_change_stats("../examples/data/karate_club/karate.net", "../examples/data/karate_club/karate_outcome.txt", "../examples/data/karate_club/karate_binattr.txt","../examples/data/karate_club/karate_contattr.txt", "../examples/data/karate_club/karate_catattr.txt")
+    test_regression_undirected_change_stats("../examples/data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt", "../examples/data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt", "../examples/data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt", "../examples/data/simulated_n500_bin_cont2/continuousAttributes_n500.txt")
     test_regression_undirected_change_stats("../examples/data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt", "../examples/data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt", "../examples/data/simulated_n1000_bin_cont/binaryAttribute_50_50_n1000.txt", "../examples/data/simulated_n1000_bin_cont/continuousAttributes_n1000.txt")
     test_bipartite_change_stats_tiny()
     test_bipartite_change_stats_inouye()
