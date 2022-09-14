@@ -109,9 +109,21 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
             # initialize outcome vector to 50% ones
             A = rand_bin_array(int(0.5*G.numNodes()), G.numNodes())
 
-            # And compute observed statistics by summing change stats for each
-            # 1 variable (note if instead starting at all zero A vector don't
-            # have to do this as then Z is zero vector)
+
+            # TODO: for bipartite graphs, should do the following,
+            # but allow either A or B mode to be all NA (which means
+            # the sampler never changes that value):
+            ## For bipartite graph, make sure initial outcome vector 
+            ## is all NA for the B mode (assuming we are using 
+            ## outcome only on A mode here) and 0 or 1 with 
+            ## uniform probability for A mode
+            # A = np.concatenate(
+            #            (rand_bin_array(int(0.5*G.num_A_nodes), G.num_A_nodes),
+            #             np.ones(G.num_B_nodes)*NA_VALUE) )
+
+    # And compute observed statistics by summing change stats for each
+    # 1 variable (note if instead starting at all zero A vector don't
+    # have to do this as then Z is zero vector)
 
     Z = computeObservedStatistics(G, A, changestats_func_list)
 
