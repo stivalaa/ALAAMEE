@@ -133,6 +133,19 @@ def changeBipartiteEgoTwoStar(mode, G, A, i):
             if G.bipartite_node_mode(i) == mode else 0)
 
 
+def changeBipartiteEgoThreeStar(G, A, i):
+    """
+    Change statistic for bipartite ego three-star
+    EgoX-3Star[mode]
+
+      o
+     /
+    *--o
+     \
+      o
+    """
+    return (changeStatisticsALAAM.changeThreeStar(G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
 
 def changeBipartiteAlterTwoStar1(mode, G, A, i):
     """
