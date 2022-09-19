@@ -45,6 +45,7 @@ import sys
 from functools import partial
 import  estimateALAAMEE
 from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
+from bipartiteALAAMsampler import bipartiteALAAMsampler
 from changeStatisticsALAAMbipartite import *
 
 
@@ -90,6 +91,7 @@ def main():
              'bipartiteFourCycle2A'],
              '../../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome_BNA.txt',
             bipartite=True,
+            sampler_func = partial(bipartiteALAAMsampler, MODE_A),
             run = runNumber
     )
 

@@ -8,6 +8,7 @@
 #
 
 import sys
+import random
 from Graph import Graph
 from SparseMatrix import SparseMatrix
 
@@ -132,3 +133,13 @@ class BipartiteGraph(Graph):
                 continue
             self.twoPathsMatrix.incrementValue(u, i)
             self.twoPathsMatrix.incrementValue(i, u)
+
+    def random_node(self, mode):
+        """
+        Choose a node of the given mode (MODE_A or MODE_B) uniformly at random
+        and return it.
+        """
+        assert mode == MODE_A or mode == MODE_B
+        return (random.randint(0, self.num_A_nodes-1) if mode == MODE_A else
+                random.randint(num_A_nodes, self.numNodes()-1))
+

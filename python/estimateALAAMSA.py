@@ -50,6 +50,7 @@ from stochasticApproximation import stochasticApproximation
 from computeObservedStatistics import computeObservedStatistics
 from gofALAAM import gof
 from basicALAAMsampler import basicALAAMsampler
+from bipartiteALAAMsampler import bipartiteALAAMsampler
 from simulateALAAM import rand_bin_array
 
 
@@ -260,4 +261,5 @@ def run_bipartite_example():
                          'bipartiteFourCycle1A',
                          'bipartiteFourCycle2A'],
                         '../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome_BNA.txt',
+                        sampler_func = partial(bipartiteALAAMsampler, MODE_A),
                         bipartite=True)
