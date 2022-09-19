@@ -69,7 +69,7 @@ def bipartiteALAAMsampler(mode,
     Parameters:
        mode                - network mode (node type) MODE_A or MODE_B
                              on which the outcome variables in A are defined.
-       G                   - Graph object for network (fixed)
+       G                   - BipartiteGraph object for network (fixed)
        A                   - vector of 0/1 outcome variables for ALAAM
        changestats_func_list  - list of change statistics funcions
        theta               - numpy vector of theta (parameter) values
