@@ -122,6 +122,8 @@ def test_undirected_graph():
     assert len(list(g.nodeIterator())) == g.numNodes()
     assert all([g.isEdge(i, j) for i in g.nodeIterator() for j in g.neighbourIterator(i)])
     assert all([len(list(g.neighbourIterator(i))) == g.degree(i) for i in g.nodeIterator()])
+    for i in g.nodeIterator():
+        assert(len(list(g.neighbourIterator(i))) == len(set(g.neighbourIterator(i)))) # check no repeated neighbours in iterator
 
     print("OK,", time.time() - start, "s")
     print()

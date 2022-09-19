@@ -116,10 +116,6 @@ class Graph:
             self.insertEdge(i-1, j-1)    # input is 1-based but we are 0-based
             lsplit = f.readline().split()
 
-        # TODO move this to unit tests instead
-        for i in self.nodeIterator():
-            assert(len(list(self.neighbourIterator(i))) == len(set(self.neighbourIterator(i)))) # check no repeated neighbours in iterator
-            
         # Note in the following,
         #  map(list, zip(*[row.split() for row in open(filename).readlines()]))
         # reads the data and transposes it so we have a list of columns
