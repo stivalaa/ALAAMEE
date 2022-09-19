@@ -146,6 +146,13 @@ binattr <- data.frame(outcome = ifelse(is.na(V(g)$outcome), 0,
 write.table(binattr, file = paste(network_name, "outcome.txt", sep="_"),
             row.names = FALSE, col.names = TRUE, quote=FALSE, sep='\t')
 
+## version with NA not zero for mode B nodes
+binattr <- data.frame(outcome = ifelse(is.na(V(g)$outcome), NA,
+                                       ifelse(V(g)$outcome, 1, 0)))
+write.table(binattr, file = paste(network_name, "outcome_BNA.txt", sep="_"),
+            row.names = FALSE, col.names = TRUE, quote=FALSE, sep='\t')
+
+
 
 ##
 ## write binary attributes
