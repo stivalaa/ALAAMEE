@@ -38,6 +38,11 @@ class Graph:
     For simplicity in undirected graph, we always store both the edge i -- j
     and the edge j -- i.
 
+    In the Pajek format *vertices at top, then followed by one line for each
+    vertex (just vertex number) then *arcs (or *edges for undirected)
+    followed by arcs list one per
+    line. For this program the nodes must be numbered 1..N.
+
     The format of the attributes files is header line with
     whitespace-delimited attribute names, followed by (whitespace
     delimited) attributes one line per node (corresponding to node
