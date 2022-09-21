@@ -113,8 +113,8 @@ system.time( dat <- read.csv(infile, skip=3,
 ## Create PersonID and CompanyID by prepending "Person" to P.ID
 ## and "Company" to company Code respectively, as there is one company
 ## code that is also a P.ID.
-dat$PersonID <- paste("Person", dat$P.ID, sep='')
-dat$CompanyID <- paste("Company", dat$Code, sep='')
+dat$PersonID <- paste("Person", dat$P.ID, sep='.')
+dat$CompanyID <- paste("Company", dat$Code, sep='.')
 
 ## Make logical node_types vector for make_bipartite_graph().
 ## It is a named vector where the names are the node names used
