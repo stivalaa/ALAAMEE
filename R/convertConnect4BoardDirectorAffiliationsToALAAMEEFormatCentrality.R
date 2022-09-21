@@ -205,27 +205,49 @@ for (colname in names(dat)) {
 }
 
 
+##
+## check for inconsistent data: since the rows in the original table
+## correspond to board memberships, there frequently are repeated
+## rows for the same person, so check that their information is
+## consistent i.e. person attributes like Gender and Age have the
+## same value for every row for the same person
+##
+print('verifying that person attributes are consistent...')
+for (attrname in c("Gender", "Age")) {
+  for (person in unique(dat$PersonID)) {
+    attrs <- dat[which(dat$PersonID == person), attrname]
+    stopifnot(length(unique(attrs)) == 1)
+  }
+}
+
 ## 
 ## get binary attributes
 ##
-
+## female is for people only no companies
+## company just is 1 for company or 0 for person
 
 binattr <- data.frame(company = ifelse(V(g)$type == FALSE, 0, 1),
-                      female  = ifelse(V(g)$Gender == 'M', 0,
-                                      ifelse(V(g)$Gender == 'F', 1, NA)),
-                      indep   = ifelse(V(g)$Indep. == "Y", 1, 0),
-                      nom     = ifelse(V(g)$Nom. == "Y", 1, 0),
-                      interim = ifelse(V(g)$Interim == "Y", 1, 0))
+                      female  = ifelse(V(g)$type == FALSE,
+                                ifelse(V(g)$Gender == 'M', 0,
+                                    ifelse(V(g)$Gender == 'F', 1, NA)), NA))
+#TODO edge not node attribute:    indep   = ifelse(V(g)$Indep. == "Y", 1, 0),
+#TODO edge not node attribute:    nom     = ifelse(V(g)$Nom. == "Y", 1, 0),
+#TODO edge not node attribute:    interim = ifelse(V(g)$Interim == "Y", 1, 0))
                       
 summary(binattr)
 
 
 ##
 ## get categorical attributes
+## These are all on people only not companies
 ##
-catattr <- data.frame(gender  = ifelse(V(g)$Gender == "NA", NA, V(g)$Gender),
-                      country = ifelse(V(g)$Country == "NA", NA, V(g)$Country),
-                      position= ifelse(V(g)$Position == "NA", NA, V(g)$Position))
+catattr <- data.frame(gender  = ifelse(V(g)$type == FALSE,
+                                 ifelse(V(g)$Gender == "NA", NA, V(g)$Gender),
+                                 NA),
+                      country = ifelse(V(g)$type == FALSE,
+                                 ifelse(V(g)$Country == "NA", NA, V(g)$Country),
+                                 NA))
+#TODO edge not node attribute:  position= ifelse(V(g)$Position == "NA", NA, V(g)$Position))
 ## print the factor levels to stdout for future reference (codebook)
 print("gender")
 catattr$gender <- factor(catattr$gender)
@@ -233,9 +255,9 @@ print(levels(catattr$gender))
 print("country")
 catattr$country <- factor(catattr$country)
 print(levels(catattr$country))
-print("position")
-catattr$position <- factor(catattr$position)
-print(levels(catattr$position))
+#print("position")
+#catattr$position <- factor(catattr$position)
+#print(levels(catattr$position))
 
 
 ##
@@ -252,30 +274,29 @@ catattr_recoded <- dcast(data = melt(catattr_recoded, id.vars = "ID"),
 catattr_recoded$ID <- NULL
 binattr <- cbind(binattr, catattr_recoded)
 
-#print('XXX 1') # R does not even give line numbers of errors....
+print('Fixing NA after one-hot encoding...')
 
-# No NA values here
-### One-hot encoding above with melt and dcast adds an _NA dummy variable,
-### and has 0 for for values that were NA. Use the _NA dummy to recode
-### all dummy variables that were for an NA value back to NA
-#
-#for (colname in c("gender", "position", "country")) {
-#  NA_idx <- which(binattr[, paste(colname, "NA", sep="_")] == 1)
-#  dummyvarnames <- Filter(function(s) substr(s, 1, nchar(colname)+1) == paste(colname, '_', sep='') && s != paste(colname, "NA", sep="_"), names(binattr))
-#  for (varname in dummyvarnames) {
-#    binattr[NA_idx, varname] <- NA
-#  }
-#}
-#
+# One-hot encoding above with melt and dcast adds an _NA dummy variable,
+## and has 0 for for values that were NA. Use the _NA dummy to recode
+## all dummy variables that were for an NA value back to NA
 
-#print('XXX 2') # R does not even give line numbers of errors....
+for (colname in c("gender", "country")) {
+  NA_idx <- which(binattr[, paste(colname, "NA", sep="_")] == 1)
+  dummyvarnames <- Filter(function(s) substr(s, 1, nchar(colname)+1) == paste(colname, '_', sep='') && s != paste(colname, "NA", sep="_"), names(binattr))
+  for (varname in dummyvarnames) {
+    binattr[NA_idx, varname] <- NA
+  }
+}
+
+
+print('replacing _ with . in column names after melt/dcat...')
 
 ## Have to replace '_' with '.' in column names as reshape2 melt/dcast above
 ## introduces '_' 
 colnames(binattr) <- sapply(colnames(binattr), function(s) gsub("_", ".", s))
 
 # compare auto encoding to original gender binary coding to check
-stopifnot(all(binattr$female == binattr$gender.F))
+stopifnot(all(binattr$female == binattr$gender.F, na.rm = TRUE))
 
 
 ##
@@ -284,19 +305,21 @@ stopifnot(all(binattr$female == binattr$gender.F))
 summary(catattr)
 catattr$gender <- as.numeric(catattr$gender)
 catattr$country <- as.numeric(catattr$country)
-catattr$position <- as.numeric(catattr$position)
+#catattr$position <- as.numeric(catattr$position)
 summary(catattr)
                        
 
 ##
 ## get continuous attributes
 ##
+## Age is only people only not companies
+##
 
 ## Appointed is days since January 1, 1970 (standard internal R format)
 ## This is OK as earliest appointed date is 1972-01-20
 contattr <- data.frame(
-         age = ifelse(V(g)$Age == 0, NA, V(g)$Age),
-         appointed = as.numeric((as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
+         age = ifelse(V(g)$type == 0, ifelse(V(g)$Age == 0, NA, V(g)$Age), NA)
+#TODO edge not node attribute:  appointed = as.numeric((as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
   )
                      
 
