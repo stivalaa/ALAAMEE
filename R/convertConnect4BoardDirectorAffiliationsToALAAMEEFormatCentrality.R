@@ -10,10 +10,6 @@
 ## Also compute betweenness centrality and BiRank centrality measures
 ## for all the nodes.
 ##
-## WARNING: betweenness centrality computation takes about XXX hours, so this
-## script takes a long time to run.
-##
-## 
 ## Usage: Rscript convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv
 ##
 ## where search.csv is the query result from selecting all companies and
@@ -32,7 +28,8 @@
 ##     connect4_directors_binattr.txt
 ##     connect4_directors_catattr.txt
 ##     connect4_directors_contattr.txt
-##     connect4_directors_outcome
+##     connect4_directors_outcome.txt
+##     connect4_directors_nodeid.txt
 ##
 ## If -g (giant component) is specified, then filenames hae _gc appended before
 ## .txt suffix.
@@ -87,7 +84,7 @@ get_giantcomponent <- FALSE
 args <- commandArgs(trailingOnly=TRUE)
 if (length(args) < 1 || length(args) > 2 ||
     (length(args) == 2 && args[1] != "-g")) {
-  cat("Usage: convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] board_director.gml.gz\n")
+  cat("Usage: convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv\n")
   quit(save="no")
 } else if (length(args) == 2) {
   get_giantcomponent <- TRUE
@@ -110,7 +107,6 @@ if (length(args) < 1 || length(args) > 2 ||
 # So note we skip the first three lines and the fourth line is the header
 
 cat("reading ", infile, "...\n")
-system.time(g <- read.graph(gzfile(infile), format='gml'))
 system.time( dat <- read.csv(infile, skip=3, 
                              header=TRUE, stringsAsFactors=FALSE) )
 
@@ -151,10 +147,6 @@ gedges <- c(t(as.matrix(dat[,c("PersonID", "CompanyID")])))
 
 cat('num_Persons = ', num_Persons, '\n')
 cat('num_Companies = ', num_Companies, '\n')
-stopifnot(num_Persons + num_Companies == vcount(g))
-stopifnot(all(V(g)$type[1:num_Persons] == FALSE))
-stopifnot(all(V(g)$type[(1+num_Persons):vcount(g)] == FALSE))
-
 
 ## make the bipartite graph
 g <- graph.bipartite(types = node_types, edges = gedges, directed = FALSE)
@@ -162,8 +154,19 @@ summary(g)
 
 stopifnot(typeof(V(g)$type) == 'logical')
 stopifnot(sum(V(g)$type) == num_Companies)
+stopifnot(num_Persons + num_Companies == vcount(g))
+stopifnot(all(V(g)$type[1:num_Persons] == FALSE))
+stopifnot(all(V(g)$type[(1+num_Persons):vcount(g)] == TRUE))
+
+## add node attributes
+print('adding node attributes to graph...')
+for (colname in names(dat)) {
+  g <- set.vertex.attribute(g, colname, value = dat[, colname])
+}
+summary(g)
 
 ## remove multiple and self edges if any
+print('removing multiple and self edges...')
 g <- simplify(g , remove.multiple = TRUE, remove.loops = TRUE)
 summary(g)
 
@@ -183,9 +186,9 @@ if (get_giantcomponent) {
 ## Replace spaces and '&' in strings with '.' and 'and' to
 ## prevent problems with header column names etc. (E.g. "Oil & gas" is 
 ## changed to "Oil.and.Gas"
-## Also replace '-' with '.'
+## Also replace '-' with '.' and '/' with '.'
 ##
-
+print('replacing problematic characters in strings with "."...')
 for (colname in names(dat)) {
   g <- set.vertex.attribute(g, colname,
                             value = sapply(get.vertex.attribute(g, colname),
@@ -196,19 +199,26 @@ for (colname in names(dat)) {
   g <- set.vertex.attribute(g, colname,
                             value = sapply(get.vertex.attribute(g, colname),
                                            function(s) gsub("-", ".", s)))
+  g <- set.vertex.attribute(g, colname,
+                            value = sapply(get.vertex.attribute(g, colname),
+                                           function(s) gsub("/", ".", s)))
 }
+
+
 ## 
 ## get binary attributes
 ##
 
-binattr <- data.frame(company = ifelse(V(g)$type == 'FALSE', 0, 1),
-                      female  = ifelse(V(g)$gender == 'M', 0,
-                                      ifelse(V(g)$gender == 'F', 1, NA))
+
+binattr <- data.frame(company = ifelse(V(g)$type == FALSE, 0, 1),
+                      female  = ifelse(V(g)$Gender == 'M', 0,
+                                      ifelse(V(g)$Gender == 'F', 1, NA)),
                       indep   = ifelse(V(g)$Indep. == "Y", 1, 0),
                       nom     = ifelse(V(g)$Nom. == "Y", 1, 0),
-                      interim = ifelse(V(g)$Interm == "Y", 1, 0))
+                      interim = ifelse(V(g)$Interim == "Y", 1, 0))
                       
 summary(binattr)
+
 
 ##
 ## get categorical attributes
@@ -233,6 +243,8 @@ print(levels(catattr$position))
 ## and add to binary attributes
 ##
 
+print('Recoding categorical as binary with one-hot encoding...')
+
 catattr_recoded <- catattr
 catattr_recoded$ID <- seq(1:nrow(catattr_recoded))
 catattr_recoded <- dcast(data = melt(catattr_recoded, id.vars = "ID"),
@@ -240,26 +252,30 @@ catattr_recoded <- dcast(data = melt(catattr_recoded, id.vars = "ID"),
 catattr_recoded$ID <- NULL
 binattr <- cbind(binattr, catattr_recoded)
 
-## One-hot encoding above with melt and dcast adds an _NA dummy variable,
-## and has 0 for for values that were NA. Use the _NA dummy to recode
-## all dummy variables that were for an NA value back to NA
+#print('XXX 1') # R does not even give line numbers of errors....
 
-for (colname in c("gender", "position", "country")) {
-  NA_idx <- which(binattr[, paste(colname, "NA", sep="_")] == 1)
-  dummyvarnames <- Filter(function(s) substr(s, 1, nchar(colname)+1) == paste(colname, '_', sep='') && s != paste(colname, "NA", sep="_"), names(binattr))
-  for (varname in dummyvarnames) {
-    binattr[NA_idx, varname] <- NA
-  }
-}
+# No NA values here
+### One-hot encoding above with melt and dcast adds an _NA dummy variable,
+### and has 0 for for values that were NA. Use the _NA dummy to recode
+### all dummy variables that were for an NA value back to NA
+#
+#for (colname in c("gender", "position", "country")) {
+#  NA_idx <- which(binattr[, paste(colname, "NA", sep="_")] == 1)
+#  dummyvarnames <- Filter(function(s) substr(s, 1, nchar(colname)+1) == paste(colname, '_', sep='') && s != paste(colname, "NA", sep="_"), names(binattr))
+#  for (varname in dummyvarnames) {
+#    binattr[NA_idx, varname] <- NA
+#  }
+#}
+#
 
+#print('XXX 2') # R does not even give line numbers of errors....
 
 ## Have to replace '_' with '.' in column names as reshape2 melt/dcast above
 ## introduces '_' 
 colnames(binattr) <- sapply(colnames(binattr), function(s) gsub("_", ".", s))
 
 # compare auto encoding to original gender binary coding to check
-stopifnot(all(is.na(catattr$gender) == as.logical(binattr$gender.NA)))
-stopifnot(all(binattr$female == binattr$gender.F, na.rm=TRUE))
+stopifnot(all(binattr$female == binattr$gender.F))
 
 
 ##
@@ -278,8 +294,10 @@ summary(catattr)
 
 ## Appointed is days since January 1, 1970 (standard internal R format)
 ## This is OK as earliest appointed date is 1972-01-20
-contattr <- data.frame(age = ifelse(V(g)$age == 0, NA, V(g)$age),
-                   appointed = (as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
+contattr <- data.frame(
+         age = ifelse(V(g)$Age == 0, NA, V(g)$Age),
+         appointed = as.numeric((as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
+  )
                      
 
 ## FIXME: fix the ages like 1971 which clearly are birth year, either
@@ -291,6 +309,7 @@ contattr <- data.frame(age = ifelse(V(g)$age == 0, NA, V(g)$age),
 
 elist <- as.data.frame(get.edgelist(g))
 names(elist) <- c("person", "company")
+cat("Computing birank centrality...\n")
 system.time( bprank <- bipartite_rank(data = elist,
                                       normalizer = "BiRank",
                                       return_mode= "both"))
@@ -298,7 +317,6 @@ contattr$birank <- c(bprank$rows$rank, bprank$columns$rank)
 
 ##
 ## compute betweeneess centrality and add as continuous attribute
-## WARNNG: This takes about 3 hours
 ##
 
 cat("Computing betweeneess centrality...\n")
@@ -368,4 +386,17 @@ write.table(outcome,
                           "connect4_directors_outcome_gc.txt", 
                           "connect4_directors_outcome.txt"),
             row.names = FALSE, col.names = TRUE, quote = FALSE)
+
+##
+## Write nodeid file that maps integer node id (1..N) to original
+## identifier, so that we can cross-reference back to original data
+## if necessary
+##
+nodeid <- data.frame(nodeID = 1:vcount(g), origID = V(g)$name)
+write.table(nodeid,
+            file = ifelse(get_giantcomponent,
+                          "connect4_directors_nodeid_gc.txt", 
+                          "connect4_directors_nodeid.txt"),
+            row.names = FALSE, col.names = TRUE, quote = FALSE)
+
 ## end
