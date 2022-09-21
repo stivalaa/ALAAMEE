@@ -328,7 +328,10 @@ contattr <- data.frame(
 ## convert to actual age by subtracting from current year
 ##
 print('fixing ages that are acutally birth years...')
-curr_year <- as.numeric(format(Sys.Date(), "%Y"))
+#acutally to be consistent we choul fix curr_year to 2022 which is the year
+#the data were downloaded, since all the other ages are ages in 2022
+#curr_year <- as.numeric(format(Sys.Date(), "%Y"))
+curr_year <- 2022
 bad_age_rows <- which(contattr$age >= 1900)
 print(contattr[bad_age_rows, ])#XXX
 contattr[bad_age_rows, "age"] <- curr_year - contattr[bad_age_rows, "age"]
