@@ -323,8 +323,16 @@ contattr <- data.frame(
   )
                      
 
-## FIXME: fix the ages like 1971 which clearly are birth year, either
-## convert to actual age by subtracting from 2022 or set to NA
+##
+## fix the ages like 1971 which clearly are birth year, either
+## convert to actual age by subtracting from current year
+##
+print('fixing ages that are acutally birth years...')
+curr_year <- as.numeric(format(Sys.Date(), "%Y"))
+bad_age_rows <- which(contattr$age >= 1900)
+print(contattr[bad_age_rows, ])#XXX
+contattr[bad_age_rows, "age"] <- curr_year - contattr[bad_age_rows, "age"]
+print(contattr[bad_age_rows, ])#XXX
 
 ##
 ## compute BiRank centrality and add as continuous attribute
