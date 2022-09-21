@@ -318,7 +318,8 @@ summary(catattr)
 ## Appointed is days since January 1, 1970 (standard internal R format)
 ## This is OK as earliest appointed date is 1972-01-20
 contattr <- data.frame(
-         age = ifelse(V(g)$type == 0, ifelse(V(g)$Age == 0, NA, V(g)$Age), NA)
+         age = as.numeric(ifelse(V(g)$type == 0, 
+                            ifelse(V(g)$Age == 0, NA, V(g)$Age), NA))
 #TODO edge not node attribute:  appointed = as.numeric((as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
   )
                      
