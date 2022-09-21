@@ -54,7 +54,6 @@
 ## Note: needs igraph version higher than 1.2.11 to allow named nodes and 
 ## types in make_bipartite_graph() (aka graph.bipartite()).
 ## Written using version 1.3.4.
-## Also need R version 3.2.0 or later for trimws().
 ##
 library(igraph)
 library(reshape2) # for dcast to do "one-hot" binary coding of categorical vars
