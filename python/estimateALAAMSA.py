@@ -252,8 +252,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                           np.ones(G.num_B_nodes)*NA_VALUE) )
             elif bipartiteGoFfixedMode == MODE_A:
                 Ainitial = np.concatenate(
-                       np.ones(G.num_A_nodes)*NA_VALUE,
-                       (rand_bin_array(int(0.5*G.num_B_nodes), G.num_B_nodes)) )
+                        (np.ones(G.num_A_nodes)*NA_VALUE,
+                        rand_bin_array(int(0.5*G.num_B_nodes), G.num_B_nodes)) )
         print('Running goodness-of-fit test...')
         start = time.time()
         gofresult = gof(G, A, gof_param_func_list, gof_theta,
