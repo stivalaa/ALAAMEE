@@ -246,11 +246,11 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             # value of outermost nodes at the original observed values
             Ainitial[G.inner_nodes] = Arandom_inner
         elif bipartite:
-            if bipartiteGoFfixedMode == MODE_A:
+            if bipartiteGoFfixedMode == MODE_B:
                 Ainitial = np.concatenate(
                          (rand_bin_array(int(0.5*G.num_A_nodes), G.num_A_nodes),
                           np.ones(G.num_B_nodes)*NA_VALUE) )
-            elif bipartiteGoFfixedMode == MODE_B:
+            elif bipartiteGoFfixedMode == MODE_A:
                 Ainitial = np.concatenate(
                        np.ones(G.num_A_nodes)*NA_VALUE,
                        (rand_bin_array(int(0.5*G.num_B_nodes), G.num_B_nodes)) )
@@ -307,4 +307,5 @@ def run_bipartite_example():
                          'bipartiteFourCycle2A'],
                         '../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome_BNA.txt',
                         sampler_func = partial(bipartiteALAAMsampler, MODE_A),
-                        bipartite=True)
+                        bipartite = True,
+                        bipartiteGoFfixedMode = MODE_A)
