@@ -178,9 +178,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     if converged:
         print('Converged.')
         significant = np.abs(theta) > 2 * std_error
-        sys.stdout.write(30*' ' + '  Parameter Std.Error t-ratio\n')
+        sys.stdout.write(30*' ' + '  Parameter  Std.Error t-ratio\n')
         for j in range(len(theta)):
-            sys.stdout.write('%30.30s % 7.3f    % 7.3f    % 7.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
+            sys.stdout.write('%30.30s % 7.3f   % 7.3f   % 7.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
         print()
 
         # Do goodness-of-fit test
