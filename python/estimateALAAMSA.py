@@ -62,7 +62,10 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         sampler_func = basicALAAMsampler,
                         zone_filename = None,
                         directed = False,
-                        bipartite = False):
+                        bipartite = False,
+                        GoFiterationInStep = 1000,
+                        GoFburnIn = 10000
+                        ):
     """Run estimation using stochastic approximation algorithm
     on specified network with binary and/or continuous and
     categorical attributes.
@@ -96,6 +99,10 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                            True for directed network else undirected.
          bipartite       - Default False.
                            True for two-mode network else one-mode.
+         GoFiterationInStep - number of MCMC steps between each sample in GoF.
+                              Default 1000.
+         GoFburnIn         - number of iterations to discard at start for GoF.
+                             Default 10000.
 
     Write output to stdout.
 
@@ -175,14 +182,32 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             gof_param_func_list = list(param_func_list)
             goflabels = list(labels)
         elif bipartite:
-            # TODO GoF statistics for bipartite
-            gof_param_func_list = list(param_func_list)
-            goflabels = list(labels)
+            # TODO better GoF statitsics for bipartite.
+            # Note that some of these are the same as bipartite stats
+            # usually used, e.g. changeThreeStar is bipartiteEgoThreeStar
+            # etc. Note also cannot use the attribute or bipatite functions
+            # here with functools.partial() as used in specifying model,
+            # as partial() even with the same parameters will give a different
+            # function address so the comparison "if f not in param_func_list"
+            # will always be True.
+            statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
+                         changeContagion,
+                         changeIndirectPartnerAttribute,
+                         changePartnerAttributeActivity,
+                         changePartnerPartnerAttribute]
+            statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1',
+                          'Contagion', 'Alter-2Star2', 'Partner-Activity',
+                          'Partner-Resource']
+            gof_param_func_list = (list(param_func_list) +
+                                   [f for f in statfuncs
+                                if f not in param_func_list])
+            goflabels = (list(labels) + [f for f in statlabels
+                                     if f not in labels])
         else:
             statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
                          changeTriangleT1, changeContagion,
                          changeIndirectPartnerAttribute,
-                         changePartnerAttributeActivity, 
+                         changePartnerAttributeActivity,
                          changePartnerPartnerAttribute,
                          changeTriangleT2,
                          changeTriangleT3]
@@ -214,7 +239,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         print('Running goodness-of-fit test...')
         start = time.time()
         gofresult = gof(G, A, gof_param_func_list, gof_theta,
-                        sampler_func = sampler_func, Ainitial = Ainitial)
+                        sampler_func = sampler_func, Ainitial = Ainitial,
+                        iterationInStep = GoFiterationInStep,
+                        buirnIn = GoFburnIn)
         print('GoF took',time.time() - start, 's')
         print('           ',goflabels)
         print('t_ratios = ',gofresult)

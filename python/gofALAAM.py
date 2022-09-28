@@ -28,7 +28,8 @@ from basicALAAMsampler import basicALAAMsampler
 
 
 def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
-        sampler_func = basicALAAMsampler, Ainitial = None):
+        sampler_func = basicALAAMsampler, Ainitial = None,
+        iterationInStep = 1000, burnIn = 10000):
     """
     ALAAM goodness-of-fit by simulating from estimated parameters, and 
     comparing observed statistics to statistics of simulated outcome vectors,
@@ -49,16 +50,16 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
                                the outcome vector to before simulation process,
                                rather than starting from all 0 or random.
                                Default None, for random initialization.
+       iterationInStep       - number of MCMC steps between each sample.
+                               Default 1000.
+       burnIn                - number of iterations to discard at start.
+                               Default 10000.
 
     Return value:
        vector of t-ratios
     """
     n = len(changestats_func_list)
     assert len(theta) == n
-
-    iterationInStep = 1000    # number of MCMC steps between each sample
-    burnIn          = 10000   # number of iterations to discard at start
-
 
     print('Gof numSamples =', numSamples, 'iterationInStep =', iterationInStep, 'burnIn = ', burnIn)
 
