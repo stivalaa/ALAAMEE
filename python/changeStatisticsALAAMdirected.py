@@ -75,7 +75,7 @@ def changeContagion(G, A, i):
     *->*
     """
     delta = 0
-    delta += sum([A[u] for u in G.outIterator(i)])
-    delta += sum([A[u] for u in G.inIterator(i)])
+    delta += sum([(A[u] == 1) for u in G.outIterator(i)])
+    delta += sum([(A[u] == 1) for u in G.inIterator(i)])
     return delta
 

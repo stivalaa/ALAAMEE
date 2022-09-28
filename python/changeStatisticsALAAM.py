@@ -120,7 +120,7 @@ def changeContagion(G, A, i):
 
     *--*
     """
-    return sum([A[u] for u in G.neighbourIterator(i)])
+    return sum([(A[u] == 1) for u in G.neighbourIterator(i)])
 
 
 def changeIndirectPartnerAttribute(G, A, i):
