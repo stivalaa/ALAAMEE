@@ -64,7 +64,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         directed = False,
                         bipartite = False,
                         GoFiterationInStep = 1000,
-                        GoFburnIn = 10000
+                        GoFburnIn = 10000,
+                        bipartiteGoFfixedMode = None
                         ):
     """Run estimation using stochastic approximation algorithm
     on specified network with binary and/or continuous and
@@ -103,11 +104,18 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                               Default 1000.
          GoFburnIn         - number of iterations to discard at start for GoF.
                              Default 10000.
+         bipartiteGoFfixedMode - for bipartite networks only, the mode
+                                 (MODE_A or MODE_B that is fixed to NA
+                                 in GoF simulation, for when outcome
+                                 variable not defined for that mode,
+                                 or None. Default None.
 
     Write output to stdout.
 
     """
     assert(len(param_func_list) == len(labels))
+    assert not (bipartiteGoFfixedMode is not None and not bipartite)
+    assert not (zone_filename is not None and bipartite)
 
     if directed:
         if bipartite:
@@ -236,6 +244,15 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             # set the outcome for inner nodes to random values, leaving
             # value of outermost nodes at the original observed values
             Ainitial[G.inner_nodes] = Arandom_inner
+        elif bipartite:
+            if bipartiteGoFfixedMode == MODE_A:
+                Ainitial = np.concatenate(
+                         (rand_bin_array(int(0.5*G.num_A_nodes), G.num_A_nodes),
+                          np.ones(G.num_B_nodes)*NA_VALUE) )
+            elif bipartiteGoFfixedMode == MODE_B:
+                Ainitial = np.concatenate(
+                       np.ones(G.num_A_nodes)*NA_VALUE,
+                       (rand_bin_array(int(0.5*G.num_B_nodes), G.num_B_nodes)) )
         print('Running goodness-of-fit test...')
         start = time.time()
         gofresult = gof(G, A, gof_param_func_list, gof_theta,
