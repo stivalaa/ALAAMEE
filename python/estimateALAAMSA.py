@@ -114,6 +114,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
     """
     assert(len(param_func_list) == len(labels))
+    assert bipartiteGoFfixedMode in [None, MODE_A, MODE_B]
     assert not (bipartiteGoFfixedMode is not None and not bipartite)
     assert not (zone_filename is not None and bipartite)
 
@@ -179,7 +180,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         significant = np.abs(theta) > 2 * std_error
         sys.stdout.write(30*' ' + '  Parameter Std.Error t-ratio\n')
         for j in range(len(theta)):
-            sys.stdout.write('%30.30s % 6.3f    % 6.3f    % 6.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
+            sys.stdout.write('%30.30s % 7.3f    % 7.3f    % 7.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
         print()
 
         # Do goodness-of-fit test
@@ -233,7 +234,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         gof_theta = np.array(list(theta) + (n-len(theta))*[0])
 
         Ainitial = None # default: use random intialization
-        if zone_filename is not None: # conditional estimation
+        if zone_filename is not None: # 7onditional estimation
             # For snowball conditional estimation, we must not start with
             # random initial outcome vector, but rather make sure the
             # nodes in the outermost zone have the same outcome attributes
@@ -265,7 +266,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         
         sys.stdout.write(30*' ' + '  t-ratio\n')
         for j in range(n):
-            sys.stdout.write('%30.30s % 6.3f\n' % (goflabels[j], gofresult[j]))
+            sys.stdout.write('%30.30s % 7.3f\n' % (goflabels[j], gofresult[j]))
         print()
 
         if isinstance(G, BipartiteGraph):
