@@ -308,4 +308,4 @@ def run_bipartite_example():
                         '../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome_BNA.txt',
                         sampler_func = partial(bipartiteALAAMsampler, MODE_A),
                         bipartite = True,
-                        bipartiteGoFfixedMode = MODE_A)
+                        bipartiteGoFfixedMode = MODE_B)
