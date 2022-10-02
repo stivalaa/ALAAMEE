@@ -227,11 +227,15 @@ for (attrname in c("Gender", "Age")) {
 ##
 ## female is for people only no companies
 ## company just is 1 for company or 0 for person
+## Also add notAustralia for country not Australia
 
 binattr <- data.frame(company = ifelse(V(g)$type == FALSE, 0, 1),
                       female  = ifelse(V(g)$type == FALSE,
                                 ifelse(V(g)$Gender == 'M', 0,
-                                    ifelse(V(g)$Gender == 'F', 1, NA)), NA))
+                                    ifelse(V(g)$Gender == 'F', 1, NA)), NA),
+                      notAustralia = ifelse(V(g)$type == FALSE,
+                                  ifelse(V(g)$Country == "Australia", 0, 1), NA)
+                     )
 #TODO edge not node attribute:    indep   = ifelse(V(g)$Indep. == "Y", 1, 0),
 #TODO edge not node attribute:    nom     = ifelse(V(g)$Nom. == "Y", 1, 0),
 #TODO edge not node attribute:    interim = ifelse(V(g)$Interim == "Y", 1, 0))
@@ -299,7 +303,8 @@ colnames(binattr) <- sapply(colnames(binattr), function(s) gsub("_", ".", s))
 
 # compare auto encoding to original gender binary coding to check
 stopifnot(all(binattr$female == binattr$gender.F, na.rm = TRUE))
-
+# also check country Australia for consistency
+stopifnot(all(!binattr$country.Australia == binattr$notAustralia, na.rm = TRUE))
 
 ##
 ## convert categorical attributes to integer values (as written to stdout above)
