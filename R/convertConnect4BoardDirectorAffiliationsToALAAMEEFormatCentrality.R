@@ -405,6 +405,7 @@ summary(catattr)
 catattr$gender <- as.numeric(catattr$gender)
 catattr$country <- as.numeric(catattr$country)
 #catattr$position <- as.numeric(catattr$position)
+catattr$industryGroup <- as.numeric(catattr$industryGroup)
 summary(catattr)
                        
 
