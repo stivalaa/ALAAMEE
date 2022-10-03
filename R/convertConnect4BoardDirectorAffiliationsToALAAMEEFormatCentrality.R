@@ -162,8 +162,8 @@ num_Companies <- length(unique(dat$CompanyID))
 node_types <- c(rep(FALSE, num_Persons), rep(TRUE, num_Companies))
 names(node_types) <- c(unique(dat$PersonID), unique(dat$CompanyID))
 
-person_attrs <- c('Gender', 'Country')
-company_attrs <- c('GICS.industry.group')
+person_attrs <- c('Gender', 'Country', 'Age', "Surname","First Name","Middle Name","Known As","P.ID")
+company_attrs <- c('GICS.industry.group', "Code", "Company", "Company.name")
 all_attrs <- c('company', person_attrs, company_attrs)
 
 ##
@@ -177,14 +177,14 @@ print('verifying that person attributes are consistent...')
 for (attrname in person_attrs) {
   for (person in unique(dat$PersonID)) {
     attrs <- dat[which(dat$PersonID == person), attrname]
-    stopifnot(length(unique(attrs)) == 1)
+    stopifnot(length(attrs) == 0 || length(unique(attrs)) == 1)
   }
 }
 print('verifying that company attributes are consistent...')
 for (attrname in company_attrs) {
   for (company in unique(dat$CompanyID)) {
     attrs <- dat[which(dat$CompanyID == company), attrname]
-    stopifnot(length(unique(attrs)) == 1)
+    stopifnot(length(attrs) == 0 || length(unique(attrs)) == 1)
   }
 }
 
@@ -236,8 +236,9 @@ for (colname in person_attrs) {
     # note the [1] after which() here, to get the first matching row for
     # that personid: it may match several rows, but we checked above that
     # these all have the same attribute values, so getting the first is safe.
-    g <- set.vertex.attribute(g, colname, V(g)[personid],
-                              dat[which(dat$PersonID == personid)[1], colname])
+    val <- dat[which(dat$PersonID == personid)[1], colname]
+    g <- set.vertex.attribute(g, colname, V(g)[personid], 
+                              ifelse(length(val) == 0, NA, val))
   }
 }
 # company attributes
@@ -418,8 +419,8 @@ summary(catattr)
 contattr <- data.frame(
          age = as.numeric(ifelse(V(g)$type == 0, 
                             ifelse(V(g)$Age == 0, NA, V(g)$Age), NA))
-#TODO edge not node attribute:  appointed = as.numeric((as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
   )
+#TODO edge not node attribute:  appointed = as.numeric((as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
                      
 
 ##
