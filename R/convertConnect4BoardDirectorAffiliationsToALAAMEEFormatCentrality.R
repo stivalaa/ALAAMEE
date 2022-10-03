@@ -162,6 +162,35 @@ num_Companies <- length(unique(dat$CompanyID))
 node_types <- c(rep(FALSE, num_Persons), rep(TRUE, num_Companies))
 names(node_types) <- c(unique(dat$PersonID), unique(dat$CompanyID))
 
+person_attrs <- c('Gender', 'Country')
+company_attrs <- c('GICS.industry.group')
+all_attrs <- c('company', person_attrs, company_attrs)
+
+##
+## check for inconsistent data: since the rows in the original table
+## correspond to board memberships, there frequently are repeated
+## rows for the same person, so check that their information is
+## consistent i.e. person attributes like Gender and Age have the
+## same value for every row for the same person
+##
+print('verifying that person attributes are consistent...')
+for (attrname in person_attrs) {
+  for (person in unique(dat$PersonID)) {
+    attrs <- dat[which(dat$PersonID == person), attrname]
+    stopifnot(length(unique(attrs)) == 1)
+  }
+}
+print('verifying that company attributes are consistent...')
+for (attrname in company_attrs) {
+  for (company in unique(dat$CompanyID)) {
+    attrs <- dat[which(dat$CompanyID == company), attrname]
+    stopifnot(length(unique(attrs)) == 1)
+  }
+}
+
+
+
+
 ##
 ## Build director affiliation network
 ##
@@ -195,9 +224,35 @@ stopifnot(all(V(g)$type[(1+num_Persons):vcount(g)] == TRUE))
 
 ## add node attributes
 print('adding node attributes to graph...')
-for (colname in names(dat)) {
-  g <- set.vertex.attribute(g, colname, value = dat[, colname])
+# first set all to NA
+for (colname in all_attrs) {
+  g <- set.vertex.attribute(g, colname, value = NA)
 }
+# person attributes
+print("person attributes")
+for (colname in person_attrs) {
+  print(colname)
+  for (personid in unique(dat$PersonID)) {
+    # note the [1] after which() here, to get the first matching row for
+    # that personid: it may match several rows, but we checked above that
+    # these all have the same attribute values, so getting the first is safe.
+    g <- set.vertex.attribute(g, colname, V(g)[personid],
+                              dat[which(dat$PersonID == personid)[1], colname])
+  }
+}
+# company attributes
+print("company attributes")
+for (colname in company_attrs) {
+  print(colname)
+  for (companyid in unique(dat$CompanyID)) {
+    # note the [1] after which() here, to get the first matching row for
+    # that companyid: it may match several rows, but we checked above that
+    # these all have the same attribute values, so getting the first is safe.
+    g <- set.vertex.attribute(g, colname, V(g)[companyid],
+                             dat[which(dat$CompanyID == companyid)[1], colname])
+  }
+}
+
 summary(g)
 
 ## remove multiple and self edges if any
@@ -242,21 +297,6 @@ for (colname in names(dat)) {
                                            function(s) gsub(",", ".", s)))
 }
 
-
-##
-## check for inconsistent data: since the rows in the original table
-## correspond to board memberships, there frequently are repeated
-## rows for the same person, so check that their information is
-## consistent i.e. person attributes like Gender and Age have the
-## same value for every row for the same person
-##
-print('verifying that person attributes are consistent...')
-for (attrname in c("Gender", "Age")) {
-  for (person in unique(dat$PersonID)) {
-    attrs <- dat[which(dat$PersonID == person), attrname]
-    stopifnot(length(unique(attrs)) == 1)
-  }
-}
 
 ## 
 ## get binary attributes
