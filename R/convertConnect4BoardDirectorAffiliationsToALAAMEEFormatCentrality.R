@@ -5,21 +5,29 @@
 ## Created: September 2022
 ##
 ## Read the network and attributes data in CSV format for the 
-## Connect4 & Gastner (2019) company director network 
+## Connect4 Boardrooom company director network 
 ## and convert to Pajek bipartite format for ALAAMEE or EstimNetDirected.
 ## Also compute betweenness centrality and BiRank centrality measures
 ## for all the nodes.
 ##
-## Usage: Rscript convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv
+## Usage: Rscript convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv ASXListedCompanies.csv
 ##
 ## where search.csv is the query result from selecting all companies and
 ## all directors from the Connect 4 Boardroom database.
 ## Accessed from Swinburne at https://www-connect4-com-au.eu1.proxy.openathens.net/cms/boardroom/index.html
 ## (14 September 2022 by Peng at Swinburne).
+## and 
+## ASXListedCompanies.csv is the list of ASX listed companies 
+## (with name, code, GICS industry group)
+## downloaded from the Australian Stock Exchange (ASX) 
+## https://www.asx.com.au/asx/research/ASXListedCompanies.csv
+##
 ## The Connect 4 Boardroom database ia a Thomson Reuters commercial
 ## prodct:
 ## https://legal.thomsonreuters.com.au/products/connect4/boardroom.aspx
-##
+## For ASX data see
+## https://www2.asx.com.au/legals/data-disclaimers 
+## for terms and conditions (Thomson Reuters, MorningStar)
 ##
 ## If -g is specified then gets giant omponent of network.
 ##
@@ -81,19 +89,21 @@ giant.component <- function(graph) {
 
 get_giantcomponent <- FALSE
 args <- commandArgs(trailingOnly=TRUE)
-if (length(args) < 1 || length(args) > 2 ||
-    (length(args) == 2 && args[1] != "-g")) {
-  cat("Usage: convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv\n")
+if (length(args) < 2 || length(args) > 3 ||
+    (length(args) == 3 && args[1] != "-g")) {
+  cat("Usage: convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv ASXListedCompanies.csv\n")
   quit(save="no")
-} else if (length(args) == 2) {
+} else if (length(args) == 3) {
   get_giantcomponent <- TRUE
   infile <- args[2]
+  asxfile <- args[3]
 } else {
   infile <- args[1]
+  asxfile <- args[2]
 }
 
 ##
-## Read Connect 4 Boardroom data and build director affiliation network
+## Read Connect 4 Boardroom data
 ##
 
 ## the data from the search query look like this:
@@ -108,6 +118,28 @@ if (length(args) < 1 || length(args) > 2 ||
 cat("reading ", infile, "...\n")
 system.time( dat <- read.csv(infile, skip=3, 
                              header=TRUE, stringsAsFactors=FALSE) )
+
+
+##
+## Read ASX listed companies data
+##
+
+## the data looks like this:
+#ASX listed companies as at Mon Oct 03 15:00:22 AEDT 2022
+#
+#Company name,ASX code,GICS industry group
+#"MOQ LIMITED","MOQ","Software & Services"
+#"1414 DEGREES LIMITED","14D","Capital Goods"
+#
+# So note we skip the first 2 lines and the 3rd line is the header
+cat("reading ", asxfile, "...\n")
+system.time(asx <- read.csv(asxfile, skip = 2, header = TRUE,
+                            stringsAsFactors = FALSE) )
+
+## 
+## Merge the Connect 4 Boardroom data and ASX list
+##
+dat <- merge(x = dat, y = asx, by.x = "Code", by.y = "ASX.code", all.x = TRUE)
 
 ## Create PersonID and CompanyID by prepending "Person" to P.ID
 ## and "Company" to company Code respectively, as there is one company
@@ -129,6 +161,39 @@ num_Persons <- length(unique(dat$PersonID))
 num_Companies <- length(unique(dat$CompanyID))
 node_types <- c(rep(FALSE, num_Persons), rep(TRUE, num_Companies))
 names(node_types) <- c(unique(dat$PersonID), unique(dat$CompanyID))
+
+person_attrs <- c('Gender', 'Country', 'Age', "Surname","First Name","Middle Name","Known As","P.ID")
+company_attrs <- c('GICS.industry.group', "Code", "Company", "Company.name")
+all_attrs <- c('company', person_attrs, company_attrs)
+
+##
+## check for inconsistent data: since the rows in the original table
+## correspond to board memberships, there frequently are repeated
+## rows for the same person, so check that their information is
+## consistent i.e. person attributes like Gender and Age have the
+## same value for every row for the same person
+##
+print('verifying that person attributes are consistent...')
+for (attrname in person_attrs) {
+  for (person in unique(dat$PersonID)) {
+    attrs <- dat[which(dat$PersonID == person), attrname]
+    stopifnot(length(attrs) == 0 || length(unique(attrs)) == 1)
+  }
+}
+print('verifying that company attributes are consistent...')
+for (attrname in company_attrs) {
+  for (company in unique(dat$CompanyID)) {
+    attrs <- dat[which(dat$CompanyID == company), attrname]
+    stopifnot(length(attrs) == 0 || length(unique(attrs)) == 1)
+  }
+}
+
+
+
+
+##
+## Build director affiliation network
+##
 
 ## Now make the edges vector in the correct format for make_bipartite_graph()
 ## I.e.:
@@ -159,9 +224,36 @@ stopifnot(all(V(g)$type[(1+num_Persons):vcount(g)] == TRUE))
 
 ## add node attributes
 print('adding node attributes to graph...')
-for (colname in names(dat)) {
-  g <- set.vertex.attribute(g, colname, value = dat[, colname])
+# first set all to NA
+for (colname in all_attrs) {
+  g <- set.vertex.attribute(g, colname, value = NA)
 }
+# person attributes
+print("person attributes")
+for (colname in person_attrs) {
+  print(colname)
+  for (personid in unique(dat$PersonID)) {
+    # note the [1] after which() here, to get the first matching row for
+    # that personid: it may match several rows, but we checked above that
+    # these all have the same attribute values, so getting the first is safe.
+    val <- dat[which(dat$PersonID == personid)[1], colname]
+    g <- set.vertex.attribute(g, colname, V(g)[personid], 
+                              ifelse(length(val) == 0, NA, val))
+  }
+}
+# company attributes
+print("company attributes")
+for (colname in company_attrs) {
+  print(colname)
+  for (companyid in unique(dat$CompanyID)) {
+    # note the [1] after which() here, to get the first matching row for
+    # that companyid: it may match several rows, but we checked above that
+    # these all have the same attribute values, so getting the first is safe.
+    g <- set.vertex.attribute(g, colname, V(g)[companyid],
+                             dat[which(dat$CompanyID == companyid)[1], colname])
+  }
+}
+
 summary(g)
 
 ## remove multiple and self edges if any
@@ -207,21 +299,6 @@ for (colname in names(dat)) {
 }
 
 
-##
-## check for inconsistent data: since the rows in the original table
-## correspond to board memberships, there frequently are repeated
-## rows for the same person, so check that their information is
-## consistent i.e. person attributes like Gender and Age have the
-## same value for every row for the same person
-##
-print('verifying that person attributes are consistent...')
-for (attrname in c("Gender", "Age")) {
-  for (person in unique(dat$PersonID)) {
-    attrs <- dat[which(dat$PersonID == person), attrname]
-    stopifnot(length(unique(attrs)) == 1)
-  }
-}
-
 ## 
 ## get binary attributes
 ##
@@ -245,14 +322,24 @@ summary(binattr)
 
 ##
 ## get categorical attributes
-## These are all on people only not companies
+## Person attributes only: gender, country
+## Company attributes only: industryGroup  (GICS.industry.group)
 ##
 catattr <- data.frame(gender  = ifelse(V(g)$type == FALSE,
                                  ifelse(V(g)$Gender == "NA", NA, V(g)$Gender),
                                  NA),
                       country = ifelse(V(g)$type == FALSE,
                                  ifelse(V(g)$Country == "NA", NA, V(g)$Country),
-                                 NA))
+                                 NA),
+                      industryGroup = ifelse(V(g)$type == FALSE, NA,
+                         ifelse(is.na(V(g)$GICS.industry.group)            |
+                                  V(g)$GICS.industry.group == "Not.Applic" |
+                                  V(g)$GICS.industry.group == "Class.Pend",
+                                  NA,
+                                V(g)$GICS.industry.group))
+                     )
+
+
 #TODO edge not node attribute:  position= ifelse(V(g)$Position == "NA", NA, V(g)$Position))
 ## print the factor levels to stdout for future reference (codebook)
 print("gender")
@@ -264,7 +351,12 @@ print(levels(catattr$country))
 #print("position")
 #catattr$position <- factor(catattr$position)
 #print(levels(catattr$position))
+print("industryGroup")
+catattr$industryGroup <- factor(catattr$industryGroup)
+print(levels(catattr$industryGroup))
 
+# There are 24 GICS industry groups
+# see https://en.wikipedia.org/wiki/Global_Industry_Classification_Standard
 
 ##
 ## make binary ("one-hot") version of Gender, Position and Country attributes,
@@ -313,6 +405,7 @@ summary(catattr)
 catattr$gender <- as.numeric(catattr$gender)
 catattr$country <- as.numeric(catattr$country)
 #catattr$position <- as.numeric(catattr$position)
+catattr$industryGroup <- as.numeric(catattr$industryGroup)
 summary(catattr)
                        
 
@@ -327,8 +420,8 @@ summary(catattr)
 contattr <- data.frame(
          age = as.numeric(ifelse(V(g)$type == 0, 
                             ifelse(V(g)$Age == 0, NA, V(g)$Age), NA))
-#TODO edge not node attribute:  appointed = as.numeric((as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
   )
+#TODO edge not node attribute:  appointed = as.numeric((as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
                      
 
 ##
