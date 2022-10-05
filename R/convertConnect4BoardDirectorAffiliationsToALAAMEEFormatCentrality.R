@@ -338,7 +338,8 @@ catattr <- data.frame(gender  = ifelse(V(g)$type == FALSE,
                       industryGroup = ifelse(V(g)$type == FALSE, NA,
                          ifelse(is.na(V(g)$GICS.industry.group)            |
                                   V(g)$GICS.industry.group == "Not.Applic" |
-                                  V(g)$GICS.industry.group == "Class.Pend",
+                                  V(g)$GICS.industry.group == "Class.Pend" |
+                                  V(g)$GICS.industry.group == "",
                                   NA,
                                 V(g)$GICS.industry.group))
                      )
