@@ -18,9 +18,9 @@
 ## (14 September 2022 by Peng at Swinburne).
 ## and 
 ## ASXListedCompanies.csv is the list of ASX listed companies 
-## (with name, code, GICS industry group)
+## (with name, code, GICS industry group, market capitalization)
 ## downloaded from the Australian Stock Exchange (ASX) 
-## https://www.asx.com.au/asx/research/ASXListedCompanies.csv
+##   https://www2.asx.com.au/markets/trade-our-cash-market/directory
 ##
 ## The Connect 4 Boardroom database ia a Thomson Reuters commercial
 ## prodct:
@@ -125,16 +125,21 @@ system.time( dat <- read.csv(infile, skip=3,
 ##
 
 ## the data looks like this:
-#ASX listed companies as at Mon Oct 03 15:00:22 AEDT 2022
+#"ASX code","Company name","Listing date","GICs industry group","Market Cap"
+#"14D","1414 DEGREES LIMITED","2018-09-12","Capital Goods",14542953
 #
-#Company name,ASX code,GICS industry group
-#"MOQ LIMITED","MOQ","Software & Services"
-#"1414 DEGREES LIMITED","14D","Capital Goods"
-#
-# So note we skip the first 2 lines and the 3rd line is the header
+## Note market cap is in AUD, e.g. the first row
+## "14D","1414 DEGREES LIMITED","2018-09-12","Capital Goods",14542953
+## shows on the rendering at https://www2.asx.com.au/markets/trade-our-cash-market/directory
+## as $14.54M
+## Note also in the header line "GICs" [sic] not "GICS" indsutry group.
+# 
 cat("reading ", asxfile, "...\n")
-system.time(asx <- read.csv(asxfile, skip = 2, header = TRUE,
-                            stringsAsFactors = FALSE) )
+system.time(asx <- read.csv(asxfile, header = TRUE, stringsAsFactors = FALSE) )
+i = match("GICs.industry.group", names(asx))
+if (!is.na(i)) {
+  names(asx)[i] <- "GICS.industry.group" # fix the header typo GICs for GICS
+}
 
 ## 
 ## Merge the Connect 4 Boardroom data and ASX list
@@ -163,7 +168,7 @@ node_types <- c(rep(FALSE, num_Persons), rep(TRUE, num_Companies))
 names(node_types) <- c(unique(dat$PersonID), unique(dat$CompanyID))
 
 person_attrs <- c('Gender', 'Country', 'Age', "Surname","First Name","Middle Name","Known As","P.ID")
-company_attrs <- c('GICS.industry.group', "Code", "Company", "Company.name")
+company_attrs <- c('GICS.industry.group', "Code", "Company", "Company.name", "Listing.date", "Market.Cap")
 all_attrs <- c('company', person_attrs, company_attrs)
 
 ##
@@ -305,7 +310,6 @@ for (colname in names(dat)) {
 ## female is for people only no companies
 ## company just is 1 for company or 0 for person
 ## Also add notAustralia for country not Australia
-
 binattr <- data.frame(company = ifelse(V(g)$type == FALSE, 0, 1),
                       female  = ifelse(V(g)$type == FALSE,
                                 ifelse(V(g)$Gender == 'M', 0,
@@ -413,14 +417,34 @@ summary(catattr)
 ## get continuous attributes
 ##
 ## Age is only people only not companies
-##
+## Listing.date and Market.Cap are only companies not people
+## Listing.date is converted to numeric year of listing date
+##   note Listing.date is in format %Y-%m-%d but '-' already converted to '.'
+##   note oldest year is 1885 (BHP) but that is an outlier:
+##    > summary( as.numeric(format(as.Date(asx$Listing.date, format = "%Y-%m-%d"), format = "%Y")) )
+##      Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's
+##      1885    2002    2009    2007    2017    2022      13
+
+## Market.Cap is in AUD, also convert to millions of AUD and log AUD
+
+
+contattr <- data.frame(
+         age = as.numeric(ifelse(V(g)$type == 0, 
+                            ifelse(V(g)$Age == 0, NA, V(g)$Age), NA)),
+         ListingYear = ifelse(V(g)$type == 1,
+                          as.numeric(format(as.Date(asx$Listing.date, 
+                                         format = "%Y-%m-%d"), format = "%Y")),
+                          NA),
+         MarketCap = ifelse(V(g)$type == 1, as.numeric(V(g)$Market.Cap), NA)
+  )
+contattr$MarketCapM <- round(contattr$MarketCap / 1e06, digits = 2)
+contattr$logMarketCap <- log(contattr$MarketCap)
+# replace -Inf with NA (for zero values with log; actually only one of these)
+contattr$logMarketCap <- ifelse(is.infinite(contattr$logMarketCap), NA,
+                                contattr$logMarketCap)
 
 ## Appointed is days since January 1, 1970 (standard internal R format)
 ## This is OK as earliest appointed date is 1972-01-20
-contattr <- data.frame(
-         age = as.numeric(ifelse(V(g)$type == 0, 
-                            ifelse(V(g)$Age == 0, NA, V(g)$Age), NA))
-  )
 #TODO edge not node attribute:  appointed = as.numeric((as.Date(V(g)$Appointed, format = "%d/%m/%Y")))
                      
 
