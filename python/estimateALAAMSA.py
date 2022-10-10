@@ -180,7 +180,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         significant = np.abs(theta) > 2 * std_error
         sys.stdout.write(30*' ' + '  Estimate  Std.Error t-ratio\n')
         for j in range(len(theta)):
-            sys.stdout.write('%30.30s % 7.3g   % 7.3g   % 7.3g %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
+            sys.stdout.write('%30.30s % 7.3f   % 7.3f   % 7.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
         print()
 
         # Do goodness-of-fit test
@@ -266,7 +266,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         
         sys.stdout.write(30*' ' + '  t-ratio\n')
         for j in range(n):
-            sys.stdout.write('%30.30s % 7.3g\n' % (goflabels[j], gofresult[j]))
+            sys.stdout.write('%30.30s % 7.3f\n' % (goflabels[j], gofresult[j]))
         print()
 
         if isinstance(G, BipartiteGraph):
