@@ -119,6 +119,11 @@ cat("reading ", infile, "...\n")
 system.time( dat <- read.csv(infile, skip=3, 
                              header=TRUE, stringsAsFactors=FALSE) )
 
+## remove any records for the ASX test security TES
+print(nrow(dat))
+print("removing rows for ASX test security TES")
+dat <- dat[which(dat$Code != "TES"), ]
+print(nrow(dat))
 
 ##
 ## Read ASX listed companies data
@@ -261,11 +266,20 @@ for (colname in company_attrs) {
 
 summary(g)
 
-## remove multiple and self edges if any
-print('removing multiple and self edges...')
-g <- simplify(g , remove.multiple = TRUE, remove.loops = TRUE)
+# there can be no self edges (since it is bipartite)
+stopifnot(!any_loop(g))
+
+## remove multiple edges (these can occur in this data as each row in the
+## table is an appointment, so can be appointed to same board in difference
+## capacities for example)
+print('removing multiple edges...')
+g <- simplify(g , remove.multiple = TRUE, remove.loops = FALSE)
 summary(g)
 
+
+# Public companies must have at least three directors
+# see e.g. https://asic.gov.au/for-business/registering-a-company/steps-to-register-a-company/minimum-officeholders/
+stopifnot(min(degree(g, which(V(g)$type == TRUE))) >= 3)
 
 
 ##
@@ -362,6 +376,8 @@ print(levels(catattr$industryGroup))
 
 # There are 24 GICS industry groups
 # see https://en.wikipedia.org/wiki/Global_Industry_Classification_Standard
+stopifnot(length(levels(catattr$industryGroup)) == 24)
+
 
 ##
 ## make binary ("one-hot") version of Gender, Position and Country attributes,
