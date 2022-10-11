@@ -499,6 +499,21 @@ cat("Computing betweeneess centrality...\n")
 system.time( contattr$betweenness <- betweenness(g, directed = FALSE, 
                                                     normalized = FALSE) )
 
+##
+## compute harmonic centrality and add as continuous attribute
+## Harmonic centrality is mean inverse distance to all other vertices,
+## considering unreachable to have zero inverse distance.
+## This is a kind of closeness centrality, but is well-defined on
+## unconnected graphs (not just connected graphs).
+## Citation in igraph manual is Marchiori & Latora (2000) Physica A 285
+## But see
+## https://en.wikipedia.org/wiki/Centrality#Harmonic_centrality
+## for long history of the same or similar idea
+##
+
+cat("Computing harmonic centrality...\n")
+system.time(contattr$harmonic_cent <- harmonic_centrality(g, normalized=FALSE))
+
 summary(contattr)
 
 ##
