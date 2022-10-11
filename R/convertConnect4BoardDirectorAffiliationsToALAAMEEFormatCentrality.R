@@ -512,8 +512,7 @@ system.time( contattr$betweenness <- betweenness(g, directed = FALSE,
 ##
 
 cat("Computing harmonic centrality...\n")
-system.time(contattr$harmonic_cent <- harmonic_centrality(g, directed = FALSE,
-                                                             normalized=FALSE))
+system.time(contattr$harmonic_cent <- harmonic_centrality(g, normalized=FALSE))
 
 summary(contattr)
 
