@@ -10,17 +10,30 @@
 ## Also compute betweenness centrality and BiRank centrality measures
 ## for all the nodes.
 ##
-## Usage: Rscript convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv ASXListedCompanies.csv
+## Usage: Rscript convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv ASXListedCompanies.csv ASXForeignEntityReport.xlsx
 ##
-## where search.csv is the query result from selecting all companies and
+## where 
+##
+## search.csv is the query result from selecting all companies and
 ## all directors from the Connect 4 Boardroom database.
 ## Accessed from Swinburne at https://www-connect4-com-au.eu1.proxy.openathens.net/cms/boardroom/index.html
 ## (14 September 2022 by Peng at Swinburne).
+##
 ## and 
+##
 ## ASXListedCompanies.csv is the list of ASX listed companies 
 ## (with name, code, GICS industry group, market capitalization)
 ## downloaded from the Australian Stock Exchange (ASX) 
 ##   https://www2.asx.com.au/markets/trade-our-cash-market/directory
+##
+## and
+##
+##  ASX-foreign-entity-report.xlsx
+##  shows "selected securities" of foreign incorporated entities quoted on
+##  the ASX 
+##  downloaded from https://www2.asx.com.au/content/dam/asx/documents/listings/foreign-entity-data/2022/ASX-foreign-entity-report-20220930.xlsx
+##  See:
+##   https://www2.asx.com.au/listings/how-to-list/listing-requirements/foreign-entity-data
 ##
 ## The Connect 4 Boardroom database ia a Thomson Reuters commercial
 ## prodct:
@@ -63,6 +76,7 @@
 ## types in make_bipartite_graph() (aka graph.bipartite()).
 ## Written using version 1.3.4.
 ##
+library(readxl) # For reading ASX foreign entity report .xlsx file
 library(igraph)
 library(reshape2) # for dcast to do "one-hot" binary coding of categorical vars
 library(birankr)
@@ -91,15 +105,17 @@ get_giantcomponent <- FALSE
 args <- commandArgs(trailingOnly=TRUE)
 if (length(args) < 2 || length(args) > 3 ||
     (length(args) == 3 && args[1] != "-g")) {
-  cat("Usage: convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv ASXListedCompanies.csv\n")
+  cat("Usage: convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv ASXListedCompanies.csv ASXForeignEntityReport.xlsx\n")
   quit(save="no")
-} else if (length(args) == 3) {
+} else if (length(args) == 4) {
   get_giantcomponent <- TRUE
   infile <- args[2]
   asxfile <- args[3]
+  asxforeign_file <- args[4]
 } else {
   infile <- args[1]
   asxfile <- args[2]
+  asxforeign_file <- args[3]
 }
 
 ##
@@ -145,6 +161,38 @@ i = match("GICs.industry.group", names(asx))
 if (!is.na(i)) {
   names(asx)[i] <- "GICS.industry.group" # fix the header typo GICs for GICS
 }
+
+##
+## Read ASX foreign entity report Excel .xlsx file
+##
+
+## the data being an Excel spreadsheet if formatted (with headers, logos,
+## footnotes, formatting etc.) for human readability not for machine reading
+## reproducibility, etc. But the readxl package handles it.
+## The header looks like this:
+##      ASX Code        Entity Name     Country of Incorporation        Security Description    ASX Listing or ASX Foreign Exempt Listing       Securities quoted on ASX as at end of September 20221 (Millions)        Securities held in Australia as at end of September 20221 (Millions)            
+##
+## read_excel() seems to automatically handle getting rid all of the logos, text
+## etc. before the actual table header, but the footnotes etc. after the table
+## are still there, but with NA in every field except ASX Code. So we will
+## just get rid of those ones. WARNING: this depens on the particular format
+## of this instance of the Excel file
+## downloaded from https://www2.asx.com.au/content/dam/asx/documents/listings/foreign-entity-data/2022/ASX-foreign-entity-report-20220930.xlsx
+## (downloaded 23 Oct 2022) - relying on Excel format and readxl package
+## is inherently unreliable, but that's just unavoidable when data is
+## distributed as Excel files instead of CSV or other more sensible formats.
+##
+asxforeign <- read_excel(asxforeign_file)
+asxforeign <- asxforeign[which(!is.na(asxforeign$'Entity Name')),]
+## ASX listing data uses "United States" but this uses 
+## "United States of America" so makenew column with soncistent name
+asxforeign$Country <- gsub("United States Of America", "United States", asxforiegn$`Country of Incorporation`)
+
+## Note we will build a column Country which is country of residence for
+## director and country of incorporation for company (rather than NA for
+## one mode for most attributes) - so can use in ERGM for example as 
+## catetgorical matching on this attribute between the two diferent modes
+## (node types). Similarly for binary attribute notAustralia.
 
 ## 
 ## Merge the Connect 4 Boardroom data and ASX list
@@ -264,6 +312,18 @@ for (colname in company_attrs) {
   }
 }
 
+## special handling for Country for companies: set to Australia except
+## for comapnies that are in the ASX foreign entity report
+for (companyid in unique(dat$CompanyID)) {
+  asxcode <- dat[which(dat$CompanyID == companyid),"Code"][1]
+  if (asxcode %in% asxforeign$`ASX Code`) {
+    g <- set.vertex.attribute(g, "Country", V(g)[companyid],
+                              asxforeign$`Country of Incorporation`)
+  } else {
+    g <- set.vertex.attribute(g, "Country", V(g)[companyid], "Australia")
+}
+
+
 summary(g)
 
 # there can be no self edges (since it is bipartite)
@@ -323,13 +383,12 @@ for (colname in names(dat)) {
 ##
 ## female is for people only no companies
 ## company just is 1 for company or 0 for person
-## Also add notAustralia for country not Australia
+## Also add notAustralia for country not Australia, for both country and person
 binattr <- data.frame(company = ifelse(V(g)$type == FALSE, 0, 1),
                       female  = ifelse(V(g)$type == FALSE,
                                 ifelse(V(g)$Gender == 'M', 0,
                                     ifelse(V(g)$Gender == 'F', 1, NA)), NA),
-                      notAustralia = ifelse(V(g)$type == FALSE,
-                                  ifelse(V(g)$Country == "Australia", 0, 1), NA)
+                      notAustralia = ifelse(V(g)$Country == "Australia", 0, 1)
                      )
 #TODO edge not node attribute:    indep   = ifelse(V(g)$Indep. == "Y", 1, 0),
 #TODO edge not node attribute:    nom     = ifelse(V(g)$Nom. == "Y", 1, 0),
@@ -340,15 +399,14 @@ summary(binattr)
 
 ##
 ## get categorical attributes
-## Person attributes only: gender, country
+## Person attributes only: gender
 ## Company attributes only: industryGroup  (GICS.industry.group)
+## Both modes: country (residence for diretor, incorporation for company)
 ##
 catattr <- data.frame(gender  = ifelse(V(g)$type == FALSE,
                                  ifelse(V(g)$Gender == "NA", NA, V(g)$Gender),
                                  NA),
-                      country = ifelse(V(g)$type == FALSE,
-                                 ifelse(V(g)$Country == "NA", NA, V(g)$Country),
-                                 NA),
+                      country = ifelse(V(g)$Country == "NA", NA, V(g)$Country),
                       industryGroup = ifelse(V(g)$type == FALSE, NA,
                          ifelse(is.na(V(g)$GICS.industry.group)            |
                                   V(g)$GICS.industry.group == "Not.Applic" |
@@ -512,7 +570,7 @@ system.time( contattr$betweenness <- betweenness(g, directed = FALSE,
 ##
 
 cat("Computing harmonic centrality...\n")
-system.time(contattr$harmonic_cent <- harmonic_centrality(g, normalized=FALSE))
+system.time(contattr$harmonic.cent <- harmonic_centrality(g, normalized=FALSE))
 
 summary(contattr)
 
