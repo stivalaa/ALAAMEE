@@ -186,7 +186,7 @@ asxforeign <- read_excel(asxforeign_file)
 asxforeign <- asxforeign[which(!is.na(asxforeign$'Entity Name')),]
 ## ASX listing data uses "United States" but this uses 
 ## "United States of America" so makenew column with soncistent name
-asxforeign$Country <- gsub("United States Of America", "United States", asxforiegn$`Country of Incorporation`)
+asxforeign$Country <- gsub("United States Of America", "United States", asxforeign$`Country of Incorporation`)
 
 ## Note we will build a column Country which is country of residence for
 ## director and country of incorporation for company (rather than NA for
