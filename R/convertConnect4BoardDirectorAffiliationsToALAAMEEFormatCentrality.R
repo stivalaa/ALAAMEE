@@ -314,6 +314,7 @@ for (colname in company_attrs) {
 
 ## special handling for Country for companies: set to Australia except
 ## for comapnies that are in the ASX foreign entity report
+print("Country attribute for companies")
 for (companyid in unique(dat$CompanyID)) {
   asxcode <- dat[which(dat$CompanyID == companyid),"Code"][1]
   if (asxcode %in% asxforeign$`ASX Code`) {
@@ -321,6 +322,7 @@ for (companyid in unique(dat$CompanyID)) {
                               asxforeign$`Country of Incorporation`)
   } else {
     g <- set.vertex.attribute(g, "Country", V(g)[companyid], "Australia")
+  }
 }
 
 
