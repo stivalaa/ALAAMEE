@@ -459,7 +459,8 @@ print('Fixing NA after one-hot encoding...')
 ## and has 0 for for values that were NA. Use the _NA dummy to recode
 ## all dummy variables that were for an NA value back to NA
 
-for (colname in c("gender", "country")) {
+#for (colname in c("gender", "country")) {
+for (colname in c("gender")) {
   NA_idx <- which(binattr[, paste(colname, "NA", sep="_")] == 1)
   dummyvarnames <- Filter(function(s) substr(s, 1, nchar(colname)+1) == paste(colname, '_', sep='') && s != paste(colname, "NA", sep="_"), names(binattr))
   for (varname in dummyvarnames) {
