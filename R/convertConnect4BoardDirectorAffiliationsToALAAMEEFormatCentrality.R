@@ -103,8 +103,8 @@ giant.component <- function(graph) {
 
 get_giantcomponent <- FALSE
 args <- commandArgs(trailingOnly=TRUE)
-if (length(args) < 2 || length(args) > 3 ||
-    (length(args) == 3 && args[1] != "-g")) {
+if (length(args) < 3 || length(args) > 4 ||
+    (length(args) == 4 && args[1] != "-g")) {
   cat("Usage: convertConnect4BoardDirectorAffiliationsToALAAMEEFormatCentrality.R [-g] search.csv ASXListedCompanies.csv ASXForeignEntityReport.xlsx\n")
   quit(save="no")
 } else if (length(args) == 4) {
