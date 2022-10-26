@@ -19,6 +19,8 @@
 #
 # Uses various GNU utils options on echo, etc.
 
+tratioThreshold=0.3 # t-ratio larger than this is put in bold
+
 
 if [ $# -lt 1 ]; then
     echo "usage: $0 estimation1.out estimation2.out ..." >&2
@@ -110,7 +112,13 @@ do
         elif [ "${tratio}" = "nan" ];  then
             echo -n " & ---"
         else
-            printf ' & $%.3f$' ${tratio}
+            abs_tratio=`echo "if (${tratio} < 0) -(${tratio}) else ${tratio}" | bc -l`
+            good_fit=`echo "${abs_tratio} < ${tratioThreshold}" | bc -l`
+            if [ $good_fit -eq 1 ]; then
+                printf ' & $%.3f$' ${tratio}
+            else
+                printf ' & $\\mathbf{%.3f}$' ${tratio}
+            fi
         fi
         model=`expr $model + 1`
     done
