@@ -576,6 +576,16 @@ system.time(contattr$harmonic.cent <- harmonic_centrality(g, normalized=FALSE))
 
 summary(contattr)
 
+
+##
+## scale and center the centrality measures so regression coefficients not
+## huge (e.g. birank) or tiny (eg. betweenness)
+##
+
+contattr$birank.scaled        <- scale(contattr$birank, center = TRUE, scale = TRUE)
+contattr$betweenness.scaled   <- scale(contattr$betweenness, center = TRUE, scale = TRUE)
+contattr$harmonic.cent.scaled <- scale(contattr$harmonic.cent, center = TRUE, scale = TRUE)
+
 ##
 ## get outcome binary attribute
 ##
