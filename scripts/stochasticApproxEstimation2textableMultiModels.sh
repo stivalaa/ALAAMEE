@@ -98,7 +98,7 @@ do
         stderr=`grep -w ${effect} ${tmpfile} | awk -vmodel=$model '$1 == model {print $4}'`
         tratio=`grep -w ${effect} ${tmpfile} | awk -vmodel=$model '$1 == model {print $5}'`
         signif=`grep -w ${effect} ${tmpfile} | awk -vmodel=$model '$1 == model {print $6}'`
-        if [ "${point}" == "" ];  then
+        if [ "${point}" = "" ];  then
             echo -n " & ---"
         else 
             # put statistically significant results in "\heavy",

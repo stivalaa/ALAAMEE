@@ -105,7 +105,9 @@ do
     while [ $model -le $num_models ]; 
     do
         tratio=`grep -w ${effect} ${tmpfile} | awk -vmodel=$model '$1 == model {print $3}'`
-        if [ "${tratio}" = "nan" ];  then
+        if [ "${tratio}" = "" ];  then
+            echo -n " & ---"
+        elif [ "${tratio}" = "nan" ];  then
             echo -n " & ---"
         else
             printf ' & $%.3f$' ${tratio}
