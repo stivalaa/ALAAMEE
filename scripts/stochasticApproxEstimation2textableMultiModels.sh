@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # File:    stochasticApproxEstimation2textableMultiModels.sh
 # Author:  Alex Stivala
