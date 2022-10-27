@@ -51,6 +51,7 @@
 ##     connect4_directors_contattr.txt
 ##     connect4_directors_outcome.txt
 ##     connect4_directors_nodeid.txt
+##     connect4_directors_catattr_strings.txt
 ##
 ## If -g (giant component) is specified, then filenames hae _gc appended before
 ## .txt suffix.
@@ -483,6 +484,10 @@ stopifnot(all(!binattr$country.Australia == binattr$notAustralia, na.rm = TRUE))
 ## convert categorical attributes to integer values (as written to stdout above)
 ##
 summary(catattr)
+## Also make copy of original categorical attributes data frame
+## with strings before conversion to factors, for future referene and
+## easier data summary table creation for readability (strings not coded)
+catattr_strings <- catattr
 catattr$gender <- as.numeric(catattr$gender)
 catattr$country <- as.numeric(catattr$country)
 #catattr$position <- as.numeric(catattr$position)
@@ -626,6 +631,12 @@ write.table(catattr,
             file = ifelse(get_giantcomponent,
                           "connect4_directors_catattr_gc.txt", 
                           "connect4_directors_catattr.txt"),
+            row.names = FALSE, col.names = TRUE, quote=FALSE)
+
+write.table(catattr_strings,
+            file = ifelse(get_giantcomponent,
+                          "connect4_directors_catattr_strings_gc.txt", 
+                          "connect4_directors_catattr_strings.txt"),
             row.names = FALSE, col.names = TRUE, quote=FALSE)
 
 ##
