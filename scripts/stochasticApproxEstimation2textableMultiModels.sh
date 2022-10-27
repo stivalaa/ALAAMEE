@@ -86,7 +86,10 @@ do
 done
 
 
-effectlist=`cat ${tmpfile} | awk '{print $2}' | sort | uniq`
+# Note LC_ALL=C for sort as otherwise on Ubuntu Linux it is case insensitive
+# (while it is not on other Linux and Cygwin)
+#https://superuser.com/questions/178171/gnu-sort-by-case-sensitive
+effectlist=`cat ${tmpfile} | awk '{print $2}' | LC_ALL=C sort | uniq`
 
 for effect in ${effectlist}
 do
