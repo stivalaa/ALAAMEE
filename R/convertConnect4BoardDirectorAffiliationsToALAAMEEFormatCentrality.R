@@ -319,7 +319,11 @@ print("Country attribute for companies")
 for (companyid in unique(dat$CompanyID)) {
   asxcode <- dat[which(dat$CompanyID == companyid),"Code"][1]
   if (asxcode %in% asxforeign$`ASX Code`) {
-    g <- set.vertex.attribute(g, "Country", V(g)[companyid], asxforeign$Country)
+    cat('XXX1 asxcode = ', asxcode,'\n')
+    cat('XXX2 ')
+    print(asxforeign[which(asxforeign$`ASX Code` == asxcode),])#XXX
+    g <- set.vertex.attribute(g, "Country", V(g)[companyid],
+            asxforeign[which(asxforeign$`ASX Code` == asxcode),]$Country)
   } else {
     g <- set.vertex.attribute(g, "Country", V(g)[companyid], "Australia")
   }
