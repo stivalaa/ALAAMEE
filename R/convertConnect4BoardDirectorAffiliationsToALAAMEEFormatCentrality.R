@@ -363,6 +363,7 @@ if (get_giantcomponent) {
 ## prevent problems with header column names etc. (E.g. "Oil & gas" is 
 ## changed to "Oil.and.Gas"
 ## Also replace '-' with '.' and '/' with '.' and ',' with '.'
+## and also '(' and ')' with '.' (occurs in "Virgin Islands (British)")
 ##
 print('replacing problematic characters in strings with "."...')
 for (colname in names(dat)) {
@@ -381,6 +382,12 @@ for (colname in names(dat)) {
   g <- set.vertex.attribute(g, colname,
                             value = sapply(get.vertex.attribute(g, colname),
                                            function(s) gsub(",", ".", s)))
+  g <- set.vertex.attribute(g, colname,
+                            value = sapply(get.vertex.attribute(g, colname),
+                                           function(s) gsub("(", ".", s)))
+  g <- set.vertex.attribute(g, colname,
+                            value = sapply(get.vertex.attribute(g, colname),
+                                           function(s) gsub(")", ".", s)))
 }
 
 
