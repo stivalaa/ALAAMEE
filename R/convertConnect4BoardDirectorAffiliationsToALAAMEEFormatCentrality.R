@@ -384,10 +384,10 @@ for (colname in names(dat)) {
                                            function(s) gsub(",", ".", s)))
   g <- set.vertex.attribute(g, colname,
                             value = sapply(get.vertex.attribute(g, colname),
-                                           function(s) gsub("(", ".", s)))
+                                           function(s) gsub("(", ".", s, fixed = TRUE)))
   g <- set.vertex.attribute(g, colname,
                             value = sapply(get.vertex.attribute(g, colname),
-                                           function(s) gsub(")", ".", s)))
+                                           function(s) gsub(")", ".", s, fixed = TRUE)))
 }
 
 
