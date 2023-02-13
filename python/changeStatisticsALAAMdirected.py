@@ -73,7 +73,7 @@ def changeReciprocity(G, A, i):
 
     *<->o
     """
-    return sum([G.isArc(u, i) for u in G.outIterator(j)])
+    return sum([G.isArc(u, i) for u in G.outIterator(i)])
 
 
 
