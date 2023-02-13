@@ -80,7 +80,7 @@ def changeReciprocity(G, A, i):
     return sum([G.isArc(u, i) for u in G.outIterator(i)])
 
 
-def changeInTwoStar(G, A, i):
+def changeEgoInTwoStar(G, A, i):
     """
     Change statistic for EgoIn2Star (popularity)
 
@@ -92,7 +92,7 @@ def changeInTwoStar(G, A, i):
     return (G.indegree(i) * (G.indegree(i) - 1))/2.0 if G.indegree(i) > 1 else 0
 
 
-def changeOutTwoStar(G, A, i):
+def changeEgoOutTwoStar(G, A, i):
     """
     Change statistic for EgoOut2Star (activity)
 
