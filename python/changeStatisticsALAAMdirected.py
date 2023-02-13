@@ -104,6 +104,49 @@ def changeOutTwoStar(G, A, i):
     return (G.outdegree(i) * (G.outdegree(i) - 1))/2.0 if G.outdegree(i) > 1 else 0
 
 
+def changeMixedTwoStar(G, A, i):
+    """
+    Change statistic for Mixed2Star (broker position)
+
+    *<--o
+     \
+      >
+       o
+    """
+    return (G.indegree(i) * G.outdegree(i) -
+            len(set(G.inIterator(i)).intersection(set(G.outIterator(i)))))
+
+
+def changeMixedTwoStarSource(G, A, i):
+    """
+    Change statistic for Mixed2StarSource
+
+    o<--*
+     \
+      >
+       o
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        delta += G.outdegree(u) - (1 if i in G.outIterator(u) else 0)
+    return delta
+
+
+def changeMixedTwoStarSink(G, A, i):
+    """
+    Change statistic for Mixed2StarSink
+
+    o<--o
+     \
+      >
+       *
+    """
+    delta = 0
+    for u in G.inIterator(i):
+        delta += G.indegree(u) - (1 if i in G.inIterator(u) else 0)
+    return delta
+
+
 
 def changeContagion(G, A, i):
     """
