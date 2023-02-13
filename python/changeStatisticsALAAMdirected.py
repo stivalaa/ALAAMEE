@@ -199,7 +199,7 @@ def changeTransitiveTriangleT1(G, A, i):
 
 def changeTransitiveTriangleT3(G, A, i):
     """
-    Change statistic for transitive triangle T3
+    Change statistic for transitive triangle T3 (contagion clustering)
 
       *
      > \
@@ -209,6 +209,16 @@ def changeTransitiveTriangleT3(G, A, i):
     """
     delta = 0
     for u in G.outIterator(i):
+        if A[u] == 1:
+            for v in G.outIterator(u):
+                if v != i and G.isArc(i, v) and A[v] == 1:
+                    delta += 1
+    for u in G.outIterator(i):
+        if A[u] == 1:
+            for v in G.inIterator(u):
+                if v != i and G.isArc(v, i) and A[v] == 1:
+                    delta +=1
+    for u in G.inIterator(i):
         if A[u] == 1:
             for v in G.outIterator(u):
                 if v != i and G.isArc(v, i) and A[v] == 1:
