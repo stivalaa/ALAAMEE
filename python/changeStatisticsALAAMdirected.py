@@ -167,3 +167,52 @@ def changeContagionReciprocity(G, A, i):
     *<->*
     """
     return sum([(G.isArc(u, i) and A[u] == 1) for u in G.outIterator(i)])
+
+
+def changeTransitiveTriangleT1(G, A, i):
+    """
+    Change statistic for transitive triangle T1
+
+      o
+     > \
+    /   >
+    *-->o
+
+      *
+     > \
+    /   >
+    o-->o
+
+      o
+     > \
+    /   >
+    o-->*
+
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        for v in G.outIterator(u):
+            if v != i and G.isArc(v, i):
+                delta += 1
+    return delta
+
+
+def changeTransitiveTriangleT3(G, A, i):
+    """
+    Change statistic for transitive triangle T3
+
+      *
+     > \
+    /   >
+    *-->*
+
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        if A[u] == 1:
+            for v in G.outIterator(u):
+                if v != i and G.isArc(v, i) and A[v] == 1:
+                    delta += 1
+    return delta
+
+

@@ -170,9 +170,9 @@ def test_directed_change_stats_highschool():
     assert round(g.density(), 8) == 0.03748176 # from R/igraph
     g.printSummary()
     outcome_binvar = list(map(int, open("../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt").read().split()[1:])) # male
-    obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeStatisticsALAAMdirected.changeSender, changeStatisticsALAAMdirected.changeReceiver, changeStatisticsALAAMdirected.changeReciprocity, changeStatisticsALAAMdirected.changeContagion, changeStatisticsALAAMdirected.changeContagionReciprocity, changeStatisticsALAAMdirected.changeEgoInTwoStar, changeStatisticsALAAMdirected.changeEgoOutTwoStar, changeStatisticsALAAMdirected.changeMixedTwoStar, changeStatisticsALAAMdirected.changeMixedTwoStarSource, changeStatisticsALAAMdirected.changeMixedTwoStarSink])
+    obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeStatisticsALAAMdirected.changeSender, changeStatisticsALAAMdirected.changeReceiver, changeStatisticsALAAMdirected.changeReciprocity, changeStatisticsALAAMdirected.changeContagion, changeStatisticsALAAMdirected.changeContagionReciprocity, changeStatisticsALAAMdirected.changeEgoInTwoStar, changeStatisticsALAAMdirected.changeEgoOutTwoStar, changeStatisticsALAAMdirected.changeMixedTwoStar, changeStatisticsALAAMdirected.changeMixedTwoStarSource, changeStatisticsALAAMdirected.changeMixedTwoStarSink, changeStatisticsALAAMdirected.changeTransitiveTriangleT1, changeStatisticsALAAMdirected.changeTransitiveTriangleT3])
     print(obs_stats)
-    assert all(obs_stats == [54, 293, 285, 209, 156, 52, 855, 993, 1713, 1633, 1584]) # verified on MPNet
+    assert all(obs_stats == [54, 293, 285, 209, 156, 52, 855, 993, 1713, 1633, 1584, 785, 267]) # verified on MPNet
     print("OK,", time.time() - start, "s")
     print()
 
