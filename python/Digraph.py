@@ -207,6 +207,7 @@ class Digraph:
         """
         Insert arc i -> j with arc weight (or label) w, in place
         """
+        assert i != j # do not allow loops (self-arcs)
         self.G[i][j] = w
         self.Grev[j][i] = w
 

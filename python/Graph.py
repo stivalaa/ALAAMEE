@@ -196,6 +196,7 @@ class Graph:
         """
         Insert edge i -- j in place
         """
+        assert i != j # do not allow loops (self-edges)
         self.G[i][j] = 1
         self.G[j][i] = 1
 
