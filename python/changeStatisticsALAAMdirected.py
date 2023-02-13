@@ -30,6 +30,10 @@ See
   Graph Models for Social Networks, chapter 9, pages 102-114. Cambridge
   University Press, New York, 2013.
 
+  Gallagher, H. C. (2019). Social networks and the willingness to
+  communicate: Reciprocity and brokerage. Journal of Language and
+  Social Psychology, 38(2), 194-214.
+
   Parker, A., Pallotti, F., & Lomi, A. (2021). New network models for the
   analysis of social contagion in organizations: an introduction to
   autologistic actor attribute models.
@@ -74,6 +78,30 @@ def changeReciprocity(G, A, i):
     *<->o
     """
     return sum([G.isArc(u, i) for u in G.outIterator(i)])
+
+
+def changeInTwoStar(G, A, i):
+    """
+    Change statistic for EgoIn2Star (popularity)
+
+    *<--o
+     <
+      \
+       o
+    """
+    return (G.indegree(i) * (G.indegree(i) - 1))/2.0 if G.indegree(i) > 1 else 0
+
+
+def changeOutTwoStar(G, A, i):
+    """
+    Change statistic for EgoOut2Star (activity)
+
+    *-->o
+     \
+      >
+       o
+    """
+    return (G.outdegree(i) * (G.outdegree(i) - 1))/2.0 if G.outdegree(i) > 1 else 0
 
 
 
