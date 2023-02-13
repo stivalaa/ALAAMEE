@@ -67,6 +67,15 @@ def changeReceiver(G, A, i):
     return G.indegree(i)
 
 
+def changeReciprocity(G, A, i):
+    """
+    change statistic for Reciprocity
+
+    *<->o
+    """
+    return sum([G.isArc(u, i) for u in G.outIterator(j)])
+
+
 
 def changeContagion(G, A, i):
     """
@@ -79,3 +88,11 @@ def changeContagion(G, A, i):
     delta += sum([(A[u] == 1) for u in G.inIterator(i)])
     return delta
 
+
+def changeContagionReciprocity(G, A, i):
+    """
+    change statistic for Contagion Reciprocity (mutual contagion)
+
+    *<->*
+    """
+    return sum([(G.isArc(u, i) and A[u] == 1) for u in G.outIterator(i)])

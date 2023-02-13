@@ -69,6 +69,8 @@ ReceiverAttrA	2.0000	-0.1796	0.269	0.068	0.760
 ContagionArcA	2.0000	0.6997	0.122	0.073	0.760	*
 
 
+[Note was using MPNet_MelNet_20220827 as saved in
+SWITCHDRIVE\Institution\USI\shared\ERGMXL\ALAAM\]
 
 Citation:
 
@@ -83,3 +85,22 @@ research, InterJournal, Complex Systems
 
 ADS
 Thu Feb 10 16:08:13 AEDT 2022
+
+
+
+
+[Note using MPNet_MelNet_20220827 as saved in
+SWITCHDRIVE\Institution\USI\shared\ERGMXL\ALAAM\]
+
+Results with gender(male) as outcome with ContagionReciproticyA added:
+
+Estimation
+Observed graph statistics:
+54.00	293.00	285.00	156.00	52.00
+...
+Effects	Lambda	Parameter	Stderr	t-ratio	SACF
+DensityA	2.00	-0.87259214	0.35085574	-0.04779465	-0.01505060	*
+SenderAttrA	2.00	0.02181337	0.11645857	-0.05923215	-0.03062335	
+ReceiverAttrA	2.00	-0.16110183	0.11999184	-0.06581364	-0.01855918	
+ContagionArcA	2.00	0.67158579	0.15392191	-0.04594921	-0.06160798	*
+ContagionReciprocityA	2.00	-1.08829738	0.38851211	-0.02489552	-0.05194178	*

@@ -170,9 +170,9 @@ def test_directed_change_stats_highschool():
     assert round(g.density(), 8) == 0.03748176 # from R/igraph
     g.printSummary()
     outcome_binvar = list(map(int, open("../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt").read().split()[1:])) # male
-    obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeStatisticsALAAMdirected.changeSender, changeStatisticsALAAMdirected.changeReceiver, changeStatisticsALAAMdirected.changeContagion])
+    obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeStatisticsALAAMdirected.changeSender, changeStatisticsALAAMdirected.changeReceiver, changeStatisticsALAAMdirected.changeContagion, changeStatisticsALAAMdirected.changeContagionReciprocity])
     print(obs_stats)
-    assert all(obs_stats == [54, 293, 285, 156]) # verified on MPNet
+    assert all(obs_stats == [54, 293, 285, 156, 52]) # verified on MPNet
     print("OK,", time.time() - start, "s")
     print()
 
