@@ -250,3 +250,21 @@ def changeTransitiveTriangleU1(G, A, i):
             if v != i and G.isArc(v, i):
                 delta += 1
     return delta
+
+
+def changeCyclicTriangleC1(G, A, i):
+    """
+    Change statistic for cyclic triangle C1
+
+       *
+      > \
+     /   >
+     o<--o
+
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        for v in G.outIterator(u):
+            if v != i and G.isArc(v, i):
+                delta += 1
+    return delta
