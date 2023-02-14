@@ -173,25 +173,17 @@ def changeTransitiveTriangleT1(G, A, i):
     """
     Change statistic for transitive triangle T1
 
-      o              *              o
-     > \            > \            > \
-    /   >          /   >          /   >
-    *-->o          o-->o          o-->*
+       *
+      > \
+     /   >
+     o-->o
 
     """
     delta = 0
-    # for u in G.outIterator(i):
-    #     for v in G.outIterator(u):
-    #         if v != i and G.isArc(i, v):
-    #             delta += 1
     for u in G.outIterator(i):
         for v in G.inIterator(u):
             if v != i and G.isArc(v, i):
                 delta += 1
-    # for u in G.inIterator(i):
-    #     for v in G.outIterator(u):
-    #         if v != i and G.isArc(v, i):
-    #             delta += 1
     return delta
 
 
@@ -224,3 +216,37 @@ def changeTransitiveTriangleT3(G, A, i):
     return delta
 
 
+def changeTransitiveTriangleU1(G, A, i):
+    """
+    Change statistic for transitive triangle U1
+
+      o
+     > \
+    /   >
+    *-->o
+
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        for v in G.outIterator(u):
+            if v != i and G.isArc(i, v):
+                delta += 1
+    return delta
+
+
+def changeTransitiveTriangleD1(G, A, i):
+    """
+    Change statistic for transitive triangle D1
+
+      o
+     > \
+    /   >
+    o-->*
+
+    """
+    delta = 0
+    for u in G.inIterator(i):
+        for v in G.outIterator(u):
+            if v != i and G.isArc(v, i):
+                delta += 1
+    return delta
