@@ -216,9 +216,9 @@ def changeTransitiveTriangleT3(G, A, i):
     return delta
 
 
-def changeTransitiveTriangleU1(G, A, i):
+def changeTransitiveTriangleD1(G, A, i):
     """
-    Change statistic for transitive triangle U1
+    Change statistic for transitive triangle D1
 
       o
      > \
@@ -234,9 +234,9 @@ def changeTransitiveTriangleU1(G, A, i):
     return delta
 
 
-def changeTransitiveTriangleD1(G, A, i):
+def changeTransitiveTriangleU1(G, A, i):
     """
-    Change statistic for transitive triangle D1
+    Change statistic for transitive triangle U1
 
       o
      > \
