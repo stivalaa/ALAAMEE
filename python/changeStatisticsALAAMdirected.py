@@ -288,6 +288,7 @@ def changeCyclicTriangleC3(G, A, i):
                     delta += 1
     return delta
 
+
 def changeAlterInTwoStar2(G, A, i):
     """
     Change statistic for AlterInTwoStar2
@@ -299,6 +300,22 @@ def changeAlterInTwoStar2(G, A, i):
     delta = 0
     for u in G.inIterator(i):
         for v in G.outIterator(u):
+            if v != i and A[v] == 1:
+                delta += 1
+    return delta
+
+
+def changeAlterOutTwoStar2(G, A, i):
+    """
+    Change statistic for AlterOutTwoStar2
+    (structural equivalence between actors with attribute, sharing
+    same network partner with arcs directed from them)
+
+    *-->o<--*
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        for v in G.inIterator(u):
             if v != i and A[v] == 1:
                 delta += 1
     return delta
