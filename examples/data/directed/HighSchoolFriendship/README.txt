@@ -42,6 +42,11 @@ class '2BIO3' created with:
 
 cat highschool_friendship_catattr.txt | awk '{if (NR == 1) {print "2BIO3"} else {if ($1 == 3) {print 1} else {print 0}}}' > highschool_friendship_class2BIO3.txt
 
+highschool_friendship_catattr_NA99999.txt is a categrocial attribute file
+for MPNet with the "NA" value changed to 99999 as MPNet crashes if there
+is a "NA" (or any string) that is not numeric.
+
+cat highschool_friendship_catattr.txt |sed 's/NA/99999/g' > highschool_friendship_catattr_NA99999.txt
 
 Results for ALAAM estimation with male as outcome attribute should look 
 something like this (from MPNet):
