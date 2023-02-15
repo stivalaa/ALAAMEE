@@ -6,7 +6,7 @@
 #
 #
 # Read output of estimateALAAMSA.run_on_network_attr() with
-# to get goodness-of-fit t-rations compauter after Stochastic
+# to get goodness-of-fit t-ratios computed after Stochastic
 # Approximation algorithm for ALAAM and build LaTeX table for multiple
 # different models
 # 
