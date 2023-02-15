@@ -237,12 +237,12 @@ write.graph(g, outfilename_directed, format="pajek")
 
 ## convert to undirected graph for ALAAM
 ## use bidirectional links only (as per Kleineberg & Boguna (2014))
-## TODO implemented directed ALAAM
+directed_vcount <- vcount(g)
 g <- as.undirected(g, mode='mutual')
 summary(g)
 g <- simplify(g , remove.multiple = TRUE, remove.loops = TRUE)
 summary(g)
-stopifnot(vcount(g) == 1632803)
+stopifnot(vcount(g) == directed_vcount)
 write.graph(g, outfilename_undirected, format="pajek")
 
 ##
