@@ -25,6 +25,13 @@
 ##  year         = 2014
 ##}
 ##
+## Based on the EstimNetDirected script (October 2018)
+## convertSNAPpokecToEstimNetDirectedFormat.R but this version writes
+## both directed and undirected versions of the network as output
+## (with same node set, so same attribute files).  The undirected
+## version uses bidirectional links only (as per Kleineberg & Boguna
+## (2014))
+##
 ## Usage:
 ## 
 ## Rscript convertSNAPpokecToALAAMEEFormat.R [maxdegree]
@@ -39,7 +46,8 @@
 ##    soc-pokec-relationships.txt.gz
 ##
 ## Output files in cwd (WARNING overwritten):
-##     soc-pokec-relationships.txt
+##     soc-pokec-relationships-directed.net
+##     soc-pokec-relationships-undirected.net
 ##     soc-pokec-binattr.txt
 ##     soc-pokec-catattr.txt
 ##     soc-pokec-contattr.txt
@@ -64,8 +72,8 @@ if (length(args) == 1) {
 ## network
 ##
 infile <- "soc-pokec-relationships.txt.gz"
-basefilename <- sub("(.+)[.].+", "\\1", basename(infile))
-outfilename <- basefilename
+outfilename_directed <- "soc-pokec-relationships-directed.net"
+outfilename_undirected <- "soc-pokec-relationships-undirected.net"
 
 cat("reading ", infile, "...\n")
 system.time(edgelist <- read.table(gzfile(infile)))
@@ -95,14 +103,6 @@ summary(g)
 ## https://snap.stanford.edu/data/soc-pokec-readme.txt
 stopifnot(vcount(g) == 1632803)
 stopifnot(ecount(g) == 30622564)
-
-## convert to undirected graph for ALAAM
-## use bidirectional links only (as per Kleineberg & Boguna (2014))
-## TODO implemented directed ALAAM
-g <- as.undirected(g, mode='mutual')
-summary(g)
-g <- simplify(g , remove.multiple = TRUE, remove.loops = TRUE)
-summary(g)
 
 
 ##
@@ -233,7 +233,17 @@ if (maxdegree_specified) {
     summary(g)
 }
 
-write.graph(g, outfilename, format="pajek")
+write.graph(g, outfilename_directed, format="pajek")
+
+## convert to undirected graph for ALAAM
+## use bidirectional links only (as per Kleineberg & Boguna (2014))
+## TODO implemented directed ALAAM
+g <- as.undirected(g, mode='mutual')
+summary(g)
+g <- simplify(g , remove.multiple = TRUE, remove.loops = TRUE)
+summary(g)
+stopifnot(vcount(g) == 1632803)
+write.graph(g, outfilename_undirected, format="pajek")
 
 ##
 ## write outcome binary attribute
