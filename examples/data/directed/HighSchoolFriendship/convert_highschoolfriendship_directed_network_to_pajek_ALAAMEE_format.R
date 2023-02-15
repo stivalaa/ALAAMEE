@@ -45,6 +45,6 @@ print(summary(catattr))
 catattr$class <- as.numeric(catattr$class)
 catattr$sex <- as.numeric(catattr$sex)
 print(summary(catattr))
-write.table(catattr, 'highschool_friendship_catattr.txt',
+write.table(catattr, 'highschool_friendship_catattr.txt', sep='\t',
             row.names = FALSE, col.names = TRUE, quote=FALSE)
 
