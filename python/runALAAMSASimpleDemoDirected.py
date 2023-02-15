@@ -17,5 +17,6 @@ estimateALAAMSA.run_on_network_attr(
         [changeDensity, changeSender, changeReceiver, changeContagion],
         ["Density", "Sender", "Receiver", "Contagion"],
         outcome_bin_filename = '../../data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt',
+        catattr_filename = '../../data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt',
         directed = True
     )
