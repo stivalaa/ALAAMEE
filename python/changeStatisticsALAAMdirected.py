@@ -320,3 +320,103 @@ def changeAlterOutTwoStar2(G, A, i):
                 delta += 1
     return delta
 
+
+def changeSenderMatch(attrname, G, A, i):
+    """
+    Change statistic for categorical matching exogenous attributes
+    [attrname]_o->Match
+    (outcome attribtue related to matching categorical exogenous attributes on
+    this and node receiving tie from this node)
+
+    {*}-->{o}
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        if (G.catattr[attrname][u] != NA_VALUE and G.catattr[attrname][i] != NA_VALUE and
+            G.catattr[attrname][u] == G.catattr[attrname][i]):
+            delta += 1
+    return delta
+
+def changeReceiverMatch(attrname, G, A, i):
+    """
+    Change statistic for categorical matching exogenous attributes
+    [attrname]_o<-Match
+    (outcome attribtue related to matching categorical exogenous attributes on
+    this and node sending tie to this node)
+
+    {*}<--{o}
+    """
+    delta = 0
+    for u in G.inIterator(i):
+        if (G.catattr[attrname][u] != NA_VALUE and G.catattr[attrname][i] != NA_VALUE and
+            G.catattr[attrname][u] == G.catattr[attrname][i]):
+            delta += 1
+    return delta
+
+def changeReciprocityMatch(attrname, G, A, i):
+    """
+    Change statistic for categorical matching exogenous attributes
+    [attrname]_o<->Match
+    (outcome attribtue related to matching categorical exogenous attributes on
+    this and node with mutual (reciprocated) ties with this node)
+
+    {*}<->{o}
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        if (G.catattr[attrname][u] != NA_VALUE and
+            G.catattr[attrname][i] != NA_VALUE and
+            G.catattr[attrname][u] == G.catattr[attrname][i] and
+            G.isArc(u, i)):
+            delta += 1
+    return delta
+
+def changeSenderMismatch(attrname, G, A, i):
+    """Change statistic for categorical mismatching exogenous
+    attributes [attrname]_o->Mismatch (outcome attribtue related to
+    mismatching categorical exogenous attributes on this and node
+    receiving tie from this node)
+
+    {*}--><o>
+
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        if (G.catattr[attrname][u] != NA_VALUE and G.catattr[attrname][i] != NA_VALUE and
+            G.catattr[attrname][u] != G.catattr[attrname][i]):
+            delta += 1
+    return delta
+
+def changeReceiverMismatch(attrname, G, A, i):
+    """Change statistic for categorical mismatching exogenous
+    attributes [attrname]_o<-Mismatch (outcome attribtue related to
+    mismatching categorical exogenous attributes on this and node
+    sending tie to this node)
+
+    {*}<--<o>
+
+    """
+    delta = 0
+    for u in G.inIterator(i):
+        if (G.catattr[attrname][u] != NA_VALUE and G.catattr[attrname][i] != NA_VALUE and
+            G.catattr[attrname][u] != G.catattr[attrname][i]):
+            delta += 1
+    return delta
+
+def changeReciprocityMismatch(attrname, G, A, i):
+    """Change statistic for categorical mismatching exogenous
+    attributes [attrname]_o<->Mismatch (outcome attribtue related to
+    mismatching categorical exogenous attributes on this and node with
+    mutual (reciprocated) ties with this node)
+
+    {*}<-><o>
+
+    """
+    delta = 0
+    for u in G.outIterator(i):
+        if (G.catattr[attrname][u] != NA_VALUE and
+            G.catattr[attrname][i] != NA_VALUE and
+            G.catattr[attrname][u] != G.catattr[attrname][i] and
+            G.isArc(u, i)):
+            delta += 1
+    return delta
