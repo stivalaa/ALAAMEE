@@ -177,11 +177,11 @@ def test_directed_change_stats_highschool():
     # 3 of these 5 arcs are mutual (reciprocated), and 2 are not.
     # Verified using igraph with network loaded using
     # load_highschoolfriendship_directed_network.R:
-    #> V(g)[29]$sex
-    #[1] "Unknown"
-    #> incident(g, V(g)[29], 'all')
-    #+ 8/668 edges from b2f5311 (vertex names):
-    #[1] 34 ->151 151->34  34 ->277 277->34  34 ->502 34 ->866 866->34  201->34
+    # > V(g)[29]$sex
+    # [1] "Unknown"
+    # > incident(g, V(g)[29], 'all')
+    # + 8/668 edges from b2f5311 (vertex names):
+    # [1] 34 ->151 151->34  34 ->277 277->34  34 ->502 34 ->866 866->34  201->34
     assert g.catattr['sex'].count(NA_VALUE) == 1
     sex_na_node = g.catattr['sex'].index(NA_VALUE) # node with NA for sex
     assert g.outdegree(sex_na_node) == 4
@@ -189,6 +189,20 @@ def test_directed_change_stats_highschool():
     assert len(set(g.outIterator(sex_na_node)).union(set(g.inIterator(sex_na_node)))) == 5
     g.printSummary()
     outcome_binvar = list(map(int, open("../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt").read().split()[1:])) # male
+    # > V(g)[neighbors(g, V(g)[29], 'all')]$sex
+    # [1] "M" "M" "F" "F" "F" "M" "M" "M"
+    # > V(g)[neighbors(g, V(g)[29], 'in')]$sex
+    # [1] "M" "F" "M" "M"
+    # > V(g)[neighbors(g, V(g)[29], 'out')]$sex
+    # [1] "M" "F" "F" "M"
+    assert outcome_binvar[sex_na_node] == 0 # NA was converted to 0 for outcome binary variable for MPNet
+    # categorical attribute is coded as Female=1, Male=2
+    assert len([g.catattr['sex'][u] for u in g.inIterator(sex_na_node)]) == 4
+    assert [g.catattr['sex'][u] for u in g.inIterator(sex_na_node)].count(1) == 1
+    assert [g.catattr['sex'][u] for u in g.inIterator(sex_na_node)].count(2) == 3
+    assert len([g.catattr['sex'][u] for u in g.outIterator(sex_na_node)]) == 4
+    assert [g.catattr['sex'][u] for u in g.outIterator(sex_na_node)].count(1) == 2
+    assert [g.catattr['sex'][u] for u in g.outIterator(sex_na_node)].count(2) == 2
     obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeStatisticsALAAMdirected.changeSender, changeStatisticsALAAMdirected.changeReceiver, changeStatisticsALAAMdirected.changeReciprocity, changeStatisticsALAAMdirected.changeContagion, changeStatisticsALAAMdirected.changeContagionReciprocity, changeStatisticsALAAMdirected.changeEgoInTwoStar, changeStatisticsALAAMdirected.changeEgoOutTwoStar, changeStatisticsALAAMdirected.changeMixedTwoStar, changeStatisticsALAAMdirected.changeMixedTwoStarSource, changeStatisticsALAAMdirected.changeMixedTwoStarSink, changeStatisticsALAAMdirected.changeTransitiveTriangleT1, changeStatisticsALAAMdirected.changeTransitiveTriangleT3, changeStatisticsALAAMdirected.changeTransitiveTriangleD1, changeStatisticsALAAMdirected.changeTransitiveTriangleU1, changeStatisticsALAAMdirected.changeCyclicTriangleC1, changeStatisticsALAAMdirected.changeCyclicTriangleC3, changeStatisticsALAAMdirected.changeAlterInTwoStar2, changeStatisticsALAAMdirected.changeAlterOutTwoStar2, partial(changeStatisticsALAAMdirected.changeSenderMatch, "class"), partial(changeStatisticsALAAMdirected.changeReceiverMatch, "class"), partial(changeStatisticsALAAMdirected.changeReciprocityMatch, "class"), partial(changeStatisticsALAAMdirected.changeSenderMismatch, "class"), partial(changeStatisticsALAAMdirected.changeReceiverMismatch, "class"), partial(changeStatisticsALAAMdirected.changeReciprocityMismatch, "class"), partial(changeStatisticsALAAMdirected.changeSenderMatch, "sex"), partial(changeStatisticsALAAMdirected.changeReceiverMatch, "sex"), partial(changeStatisticsALAAMdirected.changeReciprocityMatch, "sex"), partial(changeStatisticsALAAMdirected.changeSenderMismatch, "sex"), partial(changeStatisticsALAAMdirected.changeReceiverMismatch, "sex"), partial(changeStatisticsALAAMdirected.changeReciprocityMismatch, "sex")])
     print(obs_stats)
     assert all(obs_stats == [54, 293, 285, 209, 156, 52, 855, 993, 1713, 1633, 1584, 785, 267, 796, 775, 659, 62, 408, 435, 227, 221, 171, 66, 64, 38, 156, 156, 104, 137, 129, 105]) # verified on MPNet, the three mismatch for sex verified manually with NA values as MPNet cannot handle them (below verified same as MPNet where 99999, i.e. matches nothing else, used instead of NA)
