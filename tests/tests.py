@@ -203,9 +203,18 @@ def test_directed_change_stats_highschool():
     assert len([g.catattr['sex'][u] for u in g.outIterator(sex_na_node)]) == 4
     assert [g.catattr['sex'][u] for u in g.outIterator(sex_na_node)].count(1) == 2
     assert [g.catattr['sex'][u] for u in g.outIterator(sex_na_node)].count(2) == 2
+    # repeat for outcome binary variable, where Female (1) converted
+    # to 0, and Male (2) coverted to 1 (and the ingle NA value
+    # converted to 0, already tested above).
+    assert len([outcome_binvar[u] for u in g.inIterator(sex_na_node)]) == 4
+    assert [outcome_binvar[u] for u in g.inIterator(sex_na_node)].count(0) == 1
+    assert [outcome_binvar[u] for u in g.inIterator(sex_na_node)].count(1) == 3
+    assert len([outcome_binvar[u] for u in g.outIterator(sex_na_node)]) == 4
+    assert [outcome_binvar[u] for u in g.outIterator(sex_na_node)].count(0) == 2
+    assert [outcome_binvar[u] for u in g.outIterator(sex_na_node)].count(1) == 2
     obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeStatisticsALAAMdirected.changeSender, changeStatisticsALAAMdirected.changeReceiver, changeStatisticsALAAMdirected.changeReciprocity, changeStatisticsALAAMdirected.changeContagion, changeStatisticsALAAMdirected.changeContagionReciprocity, changeStatisticsALAAMdirected.changeEgoInTwoStar, changeStatisticsALAAMdirected.changeEgoOutTwoStar, changeStatisticsALAAMdirected.changeMixedTwoStar, changeStatisticsALAAMdirected.changeMixedTwoStarSource, changeStatisticsALAAMdirected.changeMixedTwoStarSink, changeStatisticsALAAMdirected.changeTransitiveTriangleT1, changeStatisticsALAAMdirected.changeTransitiveTriangleT3, changeStatisticsALAAMdirected.changeTransitiveTriangleD1, changeStatisticsALAAMdirected.changeTransitiveTriangleU1, changeStatisticsALAAMdirected.changeCyclicTriangleC1, changeStatisticsALAAMdirected.changeCyclicTriangleC3, changeStatisticsALAAMdirected.changeAlterInTwoStar2, changeStatisticsALAAMdirected.changeAlterOutTwoStar2, partial(changeStatisticsALAAMdirected.changeSenderMatch, "class"), partial(changeStatisticsALAAMdirected.changeReceiverMatch, "class"), partial(changeStatisticsALAAMdirected.changeReciprocityMatch, "class"), partial(changeStatisticsALAAMdirected.changeSenderMismatch, "class"), partial(changeStatisticsALAAMdirected.changeReceiverMismatch, "class"), partial(changeStatisticsALAAMdirected.changeReciprocityMismatch, "class"), partial(changeStatisticsALAAMdirected.changeSenderMatch, "sex"), partial(changeStatisticsALAAMdirected.changeReceiverMatch, "sex"), partial(changeStatisticsALAAMdirected.changeReciprocityMatch, "sex"), partial(changeStatisticsALAAMdirected.changeSenderMismatch, "sex"), partial(changeStatisticsALAAMdirected.changeReceiverMismatch, "sex"), partial(changeStatisticsALAAMdirected.changeReciprocityMismatch, "sex")])
     print(obs_stats)
-    assert all(obs_stats == [54, 293, 285, 209, 156, 52, 855, 993, 1713, 1633, 1584, 785, 267, 796, 775, 659, 62, 408, 435, 227, 221, 171, 66, 64, 38, 156, 156, 104, 137, 129, 105]) # verified on MPNet, the three mismatch for sex verified manually with NA values as MPNet cannot handle them (below verified same as MPNet where 99999, i.e. matches nothing else, used instead of NA)
+    assert all(obs_stats == [54, 293, 285, 209, 156, 52, 855, 993, 1713, 1633, 1584, 785, 267, 796, 775, 659, 62, 408, 435, 227, 221, 171, 66, 64, 38, 156, 156, 104, 137-3, 129-2, 105-2]) # verified on MPNet, the three mismatch for sex verified manually with NA values as MPNet cannot handle them (below verified same as MPNet where 99999, i.e. matches nothing else, used instead of NA)
 
     g.catattr['sex'][sex_na_node] = 99999 # to match MPNet which cannot handle NA
     obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeStatisticsALAAMdirected.changeSenderMismatch, "sex"), partial(changeStatisticsALAAMdirected.changeReceiverMismatch, "sex"), partial(changeStatisticsALAAMdirected.changeReciprocityMismatch, "sex")])
