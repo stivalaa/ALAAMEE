@@ -204,7 +204,7 @@ def test_directed_change_stats_highschool():
     assert [g.catattr['sex'][u] for u in g.outIterator(sex_na_node)].count(1) == 2
     assert [g.catattr['sex'][u] for u in g.outIterator(sex_na_node)].count(2) == 2
     # repeat for outcome binary variable, where Female (1) converted
-    # to 0, and Male (2) coverted to 1 (and the ingle NA value
+    # to 0, and Male (2) coverted to 1 (and the single NA value
     # converted to 0, already tested above).
     assert len([outcome_binvar[u] for u in g.inIterator(sex_na_node)]) == 4
     assert [outcome_binvar[u] for u in g.inIterator(sex_na_node)].count(0) == 1
