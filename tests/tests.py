@@ -150,7 +150,11 @@ def test_undirected_change_stats_karate():
     obs_alter2star1 = computeObservedStatistics(g, outcome_binvar,
                                                 [changePartnerActivityTwoPath])
     print (obs_alter2star1)
-    assert obs_alter2star1 == [566] # verified on MPNet
+    assert obs_alter2star1 == [566] # verified on MPNet (see examples/data/karateclub/README)
+    obs_alter2star2 = computeObservedStatistics(g, outcome_binvar,
+                                                [changeIndirectPartnerAttribute])
+    print (obs_alter2star2)
+    assert obs_alter2star2 == [219] # verified on MPNet (see examples/data/karateclub/README)
     print("OK,", time.time() - start, "s")
     print()
 
