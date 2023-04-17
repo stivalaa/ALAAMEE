@@ -14,7 +14,7 @@ Fri, Feb 14, 2020  3:32:29 PM
 Example for simulating from 500 node network (the n500_kstar_simulate1275000_matrix.txt
 network is extracted using extractnetwork.sh script from sample 1275000
 of the  /home/projects/pMelb0110/n500_kstar_simulation/ 
-networks with parameters Edge=-4, AS=0.2, AT=1.0, A2P=0.2)
+networks with parameters Edge=-4, AS=0.2, AT=1.0, A2P=-0.2)
 
 binary attributes file binaryAttribute_50_50_n500.txt copied from 
 Snowball/examples/attr500/binaryAttribute_50_50_n500.txt
