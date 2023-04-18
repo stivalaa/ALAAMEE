@@ -14,10 +14,10 @@ RSCRIPTSDIR=${HOME}/ALAAMEE/R
 
 uname -a
 
-time Rscript ${RSCRIPTSDIR}/plotALAAMEEResults.R theta_values_project90_giantcomponent_edgelist dzA_values_project90_giantcomponent_edgelist
+time Rscript ${RSCRIPTSDIR}/plotALAAMEEResults.R theta_values_project90_giantcomponent dzA_values_project90_giantcomponent
 
 
-time Rscript ${RSCRIPTSDIR}/computeALAMEEcovariance.R theta_values_project90_giantcomponent_edgelist dzA_values_project90_giantcomponent_edgelist | tee estimation.out
+time Rscript ${RSCRIPTSDIR}/computeALAMEEcovariance.R theta_values_project90_giantcomponent dzA_values_project90_giantcomponent | tee estimation.out
 
 times
 echo -n "ended at: "; date
