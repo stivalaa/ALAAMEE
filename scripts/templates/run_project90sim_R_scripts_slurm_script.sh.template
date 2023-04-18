@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#SBATCH --job-name="R_Covariance_project90_@JOBSUFFIX"
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=0-01:00:00
+#SBATCH --output=alaamee_covariance_project90-%j.out
+#SBATCH --error=alaamee_covariance_project90-%j.err
+
+
+module load r
+
+RSCRIPTSDIR=${HOME}/ALAAMEE/R
+
+uname -a
+
+time Rscript ${RSCRIPTSDIR}/plotALAAMEEResults.R theta_values_project90_giantcomponent_edgelist dzA_values_project90_giantcomponent_edgelist
+
+
+time Rscript ${RSCRIPTSDIR}/computeALAMEEcovariance.R theta_values_project90_giantcomponent_edgelist dzA_values_project90_giantcomponent_edgelist | tee estimation.out
+
+times
+echo -n "ended at: "; date
