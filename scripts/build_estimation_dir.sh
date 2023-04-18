@@ -8,7 +8,7 @@
 # (*vertices as header line) to ALAAMEE/EstimNEtDirected format with
 # attribute name as header line.
 #
-# ALso create slurm and Python scripts from templates (in ./templates dir)
+# ALso create slurm and Python scripts from templates directory
 # by replacing the following:
 #
 #   @OUTCOMEFILE
@@ -27,7 +27,10 @@ module load r
 
 NUM_RUNS=20
 
-RSCRIPTDIR=${HOME}/ALAAMEE/R
+
+SCRIPTDIR=`dirname $0`
+RSCRIPTDIR=${SCRIPTDIR}/../R
+TEMPLATE_DIR=${SCRIPTDIR}/templates
 
 if [ $# -ne 1 ]; then
   echo "Usage: build_estimation_dir.sh data_root" >&2
@@ -61,7 +64,7 @@ do
   mkdir ${sampledir}
   echo "outcome" > ${outcomefile}
   tail -n+2 ${outcomeclu} >> ${outcomefile}
-  for template in templates/runALAAMEEproject90simulatedParallel.py.template templates/run_project90sim_R_scripts_slurm_script.sh.template templates/run_project90simulated_parallel_slurm_script.sh.template templates/run_submit_project90simulated_parallel_slurm_script.sh.template
+  for template in ${TEMPLATE_DIR}/runALAAMEEproject90simulatedParallel.py.template ${TEMPLATE_DIR}/run_project90sim_R_scripts_slurm_script.sh.template ${TEMPLATE_DIR}/run_project90simulated_parallel_slurm_script.sh.template ${TEMPLATE_DIR}/run_submit_project90simulated_parallel_slurm_script.sh.template
   do
     cat ${template} | sed "s/@OUTCOMEFILE/${outcomefilename}/g" | sed "s/@JOBSUFFIX/${jobsuffix}/g" | sed "s/@NUM_RUNS/${NUM_RUNS}/g" > ${sampledir}/`basename ${template} .template`
   done
