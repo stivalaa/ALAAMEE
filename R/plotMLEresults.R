@@ -64,14 +64,16 @@ if (use_sd_theta) {
   basefilename <- paste(basefilename, '_sdtheta', sep='')
 }
 
+# Project 90 simulated ALAAM parameters as used in Stivala et al (2020)
+# arXiv:2002.00849v2 (ALAAM snowball paper) harcoded here
   
-effects <- c('Arc', 'Reciprocity', 'AinS', 'AoutS', 'AKT-T')
+effects <- c('Density', 'Activity', 'Contagion', 'binary_oOb', 'continuous_oOc')
 
 # output effect names, corresponding to above
-effect_names <- c('Arc', 'Reciprocity', 'AinStar', 'AoutStar', 'AT-T')
+effect_names <- c('Density', 'Activity', 'Contagion', 'Binary', 'Continuous')
 
 # known true values of effects above (for drawing horizontal line on plot)
-true_parameters <- c(-4.0, 4.25, -1.0, -0.5, 1.5)
+true_parameters <- c(-15.0, 0.55, 1.00, 1.20, 1.15)
 
  
 D <- read.table(results_filename, header=TRUE, stringsAsFactors=TRUE)
@@ -80,18 +82,6 @@ if (use_sd_theta) {
   D$StdErr <- D$sdEstimate # Use sd(theta) as estimated standard eror
 }
   
-
-if (nrow(D[which(D$Effect == 'Receiver'),]) > 0) {
-    # if binary attribute present then add the binary attribute effects true values      
-    effects <- c('Arc', 'Reciprocity', 'AinS', 'AoutS', 'AKT-T', 'A2P-TD', 'Receiver', 'Sender', 'Interaction')
-    effect_names <- c('Arc', 'Reciprocity', 'AinStar', 'AoutStar', 'AKT-T', 'A2P-TD', 'Receiver', 'Sender', 'Interaction')
-    true_parameters <- c(-1.0, 4.25, -2.0, -1.5, 0.6, -0.15, 1.0, 1.5, 2.0)
-} else if (nrow(D[which(D$Effect == 'Matching'),]) > 0) {
-    # if categorical attribute present then add the categorical attribute effects true values      
-    effects <- c('Arc', 'Reciprocity', 'AinS', 'AoutS', 'AKT-T', 'A2P-TD', 'Matching', 'MatchingReciprocity')
-    effect_names <- c('Arc', 'Reciprocity', 'AinStar', 'AoutStar', 'AKT-T', 'A2P-TD', 'Matching', 'Matching reciprocity')
-    true_parameters <- c(-1.0, 4.25, -2.0, -1.5, 1.0, -0.15, 1.5, 2.0)
-}
 
 # sort by sampleId so samples arranged horizontally in consistent order
 D$sampleId <- as.factor(D$sampleId)
@@ -151,11 +141,6 @@ for (i in 1:length(effects)) {
         next
     }
 
-    if (effect == "R_Attribute1"  && substr(basefilename, 1, 7) == "statnet") {
-                                        # nodefactor in statnet appears to be not quite the same as R (Activity) in PNet, adjust by subtracting 0.5 from estimate (log-odds) for the statnet value
-        De$Estimate <- De$Estimate - 0.5
-    }
-    
     rmse <- sqrt(mean((De$Estimate - true_parameters[i])^2))
     bias <- mean(De$Estimate - true_parameters[i])
 
