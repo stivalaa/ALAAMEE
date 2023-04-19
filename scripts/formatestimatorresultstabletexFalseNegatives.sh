@@ -21,7 +21,7 @@
 
 
 
-# write_header() - write LaTeX table header for EstimNetDirected
+# write_header() - write LaTeX table header for ALAAMEE
 
 write_header() {
   cat <<EOF
@@ -42,7 +42,7 @@ infile=$1
 
 write_header
 
-grep EstimNetDirected $infile | sort -t\& -k4,4 -k3,3 -k1,1n -k2,2r  | awk -F\& -vOFS=\& '{printf("%s & %s & %s & %s & %5.4f & %5.4f & %2.0f & %2.0f & %2.0f & %2.0f & %d & %2.2f & %g\\\\\n", $1,$2,$3,$5,$6,$7,$8,$12,$13,$17,$15,$11,$16)}' | sed 's/ EstimNetDirected  &//g'
+grep ALAAMEE $infile | sort -t\& -k4,4 -k3,3 -k1,1n -k2,2r  | awk -F\& -vOFS=\& '{printf("%s & %s & %s & %s & %5.4f & %5.4f & %2.0f & %2.0f & %2.0f & %2.0f & %d & %2.2f & %g\\\\\n", $1,$2,$3,$5,$6,$7,$8,$12,$13,$17,$15,$11,$16)}' | sed 's/ ALAAMEE  &//g'
 
 cat <<EOF 
 \hline
