@@ -25,11 +25,11 @@
 
 write_header() {
   cat <<EOF
-\begin{tabular}{rllrrrrrrrrr}
+\begin{tabular}{lrrrrrrrrr}
 \hline
-N &  Attributes &  Effect &  Bias &  RMSE &  \multicolumn{3}{c}{False negative rate (\%)}  & in C.I.    & Total     & Mean       & Total\\\\
-  &             &         &       &       &   Estim. & \multicolumn{2}{c}{95\% C.I.}       &  (\%)      & networks  & runs       & runs per\\\\
-  &             &         &       &       &   & lower & upper                              &            & converged & converged  & network\\\\
+Effect &  Bias &  RMSE &  \multicolumn{3}{c}{False negative rate (\%)}  & in C.I.    & Total     & Mean       & Total\\\\
+       &       &       &   Estim. & \multicolumn{2}{c}{95\% C.I.}       &  (\%)      & networks  & runs       & runs per\\\\
+       &       &       &   & lower & upper                              &            & converged & converged  & network\\\\
 \hline
 EOF
 }
@@ -42,7 +42,7 @@ infile=$1
 
 write_header
 
-grep ALAAMEE $infile | sort -t\& -k4,4 -k3,3 -k1,1n -k2,2r  | awk -F\& -vOFS=\& '{printf("%s & %s & %s & %s & %5.4f & %5.4f & %2.0f & %2.0f & %2.0f & %2.0f & %d & %2.2f & %g\\\\\n", $1,$2,$3,$5,$6,$7,$8,$12,$13,$17,$15,$11,$16)}' | sed 's/ ALAAMEE  &//g'
+grep ALAAMEE $infile | sort -t\& -k4,4 -k3,3 -k1,1n -k2,2r  | awk -F\& -vOFS=\& '{printf("%s & %s & %5.4f & %5.4f & %2.0f & %2.0f & %2.0f & %2.0f & %d & %2.2f & %g\\\\\n", $3,$5,$6,$7,$8,$12,$13,$17,$15,$11,$16)}' | sed 's/ALAAMEE  &//g'
 
 cat <<EOF 
 \hline
