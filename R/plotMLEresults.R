@@ -75,6 +75,26 @@ effect_names <- c('Density', 'Activity', 'Contagion', 'Binary', 'Continuous')
 # known true values of effects above (for drawing horizontal line on plot)
 true_parameters <- c(-15.0, 0.55, 1.00, 1.20, 1.15)
 
+# check for an effect set to zero
+zero_effect <- NA
+if (length(grep("_activity0", results_filename)) > 0) {
+    true_parameters[2] <- 0
+    zero_effect <- "Activity"
+}
+if (length(grep("_contagion0", results_filename)) > 0) {
+  true_parameters[3] <- 0
+  zero_effect <- "Contagion"
+}
+if (length(grep("_binary0", results_filename)) > 0) {
+  true_parameters[4] <- 0
+  zero_effect <- "binary_oOb"
+}
+if (length(grep("_continuous0", results_filename)) > 0) {
+  true_parameters[5] <- 0
+  zero_effect <- "continuous_oOb"
+}
+cat("zero effect: ", zero_effect,"\n")
+
  
 D <- read.table(results_filename, header=TRUE, stringsAsFactors=TRUE)
 
