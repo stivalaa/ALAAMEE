@@ -24,11 +24,11 @@
 # to stdout
 write_header() {
   cat <<EOF
-\begin{tabular}{rllrrrrrrr}
+\begin{tabular}{lrrrrrrr}
 \hline
-N &  Attributes  &  Effect &  Bias &  RMSE &  Mean           & Std. dev.   & Total    &   Mean     &  Total \\\\
-  &              &         &       &       &  standard       &   estimate  & networks & runs       &  runs per \\\\
-  &              &         &       &       &  error          &             & converged& converged  &  network  \\\\
+Effect &  Bias &  RMSE &  Mean           & Std. dev.   & Total    &   Mean     &  Total \\\\
+       &       &       &  standard       &   estimate  & networks & runs       &  runs per \\\\
+       &       &       &  error          &             & converged& converged  &  network  \\\\
 \hline
 EOF
 }
@@ -42,7 +42,7 @@ infile=$1
 
 write_header
 
-grep ALAAMEE $infile | sort -t\& -k4,4 -k3,3 -k1,1n -k2,2r  | awk -F\& -vOFS=\& '{printf("%s & %s & %s & %s & %5.4f & %5.4f & %5.4f & %5.4f & %d & %0.2f & %g \\\\\n", $1,$2,$3,$5,$6,$7,$9,$10,$15,$11,$16)}' | sed 's/  ALAAMEE  &//g'  
+grep ALAAMEE $infile | sort -t\& -k4,4 -k3,3 -k1,1n -k2,2r  | awk -F\& -vOFS=\& '{printf("%s & %s & %5.4f & %5.4f & %5.4f & %5.4f & %d & %0.2f & %g \\\\\n", $3,$5,$6,$7,$9,$10,$15,$11,$16)}' | sed 's/ALAAMEE  &//g'  
 
 cat <<EOF
 \hline
