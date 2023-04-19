@@ -117,10 +117,6 @@ for (results_filename in results_filenames) {
         totalRuns <- unique(De$totalRuns)
         stopifnot(length(totalRuns) == 1)
         
-        if (effect == "R_Attribute1"  && substr(error_analysis, 1, 7) == "statnet") {
-            # nodefactor in statnet appears to be not quite the same as R (Activity) in PNet, adjust by subtracting 0.5 from estimate (log-odds) for the statnet value
-            De$Estimate <- De$Estimate - 0.5
-        }
 
         rmse <- sqrt(mean((De$Estimate - this_true_parameters[i])^2))
         bias <- mean(De$Estimate - this_true_parameters[i])
