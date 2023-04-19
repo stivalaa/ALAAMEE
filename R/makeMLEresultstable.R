@@ -6,7 +6,7 @@
 #
 #
 #
-# Read estimation results (from buildresults.sh) and plot graphs
+# Read estimation results (from buildresults.sh) and make table
 # of estimates and standard errors
 #
 # Usage: Rscript [-s] makeMLEresultstable.R 
@@ -27,11 +27,7 @@ zSigma <- 2 # nominal 95% CI
 options(digits=4) # for printing rmse etc. values
 
 
-results_filenames <- c(#'estimnetdirected_estimates_n2000_sim.txt',
-                       'estimnetdirected_estimates_n2000_binattr.txt',
-                       'estimnetdirected_estimates_n2000_cat3.txt'
-                       #'estimnetdirected_estimates_n5000_sim.txt'
-                      )
+results_filenames <- c('alaamee_estimates_simulated_Project90.txt')
 
 args <- commandArgs(trailingOnly=TRUE)
 use_sd_theta <- FALSE
@@ -46,80 +42,24 @@ if (length(args) > 0 ) {
 for (results_filename in results_filenames) {
   Dorig <- read.table(results_filename, header=TRUE, stringsAsFactors=TRUE)
 
-    # known true values of effects above (for drawing horizontal line on plot)
-    true_parameters <- c(-4.0, 4.25, -1.0, -0.5, 1.5)
 
-    effects <- c('Arc', 'Reciprocity', 'AinS', 'AoutS', 'AKT-T')
-
-    effect_names <- c('Arc', 'Reciprocity', 'AinStar', 'AoutStar', 'AT-T')
     num_seedsets <- NA
                 
-    # get description of data from filename
-    error_analysis <- '*UNKNOWN*' # should always be replaced
+    # Project 90 simulated ALAAM parameters as used in Stivala et al (2020)
+    # arXiv:2002.00849v2 (ALAAM snowball paper) harcoded here
+          
+    effects <- c('Density', 'Activity', 'Contagion', 'binary_oOb', 'continuous_oOc')
+
+    # output effect names, corresponding to above
+    effect_names <- c('Density', 'Activity', 'Contagion', 'Binary', 'Continuous')
+
+    # known true values of effects above (for drawing horizontal line on plot)
+    true_parameters <- c(-15.0, 0.55, 1.00, 1.20, 1.15)
+
+    error_analysis <- 'ALAAMEE'
     fixeddensity <- 'N'
-    network_N_list <- NULL # should always be replaced
-    attribute_descr <- 'None'
-    if (length(grep('fixdensity', results_filename)) > 0) {
-      fixeddensity <- 'Y'
-    }
-    if (length(grep('bootstrapanalysis', results_filename)) > 0) {
-      error_analysis <- 'bootstrap'
-    }
-    else if (length(grep('metaanalysis', results_filename)) > 0 ){
-      error_analysis <- 'WLS'
-    }
-    else if (substr(results_filename, 1, 4) == 'pnet') {
-        # not really an error analysis method, but abuse it for PNet esimations
-        error_analysis <- 'PNet'
-    }
-    else if (substr(results_filename, 1, 13) == 'statnet_mcmle') {
-        # not really an error analysis method, but abuse it for statnet esimations
-        error_analysis <- 'statnet MCMLE'
-    }
-    else if (substr(results_filename, 1, 16) == 'statnet_stepping') {
-        # not really an error analysis method, but abuse it for statnet esimations
-        error_analysis <- 'statnet Stepping'
-    }
-    else if (substr(results_filename, 1, 5) == 'smnet') {
-        # not really an error analysis method, but abuse it for SMNet esimations
-        error_analysis <- 'SMNet'
-    }
-    else if (substr(results_filename, 1, 16) == 'estimnetdirected') {
-        # not really an error analysis method, but abuse it for EstimNetDirected estimations
-        error_analysis <- 'EstimNetDirected'
-    }
-    else if (any(grepl('one_large_sample', results_filename))) {
-        # not really an error analysis method, but abuse it for driect contidional esimations with no pooling (metaanalsysi / bootstrap)
-        error_analysis <- 'no pooling'
-    }                
-    if (length(grep('n5000', results_filename)) > 0 ) {
-      network_N_list <- 5000
-    } else if (length(grep('n500_', results_filename)) > 0 ) {
-      network_N_list <- 500
-    } else if (length(grep('n10k', results_filename)) > 0) {
-      network_N_list <- 10000
-    } else if (length(grep('n1000_', results_filename)) > 0) {
-      network_N_list <- 1000
-    } else if (any(grepl('n2000_', results_filename, fixed=TRUE))) {
-      network_N_list <- 2000
-    } else if (any(grepl('n100_', results_filename, fixed=TRUE))) {
-      network_N_list <- 100
-    } else if (any(grepl('manyN_', results_filename, fixed=TRUE))) {
-      network_N_list <- unique(Dorig$nodeCount)
-    }
-
-    if (length(grep('binattr', results_filename, fixed=TRUE)) > 0) {
-        # if binary attribute present then add the binary attribute effects true values      
-        effects <- c('Arc', 'Reciprocity', 'AinS', 'AoutS', 'AKT-T', 'A2P-TD', 'Receiver', 'Sender', 'Interaction')
-        effect_names <- c('Arc', 'Reciprocity', 'AinStar', 'AoutStar', 'AT-T', 'A2P-TD', 'Receiver', 'Sender', 'Interaction reciprocity')
-        true_parameters <- c(-1.0, 4.25, -2.0, -1.5, 0.6, -0.15, 1.0, 1.5, 2.0)
-    } else if (length(grep('cat3', results_filename, fixed=TRUE)) > 0) {
-        # if categorical attribute present then add the categorical attribute effects true values      
-        effects <- c('Arc', 'Reciprocity', 'AinS', 'AoutS', 'AKT-T', 'A2P-TD', 'Matching', 'MatchingReciprocity')
-        effect_names <- c('Arc', 'Reciprocity', 'AinStar', 'AoutStar', 'AKT-T', 'A2P-TD', 'Matching', 'Matching reciprocity')
-        true_parameters <- c(-1.0, 4.25, -2.0, -1.5, 1.0, -0.15, 1.5, 2.0)
-    }
-
+    network_N_list <- 4430
+    attribute_descr <- 'Project90simulated'
      
     for (network_N in network_N_list) {
       if ('nodeCount' %in% names(Dorig)) {
