@@ -74,6 +74,7 @@ for (results_filename in results_filenames) {
                 
       # use filename to see if data had one of the parameters set to zero
       if (length(grep("_activity0", results_filename)) > 0) {
+        true_parameters[1] <- -7.0 # For Activity=0 density is -7.0 not -15.0
         true_parameters[2] <- 0.0
         zero_effect <- effects[2]
       }
