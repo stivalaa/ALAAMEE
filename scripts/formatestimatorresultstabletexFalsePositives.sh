@@ -23,11 +23,11 @@
 # write_header() - write LaTeX table header for EstimNetDirected
 write_header() {
   cat <<EOF 
-\begin{tabular}{rllrrrrrrrrr}
+\begin{tabular}{lrrrrrrrrr}
 \hline
-N &  Attributes &  Effect &  Bias &  RMSE &  \multicolumn{3}{c}{False positive rate (\%)}  & in C.I.    & Total     & Mean       & Total\\\\
-  &             &         &       &       &   Estim. & \multicolumn{2}{c}{95\% C.I.}       &  (\%)      & networks  & runs       & runs per\\\\
-  &             &         &       &       &   & lower & upper                              &            & converged & converged  & network\\\\
+Effect &  Bias &  RMSE &  \multicolumn{3}{c}{False positive rate (\%)}  & in C.I.    & Total     & Mean       & Total\\\\
+       &       &       &   Estim. & \multicolumn{2}{c}{95\% C.I.}       &  (\%)      & networks  & runs       & runs per\\\\
+       &       &       &   & lower & upper                              &            & converged & converged  & network\\\\
 \hline
 EOF
 }
@@ -45,7 +45,7 @@ write_header
 
 # the --posix flag on awk (gawk) stop it converting NaN and Inf to 0
 # then sed 's/nan/--/g' actuall converts to --- as it has written nan as -nan
-grep ALAAMEE $infile | awk --posix -F\& -vOFS=\& '{ if ($9 != " NA ") printf("%s & %s & %s & %s & %5.4f & %5.4f & %2.0f & %2.0f & %2.0f & %2.0f & %d & %2.2f & %g\\\\\n",$1,$2,$3,$5,$7,$8,$9,$13,$14,$18,$16,$12,$17)}' | sed 's/nan/--/g'  | sed 's/ ALAAMEE  &//g'   | sed 's/binary oOb/Binary/g' | sed 's/continuous oOc/Continuous/g'
+grep ALAAMEE $infile | awk --posix -F\& -vOFS=\& '{ if ($9 != " NA ") printf("%s & %s & %5.4f & %5.4f & %2.0f & %2.0f & %2.0f & %2.0f & %d & %2.2f & %g\\\\\n",$3,$5,$7,$8,$9,$13,$14,$18,$16,$12,$17)}' | sed 's/nan/--/g'  | sed 's/ ALAAMEE  &//g'   | sed 's/binary oOb/Binary/g' | sed 's/continuous oOc/Continuous/g'
 
 cat <<EOF
 \hline
