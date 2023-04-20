@@ -42,7 +42,7 @@ infile=$1
 
 write_header
 
-grep ALAAMEE $infile | awk -F\& -vOFS=\& '{printf("%s & %s & %5.4f & %5.4f & %5.4f & %5.4f & %d & %0.2f & %g \\\\\n", $3,$5,$6,$7,$9,$10,$15,$11,$16)}' | sed 's/ALAAMEE  &//g'  
+grep ALAAMEE $infile | awk -F\& -vOFS=\& '{printf("%s & %s & %5.4f & %5.4f & %5.4f & %5.4f & %d & %0.2f & %g \\\\\n", $3,$5,$6,$7,$9,$10,$15,$11,$16)}' | sed 's/ALAAMEE  &//g' | sed 's/binary oOb/Binary/g' | sed 's/continuous oOc/Continuous/g'
 
 cat <<EOF
 \hline
