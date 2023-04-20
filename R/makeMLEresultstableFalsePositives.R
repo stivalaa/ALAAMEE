@@ -31,22 +31,10 @@ zSigma <- 2 # nominal 95% CI
 options(digits=4) # for printing rmse etc. values
 
 
-results_filenames <- c('estimnetdirected_estimates_n2000_binattr_A2P0.txt', 
-                       'estimnetdirected_estimates_n2000_binattr_AT0.txt', 
-                       'estimnetdirected_estimates_n2000_binattr_interaction0.txt', 
-                       'estimnetdirected_estimates_n2000_binattr_reciprocity0.txt', 
-                       'estimnetdirected_estimates_n2000_binattr_sender0.txt', 
-                       'estimnetdirected_estimates_n2000_binattr_receiver0.txt',
-                       'estimnetdirected_estimates_n2000_binattr_AinS0.txt',
-                       'estimnetdirected_estimates_n2000_binattr_AoutS0.txt',
-                       'estimnetdirected_estimates_n2000_cat3_reciprocity0.txt',
-                       'estimnetdirected_estimates_n2000_cat3_matching0.txt',
-                       'estimnetdirected_estimates_n2000_cat3_matchingreciprocity0.txt',
-                       'estimnetdirected_estimates_n2000_cat3_AT0.txt',
-                       'estimnetdirected_estimates_n2000_cat3_A2P0.txt',
-                       'estimnetdirected_estimates_n2000_cat3_AinS0.txt',
-                       'estimnetdirected_estimates_n2000_cat3_AoutS0.txt')
-
+results_filenames <- c('alaamee_estimates_simulated_Project90_activity0.txt',
+                       'alaamee_estimates_simulated_Project90_contagion0.txt',
+                       'alaamee_estimates_simulated_Project90_binary0.txt',
+                       'alaamee_estimates_simulated_Project90_continuous0.txt')
  
 args <- commandArgs(trailingOnly=TRUE)
 use_sd_theta <- FALSE
@@ -59,154 +47,49 @@ if (length(args) > 0 ) {
 # now only write the rows, use shell script to sort and add header
 
 for (results_filename in results_filenames) {
-     # known true values of effects above (for drawing horizontal line on plot)
-    true_parameters <- c(-4.0, 4.25, -1.0, -0.5, 1.5)
 
-    effects <- c('Arc', 'Reciprocity', 'AinS', 'AoutS', 'AKT-T')
+    # Project 90 simulated ALAAM parameters as used in Stivala et al (2020)
+    # arXiv:2002.00849v2 (ALAAM snowball paper) harcoded here
+          
+    effects <- c('Density', 'Activity', 'Contagion', 'binary_oOb', 'continuous_oOc')
 
-    effect_names <- c('Arc', 'Reciprocity', 'AinStar', 'AoutStar', 'AT-T')
+    # output effect names, corresponding to above
+    effect_names <- c('Density', 'Activity', 'Contagion', 'Binary', 'Continuous')
+
+    # known true values of effects above (for drawing horizontal line on plot)
+    true_parameters <- c(-15.0, 0.55, 1.00, 1.20, 1.15)
+
+    error_analysis <- 'ALAAMEE'
+    fixeddensity <- 'N'
+    network_N <- 4430
+    attribute_descr <- 'Project90simulated'
     num_seedsets <- NA
-
-
+     
     D <- read.table(results_filename, header=TRUE, stringsAsFactors=TRUE)
 
     if (use_sd_theta) {
       D$StdErr <- D$sdEstimate # Use sd(theta) as estimated standard eror
     }
-    # get description of data from filename
-    error_analysis <- '*UNKNOWN*' # should always be replaced
-    fixeddensity <- 'N'
-    network_N <- NULL # should always be replaced
-    attribute_descr <- 'None'
-
-
-    if (length(grep('n5000', results_filename)) > 0 ) {
-      network_N <- 5000
-    } else if (length(grep('n500_', results_filename)) > 0 ) {
-      network_N <- 500
-    } else if (length(grep('n10k', results_filename)) > 0) {
-      network_N <- 10000
-    } else if (length(grep('n1000_', results_filename)) > 0) {
-      network_N <- 1000
-    } else if (any(grepl('n2000_', results_filename, fixed=TRUE))) {
-      network_N <- 2000
-    } else if (any(grepl('n100_', results_filename, fixed=TRUE))) {
-      network_N <- 100
-    }
-    
-    if (length(grep('fixdensity', results_filename)) > 0) {
-      fixeddensity <- 'Y'
-    }
-    if (length(grep('bootstrapanalysis', results_filename)) > 0) {
-      error_analysis <- 'bootstrap'
-    }
-    else if (length(grep('metaanalysis', results_filename)) > 0 ){
-      error_analysis <- 'WLS'
-    }
-    else if (substr(results_filename, 1, 4) == 'pnet') {
-        # not really an error analysis method, but abuse it for PNet esimations
-        error_analysis <- 'PNet'
-    }
-    else if (substr(results_filename, 1, 13) == 'statnet_mcmle') {
-        # not really an error analysis method, but abuse it for statnet esimations
-        error_analysis <- 'statnet MCMLE'
-    }
-    else if (substr(results_filename, 1, 16) == 'statnet_stepping') {
-        # not really an error analysis method, but abuse it for statnet esimations
-        error_analysis <- 'statnet Stepping'
-    }
-    else if (substr(results_filename, 1, 5) == 'smnet') {
-        # not really an error analysis method, but abuse it for SMNet esimations
-        error_analysis <- 'SMNet'
-    }
-    else if (substr(results_filename, 1, 16) == 'estimnetdirected') {
-        # not really an error analysis method, but abuse it for EstimNetDirected estimations
-        error_analysis <- 'EstimNetDirected'
-    }
-    else if (any(grepl('one_large_sample', results_filename))) {
-        # not really an error analysis method, but abuse it for driect contidional esimations with no pooling (metaanalsysi / bootstrap)
-        error_analysis <- 'no pooling'
-    }                
-
-    if (length(grep('binattr', results_filename, fixed=TRUE)) > 0) {
-        # if binary attribute present then add the binary attribute effects true values      
-      attribute_descr <- 'Binary'
-      effects <- c('Arc', 'Reciprocity', 'AinS', 'AoutS', 'AKT-T', 'A2P-TD', 'Receiver', 'Sender', 'Interaction')
-      effect_names <- c('Arc', 'Reciprocity', 'AinStar', 'AoutStar', 'AT-T', 'A2P-TD', 'Receiver', 'Sender', 'Interaction reciprocity')
-      true_parameters <- c(-1.0, 4.25, -2.0, -1.5, 0.6, -0.15, 1.0, 1.5, 2.0)
-
       zero_effect <- "*UNKNOWN*" # should always be replced with a valid name
                 
       # use filename to see if data had one of the parameters set to zero
-      if (length(grep("_reciprocity0", results_filename)) > 0) {
+      if (length(grep("_activity0", results_filename)) > 0) {
         true_parameters[2] <- 0.0
         zero_effect <- effects[2]
       }
-      if (length(grep("_AinS0", results_filename)) > 0) {
+      if (length(grep("_contagion0", results_filename)) > 0) {
         true_parameters[3] <- 0.0
         zero_effect <- effects[3]
       }
-      if (length(grep("_AoutS0", results_filename)) > 0) {
+      if (length(grep("_binary0", results_filename)) > 0) {
         true_parameters[4] <- 0.0
         zero_effect <- effects[4]
       }
-      if (length(grep("_AT0", results_filename)) > 0) {
+      if (length(grep("_continuous0", results_filename)) > 0) {
         true_parameters[5] <- 0.0
         zero_effect <- effects[5]
       }
-      if (length(grep("_A2P0", results_filename)) > 0) {
-        true_parameters[6] <- 0.0
-        zero_effect <- effects[6]
-      }
-      if (length(grep("_receiver0", results_filename)) > 0 ) {
-        true_parameters[7] <- 0.0
-        zero_effect <- effects[7]
-      }
-      if (length(grep("_sender0", results_filename)) > 0 ) {
-        true_parameters[8] <- 0.0
-        zero_effect <- effects[8]
-      }
-      if (length(grep("_interaction0", results_filename)) > 0 ) {
-        true_parameters[9] <- 0.0
-        zero_effect <- effects[9]
-      }
-    } else if (length(grep('cat3', results_filename, fixed=TRUE)) > 0) {
-      # if categorical attribute present then add the categorical attribute effects true values      
-      attribute_descr <- 'Categorical'
-      effects <- c('Arc', 'Reciprocity', 'AinS', 'AoutS', 'AKT-T', 'A2P-TD', 'Matching', 'MatchingReciprocity')
-      effect_names <- c('Arc', 'Reciprocity', 'AinStar', 'AoutStar', 'AKT-T', 'A2P-TD', 'Matching', 'Matching reciprocity')
-      true_parameters <- c(-1.0, 4.25, -2.0, -1.5, 1.0, -0.15, 1.5, 2.0)
-      # use filename to see if data had one of the parameters set to zero
-      if (length(grep("_reciprocity0", results_filename)) > 0) {
-        true_parameters[2] <- 0.0
-        zero_effect <- effects[2]
-      }
-      if (length(grep("_AinS0", results_filename)) > 0) {
-        true_parameters[3] <- 0.0
-        zero_effect <- effects[3]
-      }
-      if (length(grep("_AoutS0", results_filename)) > 0) {
-        true_parameters[4] <- 0.0
-        zero_effect <- effects[4]
-      }
-      if (length(grep("_AT0", results_filename)) > 0) {
-        true_parameters[5] <- 0.0
-        zero_effect <- effects[5]
-      }
-      if (length(grep("_A2P0", results_filename)) > 0) {
-        true_parameters[6] <- 0.0
-        zero_effect <- effects[6]
-      }
-      if (length(grep("_matching0", results_filename)) > 0 ) {
-        true_parameters[7] <- 0.0
-        zero_effect <- effects[7]
-      }
-      if (length(grep("_matchingreciprocity0", results_filename)) > 0 ) {
-        true_parameters[8] <- 0.0
-        zero_effect <- effects[8]
-      }
-    }
-    
+
     for (i in 1:length(effects)) {
                     effect <- effects[i]
                     De <- D[which(D$Effect == effect),]
