@@ -21,7 +21,6 @@ NEW_NUM_RUNS=100
 
 
 SCRIPTDIR=`dirname $0`
-RSCRIPTDIR=${SCRIPTDIR}/../R
 TEMPLATE_DIR=${SCRIPTDIR}/templates
 
 if [ $# -ne 1 ]; then
@@ -31,16 +30,17 @@ fi
 outdir=$1
 
 
-for sampledir in ${data_root}/sample*
+for sampledir in ${outdir}/sample*
 do
-  sampledir=${outdir}/sample${samplenum}
-  samplenum=`echo ${sampledir} | sed 's/sample//g'
+  sampledirbase=`basename ${sampledir}`
+  samplenum=`echo ${sampledirbase} | sed 's/sample//g'`
   jobsuffix=${samplenum}
   template=${TEMPLATE_DIR}/run_project90simulated_parallel_slurm_script.sh.template.moreruns
-  do
-    mv ${sampledir}/run_project90simulated_parallel_slurm_script.sh ${sampledir}/run_project90simulated_parallel_slurm_script.sh.OLD
-    cat ${template} | sed "s/@JOBSUFFIX/${jobsuffix}/g" | sed "s/@OLD_NUM_RUNS/${OLD_NUM_RUNS}/g" | sed "s/@NEW_NUM_RUNS/${NEW_NUM_RUNS}/g" > ${sampledir}/`basename ${template} .template.moreruns`
-  done
+echo $samplenum
+echo $jobsuffix
+echo $template
+  mv ${sampledir}/run_project90simulated_parallel_slurm_script.sh ${sampledir}/run_project90simulated_parallel_slurm_script.sh.OLD
+  cat ${template} | sed "s/@JOBSUFFIX/${jobsuffix}/g" | sed "s/@OLD_NUM_RUNS/${OLD_NUM_RUNS}/g" | sed "s/@NEW_NUM_RUNS/${NEW_NUM_RUNS}/g" > ${sampledir}/`basename ${template} .template.moreruns`
 done
 
 
