@@ -5,7 +5,7 @@
 # Created: November 2013
 #
 #
-# sort rows of table output from makeMLEresultstable.R and add
+# get rows of table output from makeMLEresultstable.R and add
 # LaTeX header/footer
 # 
 # Input is stdin
@@ -42,7 +42,7 @@ infile=$1
 
 write_header
 
-grep ALAAMEE $infile | sort -t\& -k4,4 -k3,3 -k1,1n -k2,2r  | awk -F\& -vOFS=\& '{printf("%s & %s & %5.4f & %5.4f & %5.4f & %5.4f & %d & %0.2f & %g \\\\\n", $3,$5,$6,$7,$9,$10,$15,$11,$16)}' | sed 's/ALAAMEE  &//g'  
+grep ALAAMEE $infile | awk -F\& -vOFS=\& '{printf("%s & %s & %5.4f & %5.4f & %5.4f & %5.4f & %d & %0.2f & %g \\\\\n", $3,$5,$6,$7,$9,$10,$15,$11,$16)}' | sed 's/ALAAMEE  &//g'  
 
 cat <<EOF
 \hline

@@ -5,7 +5,7 @@
 # Created: December 2013
 #
 #
-# sort rows of table output from makeMLEresultstable.R and add
+# get rows of table output from makeMLEresultstable.R and add
 # LaTeX header/footer
 # 
 # Input is stdin
@@ -45,7 +45,7 @@ write_header
 
 # the --posix flag on awk (gawk) stop it converting NaN and Inf to 0
 # then sed 's/nan/--/g' actuall converts to --- as it has written nan as -nan
-grep EstimNetDirected $infile | sort -t\& -k4,4 -k3,3 -k1,1n -k2,2r  | awk --posix -F\& -vOFS=\& '{ if ($9 != " NA ") printf("%s & %s & %s & %s & %5.4f & %5.4f & %2.0f & %2.0f & %2.0f & %2.0f & %d & %2.2f & %g\\\\\n",$1,$2,$3,$5,$7,$8,$9,$13,$14,$18,$16,$12,$17)}' | sed 's/nan/--/g'  | sed 's/ EstimNetDirected  &//g'  
+grep ALAAMEE $infile | awk --posix -F\& -vOFS=\& '{ if ($9 != " NA ") printf("%s & %s & %s & %s & %5.4f & %5.4f & %2.0f & %2.0f & %2.0f & %2.0f & %d & %2.2f & %g\\\\\n",$1,$2,$3,$5,$7,$8,$9,$13,$14,$18,$16,$12,$17)}' | sed 's/nan/--/g'  | sed 's/ ALAAMEE  &//g'  
 
 cat <<EOF
 \hline
