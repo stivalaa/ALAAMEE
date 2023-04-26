@@ -6,7 +6,7 @@ The ALAAM is a social influence model. Parameters of the model are estimated tha
 
 This software is applicable to one-mode networks (directed or undirected), and undirected two-mode (bipartite) networks. It allows for estimation from network snowball samples (Stivala et al., 2020).
 
-This Python implementation uses the NumPy library for vector and matrix data types and functions. In addition, there are R scripts for estimating standard errors and plotting results from the output.
+This Python implementation uses the [NumPy](https://numpy.org/) library for vector and matrix data types and functions. In addition, there are R scripts for estimating standard errors and plotting results from the output.
 
 ## Other ALAAM software
 
