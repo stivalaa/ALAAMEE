@@ -1,0 +1,76 @@
+Example ALAAM estimation (stochastic approximation) using the 
+excerpt of 50 girls from 'Teenage Friends and Lifestyle Study' data
+from SIENA.
+
+See data at: https://www.stats.ox.ac.uk/~snijders/siena/
+https://www.stats.ox.ac.uk/~snijders/siena/s50_data.htm
+
+The data are used for examples in SIENA, and this example is similar
+to the example used in the tutorial for the Bayesian ALAAM implementation
+in R here:
+
+https://github.com/johankoskinen/ALAAM
+https://github.com/johankoskinen/ALAAM/blob/main/ALAAM%20tutorial.Rmd
+
+The reference for the Bayesian ALAAM is:
+
+Koskinen, J., & Daraganova, G. (2022). Bayesian analysis of social influence. Journal of the Royal Statistical Society Series A. 185(4), 1855-1881. https://doi.org/10.1111/rssa.12844
+
+
+The references for this data (as per the documentation from the SIENA
+data page) are:
+
+  Michell, L., and A. Amos (1997). Girls, pecking order and smoking. Social Science and Medicine, 44, 1861 - 1869.
+    Pearson, M.A., and L. Michell. 2000. Smoke Rings: Social network analysis of friendship groups, smoking and drug-taking. Drugs: education, prevention and policy, 7, 21-37.
+    Pearson, M., and P. West. 2003. Drifting Smoke Rings: Social Network Analysis and Markov Processes in a Longitudinal Study of Friendship Groups and Risk-Taking. Connections, 25(2), 59-76.
+    Pearson, Michael, Steglich, Christian, and Snijders, Tom. Homophily and assimilation among sport-active adolescent substance users. Connections 27(1), 47-63. 2006.
+    Steglich, C.E.G., Snijders, T.A.B. and West, P. (2006), Applying SIENA: An illustrative analysis of the co-evolution of adolescents' friendship networks, taste in music, and alcohol consumption.
+    Methodology, 2, 48-56.
+    West, P. and Sweeting, H. (1995) Background Rationale and Design of the West of Scotland 11-16 Study. Working Paper No. 52. MRC Medical Sociology Unit Glasgow. 
+
+
+For simple model, should get results like these from MPNet:
+
+  Estimation
+  Observed graph statistics:
+  17.00	43.00	26.00	25.00	7.00	28.00	59.00	
+  ...
+  Estimation results
+  NOTE: t-statistics = (observation - sample mean)/standard error
+  NOTE: SACF (sample autocorrelation)
+  Effects	Lambda	Parameter	Stderr	t-ratio	SACF
+  DensityA	2.0000	-2.1037	1.831	-0.009	-0.033	
+  SenderAttrA	2.0000	0.2852	0.466	-0.030	-0.002	
+  ReciprocityAttrA	2.0000	-1.0515	0.760	-0.014	0.008	
+  ContagionArcA	2.0000	0.6411	0.470	-0.030	0.003	
+  ContagionReciprocityA	2.0000	-0.3624	1.263	-0.030	0.023	
+  sport_oOA	2.0000	-0.6200	0.768	-0.004	-0.050	
+  alcohol_oOA	2.0000	0.8140	0.366	-0.001	0.011	*
+  
+
+And for the more complex model, like this:
+
+  Estimation
+  Observed graph statistics:
+  17.00	43.00	40.00	26.00	25.00	7.00	57.00	44.00	88.00	27.00	28.00	59.00
+  ...
+  Estimation results
+  NOTE: t-statistics = (observation - sample mean)/standard error
+  NOTE: SACF (sample autocorrelation)
+  Effects	Lambda	Parameter	Stderr	t-ratio	SACF
+  DensityA	2.0000	-1.4515	2.409	-0.015	0.051	
+  SenderAttrA	2.0000	0.5001	1.425	-0.031	0.024	
+  ReceiverAttrA	2.0000	-1.5234	1.780	-0.050	0.011	
+  ReciprocityAttrA	2.0000	1.6537	1.708	-0.025	0.027	
+  ContagionArcA	2.0000	2.1533	1.005	-0.029	-0.046	*
+  ContagionReciprocityA	2.0000	-3.5944	2.248	0.010	-0.051	
+  EgoIn2StarA	2.0000	0.4094	0.696	-0.072	0.003	
+  EgoOut2StarA	23.0000	0.1218	0.725	-0.032	0.020	
+  Mixed2StarA	2.0000	-0.2026	0.534	-0.057	-0.005	
+  T1TA	2.0000	-1.1302	0.656	-0.058	0.026	
+  sport_oOA	2.0000	-1.6913	1.189	-0.011	0.035	
+  alcohol_oOA	2.0000	0.9967	0.454	-0.025	0.047	*
+  
+  
+ADS
+Mon May  1 15:00:24 AEST 2023
