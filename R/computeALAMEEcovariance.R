@@ -176,7 +176,7 @@ theta <- theta[which(theta$t > firstiter),]
 
 ## get statistics from dzA files
 dzA <- NULL
-for (dzAfile in Sys.glob(paste(dzA_prefix, "_[0-9]*[.]txt", sep=''))) {
+for (dzAfile in sort(Sys.glob(paste(dzA_prefix, "_[0-9]*[.]txt", sep='')))) {
   run <- as.integer(sub(paste(dzA_prefix, "_([0-9]+)[.]txt", sep=''), "\\1",
                         dzAfile))
   if (!(run %in% removed_runs))  {
