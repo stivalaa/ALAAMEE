@@ -18,7 +18,10 @@
 ##     s50-catattr.txt
 ##     s50-contattr.txt
 ##     s50-outcome.txt
+##     s50-adjmatrix.txt [for MPNet]
 ##
+## Note using TAB not space separtors in attribute files so they can
+## also be used in MPNet.
 ##
 ## The outcome here is set to 1 for smoking (any value > 1 in the original
 ## coding which is 1 (non), 2 (occasional) and 3 (regular, 
@@ -84,6 +87,7 @@ summary(g)
 stopifnot(n == vcount(g))
 stopifnot(n == 50)
 write.graph(g, file = "s50-friendships-directed.net", format = "pajek")
+write.table(as.matrix(get.adjacency(g)), 's50-friendships-adjmatrix.txt', row.names=F, col.names=F)
 
 ##
 ## write outcome binary attribute
@@ -106,7 +110,7 @@ catattr <- data.frame(
                      )
 summary(catattr)
 write.table(catattr, file = "s50-catattr.txt",
-            row.names = FALSE, col.names = TRUE, quote=FALSE)
+            row.names = FALSE, col.names = TRUE, quote=FALSE, sep = '\t')
 
 ##
 ## write binary attributes
@@ -120,7 +124,7 @@ binattr <- data.frame(
                     )
 summary(binattr)
 write.table(binattr, file = "s50-binattr.txt",
-            row.names = FALSE, col.names = TRUE, quote = FALSE)
+            row.names = FALSE, col.names = TRUE, quote = FALSE, sep = '\t')
 ##
 ## write continuous attributes
 ## these are just the categorical attributes
@@ -133,5 +137,5 @@ contattr <- data.frame(
                      )
 summary(contattr)
 write.table(contattr, file = "s50-contattr.txt",
-            row.names = FALSE, col.names = TRUE, quote=FALSE)
+            row.names = FALSE, col.names = TRUE, quote=FALSE, sep = '\t')
 
