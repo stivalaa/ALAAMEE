@@ -214,7 +214,7 @@ if (keptcount < totalruns) {
 if (max_runs > 0) {
   theta <- theta[which(theta$run < max_runs), ]
   dzA <- dzA[which(dzA$run < max_runs), ]
-  totalruns <- max_runs
+  totalruns <- min(max_runs, totalruns)
   keptcount <- length(unique(theta$run))
 }
 
