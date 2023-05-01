@@ -78,6 +78,7 @@
 
 options(width=9999)  # do not line wrap
 
+library(optparse)
 library(mcmcse)
 
 alpha = 0.05  # for 95% confidence interval
@@ -118,21 +119,31 @@ inverse_variance_wm <- function(estimates, stderrs) {
 nonParamVars <- c('run', 't', 'AcceptanceRate')
 
 args <- commandArgs(trailingOnly=TRUE)
-if (length(args) != 2) {
-  cat("Usage: Rscript computeALAMEEcovariance.R thetaPrefix dzAprefix\n")
-  quit(save="no")
-}
+option_list <- list(
+  make_option(c("-r", "--max_runs"), type="integer", default=0,
+               help="max number of runs to use [default all")
+  )
+parser <- OptionParser(
+     usage = "Usage: Rscript computeALAMEEcovariance.R [options] thetaPrefix dzAprefix\n",
+     option_list = option_list)
+arguments <- parse_args(parser, positional_arguments = 2)
+opt <- arguments$options
+args <- arguments$args
 theta_prefix <- args[1]
 dzA_prefix <- args[2]
 
+max_runs <- opt$max_runs # 0 (default) means use all runs
 
+if (max_runs > 0) {
+  cat("Using maximum of", max_runs, "runs\n", file=stderr())
+}
 
 ## get parameter estimates from theta files
 theta <- NULL
 keptcount <- 0
 totalruns <- 0
 removed_runs <- NULL
-for (thetafile in Sys.glob(paste(theta_prefix, "_[0-9]*[.]txt", sep=''))) {
+for (thetafile in sort(Sys.glob(paste(theta_prefix, "_[0-9]*[.]txt", sep='')))) {
   run <- as.integer(sub(paste(theta_prefix, "_([0-9]+)[.]txt", sep=''), "\\1",
                         thetafile))
   totalruns <- totalruns + 1
@@ -188,7 +199,6 @@ for (dzAfile in Sys.glob(paste(dzA_prefix, "_[0-9]*[.]txt", sep=''))) {
   }
 }
 
-cat("Using", keptcount, "of", totalruns, "runs\n", file=stderr())
 stopifnot(totalruns - keptcount == length(removed_runs))
 
 dzA <- dzA[which(dzA$t > firstiter),]
@@ -200,6 +210,15 @@ if (keptcount < totalruns) {
     theta$run <- as.integer(factor(theta$run, levels = levels(fac))) - 1
     dzA$run <- as.integer(factor(dzA$run, levels = levels(fac))) - 1
 }
+
+if (max_runs > 0) {
+  theta <- theta[which(theta$run < max_runs), ]
+  dzA <- dzA[which(dzA$run < max_runs), ]
+  totalruns <- max_runs
+  keptcount <- length(unique(theta$run))
+}
+
+cat("Using", keptcount, "of", totalruns, "runs\n", file=stderr())
 
 if (keptcount > 0 ) {
   num_runs <- length(unique(theta$run))
