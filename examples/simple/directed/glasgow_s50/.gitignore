@@ -4,3 +4,7 @@ s50_Network_A_0.txt
 s50_Network_M_0.txt
 s50_model.txt
 s50_update.txt
+alaam_sa_s50_simple_model-*.err
+alaam_sa_s50_simple_model-*.out
+alaam_sa_s50-*.err
+alaam_sa_s50-*.out
