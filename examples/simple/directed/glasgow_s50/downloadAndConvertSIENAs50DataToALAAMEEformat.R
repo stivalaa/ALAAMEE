@@ -16,6 +16,7 @@
 ##     s50-friendships-directed.net
 ##     s50-binattr.txt
 ##     s50-catattr.txt
+##     s50-contattr.txt
 ##     s50-outcome.txt
 ##
 ##
@@ -121,6 +122,16 @@ summary(binattr)
 write.table(binattr, file = "s50-binattr.txt",
             row.names = FALSE, col.names = TRUE, quote = FALSE)
 ##
-## (no continuous attributes)
+## write continuous attributes
+## these are just the categorical attributes
 ##
+
+contattr <- data.frame(
+                      sport = sport[, 1], # Sport: 1 (not regular) and 2 (regular
+                      alcohol = alcohol[, 1], # Alcohol: 1 (non), 2 (once or twice a year), 3 (once a month), 4 (once a week) and 5 (more than once a week)
+                      drugs = drugs[, 1] # Cannabis use: 1 (non), 2 (tried once), 3 (occasional) and 4 (regular)
+                     )
+summary(contattr)
+write.table(contattr, file = "s50-contattr.txt",
+            row.names = FALSE, col.names = TRUE, quote=FALSE)
 
