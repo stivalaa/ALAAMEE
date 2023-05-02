@@ -49,6 +49,7 @@ p <- p + theme(panel.background = element_blank(),
                legend.key =  	element_rect(fill = "white", colour = "white"),
                panel.border = element_rect(color = 'black')
                )
+p <- p + ylim(c(0, 100))
 p <- p + geom_point()
 p <- p + geom_errorbar(aes(ymax = FPRpercentUpper, ymin = FPRpercentLower))
 p <- p + xlab("Total runs per network")
