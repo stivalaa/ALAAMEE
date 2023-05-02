@@ -51,9 +51,11 @@ p <- p + theme(panel.background = element_blank(),
                )
 p <- p + geom_point()
 p <- p + geom_errorbar(aes(ymax = FNRpercentUpper, ymin = FNRpercentLower))
+p <- p + xlab("Total runs per network")
+p <- p + ylab("False negative rate (%)")
 p <- p + facet_grid(factor(Effect, levels = effects, labels = effect_names) ~ .)
 
-postscript(paste(basefilename, '-fnr', sep=''), onefile=FALSE,
+postscript(paste(basefilename, '-fnr.eps', sep=''), onefile=FALSE,
            paper="special", horizontal=FALSE, width=9, height=6)
 print(p)
 dev.off()
