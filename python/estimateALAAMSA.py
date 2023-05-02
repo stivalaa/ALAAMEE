@@ -46,6 +46,7 @@ from Digraph import Digraph
 from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
 from changeStatisticsALAAM import *
 from changeStatisticsALAAMbipartite import *
+from changeStatisticsALAAMdirected import *
 from stochasticApproximation import stochasticApproximation
 from computeObservedStatistics import computeObservedStatistics
 from gofALAAM import gof
@@ -187,9 +188,37 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
         # change stats functions to add to GoF if not already in estimation
         if directed:
-            # TODO GoF statistics for directed
-            gof_param_func_list = list(param_func_list)
-            goflabels = list(labels)
+            statfuncs = [changeSender, changeReceiver, changeReciprocity,
+                         changeEgoInTwoStar, changeEgoOutTwoStar,
+                         changeMixedTwoStar, changeMixedTwoStarSource,
+                         changeMixedTwoStarSink, changeContagion,
+                         changeContagionReciprocity,
+                         changeTransitiveTriangleT1,
+                         changeTransitiveTriangleT3,
+                         changeTransitiveTriangleD1,
+                         changeTransitiveTriangleU1,
+                         changeCyclicTriangleC1,
+                         changeCyclicTriangleC3,
+                         changeAlterInTwoStar2,
+                         changeAlterOutTwoStar2]
+            statlabels = ["Sender", "Receiver", "Reciprocity",
+                          "EgoInTwoStar", "EgoOutTwoStar",
+                          "MixedTwoStar", "MixedTwoStarSource",
+                          "MixedTwoStarSink", "Contagion",
+                          "ContagionReciprocity",
+                          "TransitiveTriangleT1",
+                          "TransitiveTriangleT3",
+                          "TransitiveTriangleD1",
+                          "TransitiveTriangleU1",
+                          "CyclicTriangleC1",
+                          "CyclicTriangleC3",
+                          "AlterInTwoStar2",
+                          "AlterOutTwoStar2"]
+            gof_param_func_list = (list(param_func_list) +
+                                   [f for f in statfuncs
+                                if f not in param_func_list])
+            goflabels = (list(labels) + [f for f in statlabels
+                                     if f not in labels])
         elif bipartite:
             # TODO better GoF statitsics for bipartite.
             # Note that some of these are the same as bipartite stats
