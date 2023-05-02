@@ -21,7 +21,7 @@ from changeStatisticsALAAM import changeDensity, changeoOc
 estimateALAAMSA.run_on_network_attr(
         's50-friendships-directed.net',
         [changeDensity, changeSender, changeReceiver, changeContagion, changeReciprocity, changeContagionReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar, changeTransitiveTriangleT1, partial(changeoOc, "sport"), partial(changeoOc, "alcohol")],
-        ["Density",     "Sender",     "Receiver",     "Contagion",     "Reciprocity",     "ContagionReciprocity",     "EgoInTwoStar",     "EgoOutTwoStar",     "MixedTwoStar",     "TransitveTriangleT1",      "sport_oOc",                 "alcohol_oOc"],
+        ["Density",     "Sender",     "Receiver",     "Contagion",     "Reciprocity",     "ContagionReciprocity",     "EgoInTwoStar",     "EgoOutTwoStar",     "MixedTwoStar",     "TransitiveTriangleT1",      "sport_oOc",                 "alcohol_oOc"],
         outcome_bin_filename = 's50-outcome.txt',
         binattr_filename = 's50-binattr.txt',
         contattr_filename = 's50-contattr.txt',
