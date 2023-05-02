@@ -27,16 +27,17 @@ args <- commandArgs(trailingOnly=TRUE)
 results_filename <- args[1]
 basefilename <- sub("(.+)[.].+", "\\1", basename(results_filename))
 
-# Project 90 simulated ALAAM parameters as used in Stivala et al (2020)
-# arXiv:2002.00849v2 (ALAAM snowball paper) harcoded here
-  
-effects <- c('Density', 'Activity', 'Contagion', 'binary_oOb', 'continuous_oOc')
+
+effects <- c('Activity', 'Contagion', 'binary_oOb', 'continuous_oOc')
 
 # output effect names, corresponding to above
-effect_names <- c('Density', 'Activity', 'Contagion', 'Binary', 'Continuous')
+effect_names <- c('Activity', 'Contagion', 'Binary', 'Continuous')
 
  
 D <- read.table(results_filename, header=TRUE, stringsAsFactors=TRUE)
+
+# remove density as no data for zero density
+D <- D[which(D$Effect != "Density"), ]
 
 p <- ggplot(D, aes(x = TotalRuns, y = FPRpercent))
 p <- p + theme_bw()
