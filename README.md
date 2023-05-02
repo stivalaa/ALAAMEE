@@ -15,7 +15,7 @@ This Python implementation uses the [NumPy](https://numpy.org/) library for vect
 
 ## Funding
 
-Development of the ALAAMEE software was funded by the Swiss National Science Foundation project numbers numbers 167326 (NRP 75) and 200778.
+Development of the ALAAMEE software was funded by the Swiss National Science Foundation project numbers 167326 (NRP 75) and 200778.
 
 ## References
 
