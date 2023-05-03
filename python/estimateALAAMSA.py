@@ -307,7 +307,7 @@ def run_example():
     """
     run_on_network_attr(
         '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
-        [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
+        [changeDensity, changeActivity, changeStatisticsALAAM.changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
         ["Density", "Activity", "Contagion", "Binary", "Continuous"],
         '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
         '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
