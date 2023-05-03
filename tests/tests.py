@@ -90,7 +90,7 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
         num_tests          - number of nodes to randomly sample
     """ 
     nodelist = get_random_nodelist(g, outcome_binvar, num_tests)
-    outcome_binvar_orig = numpy.copy(outcome_binvar)
+    outcome_binvar_orig = list.copy(outcome_binvar)
     oldstart = time.time()
     old_deltas = basic_sampler_test(g, outcome_binvar, changestats_func_1, nodelist)
     print("old version: ", time.time() - oldstart, "s")
@@ -260,7 +260,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_OLD, changeTriangleT1, num_tests)
 
     print("changeContagion")
-    compare_changestats_implementations(g, outcome_binvar, changeContagion_SLOWER, changeContagion, num_tests)
+    compare_changestats_implementations(g, outcome_binvar, changeContagion, changeContagion, num_tests*100)
 
     print("OK,", time.time() - start, "s")
     print()
