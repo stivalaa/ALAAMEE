@@ -260,7 +260,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_OLD, changeTriangleT1, num_tests)
 
     print("changeContagion")
-    compare_changestats_implementations(g, outcome_binvar, changeContagion_OLD, changeContagion, num_tests)
+    compare_changestats_implementations(g, outcome_binvar, changeContagion_SLOWER, changeContagion, num_tests)
 
     print("OK,", time.time() - start, "s")
     print()
