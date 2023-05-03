@@ -28,7 +28,7 @@ write_header() {
 \begin{tabular}{lrrrrrrrrr}
 \hline
 Effect &  Bias &  RMSE &  \multicolumn{3}{c}{False negative rate (\%)}  & in C.I.    & Total     & Mean       & Total\\\\
-       &       &       &   Estim. & \multicolumn{2}{c}{95\% C.I.}       &  (\%)      & networks  & runs       & runs per\\\\
+       &       &       &   Estim. & \multicolumn{2}{c}{95\% C.I.}       &  (\%)      & samples  & runs       & runs per\\\\
        &       &       &   & lower & upper                              &            & converged & converged  & network\\\\
 \hline
 EOF
