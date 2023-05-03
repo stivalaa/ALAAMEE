@@ -53,7 +53,7 @@ p <- p + theme(panel.background = element_blank(),
 p <- p + ylim(c(0, 100))
 p <- p + geom_point()
 p <- p + geom_errorbar(aes(ymax = FPRpercentUpper, ymin = FPRpercentLower))
-p <- p + xlab("Total runs per network")
+p <- p + xlab("Total runs per sample")
 p <- p + ylab("False positive rate (%)")
 p <- p + facet_grid(factor(Effect, levels = effects, labels = effect_names) ~ .)
 

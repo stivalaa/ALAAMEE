@@ -51,7 +51,7 @@ p <- p + theme(panel.background = element_blank(),
                )
 p <- p + geom_point()
 p <- p + geom_errorbar(aes(ymax = FNRpercentUpper, ymin = FNRpercentLower))
-p <- p + xlab("Total runs per network")
+p <- p + xlab("Total runs per sample")
 p <- p + ylab("False negative rate (%)")
 p <- p + facet_grid(factor(Effect, levels = effects, labels = effect_names) ~ .)
 
