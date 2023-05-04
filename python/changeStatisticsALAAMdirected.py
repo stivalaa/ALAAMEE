@@ -441,3 +441,20 @@ def changeContagion_OLD(G, A, i):
     delta += sum([(A[u] == 1) for u in G.outIterator(i)])
     delta += sum([(A[u] == 1) for u in G.inIterator(i)])
     return delta
+
+def changeContagion_GENCOMP(G, A, i):
+    """
+    change statistic for Contagion (partner attribute)
+
+    *->*
+
+    More elegant version using generator comprehensions instead of loops,
+    or list comprehensions (which are slower than loops for this). 
+    Unfortunately generator comprehension is just the same speed as list
+    comprehension here (does sum end up converting the iterator to a list?). 
+    Or not(?): https://stackoverflow.com/questions/62975325/why-is-summing-list-comprehension-faster-than-generator-expression
+    """
+    delta = 0
+    delta += sum((A[u] == 1) for u in G.outIterator(i))
+    delta += sum((A[u] == 1) for u in G.inIterator(i))
+    return delta
