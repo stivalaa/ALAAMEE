@@ -77,7 +77,11 @@ def changeReciprocity(G, A, i):
 
     *<->o
     """
-    return sum([G.isArc(u, i) for u in G.outIterator(i)])
+    delta = 0
+    for u in G.outIterator(i):
+        if G.isArc(u, i):
+            delta += 1
+    return delta
 
 
 def changeEgoInTwoStar(G, A, i):
@@ -474,3 +478,13 @@ def changeContagionReciprocity_OLD(G, A, i):
     """
     return sum([(G.isArc(u, i) and A[u] == 1) for u in G.outIterator(i)])
 
+def changeReciprocity_OLD(G, A, i):
+    """
+    change statistic for Reciprocity
+
+    *<->o
+
+    More elegant version using list comprehensions instead of loops, but
+    unfortunately turns out to be slower than loop version.
+    """
+    return sum([G.isArc(u, i) for u in G.outIterator(i)])

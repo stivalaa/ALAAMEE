@@ -444,6 +444,8 @@ def test_regression_directed_change_stats(netfilename, outcomefilename,
     print("changeContagionReciprocity")
     compare_changestats_implementations(g, outcome_binvar, changeStatisticsALAAMdirected.changeContagionReciprocity_OLD, changeStatisticsALAAMdirected.changeContagionReciprocity, num_tests)
 
+    print("changeReciprocity")
+    compare_changestats_implementations(g, outcome_binvar, changeStatisticsALAAMdirected.changeReciprocity_OLD, changeStatisticsALAAMdirected.changeReciprocity, num_tests)
     print("OK,", time.time() - start, "s")
     print()
 
