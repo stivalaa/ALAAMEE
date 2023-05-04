@@ -251,7 +251,8 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     start = time.time()
     g = Graph(netfilename, binattrfilename, contattrfilename)
     g.printSummary()
-    outcome_binvar = list(map(int_or_na, open("../examples/data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt").read().split()[1:]))
+    outcome_binvar = list(map(int_or_na, open(outcomefilename).read().split()[1:]))
+    assert len(outcome_binvar) == g.numNodes()
 
     print("changePartnerPartnerAttribute")
     compare_changestats_implementations(g, outcome_binvar, changePartnerPartnerAttribute_OLD, changePartnerPartnerAttribute, num_tests)
