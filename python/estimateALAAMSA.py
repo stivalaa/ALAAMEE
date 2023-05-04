@@ -243,7 +243,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                      if f not in labels])
         else:
             statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
-                         changeTriangleT1, changeContagion,
+                         changeTriangleT1, changeStatisticsALAAM.changeContagion,
                          changeIndirectPartnerAttribute,
                          changePartnerAttributeActivity,
                          changePartnerPartnerAttribute,
