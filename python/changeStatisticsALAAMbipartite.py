@@ -266,7 +266,7 @@ def changeBipartiteFourCycle1_OLD(mode, G, A, i):
     else:
         return 0
 
-@functools.cache # Memoize the following function (Python 3.9)
+##@functools.cache # Memoize the following function (Python 3.9)
 def changeBipartiteFourCycle1_OLD2(mode, G, i):
     """
     Does not have numpy array A as parameter (not hashable), so we

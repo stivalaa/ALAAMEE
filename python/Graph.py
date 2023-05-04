@@ -247,7 +247,7 @@ class Graph:
         return iter(self.G.keys())
 
 
-    @functools.cache # Memoize the twoPaths function (Python 3.9)
+##    @functools.cache # Memoize the twoPaths function (Python 3.9)
     def twoPaths(self, i, j):
         """
         Count undirected two-paths for (i, j): paths i -- v -- j for some v
