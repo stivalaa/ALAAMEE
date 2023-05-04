@@ -237,7 +237,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     test new against old version of undirected ALAAM change stats
 
     Parameters:
-           netfilename     - filename bipartite network in Pajek format
+           netfilename     - filename undirected network in Pajek format
            outcomefilename - filename of binary outcome file
            binattrfilename - filename of binary attributes
            contattrfilename- filename of continuous attributes
@@ -412,6 +412,37 @@ def test_regression_bipartite_change_stats(netfilename, outcomefilename,
     print()
 
 
+def test_regression_directed_change_stats(netfilename, outcomefilename,
+                                          binattrfilename, contattrfilename,
+                                          catattrfilename = None,
+                                          num_tests = DEFAULT_NUM_TESTS):
+    """
+    test new against old version of directed ALAAM change stats
+
+    Parameters:
+           netfilename     - filename directed network in Pajek format
+           outcomefilename - filename of binary outcome file
+           binattrfilename - filename of binary attributes
+           contattrfilename- filename of continuous attributes
+           catattrfilename - filename of categorical attributes
+           num_tests       - number of nodes to sample (number of times
+                             the change statistic is computed)
+    
+    """
+    print("testing directed change stats for ", netfilename)
+    print("for ", num_tests, "iterations...")
+    start = time.time()
+    g = Digraph(netfilename, binattrfilename, contattrfilename)
+    g.printSummary()
+    outcome_binvar = list(map(int_or_na, open(outcomefilename).read().split()[1:]))
+    assert len(outcome_binvar) == g.numNodes()
+
+    print("changeContagion")
+    compare_changestats_implementations(g, outcome_binvar, changeStatisticsALAAMdirected.changeContagion, changeStatisticsALAAMdirected.changeContagion, num_tests)
+
+    print("OK,", time.time() - start, "s")
+    print()
+
     
 ############################### main #########################################
 
@@ -430,6 +461,8 @@ def main():
     test_regression_twopaths_iterators("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net")
     test_regression_bipartite_change_stats("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net", "../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt")
     #too slow (and data large for GitHub): test_regression_bipartite_change_stats("../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_bipartite.net", "../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_outcome.txt", 10)
+    test_regression_directed_change_stats("../examples/data/directed/HighSchoolFriendship/highschool_friendship_arclist.net", '../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt', None, None, '../examples/data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt')
+
 
 if __name__ == "__main__":
     main()
