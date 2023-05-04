@@ -170,7 +170,11 @@ def changeContagionReciprocity(G, A, i):
 
     *<->*
     """
-    return sum([(G.isArc(u, i) and A[u] == 1) for u in G.outIterator(i)])
+    delta = 0
+    for u in G.outIterator(i):
+        if A[u] == 1 and G.isArc(u, i):
+            delta += 1
+    return delta
 
 
 def changeTransitiveTriangleT1(G, A, i):
@@ -458,3 +462,15 @@ def changeContagion_GENCOMP(G, A, i):
     delta += sum((A[u] == 1) for u in G.outIterator(i))
     delta += sum((A[u] == 1) for u in G.inIterator(i))
     return delta
+
+def changeContagionReciprocity_OLD(G, A, i):
+    """
+    change statistic for Contagion Reciprocity (mutual contagion)
+
+    *<->*
+
+    More elegant version using list comprehensions instead of loops, but
+    unfortunately turns out to be slower than loop version.
+    """
+    return sum([(G.isArc(u, i) and A[u] == 1) for u in G.outIterator(i)])
+
