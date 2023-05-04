@@ -155,8 +155,12 @@ def changeContagion(G, A, i):
     *->*
     """
     delta = 0
-    delta += sum([(A[u] == 1) for u in G.outIterator(i)])
-    delta += sum([(A[u] == 1) for u in G.inIterator(i)])
+    for u in G.outIterator(i):
+        if A[u] == 1:
+            delta += 1
+    for u in G.inIterator(i):
+        if A[u] == 1:
+            delta += 1
     return delta
 
 
@@ -419,4 +423,21 @@ def changeReciprocityMismatch(attrname, G, A, i):
             G.catattr[attrname][u] != G.catattr[attrname][i] and
             G.isArc(u, i)):
             delta += 1
+    return delta
+
+
+# ================== old versions for regression testing ======================
+
+def changeContagion_OLD(G, A, i):
+    """
+    change statistic for Contagion (partner attribute)
+
+    *->*
+
+    More elegant version using list comprehensions instead of loops, but
+    unfortunately turns out to be slower than loop version.
+    """
+    delta = 0
+    delta += sum([(A[u] == 1) for u in G.outIterator(i)])
+    delta += sum([(A[u] == 1) for u in G.inIterator(i)])
     return delta

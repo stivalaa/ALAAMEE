@@ -438,7 +438,7 @@ def test_regression_directed_change_stats(netfilename, outcomefilename,
     assert len(outcome_binvar) == g.numNodes()
 
     print("changeContagion")
-    compare_changestats_implementations(g, outcome_binvar, changeStatisticsALAAMdirected.changeContagion, changeStatisticsALAAMdirected.changeContagion, num_tests)
+    compare_changestats_implementations(g, outcome_binvar, changeStatisticsALAAMdirected.changeContagion_OLD, changeStatisticsALAAMdirected.changeContagion, num_tests)
 
     print("OK,", time.time() - start, "s")
     print()
