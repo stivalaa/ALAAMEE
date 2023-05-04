@@ -108,10 +108,16 @@ def changeTriangleT1(G, A, i):
      / \
     *---o
     """
-    return (0 if G.degree(i) < 2 else
-            sum([int(G.isEdge(i, v))
-                 for u in G.neighbourIterator(i)
-                 for v in G.neighbourIterator(u)]) // 2)
+    delta = 0
+    if G.degree(i) < 2:
+        return 0
+    else:
+        for u in G.neighbourIterator(i):
+            for v in G.neighbourIterator(u):
+                if v != i and G.isEdge(i, v):
+                    delta += 1
+    assert delta % 2 == 0
+    return delta / 2.0
 
 
 def changeContagion(G, A, i):
@@ -336,17 +342,14 @@ def changeTriangleT1_OLD(G, A, i):
       o
      / \
     *---o
+
+    More elegant version using list comprehensions not loops, 
+    unfortunately this is slower than loop version.
     """
-    delta = 0
-    if G.degree(i) < 2:
-        return 0
-    else:
-        for u in G.neighbourIterator(i):
-            for v in G.neighbourIterator(u):
-                if v != i and G.isEdge(i, v):
-                    delta += 1
-    assert delta % 2 == 0
-    return delta / 2.0
+    return (0 if G.degree(i) < 2 else
+            sum([int(G.isEdge(i, v))
+                 for u in G.neighbourIterator(i)
+                 for v in G.neighbourIterator(u)]) // 2)
 
 
 def changeContagion_SLOWER(G, A, i):
