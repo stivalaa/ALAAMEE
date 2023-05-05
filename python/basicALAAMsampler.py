@@ -63,6 +63,9 @@ def basicALAAMsampler(G, A, changestats_func_list, theta, performMove,
     Note A is updated in place if performMove is True
     otherwise unchanged
     """
+    theta = list(theta)
+    if (len(theta) == 1):
+        theta = theta[0]
     n = len(changestats_func_list)
 #    assert(len(theta) == n)
     accepted = 0
@@ -80,11 +83,14 @@ def basicALAAMsampler(G, A, changestats_func_list, theta, performMove,
 
         # compute change statistics for each of the n statistics using the
         # list of change statistic functions
+        changeSignMul = -1 if isChangeToZero else +1
         changestats = np.zeros(n)
+        total = 0
         for l in range(n):
             changestats[l] = changestats_func_list[l](G, A, i)
-        changeSignMul = -1 if isChangeToZero else +1
-        total = np.sum(theta * changeSignMul * changestats)
+            total += theta[l] * changeSignMul * changestats[l]
+        #total = np.sum(theta * changeSignMul * changestats)
+        
         if random.uniform(0, 1) < np.exp(total): #np.exp gives inf not overflow
             accepted += 1
             if performMove:
