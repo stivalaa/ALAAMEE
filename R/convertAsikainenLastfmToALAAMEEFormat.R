@@ -116,7 +116,7 @@ stopifnot(max(gender$nodeid) == numIds - 1)
 ##
 ## get binary attributes
 ##
-binattr <- gender[, "female"],  # bool, 1 - female
+binattr <- gender[, "female"] # bool, 1 - female
 
 
 ##
