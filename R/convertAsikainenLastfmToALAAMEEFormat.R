@@ -72,7 +72,7 @@ if (length(args) == 1) {
 ##
 ## network
 ##
-infile <- "lastfm.edge"
+infile <- "lastfm.edg"
 outfilename_undirected <- "lastfm.net"
 
 cat("reading ", infile, "...\n")
