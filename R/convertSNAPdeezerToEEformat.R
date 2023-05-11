@@ -76,6 +76,20 @@ zipfile <- args[1]
 ##  Density 0.0001
 ##  Transitivity 0.0959
 
+## From http://snap.stanford.edu/data/feather-deezer-social.html
+##
+##  Dataset statistics
+##  Directed	No.
+##  Node features	Yes.
+##  Edge features	No.
+##  Node labels	Yes. Binary class.
+##  Temporal	No.
+##  Nodes	28,281
+##  Edges	92,752
+##  Density	0.0002
+##  Transitvity	0.0959
+##
+
 ## See also https://github.com/benedekrozemberczki/FEATHER
 ## for original copy of data and more documentation
 
