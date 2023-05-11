@@ -102,7 +102,7 @@ stopifnot(max(uniqueIds) == numIds - 1)
 stopifnot(numIds == 28281)
 
 ## have to add 1 as igraph cannot handle 0 as vertex id apparently
-g <- graph.edgelist(as.matrix(edgelist)+1, directed=TRUE)
+g <- graph.edgelist(as.matrix(edgelist)+1, directed=FALSE)
 
 
 summary(g)
