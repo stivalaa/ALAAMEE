@@ -76,6 +76,9 @@ zipfile <- args[1]
 ##  Density 0.0001
 ##  Transitivity 0.0959
 
+## See also https://github.com/benedekrozemberczki/FEATHER
+## for original copy of data and more documentation
+
 
 outfilename_undirected <- "deezer_europe.net"
 targetfilename <- "deezer_europe_target.txt"
