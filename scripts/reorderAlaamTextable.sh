@@ -11,10 +11,12 @@
 # permute the table rows according to specified order, in order to
 # present the rows in an order we determine as best for presentation.
 # 
-# Usage: reorderAlaamTextable.sh <intable> <permutation>
+# Usage: reorderAlaamTextable.sh [-r] <intable> <permutation>
 #
 # where <intable> is the input tex file and
 #       <permutation> is a permutation of 0..n-1 e.g. 2 0 1
+# if -r is specfied, this means input contains extra row for TotalRuns
+#    and ConvergedRuns
 #
 # E.g.:
 #   reorderAlaamTextable.sh  ecoli_estimations.tex  1 5 4 2 3 0 9 10 7 6
@@ -38,6 +40,12 @@ if [ $# -lt 2 ]; then
   echo "Usage: $0 <infile> <permutation>" >&2
   exit 1
 fi
+has_runs=0
+if [ $1 = "-r" ]; then
+  has_runs=1
+  shift 1
+fi
+
 infile=$1
 shift 1
 permutation=$*
@@ -56,7 +64,11 @@ fi
 # assume format of input latex table from stochasticApproxEstimation2textableMultiModels.sh
 # 7 header rows and 2 trailer rows
 headrows=7
-tailrows=2
+if [ $has_runs -eq 1 ]; then
+  tailrows=5
+else
+  tailrows=2
+fi
 head -n${headrows} ${infile}
 cat ${infile} | tail -n+`expr ${headrows} + 1` |head -n-${tailrows} > ${tmpfile}
 nrows=`cat ${tmpfile} | wc -l`
