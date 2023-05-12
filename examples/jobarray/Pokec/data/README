@@ -1,0 +1,41 @@
+Note the files 
+
+    soc-pokec-profiles.txt.gz
+    soc-pokec-relationships.txt.gz
+
+downloaded from SNAP https://snap.stanford.edu/data/soc-Pokec.html
+
+must be put in this directory and then the get_pokec_data_slurm_script.sh
+script run to convert the data to the format for ALAAMEE.
+
+(Not included in repository as too large).
+
+Pokec social network
+Dataset information
+Pokec is the most popular on-line social network in Slovakia. The popularity of network has not changed even after the coming of Facebook. Pokec has been provided for more than 10 years and connects more than 1.6 million people. Datasets contains anonymized data of the whole network. Profile data contains gender, age, hobbies, interest, education etc. Profile data are in Slovak language. Friendships in Pokec are oriented.
+
+Dataset statistics
+Nodes	1632803
+Edges	30622564
+Nodes in largest WCC	1632803 (1.000)
+Edges in largest WCC	30622564 (1.000)
+Nodes in largest SCC	1304537 (0.799)
+Edges in largest SCC	29183655 (0.953)
+Average clustering coefficient	0.1094
+Number of triangles	32557458
+Fraction of closed triangles	0.01611
+Diameter (longest shortest path)	11
+90-percentile effective diameter	5.2
+Source (citation)
+L. Takac, M. Zabovsky. Data Analysis in Public Social Networks, International Scientific Conference & International Workshop Present Day Trends of Innovations, May 2012 Lomza, Poland.
+Files
+File	Description
+soc-pokec-relationships.txt.gz	User relationship data
+soc-pokec-profiles.txt.gz	User profile data
+soc-pokec-readme.txt	Description of files
+
+
+
+
+ADS
+Wed, Oct 31, 2018  1:18:08 PM
