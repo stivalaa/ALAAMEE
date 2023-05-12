@@ -1,5 +1,5 @@
-  #!/bin/sh
-  #
+#!/bin/bash
+#
 # File:    EEEstimation2textableSingleModel.sh
 # Author:  Alex Stivala
 # Created: May 2023
@@ -95,7 +95,7 @@ do
             fi
         fi
   fi
-        echo '\\\\'
+        echo '\\'
 done
 
 echo '\hline'
