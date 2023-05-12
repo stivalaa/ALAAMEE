@@ -46,8 +46,8 @@ def main():
 
     estimateALAAMEE.run_on_network_attr(
         '../data/musae_git.net',
-        [changeDensity, changeActivity, changeContagion],
-        ["Density", "Activity", "Contagion"],
+        [changeDensity,  changeContagion],
+        ["Density",      "Contagion"],
         #[changeDensity, changeActivity, changeTwoStar, changeThreeStar, changePartnerActivityTwoPath, changeContagion, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute],
         #["Density", "Activity", "Two-Star", "Three-Star", "Alter-2Star1", "Contagion", "Alter-2Star2", "Partner-Activity", "Partner-Resource"],
         '../data/musae_git_target.txt',  # use target developer type as outcome variable

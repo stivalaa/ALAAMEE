@@ -22,22 +22,21 @@ from Graph import int_or_na
 
 # parameters and corresponding labels 
 # TODO parse from estimation output
-param_func_list =        [changeDensity, changeActivity, changeContagion]
-labels =                 ["Density",     "Activity",     "Contagion"]
+param_func_list =        [changeDensity, changeContagion]
+labels =                 ["Density",     "Contagion"]
 
      
 
 # Estimation results from estimation.txt
 ##
 #Pooled
-#Density -0.531597 0.04397413 0.2648604 -0.008196847 * 
-#Activity -0.1653597 0.01002643 0.06078387 -0.02436076 * 
-#Contagion 0.4649383 0.02807401 0.1767471 -0.086256 * 
+#Density -1.059162 0.05737307 0.2255518 0.03083322 * 
+#Contagion -0.0002923242 0.001657929 0.01037891 -0.01372051  
 #TotalRuns 1 
 #ConvergedRuns 1 
 # TODO parse these from estimation output
 
-theta = np.array([-0.531597, -0.1653597, 0.4649383])
+theta = np.array([-1.059162, -0.0002923242])
 
 assert len(param_func_list) == len(labels)
 assert len(theta) == len(param_func_list)
