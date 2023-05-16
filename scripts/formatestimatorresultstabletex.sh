@@ -28,7 +28,7 @@ write_header() {
 \hline
 Effect &  Bias &  RMSE &  Mean           & Std. dev.   & Total    &   Mean     &  Total \\\\
        &       &       &  standard       &   estimate  & samples & runs       &  runs per \\\\
-       &       &       &  error          &             & converged& converged  &  network  \\\\
+       &       &       &  error          &             & converged& converged  &  sample  \\\\
 \hline
 EOF
 }
