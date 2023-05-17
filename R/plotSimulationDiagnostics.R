@@ -45,6 +45,15 @@ library(reshape)
 
 zSigma <- 1.96 # number of standard deviations for 95% confidence interval
 
+# http://stackoverflow.com/questions/10762287/how-can-i-format-axis-labels-with-exponents-with-ggplot2-and-scales
+orig_scientific_10 <- function(x) {
+  parse(text=gsub("e", " %*% 10^", scientific_format()(x)))
+}
+my_scientific_10 <- function(x) {
+# also remove + and leading 0 in exponennt
+  parse( text=gsub("e", " %*% 10^", gsub("e[+]0", "e", scientific_format()(x))) )
+}
+
 args <- commandArgs(trailingOnly=TRUE)
 if (length(args) < 1 || length(args) > 2) {
     cat("Usage: Rscript plotSimulationDiagnostics.R simulation_stats.txt [obs_stats.txt]\n")
@@ -86,6 +95,11 @@ for (statname in statnames) {
     }
     p <- p + xlab('t')
     p <- p + ylab(statname)
+    p <- p + scale_x_continuous(guide = guide_axis(check.overlap = TRUE,
+                                                   #n.dodge = 2,
+                                                   #angle = 90
+                                                  ),
+                                labels = my_scientific_10)
     plotlist <- c(plotlist, list(p))
 
     p <- ggplot(simstats_statname, aes(x=value))
@@ -103,6 +117,10 @@ for (statname in statnames) {
                           color = "red")
     }
     p <- p + xlab(statname)
+    p <- p + scale_x_continuous(guide = guide_axis(check.overlap = TRUE,
+                                                   #n.dodge = 2,
+                                                   #angle = 90
+                                                  ))
     plotlist <- c(plotlist, list(p))
 
     ## compute t-ratio
@@ -115,7 +133,8 @@ for (statname in statnames) {
 }
 
 postscript(paste(basefilename, '-plots.eps', sep=''), onefile=FALSE,
-           paper="special", horizontal=FALSE, width=9, height=6)
+           horizontal = TRUE)
+##           paper="special", horizontal=FALSE, width=9, height=6)
 do.call(grid.arrange, plotlist)
 dev.off()
 
