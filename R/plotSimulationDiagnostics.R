@@ -42,6 +42,7 @@ library(grid)
 library(gridExtra)
 library(ggplot2)
 library(reshape)
+library(scales)
 
 zSigma <- 1.96 # number of standard deviations for 95% confidence interval
 
