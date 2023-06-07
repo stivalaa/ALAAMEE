@@ -2,3 +2,7 @@ estimation.txt
 obs_stats_sim_musae_git.txt
 stats_sim_gof_musae_git-plots.eps
 stats_sim_gof_musae_git.txt
+alaamee_Github-*.err
+alaamee_Github-*.out
+alaamee_covariance_Github-*.err
+alaamee_covariance_Github-*.out
