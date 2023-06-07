@@ -30,14 +30,14 @@ labels =                 ["Density",     "Activity",     "Contagion"]
 # Estimation results from estimation.txt
 ##
 #Pooled
-#Density -0.53586 0.043821 0.2762325 0.09203356  
-#Activity -0.1653545 0.009248309 0.06732604 0.06141516 * 
-#Contagion 0.4641499 0.02752406 0.1606117 -0.001245204 * 
-#TotalRuns 1 
-#ConvergedRuns 1 
+#Density -0.5365325 0.04596909 0.08739228 0.03865613 * 
+#Activity -0.1652275 0.009578548 0.01737109 0.0168499 * 
+#Contagion 0.4641411 0.0281529 0.04280775 -0.04349935 * 
+#TotalRuns 10 
+#ConvergedRuns 10 
 # TODO parse these from estimation output
 
-theta = np.array([-0.53586, -0.1653545, 0.4641499])
+theta = np.array([-0.5365325, -0.1652275, 0.4641411])
 
 assert len(param_func_list) == len(labels)
 assert len(theta) == len(param_func_list)
