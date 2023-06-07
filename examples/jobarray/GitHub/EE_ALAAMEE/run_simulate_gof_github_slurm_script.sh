@@ -27,12 +27,12 @@ export PYTHONPATH=${HOME}/ALAAMEE/python:${PYTHONPATH}
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
 if [ ! -f ${OBSTATS_FILE} ]; then
-  time ./computeALAAMstatisticsGithub.py | tee ${OBSTATS_FILE}
+  time python3 ./computeALAAMstatisticsGithub.py | tee ${OBSTATS_FILE}
 fi
 
 # TODO parse parameters for simulation from estimation output (currently 
 #      hardcoded in ./runALAAMsimulateGoFGithub.py  script)
-time ./runALAAMsimulateGoFGithub.py  | tee ${SIMSTATS_FILE}
+time python3 ./runALAAMsimulateGoFGithub.py  | tee ${SIMSTATS_FILE}
 
 
 module unload python # otherwise module load r fails
