@@ -4,3 +4,5 @@ get_network_data.out
 git_web_ml.zip
 musae_git.net
 musae_git_target.txt
+get_github_data-*.err
+get_github_data-*.out
