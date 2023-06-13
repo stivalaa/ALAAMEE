@@ -11,7 +11,10 @@
 echo -n "started at: "; date
 uname -a
 
-module load numpy/1.22.3-python-3.10.4
+# module version numbers are required on OzStar (Ngarrgu Tindebeek)
+module load foss/2022b
+module load python/3.10.8
+module load numpy/1.24.2-scipy-bundle-2023.02
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
