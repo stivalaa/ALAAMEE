@@ -17,6 +17,7 @@ from functools import partial
 
 import  estimateALAAMEE
 from changeStatisticsALAAM import *
+from zooALAAMsampler import zooALAAMsampler
 
 
 def usage(progname):
@@ -46,9 +47,18 @@ def main():
 
     estimateALAAMEE.run_on_network_attr(
         '../data/musae_git.net',
-        [changeDensity, changeActivity,   changeContagion],
-        ["Density",     "Activity",       "Contagion"],
         ### with learningRate = 0.001:
+        [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changeContagion],
+        ["Density",     "Activity",     "Two-Star",    "Three-Star",   "Contagion"],
+        ## Does not converge:
+        #[changeDensity, changeActivity, changeTwoStar, changeThreeStar, changeContagion],
+        #["Density",     "Activity",     "Two-Star",    "Three-Star",   "Contagion"],
+        ## Extremely slow (very low acceptance rate), did not finish:
+        #[changeDensity, changeActivity, changeTwoStar, changeThreeStar, changePartnerActivityTwoPath, changeContagion, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute],
+        #["Density", "Activity", "Two-Star", "Three-Star", "Alter-2Star1", "Contagion", "Alter-2Star2", "Partner-Activity", "Partner-Resource"],
+        ## Bad GoF sim:
+        #[changeDensity, changeActivity,   changeContagion],
+        #["Density",     "Activity",       "Contagion"],
         ## Does not converge:
         #[changeDensity, changeActivity, changeTwoStar,  changeContagion],
         #["Density",     "Activity",     "Two-Star",    "Contagion"],
@@ -66,7 +76,7 @@ def main():
         #["Density", "Activity", "Two-Star", "Three-Star", "Alter-2Star1", "Contagion", "Alter-2Star2", "Partner-Activity", "Partner-Resource"],
         '../data/musae_git_target.txt',  # use target developer type as outcome variable
         run = runNumber,
-        learningRate = 0.001,
+        learningRate = 0.01
         )
 
 
