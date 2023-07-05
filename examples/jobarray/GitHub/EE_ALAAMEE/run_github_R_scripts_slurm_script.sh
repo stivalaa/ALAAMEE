@@ -12,7 +12,8 @@
 
 module load r
 
-RSCRIPTSDIR=${HOME}/ALAAMEE/R
+#RSCRIPTSDIR=${HOME}/ALAAMEE/R
+RSCRIPTSDIR=../../../../R
 
 uname -a
 

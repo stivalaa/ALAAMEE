@@ -23,7 +23,8 @@ SIMSTATS_FILE=stats_sim_gof_musae_git.txt
 # output file of observed ALAAM statistics
 OBSTATS_FILE=obs_stats_sim_musae_git.txt
 
-export PYTHONPATH=${HOME}/ALAAMEE/python:${PYTHONPATH}
+ROOT=../../../../
+export PYTHONPATH=${ROOT}/python:${PYTHONPATH}
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
 if [ ! -f ${OBSTATS_FILE} ]; then
@@ -37,7 +38,7 @@ time python3 ./runALAAMsimulateGoFGithub.py  | tee ${SIMSTATS_FILE}
 
 module unload python # otherwise module load r fails
 module load r
-Rscript ${HOME}/ALAAMEE/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
+Rscript ${ROOT}/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
 
 times
