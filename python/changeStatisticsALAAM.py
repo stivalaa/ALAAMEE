@@ -359,16 +359,16 @@ def changeGWActivity(G, A, i):
     et al. (2007), which is a sum over all nodes.
 
     """
-    # Note lambda = exp(alpha)/(exp(alpha)-1) [p. 113 Snjders et al. 2006]
-    # and 1/lambda = exp(-theta_s) = 1 - exp(-alpha) [p. 222 Hunter 2007]
-    lambda = 2.0 # TODO make it a function parameter
-    #theta_s = -math.log(1/lambda)
-    alpha = -math.log(1 - l/lambda)
+    # Note lambda_s = exp(alpha)/(exp(alpha)-1) [p. 113 Snjders et al. 2006]
+    # and 1/lambda_s = exp(-theta_s) = 1 - exp(-alpha) [p. 222 Hunter 2007]
+    lambda_s = 2.0 # TODO make it a function parameter
+    #theta_s = -math.log(1/lambda_s)
+    alpha = -math.log(1 - l/lambda_s)
 
     return math.exp(-alpha * G.degree(i))
 
 
-
+ 
 # ================== old versions for regression testing ======================
 
 def changePartnerPartnerAttribute_OLD(G, A, i):
