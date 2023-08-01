@@ -492,7 +492,7 @@ def changeGWSender(G, A, i):
 
 
 def changeGWReceiver(G, A, i):
-    """Change statistic for Geometrically Weighted Sender.
+    """Change statistic for Geometrically Weighted Receiver.
     
           o
         /
