@@ -362,7 +362,7 @@ def changeGWActivity(G, A, i):
     # Note lambda = exp(alpha)/(exp(alpha)-1) [p. 113 Snjders et al. 2006]
     # and 1/lambda = exp(-theta_s) = 1 - exp(-alpha) [p. 222 Hunter 2007]
     lambda = 2.0 # TODO make it a function parameter
-    theta_s = -math.log(1/lambda)
+    #theta_s = -math.log(1/lambda)
     alpha = -math.log(1 - l/lambda)
 
     return math.exp(-alpha * G.degree(i))
