@@ -438,11 +438,11 @@ def changeReciprocityMismatch(attrname, G, A, i):
 def changeGWSender(G, A, i):
     """Change statistic for Geometrically Weighted Sender.
 
-        >*
+        >o
       /
-     *-->*
+     *-->o
       \ :
-       >*
+       >o
 
 
     This is an ALAAM analogue of the geometrically weighted out-degree
@@ -488,20 +488,19 @@ def changeGWSender(G, A, i):
     #theta_s = -math.log(1/lambda_s)
     alpha = -math.log(1 - 1/lambda_s)
 
-    num_outneighbour_outcome = sum([(A[u] == 1) for u in G.outIterator(i)])    
-    return math.exp(-alpha * num_outneighbour_outcome)
+    return math.exp(-alpha * G.outdegree(i))
 
 
 def changeGWReceiver(G, A, i):
     """Change statistic for Geometrically Weighted Sender.
     
-          *
+          o
         /
       <
-     *<--*
+     *<--o
       <  :
         \
-         *
+         o
 
 
     This is an ALAAM analogue of the geometrically weighted in-degree
@@ -547,8 +546,7 @@ def changeGWReceiver(G, A, i):
     #theta_s = -math.log(1/lambda_s)
     alpha = -math.log(1 - 1/lambda_s)
 
-    num_inneighbour_outcome = sum([(A[u] == 1) for u in G.inIterator(i)])    
-    return math.exp(-alpha * num_inneighbour_outcome)
+    return math.exp(-alpha * G.indegree(i))
 
 
 # ================== old versions for regression testing ======================
