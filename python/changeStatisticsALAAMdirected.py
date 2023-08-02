@@ -549,6 +549,40 @@ def changeGWReceiver(G, A, i):
     return math.exp(-alpha * G.indegree(i))
 
 
+def changeGWContagion(G, A, i):
+    """Change statistic for Geometrically Weighted Contagoin.
+
+        >o
+      /
+     *-->o
+      \ :
+       >o
+
+          o
+        /
+      <
+     *<--o
+      <  :
+        \
+         o
+
+    This is a geometrically weighted version of changeContagion.
+    The idea is to use this rather than
+    Contagion to test for Alters and Ego both having outcome, but with
+    geometic decay to help prevent near-degeneracy problems, just as
+    GWSender and GWReceiver does when used instead of Sender and Receiver
+    (and EgoInTwoStar, EgoOutTwoStar, etc.)
+
+    """
+    # Note lambda_s = exp(alpha)/(exp(alpha)-1) [p. 113 Snjders et al. 2006]
+    # and 1/lambda_s = exp(-theta_s) = 1 - exp(-alpha) [p. 222 Hunter 2007]
+    lambda_s = 2.0 # TODO make it a function parameter
+    #theta_s = -math.log(1/lambda_s)
+    alpha = -math.log(1 - 1/lambda_s)
+
+    return math.exp(-alpha * changeContagoin(G, A, i)
+
+
 # ================== old versions for regression testing ======================
 
 def changeContagion_OLD(G, A, i):
