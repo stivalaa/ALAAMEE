@@ -580,7 +580,7 @@ def changeGWContagion(G, A, i):
     #theta_s = -math.log(1/lambda_s)
     alpha = -math.log(1 - 1/lambda_s)
 
-    return math.exp(-alpha * changeContagoin(G, A, i)
+    return math.exp(-alpha * changeContagoin(G, A, i))
 
 
 # ================== old versions for regression testing ======================
