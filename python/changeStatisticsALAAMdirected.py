@@ -552,19 +552,19 @@ def changeGWReceiver(G, A, i):
 def changeGWContagion(G, A, i):
     """Change statistic for Geometrically Weighted Contagion.
 
-        >o
+        >*
       /
-     *-->o
+     *-->*
       \ :
-       >o
+       >*
 
-          o
+          *
         /
       <
-     *<--o
+     *<--*
       <  :
         \
-         o
+         *
 
     This is a geometrically weighted version of changeContagion.
     The idea is to use this rather than
