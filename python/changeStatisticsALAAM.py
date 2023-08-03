@@ -16,6 +16,8 @@ with the (G, A, i) signature, e.g. partial(changeo_Oc, "age").
 Similarly for the use of the setting network (another fixed graph for
 different relationships than the main graph G) the setting-homophily
 change statistic is used as e.g. partial(changeSettingHomophily, Gsetting).
+The same technique is used for the geometrically weighted statistics
+e.g. partial(changeGWActivity, math.log(2))
 
 The change statistics here are documented in Daraganova & Robins
 (2013) Tables 9.1-9.3 (pp. 110-112) and the PNet manual Appendix B
@@ -312,7 +314,7 @@ def changeSettingHomophily(settingGraph, G, A, i):
     return delta
 
 
-def changeGWActivity(G, A, i):
+def changeGWActivity(alpha, G, A, i):
     """Change statistic for Geometrically Weighted Activity.
 
        o
@@ -339,6 +341,20 @@ def changeGWActivity(G, A, i):
     and both papers for the relationships between gwdegree and the
     alternating k-star statistic.
 
+    alpha > 0 is the decay parameter controlling the geometric rate of
+    decrease in the weights. For large alpha, the contribution of
+    positive outcomes on higher degree nodes is decreased. As alpha goes
+    to 0, increasing weight is placed on outcome vectors with positive
+    outcome on high degree nodes.  See Sjniders et a. (2006) p. 112.
+
+    Note lambda_s = exp(alpha)/(exp(alpha)-1) [p. 113 Snjders et al. 2006]
+    and 1/lambda_s = exp(-theta_s) = 1 - exp(-alpha) [p. 222 Hunter 2007]
+    theta_s = -log(1/lambda_s)
+    alpha = -log(1 - 1/lambda_s)
+    So for the "traditional" value of lambda = 2 we have
+    alpha = -log(1 - 1/2) = -log(1/2) = log(2) =appox 0.69
+
+
     The purpose of this statistic is to try to avoid problems with
     near-degeneracy when using the Activity, Two-Star, Three-Star,
     etc. parameters, by instead using this parameter to model
@@ -359,12 +375,6 @@ def changeGWActivity(G, A, i):
     et al. (2007), which is a sum over all nodes.
 
     """
-    # Note lambda_s = exp(alpha)/(exp(alpha)-1) [p. 113 Snjders et al. 2006]
-    # and 1/lambda_s = exp(-theta_s) = 1 - exp(-alpha) [p. 222 Hunter 2007]
-    lambda_s = 2.0 # TODO make it a function parameter
-    #theta_s = -math.log(1/lambda_s)
-    alpha = -math.log(1 - 1/lambda_s)
-
     return math.exp(-alpha * G.degree(i))
 
 
@@ -385,12 +395,6 @@ def changeGWContagion(G, A, i):
     GWActivity does when used instead of Activity (and TwoStar, etc.)
 
     """
-    # Note lambda_s = exp(alpha)/(exp(alpha)-1) [p. 113 Snjders et al. 2006]
-    # and 1/lambda_s = exp(-theta_s) = 1 - exp(-alpha) [p. 222 Hunter 2007]
-    lambda_s = 2.0 # TODO make it a function parameter
-    #theta_s = -math.log(1/lambda_s)
-    alpha = -math.log(1 - 1/lambda_s)
-
     return math.exp(-alpha * changeContagion(G, A, i))
 
 
