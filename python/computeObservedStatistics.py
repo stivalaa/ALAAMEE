@@ -7,10 +7,13 @@
 Compute the observed values of ALAAM statistics by summing the change
 statistics for each 1 variable in the outcome variable vector.
 """
+import sys
 import numpy as np         # used for matrix & vector data types and functions
 
 from Graph import Graph,NA_VALUE
-from util import int_or_na
+from Digraph import Digraph
+from BipartiteGraph import BipartiteGraph
+from utils import int_or_na
 from changeStatisticsALAAM import *
 
 
@@ -88,15 +91,14 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
         if bipartite:
             raise Exception("directed bipartite network not suppored")
         G = Digraph(edgelist_filename, binattr_filename, contattr_filename,
-                    catattr_filename, zone_filename)
+                    catattr_filename)
     else:
         if bipartite:
             G = BipartiteGraph(edgelist_filename, binattr_filename,
-                               contattr_filename, catattr_filename,
-                               zone_filename)
+                               contattr_filename, catattr_filename)
         else:
             G = Graph(edgelist_filename, binattr_filename,
-                      contattr_filename, catattr_filename, zone_filename)
+                      contattr_filename, catattr_filename)
 
 
     outcome_binvar = list(map(int_or_na, open(outcome_bin_filename).read().split()[1:]))
