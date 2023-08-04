@@ -146,3 +146,92 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                                               sampler_m = iterationInStep)
         Z += changeTo1ChangeStats - changeTo0ChangeStats
         yield (np.array(A), np.array(Z), acceptance_rate, (i+1)*iterationInStep+burnIn)
+
+
+
+
+def simulate_from_network_attr(arclist_filename, param_func_list, labels,
+                               theta,
+                               binattr_filename=None,
+                               contattr_filename=None,
+                               catattr_filename=None,
+                               sampler_func = basicALAAMsampler,
+                               numSamples = 100,
+                               iterationInStep = None,
+                               burnIn = None,
+                               zone_filename = None,
+                               directed = False,
+                               bipartite = False):
+    """Simulate ALAAM from on specified network with binary and/or continuous
+    and categorical attributes.
+
+    Parameters:
+         arclist_filename - filename of Pajek format arclist
+         param_func_list   - list of change statistic functions corresponding
+                             to parameters to estimate
+         labels            - list of strings corresponding to param_func_list
+                             to label output (header line)
+         theta             - correponding vector of theta values
+         binattr_filename - filename of binary attributes (node per line)
+                            Default None, in which case no binary attr.
+         contattr_filename - filename of continuous attributes (node per line)
+                            Default None, in which case no continuous attr.
+         catattr_filename - filename of categorical attributes (node per line)
+                            Default None, in which case no categorical attr.
+         sampler_func        - ALAAM sampler function with signature
+                               (G, A, changestats_func_list, theta, performMove,
+                                sampler_m); see basicALAAMsampler.py
+                               default basicALAAMsampler
+         iterationInStep  - number of sampler iterations
+                             i.e. the number of iterations between samples
+                             (or 10*numNodes if None)
+         numSamples       - Number of samples (default 100)
+         burnIn           - Number of sampels to discard at start
+                            (or 10*iterationInStep if None)
+         zone_filename   - filename of snowball sampling zone file
+                           (header line 'zone' then zone number for nodes,
+                           one per line)
+                           Default None, in which case no snowball zones.
+                           If not None then the sampler_func should take
+                           account of snowball sample zones i.e.
+                           conditionalALAAMsampler()
+         directed        - Default False.
+                           True for directed network else undirected.
+         bipartite       - Default False.
+                           True for two-mode network else one-mode.
+
+
+    The output is written to stdout in a format for reading by
+    the R script plotSimulationDiagnostics.R.
+    """
+    assert(len(param_func_list) == len(labels))
+
+
+    G = Digraph(arclist_filename, binattr_filename, contattr_filename,
+              catattr_filename)
+
+    if directed:
+        if bipartite:
+            raise Exception("directed bipartite network not suppored")
+        G = Digraph(edgelist_filename, binattr_filename, contattr_filename,
+                    catattr_filename, zone_filename)
+    else:
+        if bipartite:
+            G = BipartiteGraph(edgelist_filename, binattr_filename,
+                               contattr_filename, catattr_filename,
+                               zone_filename)
+        else:
+            G = Graph(edgelist_filename, binattr_filename,
+                      contattr_filename, catattr_filename, zone_filename)
+
+    #G.printSummary()
+
+    sys.stdout.write(' '.join(['t'] + labels + ['acceptance_rate']) + '\n')
+    for (simvec,stats,acceptance_rate,t) in simulateALAAM(G, param_func_list,
+                                                          theta,
+                                                          numSamples,
+                                                          iterationInStep,
+                                                          burnIn,
+                                                          sampler_func = sampler_func):
+        sys.stdout.write(' '.join([str(t)] + [str(x) for x in list(stats)] +
+                                  [str(acceptance_rate)]) + '\n')
