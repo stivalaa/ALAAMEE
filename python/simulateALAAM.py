@@ -27,6 +27,8 @@
 import numpy as np         # used for matrix & vector data types and functions
 
 from Graph import Graph,NA_VALUE
+from Digraph import Digraph
+from BipartiteGraph import BipartiteGraph
 from changeStatisticsALAAM import *
 from basicALAAMsampler import basicALAAMsampler
 from computeObservedStatistics import computeObservedStatistics
