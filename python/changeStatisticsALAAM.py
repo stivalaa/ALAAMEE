@@ -45,6 +45,7 @@ See
 """
 
 import math
+import functools
 
 from utils import NA_VALUE
 from Graph import Graph
@@ -72,7 +73,7 @@ def param_func_to_label(param_func):
     name after a period, to get e.g. "changeeo_Oc.age"
     """
     prefix = "change"
-    if isinstance(param_func, partial):
+    if isinstance(param_func, functools.partial):
         funcname = param_func.func.__name__
         suffix = ".".join([str(x) for x in param_func.args])
     else:
