@@ -24,6 +24,7 @@
   Attribute Model. arXiv preprint arXiv:2002.00849.
 
 """
+import sys
 import numpy as np         # used for matrix & vector data types and functions
 
 from Graph import Graph,NA_VALUE
