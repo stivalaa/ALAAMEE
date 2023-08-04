@@ -50,6 +50,42 @@ from utils import NA_VALUE
 from Graph import Graph
 
 
+
+def param_func_to_label(param_func):
+    """Return string label for a change statistic function, for
+   use in automatically generating the labels for the param_func_list
+   list of functions in the estimation functions like
+   estimateALAAMEE.run_on_network_attr()
+
+    Parameters:
+        param_func - change statistic function from changeStatisticsALAAM.py
+                     etc. e.g changeActivity
+
+    Return value:
+        label for parameter corresponding to the change statistic.
+
+    The name of the function is obtained using its __name__ attribute,
+    and the "change" at the front removed. 
+    For functions created with functools.partial(), e.g.
+    partial(changeo_Oc, "age"), we get the original function and paramters via
+    the func and args attributes, and the parameter is appended to the function
+    name after a period, to get e.g. "changeeo_Oc.age"
+    """
+    prefix = "change"
+    if isinstance(param_func, partial):
+        funcname = param_func.func.__name__
+        suffix = ".".join([str(x) for x in param_func.args])
+    else:
+        funcname = param_func.__name__
+        suffix = None
+
+    label = funcname[len(prefix):] if funcname.startswith(prefix) else funcname
+    if suffix is not None:
+        label += "." + suffix
+    return label
+
+
+
 def changeDensity(G, A, i):
     """
     change statistic for [outcome attribute] Density
