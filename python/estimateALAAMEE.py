@@ -1,5 +1,5 @@
 #
-# File:    estimatieALAAMEE.py
+# File:    estimateALAAMEE.py
 # Author:  Alex Stivala
 # Created: Februrary 2020
 #
