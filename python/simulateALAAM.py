@@ -215,15 +215,15 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
     if directed:
         if bipartite:
             raise Exception("directed bipartite network not suppored")
-        G = Digraph(edgelist_filename, binattr_filename, contattr_filename,
+        G = Digraph(arclist_filename, binattr_filename, contattr_filename,
                     catattr_filename, zone_filename)
     else:
         if bipartite:
-            G = BipartiteGraph(edgelist_filename, binattr_filename,
+            G = BipartiteGraph(arclist_filename, binattr_filename,
                                contattr_filename, catattr_filename,
                                zone_filename)
         else:
-            G = Graph(edgelist_filename, binattr_filename,
+            G = Graph(arclist_filename, binattr_filename,
                       contattr_filename, catattr_filename, zone_filename)
 
     #G.printSummary()
