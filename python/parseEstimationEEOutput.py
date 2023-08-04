@@ -46,10 +46,10 @@ def parseEstimationEEOutput(filename):
                 break
             s = line.split(" ")
             paramname   = s[0]
-            estimate    = s[1]
-            sd_estimate = s[2]
-            std_error   = s[3]
-            est_t_ratio = s[4]
+            estimate    = float(s[1])
+            sd_estimate = float(s[2])
+            std_error   = float(s[3])
+            est_t_ratio = float(s[4])
             retlist.append((paramname, estimate))
 
     # Convert list of tuples to tuple of lists
