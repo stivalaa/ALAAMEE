@@ -415,7 +415,7 @@ def changeGWActivity(alpha, G, A, i):
     return math.exp(-alpha * G.degree(i))
 
 
-def changeGWContagion(G, A, i):
+def changeGWContagion(alpha, G, A, i):
     """Change statistic for Geometrically Weighted Contagion.
 
        *
