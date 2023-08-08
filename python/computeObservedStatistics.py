@@ -84,8 +84,6 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
     """
     assert(len(param_func_list) == len(labels))
 
-    G = Digraph(edgelist_filename, binattr_filename, contattr_filename,
-               catattr_filename)
 
     if directed:
         if bipartite:
