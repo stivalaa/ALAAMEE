@@ -10,8 +10,12 @@
 echo -n "started at: "; date
 uname -a
 
-module purge    # otherwise module load python sometimes fails
-module load python/3.9.0
+#module purge    # otherwise module load python sometimes fails
+#module load python/3.9.0
+# module version numbers are required on OzStar (Ngarrgu Tindebeek)
+module load foss/2022b
+module load python/3.10.8
+module load numpy/1.24.2-scipy-bundle-2023.02
 
 # run simulation from parameters and plot observed
 # statistics of network from which the parmeters were estimated as

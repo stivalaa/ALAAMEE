@@ -10,12 +10,14 @@
 #SBATCH --mem=8GB
 
 
-module load r
-
 #RSCRIPTSDIR=${HOME}/ALAAMEE/R
 RSCRIPTSDIR=../../../../R
 
 uname -a
+
+module load gcc/11.3.0 # needed by r/4.2.1
+module load openmpi/4.1.4 # needed by r/4.2.1
+module load r/4.2.1
 
 time Rscript ${RSCRIPTSDIR}/plotALAAMEEResults.R theta_values_musae_git dzA_values_musae_git
 
