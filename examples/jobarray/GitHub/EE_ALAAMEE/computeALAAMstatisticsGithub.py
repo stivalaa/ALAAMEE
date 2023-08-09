@@ -11,57 +11,15 @@ import sys
 import numpy as np         # used for matrix & vector data types and functions
 from functools import partial
 
-from computeObservedStatistics import computeObservedStatistics
-from Graph import Graph,NA_VALUE,int_or_na
-from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
-from changeStatisticsALAAMbipartite import *
+from computeObservedStatistics import get_observed_stats_from_network_attr
 from changeStatisticsALAAM import *
 
-def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
-                                         labels,
-                                         outcome_bin_filename,
-                                         binattr_filename=None,
-                                         contattr_filename=None,
-                                         catattr_filename=None):
-    """Compute observed stats for outcome on specified network with binary
-    and/or continuous and categorical attributes.
-    
-    Parameters:
-         edgelist_filename - filename of Pajek format edgelist 
-         param_func_list   - list of change statistic functions corresponding
-                             to statistics to compute
-         labels            - list of strings corresponding to param_func_list
-                             to label output (header line)
-         outcome_bin_filename - filename of binary attribute (node per line)
-                                of outcome variable for ALAAM
-         binattr_filename - filename of binary attributes (node per line)
-                            Default None, in which case no binary attr.
-         contattr_filename - filename of continuous attributes (node per line)
-                            Default None, in which case no continuous attr.
-         catattr_filename - filename of continuous attributes (node per line)
-                            Default None, in which case no categorical attr.
+from model import param_func_list
 
-    Write output to stdout.
+## Add extra statistics not in model for goodness-of-fit
+statfuncs = [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changePartnerActivityTwoPath, changeContagion, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute, changeTriangleT1, changeTriangleT2, changeTriangleT3]
 
-    """
-    assert(len(param_func_list) == len(labels))
-
-    G = Graph(edgelist_filename, binattr_filename, contattr_filename,
-              catattr_filename)
-
-    outcome_binvar = list(map(int_or_na, open(outcome_bin_filename).read().split()[1:]))
-    assert(len(outcome_binvar) == G.numNodes())
-    A = outcome_binvar
-
-    assert( all([x in [0,1,NA_VALUE] for x in A]) )
- 
-    # Calculate observed statistics by summing change stats for each 1 variable
-    Zobs = computeObservedStatistics(G, A, param_func_list)
-
-    sys.stdout.write(' '.join(labels) + '\n')
-    sys.stdout.write(' '.join([str(z) for z in Zobs]) + '\n')
-
-
+param_func_list += [f for f in statfuncs if f not in param_func_list]
 
 ##
 ## main
@@ -69,7 +27,7 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
 
 get_observed_stats_from_network_attr(
         '../data/musae_git.net',
-        [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changePartnerActivityTwoPath, changeContagion, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute, changeTriangleT1, changeTriangleT2, changeTriangleT3],
-        ["Density", "Activity", "Two-Star", "Three-Star", "Alter-2Star1", "Contagion", "Alter-2Star2", "Partner-Activity", "Partner-Resource", "T1", "T2", "T3"],
+        param_func_list,
+        [param_func_to_label(f) for f in param_func_list],
         '../data/musae_git_target.txt'  # use target developer type as outcome variable
 )

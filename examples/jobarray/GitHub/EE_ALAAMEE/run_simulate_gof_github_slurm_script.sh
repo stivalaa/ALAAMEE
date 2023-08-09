@@ -27,9 +27,7 @@ ROOT=../../../../
 export PYTHONPATH=${ROOT}/python:${PYTHONPATH}
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
-if [ ! -f ${OBSTATS_FILE} ]; then
-  time python3 ./computeALAAMstatisticsGithub.py | tee ${OBSTATS_FILE}
-fi
+time python3 ./computeALAAMstatisticsGithub.py | tee ${OBSTATS_FILE}
 
 # TODO parse parameters for simulation from estimation output (currently 
 #      hardcoded in ./runALAAMsimulateGoFGithub.py  script)

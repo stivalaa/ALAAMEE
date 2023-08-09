@@ -16,8 +16,9 @@ import sys
 from functools import partial
 
 import  estimateALAAMEE
-from changeStatisticsALAAM import *
-from zooALAAMsampler import zooALAAMsampler
+from changeStatisticsALAAM import param_func_to_label
+
+from model import param_func_list
 
 
 def usage(progname):
@@ -47,36 +48,11 @@ def main():
 
     estimateALAAMEE.run_on_network_attr(
         '../data/musae_git.net',
-        ### with learningRate = 0.001:
-        [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changeContagion],
-        ["Density",     "Activity",     "Two-Star",    "Three-Star",   "Contagion"],
-        ## Does not converge:
-        #[changeDensity, changeActivity, changeTwoStar, changeThreeStar, changeContagion],
-        #["Density",     "Activity",     "Two-Star",    "Three-Star",   "Contagion"],
-        ## Extremely slow (very low acceptance rate), did not finish:
-        #[changeDensity, changeActivity, changeTwoStar, changeThreeStar, changePartnerActivityTwoPath, changeContagion, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute],
-        #["Density", "Activity", "Two-Star", "Three-Star", "Alter-2Star1", "Contagion", "Alter-2Star2", "Partner-Activity", "Partner-Resource"],
-        ## Bad GoF sim:
-        #[changeDensity, changeActivity,   changeContagion],
-        #["Density",     "Activity",       "Contagion"],
-        ## Does not converge:
-        #[changeDensity, changeActivity, changeTwoStar,  changeContagion],
-        #["Density",     "Activity",     "Two-Star",    "Contagion"],
-        ### with default learningRate = 0.01:
-        ## Bad GoF sim:
-        #[changeDensity, changeActivity,   changeContagion],
-        #["Density",     "Activity",       "Contagion"],
-        ## Does not converge:
-        #[changeDensity, changeActivity, changeTwoStar,  changeContagion],
-        #["Density",     "Activity",     "Two-Star",    "Contagion"],
-        ## Does not converge:
-        #[changeDensity, changeActivity, changeTwoStar, changeThreeStar, changeContagion],
-        #["Density",     "Activity",     "Two-Star",    "Three-Star",   "Contagion"],
-        #[changeDensity, changeActivity, changeTwoStar, changeThreeStar, changePartnerActivityTwoPath, changeContagion, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute],
-        #["Density", "Activity", "Two-Star", "Three-Star", "Alter-2Star1", "Contagion", "Alter-2Star2", "Partner-Activity", "Partner-Resource"],
+        param_func_list,
+        [param_func_to_label(f) for f in param_func_list],
         '../data/musae_git_target.txt',  # use target developer type as outcome variable
         run = runNumber,
-        learningRate = 0.01
+        learningRate = 0.001
         )
 
 

@@ -209,10 +209,6 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
     """
     assert(len(param_func_list) == len(labels))
 
-
-    G = Digraph(arclist_filename, binattr_filename, contattr_filename,
-              catattr_filename)
-
     if directed:
         if bipartite:
             raise Exception("directed bipartite network not suppored")
