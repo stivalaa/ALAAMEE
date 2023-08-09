@@ -52,7 +52,7 @@ def main():
         [param_func_to_label(f) for f in param_func_list],
         '../data/musae_git_target.txt',  # use target developer type as outcome variable
         run = runNumber,
-        learningRate = 0.001
+        learningRate = 0.01
         )
 
 
