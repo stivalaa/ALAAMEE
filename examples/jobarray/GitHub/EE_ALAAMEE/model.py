@@ -7,7 +7,14 @@ from math import log
 from changeStatisticsALAAM import *
 
 
-param_func_list = [changeDensity, partial(changeGWActivity, log(2.0)), changeContagion]
+## does not converge with GWContagin (as always it seems) [bad trace plot, gof sim shows GWContagion not converging)
+param_func_list = [changeDensity, partial(changeGWActivity, 2.0), partial(changeGWContagion, 2.0)]
+## good gof sim on Density, only OK on Contagion, but bad on GWActivity:
+#param_func_list = [changeDensity, partial(changeGWActivity, 0.1), changeContagion]
+## very good gof sim on Density,Contagion, but bad on GWActivity:
+#param_func_list = [changeDensity, partial(changeGWActivity, 2.0), changeContagion]
+## good gof sim on Density,Contagion, but bad on GWActivity:
+#param_func_list = [changeDensity, partial(changeGWActivity, log(2.0)), changeContagion]
 
 
 ### with learningRate = 0.001:

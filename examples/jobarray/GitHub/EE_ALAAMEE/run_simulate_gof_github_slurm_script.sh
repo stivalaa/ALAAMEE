@@ -1,6 +1,6 @@
 #!/bin/sh
 #SBATCH --job-name="gof_ALAAM"
-#SBATCH --time=0-04:00:00
+#SBATCH --time=0-01:00:00
 #SBATCH --output=gof_alaam_sim_github-%j.out
 #SBATCH --error=gof_alaam_sim_github-%j.err
 #SBATCH --ntasks=1

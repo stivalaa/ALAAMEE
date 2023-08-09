@@ -7,7 +7,7 @@
 # on completion
 
 #SBATCH --job-name="ALAAMEE_jobarray_parallel"
-#SBATCH --time=0-04:00:00
+#SBATCH --time=0-01:00:00
 #SBATCH --output=alaamee_Github-%A_%a.out
 #SBATCH --error=alaamee_Github-%A_%a.err
 #SBATCH --ntasks=1
