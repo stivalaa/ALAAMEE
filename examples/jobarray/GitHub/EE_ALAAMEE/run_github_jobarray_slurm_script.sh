@@ -12,7 +12,7 @@
 #SBATCH --error=alaamee_Github-%A_%a.err
 #SBATCH --ntasks=1
 #SBATCH --mem=1GB
-#SBATCH --array=0-9
+#SBATCH --array=0-99
 #SBATCH --partition=slim
 
 
