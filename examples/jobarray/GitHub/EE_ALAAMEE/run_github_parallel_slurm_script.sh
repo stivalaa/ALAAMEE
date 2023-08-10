@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name="ALAAMEE_parallel"
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-00:30:00
 #SBATCH --output=alaamee_Github-%j.out
 #SBATCH --error=alaamee_Github-%j.err
 #SBATCH --ntasks=10
