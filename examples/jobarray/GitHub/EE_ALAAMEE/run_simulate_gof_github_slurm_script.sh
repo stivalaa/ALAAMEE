@@ -35,9 +35,10 @@ time python3 ./computeALAAMstatisticsGithub.py | tee ${OBSTATS_FILE}
 
 time python3 ./runALAAMsimulateGoFGithub.py  | tee ${SIMSTATS_FILE}
 
+module load gcc/11.3.0 # needed by r/4.2.1
+module load openmpi/4.1.4 # needed by r/4.2.1
+module load r/4.2.1
 
-module unload python # otherwise module load r fails
-module load r
 Rscript ${ROOT}/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
 
