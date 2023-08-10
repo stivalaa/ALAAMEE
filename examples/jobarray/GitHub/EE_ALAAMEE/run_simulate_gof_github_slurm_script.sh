@@ -33,8 +33,6 @@ export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
 time python3 ./computeALAAMstatisticsGithub.py | tee ${OBSTATS_FILE}
 
-# TODO parse parameters for simulation from estimation output (currently 
-#      hardcoded in ./runALAAMsimulateGoFGithub.py  script)
 time python3 ./runALAAMsimulateGoFGithub.py  | tee ${SIMSTATS_FILE}
 
 
