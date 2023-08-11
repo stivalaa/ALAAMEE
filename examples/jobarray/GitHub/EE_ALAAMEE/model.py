@@ -1,5 +1,5 @@
 """
-Defines the model in terms of the list of paramters to estimate
+Defines the model in terms of the list of parameters to estimate
 (also used for computing observed statistics and simulation for GoF)
 """
 from functools import partial
