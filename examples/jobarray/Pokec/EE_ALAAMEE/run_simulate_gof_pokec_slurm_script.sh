@@ -5,7 +5,6 @@
 #SBATCH --error=gof_alaam_sim_pokec-%j.err
 #SBATCH --ntasks=1
 #SBATCH --mem=4GB
-#SBATCH --partition=slim
 
 echo -n "started at: "; date
 uname -a

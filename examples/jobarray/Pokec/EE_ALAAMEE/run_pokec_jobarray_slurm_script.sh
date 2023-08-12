@@ -13,7 +13,6 @@
 #SBATCH --ntasks=1
 #SBATCH --mem=4GB
 #SBATCH --array=0-99
-#SBATCH --partition=slim
 
 
 echo -n "started at: "; date
