@@ -6,7 +6,6 @@
 #SBATCH --error=alaamee_Github-%j.err
 #SBATCH --ntasks=10
 #SBATCH --mem-per-cpu=100MB
-#SBATCH --partition=slim
 
 
 echo -n "started at: "; date

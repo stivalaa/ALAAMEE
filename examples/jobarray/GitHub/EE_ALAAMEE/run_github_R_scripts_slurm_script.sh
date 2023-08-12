@@ -6,7 +6,6 @@
 #SBATCH --time=0-00:10:00
 #SBATCH --output=alaamee_covariance_Github-%j.out
 #SBATCH --error=alaamee_covariance_Github-%j.err
-#SBATCH --partition=slim
 #SBATCH --mem=8GB
 
 
