@@ -1,0 +1,74 @@
+Citation information for Project 90 network:
+
+The .Project 90. data (Potterat et al., 2004; Woodhouse et al., 1994; Klovdahl et al., 1994; Rothenberg et al., 1995; Goel and Salganik, 2010) is available upon registration from https://opr.princeton.edu/archive/p90/.
+
+
+J. Potterat, D. E. Woodhouse, S. Q. Muth, R. B. Rothenbueg, W. W. Darrow, A. S. Klovdahl, J. B. Muth, et al. Network
+dynamism: history and lessons of the Colorado Springs study. In M. Morris, editor, Network epidemiology: A
+handbook for survey design and data collection, pages 87.114. Oxford University Press, 2004.
+
+D. E. Woodhouse, R. B. Rothenberg, J. J. Potterat, W. W. Darrow, S. Q. Muth, A. S. Klovdahl, H. P. Zimmerman,
+H. L. Rogers, T. S. Maldonado, J. B. Muth, et al. Mapping a social network of heterosexuals at high risk for HIV
+infection. AIDS, 8(9):1331.1336, 1994.
+
+A. S. Klovdahl, J. J. Potterat, D. E. Woodhouse, J. B. Muth, S. Q. Muth, and W. W. Darrow. Social networks and
+infectious disease: The Colorado Springs study. Social Science & Medicine, 38(1):79.88, 1994.
+
+R. B. Rothenberg, D. E. Woodhouse, J. J. Potterat, S. Q. Muth, W. W. Darrow, and A. S. Klovdahl. Social networks
+in disease transmission: the Colorado Springs study. In R. H. Needle, S. L. Coyle, S. G. Genser, and R. T. Trotter,
+editors, Social Networks, Drug Abuse, and HIV Transmission, volume 151, pages 3.19. National Institute on Drug
+Abuse, 1995.
+
+S. Goel and M. J. Salganik. Assessing respondent-driven sampling. Proceedings of the National Academy of Sciences
+of the USA, 107(15):6743.6747, 2010.
+
+============================================================================
+sample-project90_sim540000000.txt is a copy of sample-project90_sim540000000.clu
+from the simulated ALAAM directory Alaam_estimations_simulated_Project90
+with the first line (*vertices 4430) removed.
+
+sample-project90_sim540000000_with_header.txt is a copy of the above but with header line
+(outcome) added
+
+project90_giantcomponent_edgelist.txt is project90_giantcomponent_adjmatrix.txt
+converted to Pajek edgelist format with R (igraph).
+
+binaryAttribute_50_50_n4430_with_header.txt and continuousAttributes_n4430_with_header.txt
+are copies  of binaryAttribute_50_50_n4430_with_header.txt and continuousAttributes_n4430.txt with header line added.
+
+ADS
+Wed May 13 04:27:21 CEST 2020
+
+
+
+============================================================================
+Example for simulating ALAAM on the giant component of the
+Project 90 network, converted
+into IPNet format (the network only, no attributes) with the
+convertProject90giantComponentToAdjmatrix.sh scipt
+
+binary attributes file binaryAttribute_50_50_n4430.txt generated with
+~/Snowball/scripts/genrandomattributes.sh  4430 2215 |dos2unix |tail -n+2 > binaryAttribute_50_50_n4430.txt
+
+continuousAttributes_n4430.txt normal(0,1) generated with
+~/Snowball/scripts/genrandomContinuousAttributes.py 4430  |tail -n+2 > continuousAttributes_n4430.txt
+
+
+zonefile.txt created with
+printf '1 %.0s' {1..4430} > zonefile.txt
+
+(http://stackoverflow.com/questions/5349718/how-can-i-repeat-a-character-in-bash)
+
+ADS
+Fri Aug 12 11:33:27 AEST 2016
+=============================================================================
+* Simulation result for network with 4430 of vertices.
+* Parameter Values of:
+#Attribute-Density      -15.00000
+#Activity        0.55000
+#Contagion       1.00000
+#oOb of Binary Attr1:1.20000
+#oOc of Continuous Attr1:1.15000
+* There are 1000000000 proposed graphs.
+* Statistic samples are picked up at 1 per 10000000 graphs.
+* Accepted 31394885 proposed graphs.

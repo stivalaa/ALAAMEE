@@ -1,0 +1,8 @@
+Pokec network from SNAP, with hubs removed as per EstimNetDirected paper.
+Removed oringal data and directed network here to save space, only using undirected in this 
+example.
+The undirected
+version uses bidirectional links only (as per Kleineberg & Boguna 2014)
+
+ADS
+Mon Aug 14 08:46:19 AEST 2023
