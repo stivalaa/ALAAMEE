@@ -11,5 +11,5 @@ higgs_reply.net
 higgs_reply_active.txt
 higgs_retweet_active.txt
 higgs_rewtweet.net
-
-
+get_higgs_data-*.out
+get_higgs_data-*.err
