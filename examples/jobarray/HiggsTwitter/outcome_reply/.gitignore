@@ -1,0 +1,11 @@
+alaamee_higgs-*.out
+alaamee_higgs-*.err
+On branch examples
+alaamee_covariance_higgs-*.err
+alaamee_covariance_higgs-*.out
+estimation.txt
+gof_alaam_sim_higgs-*.err
+gof_alaam_sim_higgs-*.out
+obs_stats_sim_higgs.txt
+stats_sim_gof_higgs-plots.eps
+stats_sim_gof_higgs.txt

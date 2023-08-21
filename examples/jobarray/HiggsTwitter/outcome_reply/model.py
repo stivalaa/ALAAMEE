@@ -8,7 +8,9 @@ from math import log
 from changeStatisticsALAAM import *
 from changeStatisticsALAAMdirected import *
 
-param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeContagion, changeReciprocity, changeContagionReciprocity]
+
+## sim gof good on Density, GWSender, GWReceiver, but bad on all others:
+param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeContagion]
 
 ## sim gof good on Density, GWSender, GWReceiver, but bad on all others:
 #param_func_list =  [changeDensity, partial(changeGWSender, 1.0), partial(changeGWReceiver, 1.0), changeContagion, changeReciprocity, changeContagionReciprocity]

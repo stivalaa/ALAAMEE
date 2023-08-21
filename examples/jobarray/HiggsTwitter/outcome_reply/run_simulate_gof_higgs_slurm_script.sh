@@ -24,8 +24,7 @@ SIMSTATS_FILE=stats_sim_gof_higgs.txt
 # output file of observed ALAAM statistics
 OBSTATS_FILE=obs_stats_sim_higgs.txt
 
-#ROOT=${HOME}
-ROOT=${DOCUMENTS}/USI
+ROOT=${HOME}
 export PYTHONPATH=${ROOT}/ALAAMEE/python:${PYTHONPATH}
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
