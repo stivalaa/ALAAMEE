@@ -1,0 +1,15 @@
+higgs-activity_time.txt.gz
+higgs-mention_network.edgelist.gz
+higgs-reply_network.edgelist.gz
+higgs-retweet_network.edgelist.gz
+higgs-social_network.edgelist.gz
+higgs_social.net
+get_higgs_twitter_data_slurm_script.out
+higgs_mention.net
+higgs_mention_active.txt
+higgs_reply.net
+higgs_reply_active.txt
+higgs_retweet_active.txt
+higgs_rewtweet.net
+
+
