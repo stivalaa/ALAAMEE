@@ -32,6 +32,9 @@ stats_filename = sys.argv[1]
 
 labels =  [param_func_to_label(f) for f in param_func_list]
 
+# always add the t column needed by R scripts
+labels += ['t']
+
 # Note in the following,
 #  map(list, zip(*[row.split() for row in open(filename).readlines()]))
 # reads the data and transposes it so we have a list of columns

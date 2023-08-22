@@ -8,3 +8,5 @@ alaamee_covariance_Github-*.err
 alaamee_covariance_Github-*.out
 gof_alaam_sim_github-*.err
 gof_alaam_sim_github-*.out
+model_stats_sim_gof_musae_git-plots.eps
+model_stats_sim_gof_musae_git.txt
