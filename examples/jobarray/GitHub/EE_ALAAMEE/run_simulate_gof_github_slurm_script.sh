@@ -40,6 +40,7 @@ module load r/4.2.1
 
 Rscript ${ROOT}/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
+./plot_model_degeneracy_check.sh
 
 times
 echo -n "started at: "; date
