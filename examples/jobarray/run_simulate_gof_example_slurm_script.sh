@@ -18,7 +18,7 @@ SIMSTATS_FILE=stats_sim_gof_n500.txt
 # output file of observed ALAAM statistics
 OBSTATS_FILE=obs_stats_sim_n500.txt
 
-export PYTHONPATH=${HOME}/ALAAMEE/python:${PYTHONPATH}
+export PYTHONPATH=../../python:${PYTHONPATH}
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
 time ../../python/computeALAAMstatisticsSimpleDemo.py | tee ${OBSTATS_FILE}

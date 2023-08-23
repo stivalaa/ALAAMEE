@@ -11,7 +11,7 @@ from functools import partial
 import numpy as np
 
 from changeStatisticsALAAM import *
-import  simulateALAAMsimpleDemo
+from simulateALAAM import simulate_from_network_attr
 
 # parameters and corresponding labels 
 # TODO parse frmo estimation output
@@ -53,7 +53,7 @@ assert len(goflabels) == n
 gof_theta = np.array(list(theta) + (n-len(theta))*[0])
 
 
-simulateALAAMsimpleDemo.simulate_from_network_attr(
+simulate_from_network_attr(
     '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
     gof_param_func_list,
     goflabels, 

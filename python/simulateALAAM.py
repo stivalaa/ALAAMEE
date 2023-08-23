@@ -164,7 +164,8 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                                burnIn = None,
                                zone_filename = None,
                                directed = False,
-                               bipartite = False):
+                               bipartite = False,
+                               degreestats = False):
     """Simulate ALAAM from on specified network with binary and/or continuous
     and categorical attributes.
 
@@ -202,6 +203,9 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                            True for directed network else undirected.
          bipartite       - Default False.
                            True for two-mode network else one-mode.
+         degreestats     - Default False.
+                           If True then also compute mean and variance
+                           of nodes with outcome variable = 1 (and also 0).
 
 
     The output is written to stdout in a format for reading by
@@ -225,6 +229,11 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
 
     #G.printSummary()
 
+    if degreestats:
+        ##TODO directed and bipartite degrees
+        degseq = np.array([G.degree(v) for v in G.nodeIterator()])
+        labels += ['meanDegree1', 'varDegree1', 'meanDegree0', 'varDegree0']
+
     sys.stdout.write(' '.join(['t'] + labels + ['acceptance_rate']) + '\n')
     for (simvec,stats,acceptance_rate,t) in simulateALAAM(G, param_func_list,
                                                           theta,
@@ -232,5 +241,15 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                                                           iterationInStep,
                                                           burnIn,
                                                           sampler_func = sampler_func):
+        if degreestats:
+            ## mean and variance of degrees of nodes with outcome = 1
+            meanDegree1 = np.mean(degseq[np.nonzero(simvec == 1)[0]])
+            varDegree1 = np.var(degseq[np.nonzero(simvec == 1)[0]])
+            ## mean and variance of degrees of nodes with outcome = 0
+            meanDegree0 = np.mean(degseq[np.nonzero(simvec == 0)[0]])
+            varDegree0 = np.var(degseq[np.nonzero(simvec == 0)[0]])
+            stats = np.append(stats, [meanDegree1, varDegree1,
+                                      meanDegree0, varDegree0])
+
         sys.stdout.write(' '.join([str(t)] + [str(x) for x in list(stats)] +
                                   [str(acceptance_rate)]) + '\n')

@@ -55,7 +55,8 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
                                          contattr_filename=None,
                                          catattr_filename=None,
                                          directed=False,
-                                         bipartite=False):
+                                         bipartite=False,
+                                         degreestats=False):
     """Compute observed stats for outcome on specified network with binary
     and/or continuous and categorical attributes.
 
@@ -77,6 +78,9 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
                            True for directed network else undirected.
          bipartite       - Default False.
                            True for two-mode network else one-mode.
+         degreestats     - Default False.
+                           If True then also compute mean and variance
+                           of nodes with outcome variable = 1 (and also 0).
 
     Write output to stdout in format readable by R script
     plotSimulationDiagnostics.R
@@ -107,6 +111,22 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
 
     # Calculate observed statistics by summing change stats for each 1 variable
     Zobs = computeObservedStatistics(G, A, param_func_list)
+
+    if degreestats:
+        ## Add mean and variance of degrees of nodes with different
+        ## outcome values
+        ## TODO directed and bipartite degrees
+        labels += ['meanDegree1', 'varDegree1', 'meanDegree0', 'varDegree0']
+        degseq = np.array([G.degree(v) for v in G.nodeIterator()])
+        A = np.array(outcome_binvar)
+        ## mean and variance of degrees of nodes with outcome = 1
+        meanDegree1 = np.mean(degseq[np.nonzero(A == 1)[0]])
+        varDegree1 = np.var(degseq[np.nonzero(A == 1)[0]])
+        ## mean and variance of degrees of nodes with outcome = 0
+        meanDegree0 = np.mean(degseq[np.nonzero(A == 0)[0]])
+        varDegree0 = np.var(degseq[np.nonzero(A == 0)[0]])
+
+    Zobs = np.append(Zobs, [meanDegree1, varDegree1, meanDegree0, varDegree0])
 
     sys.stdout.write(' '.join(labels) + '\n')
     sys.stdout.write(' '.join([str(z) for z in Zobs]) + '\n')
