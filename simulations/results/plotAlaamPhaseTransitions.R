@@ -85,6 +85,10 @@ dat <- read.table("../AlaamSimulations/GitHubSimulations/Activity/stats_sim_gith
 plot_mean_and_variance("Activity", "Density", "github")
 plot_mean_and_variance("Activity", "Activity", "github", obs)
 plot_mean_and_variance("Activity", "Contagion", "github")
+print(obs)#XXX
+plot_mean_and_variance("Activity", "meanDegree1", "github", obs)
+plot_mean_and_variance("Activity", "varDegree1", "github", obs)
+
 
 dat <- read.table("../AlaamSimulations/GitHubSimulations/Contagion/stats_sim_github.txt", header = TRUE)
 plot_mean_and_variance("Contagion", "Density", "github")
@@ -96,6 +100,8 @@ dat <- read.table("../AlaamSimulations/pokec/Activity/stats_sim_pokec.txt", head
 plot_mean_and_variance("Activity", "Density", "pokec")
 plot_mean_and_variance("Activity", "Activity", "pokec", obs)
 plot_mean_and_variance("Activity", "Contagion", "pokec")
+plot_mean_and_variance("Activity", "meanDegree1", "pokec", obs)
+plot_mean_and_variance("Activity", "varDegree1", "pokec", obs)
 
 dat <- read.table("../AlaamSimulations/pokec/Contagion/stats_sim_pokec.txt", header = TRUE)
 plot_mean_and_variance("Contagion", "Density", "pokec")

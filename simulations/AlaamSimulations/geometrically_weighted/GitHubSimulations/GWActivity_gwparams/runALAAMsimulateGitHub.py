@@ -67,17 +67,31 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
 
     #G.printSummary()
 
-    sys.stdout.write(' '.join(['t'] + [('theta_' + z) for z in labels] + labels + ['acceptance_rate']) + '\n')
+    degseq = np.array([G.degree(v) for v in G.nodeIterator()])
+
+    sys.stdout.write(' '.join(['t'] + [('theta_' + z) for z in labels] + labels + ['acceptance_rate', 'meanDegree1', 'varDegree1', 'meanDegree0', 'varDegree0']) + '\n')
     for (simvec,stats,acceptance_rate,t) in simulateALAAM(G, param_func_list,
                                                           theta,
                                                           numSamples,
                                                           iterationInStep,
                                                           burnIn,
                                                           sampler_func = sampler_func):
+        ## mean and variance of degrees of nodes with outcome = 1
+        meanDegree1 = np.mean(degseq[np.nonzero(simvec)[0]])
+        varDegree1 = np.var(degseq[np.nonzero(simvec)[0]])
+        ## mean and variance of degrees of nodes with outcome = 0
+        meanDegree0 = np.mean(degseq[np.nonzero(simvec == 0)[0]])
+        varDegree0 = np.var(degseq[np.nonzero(simvec == 0)[0]])
+
         sys.stdout.write(' '.join([str(t)] +
                                   [str(th) for th in list(theta)] +
                                   [str(x) for x in list(stats)] +
-                                  [str(acceptance_rate)]) + '\n')
+                                  [str(acceptance_rate)] +
+                                  [str(x) for x in [meanDegree1, varDegree1,
+                                                    meanDegree0, varDegree0]]) +
+                                  '\n')
+
+
 
     
 def usage(progname):

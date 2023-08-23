@@ -5,8 +5,7 @@
 #SBATCH --error=alaam_sim_github-%A_%a.err
 #SBATCH --ntasks=1
 #SBATCH --mem=500MB
-#SBATCH --array=201-300
-#orig: SBATCH --array=0-200
+#SBATCH --array=0-300
 
 echo -n "started at: "; date
 uname -a

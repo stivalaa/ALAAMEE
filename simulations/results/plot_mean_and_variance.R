@@ -71,7 +71,7 @@ plot_mean_and_variance <- function(varname, statname, outfile_basename, obs) {
     xlab(bquote(theta[.(varname)])) +
     scale_y_continuous(labels = my_scientific_10)
   if (!missing(obs)) {
-    p <- p + geom_hline(yintercept = obs[1, varname],
+    p <- p + geom_hline(yintercept = obs[1, statname],
                         linetype= "dashed", color = "red")
   }
   print(p)
@@ -96,7 +96,7 @@ plot_mean_and_variance <- function(varname, statname, outfile_basename, obs) {
     xlab(bquote(theta[.(varname)])) +
     scale_y_continuous(labels = my_scientific_10)
   if (!missing(obs)) {
-    p <- p + geom_hline(yintercept = obs[1, varname],
+    p <- p + geom_hline(yintercept = obs[1, statname],
                         linetype= "dashed", color = "red")
   }
   print(p)
