@@ -29,5 +29,6 @@ get_observed_stats_from_network_attr(
         '../data/musae_git.net',
         param_func_list,
         [param_func_to_label(f) for f in param_func_list],
-        '../data/musae_git_target.txt'  # use target developer type as outcome variable
+        '../data/musae_git_target.txt' , # use target developer type as outcome variable
+        degreestats = True
 )

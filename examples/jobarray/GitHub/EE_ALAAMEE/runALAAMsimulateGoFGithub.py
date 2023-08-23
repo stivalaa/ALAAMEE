@@ -47,7 +47,8 @@ simulate_from_network_attr(
     '../data/musae_git.net',
     param_func_list, labels, theta,
     iterationInStep = 100000,
-    burnIn = 1000000
+    burnIn = 1000000,
+    degreestats = True
     )
 
 
