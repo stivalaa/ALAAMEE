@@ -7,6 +7,14 @@ from math import log
 from changeStatisticsALAAM import *
 
 
+## good convergence and sim gof on parameters in model (learningRate = 0.01), similar to alpha=2
+#param_func_list = [changeDensity, partial(changeGWActivity, 5.0), changeContagion]
+
+## good convergence and sim gof on parameters in model (learningRate = 0.01), similar to alpha=log(2)
+#param_func_list = [changeDensity, partial(changeGWActivity, 0.1), changeContagion]
+
+## good convergence and sim gof on parameters in model (learningRate = 0.01); also better (jsut outside 95%) on TwoStar and ThreeStar  than alpha=log(2)
+param_func_list = [changeDensity, partial(changeGWActivity, 2.0), changeContagion]
 
 #slow (did not finish): param_func_list = [changeDensity, partial(changeGWActivity, log(2.0)), changeContagion, changePartnerActivityTwoPath, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute]
 
@@ -18,7 +26,7 @@ from changeStatisticsALAAM import *
 #param_func_list = [changeDensity, changeActivity, changeContagion]
 
 ## good convergence and sim gof on parameters in model (learningRate = 0.01):
-param_func_list = [changeDensity, partial(changeGWActivity, log(2.0)), changeContagion]
+#param_func_list = [changeDensity, partial(changeGWActivity, log(2.0)), changeContagion]
 
 ### Below with learningRate = 0.001 (did not converge properly in default iterations)
 ## not good convergence, bad sim gof on GWActivity:
