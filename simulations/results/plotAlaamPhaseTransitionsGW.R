@@ -116,6 +116,12 @@ plot_mean_and_variance("GWContagion", "Density", "github_gwparams")
 plot_mean_and_variance("GWContagion", "Contagion", "github_gwparams")
 plot_mean_and_variance("GWContagion", "GWContagion", "github_gwparams", obs)
 
+dat <- read.table("../AlaamSimulations/geometrically_weighted/GitHubSimulations/Contagion_gwparams/stats_sim_github.txt", header= TRUE)
+plot_mean_and_variance("Contagion", "Density", "github_gwparams")
+plot_mean_and_variance("Contagion", "Contagion", "github_gwparams", obs)
+plot_mean_and_variance("Contagion", "meanDegree1", "github_gwparams", obs)
+plot_mean_and_variance("Contagion", "varDegree1", "github_gwparams", obs)
+
 
 
 obs <- read.table('../AlaamSimulations/geometrically_weighted/pokec/observed/obs_stats_sim_pokec_europe.txt', header = TRUE)
@@ -147,3 +153,30 @@ dat <- read.table("../AlaamSimulations/geometrically_weighted/latticeSimulations
 plot_mean_and_variance("GWContagion", "Density", "lattice")
 plot_mean_and_variance("GWContagion", "Contagion", "lattice")
 plot_mean_and_variance("GWContagion", "GWContagion", "lattice")
+
+
+
+obs <- read.table('../AlaamSimulations/geometrically_weighted/HighSchoolFriendship/observed/obs_stats_sim_highschool.txt', header = TRUE)
+## Remove alpha value suffix from GW paramters in observed data so they match
+## those in the simulated data (which was done without these suffixes)
+## e.g. "GWActivity.0.6931471805599453" -> "GWActivity"
+colnames(obs) <- gsub("[.][0-9.]*", "", colnames(obs))
+dat <- read.table("../AlaamSimulations/geometrically_weighted/HighSchoolFriendship/GWSender/stats_sim_highschool.txt", header = TRUE)
+plot_mean_and_variance("GWSender", "Density", "highschool")
+plot_mean_and_variance("GWSender", "Contagion", "highschool")
+plot_mean_and_variance("GWSender", "Sender", "highschool", obs)
+plot_mean_and_variance("GWSender", "GWSender", "highschool", obs)
+plot_mean_and_variance("GWSender", "meanInDegree1", "highschool", obs)
+plot_mean_and_variance("GWSender", "varInDegree1", "highschool", obs)
+plot_mean_and_variance("GWSender", "meanOutDegree1", "highschool", obs)
+plot_mean_and_variance("GWSender", "varOutDegree1", "highschool", obs)
+
+dat <- read.table("../AlaamSimulations/geometrically_weighted/HighSchoolFriendship/GWReceiver/stats_sim_highschool.txt", header = TRUE)
+plot_mean_and_variance("GWReceiver", "Density", "highschool")
+plot_mean_and_variance("GWReceiver", "Contagion", "highschool")
+plot_mean_and_variance("GWReceiver", "GWReceiver", "highschool", obs)
+plot_mean_and_variance("GWReceiver", "Receiver", "highschool", obs)
+plot_mean_and_variance("GWReceiver", "meanInDegree1", "highschool", obs)
+plot_mean_and_variance("GWReceiver", "varInDegree1", "highschool", obs)
+plot_mean_and_variance("GWReceiver", "meanOutDegree1", "highschool", obs)
+plot_mean_and_variance("GWReceiver", "varOutDegree1", "highschool", obs)

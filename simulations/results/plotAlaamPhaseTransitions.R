@@ -117,3 +117,23 @@ dat <- read.table("../AlaamSimulations/latticeSimulations/Contagion/stats_sim_la
 plot_mean_and_variance("Contagion", "Density", "lattice")
 plot_mean_and_variance("Contagion", "Contagion", "lattice")
 
+
+
+obs <- read.table('../AlaamSimulations/HighSchoolFriendship/observed/obs_stats_sim_highschool.txt', header = TRUE)
+dat <- read.table("../AlaamSimulations/HighSchoolFriendship/Sender/stats_sim_highschool.txt", header = TRUE)
+plot_mean_and_variance("Sender", "Density", "highschool")
+plot_mean_and_variance("Sender", "Contagion", "highschool")
+plot_mean_and_variance("Sender", "Sender", "highschool", obs)
+plot_mean_and_variance("Sender", "meanInDegree1", "highschool", obs)
+plot_mean_and_variance("Sender", "varInDegree1", "highschool", obs)
+plot_mean_and_variance("Sender", "meanOutDegree1", "highschool", obs)
+plot_mean_and_variance("Sender", "varOutDegree1", "highschool", obs)
+
+dat <- read.table("../AlaamSimulations/HighSchoolFriendship/Receiver/stats_sim_highschool.txt", header = TRUE)
+plot_mean_and_variance("Receiver", "Density", "highschool")
+plot_mean_and_variance("Receiver", "Contagion", "highschool")
+plot_mean_and_variance("Receiver", "Receiver", "highschool", obs)
+plot_mean_and_variance("Receiver", "meanInDegree1", "highschool", obs)
+plot_mean_and_variance("Receiver", "varInDegree1", "highschool", obs)
+plot_mean_and_variance("Receiver", "meanOutDegree1", "highschool", obs)
+plot_mean_and_variance("Receiver", "varOutDegree1", "highschool", obs)
