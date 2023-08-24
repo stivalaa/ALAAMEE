@@ -89,7 +89,7 @@ def changeReciprocity(G, A, i):
 
 def changeEgoInTwoStar(G, A, i):
     """
-    Change statistic for EgoIn2Star (popularity)
+    Change statistic for EgoIn2Star
 
     *<--o
      <
@@ -99,9 +99,24 @@ def changeEgoInTwoStar(G, A, i):
     return (G.indegree(i) * (G.indegree(i) - 1))/2.0 if G.indegree(i) > 1 else 0
 
 
+def changeEgoInThreeStar(G, A, i):
+    """
+    Change statistic for EgoIn3Star
+
+        o
+       /
+     <
+    *<--o
+     ^
+      \
+       o
+    """
+    return ( G.indegree(i) * (G.indegree(i) - 1) * (G.indegree(i) - 2) / 6.0
+             if G.indegree(i) > 2 else 0 )
+
 def changeEgoOutTwoStar(G, A, i):
     """
-    Change statistic for EgoOut2Star (activity)
+    Change statistic for EgoOut2Star
 
     *-->o
      \
@@ -110,6 +125,20 @@ def changeEgoOutTwoStar(G, A, i):
     """
     return (G.outdegree(i) * (G.outdegree(i) - 1))/2.0 if G.outdegree(i) > 1 else 0
 
+def changeEgoOutThreeStar(G, A, i):
+    """
+    Change statistic for EgoOut3Star
+
+      o
+      ^
+     /
+    *-->o
+     \
+      >
+       o
+    """
+    return ( G.outdegree(i) * (G.outdegree(i) - 1) * (G.outdegree(i) - 2) / 6.0
+             if G.outdegree(i) > 2 else 0 )
 
 def changeMixedTwoStar(G, A, i):
     """
