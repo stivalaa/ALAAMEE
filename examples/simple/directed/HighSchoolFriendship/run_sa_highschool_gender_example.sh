@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=500MB
-#SBATCH --time=0-00:30:00
+#SBATCH --time=0-01:00:00
 #SBATCH --output=alaam_sa_highschool_gender-%j.out
 #SBATCH --error=alaam_sa_highschool_gender-%j.err
 
