@@ -2,7 +2,7 @@
 #
 # File:    runALAAMSAhighschool_class.py
 # Author:  Alex Stivala
-# Created: May 2023
+# Created: August 2023
 #
 """Run the python implementation of the Stochastic
  Approximation algorithm for estimation of Autologistic Actor Attribute
