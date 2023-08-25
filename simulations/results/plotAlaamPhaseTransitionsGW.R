@@ -142,6 +142,10 @@ plot_mean_and_variance("GWContagion", "Density", "pokec")
 plot_mean_and_variance("GWContagion", "Contagion", "pokec")
 plot_mean_and_variance("GWContagion", "GWContagion", "pokec", obs)
 
+dat <- read.table("../AlaamSimulations/geometrically_weighted/pokec/Contagion_gwparams/stats_sim_pokec.txt", header = TRUE)
+plot_mean_and_variance("Contagion", "Density", "pokec_gwparams")
+plot_mean_and_variance("Contagion", "Contagion", "pokec_gwparams", obs)
+
 
 dat <- read.table("../AlaamSimulations/geometrically_weighted/latticeSimulations/GWActivity/stats_sim_lattice.txt", header = TRUE)
 plot_mean_and_variance("GWActivity", "Density", "lattice")
