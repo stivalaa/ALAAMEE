@@ -19,7 +19,7 @@
 #
 # Uses various GNU utils options on echo, etc.
 
-tratioThreshold=0.1 # t-ratio larger than this is put in bold
+tratioThreshold=2.0 # t-ratio larger than this is put in bold
 
 
 if [ $# -lt 1 ]; then
