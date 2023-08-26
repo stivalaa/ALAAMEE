@@ -1,0 +1,21 @@
+Example estimations using the SocioPatterns high school friendship directed
+network from:
+
+
+	http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/
+
+
+	R. Mastrandrea, J. Fournet, A. Barrat, Contact patterns in a high school: a comparison between data collected using wearable sensors, contact diaries and friendship surveys.  PLoS ONE 10(9): e0136497 (2015)
+
+
+Note that here we are using gender (= male) and school class (= 2BIO3) as
+"outcome" binary variables, just to demonstate the meanings of the effects
+in the model. Obviusly this is not to be intepreted as social influence
+causing the gender to be male or the class to be 2BIO3, it is just a way
+of testing the structural positions of actors with those binary attributes.
+
+For more information, and results from using MPNet to do these estimations, see
+../../../data/directed/HighSchoolFriendship/README.txt
+
+ADS
+Thu Aug 24 09:43:37 AEST 2023
