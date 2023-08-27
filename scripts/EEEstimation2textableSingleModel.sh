@@ -89,7 +89,10 @@ do
             echo XXX "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" >&2
             signif=`echo "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" | bc -l`
             echo ZZZ ${signif} >&2
-            printf ' & %.3f & %.3f & ' ${estimnet_point} ${estimnet_stderr}
+            echo WWWW `echo "${estimnet_stderr}" | awk '{printf("%g", $0)}'` >&2
+            echo EEE `echo "${estimnet_stderr}" | awk '{printf("%d", sprintf("%g", $0) < 0.001)}'` >&2
+            format_stderr=`echo "${estimnet_stderr}" | awk '{printf("%s", (sprintf("%g", $0) < 0.001 ? "< 0.001" : sprintf("%.3f", $0)))}'`
+            printf ' & %.3f & %s & ' ${estimnet_point} "${format_stderr} "
             if [ ${signif} -ne 0 ]; then
       	  echo -n '*'
             fi
