@@ -48,7 +48,8 @@ simulate_from_network_attr(
     param_func_list, labels, theta,
     iterationInStep = 100000,
     burnIn = 1000000,
-    degreestats = True
+    degreestats = True,
+    outputSimulatedVectors = True
     )
 
 
