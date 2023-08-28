@@ -45,27 +45,47 @@ my_scientific_10 <- function(x) {
 ##                or 'all' for undirected graph
 ##    btype:      igraph bipartite node type FALSE or TRUE, or NULL
 ##                if not bipartite. (Default NULL)
+##    sim2_graphs if not NULL, simulated graphs from a second model to put on
+##                  same plot  for comparison  (default NULL)
 ##
 ## Return value:
 ##    ggplot2 object to add to plot list
 ##
 ##
-deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL) {
+deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL) {
     num_sim <- length(sim_graphs)
+    if (!is.null(sim2_graphs)) {
+      num_sim2 <- length(sim2_graphs)
+    }
     start = Sys.time()
     if (is.bipartite(g_obs)) {
       maxdeg <- max(unlist(sapply(sim_graphs,
            function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))),
            degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g)$outcome == 1)], mode=mode))
+      if (!is.null(sim2_graphs)) {
+        maxdeg<- max(unlist(sapply(sim2_graphs,
+                                   function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))),
+                     maxdeg)
+      }
     } else {
       maxdeg <- max(unlist(sapply(sim_graphs,
                                   function(g) degree(g, V(g)[outcome == 1], mode=mode))),
                     degree(g_obs, V(g_obs)[outcome == 1], mode=mode))
+      if (!is.null(sim2_graphs)) {
+        maxdeg <- max(unlist(sapply(sim2_graphs,
+                                    function(g) degree(g, V(g)[outcome == 1], mode=mode))),
+                      maxdeg)
+      }
     }
     cat("Max ", mode, " degree is ", maxdeg, "\n")
     deg_df <- data.frame(sim = rep(1:num_sim, each=(maxdeg+1)),
                            degree = rep(0:maxdeg, num_sim),
                            count = NA)
+    if (!is.null(sim2_graphs)) {
+      deg_df2 <- data.frame(sim = rep(1:num_sim2, each=(maxdeg+1)),
+                           degree = rep(0:maxdeg, num_sim2),
+                           count = NA)
+    }
     end = Sys.time()
     cat(mode, "-degree init took ", as.numeric(difftime(end, start, unit="secs")),"s\n")
     start = Sys.time()
@@ -75,19 +95,42 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL) {
         deg_table <- table(factor(degree(sim_graphs[[i]],
     V(sim_graphs[[i]])[which(V(sim_graphs[[i]])$type == btype & V(sim_graphs[[i]])$outcome == 1)], mode = mode),
                                   levels=0:maxdeg))
+        if (!is.null(sim2_graphs)) {
+          deg_table2 <- table(factor(degree(sim2_graphs[[i]],
+                                           V(sim2_graphs[[i]])[which(V(sim2_graphs[[i]])$type == btype & V(sim2_graphs[[i]])$outcome == 1)], mode = mode),
+                                    levels=0:maxdeg))
+        }
       } else {
         deg_table <- table(factor(degree(sim_graphs[[i]], V(sim_graphs[[i]])[outcome == 1], mode = mode),
                                   levels=0:maxdeg))
+        if (!is.null(sim2_graphs)) {
+          deg_table2 <- table(factor(degree(sim2_graphs[[i]], V(sim2_graphs[[i]])[outcome == 1], mode = mode),
+                                    levels=0:maxdeg))
+        }
       }
       deg_df[which(deg_df[,"sim"] == i), "count"] <- deg_table
+      if (!is.null(sim2_graphs)) {
+        deg_df2[which(deg_df2[,"sim"] == i), "count"] <- deg_table2
+      }
     }
     deg_df$degree <- as.factor(deg_df$degree)
     deg_df$count[which(is.na(deg_df$count))] <- 0
+    if (!is.null(sim2_graphs)) {
+      deg_df2$degree <- as.factor(deg_df2$degree)
+      deg_df2$count[which(is.na(deg_df2$count))] <- 0
+      }
     if (is.bipartite(g_obs)) {
       deg_df$nodefraction <- deg_df$count / sapply(sim_graphs,
                                  function(g) length(which(V(g)$type == btype & V(g)$outcome == 1)))
+      if (!is.null(sim2_graphs)) {
+        deg_df2$nodefraction <- deg_df2$count / sapply(sim2_graphs,
+                                                     function(g) length(which(V(g)$type == btype & V(g)$outcome == 1)))        
+      }
     } else {
       deg_df$nodefraction <- deg_df$count / sapply(sim_graphs, function(g) length(which(V(g)$outcome == 1)))
+      if (!is.null(sim2_graphs)) {
+        deg_df2$nodefraction <- deg_df2$count / sapply(sim2_graphs, function(g) length(which(V(g)$outcome == 1)))
+      }
     }
     end = Sys.time()
     cat(mode, "-degree sim data frame construction took",
@@ -104,7 +147,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL) {
     }
     obs_deg_df$count <- as.numeric(obs_deg_table)
     ## without as.numeric() above get error "Error: geom_line requires
-    ## the following missing aesthetics: y" when the plot is finally
+    ## the following is.null aesthetics: y" when the plot is finally
     ## printed at the end. Who knows why... even though printing the
     ## data frame and the computations below are apparently not
     ## affected by this at all (does not happen with the boxplot for
@@ -118,14 +161,26 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL) {
       obs_deg_df$nodefraction <- obs_deg_df$count / length(which(V(g_obs)$outcome == 1))
     }
     ##print(obs_deg_df)#XXX
+    if (!is.null(sim2_graphs)) {
+      deg_df$model <- "Model 1"
+      deg_df2$model <- "Model 2"
+      deg_df <- rbind(deg_df, deg_df2)
+      deg_df$model <- factor(deg_df$model)
+    }
     end = Sys.time()
     cat(mode, "-degree obs data frame construction took",
         as.numeric(difftime(end, start, unit="secs")), "s\n")
     start = Sys.time()
-    p <- ggplot(deg_df, aes(x = degree, y = nodefraction)) + geom_boxplot()
+    if (!is.null(sim2_graphs)) {
+      p <- ggplot(deg_df, aes(x = degree, y = nodefraction, fill = model))
+    } else {
+      p <- ggplot(deg_df, aes(x = degree, y = nodefraction))
+    }
+    p <- p + geom_boxplot()
     p <- p + geom_line(data = obs_deg_df, aes(x = degree, y = nodefraction,
                                               colour = obscolour,
-                                              group = 1))
+                                              group = 1),
+                       inherit.aes = FALSE)
     ## the "group=1" is ncessary in the above line otherwise get error
     ## "geom_path: Each group consists of only one observation. Do you
     ## need to adjust the group aesthetic?" and it does not work.
@@ -250,12 +305,16 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 ##    g_obs:            observed graph igraph object
 ##    obs_outcomevec:   observed binary outcome vector
 ##    sim_outcomevecs:  list or simulated binary outcome vectors
+##    sim2_outcomevecs: list of simulated binary outcome vectors from a
+##                      different model to compare on same plots
+##                      (default NULL)
 ##
 ## Return value:
 ##    list of ggplot2 objects
 ##
 ##
-build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs) {
+build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
+                                sim2_outcomevecs = NULL) {
 
   num_sim <- length(sim_outcomevecs)
   plotlist <- list()
@@ -271,7 +330,16 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs) {
   for (i in 1:length(sim_graphs)) {
     V(sim_graphs[[i]])$outcome <- sim_outcomevecs[[i]]
   }
-  
+  if (!is.null(sim2_outcomevecs)) {
+    num_sim2 <- length(sim2_outcomevecs)
+    sim2_graphs <- rep(list(graph_from_edgelist(as_edgelist(g_obs))), num_sim2)
+    for (i in 1:length(sim2_graphs)) {
+      V(sim2_graphs[[i]])$outcome <- sim2_outcomevecs[[i]]
+    }
+  } else {
+    sim2_graphs <- NULL
+  }
+
 
   if (is.directed(g_obs)) {
     ##
@@ -279,7 +347,8 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs) {
     ##
 
     system.time(plotlist <- c(plotlist,
-                              list(deg_distr_plot(g_obs, sim_graphs, 'in'))))
+                              list(deg_distr_plot(g_obs, sim_graphs, 'in',
+                                                  sim2_graphs=sim2_graphs))))
 
     system.time(plotlist <- c(plotlist,
                               list(deg_hist_plot(g_obs, sim_graphs, 'in', FALSE))))
@@ -293,7 +362,7 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs) {
     ##
 
     system.time(plotlist <- c(plotlist,
-                              list(deg_distr_plot(g_obs, sim_graphs, 'out'))))
+                              list(deg_distr_plot(g_obs, sim_graphs, 'out', sim2_graphs=sim2_graphs))))
 
     system.time(plotlist <- c(plotlist,
                               list(deg_hist_plot(g_obs, sim_graphs, 'out', FALSE))))
@@ -309,13 +378,13 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs) {
     if (is.bipartite(g_obs)) {
       system.time(plotlist <- c(plotlist,
                                 list(deg_distr_plot(g_obs, sim_graphs,
-                                                    'all', FALSE))))
+                                                    'all', FALSE, sim2_graphs=sim2_graphs))))
       system.time(plotlist <- c(plotlist,
                                 list(deg_distr_plot(g_obs, sim_graphs,
-                                                    'all', TRUE))))      
+                                                    'all', TRUE, sim2_graphs=sim2_graphs))))      
     } else {
       system.time(plotlist <- c(plotlist,
-                                list(deg_distr_plot(g_obs, sim_graphs, 'all'))))
+                                list(deg_distr_plot(g_obs, sim_graphs, 'all', sim2_graphs=sim2_graphs))))
     }
 
     if (is.bipartite(g_obs)) {
