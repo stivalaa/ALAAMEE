@@ -33,3 +33,6 @@ module load r
 Rscript ../../../R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
 
+Rscript ../../../R/plotALAAMEEsimFit.R ../../data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net ../../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome_BNA.txt sim_outcome
+
+Rscript ../../../R/plotALAAMEEvsRandomDegreeDist.R ../../data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net ../../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome_BNA.txt sim_outcome

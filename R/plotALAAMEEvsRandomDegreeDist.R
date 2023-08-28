@@ -112,11 +112,29 @@ num_sim <- length(sim_outcomevecs)
 
 
 ## Generate list of random outcome vectors
-p <- sum(V(g_obs)$outcome) / vcount(g_obs)
-cat('p = ', p, '\n')
-random_outcomevecs <- lapply(1:num_sim, function(x)
-                             sample(2, size = vcount(g_obs), replace = TRUE,
-                                    prob = c(1-p, p)) - 1)
+if (is.bipartite(g_obs)) {
+  numA <- length(V(g_obs)[type == FALSE])
+  pA <- sum(V(g_obs)[type == FALSE]$outcome, na.rm=TRUE) / numA
+  cat('pA = ', pA, '\n')
+  random_outcomevecsA <- lapply(1:num_sim, function(x)
+                               sample(2, size = numA, replace = TRUE,
+                                      prob = c(1-pA, pA)) - 1)
+  numB <- length(V(g_obs)[type == TRUE])
+  pB <- sum(V(g_obs)[type == TRUE]$outcome, na.rm=TRUE) / numB
+  cat('pB = ', pB, '\n')
+  random_outcomevecsB <- lapply(1:num_sim, function(x)
+                               sample(2, size = numB, replace = TRUE,
+                                      prob = c(1-pB, pB)) - 1)
+
+  random_outcomevecs <- lapply(1:num_sim, function(i) 
+                       c(random_outcomevecsB[[i]], random_outcomevecsB[[i]]))
+} else {
+  p <- sum(V(g_obs)$outcome) / vcount(g_obs)
+  cat('p = ', p, '\n')
+  random_outcomevecs <- lapply(1:num_sim, function(x)
+                               sample(2, size = vcount(g_obs), replace = TRUE,
+                                      prob = c(1-p, p)) - 1)
+}
 
 ## build the list of plots
 plotlist <- build_sim_fit_plots(g_obs, obs_outcomevec, sim_outcomevecs,
