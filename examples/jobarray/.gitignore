@@ -1,4 +1,5 @@
 sim_outcome_*.txt
+sim_outcome.pdf
 *.py~
 *.sh~
 dzA_values_*.txt
