@@ -56,6 +56,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     num_sim <- length(sim_graphs)
     if (!is.null(sim2_graphs)) {
       num_sim2 <- length(sim2_graphs)
+      obscolour <- "observed" # for legend
     }
     start = Sys.time()
     if (is.bipartite(g_obs)) {
@@ -186,6 +187,10 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     ## need to adjust the group aesthetic?" and it does not work.
     ## https://stackoverflow.com/questions/27082601/ggplot2-line-chart-gives-geom-path-each-group-consist-of-only-one-observation
     p <- p + ptheme
+    if (!is.null(sim2_graphs)) {
+      p <- p + theme(legend.title=element_blank(),
+                     legend.position = c(0.9, 0.8))
+    }
     if (is.bipartite(g_obs)) {
       degreetype <- ifelse(btype, 'mode B degree', 'mode A degree')
     } else {
