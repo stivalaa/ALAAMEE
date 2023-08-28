@@ -14,7 +14,7 @@ library(ggplot2)
 library(reshape)
 library(doBy)
 library(scales)
-
+library(RColorBrewer)
 
 
 obscolour <- 'red' # colour to plot observed graph points/lines
@@ -175,6 +175,10 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
       deg_df2$model <- "Model 2"
       deg_df <- rbind(deg_df, deg_df2)
       deg_df$model <- factor(deg_df$model)
+      ## https://stackoverflow.com/questions/6919025/how-to-assign-colors-to-categorical-variables-in-ggplot2-that-have-stable-mappin
+      myColors <- brewer.pal(3, "Set1")
+      names(myColors) <- levels(deg_df$model)
+      colScale <- scale_fill_manual(name = "model", values = myColors)
     }
     end = Sys.time()
     cat(mode, "-degree obs data frame construction took",
@@ -182,6 +186,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     start = Sys.time()
     if (!is.null(sim2_graphs)) {
       p <- ggplot(deg_df, aes(x = degree, y = nodefraction, fill = model))
+      p <- p + colScale
     } else {
       p <- ggplot(deg_df, aes(x = degree, y = nodefraction))
     }
@@ -222,8 +227,8 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     }
     p <- p + guides(x = guide_axis(check.overlap = TRUE))
 
-    p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dashed", color = "red")
-    p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dashed", color = "blue")
+    p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dashed", color = myColors[1])
+    p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dashed",color = myColors[2])
     
     end = Sys.time()
     cat(mode, "-degree plotting took",
