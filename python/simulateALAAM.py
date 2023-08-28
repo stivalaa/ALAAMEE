@@ -167,7 +167,8 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                                bipartite = False,
                                degreestats = False,
                                outputSimulatedVectors = False,
-                               simvecFilePrefix = "sim_outcome"):
+                               simvecFilePrefix = "sim_outcome",
+                               Ainitial = None):
     """Simulate ALAAM from on specified network with binary and/or continuous
     and categorical attributes.
 
@@ -221,6 +222,10 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                             outputSimulatedVectors = True. The iteration
                             number and ".txt" is appened to form names like
                             "sim_outcome_1000.txt". Default "sim_outcome".
+       Ainitial              - vector of 0/1 outcome variables to initialize
+                               the outcome vector to before simulation process,
+                               rather than starting from all 0 or random.
+                               Default None, for random initialization here.
 
     The output is written to stdout in a format for reading by
     the R script plotSimulationDiagnostics.R.
@@ -254,7 +259,8 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                                                           numSamples,
                                                           iterationInStep,
                                                           burnIn,
-                                                          sampler_func = sampler_func):
+                                                          sampler_func = sampler_func,
+                                                          Ainitial = Ainitial):
         if degreestats:
             ## mean and variance of degrees of nodes with outcome = 1
             meanDegree1 = np.mean(degseq[np.nonzero(simvec == 1)[0]])
