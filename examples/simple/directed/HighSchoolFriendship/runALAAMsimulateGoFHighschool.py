@@ -22,7 +22,7 @@ from parseEstimationEEOutput import parseEstimationEEOutput
 ###
 
 param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeContagion]
-theta = np.array([-1.68704826,  -5, -0.24034214,  0.20616495])
+theta = np.array([-1.68704826,  3.56490062, -0.24034214,  0.20616495])
 labels =  [param_func_to_label(f) for f in param_func_list]
 
 
