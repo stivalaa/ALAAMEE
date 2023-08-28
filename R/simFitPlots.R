@@ -69,6 +69,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
            degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g_obs)$outcome == 1)], mode=mode))
       meandeg_sim <- mean(unlist(sapply(sim_graphs,
            function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))))
+      meandeg_obs <- mean(degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g_obs)$outcome == 1)], mode=mode))
       if (!is.null(sim2_graphs)) {
         maxdeg<- max(unlist(sapply(sim2_graphs,
                                    function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))),
@@ -84,6 +85,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
                     degree(g_obs, V(g_obs)[outcome == 1], mode=mode))
       meandeg_sim <- mean(unlist(sapply(sim_graphs,
                   function(g) degree(g, V(g)[outcome == 1], mode=mode))))
+      meandeg_obs <- mean(degree(g_obs, V(g_obs)[outcome == 1], mode=mode))
       if (!is.null(sim2_graphs)) {
         maxdeg <- max(unlist(sapply(sim2_graphs,
                                     function(g) degree(g, V(g)[outcome == 1], mode=mode))),
@@ -235,8 +237,9 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     p <- p + guides(x = guide_axis(check.overlap = TRUE))
 
     if (!is.null(sim2_graphs)) {
-      p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dashed", color = myColors[1])
-      p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dashed",color = myColors[2])
+      p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dotted", color = myColors[1])
+      p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dotted",color = myColors[2])
+      p <- p + geom_vline(xintercept = meandeg_obs, linetype = "dashed",color = 'red')
     }
     
     end = Sys.time()
