@@ -228,8 +228,10 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     }
     p <- p + guides(x = guide_axis(check.overlap = TRUE))
 
-    p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dashed", color = myColors[1])
-    p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dashed",color = myColors[2])
+    if (!is.null(sim2_graphs)) {
+      p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dashed", color = myColors[1])
+      p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dashed",color = myColors[2])
+    }
     
     end = Sys.time()
     cat(mode, "-degree plotting took",
