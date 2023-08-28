@@ -127,7 +127,7 @@ if (is.bipartite(g_obs)) {
                                       prob = c(1-pB, pB)) - 1)
 
   random_outcomevecs <- lapply(1:num_sim, function(i) 
-                       c(random_outcomevecsB[[i]], random_outcomevecsB[[i]]))
+                       c(random_outcomevecsA[[i]], random_outcomevecsB[[i]]))
 } else {
   p <- sum(V(g_obs)$outcome) / vcount(g_obs)
   cat('p = ', p, '\n')

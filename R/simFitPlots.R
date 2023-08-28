@@ -75,6 +75,8 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
                      maxdeg)
         meandeg_sim2 <- mean(unlist(sapply(sim2_graphs,
                           function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))))
+        #print(unlist(sapply(sim2_graphs, function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode)))) #XXX
+        cat('meandeg_sim2 = ', meandeg_sim2, '\n')
       }
     } else {
       maxdeg <- max(unlist(sapply(sim_graphs,
@@ -240,6 +242,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     end = Sys.time()
     cat(mode, "-degree plotting took",
         as.numeric(difftime(end, start, unit="secs")), "s\n")
+    warnings()
     return(p)
 }
 
@@ -377,6 +380,10 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
     sim2_graphs <- rep(list(graph_from_edgelist(as_edgelist(g_obs))), num_sim2)
     for (i in 1:length(sim2_graphs)) {
       V(sim2_graphs[[i]])$outcome <- sim2_outcomevecs[[i]]
+      ## for bipartite graphs, we also have to reconstruct the node type
+      if (is.bipartite(g_obs)) {
+        V(sim2_graphs[[i]])$type <- V(g_obs)$type
+      }
     }
   } else {
     sim2_graphs <- NULL
