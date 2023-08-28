@@ -138,7 +138,8 @@ if (is.bipartite(g_obs)) {
 
 ## build the list of plots
 plotlist <- build_sim_fit_plots(g_obs, obs_outcomevec, sim_outcomevecs,
-                                random_outcomevecs)
+                                random_outcomevecs, 
+                                c("ALAAM", "Random"))
 
 
 ###

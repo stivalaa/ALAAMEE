@@ -47,12 +47,14 @@ my_scientific_10 <- function(x) {
 ##                if not bipartite. (Default NULL)
 ##    sim2_graphs if not NULL, simulated graphs from a second model to put on
 ##                  same plot  for comparison  (default NULL)
+##    model_names - two-element vector of model names, corresponding to
+##                  sim_graphs and sim2_graphs (default c("Model 1", "Model 2"))
 ##
 ## Return value:
 ##    ggplot2 object to add to plot list
 ##
 ##
-deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL) {
+deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL, model_names = c("Model 1", "Model 2")) {
     num_sim <- length(sim_graphs)
     if (!is.null(sim2_graphs)) {
       num_sim2 <- length(sim2_graphs)
@@ -179,8 +181,8 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     }
     ##print(obs_deg_df)#XXX
     if (!is.null(sim2_graphs)) {
-      deg_df$model <- "Model 1"
-      deg_df2$model <- "Model 2"
+      deg_df$model <- model_names[1]
+      deg_df2$model <- model_names[2]
       deg_df <- rbind(deg_df, deg_df2)
       deg_df$model <- factor(deg_df$model)
       ## https://stackoverflow.com/questions/6919025/how-to-assign-colors-to-categorical-variables-in-ggplot2-that-have-stable-mappin
@@ -352,13 +354,16 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 ##    sim2_outcomevecs: list of simulated binary outcome vectors from a
 ##                      different model to compare on same plots
 ##                      (default NULL)
+##    model_names - two-element vector of model names, corresponding to
+##                  sim_graphs and sim2_graphs (default c("Model 1", "Model 2"))
 ##
 ## Return value:
 ##    list of ggplot2 objects
 ##
 ##
 build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
-                                sim2_outcomevecs = NULL) {
+                                sim2_outcomevecs = NULL,
+                                model_names = c("Model 1", "Model 2")) {
 
   num_sim <- length(sim_outcomevecs)
   plotlist <- list()
@@ -400,7 +405,8 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
 
     system.time(plotlist <- c(plotlist,
                               list(deg_distr_plot(g_obs, sim_graphs, 'in',
-                                                  sim2_graphs=sim2_graphs))))
+                                                  sim2_graphs=sim2_graphs,
+                                                  model_names = model_names))))
 
     if (is.null(sim2_graphs)) {
       system.time(plotlist <- c(plotlist,
@@ -416,7 +422,7 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
     ##
 
     system.time(plotlist <- c(plotlist,
-                              list(deg_distr_plot(g_obs, sim_graphs, 'out', sim2_graphs=sim2_graphs))))
+                              list(deg_distr_plot(g_obs, sim_graphs, 'out', sim2_graphs=sim2_graphs, model_names=model_names))))
 
     if (is.null(sim2_graphs)) {
       system.time(plotlist <- c(plotlist,
@@ -434,13 +440,13 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
     if (is.bipartite(g_obs)) {
       system.time(plotlist <- c(plotlist,
                                 list(deg_distr_plot(g_obs, sim_graphs,
-                                                    'all', FALSE, sim2_graphs=sim2_graphs))))
+                                                    'all', FALSE, sim2_graphs=sim2_graphs, model_names=model_names))))
       system.time(plotlist <- c(plotlist,
                                 list(deg_distr_plot(g_obs, sim_graphs,
-                                                    'all', TRUE, sim2_graphs=sim2_graphs))))      
+                                                    'all', TRUE, sim2_graphs=sim2_graphs, model_names=model_names))))      
     } else {
       system.time(plotlist <- c(plotlist,
-                                list(deg_distr_plot(g_obs, sim_graphs, 'all', sim2_graphs=sim2_graphs))))
+                                list(deg_distr_plot(g_obs, sim_graphs, 'all', sim2_graphs=sim2_graphs, model_names=model_names))))
     }
 
     if (is.null(sim2_graphs)) {
