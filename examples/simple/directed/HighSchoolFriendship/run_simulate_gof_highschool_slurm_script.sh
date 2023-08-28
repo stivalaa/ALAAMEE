@@ -43,5 +43,7 @@ Rscript ${ROOT}/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
 Rscript ${ROOT}/R/plotALAAMEEsimFit.R ../../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net ../../../data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt sim_outcome
 
+Rscript ${ROOT}/R/plotALAAMEEvsRandomDegreeDist.R  ../../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net ../../../data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt sim_outcome
+
 times
 echo -n "started at: "; date
