@@ -183,6 +183,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     end = Sys.time()
     cat(mode, "-degree obs data frame construction took",
         as.numeric(difftime(end, start, unit="secs")), "s\n")
+    stopifnot(all(!is.na(deg_df$model)))
     start = Sys.time()
     if (!is.null(sim2_graphs)) {
       p <- ggplot(deg_df, aes(x = degree, y = nodefraction, fill = model))
