@@ -126,7 +126,7 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
         meanDegree0 = np.mean(degseq[np.nonzero(A == 0)[0]])
         varDegree0 = np.var(degseq[np.nonzero(A == 0)[0]])
 
-    Zobs = np.append(Zobs, [meanDegree1, varDegree1, meanDegree0, varDegree0])
+        Zobs = np.append(Zobs, [meanDegree1, varDegree1, meanDegree0, varDegree0])
 
     sys.stdout.write(' '.join(labels) + '\n')
     sys.stdout.write(' '.join([str(z) for z in Zobs]) + '\n')
