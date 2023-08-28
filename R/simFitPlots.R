@@ -350,11 +350,13 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
                               list(deg_distr_plot(g_obs, sim_graphs, 'in',
                                                   sim2_graphs=sim2_graphs))))
 
-    system.time(plotlist <- c(plotlist,
-                              list(deg_hist_plot(g_obs, sim_graphs, 'in', FALSE))))
-
-    system.time(plotlist <- c(plotlist,
-                              list(deg_hist_plot(g_obs, sim_graphs, 'in', TRUE))))
+    if (is.null(sim2_graphs)) {
+      system.time(plotlist <- c(plotlist,
+                                list(deg_hist_plot(g_obs, sim_graphs, 'in', FALSE))))
+      
+      system.time(plotlist <- c(plotlist,
+                                list(deg_hist_plot(g_obs, sim_graphs, 'in', TRUE))))
+    }
 
 
     ##
@@ -364,11 +366,13 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
     system.time(plotlist <- c(plotlist,
                               list(deg_distr_plot(g_obs, sim_graphs, 'out', sim2_graphs=sim2_graphs))))
 
-    system.time(plotlist <- c(plotlist,
-                              list(deg_hist_plot(g_obs, sim_graphs, 'out', FALSE))))
-
-    system.time(plotlist <- c(plotlist,
-                              list(deg_hist_plot(g_obs, sim_graphs, 'out', TRUE))))
+    if (is.null(sim2_graphs)) {
+      system.time(plotlist <- c(plotlist,
+                                list(deg_hist_plot(g_obs, sim_graphs, 'out', FALSE))))
+      
+      system.time(plotlist <- c(plotlist,
+                                list(deg_hist_plot(g_obs, sim_graphs, 'out', TRUE))))
+    }
 
   } else {
     ##
@@ -387,23 +391,25 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
                                 list(deg_distr_plot(g_obs, sim_graphs, 'all', sim2_graphs=sim2_graphs))))
     }
 
-    if (is.bipartite(g_obs)) {
-      system.time(plotlist <- c(plotlist,
-                                list(deg_hist_plot(g_obs, sim_graphs, 'all', FALSE, FALSE))))
-
-      system.time(plotlist <- c(plotlist,
-                                list(deg_hist_plot(g_obs, sim_graphs, 'all', TRUE, FALSE))))
-      system.time(plotlist <- c(plotlist,
-                                list(deg_hist_plot(g_obs, sim_graphs, 'all', FALSE, TRUE))))
-
-      system.time(plotlist <- c(plotlist,
-                                list(deg_hist_plot(g_obs, sim_graphs, 'all', TRUE, TRUE))))
-    } else {
-      system.time(plotlist <- c(plotlist,
-                                list(deg_hist_plot(g_obs, sim_graphs, 'all', FALSE))))
-
-      system.time(plotlist <- c(plotlist,
-                                list(deg_hist_plot(g_obs, sim_graphs, 'all', TRUE))))
+    if (is.null(sim2_graphs)) {
+      if (is.bipartite(g_obs)) {
+        system.time(plotlist <- c(plotlist,
+                                  list(deg_hist_plot(g_obs, sim_graphs, 'all', FALSE, FALSE))))
+        
+        system.time(plotlist <- c(plotlist,
+                                  list(deg_hist_plot(g_obs, sim_graphs, 'all', TRUE, FALSE))))
+        system.time(plotlist <- c(plotlist,
+                                  list(deg_hist_plot(g_obs, sim_graphs, 'all', FALSE, TRUE))))
+        
+        system.time(plotlist <- c(plotlist,
+                                  list(deg_hist_plot(g_obs, sim_graphs, 'all', TRUE, TRUE))))
+      } else {
+        system.time(plotlist <- c(plotlist,
+                                  list(deg_hist_plot(g_obs, sim_graphs, 'all', FALSE))))
+        
+        system.time(plotlist <- c(plotlist,
+                                  list(deg_hist_plot(g_obs, sim_graphs, 'all', TRUE))))
+      }
     }
   }
 
