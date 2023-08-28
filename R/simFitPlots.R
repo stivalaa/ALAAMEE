@@ -182,7 +182,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
       deg_df <- rbind(deg_df, deg_df2)
       deg_df$model <- factor(deg_df$model)
       ## https://stackoverflow.com/questions/6919025/how-to-assign-colors-to-categorical-variables-in-ggplot2-that-have-stable-mappin
-      myColors <- brewer.pal(3, "Set1")
+      myColors <- brewer.pal(3, "Set1")[1:2] # force only two colors
       names(myColors) <- levels(deg_df$model)
       colScale <- scale_fill_manual(name = "model", values = myColors)
     }
