@@ -63,19 +63,27 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
       maxdeg <- max(unlist(sapply(sim_graphs,
            function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))),
            degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g)$outcome == 1)], mode=mode))
+      meandeg_sim <- mean(unlist(sapply(sim_graphs,
+           function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))))
       if (!is.null(sim2_graphs)) {
         maxdeg<- max(unlist(sapply(sim2_graphs,
                                    function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))),
                      maxdeg)
+        meandeg_sim2 <- mean(unlist(sapply(sim2_graphs,
+                          function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))))
       }
     } else {
       maxdeg <- max(unlist(sapply(sim_graphs,
                                   function(g) degree(g, V(g)[outcome == 1], mode=mode))),
                     degree(g_obs, V(g_obs)[outcome == 1], mode=mode))
+      meandeg_sim <- mean(unlist(sapply(sim_graphs,
+                  function(g) degree(g, V(g)[outcome == 1], mode=mode))))
       if (!is.null(sim2_graphs)) {
         maxdeg <- max(unlist(sapply(sim2_graphs,
                                     function(g) degree(g, V(g)[outcome == 1], mode=mode))),
                       maxdeg)
+        meandeg_sim2 <- mean(unlist(sapply(sim2_graphs,
+                                    function(g) degree(g, V(g)[outcome == 1], mode=mode))))
       }
     }
     cat("Max ", mode, " degree is ", maxdeg, "\n")
@@ -213,6 +221,10 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
         p <- p + scale_x_discrete(breaks = seq(0, maxdeg, by = 5))
     }
     p <- p + guides(x = guide_axis(check.overlap = TRUE))
+
+    p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dashed", color = "red")
+    p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dashed", color = "blue")
+    
     end = Sys.time()
     cat(mode, "-degree plotting took",
         as.numeric(difftime(end, start, unit="secs")), "s\n")
