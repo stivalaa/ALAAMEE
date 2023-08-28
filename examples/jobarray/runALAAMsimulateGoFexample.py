@@ -59,7 +59,8 @@ simulate_from_network_attr(
     goflabels, 
     gof_theta,
     '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
-    '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt'
+    '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt',
+    outputSimulatedVectors = True
     )
 
 

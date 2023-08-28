@@ -1,3 +1,4 @@
+sim_outcome_*.txt
 *.py~
 *.sh~
 dzA_values_*.txt

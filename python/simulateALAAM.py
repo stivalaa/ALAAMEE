@@ -24,7 +24,7 @@
   Attribute Model. arXiv preprint arXiv:2002.00849.
 
 """
-import sys
+import sys,os
 import numpy as np         # used for matrix & vector data types and functions
 
 from Graph import Graph,NA_VALUE
@@ -165,7 +165,9 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                                zone_filename = None,
                                directed = False,
                                bipartite = False,
-                               degreestats = False):
+                               degreestats = False,
+                               outputSimulatedVectors = False,
+                               simvecFilePrefix = "sim_outcome"):
     """Simulate ALAAM from on specified network with binary and/or continuous
     and categorical attributes.
 
@@ -206,7 +208,19 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
          degreestats     - Default False.
                            If True then also compute mean and variance
                            of nodes with outcome variable = 1 (and also 0).
-
+         outputSimulatedVectors - if True, output each simulated vector
+                                as a file with single column with header
+                                line 'outcome' and each subsequent line
+                                0 or 1 (or NA) for outcome binary value
+                                for each node (i.e. same format as
+                                observed outcome binary vector as used
+                                in estimation functions like
+                                estimateALAAMEE.run_on_network_attr().
+                                Default False. WARNING: files are overwritten.
+         simvecFilePrefix - Prefix of simulation outcome vector files, if
+                            outputSimulatedVectors = True. The iteration
+                            number and ".txt" is appened to form names like
+                            "sim_outcome_1000.txt". Default "sim_outcome".
 
     The output is written to stdout in a format for reading by
     the R script plotSimulationDiagnostics.R.
@@ -253,3 +267,9 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
 
         sys.stdout.write(' '.join([str(t)] + [str(x) for x in list(stats)] +
                                   [str(acceptance_rate)]) + '\n')
+        if outputSimulatedVectors:
+            outfilename = simvecFilePrefix + "_" + str(t) + os.path.extsep + "txt"
+            with open(outfilename, 'w') as f:
+                f.write("outcome\n")
+                f.write("\n".join(["NA" if int(x) == NA_VALUE else str(int(x))
+                                   for x in simvec]))
