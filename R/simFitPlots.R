@@ -176,7 +176,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL) {
 ##    ggplot2 object to add to plot list
 ##
 deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
-    print('in deg_hist_plot...')#XXX seems to be only way to debug in R...
+    #print('in deg_hist_plot...')#XXX seems to be only way to debug in R...
     start <- Sys.time()
     if (use_log) {
       if (is.bipartite(g_obs)) {
@@ -191,11 +191,11 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
         dobs <- data.frame(degree = degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g_obs)$outcome ==1)], mode=mode),
                            group = 'obs')
       } else {
-        print('building dobs ...')#XXX seems to be only way to debug in R...
-        print(V(g_obs)$outcome)#XXX seems to be only way to debug in R...
+        #print('building dobs ...')#XXX seems to be only way to debug in R...
+        #print(V(g_obs)$outcome)#XXX seems to be only way to debug in R...
         dobs <- data.frame(degree = degree(g_obs, V(g_obs)[outcome == 1], mode=mode),
                            group = 'obs')
-        print('done building dobs')#XXX seems to be only way to debug in R...
+        #print('done building dobs')#XXX seems to be only way to debug in R...
       }          
     }
 #    print(names(dobs))#XXX
@@ -329,8 +329,6 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs) {
       system.time(plotlist <- c(plotlist,
                                 list(deg_hist_plot(g_obs, sim_graphs, 'all', TRUE, TRUE))))
     } else {
-      print('about to do deg_hist_plot...')
-      
       system.time(plotlist <- c(plotlist,
                                 list(deg_hist_plot(g_obs, sim_graphs, 'all', FALSE))))
 
