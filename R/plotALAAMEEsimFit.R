@@ -82,6 +82,7 @@ outfilename <- paste(simoutcomefileprefix, "pdf", sep='.')
 g_obs <- read.graph(netfilename, format="pajek")
 ## Single column table with header, just get the first (only) column
 obs_outcomevec <- read.table(obsoutcomefilename, header = TRUE)[,1]
+stopifnot(length(obs_outcomevec) == vcount(g_obs))
 V(g_obs)$outcome <- obs_outcomevec
 
 sim_files <- Sys.glob(simvec_glob)
