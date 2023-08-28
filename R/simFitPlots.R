@@ -134,16 +134,16 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL) {
     if (is.bipartite(g_obs)) {
       degreetype <- ifelse(btype, 'mode B degree', 'mode A degree')
     } else {
-      degreetype <- 'degree'
+      degreetype <- 'degree (outcome = 1 nodes)'
     }
     if (mode == 'in' || mode =='out') {
-      degreetype <- paste(mode, 'degree', sep='-')
+      degreetype <- paste(mode, 'degree (outcome = 1 nodes)', sep='-')
     }
-    p <- p + xlab(degreetype) + ylab('fraction of nodes')
+    p <- p + xlab(degreetype) + ylab('fraction of outcome = 1 nodes')
     if (is.bipartite(g_obs)) {
-      p <- p + ylab(paste('fraction of', ifelse(btype, 'B', 'A'), 'nodes'))
+      p <- p + ylab(paste('fraction of outcome = 1 ', ifelse(btype, 'B', 'A'), 'nodes'))
     } else {
-      p <- p + ylab('fraction of nodes')
+      p <- p + ylab('fraction of outcome = 1 nodes')
     }
     if (maxdeg > 200) {
         p <- p + scale_x_discrete(breaks = seq(0, maxdeg, by = 200))
@@ -224,12 +224,13 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
         geom_histogram(aes(y = ..density..),
                        alpha = 0.4, position = 'identity', lwd = 0.2)
     if (is.bipartite(g_obs)) {
-      degreetype <- ifelse(btype, 'mode B degree', 'mode A degree')
+      degreetype <- cat(ifelse(btype, 'mode B degree', 'mode A degree'),
+                        '(outcome = 1 nodes)')
     } else {
-      degreetype <- 'degree'
+      degreetype <- 'degree (outcome = 1 nodes)'
     }
     if (mode == 'in' || mode =='out') {
-      degreetype <- paste(mode, 'degree', sep='-')
+      degreetype <- paste(mode, 'degree (outcome = 1 nodes)', sep='-')
     }
     p <- p + xlab(paste(ifelse(use_log, "log ", ""), degreetype, sep=''))
     p <- p + theme(legend.title=element_blank(),
