@@ -85,9 +85,9 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL) {
     deg_df$count[which(is.na(deg_df$count))] <- 0
     if (is.bipartite(g_obs)) {
       deg_df$nodefraction <- deg_df$count / sapply(sim_graphs,
-                                 function(g) length(which(V(g)$type == btype)))
+                                 function(g) length(which(V(g)$type == btype & V(g)$outcome == 1)))
     } else {
-      deg_df$nodefraction <- deg_df$count / sapply(sim_graphs, vcount)
+      deg_df$nodefraction <- deg_df$count / sapply(sim_graphs, function(g) length(which(V(g)$outcome == 1)))
     }
     end = Sys.time()
     cat(mode, "-degree sim data frame construction took",
@@ -113,9 +113,9 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL) {
     obs_deg_df$count[which(is.na(obs_deg_df$count))] <- 0
     if (is.bipartite(g_obs)) {
       obs_deg_df$nodefraction <- obs_deg_df$count /
-                                         length(which(V(g_obs)$type == btype))
+                                         length(which(V(g_obs)$type == btype & V(g_obs)$outcome == 1))
     } else {
-      obs_deg_df$nodefraction <- obs_deg_df$count / vcount(g_obs)
+      obs_deg_df$nodefraction <- obs_deg_df$count / length(which(V(g_obs)$outcome == 1))
     }
     ##print(obs_deg_df)#XXX
     end = Sys.time()
