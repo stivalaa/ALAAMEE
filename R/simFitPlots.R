@@ -317,7 +317,7 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
         geom_histogram(aes(y = ..density..),
                        alpha = 0.4, position = 'identity', lwd = 0.2)
     if (is.bipartite(g_obs)) {
-      degreetype <- cat(ifelse(btype, 'mode B degree', 'mode A degree'),
+      degreetype <- paste(ifelse(btype, 'mode B degree', 'mode A degree'),
                         '(outcome = 1 nodes)')
     } else {
       degreetype <- 'degree (outcome = 1 nodes)'
