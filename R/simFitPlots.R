@@ -60,7 +60,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL) {
     } else {
       maxdeg <- max(unlist(sapply(sim_graphs,
                                   function(g) degree(g, V(g)[outcome == 1], mode=mode))),
-                    degree(g_obs, V(g)[outcome == 1] mode=mode))
+                    degree(g_obs, V(g_obs)[outcome == 1], mode=mode))
     }
     cat("Max ", mode, " degree is ", maxdeg, "\n")
     deg_df <- data.frame(sim = rep(1:num_sim, each=(maxdeg+1)),
@@ -188,10 +188,10 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
       }        
     } else {
       if (is.bipartite(g_obs)) {
-        dobs <- data.frame(degree = degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g)$outcome ==1)], mode=mode),
+        dobs <- data.frame(degree = degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g_obs)$outcome ==1)], mode=mode),
                            group = 'obs')
       } else {
-        dobs <- data.frame(degree = degree(g_obs, V(g)[outcome == 1], mode=mode),
+        dobs <- data.frame(degree = degree(g_obs, V(g_obs)[outcome == 1], mode=mode),
                            group = 'obs')
       }          
     }
@@ -253,7 +253,7 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 ##
 build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs) {
 
-  num_sim <- length(sim_graphs)
+  num_sim <- length(sim_outcomevecs)
   plotlist <- list()
 
 
@@ -263,11 +263,10 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs) {
   ## simple) (Can't work out how to "deep copy" igraph graphs in R -
   ## assignment shares the data so modifying one modifies all - so do
   ## it by constructing from edgelist)
-  sim_graphs <- rep(list(graph_from_edgelist(as_edgelist(g))), num_sim)
+  sim_graphs <- rep(list(graph_from_edgelist(as_edgelist(g_obs))), num_sim)
   for (i in 1:length(sim_graphs)) {
-    sim_graphs[[i]]$outcome <- sim_outcomevecs[[i]]
+    V(sim_graphs[[i]])$outcome <- sim_outcomevecs[[i]]
   }
-  
   
 
   if (is.directed(g_obs)) {

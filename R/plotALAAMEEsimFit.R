@@ -23,7 +23,7 @@
 ## WARNING: output file is overwritten
 ##
 ## Example:
-##
+##    /plotALAAMEEsimFit.R ../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt obs_stats_sim_n500.txt sim_outcome
 ##
 ## Uses the igraph library to read Pajek format graph files and
 ## compute graph statistics:
@@ -67,6 +67,10 @@ source_local('simFitPlots.R')
 
 args <- commandArgs(trailingOnly=TRUE)
 
+if (length(args) != 3) {
+  write('Usage: plotALAAMEEsimFit.R netfilename obsOutcomefilename simOutcomeFilePrefix\n', stderr())
+  quit(save="no")
+}
 
 netfilename <- args[1]
 obsoutcomefilename <- args[2]
@@ -78,7 +82,7 @@ outfilename <- paste(simoutcomefileprefix, "pdf", sep='.')
 g_obs <- read.graph(netfilename, format="pajek")
 ## Single column table with header, just get the first (only) column
 obs_outcomevec <- read.table(obsoutcomefilename, header = TRUE)[,1]
-
+V(g_obs)$outcome <- obs_outcomevec
 
 sim_files <- Sys.glob(simvec_glob)
 if (length(sim_files) == 0) {
@@ -92,12 +96,11 @@ cat('Reading ', length(sim_files), ' vectors...\n')
 ## Single column table with header, just get the first (only) column
 system.time(sim_outcomevecs <- lapply(sim_files,
                                       FUN = function(f)
-                                        read.table(f, header= TRUE)[,1],
-                                      simplify = FALSE))
+                                        read.table(f, header= TRUE)[,1]))
 
 num_nodes <- vcount(g_obs)
 ## all simulated vectors must have the same number of elements
-stopifnot(length(unique((sapply(sim_outcomevecs, function(v) length(v)))) == 1))
+stopifnot(length(unique((sapply(sim_outcomevecs, function(v) length(v))))) == 1)
 ## and it must be the same a the number of nodes in the observed graph
 stopifnot(num_nodes == length(sim_outcomevecs[[1]]))
 
