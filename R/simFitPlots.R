@@ -62,7 +62,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     if (is.bipartite(g_obs)) {
        if (length(which(V(g_obs)$type == btype & V(g_obs)$outcome == 1)) == 0) {
          cat("No nodes with outcome 1 in btype ", btype, ", skipping\n")
-         return(ggplot()) #empty plot
+         return(list()) #empty list element
        }
       maxdeg <- max(unlist(sapply(sim_graphs,
            function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))),
@@ -268,7 +268,7 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
     if (is.bipartite(g_obs)) {
        if (length(which(V(g_obs)$type == btype & V(g_obs)$outcome == 1)) == 0) {
          cat("(deg_hist_plot) No nodes with outcome 1 in btype ", btype, ", skipping\n")
-         return(ggplot()) #empty plot
+         return(list()) #empty list element
        }
     }
     if (use_log) {
@@ -462,7 +462,7 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
     }
   }
 
-
-
+  ## remove empty elements
+  plotlist <- plotlist[lapply(plotlist, length) > 0]
   return(plotlist)
 }
