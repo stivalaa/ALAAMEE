@@ -5,3 +5,4 @@ stats_sim_gof_inouye_bipartite.txt
 stats_sim_gof_inouye_bipartite-plots.eps
 gof_alaam_sim_bipartite_example-*.err
 gof_alaam_sim_bipartite_example-*.out
+sim_outcome_*.txt

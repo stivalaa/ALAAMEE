@@ -60,9 +60,13 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     }
     start = Sys.time()
     if (is.bipartite(g_obs)) {
+       if (length(which(V(g_obs)$type == btype & V(g_obs)$outcome == 1)) == 0) {
+         cat("No nodes with outcome 1 in btype ", btype, ", skipping\n")
+         return(ggplot()) #empty plot
+       }
       maxdeg <- max(unlist(sapply(sim_graphs,
            function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))),
-           degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g)$outcome == 1)], mode=mode))
+           degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g_obs)$outcome == 1)], mode=mode))
       meandeg_sim <- mean(unlist(sapply(sim_graphs,
            function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))))
       if (!is.null(sim2_graphs)) {
@@ -258,6 +262,12 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
 deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
     #print('in deg_hist_plot...')#XXX seems to be only way to debug in R...
     start <- Sys.time()
+    if (is.bipartite(g_obs)) {
+       if (length(which(V(g_obs)$type == btype & V(g_obs)$outcome == 1)) == 0) {
+         cat("(deg_hist_plot) No nodes with outcome 1 in btype ", btype, ", skipping\n")
+         return(ggplot()) #empty plot
+       }
+    }
     if (use_log) {
       if (is.bipartite(g_obs)) {
         dobs <- data.frame(degree = log(degree(g_obs, V(g_obs)[which(V(g_obs)$type == btype & V(g_obs)$outcome == 1)], mode=mode)),
@@ -282,8 +292,11 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 #    print('about to get simdegrees...')#XXX seems to be only way to debug in R...
   ## get degrees of all simulated graphs in one histogram
   if (is.bipartite(g_obs)) {
+    #cat('XXX',mode,btype,'\n')
     ## as.vector() and unlist() BOTH seems to be required, otherwise rbind() below crashes with error about wrong number of columns
+   #print(sim_graphs)#XXX
     simdegrees <- as.vector(unlist(sapply(sim_graphs, function(g) degree(g, V(g)[which(V(g)$type == btype & V(g)$outcome == 1)], mode=mode))))
+    #print(simdegrees)#XXX
     } else {
       simdegrees <- as.vector(unlist(sapply(sim_graphs, function(g) degree(g, V(g)[outcome == 1], mode=mode))))
     }
@@ -354,6 +367,10 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
   sim_graphs <- rep(list(graph_from_edgelist(as_edgelist(g_obs))), num_sim)
   for (i in 1:length(sim_graphs)) {
     V(sim_graphs[[i]])$outcome <- sim_outcomevecs[[i]]
+    ## for bipartite graphs, we also have to reconstruct the node type
+    if (is.bipartite(g_obs)) {
+      V(sim_graphs[[i]])$type <- V(g_obs)$type
+    }
   }
   if (!is.null(sim2_outcomevecs)) {
     num_sim2 <- length(sim2_outcomevecs)

@@ -100,7 +100,8 @@ simulate_from_network_attr(
     iterationInStep = 1000,
     burnIn = 1000,
     bipartite = True,
-    Ainitial = Ainitial
+    Ainitial = Ainitial,
+    outputSimulatedVectors = True
     )
 
 
