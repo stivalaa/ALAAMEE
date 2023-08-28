@@ -42,5 +42,7 @@ Rscript ${ROOT}/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
 ./plot_model_degeneracy_check.sh
 
+Rscript ${ROOT}/R/plotALAAMEEsimFit.R ../data/musae_git.net ../data/musae_git_target.txt  sim_outcome
+
 times
 echo -n "started at: "; date
