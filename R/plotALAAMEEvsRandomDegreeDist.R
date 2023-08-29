@@ -129,11 +129,15 @@ if (is.bipartite(g_obs)) {
   random_outcomevecs <- lapply(1:num_sim, function(i) 
                        c(random_outcomevecsA[[i]], random_outcomevecsB[[i]]))
 } else {
-  p <- sum(V(g_obs)$outcome) / vcount(g_obs)
+  cat("obs num outcome 1 is ", sum(V(g_obs)$outcome), "\n")
+  #p <- sum(V(g_obs)$outcome) / vcount(g_obs)
+  cat("mean sim num outcome 1 is ", mean(sapply(sim_outcomevecs, sum)) , "\n")
+  p <- mean(sapply(sim_outcomevecs, sum)) / vcount(g_obs)
   cat('p = ', p, '\n')
   random_outcomevecs <- lapply(1:num_sim, function(x)
                                sample(2, size = vcount(g_obs), replace = TRUE,
                                       prob = c(1-p, p)) - 1)
+  cat("mean random num outcome 1 is ", mean(sapply(random_outcomevecs, sum)) , "\n")
 }
 
 ## build the list of plots
