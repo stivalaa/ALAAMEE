@@ -46,4 +46,4 @@ do
 done
 
 times
-echo -n "started at: "; date
+echo -n "ended at: "; date
