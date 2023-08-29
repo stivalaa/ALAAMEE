@@ -5,6 +5,14 @@
 # Created: April 2023
 #
 """Simulate from  Autologistic Actor Attribute Model (ALAAM).
+   
+   Usage: runALAAMsimulateGoFGithub.py <estimated | negative | positive>
+
+   estimated/negative/positive controls value of GWSender(log(2.0)) parameter:
+
+     estimated - use estimated parameter value of GWSender
+     negative  - use strongly negative parameter on GWSender
+     positive  - use strongly positive parameter on GWSender
 """
 import sys
 from functools import partial
