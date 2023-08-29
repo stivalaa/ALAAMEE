@@ -11,6 +11,7 @@
    estimated/negative/positive controls value of GWSender(log(2.0)) parameter:
 
      estimated - use estimated parameter value of GWSender
+     zero      - use zero for GWSender
      negative  - use strongly negative parameter on GWSender
      positive  - use strongly positive parameter on GWSender
 """
@@ -29,11 +30,29 @@ from parseEstimationEEOutput import parseEstimationEEOutput
 ### main
 ###
 
-param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeContagion]
-#theta = np.array([-1.68704826,  3.56490062, -0.24034214,  0.20616495])
-## p = 0.4029851; logit(p) = -0.3930425
-#theta = np.array([-0.3930425, +15, 0, 0])
-theta = np.array([-0.3930425, -15, 0, 0])
+if len(sys.argv) != 2:
+    sys.stderr.write("Usage: " + sys.argv[0] + " estimated | zero | negative | positive\n")
+    sys.exit(1)
+
+        
+param_func_list =  [changeDensity, partial(changeGWSender, log(2.0))]
+
+if sys.argv[1] == "estimated":
+    ## parameters estimated from model with Density, GWSender(log(2)) only
+    theta     = np.array([-0.44657605, 0.57893814])
+elif sys.argv[1] == "zero":    
+    ## Model with Density only is just logit of probability of node
+    ## with outcome 1: p = 0.4029851; logit(p) = -0.3930425
+    theta = np.array([-0.3930425, 0])    
+elif sys.argv[1] == "negative":
+    theta = np.array([-0.3930425, -15])
+elif sys.argv[1] == "positive":
+    theta = np.array([-0.3930425, -15])
+else:
+    sys.stderr.write("Usage: " + sys.argv[0] + " estimated | zero | negative | positive\n")
+    sys.exit(1)
+    
+
 labels =  [param_func_to_label(f) for f in param_func_list]
 
 
@@ -68,7 +87,8 @@ simulate_from_network_attr(
     iterationInStep = 1000,
     burnIn = 10000,
     directed = True,
-    outputSimulatedVectors = True
+    outputSimulatedVectors = True,
+    simvecFilePrefix = "sim_outcome_"+sys.argv[1]
     )
 
 
