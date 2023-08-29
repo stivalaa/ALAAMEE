@@ -47,7 +47,7 @@ elif sys.argv[1] == "zero":
 elif sys.argv[1] == "negative":
     theta = np.array([-0.3930425, -15])
 elif sys.argv[1] == "positive":
-    theta = np.array([-0.3930425, -15])
+    theta = np.array([-0.3930425, 15])
 else:
     sys.stderr.write("Usage: " + sys.argv[0] + " estimated | zero | negative | positive\n")
     sys.exit(1)
