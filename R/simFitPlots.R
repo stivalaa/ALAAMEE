@@ -206,6 +206,10 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
                                               colour = obscolour,
                                               group = 1),
                        inherit.aes = FALSE)
+    p <- p + geom_point(data = obs_deg_df, aes(x = degree, y = nodefraction,
+                                              colour = obscolour,
+                                              group = 1),
+                       inherit.aes = FALSE)
     ## the "group=1" is ncessary in the above line otherwise get error
     ## "geom_path: Each group consists of only one observation. Do you
     ## need to adjust the group aesthetic?" and it does not work.
