@@ -21,7 +21,7 @@ library(RColorBrewer)
 ## LaTeX documents and reduced in smaller panels
 ## https://ggplot2.tidyverse.org/articles/faq-customising.html
 
-theme_set(theme_gray(base_size = 14))
+theme_set(theme_gray(base_size = 18))
 
 obscolour <- 'red' # colour to plot observed graph points/lines
 ## simulated graph statistics will be boxplot on same plot in default colour
@@ -233,11 +233,11 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     if (mode == 'in' || mode =='out') {
       degreetype <- paste(mode, 'degree (outcome = 1 nodes)', sep='-')
     }
-    p <- p + xlab(degreetype) + ylab('frac. of outcome = 1 nodes')
+    p <- p + xlab(degreetype) + ylab('frac. outcome = 1 nodes')
     if (is.bipartite(g_obs)) {
-      p <- p + ylab(paste('frac. of outcome = 1 ', ifelse(btype, 'B', 'A'), 'nodes'))
+      p <- p + ylab(paste('frac. outcome = 1 ', ifelse(btype, 'B', 'A'), 'nodes'))
     } else {
-      p <- p + ylab('frac. of outcome = 1 nodes')
+      p <- p + ylab('frac. outcome = 1 nodes')
     }
     if (maxdeg > 200) {
         p <- p + scale_x_discrete(breaks = seq(0, maxdeg, by = 200))
