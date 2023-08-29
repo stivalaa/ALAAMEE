@@ -7,5 +7,8 @@ obs_stats_sim_highschool.txt
 sim_outcome.pdf
 stats_sim_gof_highschool-plots.eps
 stats_sim_gof_highschool.txt
-
 sim_outcome_vs_random.pdf
+sim_outcome_*.pdf
+stats_sim_gof_highschool_*.txt
+stats_sim_gof_highschool_*-plots.eps
+simulate_gof_highschool_slurm_script.out
