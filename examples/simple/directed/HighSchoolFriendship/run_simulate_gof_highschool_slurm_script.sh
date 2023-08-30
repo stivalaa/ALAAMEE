@@ -42,7 +42,7 @@ do
     
     Rscript ${ROOT}/R/plotALAAMEEsimFit.R ../../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net ../../../data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt sim_outcome_${gwsender}
     
-    Rscript ${ROOT}/R/plotALAAMEEvsRandomDegreeDist.R  ../../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net ../../../data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt sim_outcome_${gwsender}
+    Rscript ${ROOT}/R/plotALAAMEEvsRandomDegreeDist.R --outdegree_only  ../../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net ../../../data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt sim_outcome_${gwsender}
 done
 
 times

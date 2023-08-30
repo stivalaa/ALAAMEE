@@ -366,6 +366,8 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 ##                      (default NULL)
 ##    model_names - two-element vector of model names, corresponding to
 ##                  sim_graphs and sim2_graphs (default c("Model 1", "Model 2"))
+##    outdegree_only - if TRUE then only do out-degree distribution not
+##                    in-degree for directed graphs (default FALSE).
 ##
 ## Return value:
 ##    list of ggplot2 objects
@@ -373,7 +375,8 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 ##
 build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
                                 sim2_outcomevecs = NULL,
-                                model_names = c("Model 1", "Model 2")) {
+                                model_names = c("Model 1", "Model 2"),
+                                outdegree_only = FALSE) {
 
   num_sim <- length(sim_outcomevecs)
   plotlist <- list()
@@ -412,18 +415,19 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
     ##
     ## In degree
     ##
-
-    system.time(plotlist <- c(plotlist,
-                              list(deg_distr_plot(g_obs, sim_graphs, 'in',
-                                                  sim2_graphs=sim2_graphs,
-                                                  model_names = model_names))))
-
-    if (is.null(sim2_graphs)) {
+    if (!outdegree_only) {
       system.time(plotlist <- c(plotlist,
-                                list(deg_hist_plot(g_obs, sim_graphs, 'in', FALSE))))
+                                list(deg_distr_plot(g_obs, sim_graphs, 'in',
+                                                    sim2_graphs=sim2_graphs,
+                                                    model_names = model_names))))
       
-      system.time(plotlist <- c(plotlist,
-                                list(deg_hist_plot(g_obs, sim_graphs, 'in', TRUE))))
+      if (is.null(sim2_graphs)) {
+        system.time(plotlist <- c(plotlist,
+                                  list(deg_hist_plot(g_obs, sim_graphs, 'in', FALSE))))
+        
+        system.time(plotlist <- c(plotlist,
+                                  list(deg_hist_plot(g_obs, sim_graphs, 'in', TRUE))))
+      }
     }
 
 

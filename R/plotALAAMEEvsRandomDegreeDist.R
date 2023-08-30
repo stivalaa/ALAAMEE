@@ -12,7 +12,7 @@
 ## observed (i.e. same probability of a node being 1, but all independent)
 ##
 ##
-## Usage: Rscript plotALAAMEEsimFit.R netfilename obsOutcomefilename simOutcomefilePrefix
+## Usage: Rscript plotALAAMEEsimFit.R [-o] netfilename obsOutcomefilename simOutcomefilePrefix
 ##  netfilename is the Pajek format graph as used in ALAAMEE estimation.
 ##  obsOutcomefilename is the observed binary outcome vectors as used in
 ##    ALAAMEE estimation.
@@ -20,6 +20,8 @@
 ##    from the simulation. These files have _x.txt appended by ALAAMEE 
 ##    where x is iteration number.
 ##
+##  -o : outdegree only - only do out-degree not in-degree plots for directed
+##       network.
 ##
 ## Output file is simfitPrefix_vs_random.pdf (where Prefix is the simOutcomefilePrefix).
 ## WARNING: output file is overwritten
@@ -38,6 +40,7 @@
 ## Note that ALAAMEE can handle very large graphs, but R and igraph
 ## can be very slow and may not be able to practically work for larger
 
+library(optparse)
 
 library(igraph)
 
@@ -69,10 +72,17 @@ source_local('simFitPlots.R')
 
 args <- commandArgs(trailingOnly=TRUE)
 
-if (length(args) != 3) {
-  write('Usage: plotALAAMEEsimFit.R netfilename obsOutcomefilename simOutcomeFilePrefix\n', stderr())
-  quit(save="no")
-}
+option_list <- list(
+  make_option(c("-o", "--outdegree_only"), action="store_true", default=FALSE,
+                 help="only plot out-degree not in-degree for directed networks")
+  )
+parser <- OptionParser(usage = "%prog [options] netfilename obsOutcomefilename simOutcomeFilePrefix",
+                       option_list = option_list)
+arguments <- parse_args(parser, positional_arguments = 3)
+opt <- arguments$options
+args <- arguments$args
+
+outdegree_only <- opt$outdegree_only
 
 netfilename <- args[1]
 obsoutcomefilename <- args[2]
@@ -143,7 +153,8 @@ if (is.bipartite(g_obs)) {
 ## build the list of plots
 plotlist <- build_sim_fit_plots(g_obs, obs_outcomevec, sim_outcomevecs,
                                 random_outcomevecs, 
-                                c("ALAAM", "Random"))
+                                c("ALAAM", "Random"),
+                                outdegree_only = outdegree_only)
 
 
 ###
