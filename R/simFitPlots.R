@@ -65,6 +65,7 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     if (!is.null(sim2_graphs)) {
       num_sim2 <- length(sim2_graphs)
       obscolour <- "observed" # for legend
+      palette_name = "Dark2" # RColorBrewer palette name
     }
     start = Sys.time()
     if (is.bipartite(g_obs)) {
@@ -192,7 +193,8 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
       deg_df <- rbind(deg_df, deg_df2)
       deg_df$model <- factor(deg_df$model)
       ## https://stackoverflow.com/questions/6919025/how-to-assign-colors-to-categorical-variables-in-ggplot2-that-have-stable-mappin
-      myColors <- brewer.pal(3, "Set1")[1:2] # force only two colors
+      palette <- brewer.pal(3, palette_name)
+      myColors <- palette[2:3] # force only two colors
       names(myColors) <- levels(deg_df$model)
       colScale <- scale_fill_manual(name = "model", values = myColors)
     }
@@ -211,11 +213,13 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     p <- p + geom_line(data = obs_deg_df, aes(x = degree, y = nodefraction,
                                               colour = obscolour,
                                               group = 1),
-                       inherit.aes = FALSE)
+                       inherit.aes = FALSE) +
+      scale_colour_brewer(palette = palette_name)
     p <- p + geom_point(data = obs_deg_df, aes(x = degree, y = nodefraction,
                                               colour = obscolour,
                                               group = 1),
-                       inherit.aes = FALSE)
+                        inherit.aes = FALSE) +
+      scale_colour_brewer(palette = palette_name)
     ## the "group=1" is ncessary in the above line otherwise get error
     ## "geom_path: Each group consists of only one observation. Do you
     ## need to adjust the group aesthetic?" and it does not work.
@@ -249,9 +253,9 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     p <- p + guides(x = guide_axis(check.overlap = TRUE))
 
     if (!is.null(sim2_graphs)) {
-      p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dotted", color = myColors[1])
-      p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dotted",color = myColors[2])
-      p <- p + geom_vline(xintercept = meandeg_obs, linetype = "dashed",color = 'red')
+      p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dashed", color = myColors[1])
+      p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dashed",color = myColors[2])
+      p <- p + geom_vline(xintercept = meandeg_obs, linetype = "solid",color = palette[1])
     }
     
     end = Sys.time()
