@@ -21,7 +21,7 @@ library(RColorBrewer)
 ## LaTeX documents and reduced in smaller panels
 ## https://ggplot2.tidyverse.org/articles/faq-customising.html
 
-theme_set(theme_gray(base_size = 18))
+theme_set(theme_gray(base_size = 14))
 
 obscolour <- 'red' # colour to plot observed graph points/lines
 ## simulated graph statistics will be boxplot on same plot in default colour
@@ -61,11 +61,14 @@ my_scientific_10 <- function(x) {
 ##
 ##
 deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL, model_names = c("Model 1", "Model 2")) {
+  
     num_sim <- length(sim_graphs)
     if (!is.null(sim2_graphs)) {
       num_sim2 <- length(sim2_graphs)
       obscolour <- "observed" # for legend
       palette_name = "Dark2" # RColorBrewer palette name
+    } else {
+      palette_name = "Set1"
     }
     start = Sys.time()
     if (is.bipartite(g_obs)) {
