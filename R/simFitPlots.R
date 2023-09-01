@@ -375,6 +375,8 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 ##                  sim_graphs and sim2_graphs (default c("Model 1", "Model 2"))
 ##    outdegree_only - if TRUE then only do out-degree distribution not
 ##                    in-degree for directed graphs (default FALSE).
+##    do_assortativity - if TRUE then do assortativity on outcome attribute
+##                       (default FALSE)
 ##
 ## Return value:
 ##    list of ggplot2 objects
@@ -383,7 +385,8 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
                                 sim2_outcomevecs = NULL,
                                 model_names = c("Model 1", "Model 2"),
-                                outdegree_only = FALSE) {
+                                outdegree_only = FALSE,
+                                do_assortativity = FALSE) {
 
   num_sim <- length(sim_outcomevecs)
   plotlist <- list()
@@ -491,6 +494,26 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
       }
     }
   }
+
+  ##
+  ## Assortitivity on outcome attribute
+  ##
+  if (do_assortativity) {
+    ## Note in igraph assortativity.nominal() the types must start at 1 not 0
+    system.time( obs_assortativity <- assortativity.nominal(g_obs, 1+V(g_obs)$outcome) )
+    system.time( sim_assortativity <- sapply(sim_graphs, function(g) assortativity.nominal(g, 1+V(g)$outcome)) )
+    cat('obs assortativity: ', obs_assortativity, '\n')
+    cat('sim assortativity: ', sim_assortativity, '\n')
+    p <- ggplot() + geom_boxplot(aes(x = 'assortativity', y = sim_assortativity))
+    p <- p + geom_point(aes(x = as.numeric(ordered('assortativity')),
+                            y = obs_assortativity,
+                            colour = obscolour))
+    p <- p + ylab('assortativity') + ptheme +
+      theme(axis.title.x = element_blank())
+    ##p <- p + ylim(0, 1)
+    plotlist <- c(plotlist, list(p))
+  }
+
 
   ## remove empty elements
   plotlist <- plotlist[lapply(plotlist, length) > 0]

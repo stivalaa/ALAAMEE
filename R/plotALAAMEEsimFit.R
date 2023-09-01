@@ -10,13 +10,15 @@
 ## Python function simulate_from_network_attr(..., outputSimulatedVectors=True)
 ##
 ##
-## Usage: Rscript plotALAAMEEsimFit.R netfilename obsOutcomefilename simOutcomefilePrefix
+## Usage: Rscript plotALAAMEEsimFit.R [-a] netfilename obsOutcomefilename simOutcomefilePrefix
 ##  netfilename is the Pajek format graph as used in ALAAMEE estimation.
 ##  obsOutcomefilename is the observed binary outcome vectors as used in
 ##    ALAAMEE estimation.
 ##  simOoutcomefilePrefix is the prefix of simulated outcome binary veectors
 ##    from the simulation. These files have _x.txt appended by ALAAMEE 
 ##    where x is iteration number.
+##
+##   -a : do assortativity on outcome attribute
 ##
 ##
 ## Output file is simfitPrefix.pdf (where Prefix is the simOutcomefilePrefix).
@@ -36,6 +38,7 @@
 ## Note that ALAAMEE can handle very large graphs, but R and igraph
 ## can be very slow and may not be able to practically work for larger
 
+library(optparse)
 
 library(igraph)
 
@@ -67,10 +70,19 @@ source_local('simFitPlots.R')
 
 args <- commandArgs(trailingOnly=TRUE)
 
-if (length(args) != 3) {
-  write('Usage: plotALAAMEEsimFit.R netfilename obsOutcomefilename simOutcomeFilePrefix\n', stderr())
-  quit(save="no")
-}
+args <- commandArgs(trailingOnly=TRUE)
+
+option_list <- list(
+  make_option(c("-a", "--assortativity"), action="store_true", default=FALSE,
+                 help="include assortativity on outcome attribute")
+  )
+parser <- OptionParser(usage = "%prog [options] netfilename obsOutcomefilename simOutcomeFilePrefix",
+                       option_list = option_list)
+arguments <- parse_args(parser, positional_arguments = 3)
+opt <- arguments$options
+args <- arguments$args
+
+do_assortativity <- opt$assortativity
 
 netfilename <- args[1]
 obsoutcomefilename <- args[2]
@@ -110,7 +122,8 @@ num_sim <- length(sim_outcomevecs)
 
 
 ## build the list of plots
-plotlist <- build_sim_fit_plots(g_obs, obs_outcomevec, sim_outcomevecs)
+plotlist <- build_sim_fit_plots(g_obs, obs_outcomevec, sim_outcomevecs,
+                                do_assortativity = do_assortativity)
 
 
 ###
