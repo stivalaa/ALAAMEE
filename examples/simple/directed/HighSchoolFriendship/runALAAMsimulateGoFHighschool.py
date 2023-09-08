@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 #
-# File:    run runALAAMsimulateGoFGithub.py
+# File:    run runALAAMsimulateGoFHighschool.py
 # Author:  Alex Stivala
 # Created: April 2023
 #
 """Simulate from  Autologistic Actor Attribute Model (ALAAM).
    
-   Usage: runALAAMsimulateGoFGithub.py <estimated | negative | positive>
+   Usage: runALAAMsimulateGoFHighschool.py <estimated | negative | positive>
 
    estimated/negative/positive controls value of GWSender(log(2.0)) parameter:
 
