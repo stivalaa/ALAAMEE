@@ -504,8 +504,8 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
     system.time( sim_assortativity <- sapply(sim_graphs, function(g) assortativity.nominal(g, 1+V(g)$outcome)) )
     cat('obs assortativity: ', obs_assortativity, '\n')
     cat('sim assortativity: ', sim_assortativity, '\n')
-    p <- ggplot() + geom_boxplot(aes(x = 'assortativity', y = sim_assortativity))
-    p <- p + geom_point(aes(x = as.numeric(ordered('assortativity')),
+    p <- ggplot() + geom_boxplot(aes(x = 'outcome', y = sim_assortativity))
+    p <- p + geom_point(aes(x = as.numeric(ordered('outcome')),
                             y = obs_assortativity,
                             colour = obscolour))
     p <- p + ylab('assortativity') + ptheme +
