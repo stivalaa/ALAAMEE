@@ -12,3 +12,4 @@ sim_outcome_*.pdf
 stats_sim_gof_highschool_*.txt
 stats_sim_gof_highschool_*-plots.eps
 simulate_gof_highschool_slurm_script.out
+simulate_gof_highschool_model6_slurm_script.out
