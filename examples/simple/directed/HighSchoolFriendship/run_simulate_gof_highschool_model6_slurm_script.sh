@@ -36,7 +36,7 @@ modelname=model6
 # output file of simulated ALAAM statistics
 SIMSTATS_FILE=stats_sim_gof_highschool_${modelname}.txt
 
-time python3 ./runALAAMsimulateGoFHighschool.py ${modelname}  | tee ${SIMSTATS_FILE}
+time python3 ./runALAAMsimulateGoFHighschoolModel6.py  | tee ${SIMSTATS_FILE}
 
 Rscript ${ROOT}/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 

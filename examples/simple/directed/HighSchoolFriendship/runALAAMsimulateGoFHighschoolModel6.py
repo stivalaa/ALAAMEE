@@ -62,6 +62,7 @@ assert len(theta) == len(param_func_list)
 simulate_from_network_attr(
     '../../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net',
     param_func_list, labels, theta,
+    catattr_filename = '../../../data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt',
     iterationInStep = 1000,
     burnIn = 10000,
     directed = True,
