@@ -44,6 +44,13 @@ See
   G. Robins, P. Pattison, and P. Elliott. Network models for social
   influence processes. Psychometrika, 66(2):161-189, 2001.
 
+  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic
+  actor attribute model. Unpublished manuscript.
+
+  Stivala, A., Wang, P., & Lomi, A. (2023). ALAAMEE: Open-source
+  software for fitting autologistic actor attribute
+  models. Unpublished manuscript.
+
   Wang, P., Robins, G., & Pattison, P. (2009). PNet: A program for the
   simulation and estimation of exponential random graph
   models. University of Melbourne.
@@ -526,6 +533,10 @@ def changeGWSender(alpha, G, A, i):
     contribution of the single term for i in Equation (31) of Snijders
     et al. (2007), which is a sum over all nodes.
 
+    Reference:
+
+      Stivala, A. (2023). Overcoming near-degeneracy in the
+      autologistic actor attribute model. Unpublished manuscript.
     """
     return math.exp(-alpha * G.outdegree(i))
 
@@ -590,6 +601,11 @@ def changeGWReceiver(alpha, G, A, i):
     number of stars at the node i. And hence this is just the
     contribution of the single term for i in Equation (32) of Snijders
     et al. (2007), which is a sum over all nodes.
+
+    Reference:
+
+      Stivala, A. (2023). Overcoming near-degeneracy in the
+      autologistic actor attribute model. Unpublished manuscript.
 
     """
     return math.exp(-alpha * G.indegree(i))

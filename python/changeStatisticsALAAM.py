@@ -19,7 +19,7 @@ change statistic is used as e.g. partial(changeSettingHomophily, Gsetting).
 The same technique is used for the geometrically weighted statistics
 e.g. partial(changeGWActivity, math.log(2))
 
-The change statistics here are documented in Daraganova & Robins
+Most of the change statistics here are documented in Daraganova & Robins
 (2013) Tables 9.1-9.3 (pp. 110-112) and the PNet manual Appendix B
 "IPNet Graph Statistics" (pp. 42-43), and here I use a similar naming
 convention to the latter. Similarly, the diagrams will follow a
@@ -37,6 +37,13 @@ See
 
   G. Robins, P. Pattison, and P. Elliott. Network models for social
   influence processes. Psychometrika, 66(2):161-189, 2001.
+
+  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic
+  actor attribute model. Unpublished manuscript.
+
+  Stivala, A., Wang, P., & Lomi, A. (2023). ALAAMEE: Open-source
+  software for fitting autologistic actor attribute
+  models. Unpublished manuscript.
 
   Wang, P., Robins, G., & Pattison, P. (2009). PNet: A program for the
   simulation and estimation of exponential random graph
@@ -410,6 +417,11 @@ def changeGWActivity(alpha, G, A, i):
     number of stars at the node i. And hence this is just the
     contribution of the single term for i in Equation (11) of Snijders
     et al. (2007), which is a sum over all nodes.
+
+    Reference:
+
+      Stivala, A. (2023). Overcoming near-degeneracy in the
+      autologistic actor attribute model. Unpublished manuscript.
 
     """
     return math.exp(-alpha * G.degree(i))

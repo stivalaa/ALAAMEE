@@ -78,6 +78,13 @@ See
   G. Robins, P. Pattison, and P. Elliott. Network models for social
   influence processes. Psychometrika, 66(2):161-189, 2001.
 
+  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic
+  actor attribute model. Unpublished manuscript.
+
+  Stivala, A., Wang, P., & Lomi, A. (2023). ALAAMEE: Open-source
+  software for fitting autologistic actor attribute
+  models. Unpublished manuscript.
+
   Wang, P., Robins, G., & Pattison, P. (2009). PNet: A program for the
   simulation and estimation of exponential random graph
   models. University of Melbourne. http://www.melnet.org.au/s/PNetManual.pdf
