@@ -78,8 +78,9 @@ See
   G. Robins, P. Pattison, and P. Elliott. Network models for social
   influence processes. Psychometrika, 66(2):161-189, 2001.
 
-  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic
-  actor attribute model. Unpublished manuscript.
+  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic 
+  actor attribute model. arXiv preprint arXiv:2309.07338.
+  https://arxiv.org/abs/2309.07338
 
   Stivala, A., Wang, P., & Lomi, A. (2023). ALAAMEE: Open-source
   software for fitting autologistic actor attribute
