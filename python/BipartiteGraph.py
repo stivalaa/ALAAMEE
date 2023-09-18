@@ -14,8 +14,8 @@ from SparseMatrix import SparseMatrix
 
 
 # Mode (node type) of a node for bipartite (two-mode) networks
-MODE_A = 0
-MODE_B = 1
+MODE_A = 'A'
+MODE_B = 'B'
 
 
 class BipartiteGraph(Graph):
