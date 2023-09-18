@@ -212,6 +212,79 @@ def changeBipartiteFourCycle2(mode, G, A, i):
                 if A[j] == 1]) if G.bipartite_node_mode(i) == mode else 0
 
 
+
+def changeBipartiteGWActivity(alpha, mode, G, A, i):
+    """
+    change statistic for Geometrically Weighted Bipartite Activity
+
+       o
+      /
+     *--o
+      \ :
+       o
+
+
+    This is an ALAAM analogue of the geometrically weighted degree
+    statistic defined by Equation (11) in:
+
+    Snijders, T. A., Pattison, P. E., Robins, G. L., & Handcock,
+    M. S. (2006). New specifications for exponential random graph
+    models. Sociological methodology, 36(1), 99-153.
+
+    See also Section 3 (pp. 219-222) in:
+
+    Hunter, D. R. (2007). Curved exponential family models for social
+    networks. Social networks, 29(2), 216-230.
+
+    and the Remark on p. 222 of Hunter (2007) relating the GWD
+    statistic defined there to that defined in Snijders et al. (2006),
+    and both papers for the relationships between gwdegree and the
+    alternating k-star statistic.
+
+    alpha > 0 is the decay parameter controlling the geometric rate of
+    decrease in the weights. For large alpha, the contribution of
+    positive outcomes on higher degree nodes is decreased. As alpha goes
+    to 0, increasing weight is placed on outcome vectors with positive
+    outcome on high degree nodes.  See Sjniders et a. (2006) p. 112.
+
+    Note lambda_s = exp(alpha)/(exp(alpha)-1) [p. 113 Snjders et al. 2006]
+    and 1/lambda_s = exp(-theta_s) = 1 - exp(-alpha) [p. 222 Hunter 2007]
+    theta_s = -log(1/lambda_s)
+    alpha = -log(1 - 1/lambda_s)
+    So for the "traditional" value of lambda = 2 we have
+    alpha = -log(1 - 1/2) = -log(1/2) = log(2) =appox 0.69
+
+
+    The purpose of this statistic is to try to avoid problems with
+    near-degeneracy when using the Activity, Two-Star, Three-Star,
+    etc. parameters, by instead using this parameter to model
+    alternating k-stars or alternatively as in this parameterization,
+    geometrically weighted degree distribution.
+
+    Note that the change statistic for ERGM (described in those
+    papers) is not the change statistic here for ALAAM. In ERGM,
+    modeling the network (stars or degree distribution here) the
+    change statistic is for adding an edge, and so involves counting
+    the additional number of stars created by adding an extra edge.
+    However for ALAAM, the network is fixed, and the change statistic
+    is for switching the outcome of node i from 0 to 1, and hence the
+    number of stars (or activity degree) at the node is 0 before the
+    the switch, and hence the change statistic is just related to the
+    number of stars at the node i. And hence this is just the
+    contribution of the single term for i in Equation (11) of Snijders
+    et al. (2007), which is a sum over all nodes.
+
+    Reference:
+
+     Stivala, A. (2023). Overcoming near-degeneracy in the autologistic 
+     actor attribute model. arXiv preprint arXiv:2309.07338.
+     https://arxiv.org/abs/2309.07338
+
+    """
+    return (math.exp(-alpha * G.degree(i)) if G.bipartite_node_mode(i) == mode
+            else 0)
+
+
 # ================== old versions for regression testing ======================
 
 def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
