@@ -229,12 +229,11 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             # function address so the comparison "if f not in param_func_list"
             # will always be True.
             statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
-                         changeContagion,
                          changeIndirectPartnerAttribute,
                          changePartnerAttributeActivity,
                          changePartnerPartnerAttribute]
             statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1',
-                          'Contagion', 'Alter-2Star2', 'Partner-Activity',
+                          'Alter-2Star2', 'Partner-Activity',
                           'Partner-Resource']
             gof_param_func_list = (list(param_func_list) +
                                    [f for f in statfuncs
