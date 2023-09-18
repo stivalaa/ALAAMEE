@@ -213,7 +213,7 @@ def changeBipartiteFourCycle2(mode, G, A, i):
 
 
 
-def changeBipartiteGWActivity(alpha, mode, G, A, i):
+def changeBipartiteGWActivity(mode, alpha, G, A, i):
     """
     change statistic for Geometrically Weighted Bipartite Activity
 
