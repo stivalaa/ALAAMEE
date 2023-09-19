@@ -119,16 +119,23 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
         if START_FROM_ZERO: # start from zero vector
             A = np.zeros(G.numNodes())  # initialize outcmoe vector to zero
         else:   # do not use all zero,to avoid special case of proposal probability
+            ## TODO handle snowball conditional estimation
+            ## See estimationALAAMSA.py:
+            ##    For snowball conditional estimation, we must not start with
+            ##    random initial outcome vector, but rather make sure the
+            ##    nodes in the outermost zone have the same outcome attributes
+            ##    as the obseved vector
+        
             if bipartite:
                 # initialize outcome vector to all NA for one mode and
                 # 50% zero for other mode, depending which mode we want fixed
                 # to all NA values.
                 if bipartiteFixedMode == MODE_B:
-                    Ainitial = np.concatenate(
+                    A = np.concatenate(
                         (rand_bin_array(int(0.5*G.num_A_nodes), G.num_A_nodes),
                           np.ones(G.num_B_nodes)*NA_VALUE) )
                 elif bipartiteFixedMode == MODE_A:
-                    Ainitial = np.concatenate(
+                    A = np.concatenate(
                         (np.ones(G.num_A_nodes)*NA_VALUE,
                        rand_bin_array(int(0.5*G.num_B_nodes), G.num_B_nodes)) )
                 else:
