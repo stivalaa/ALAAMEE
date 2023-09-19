@@ -29,7 +29,7 @@ import numpy as np         # used for matrix & vector data types and functions
 
 from Graph import Graph,NA_VALUE
 from Digraph import Digraph
-from BipartiteGraph import BipartiteGraph
+from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
 from changeStatisticsALAAM import *
 from basicALAAMsampler import basicALAAMsampler
 from computeObservedStatistics import computeObservedStatistics
@@ -58,7 +58,8 @@ def rand_bin_array(K, N):
 
 def simulateALAAM(G, changestats_func_list, theta, numSamples,
                   iterationInStep = None, burnIn = None,
-                  sampler_func = basicALAAMsampler, Ainitial = None):
+                  sampler_func = basicALAAMsampler, Ainitial = None,
+                  bipartiteFixedMode = None):
     """
     Simulate ALAAM (generate binary outcome vector) given model parameters
     and network (including node attributes).
@@ -83,7 +84,11 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                                the outcome vector to before simulation process,
                                rather than starting from all 0 or random.
                                Default None, for random initialization here.
-
+      bipartiteFixedMode - for bipartite networks only, the mode
+                                 (MODE_A or MODE_B that is fixed to NA
+                                 in simulation, for when outcome
+                                 variable not defined for that mode,
+                                 or None. Default None.
 
      Returns:
        This is a generator function that yields tuple
@@ -94,7 +99,12 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
           t is the iteration number
        values on each call.
     """
+    bipartite = isinstance(G, BipartiteGraph)
     assert len(theta) == len(changestats_func_list)
+    assert bipartiteFixedMode in [None, MODE_A, MODE_B]
+    assert not (bipartiteFixedMode is not None and not bipartite)
+    assert not (Ainitial is not None and bipartiteFixedMode is not None)
+
 
     if iterationInStep is None:
         iterationInStep = 10 * G.numNodes()
@@ -109,20 +119,24 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
         if START_FROM_ZERO: # start from zero vector
             A = np.zeros(G.numNodes())  # initialize outcmoe vector to zero
         else:   # do not use all zero,to avoid special case of proposal probability
-            # initialize outcome vector to 50% ones
-            A = rand_bin_array(int(0.5*G.numNodes()), G.numNodes())
-
-
-            # TODO: for bipartite graphs, should do the following,
-            # but allow either A or B mode to be all NA (which means
-            # the sampler never changes that value):
-            ## For bipartite graph, make sure initial outcome vector 
-            ## is all NA for the B mode (assuming we are using 
-            ## outcome only on A mode here) and 0 or 1 with 
-            ## uniform probability for A mode
-            # A = np.concatenate(
-            #            (rand_bin_array(int(0.5*G.num_A_nodes), G.num_A_nodes),
-            #             np.ones(G.num_B_nodes)*NA_VALUE) )
+            if bipartite:
+                # initialize outcome vector to all NA for one mode and
+                # 50% zero for other mode, depending which mode we want fixed
+                # to all NA values.
+                if bipartiteFixedMode == MODE_B:
+                    Ainitial = np.concatenate(
+                        (rand_bin_array(int(0.5*G.num_A_nodes), G.num_A_nodes),
+                          np.ones(G.num_B_nodes)*NA_VALUE) )
+                elif bipartiteFixedMode == MODE_A:
+                    Ainitial = np.concatenate(
+                        (np.ones(G.num_A_nodes)*NA_VALUE,
+                       rand_bin_array(int(0.5*G.num_B_nodes), G.num_B_nodes)) )
+                else:
+                    # initialize outcome vector to 50% ones
+                    A = rand_bin_array(int(0.5*G.numNodes()), G.numNodes())
+            else:
+                # initialize outcome vector to 50% ones
+                A = rand_bin_array(int(0.5*G.numNodes()), G.numNodes())
 
     # And compute observed statistics by summing change stats for each
     # 1 variable (note if instead starting at all zero A vector don't
@@ -168,7 +182,8 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                                degreestats = False,
                                outputSimulatedVectors = False,
                                simvecFilePrefix = "sim_outcome",
-                               Ainitial = None):
+                               Ainitial = None,
+                               bipartiteFixedMode = None):
     """Simulate ALAAM from on specified network with binary and/or continuous
     and categorical attributes.
 
@@ -226,11 +241,18 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                                the outcome vector to before simulation process,
                                rather than starting from all 0 or random.
                                Default None, for random initialization here.
+      bipartiteFixedMode - for bipartite networks only, the mode
+                                 (MODE_A or MODE_B that is fixed to NA
+                                 in simulation, for when outcome
+                                 variable not defined for that mode,
+                                 or None. Default None.
 
     The output is written to stdout in a format for reading by
     the R script plotSimulationDiagnostics.R.
     """
     assert(len(param_func_list) == len(labels))
+    assert not (bipartiteFixedMode is not None and not bipartite)
+    assert not (Ainitial is not None and bipartiteFixedMode is not None)
 
     if directed:
         if bipartite:
@@ -260,7 +282,8 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                                                           iterationInStep,
                                                           burnIn,
                                                           sampler_func = sampler_func,
-                                                          Ainitial = Ainitial):
+                                                          Ainitial = Ainitial,
+                                                          bipartiteFixedMode = bipartiteFixedMode):
         if degreestats:
             ## mean and variance of degrees of nodes with outcome = 1
             meanDegree1 = np.mean(degseq[np.nonzero(simvec == 1)[0]])
