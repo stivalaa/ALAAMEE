@@ -261,31 +261,10 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         # pad theta vector with zeros for the added parameters
         gof_theta = np.array(list(theta) + (n-len(theta))*[0])
 
-        Ainitial = None # default: use random intialization
-        if zone_filename is not None: # 7onditional estimation
-            # For snowball conditional estimation, we must not start with
-            # random initial outcome vector, but rather make sure the
-            # nodes in the outermost zone have the same outcome attributes
-            # as the obseved vector
-            Ainitial = np.copy(A) # copy of observed vector
-            # make vector of 50% ones, size of number of inner nodes
-            Arandom_inner = rand_bin_array(int(0.5*len(G.inner_nodes)), len(G.inner_nodes))
-            # set the outcome for inner nodes to random values, leaving
-            # value of outermost nodes at the original observed values
-            Ainitial[G.inner_nodes] = Arandom_inner
-        elif bipartite:
-            if bipartiteGoFfixedMode == MODE_B:
-                Ainitial = np.concatenate(
-                         (rand_bin_array(int(0.5*G.num_A_nodes), G.num_A_nodes),
-                          np.ones(G.num_B_nodes)*NA_VALUE) )
-            elif bipartiteGoFfixedMode == MODE_A:
-                Ainitial = np.concatenate(
-                        (np.ones(G.num_A_nodes)*NA_VALUE,
-                        rand_bin_array(int(0.5*G.num_B_nodes), G.num_B_nodes)) )
         print('Running goodness-of-fit test...')
         start = time.time()
         gofresult = gof(G, A, gof_param_func_list, gof_theta,
-                        sampler_func = sampler_func, Ainitial = Ainitial,
+                        sampler_func = sampler_func,
                         iterationInStep = GoFiterationInStep,
                         burnIn = GoFburnIn)
         print('GoF took',time.time() - start, 's')

@@ -69,7 +69,7 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
     # Compute simulated outcome vector statistics from MCMC
     sim_results = simulateALAAM(G, changestats_func_list,  theta,
                                 numSamples, iterationInStep, burnIn,
-                                sampler_func, Ainitial)
+                                sampler_func, Ainitial, Aobs = Aobs)
     #simulateALAAM() return list of tuples (simvec,stats,acceptance_rate,t)
     # convert to matrix where each row is sample, each column is statistic
     Zmatrix = np.stack([r[1] for r in sim_results])

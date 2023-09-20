@@ -59,7 +59,7 @@ def rand_bin_array(K, N):
 def simulateALAAM(G, changestats_func_list, theta, numSamples,
                   iterationInStep = None, burnIn = None,
                   sampler_func = basicALAAMsampler, Ainitial = None,
-                  bipartiteFixedMode = None):
+                  bipartiteFixedMode = None, Aobs = None):
     """
     Simulate ALAAM (generate binary outcome vector) given model parameters
     and network (including node attributes).
@@ -89,6 +89,9 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                                  in simulation, for when outcome
                                  variable not defined for that mode,
                                  or None. Default None.
+      Aobs                 - vector of 0/1 observed outcome variables for ALAAM
+                             for use with snowball conditional estimation only,
+                             or None (default None).
 
      Returns:
        This is a generator function that yields tuple
@@ -104,6 +107,7 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
     assert bipartiteFixedMode in [None, MODE_A, MODE_B]
     assert not (bipartiteFixedMode is not None and not bipartite)
     assert not (Ainitial is not None and bipartiteFixedMode is not None)
+    assert not (G.zone is not None and bipartite)
 
 
     if iterationInStep is None:
@@ -119,12 +123,17 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
         if START_FROM_ZERO: # start from zero vector
             A = np.zeros(G.numNodes())  # initialize outcmoe vector to zero
         else:   # do not use all zero,to avoid special case of proposal probability
-            ## TODO handle snowball conditional estimation
-            ## See estimationALAAMSA.py:
-            ##    For snowball conditional estimation, we must not start with
-            ##    random initial outcome vector, but rather make sure the
-            ##    nodes in the outermost zone have the same outcome attributes
-            ##    as the obseved vector
+            if G.zone is not None: # conditional estimation
+                # For snowball conditional estimation, we must not start with
+                # random initial outcome vector, but rather make sure the
+                # nodes in the outermost zone have the same outcome attributes
+                # as the obseved vector
+                A= np.copy(Aobs) # copy of observed vector
+                # make vector of 50% ones, size of number of inner nodes
+                Arandom_inner = rand_bin_array(int(0.5*len(G.inner_nodes)), len(G.inner_nodes))
+                # set the outcome for inner nodes to random values, leaving
+                # value of outermost nodes at the original observed values
+                A[G.inner_nodes] = Arandom_inner
         
             if bipartite:
                 # initialize outcome vector to all NA for one mode and
