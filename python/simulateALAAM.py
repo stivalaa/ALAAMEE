@@ -123,7 +123,7 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
         if START_FROM_ZERO: # start from zero vector
             A = np.zeros(G.numNodes())  # initialize outcmoe vector to zero
         else:   # do not use all zero,to avoid special case of proposal probability
-            if G.zone is not None: # conditional estimation
+            if G.zone is not None: # snowball conditional estimation
                 # For snowball conditional estimation, we must not start with
                 # random initial outcome vector, but rather make sure the
                 # nodes in the outermost zone have the same outcome attributes
@@ -134,8 +134,7 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
                 # set the outcome for inner nodes to random values, leaving
                 # value of outermost nodes at the original observed values
                 A[G.inner_nodes] = Arandom_inner
-        
-            if bipartite:
+            elif bipartite:
                 # initialize outcome vector to all NA for one mode and
                 # 50% zero for other mode, depending which mode we want fixed
                 # to all NA values.
