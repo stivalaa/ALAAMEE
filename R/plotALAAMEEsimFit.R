@@ -19,6 +19,7 @@
 ##    where x is iteration number.
 ##
 ##   -a : do assortativity on outcome attribute
+##   -e : do E-I index on outcome attribute
 ##
 ##
 ## Output file is simfitPrefix.pdf (where Prefix is the simOutcomefilePrefix).
@@ -74,7 +75,9 @@ args <- commandArgs(trailingOnly=TRUE)
 
 option_list <- list(
   make_option(c("-a", "--assortativity"), action="store_true", default=FALSE,
-                 help="include assortativity on outcome attribute")
+                 help="include assortativity on outcome attribute"),
+  make_option(c("-e", "--eiindex"), action="store_true", default=FALSE,
+                 help="include E-I index on outcome attribute")
   )
 parser <- OptionParser(usage = "%prog [options] netfilename obsOutcomefilename simOutcomeFilePrefix",
                        option_list = option_list)
@@ -83,6 +86,7 @@ opt <- arguments$options
 args <- arguments$args
 
 do_assortativity <- opt$assortativity
+do_eiindex <- opt$eiindex
 
 netfilename <- args[1]
 obsoutcomefilename <- args[2]
@@ -123,7 +127,8 @@ num_sim <- length(sim_outcomevecs)
 
 ## build the list of plots
 plotlist <- build_sim_fit_plots(g_obs, obs_outcomevec, sim_outcomevecs,
-                                do_assortativity = do_assortativity)
+                                do_assortativity = do_assortativity,
+                                do_eiindex = do_eiindex)
 
 
 ###

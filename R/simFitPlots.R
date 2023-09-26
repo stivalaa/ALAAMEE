@@ -16,6 +16,16 @@ library(doBy)
 library(scales)
 library(RColorBrewer)
 
+## read in R source file from directory where this script is located
+##http://stackoverflow.com/questions/1815606/rscript-determine-path-of-the-executing-script
+source_local <- function(fname){
+  argv <- commandArgs(trailingOnly = FALSE)
+  base_dir <- dirname(substring(argv[grep("--file=", argv)], 8))
+  source(paste(base_dir, fname, sep=.Platform$file.sep))
+}
+
+source_local('EIindex.R')
+
 
 ## Change default font size to make it larger so readable when included in
 ## LaTeX documents and reduced in smaller panels
@@ -377,6 +387,8 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 ##                    in-degree for directed graphs (default FALSE).
 ##    do_assortativity - if TRUE then do assortativity on outcome attribute
 ##                       (default FALSE)
+##    do_eiindex - if TRUE then do E-I index on outcome attribute
+##                       (default FALSE)
 ##
 ## Return value:
 ##    list of ggplot2 objects
@@ -386,7 +398,8 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
                                 sim2_outcomevecs = NULL,
                                 model_names = c("Model 1", "Model 2"),
                                 outdegree_only = FALSE,
-                                do_assortativity = FALSE) {
+                                do_assortativity = FALSE,
+                                do_eiindex = FALSE) {
 
   num_sim <- length(sim_outcomevecs)
   plotlist <- list()
@@ -509,6 +522,24 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
                             y = obs_assortativity,
                             colour = obscolour))
     p <- p + ylab('assortativity') + ptheme +
+      theme(axis.title.x = element_blank())
+    ##p <- p + ylim(0, 1)
+    plotlist <- c(plotlist, list(p))
+  }
+
+  ##
+  ## E-I index on outcome attribute
+  ##
+  if (do_eiindex) {
+    system.time( obs_eiindex <- EIindex(g_obs, "outcome") )
+    system.time( sim_eiindex <- sapply(sim_graphs, function(g) EIindex(g, "outcome")) )
+    cat('obs eiindex: ', obs_eiindex, '\n')
+    cat('sim eiindex: ', sim_eiindex, '\n')
+    p <- ggplot() + geom_boxplot(aes(x = 'outcome', y = sim_eiindex))
+    p <- p + geom_point(aes(x = as.numeric(ordered('outcome')),
+                            y = obs_eiindex,
+                            colour = obscolour))
+    p <- p + ylab('E-I index') + ptheme +
       theme(axis.title.x = element_blank())
     ##p <- p + ylim(0, 1)
     plotlist <- c(plotlist, list(p))
