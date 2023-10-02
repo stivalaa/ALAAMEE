@@ -111,12 +111,13 @@ write.table(catattr, file = "badgers_catattr.txt",
 
 ## Compute centralites and write as continuous attributes
 ## (note flow betweenness takes a few seconds even on this small network)
-system.time( betweenGroupFlow <- flowbet(X3, gmode = "graph", rescale = TRUE) )
+system.time( betweenGroupFlow <- flowbet(X3, gmode = "graph", rescale = FALSE) )
 withinGroupEigen <- eigen_centrality(
                       graph_from_adjacency_matrix(X2, mode='undirected',
-                                            weighted=TRUE, diag=FALSE))$vector
+                                            weighted=TRUE, diag=FALSE),
+                       scale = FALSE)$vector
 
-withinGroupDegree <- sna::degree(X2, gmode="graph", rescale=TRUE)
+withinGroupDegree <- sna::degree(X2, gmode="graph", rescale=FALSE)
 contattr <- data.frame(betweenGroupFlowCent = betweenGroupFlow,
                        withinGroupEigenCent = withinGroupEigen,
                        withinGroupDegreeCent = withinGroupDegree)
