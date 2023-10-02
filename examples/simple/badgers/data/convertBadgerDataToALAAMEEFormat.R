@@ -119,7 +119,14 @@ withinGroupEigen <- eigen_centrality(
                                             weighted=TRUE, diag=FALSE),
                        scale = FALSE)$vector
 
+
 withinGroupDegree <- sna::degree(X2, gmode="graph", rescale=FALSE)
+
+## Center and scale the centrality measures
+betweenGroupFlow <- scale(betweenGroupFlow, center = TRUE, scale = TRUE)
+withinGroupEigen <- scale(withinGroupEigen, center = TRUE, scale = TRUE)
+withinGroupDegree <- scale(withinGroupDegree, center = TRUE, scale = TRUE)
+
 contattr <- data.frame(betweenGroupFlowCent = betweenGroupFlow,
                        withinGroupEigenCent = withinGroupEigen,
                        withinGroupDegreeCent = withinGroupDegree)
