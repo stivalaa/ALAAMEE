@@ -232,9 +232,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                          changeIndirectPartnerAttribute,
                          changePartnerAttributeActivity,
                          changePartnerPartnerAttribute]
-            statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1',
-                          'Alter-2Star2', 'Partner-Activity',
-                          'Partner-Resource']
+            statlabels = [param_func_to_label(f) for f in statfuncs]
             gof_param_func_list = (list(param_func_list) +
                                    [f for f in statfuncs
                                 if f not in param_func_list])
@@ -248,9 +246,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                          changePartnerPartnerAttribute,
                          changeTriangleT2,
                          changeTriangleT3]
-            statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1',
-                          'T1', 'Contagion', 'Alter-2Star2', 'Partner-Activity',
-                          'Partner-Resource','T2', 'T3']
+            statlabels = [param_func_to_label(f) for f in statfuncs]
             gof_param_func_list = (list(param_func_list) +
                                    [f for f in statfuncs
                                 if f not in param_func_list])

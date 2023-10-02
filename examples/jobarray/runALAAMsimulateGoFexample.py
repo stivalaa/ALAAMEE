@@ -39,7 +39,7 @@ statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
              changePartnerPartnerAttribute,
              changeTriangleT2,
              changeTriangleT3]
-statlabels = ['Two-Star', 'Three-Star', 'Alter-2Star1A',
+statlabels = ['TwoStar', 'ThreeStar', 'Alter-2Star1A',
               'T1', 'Contagion', 'Alter-2Star2A', 'Partner-Activity',
               'Partner-Resource','T2', 'T3']
 gof_param_func_list = (list(param_func_list) +
