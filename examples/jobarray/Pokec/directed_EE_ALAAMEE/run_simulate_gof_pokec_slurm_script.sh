@@ -43,4 +43,4 @@ Rscript ${ROOT}/ALAAMEE/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTAT
 
 
 times
-echo -n "started at: "; date
+echo -n "ended at: "; date
