@@ -7,6 +7,7 @@
 #SBATCH --output=alaamee_covariance_pokec-%j.out
 #SBATCH --error=alaamee_covariance_pokec-%j.err
 
+echo -n "started at: "; date
 
 module load r
 

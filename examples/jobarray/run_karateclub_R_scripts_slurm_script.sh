@@ -7,6 +7,7 @@
 #SBATCH --output=alaamee_covariance_karate-%j.out
 #SBATCH --error=alaamee_covariance_karate-%j.err
 
+echo -n "started at: "; date
 
 module unload python # must do this otherwise module load r fails on cluster
 module load r 

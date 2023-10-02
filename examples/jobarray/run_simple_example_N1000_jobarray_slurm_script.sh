@@ -14,6 +14,7 @@
 #SBATCH --mem=100MB
 #SBATCH --array=0-99
 
+echo -n "started at: "; date
 
 
 echo SLURM_ARRAY_TASK_ID = ${SLURM_ARRAY_TASK_ID}

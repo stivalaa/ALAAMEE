@@ -8,6 +8,7 @@
 #SBATCH --error=alaamee_covariance_higgs-%j.err
 #SBATCH --mem-per-cpu=8GB
 
+echo -n "started at: "; date
 
 #module load r
 module load gcc/11.3.0 # needed by r/4.2.1

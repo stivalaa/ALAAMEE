@@ -7,6 +7,7 @@
 #SBATCH --output=alaamee_covariance_simexampleN1000-%j.out
 #SBATCH --error=alaamee_covariance_simexampleN1000-%j.err
 
+echo -n "started at: "; date
 
 module unload python # must do this otherwise module load r fails on cluster
 module load r 

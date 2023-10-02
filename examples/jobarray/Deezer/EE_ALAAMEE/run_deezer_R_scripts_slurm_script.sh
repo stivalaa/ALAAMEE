@@ -8,6 +8,7 @@
 #SBATCH --error=alaamee_covariance_Deezer-%j.err
 #SBATCH --partition=slim
 
+echo -n "started at: "; date
 
 module load r
 

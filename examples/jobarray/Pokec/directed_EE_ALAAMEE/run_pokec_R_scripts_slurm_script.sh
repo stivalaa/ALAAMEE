@@ -8,6 +8,7 @@
 #SBATCH --error=alaamee_covariance_pokec-%j.err
 #SBATCH --mem=8GB
 
+echo -n "started at: "; date
 
 module load gcc/11.3.0 # needed by r/4.2.1
 module load openmpi/4.1.4 # needed by r/4.2.1

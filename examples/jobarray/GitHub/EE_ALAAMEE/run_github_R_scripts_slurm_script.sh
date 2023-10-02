@@ -8,6 +8,7 @@
 #SBATCH --error=alaamee_covariance_Github-%j.err
 #SBATCH --mem=8GB
 
+echo -n "started at: "; date
 
 #RSCRIPTSDIR=${HOME}/ALAAMEE/R
 RSCRIPTSDIR=../../../../R
