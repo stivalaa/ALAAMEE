@@ -25,8 +25,9 @@ from functools import partial
 import  estimateALAAMSA
 from changeStatisticsALAAM import *
 
-param_func_list =  [changeDensity, changeActivity,
-                    changeTwoStar, changeThreeStar, changeContagion, 
+param_func_list =  [changeDensity, changeActivity, changeContagion, 
+                    changePartnerActivityTwoPath,
+                    changeTriangleT1, changeTriangleT3,
                     partial(changeoOb, "male"),
                     partial(changeoOb, "yearling"),
                     partial(changeoOc, "betweenGroupFlowCent")]

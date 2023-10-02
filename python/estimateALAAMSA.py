@@ -201,19 +201,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                          changeCyclicTriangleC3,
                          changeAlterInTwoStar2,
                          changeAlterOutTwoStar2]
-            statlabels = ["Sender", "Receiver", "Reciprocity",
-                          "EgoInTwoStar", "EgoOutTwoStar",
-                          "MixedTwoStar", "MixedTwoStarSource",
-                          "MixedTwoStarSink", "Contagion",
-                          "ContagionReciprocity",
-                          "TransitiveTriangleT1",
-                          "TransitiveTriangleT3",
-                          "TransitiveTriangleD1",
-                          "TransitiveTriangleU1",
-                          "CyclicTriangleC1",
-                          "CyclicTriangleC3",
-                          "AlterInTwoStar2",
-                          "AlterOutTwoStar2"]
+            statlabels = [param_func_to_label(f) for f in statfuncs]
             gof_param_func_list = (list(param_func_list) +
                                    [f for f in statfuncs
                                 if f not in param_func_list])
