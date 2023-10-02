@@ -28,7 +28,7 @@ from changeStatisticsALAAM import *
 ## No withinGroupDegree as we have Activity now
 param_func_list =  [changeDensity, changeActivity, changeContagion, 
                     partial(changeoOb, "male"),
-                    partial(changeoOb, "adult"),
+                    partial(changeoOb, "yearling"),
                     partial(changeoOc, "betweenGroupFlowCent"),
                     partial(changeoOc, "withinGroupEigenCent")]
 

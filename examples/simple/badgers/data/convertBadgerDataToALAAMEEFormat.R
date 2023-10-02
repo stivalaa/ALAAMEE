@@ -96,7 +96,9 @@ write.table(outcomebinattr, file = "badgers_TBpos.txt",
 
 ## Write binary attributes
 binattr <- data.frame(male = ifelse(Sex$Sex == "M", 1, 0), # Male is 1
-                      adult = ifelse(Ages$Age == "Adult", 1, 0)) # Adult is 1
+                      adult = ifelse(Ages$Age == "Adult", 1, 0), # Adult is 1
+                      female = ifelse(Sex$Sex == "F", 1, 0), # Female is 1
+                      yearling = ifelse(Ages$Age == "Yearling", 1, 0)) # Yearling is 1
 summary(binattr)
 write.table(binattr, file = "badgers_binattr.txt",
             row.names = FALSE, col.names = TRUE, quote = FALSE)
