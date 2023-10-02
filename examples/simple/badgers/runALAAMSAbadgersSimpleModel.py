@@ -25,7 +25,8 @@ from functools import partial
 import  estimateALAAMSA
 from changeStatisticsALAAM import *
 
-param_func_list =  [changeDensity, changeActivity, changeContagion, 
+## Actvity not included because related to withinGroupDegreeCent
+param_func_list =  [changeDensity, changeContagion, 
                     partial(changeoOb, "male"),
                     partial(changeoOb, "adult"),
                     partial(changeoOc, "betweenGroupFlowCent"),
