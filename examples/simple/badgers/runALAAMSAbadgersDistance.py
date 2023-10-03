@@ -151,8 +151,6 @@ print("distmatrix = ", distmatrix)#XXX
 param_func_list =  [changeDensity, changeActivity, changeContagion, 
                     partial(changeoOb, "male"),
                     partial(changeoOb, "yearling"),
-                    partial(changeoO_Osame, "group"),
-                    partial(changeoO_OsameContagion, "group"),
                     partial(changeGeographicHomophily, distmatrix),
                     partial(changeContagionDist, distmatrix)]
 
