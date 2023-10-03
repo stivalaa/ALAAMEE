@@ -328,6 +328,23 @@ def changeoO_Osame(attrname, G, A, i):
     return delta
 
 
+def changeoO_OsameContagion(attrname, G, A, i):
+    """
+    Change statistic for categorical matching exogenous attributes oO_Osame
+    contagion (outcome attribtue on both nodes with matching categorical
+    exogenous attributes)
+
+    {*}--{*}
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        if (G.catattr[attrname][u] != NA_VALUE and G.catattr[attrname][i] != NA_VALUE and
+            G.catattr[attrname][u] == G.catattr[attrname][i] and
+            A[u] == 1):
+            delta += 1
+    return delta
+
+
 def changeoO_Odiff(attrname, G, A, i):
     """Change statistic for categorical mismatching exogenous attributes
     oO_Odiff (outcome attribtue related to mismatching categorical
