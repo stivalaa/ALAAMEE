@@ -53,6 +53,7 @@ See
 """
 
 import math
+import numpy
 import functools
 
 from utils import NA_VALUE
@@ -83,7 +84,8 @@ def param_func_to_label(param_func):
     prefix = "change"
     if isinstance(param_func, functools.partial):
         funcname = param_func.func.__name__
-        suffix = ".".join([str(x) for x in param_func.args])
+        suffix = ".".join(["matrix" if isinstance(x, numpy.ndarray)
+                           else str(x) for x in param_func.args])
     else:
         funcname = param_func.__name__
         suffix = None
