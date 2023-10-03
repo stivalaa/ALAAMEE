@@ -96,6 +96,10 @@ z = np.array([complex(loc[0], loc[1]) for loc in locations])
 m, n = np.meshgrid(z, z)
 distmatrix = abs(m - n)
 print("dim distmatrix = ", np.shape(distmatrix))#XXX
+
+# normalize distances to interval [0,1]
+distmatrix = distmatrix / np.max(distmatrix)
+
 print("distmatrix = ", distmatrix)#XXX
 
 
