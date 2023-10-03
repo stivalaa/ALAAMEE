@@ -30,69 +30,6 @@ from changeStatisticsALAAM import *
 from utils import int_or_na,float_or_na,NA_VALUE
 
 
-def changeGeographicHomophily(distmatrix, G, A, i):
-    """Change statistic for GeographicHomophily, outcome attribute on
-    two actors related to the distance betwen them
-    
-    *...*
-
-    (where '...' denotes the distance as specified in distmatrix).
-    The distance matrix distmatrix is an NxN numpy matrix (where N is
-    the number of nodes in G) where distmatrix[i,j] is the distance
-    beetween nodes i and j.
-
-    In the PNet manual (Wang et al., 2009) this is called
-    "Geographic-Homophily" (p. 42), and in Daraganova & Robins (2013)
-    is referred to as "Attribute proximity [geographic homophily]"
-    "represented as dyadic covariate of logarithm of distance" (p. 245).
-    (Note we are not using logarithm here, just distance as is).
-    This is explicitly noted as accounting for geographic distance,
-    "regardless of whether these people are friends." (Daraganova & 
-    Robins 2013, p. 245).
-
-    TODO: Note this implementation is not scalable to large networks, as the
-    distance matrix is NxN. For large networks, need to implement a version
-    that instead of a matrix calls a function to find the distance between
-    two nodes. However, even then, this change statistic involves
-    iterating over all nodes, rather than just neighbour nodes, and so
-    is not scalable.
-
-    """
-    delta = 0
-    for u in G.nodeIterator():
-        if u != i and A[u] == 1:
-            delta += distmatrix[i, u]
-    return delta
-
-
-def changeContagionDist(distmatrix, G, A, i):
-    """Change statistic for ContagionDist, outcome attribute on two
-    directly connected actors related to the distance betwen them
-    
-    *...*
-     ---
-    
-    (where '...' denotes the distance as specified in distmatrix and
-    --- the network in G). The distance matrix distmatrix is an NxN
-    numpy matrix (where N is the number of nodes in G) where
-    distmatrix[i,j] is the distance beetween nodes i and j.
-
-    In the PNet manual (Wang et al., 2009) this is called
-    "Contagion-among-partners" (p. 42).
-
-    TODO: Note this implementation is not scalable to large networks, as the
-    distance matrix is NxN. For large networks, need to implement a version
-    that instead of a matrix calls a function to find the distance between
-    two nodes.
-
-    """
-    delta = 0
-    for u in G.neighbourIterator(i):
-        if A[u] == 1:
-            delta += distmatrix[i, u]
-    return delta
-
-
 ##############################################################################
 ##
 ## Main
