@@ -28,7 +28,6 @@ from changeStatisticsALAAM import *
 param_func_list =  [changeDensity, changeActivity, changeContagion, 
                     partial(changeoOb, "male"),
                     partial(changeoOb, "yearling"),
-                    partial(changeoOc, "betweenGroupFlowCent"),
                     partial(changeoO_Osame, "group")]
 
 estimateALAAMSA.run_on_network_attr(
