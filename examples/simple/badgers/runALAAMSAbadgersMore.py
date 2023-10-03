@@ -26,11 +26,10 @@ import  estimateALAAMSA
 from changeStatisticsALAAM import *
 
 param_func_list =  [changeDensity, changeActivity, changeContagion, 
-                    changePartnerActivityTwoPath,
-                    changeTriangleT1, changeTriangleT3,
                     partial(changeoOb, "male"),
                     partial(changeoOb, "yearling"),
-                    partial(changeoOc, "betweenGroupFlowCent")]
+                    partial(changeoOc, "betweenGroupFlowCent"),
+                    partial(changeoO_Osame, "group")]
 
 estimateALAAMSA.run_on_network_attr(
         'data/badgers_overallnetwork.net',
