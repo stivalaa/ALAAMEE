@@ -153,7 +153,8 @@ param_func_list =  [changeDensity, changeActivity, changeContagion,
                     partial(changeoOb, "yearling"),
                     partial(changeoO_Osame, "group"),
                     partial(changeoO_OsameContagion, "group"),
-                    partial(changeGeographicHomophily, distmatrix)]
+                    partial(changeGeographicHomophily, distmatrix),
+                    partial(changeContagionDist, distmatrix)]
 
 print("parameters: ",[param_func_to_label(f) for f in param_func_list])#XXX
 
