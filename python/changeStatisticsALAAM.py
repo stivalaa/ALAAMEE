@@ -360,6 +360,7 @@ def changeoO_Odiff(attrname, G, A, i):
             delta += 1
     return delta
 
+
 def changeSettingHomophily(settingGraph, G, A, i):
     """Change statistic for Setting-Homophily, outcome attribute on two actors
     connected in the setting network.
@@ -368,6 +369,13 @@ def changeSettingHomophily(settingGraph, G, A, i):
     
     (where '...' denotes an edge in the setting network (settingGraph) rather
     than the main network G denoted '--')
+
+    Note the PNet manual (Wang et al., 2019) is apparently wrong
+    (or at least does not agree with what IPNet implemented) here
+    for "Setting-Homophily" which is dnoted as having both the red
+    and black (setting and networ) edges [p. 42]: in fact in IPNet
+    (and hence here) only the setting edge is required, the IPNet code
+    does not test for a network edge at all.
     """
     delta = 0
     for u in settingGraph.neighbourIterator(i): #note settingGraph not G
