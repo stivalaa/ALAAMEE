@@ -1,0 +1,52 @@
+Replication of results from:
+
+Hamilton, D. G., Jones, M. E., Cameron, E. Z., Kerlin, D. H., McCallum, H., Storfer, A., ... & Hamede, R. K. (2020). Infectious disease and sickness behaviour: tumour progression affects interaction patterns and social network structure in wild Tasmanian devils. Proceedings of the Royal Society B, 287(1940), 20202454.
+
+using the replication data (in ../data/ directory) from dryad repository
+https://dx.doi.org/10.5061/dryad.xksn02vdp
+where the zip file is extracted into this directory to get the data
+files and R script.
+
+This replicates the results in Table 1 of Hamilton et al. (2020) using
+the TERGM. Note I had to make some minor changes to the R script to
+use the btergm package instead of xergm (xergm is now removed from CRAN
+and btergm is used instead), and the non-existent age data, etc.
+
+
+btergm version and citation info:
+
+  > library(btergm)
+  Registered S3 methods overwritten by 'btergm':
+    method    from
+    plot.gof  ergm
+    print.gof ergm
+  Package:  btergm
+  Version:  1.10.6
+  Date:     2022-04-01
+  Authors:  Philip Leifeld (University of Essex)
+            Skyler J. Cranmer (The Ohio State University)
+            Bruce A. Desmarais (Pennsylvania State University)
+  
+  > citation('btergm')
+  
+  To cite btergm in publications, use:
+  
+  
+  
+  A BibTeX entry for LaTeX users is
+  
+    @Article{,
+      title = {Temporal Exponential Random Graph Models with {btergm}: Estimation and Bootstrap Confidence Intervals},
+      author = {Philip Leifeld and Skyler J. Cranmer and Bruce A. Desmarais},
+      journal = {Journal of Statistical Software},
+      year = {2018},
+      volume = {83},
+      number = {6},
+      pages = {1--36},
+      doi = {10.18637/jss.v083.i06},
+    }
+  
+  
+
+ADS
+Wed Oct  4 10:32:45 AEDT 2023
