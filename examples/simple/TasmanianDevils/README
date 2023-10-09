@@ -1,10 +1,10 @@
-Stochastic-actor oriented model (SAOM) estimation with RSiena for data from:
+Models using data from:
 
 Hamilton, D. G., Jones, M. E., Cameron, E. Z., Kerlin, D. H., McCallum, H., Storfer, A., ... & Hamede, R. K. (2020). Infectious disease and sickness behaviour: tumour progression affects interaction patterns and social network structure in wild Tasmanian devils. Proceedings of the Royal Society B, 287(1940), 20202454.
 
-using the replication data (in ../tergm_replication/ directory) from dryad repository
-https://dx.doi.org/10.5061/dryad.xksn02vdp
+using the replication data (extracted in ../tergm_replication/ directory) from dryad repository:
 
+Hamilton, David (2020). Data for: Infectious disease and sickness behaviour: tumour progression affects interaction patterns and social network structure in wild Tasmanian devils [Dataset]. Dryad. https://doi.org/10.5061/dryad.xksn02vdp
   
   
 ADS
