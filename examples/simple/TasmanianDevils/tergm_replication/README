@@ -2,7 +2,7 @@ Replication of results from:
 
 Hamilton, D. G., Jones, M. E., Cameron, E. Z., Kerlin, D. H., McCallum, H., Storfer, A., ... & Hamede, R. K. (2020). Infectious disease and sickness behaviour: tumour progression affects interaction patterns and social network structure in wild Tasmanian devils. Proceedings of the Royal Society B, 287(1940), 20202454.
 
-using the replication data (in ../data/ directory) from dryad repository
+using the replication data from dryad repository
 https://dx.doi.org/10.5061/dryad.xksn02vdp
 where the zip file is extracted into this directory to get the data
 files and R script.
