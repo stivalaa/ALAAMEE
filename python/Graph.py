@@ -165,7 +165,7 @@ class Graph:
         # edge i -- j and the edge j -- i we have to divide by 2 here.
         # using // for integer (floor) division to keep result as int
         return sum([len(list(v.keys())) for v in self.G.values()])//2
-    
+
     def density(self):
         """
         Return the graph density 
@@ -245,6 +245,22 @@ class Graph:
         Return iterator over nodes of graph
         """
         return iter(self.G.keys())
+
+
+    def edgeIterator(self):
+        """
+        Iterate over edges in graph
+
+        This is a generator function that yields a tuple (i, j) for
+        each edge (i, j) in the graph
+        """
+        # Since for simplicity in undirected graph, we always store
+        # both the edge i -- j and the edge j -- i we will return only
+        # those edges where i < j
+        for i in self.G.keys():
+            for j in self.G[i].keys():
+                if j < i:
+                    yield (i, j)
 
 
     @functools.cache # Memoize the twoPaths function (Python 3.9)

@@ -23,6 +23,8 @@ from changeStatisticsALAAMbipartite import *
 DEFAULT_NUM_TESTS = 10000 # number of random node samples
 
 ####################### utililty functions ###################################
+#
+##############################################################################
 
 def get_random_nodelist(G, A, num_tests):
     """
@@ -101,7 +103,34 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
     assert new_deltas == old_deltas
 
 
+
+
+####################  ALAAM statistics functions ############################
+#
+# These compute ALAAM statistics directly (rather than by summing change
+# statistics) in order to verify / regression test change statistic functions
+# by comparing the dircetly computed statistic to the value computed
+# by summming the correpsonding change statistic for each node with
+# outcome variable = 1 (as done by the computeObservedStatistics() function)
+#
+# These functions all have signature (G, A) where G is the Graph (or Digraph)
+# and A is the outcome vector.
+#
+##############################################################################
+
+def Contagion(G, A):
+    """
+    Undirected Contagtion statistic (partner attribute)
+
+    *--*
+    """
+    pass #TODO
+
+
+
 ######################## test functions #####################################
+#
+##############################################################################
 
 def test_undirected_graph():
     """
@@ -124,6 +153,8 @@ def test_undirected_graph():
     assert all([len(list(g.neighbourIterator(i))) == g.degree(i) for i in g.nodeIterator()])
     for i in g.nodeIterator():
         assert(len(list(g.neighbourIterator(i))) == len(set(g.neighbourIterator(i)))) # check no repeated neighbours in iterator
+
+    assert g.numEdges() == len(list(g.edgeIterator()))
 
     print("OK,", time.time() - start, "s")
     print()
