@@ -173,6 +173,7 @@ def test_undirected_change_stats_karate():
     assert g.numNodes() == 34
     assert g.numEdges() == 78
     assert round(g.density(), 7) == 0.1390374 # from R/igraph
+    assert g.numEdges() == len(list(g.edgeIterator()))
     g.printSummary()
     outcome_binvar = list(map(int_or_na, open("../examples/data/karate_club/karate_outcome.txt").read().split()[1:]))
     obs_stats = computeObservedStatistics(g, outcome_binvar, [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changeContagion, changeTriangleT1, changeTriangleT2, changeTriangleT3, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute, partial(changeoOb, "senior"), partial(changeo_Ob, "senior"), partial(changeoOc, "age"), partial(changeo_Oc, "age"), partial(changeoO_Osame, "gender")])
@@ -282,6 +283,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     start = time.time()
     g = Graph(netfilename, binattrfilename, contattrfilename)
     g.printSummary()
+    assert g.numEdges() == len(list(g.edgeIterator()))
     outcome_binvar = list(map(int_or_na, open(outcomefilename).read().split()[1:]))
     assert len(outcome_binvar) == g.numNodes()
 
