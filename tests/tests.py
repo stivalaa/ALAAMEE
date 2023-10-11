@@ -121,6 +121,8 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
     change_stat_sum = computeObservedStatistics(g, outcome_binvar,
                                                 [changestats_func])[0]
     stat_value =  stat_func(g, outcome_binvar)
+    print(stat_value)#XXX
+    print(change_stat_sum)#XXX
     assert change_stat_sum == stat_value
 
 
@@ -181,7 +183,7 @@ def GWActivity_kiter(alpha, G, A):
        o
 
     This implementation iterations over node degrees rather than nodes
-    
+
     See equations (3) and (4) in:
 
     Stivala, A. (2023). Overcoming near-degeneracy in the autologistic
@@ -189,14 +191,13 @@ def GWActivity_kiter(alpha, G, A):
     https://arxiv.org/abs/2309.07338v2
 
     """
-    maxdegree = max(g.degree(i) for i in G.nodeIterator)
-    # build frequency counts (histogram) of node degrees using
-    # Counter (multiset or bag) data type from collections library
-    # which conveniently returns 0 instead of KeyError key not present
-    degree_freq = Counter(g.degree(i) for i in G.nodeIterator)
-    pass
-    
-    
+    maxdegree = max(G.degree(i) for i in G.nodeIterator())
+    # build frequency counts (histogram) of degrees of nodes with
+    # outcome variable 1 using Counter (multiset or bag) data type
+    # from collections library which conveniently returns 0 instead of
+    # KeyError key not present
+    degree1_freq = Counter(G.degree(i) for i in G.nodeIterator() if A[i] == 1)
+    return sum(exp(-alpha * k) * degree1_freq[k] for k in range(maxdegree+1))
 
 
 ######################### test functions #####################################
@@ -372,6 +373,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     print("changeGWActivity")
     alpha = log(2)
     compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity, alpha), partial(changeGWActivity, alpha))
+    compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity_kiter, alpha), partial(changeGWActivity, alpha))
 
     print("OK,", time.time() - start, "s")
     print()
