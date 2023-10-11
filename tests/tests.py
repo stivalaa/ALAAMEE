@@ -102,7 +102,24 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
     #print(new_deltas)
     assert new_deltas == old_deltas
 
+def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
+                                          changestats_func):
+    """
+    Compare the dircetly computed statistic to the value computed
+    by summming the correpsonding change statistic for each node with
+    outcome variable = 1 (as done by the computeObservedStatistics()
+    function), to verify they get the same result.
 
+    Parameters:
+        g                  - Graph object
+        outcome_binvar     - vector of 0/1 outcome variables for ALAAM
+        stat_func          - function that directly computes statistic value
+        changestats_func   - change statistics function
+    """
+    change_stat_sum = computeObservedStatistics(g, outcome_binvar,
+                                                [changestats_func])[0]
+    stat_value =  stat_func(g, outcome_binvar)
+    assert change_stat_sum == stat_value
 
 
 ####################  ALAAM statistics functions ############################
@@ -111,7 +128,8 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
 # statistics) in order to verify / regression test change statistic functions
 # by comparing the dircetly computed statistic to the value computed
 # by summming the correpsonding change statistic for each node with
-# outcome variable = 1 (as done by the computeObservedStatistics() function)
+# outcome variable = 1 (as done by the computeObservedStatistics() function),
+# which is done by the compare_statistic_sum_changestatistic() function.
 #
 # These functions all have signature (G, A) where G is the Graph (or Digraph)
 # and A is the outcome vector.
@@ -295,7 +313,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_OLD, changeTriangleT1, num_tests)
 
     print("changeContagion")
-    assert computeObservedStatistics(g, outcome_binvar, [changeContagion])[0] == Contagion(g, outcome_binvar)
+    compare_statistic_sum_changestatistic(g, outcome_binvar, Contagion, changeContagion)
     compare_changestats_implementations(g, outcome_binvar, changeContagion_SLOWER, changeContagion, num_tests)
 
     print("OK,", time.time() - start, "s")
