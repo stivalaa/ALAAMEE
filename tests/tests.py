@@ -182,7 +182,7 @@ def GWActivity_kiter(alpha, G, A):
       \ :
        o
 
-    This implementation iterations over node degrees rather than nodes
+    This implementation iterates over node degrees rather than nodes
 
     See equations (3) and (4) in:
 
