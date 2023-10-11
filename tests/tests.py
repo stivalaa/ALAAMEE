@@ -105,7 +105,8 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
     assert new_deltas == old_deltas
 
 def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
-                                          changestats_func):
+                                          changestats_func,
+                                          epsilon = None):
     """
     Compare the dircetly computed statistic to the value computed
     by summming the correpsonding change statistic for each node with
@@ -117,13 +118,19 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
         outcome_binvar     - vector of 0/1 outcome variables for ALAAM
         stat_func          - function that directly computes statistic value
         changestats_func   - change statistics function
+        epsilon            - epsilon for testing absolute difference in values
+                             for float, or None for exact (for integers)
+                             default None
     """
     change_stat_sum = computeObservedStatistics(g, outcome_binvar,
                                                 [changestats_func])[0]
     stat_value =  stat_func(g, outcome_binvar)
-    #print(stat_value)
-    #print(change_stat_sum)
-    assert change_stat_sum == stat_value
+    print(stat_value)
+    print(change_stat_sum)
+    if epsilon is not None:
+        assert abs(change_stat_sum - stat_value) < epsilon
+    else:
+        assert change_stat_sum == stat_value
 
 
 ####################  ALAAM statistics functions ############################
@@ -371,9 +378,9 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     compare_changestats_implementations(g, outcome_binvar, changeContagion_SLOWER, changeContagion, num_tests)
 
     print("changeGWActivity")
-    alpha = log(2)
-    compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity, alpha), partial(changeGWActivity, alpha))
-    compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity_kiter, alpha), partial(changeGWActivity, alpha))
+    for alpha in [log(2)] + [x * 0.2 for x in range(1,25)]:
+        compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity, alpha), partial(changeGWActivity, alpha), epsilon = 1e-08)
+        compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity_kiter, alpha), partial(changeGWActivity, alpha), epsilon = 1e-08)
 
     print("OK,", time.time() - start, "s")
     print()
