@@ -11,6 +11,7 @@ import time
 import random
 from functools import partial
 from math import log,exp
+from collections import Counter
 import numpy
 
 from Graph import Graph,int_or_na
@@ -166,8 +167,36 @@ def GWActivity(alpha, G, A):
     https://arxiv.org/abs/2309.07338v2
 
     """
-    return sum([exp(-alpha * G.degree(i))
-                for i in G.nodeIterator() if A[i] == 1])
+    return sum(exp(-alpha * G.degree(i))
+               for i in G.nodeIterator() if A[i] == 1)
+
+
+def GWActivity_kiter(alpha, G, A):
+    """Geometrically Weighted Activity statistic
+
+       o
+      /
+     *--o
+      \ :
+       o
+
+    This implementation iterations over node degrees rather than nodes
+    
+    See equations (3) and (4) in:
+
+    Stivala, A. (2023). Overcoming near-degeneracy in the autologistic
+    actor attribute model. arXiv preprint arXiv:2309.07338v2.
+    https://arxiv.org/abs/2309.07338v2
+
+    """
+    maxdegree = max(g.degree(i) for i in G.nodeIterator)
+    # build frequency counts (histogram) of node degrees using
+    # Counter (multiset or bag) data type from collections library
+    # which conveniently returns 0 instead of KeyError key not present
+    degree_freq = Counter(g.degree(i) for i in G.nodeIterator)
+    pass
+    
+    
 
 
 ######################### test functions #####################################
