@@ -10,6 +10,7 @@
 import time
 import random
 from functools import partial
+from math import log,exp
 import numpy
 
 from Graph import Graph,int_or_na
@@ -132,7 +133,10 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
 # which is done by the compare_statistic_sum_changestatistic() function.
 #
 # These functions all have signature (G, A) where G is the Graph (or Digraph)
-# and A is the outcome vector.
+# and A is the outcome vector. (For those with aditional parameters, such as
+# alpha on GWActivity, the additional parameters are at the start to allow
+# the use of functools.partial to create a function with the (G, A) signature
+# e.g.  partial(GWActivity, log(2))
 #
 ##############################################################################
 
@@ -146,12 +150,31 @@ def Contagion(G, A):
     return sum([int(A[i] == A[j] == 1) for (i, j) in G.edgeIterator()])
 
 
+def GWActivity(alpha, G, A):
+    """Geometrically Weighted Activity statistic
+
+       o
+      /
+     *--o
+      \ :
+       o
+
+    See equation (4) in:
+
+    Stivala, A. (2023). Overcoming near-degeneracy in the autologistic
+    actor attribute model. arXiv preprint arXiv:2309.07338.
+
+    """
+    return sum([exp(-alpha * G.degree(i))
+                for i in G.nodeIterator() if A[i] == 1])
+
 
 ######################## test functions #####################################
 #
 ##############################################################################
 
 def test_undirected_graph():
+
     """
     test Graph object
     """
@@ -315,6 +338,10 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     print("changeContagion")
     compare_statistic_sum_changestatistic(g, outcome_binvar, Contagion, changeContagion)
     compare_changestats_implementations(g, outcome_binvar, changeContagion_SLOWER, changeContagion, num_tests)
+
+    print("changeGWActivity")
+    alpha = log(2)
+    compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity, alpha), partial(changeGWActivity, alpha))
 
     print("OK,", time.time() - start, "s")
     print()
