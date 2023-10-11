@@ -128,7 +128,7 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
 # These compute ALAAM statistics directly (rather than by summing change
 # statistics) in order to verify / regression test change statistic functions
 # by comparing the dircetly computed statistic to the value computed
-# by summming the correpsonding change statistic for each node with
+# by summming the corresponding change statistic for each node with
 # outcome variable = 1 (as done by the computeObservedStatistics() function),
 # which is done by the compare_statistic_sum_changestatistic() function.
 #
@@ -169,7 +169,7 @@ def GWActivity(alpha, G, A):
                 for i in G.nodeIterator() if A[i] == 1])
 
 
-######################## test functions #####################################
+######################### test functions #####################################
 #
 ##############################################################################
 
