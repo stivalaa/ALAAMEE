@@ -162,7 +162,8 @@ def GWActivity(alpha, G, A):
     See equation (4) in:
 
     Stivala, A. (2023). Overcoming near-degeneracy in the autologistic
-    actor attribute model. arXiv preprint arXiv:2309.07338.
+    actor attribute model. arXiv preprint arXiv:2309.07338v2.
+    https://arxiv.org/abs/2309.07338v2
 
     """
     return sum([exp(-alpha * G.degree(i))
