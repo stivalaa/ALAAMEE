@@ -259,7 +259,7 @@ class Graph:
         # those edges where i < j
         for i in self.G.keys():
             for j in self.G[i].keys():
-                if j < i:
+                if i < j:
                     yield (i, j)
 
 
