@@ -167,8 +167,19 @@ def Contagion(G, A):
     *--*
     """
     # Number of edges i -- j where both A[i] and A[j] are 1
-    return sum([int(A[i] == A[j] == 1) for (i, j) in G.edgeIterator()])
+    return sum(int(A[i] == A[j] == 1) for (i, j) in G.edgeIterator())
 
+def Contagion_nodeiter(G, A):
+    """
+    Undirected Contagion statistic (partner attribute)
+
+    *--*
+
+    Alternative implementation iterating over nodes not edges
+    """
+    ## Division by two to adjust for double-counting (operator // is int. div.)
+    return sum(sum((A[u] == 1) for u in G.neighbourIterator(i))
+                               for i in G.nodeIterator() if A[i] == 1) // 2
 
 def GWActivity(alpha, G, A):
     """Geometrically Weighted Activity statistic
@@ -235,7 +246,7 @@ def GWContagion_kiter(alpha, G, A):
     # outcmome 1 of nodes also with outcome variable 1 using Counter
     # (multiset or bag) data type from collections library which
     # conveniently returns 0 instead of KeyError key not present
-    degree1_1_freq = Counter(sum([(A[u] == 1) for u in G.neighbourIterator(i)])
+    degree1_1_freq = Counter(sum((A[u] == 1) for u in G.neighbourIterator(i))
                              for i in G.nodeIterator() if A[i] == 1)
     return sum(exp(-alpha * k) * degree1_1_freq[k] for k in range(maxdegree+1))
 
@@ -250,7 +261,7 @@ def GWContagion(alpha, G, A):
        *
 
     """
-    return sum(exp(-alpha * sum([(A[u] == 1) for u in G.neighbourIterator(i)]))
+    return sum(exp(-alpha * sum((A[u] == 1) for u in G.neighbourIterator(i)))
                for i in G.nodeIterator() if A[i] == 1)
 
 
@@ -421,6 +432,9 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_OLD, changeTriangleT1, num_tests)
 
     print("changeContagion")
+    print(Contagion(g, outcome_binvar))#XXX
+    print(Contagion_nodeiter(g, outcome_binvar))#XXX
+    assert Contagion(g, outcome_binvar) == Contagion_nodeiter(g, outcome_binvar)
     compare_statistic_sum_changestatistic(g, outcome_binvar, Contagion, changeContagion)
     compare_changestats_implementations(g, outcome_binvar, changeContagion_SLOWER, changeContagion, num_tests)
 
