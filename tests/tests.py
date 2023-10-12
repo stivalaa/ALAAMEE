@@ -424,6 +424,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
 
     print("GWContagion")
     print(GWContagion(0, g, outcome_binvar))#XXX
+    print(GWContagion_kiter(0, g, outcome_binvar))#XXX
     print( Contagion(g, outcome_binvar))#XXX
     assert GWContagion(0, g, outcome_binvar) == Contagion(g, outcome_binvar)
     alpha = log(2)
