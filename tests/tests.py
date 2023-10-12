@@ -10,7 +10,7 @@
 import time
 import random
 from functools import partial
-from math import log,exp
+from math import log,exp,isclose
 from collections import Counter
 import numpy
 
@@ -129,7 +129,7 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
     print(stat_value)
     print(change_stat_sum)
     if epsilon is not None:
-        assert abs(change_stat_sum - stat_value) < epsilon
+        assert math.isclose(change_stat_sum, stat_value, abs_tol=epsilon)
     else:
         assert change_stat_sum == stat_value
 
@@ -221,6 +221,7 @@ def GWContagion_kiter(alpha, G, A):
     This implementation iterates over node degrees rather than nodes
 
     """
+    # FIXME this is wrong because of double-counting
     maxdegree = max(G.degree(i) for i in G.nodeIterator())
     # build frequency counts (histogram) of number of neighbours with
     # outcmome 1 of nodes also with outcome variable 1 using Counter
@@ -241,6 +242,7 @@ def GWContagion(alpha, G, A):
        *
 
     """
+    # FIXME this is wrong because of double-counting
     return sum(exp(-alpha * sum([(A[u] == 1) for u in G.neighbourIterator(i)]))
                for i in G.nodeIterator() if A[i] == 1)
 
@@ -421,6 +423,9 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity_kiter, alpha), partial(changeGWActivity, alpha), epsilon = 1e-08)
 
     print("GWContagion")
+    print(GWContagion(0, g, outcome_binvar))#XXX
+    print( Contagion(g, outcome_binvar))#XXX
+    assert GWContagion(0, g, outcome_binvar) == Contagion(g, outcome_binvar)
     alpha = log(2)
     assert GWContagion(alpha, g, outcome_binvar) == GWContagion_kiter(alpha, g, outcome_binvar)
     #compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
