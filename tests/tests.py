@@ -230,7 +230,6 @@ def GWContagion_kiter(alpha, G, A):
     This implementation iterates over node degrees rather than nodes
 
     """
-    # FIXME this is wrong because of double-counting(?)
     maxdegree = max(G.degree(i) for i in G.nodeIterator())
     # build frequency counts (histogram) of number of neighbours with
     # outcmome 1 of nodes also with outcome variable 1 using Counter
@@ -251,7 +250,6 @@ def GWContagion(alpha, G, A):
        *
 
     """
-    # FIXME this is wrong because of double-counting(?)
     return sum(exp(-alpha * sum([(A[u] == 1) for u in G.neighbourIterator(i)]))
                for i in G.nodeIterator() if A[i] == 1)
 
