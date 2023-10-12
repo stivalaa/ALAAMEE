@@ -594,3 +594,25 @@ def changeGWContagion_OLD(alpha, G, A, i):
 
     """
     return math.exp(-alpha * changeContagion(G, A, i))
+
+
+def changeGWContagion(alpha, G, A, i):
+    """Change statistic for Geometrically Weighted Contagion.
+
+    NOTE: do not use, apparently not correct
+
+       *
+      /
+     *--*
+      \ :
+       *
+
+
+    This is like GWActivity, but with the outcome on all the Alter
+    nodes as well as Ego. The idea is to use this rather than
+    Contagion to test for Alters and Ego both having outcome, but with
+    geometic decay to help prevent near-degeneracy problems, just as
+    GWActivity does when used instead of Activity (and TwoStar, etc.)
+
+    """
+    return math.exp(-alpha * sum([(A[u] == 1) for u in G.neighbourIterator(i)]))
