@@ -151,6 +151,15 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
 #
 ##############################################################################
 
+def Activity(G, A):
+    """
+    Activity statistic (undirected)
+
+    *--o
+    """
+    return sum(G.degree(i) for i in G.nodeIterator() if A[i] == 1)
+
+
 def Contagion(G, A):
     """
     Undirected Contagtion statistic (partner attribute)
@@ -221,7 +230,7 @@ def GWContagion_kiter(alpha, G, A):
     This implementation iterates over node degrees rather than nodes
 
     """
-    # FIXME this is wrong because of double-counting
+    # FIXME this is wrong because of double-counting(?)
     maxdegree = max(G.degree(i) for i in G.nodeIterator())
     # build frequency counts (histogram) of number of neighbours with
     # outcmome 1 of nodes also with outcome variable 1 using Counter
@@ -242,7 +251,7 @@ def GWContagion(alpha, G, A):
        *
 
     """
-    # FIXME this is wrong because of double-counting
+    # FIXME this is wrong because of double-counting(?)
     return sum(exp(-alpha * sum([(A[u] == 1) for u in G.neighbourIterator(i)]))
                for i in G.nodeIterator() if A[i] == 1)
 
@@ -416,6 +425,9 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     print("changeContagion")
     compare_statistic_sum_changestatistic(g, outcome_binvar, Contagion, changeContagion)
     compare_changestats_implementations(g, outcome_binvar, changeContagion_SLOWER, changeContagion, num_tests)
+
+    print("changeActivity")
+    compare_statistic_sum_changestatistic(g, outcome_binvar, Activity, changeActivity)
 
     print("changeGWActivity")
     for alpha in [log(2)] + [x * 0.2 for x in range(1,25)]:
