@@ -94,12 +94,13 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
         num_tests          - number of nodes to randomly sample
     """ 
     nodelist = get_random_nodelist(g, outcome_binvar, num_tests)
-    outcome_binvar_orig = list.copy(outcome_binvar)
+    outcome_binvar1 = list.copy(outcome_binvar)
+    outcome_binvar2 = list.copy(outcome_binvar)
     oldstart = time.time()
-    old_deltas = basic_sampler_test(g, outcome_binvar, changestats_func_1, nodelist)
+    old_deltas = basic_sampler_test(g, outcome_binvar1, changestats_func_1, nodelist)
     print("old version: ", time.time() - oldstart, "s")
     newstart = time.time()
-    new_deltas = basic_sampler_test(g, outcome_binvar_orig, changestats_func_2, nodelist)
+    new_deltas = basic_sampler_test(g, outcome_binvar2, changestats_func_2, nodelist)
     print("new version: ", time.time() - newstart, "s")
     #print(new_deltas)
     assert new_deltas == old_deltas
