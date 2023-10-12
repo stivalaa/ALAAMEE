@@ -125,8 +125,8 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
     change_stat_sum = computeObservedStatistics(g, outcome_binvar,
                                                 [changestats_func])[0]
     stat_value =  stat_func(g, outcome_binvar)
-    #print(stat_value)
-    #print(change_stat_sum)
+    print(stat_value)
+    print(change_stat_sum)
     if epsilon is not None:
         assert abs(change_stat_sum - stat_value) < epsilon
     else:
@@ -205,6 +205,43 @@ def GWActivity_kiter(alpha, G, A):
     # KeyError key not present
     degree1_freq = Counter(G.degree(i) for i in G.nodeIterator() if A[i] == 1)
     return sum(exp(-alpha * k) * degree1_freq[k] for k in range(maxdegree+1))
+
+
+
+def GWContagion_kiter(alpha, G, A):
+    """Geometrically Weighted Contagion statistic
+
+       *
+      /
+     *--*
+      \ :
+       *
+
+    This implementation iterates over node degrees rather than nodes
+
+    """
+    maxdegree = max(G.degree(i) for i in G.nodeIterator())
+    # build frequency counts (histogram) of number of neighbours with
+    # outcmome 1 of nodes also with outcome variable 1 using Counter
+    # (multiset or bag) data type from collections library which
+    # conveniently returns 0 instead of KeyError key not present
+    degree1_1_freq = Counter(sum([(A[u] == 1) for u in G.neighbourIterator(i)])
+                             for i in G.nodeIterator() if A[i] == 1)
+    return sum(exp(-alpha * k) * degree1_1_freq[k] for k in range(maxdegree+1))
+
+
+def GWContagion(alpha, G, A):
+    """Geometrically Weighted Contagion statistic
+
+       *
+      /
+     *--*
+      \ :
+       *
+
+    """
+    return sum(exp(-alpha * sum([(A[u] == 1) for u in G.neighbourIterator(i)]))
+               for i in G.nodeIterator() if A[i] == 1)
 
 
 ######################### test functions #####################################
@@ -382,6 +419,11 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity, alpha), partial(changeGWActivity, alpha), epsilon = 1e-08)
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity_kiter, alpha), partial(changeGWActivity, alpha), epsilon = 1e-08)
 
+    print("GWContagion")
+    alpha = log(2)
+    assert GWContagion(alpha, g, outcome_binvar) == GWContagion_kiter(alpha, g, outcome_binvar)
+    compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion, alpha), partial(changeGWContagion_OLD, alpha), epsilon = 1e-08)
+    compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion_kiter, alpha), partial(changeGWContagion_OLD, alpha), epsilon = 1e-08)
     print("OK,", time.time() - start, "s")
     print()
 
