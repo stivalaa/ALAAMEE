@@ -178,6 +178,8 @@ def Contagion_nodeiter(G, A):
     Alternative implementation iterating over nodes not edges
     """
     ## Division by two to adjust for double-counting (operator // is int. div.)
+    ## Note the above implementation iterating over edges instead is therefore
+    ## simpler and more elegant (and more efficient), does not double-count
     return sum(sum((A[u] == 1) for u in G.neighbourIterator(i))
                                for i in G.nodeIterator() if A[i] == 1) // 2
 
@@ -432,8 +434,6 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_OLD, changeTriangleT1, num_tests)
 
     print("changeContagion")
-    print(Contagion(g, outcome_binvar))#XXX
-    print(Contagion_nodeiter(g, outcome_binvar))#XXX
     assert Contagion(g, outcome_binvar) == Contagion_nodeiter(g, outcome_binvar)
     compare_statistic_sum_changestatistic(g, outcome_binvar, Contagion, changeContagion)
     compare_changestats_implementations(g, outcome_binvar, changeContagion_SLOWER, changeContagion, num_tests)
