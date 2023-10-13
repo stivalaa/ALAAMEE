@@ -375,7 +375,8 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
 
     print("changeContagion")
     compare_statistic_sum_changestatistic(g, outcome_binvar, Contagion, changeContagion)
-    compare_changestats_implementations(g, outcome_binvar, changeContagion_SLOWER, changeContagion, num_tests)
+    compare_changestats_implementations(g, outcome_binvar, changeContagion_LISTCOMP, changeContagion, num_tests)
+    compare_changestats_implementations(g, outcome_binvar, changeContagion_GENEXP, changeContagion, num_tests)
 
     print("changeGWActivity")
     for alpha in [log(2)] + [x * 0.2 for x in range(1,25)]:

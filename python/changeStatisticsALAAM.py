@@ -562,7 +562,7 @@ def changeTriangleT1_OLD(G, A, i):
                  for v in G.neighbourIterator(u)]) // 2)
 
 
-def changeContagion_SLOWER(G, A, i):
+def changeContagion_LISTCOMP(G, A, i):
     """
     change statistic for Contagion (partner attribute)
 
@@ -572,6 +572,17 @@ def changeContagion_SLOWER(G, A, i):
     unfortunately this is slower than loop version.
     """
     return sum([(A[u] == 1) for u in G.neighbourIterator(i)])
+
+def changeContagion_GENEXP(G, A, i):
+    """
+    change statistic for Contagion (partner attribute)
+
+    *--*
+
+    More elegant version using generator expression not loops, 
+    unfortunately this is slower than loop version.
+    """
+    return sum((A[u] == 1) for u in G.neighbourIterator(i))
 
 
 def changeGWContagion_OLD(alpha, G, A, i):
