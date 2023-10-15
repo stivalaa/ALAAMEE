@@ -610,7 +610,6 @@ def changeGWContagion_OLD(alpha, G, A, i):
 def changeGWContagion(alpha, G, A, i):
     """Change statistic for Geometrically Weighted Contagion.
 
-    NOTE: do not use, apparently not correct
 
        *
       /
@@ -626,4 +625,11 @@ def changeGWContagion(alpha, G, A, i):
     GWActivity does when used instead of Activity (and TwoStar, etc.)
 
     """
-    return math.exp(-alpha * sum([(A[u] == 1) for u in G.neighbourIterator(i)]))
+    delta = math.exp(-alpha * sum([(A[u] == 1)
+                                   for u in G.neighbourIterator(i)]))
+    for j in G.neighbourIterator(i):
+        if A[j] == 1:
+            djplus = sum([(A[u] == 1) for u in G.neighbourIterator(j)])
+            delta += (math.exp(-alpha * (djplus + 1)) -
+                      math.exp(-alpha * djplus))
+    return delta
