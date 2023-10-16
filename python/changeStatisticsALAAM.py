@@ -521,7 +521,35 @@ def changeContagionDist(distmatrix, G, A, i):
     return delta
 
 
- 
+
+def changeGWContagion(alpha, G, A, i):
+    """Change statistic for Geometrically Weighted Contagion.
+
+
+       *
+      /
+     *--*
+      \ :
+       *
+
+
+    This is like GWActivity, but with the outcome on all the Alter
+    nodes as well as Ego. The idea is to use this rather than
+    Contagion to test for Alters and Ego both having outcome, but with
+    geometic decay to help prevent near-degeneracy problems, just as
+    GWActivity does when used instead of Activity (and TwoStar, etc.)
+
+    """
+    delta = math.exp(-alpha * sum([(A[u] == 1)
+                                   for u in G.neighbourIterator(i)]))
+    for j in G.neighbourIterator(i):
+        if A[j] == 1:
+            djplus = sum([(A[u] == 1) for u in G.neighbourIterator(j)])
+            delta += (math.exp(-alpha * (djplus + 1)) -
+                      math.exp(-alpha * djplus))
+    return delta
+
+
 # ================== old versions for regression testing ======================
 
 def changePartnerPartnerAttribute_OLD(G, A, i):
@@ -585,30 +613,3 @@ def changeContagion_GENEXP(G, A, i):
     return sum((A[u] == 1) for u in G.neighbourIterator(i))
 
 
-
-def changeGWContagion(alpha, G, A, i):
-    """Change statistic for Geometrically Weighted Contagion.
-
-
-       *
-      /
-     *--*
-      \ :
-       *
-
-
-    This is like GWActivity, but with the outcome on all the Alter
-    nodes as well as Ego. The idea is to use this rather than
-    Contagion to test for Alters and Ego both having outcome, but with
-    geometic decay to help prevent near-degeneracy problems, just as
-    GWActivity does when used instead of Activity (and TwoStar, etc.)
-
-    """
-    delta = math.exp(-alpha * sum([(A[u] == 1)
-                                   for u in G.neighbourIterator(i)]))
-    for j in G.neighbourIterator(i):
-        if A[j] == 1:
-            djplus = sum([(A[u] == 1) for u in G.neighbourIterator(j)])
-            delta += (math.exp(-alpha * (djplus + 1)) -
-                      math.exp(-alpha * djplus))
-    return delta
