@@ -448,10 +448,10 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWActivity_kiter, alpha), partial(changeGWActivity, alpha), epsilon = 1e-08)
 
     print("GWContagion")
-    alpha = log(2)
-    assert GWContagion(alpha, g, outcome_binvar) == GWContagion_kiter(alpha, g, outcome_binvar)
-    compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
-    compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion_kiter, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
+    for alpha in [log(2)] + [x * 0.2 for x in range(1,25)]:
+        assert math.isclose(GWContagion(alpha, g, outcome_binvar), GWContagion_kiter(alpha, g, outcome_binvar), abs_tol = 1e-08)
+        compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
+        compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion_kiter, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
     print("OK,", time.time() - start, "s")
     print()
 
