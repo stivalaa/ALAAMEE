@@ -75,14 +75,18 @@ class Graph:
 
     """
 
-    def __init__(self, pajek_edgelist_filename, binattr_filename=None,
+    def __init__(self, pajek_edgelist_filename=None, binattr_filename=None,
                  contattr_filename=None, catattr_filename=None,
-                 zone_filename=None):
+                 zone_filename=None,
+                 num_nodes=None):
         """
         Construct graph from Pajek format network and binary attributes.
 
         Parameters:
             pajek_edgelist_filename - edge list in Pajek format
+                                      If None then num_nodes must be
+                                      used instead to make empty graph
+                                      Default None
             binattr_filename  - binary attributes
                                 Default None: no binary attributes loaded
             contattr_filename - continuous attributes
@@ -91,7 +95,13 @@ class Graph:
                                 Default None: no categorical attributes loaded
             zone_filename    - snowball sample zone for each node
                                 Deafult None: no zone information loaded
+            num_nodes        - number of nodes in empty graph to create
+                               (only if pajek_edgelist_filename = None)
+                               Default None
         """
+        assert not (num_nodes is not None and
+                    pajek_edgelist_filename is not None)
+        assert num_nodes is not None or pajek_edgelist_filename is not None
         self.G = None  # dict of dicts as described above
         self.binattr = None # binary attributes: dict name, list by node (int not boolean)
         self.contattr = None # continuous attributes: dict name, list by node
@@ -102,24 +112,29 @@ class Graph:
         self.max_zone= None  # maximum snowball zone number
         self.inner_nodes = None # list of nodes with zone < max_zone
 
-        f =  open(pajek_edgelist_filename)
-        l = f.readline() # first line must be e.g. "*vertices 500"
-        n = int(l.split()[1])
+        if pajek_edgelist_filename is not None:
+            f =  open(pajek_edgelist_filename)
+            l = f.readline() # first line must be e.g. "*vertices 500"
+            n = int(l.split()[1])
+        else:
+            n = num_nodes
 
         # empty graph n nodes        
         self.G = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
 
-        while l and l.rstrip().lower() != "*edges":
-            l = f.readline()
-        if not l:
-           raise ValueError("no *edges in Pajek file " + pajek_edgelist_filename)            
-        lsplit = f.readline().split()
-        while len(lsplit) >= 2:
-            lsplit = lsplit[:2]  # only used first two (i,j) ignore weight
-            (i, j) = list(map(int, lsplit))
-            assert(i >= 1 and i <= n and j >= 1 and j <= n)
-            self.insertEdge(i-1, j-1)    # input is 1-based but we are 0-based
+        if pajek_edgelist_filename is not None:
+            while l and l.rstrip().lower() != "*edges":
+                l = f.readline()
+            if not l:
+                raise ValueError("no *edges in Pajek file " +
+                                 pajek_edgelist_filename)
             lsplit = f.readline().split()
+            while len(lsplit) >= 2:
+                lsplit = lsplit[:2]  # only used first two (i,j) ignore weight
+                (i, j) = list(map(int, lsplit))
+                assert(i >= 1 and i <= n and j >= 1 and j <= n)
+                self.insertEdge(i-1, j-1)    # input is 1-based but we are 0-based
+                lsplit = f.readline().split()
 
         # Note in the following,
         #  map(list, zip(*[row.split() for row in open(filename).readlines()]))
