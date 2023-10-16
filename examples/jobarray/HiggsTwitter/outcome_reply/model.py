@@ -24,9 +24,6 @@ param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(ch
 ## sim gof good on Density, GWSender, GWReceiover but bad (obs > sim outside 95%) on Contagion
 #param_func_list =  [changeDensity, partial(changeGWSender, 5.0), partial(changeGWReceiver, 1.0), changeContagion]
 
-## not good convergence on GWContagion (never is it seems)
-## Bad gof sim on GWContagion (negative values - should not even be possible)
-#param_func_list =  [changeDensity, partial(changeGWSender, 1.0), partial(changeGWReceiver, 1.0),  partial(changeGWContagion, 1.0)]
 
 ## sim gof good on Density, GWSender, GWReceiover but bad (obs > sim outside 95%) on Contagion
 #param_func_list =  [changeDensity, partial(changeGWSender, 1.0), partial(changeGWReceiver, 5.0),  changeContagion]
