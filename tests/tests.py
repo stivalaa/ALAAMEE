@@ -126,8 +126,8 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
     change_stat_sum = computeObservedStatistics(g, outcome_binvar,
                                                 [changestats_func])[0]
     stat_value =  stat_func(g, outcome_binvar)
-    print(stat_value)
-    print(change_stat_sum)
+    #print(stat_value)
+    #print(change_stat_sum)
     if epsilon is not None:
         assert math.isclose(change_stat_sum, stat_value, abs_tol=epsilon)
     else:
@@ -408,6 +408,7 @@ def test_gwcontagion():
     in 16/10/2023).
     """
     print("testing GWContagion...")
+    start = time.time()
     # Note we only create the relevant part of the graph here, it is
     # just a line graph 0 -- 1 -- 2 -- 3
     # with all nodes but 1 having outcome A[i] = 1 (we then compute
@@ -440,6 +441,8 @@ def test_gwcontagion():
     assert GWContagion(alpha, G, A) == exp(-alpha) + exp(-alpha*2) + exp (-alpha*2) + exp(-alpha)
     A[1] = 0
     assert changeGWContagion(alpha, G, A, 1) == exp(-alpha*2) + (exp(-alpha*(0+1)) - exp(-alpha*0)) + (exp(-alpha*(1+1)) - exp(-alpha*1))
+    print("OK,", time.time() - start, "s")
+    print()
 
 
 def test_regression_undirected_change_stats(netfilename, outcomefilename,
