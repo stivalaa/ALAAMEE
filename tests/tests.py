@@ -401,6 +401,47 @@ def test_directed_change_stats_highschool():
     print()
 
 
+def test_gwcontagion():
+    """
+    Test of GWContagion statistic implementation on hand-worked example
+    (handwritten derivation of change statistic dated 13/10/23 scanned
+    in 16/10/2023).
+    """
+    print("testing GWContagion...")
+    # Note we only create the relevant part of the graph here, it is
+    # just a line graph 0 -- 1 -- 2 -- 3
+    # with all nodes but 1 having outcome A[i] = 1 (we then compute
+    # GWContagion with A[1] == 0 and A[1] == 1 and the change between them)
+    G = Graph(num_nodes = 4)
+    assert G.numNodes() == 4
+    assert G.numEdges() == 0
+    G.insertEdge(0, 1)
+    G.insertEdge(1, 2)
+    G.insertEdge(2, 3)
+    assert G.numEdges() == 3
+    assert G.degree(0) == 1
+    assert G.degree(1) == 2
+    assert G.degree(2) == 2
+    assert G.degree(3) == 1
+    alpha = log(2)
+    A = [1, 0, 1, 1]
+    #
+    # * -- o -- * -- *
+    #
+    assert Activity(G, A) == 1 + 0 + 2 + 1
+    assert Contagion(G, A) == 1
+    assert GWContagion(alpha, G, A) == exp(0) + 0 + exp(-alpha) + exp(-alpha)
+    A[1] = 1
+    #
+    # * -- * -- * -- *
+    #
+    assert Activity(G, A) == 1 + 2 + 2 + 1
+    assert Contagion(G, A) == 3
+    assert GWContagion(alpha, G, A) == exp(-alpha) + exp(-alpha*2) + exp (-alpha*2) + exp(-alpha)
+    A[1] = 0
+    assert changeGWContagion(alpha, G, A, 1) == exp(-alpha*2) + (exp(-alpha*(0+1)) - exp(-alpha*0)) + (exp(-alpha*(1+1)) - exp(-alpha*1))
+
+
 def test_regression_undirected_change_stats(netfilename, outcomefilename,
                                             binattrfilename, contattrfilename,
                                             catattrfilename = None,
@@ -647,6 +688,7 @@ def main():
     test_undirected_graph()
     test_undirected_change_stats_karate()
     test_directed_change_stats_highschool()
+    test_gwcontagion()
     test_regression_undirected_change_stats("../examples/data/karate_club/karate.net", "../examples/data/karate_club/karate_outcome.txt", "../examples/data/karate_club/karate_binattr.txt","../examples/data/karate_club/karate_contattr.txt", "../examples/data/karate_club/karate_catattr.txt")
     test_regression_undirected_change_stats("../examples/data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt", "../examples/data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt", "../examples/data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt", "../examples/data/simulated_n500_bin_cont2/continuousAttributes_n500.txt")
     test_regression_undirected_change_stats("../examples/data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt", "../examples/data/simulated_n1000_bin_cont/sample-n1000_bin_cont3800000.txt", "../examples/data/simulated_n1000_bin_cont/binaryAttribute_50_50_n1000.txt", "../examples/data/simulated_n1000_bin_cont/continuousAttributes_n1000.txt")
