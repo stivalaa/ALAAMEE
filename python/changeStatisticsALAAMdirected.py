@@ -617,8 +617,6 @@ def changeGWReceiver(alpha, G, A, i):
 def changeGWContagion(alpha, G, A, i):
     """Change statistic for Geometrically Weighted Contagion.
 
-       NOTE: do not use, apparently not correct
-
         >*
       /
      *-->*

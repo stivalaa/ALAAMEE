@@ -266,6 +266,29 @@ def GWContagion(alpha, G, A):
     return sum(exp(-alpha * sum((A[u] == 1) for u in G.neighbourIterator(i)))
                for i in G.nodeIterator() if A[i] == 1)
 
+def directedGWContagion(alpha, G, A):
+    """Directed Geometrically Weighted Contagion statistic
+
+        >*
+      /
+     *-->*
+      \ :
+       >*
+
+          *
+        /
+      <
+     *<--*
+      <  :
+        \
+         *
+    """
+    return ( sum(exp(-alpha * sum((A[u] == 1) for u in G.outIterator(i)))
+                 for i in G.nodeIterator() if A[i] == 1) +
+             sum(exp(-alpha * sum((A[u] == 1) for u in G.inIterator(i)))
+                 for i in G.nodeIterator() if A[i] == 1) )
+
+
 
 ######################### test functions #####################################
 #
@@ -679,6 +702,11 @@ def test_regression_directed_change_stats(netfilename, outcomefilename,
 
     print("changeReciprocity")
     compare_changestats_implementations(g, outcome_binvar, changeStatisticsALAAMdirected.changeReciprocity_OLD, changeStatisticsALAAMdirected.changeReciprocity, num_tests)
+
+    print("changeGWContagion")
+    for alpha in [log(2)] + [x * 0.2 for x in range(1,25)]:
+        compare_statistic_sum_changestatistic(g, outcome_binvar, partial(directedGWContagion, alpha), partial(changeStatisticsALAAMdirected.changeGWContagion, alpha), epsilon = 1e-08)
+
     print("OK,", time.time() - start, "s")
     print()
 

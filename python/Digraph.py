@@ -247,3 +247,10 @@ class Digraph:
             print('There are', self.max_zone, 'snowball sample waves, with', len(self.inner_nodes), 'nodes in inner waves')
         else:
             print('No snowball zones')
+
+    def nodeIterator(self):
+        """
+        Return iterator over nodes of graph
+        """
+        return iter(self.G.keys())
+
