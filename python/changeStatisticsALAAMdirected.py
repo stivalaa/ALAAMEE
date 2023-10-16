@@ -614,6 +614,51 @@ def changeGWReceiver(alpha, G, A, i):
     return math.exp(-alpha * G.indegree(i))
 
 
+def changeGWContagion(alpha, G, A, i):
+    """Change statistic for Geometrically Weighted Contagion.
+
+       NOTE: do not use, apparently not correct
+
+        >*
+      /
+     *-->*
+      \ :
+       >*
+
+          *
+        /
+      <
+     *<--*
+      <  :
+        \
+         *
+
+    This is a geometrically weighted version of changeContagion.
+    The idea is to use this rather than
+    Contagion to test for Alters and Ego both having outcome, but with
+    geometic decay to help prevent near-degeneracy problems, just as
+    GWSender and GWReceiver does when used instead of Sender and Receiver
+    (and EgoInTwoStar, EgoOutTwoStar, etc.)
+
+    """
+    delta = math.exp(-alpha * sum([(A[u] == 1)
+                                   for u in G.outIterator(i)]))
+    for j in G.outIterator(i):
+        if A[j] == 1:
+            djplus = sum([(A[u] == 1) for u in G.inIterator(j)])
+            delta += (math.exp(-alpha * (djplus + 1)) -
+                      math.exp(-alpha * djplus))
+
+    delta += math.exp(-alpha * sum([(A[u] == 1)
+                                   for u in G.inIterator(i)]))
+    for j in G.inIterator(i):
+        if A[j] == 1:
+            djplus = sum([(A[u] == 1) for u in G.outIterator(j)])
+            delta += (math.exp(-alpha * (djplus + 1)) -
+                      math.exp(-alpha * djplus))
+            
+    return delta
+
 
 # ================== old versions for regression testing ======================
 
@@ -669,34 +714,4 @@ def changeReciprocity_OLD(G, A, i):
     unfortunately turns out to be slower than loop version.
     """
     return sum([G.isArc(u, i) for u in G.outIterator(i)])
-
-
-def changeGWContagion_OLD(alpha, G, A, i):
-    """Change statistic for Geometrically Weighted Contagion.
-
-       NOTE: do not use, apparently not correct
-
-        >*
-      /
-     *-->*
-      \ :
-       >*
-
-          *
-        /
-      <
-     *<--*
-      <  :
-        \
-         *
-
-    This is a geometrically weighted version of changeContagion.
-    The idea is to use this rather than
-    Contagion to test for Alters and Ego both having outcome, but with
-    geometic decay to help prevent near-degeneracy problems, just as
-    GWSender and GWReceiver does when used instead of Sender and Receiver
-    (and EgoInTwoStar, EgoOutTwoStar, etc.)
-
-    """
-    return math.exp(-alpha * changeContagion(G, A, i))
 
