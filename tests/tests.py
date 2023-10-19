@@ -707,6 +707,7 @@ def test_regression_directed_change_stats(netfilename, outcomefilename,
     print("changeGWContagion")
     for alpha in [log(2)] + [x * 0.2 for x in range(1,25)]:
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(directedGWContagion, alpha), partial(changeStatisticsALAAMdirected.changeGWContagion, alpha), epsilon = 1e-08)
+        compare_changestats_implementations(g, outcome_binvar, partial(changeStatisticsALAAMdirected.changeGWContagion_LISTCOMP, alpha), partial(changeStatisticsALAAMdirected.changeGWContagion, alpha), num_tests)
 
     print("OK,", time.time() - start, "s")
     print()

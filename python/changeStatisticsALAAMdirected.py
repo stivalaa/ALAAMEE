@@ -638,20 +638,35 @@ def changeGWContagion(alpha, G, A, i):
     GWSender and GWReceiver does when used instead of Sender and Receiver
     (and EgoInTwoStar, EgoOutTwoStar, etc.)
 
+    Implemented with only (ugly and more code) loops, as it is faster
+    than more elegant implementation using list comprehensions.
+
     """
-    delta = math.exp(-alpha * sum([(A[u] == 1)
-                                   for u in G.outIterator(i)]))
+    diplus = 0
+    for u in G.outIterator(i):
+        if A[u] == 1:
+            diplus += 1
+    delta = math.exp(-alpha * diplus)
     for j in G.outIterator(i):
+        djplus = 0
         if A[j] == 1:
-            djplus = sum([(A[u] == 1) for u in G.inIterator(j)])
+            for v in G.inIterator(j):
+                if A[v] == 1:
+                    djplus += 1
             delta += (math.exp(-alpha * (djplus + 1)) -
                       math.exp(-alpha * djplus))
 
-    delta += math.exp(-alpha * sum([(A[u] == 1)
-                                   for u in G.inIterator(i)]))
+    diplus = 0
+    for u in G.inIterator(i):
+        if A[u] == 1:
+            diplus += 1
+    delta += math.exp(-alpha * diplus)
     for j in G.inIterator(i):
+        djplus = 0
         if A[j] == 1:
-            djplus = sum([(A[u] == 1) for u in G.outIterator(j)])
+            for v in G.outIterator(j):
+                if A[v] == 1:
+                    djplus += 1
             delta += (math.exp(-alpha * (djplus + 1)) -
                       math.exp(-alpha * djplus))
             
@@ -713,3 +728,47 @@ def changeReciprocity_OLD(G, A, i):
     """
     return sum([G.isArc(u, i) for u in G.outIterator(i)])
 
+def changeGWContagion_LISTCOMP(alpha, G, A, i):
+    """Change statistic for Geometrically Weighted Contagion.
+
+        >*
+      /
+     *-->*
+      \ :
+       >*
+
+          *
+        /
+      <
+     *<--*
+      <  :
+        \
+         *
+
+    This is a geometrically weighted version of changeContagion.
+    The idea is to use this rather than
+    Contagion to test for Alters and Ego both having outcome, but with
+    geometic decay to help prevent near-degeneracy problems, just as
+    GWSender and GWReceiver does when used instead of Sender and Receiver
+    (and EgoInTwoStar, EgoOutTwoStar, etc.)
+
+    This version uses list comprehensions meaning there is less code
+    and it is more elegant and readable, but unfortunately slower.
+    """
+    delta = math.exp(-alpha * sum([(A[u] == 1)
+                                   for u in G.outIterator(i)]))
+    for j in G.outIterator(i):
+        if A[j] == 1:
+            djplus = sum([(A[u] == 1) for u in G.inIterator(j)])
+            delta += (math.exp(-alpha * (djplus + 1)) -
+                      math.exp(-alpha * djplus))
+
+    delta += math.exp(-alpha * sum([(A[u] == 1)
+                                   for u in G.inIterator(i)]))
+    for j in G.inIterator(i):
+        if A[j] == 1:
+            djplus = sum([(A[u] == 1) for u in G.outIterator(j)])
+            delta += (math.exp(-alpha * (djplus + 1)) -
+                      math.exp(-alpha * djplus))
+            
+    return delta
