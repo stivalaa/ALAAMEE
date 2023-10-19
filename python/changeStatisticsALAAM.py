@@ -543,19 +543,18 @@ def changeGWContagion(alpha, G, A, i):
     than more elegant implementation using list comprehensions.
 
     """
+    delta = 0
     diplus = 0
-    for u in G.neighbourIterator(i):
-        if A[u] == 1:
-            diplus += 1
-    delta = math.exp(-alpha * diplus)
     for j in G.neighbourIterator(i):
         djplus = 0
         if A[j] == 1:
+            diplus += 1
             for v in G.neighbourIterator(j):
                 if A[v] == 1:
                     djplus += 1
             delta += (math.exp(-alpha * (djplus + 1)) -
                       math.exp(-alpha * djplus))
+    delta += math.exp(-alpha * diplus)
     return delta
 
 

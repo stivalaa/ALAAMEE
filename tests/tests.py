@@ -81,7 +81,8 @@ def basic_sampler_test(G, A, changestats_func, nodelist):
     return deltas
 
 def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
-                                        changestats_func_2, num_tests):
+                                        changestats_func_2, num_tests,
+                                        epsilon =  None):
     """
     compare two change statistics functions, verify they get the same
     results and show times
@@ -92,6 +93,9 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
         changestats_func_1 - old implementation of change stats function
         changestats_func_2 - new implementation of chage stats function
         num_tests          - number of nodes to randomly sample
+        epsilon            - epsilon for testing absolute difference in values
+                             for float, or None for exact (for integers)
+                             default None
     """ 
     nodelist = get_random_nodelist(g, outcome_binvar, num_tests)
     outcome_binvar1 = list.copy(outcome_binvar)
@@ -102,8 +106,13 @@ def compare_changestats_implementations(g, outcome_binvar, changestats_func_1,
     newstart = time.time()
     new_deltas = basic_sampler_test(g, outcome_binvar2, changestats_func_2, nodelist)
     print("new version: ", time.time() - newstart, "s")
-    #print(new_deltas)
-    assert new_deltas == old_deltas
+    if epsilon is not None:
+        #print([abs(new_deltas[i] - old_deltas[i]) for i in range(len(new_deltas))])
+        assert all([math.isclose(new_deltas[i], old_deltas[i], abs_tol=epsilon)
+                    for i in range(len(new_deltas))])
+    else:
+        assert new_deltas == old_deltas
+
 
 def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
                                           changestats_func,
@@ -519,7 +528,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
         assert math.isclose(GWContagion(alpha, g, outcome_binvar), GWContagion_kiter(alpha, g, outcome_binvar), abs_tol = 1e-08)
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion_kiter, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
-        compare_changestats_implementations(g, outcome_binvar, partial(changeGWContagion_LISTCOMP, alpha), partial(changeGWContagion, alpha), num_tests)
+        compare_changestats_implementations(g, outcome_binvar, partial(changeGWContagion_LISTCOMP, alpha), partial(changeGWContagion, alpha), num_tests, epsilon = 1e-08)
     print("OK,", time.time() - start, "s")
     print()
 
@@ -707,7 +716,7 @@ def test_regression_directed_change_stats(netfilename, outcomefilename,
     print("changeGWContagion")
     for alpha in [log(2)] + [x * 0.2 for x in range(1,25)]:
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(directedGWContagion, alpha), partial(changeStatisticsALAAMdirected.changeGWContagion, alpha), epsilon = 1e-08)
-        compare_changestats_implementations(g, outcome_binvar, partial(changeStatisticsALAAMdirected.changeGWContagion_LISTCOMP, alpha), partial(changeStatisticsALAAMdirected.changeGWContagion, alpha), num_tests)
+        compare_changestats_implementations(g, outcome_binvar, partial(changeStatisticsALAAMdirected.changeGWContagion_LISTCOMP, alpha), partial(changeStatisticsALAAMdirected.changeGWContagion, alpha), num_tests, epsilon = 1e-08)
 
     print("OK,", time.time() - start, "s")
     print()
