@@ -519,6 +519,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
         assert math.isclose(GWContagion(alpha, g, outcome_binvar), GWContagion_kiter(alpha, g, outcome_binvar), abs_tol = 1e-08)
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion_kiter, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
+        compare_changestats_implementations(g, outcome_binvar, partial(changeGWContagion_LISTCOMP, alpha), partial(changeGWContagion, alpha), num_tests)
     print("OK,", time.time() - start, "s")
     print()
 
