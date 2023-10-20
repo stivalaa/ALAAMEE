@@ -11,7 +11,7 @@ import math
 import functools
 from utils import int_or_na,float_or_na,NA_VALUE
 
-from numba import jitclass
+from numba.experimental import jitclass
 
 
 @jitclass
@@ -279,7 +279,7 @@ class Graph:
                     yield (i, j)
 
 
-    @functools.cache # Memoize the twoPaths function (Python 3.9)
+#does not work with numba:    @functools.cache # Memoize the twoPaths function (Python 3.9)
     def twoPaths(self, i, j):
         """
         Count undirected two-paths for (i, j): paths i -- v -- j for some v
