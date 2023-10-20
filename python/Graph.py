@@ -11,9 +11,10 @@ import math
 import functools
 from utils import int_or_na,float_or_na,NA_VALUE
 
+from numba import jitclass
 
 
-
+@jitclass
 class Graph:
     """The network is represented as a dictionary of dictionaries.
     Nodes are indexed by integers 0..n-1. The outermost dictionary has the node
