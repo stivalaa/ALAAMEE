@@ -1,6 +1,6 @@
 #!/bin/sh
 #SBATCH --job-name="ALAAM_sim"
-#SBATCH --time=0-00:40:00
+#SBATCH --time=0-08:00:00
 #SBATCH --output=alaam_sim_pokec-%A_%a.out
 #SBATCH --error=alaam_sim_pokec-%A_%a.err
 #SBATCH --ntasks=1

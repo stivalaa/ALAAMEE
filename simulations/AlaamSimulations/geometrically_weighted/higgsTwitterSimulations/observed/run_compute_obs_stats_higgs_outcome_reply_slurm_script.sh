@@ -1,6 +1,6 @@
 #!/bin/sh
 #SBATCH --job-name="ALAAM_obs"
-#SBATCH --time=0-01:35:00
+#SBATCH --time=0-02:35:00
 #SBATCH --output=alaam_obs_higgs_outcome_reply-%j.out
 #SBATCH --error=alaam_obs_higgs_outcome_reply-%j.err
 #SBATCH --ntasks=1

@@ -1,6 +1,6 @@
 #!/bin/sh
 #SBATCH --job-name="ALAAM_sim"
-#SBATCH --time=0-00:30:00
+#SBATCH --time=0-01:00:00
 #SBATCH --output=alaam_sim_project90noattr-%A_%a.out
 #SBATCH --error=alaam_sim_project90noattr-%A_%a.err
 #SBATCH --ntasks=1
