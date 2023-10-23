@@ -569,7 +569,7 @@ def changePartnerPartnerAttribute_OLD(G, A, i):
     delta = 0
     for u in G.neighbourIterator(i):
         if A[u] == 1:
-            # FIXME this is inefficient, iterating over all nodes
+            # this is inefficient, iterating over all nodes
             for v in range(G.numNodes()):
                 if v == i or v == u:
                     continue
