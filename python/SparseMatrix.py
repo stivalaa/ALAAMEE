@@ -72,13 +72,13 @@ class SparseMatrix:
         """
         Return iterator over columns of nonzero entries in row i
         """
-        return iter(self.A[i].keys())
+        return self.A[i].keys()
 
     def rowNonZeroValuesIterator(self, i):
         """
         Return iterator over nonzero entries in row i
         """
-        return iter(self.A[i].values())
+        return self.A[i].values()
 
     def insertValue(self, i, j, v):
         """
