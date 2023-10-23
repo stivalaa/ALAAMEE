@@ -205,7 +205,7 @@ class Graph:
         """
         Return iterator over neighbours of i
         """
-        return self.G[i].keys()
+        return iter(self.G[i].keys())
 
     def insertEdge(self, i, j):
         """
@@ -259,7 +259,7 @@ class Graph:
         """
         Return iterator over nodes of graph
         """
-        return self.G.keys()
+        return iter(self.G.keys())
 
 
     def edgeIterator(self):

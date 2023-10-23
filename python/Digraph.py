@@ -195,13 +195,13 @@ class Digraph:
         """
         Return iterator over out-neighbours of i
         """
-        return self.G[i].keys()
+        return iter(self.G[i].keys())
 
     def inIterator(self, i):
         """
         Return iterator over in-neighbours of i
         """
-        return self.Grev[i].keys()
+        return iter(self.Grev[i].keys())
 
     def insertArc(self, i, j, w = 1):
         """
@@ -252,5 +252,5 @@ class Digraph:
         """
         Return iterator over nodes of graph
         """
-        return self.G.keys()
+        return iter(self.G.keys())
 
