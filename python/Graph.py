@@ -76,7 +76,7 @@ class Graph:
     stored simply as a list (in node id order just as for attributes).
 
     """
-    G: numba.types.DictType(numba.types.int32, numba.types.DictType(numba.types.int32, numba.types.int32)) # dict of dicts as described above
+##    G: numba.types.DictType(numba.types.int32, numba.types.DictType(numba.types.int32, numba.types.int32)) # dict of dicts as described above
     binattr: numba.types.DictType(numba.types.unicode_type, numba.types.ListType(numba.types.int32)) # binary attributes: dict name, list by node (int not boolean)
     contattr: numba.types.DictType(numba.types.unicode_type, numba.types.ListType(numba.types.int32)) # continuous attributes: dict name, list by node
     catattr: numba.types.DictType(numba.types.unicode_type, numba.types.ListType(numba.types.int32))  # categorical attributes: dict name, list by node
@@ -113,10 +113,7 @@ class Graph:
         assert not (num_nodes is not None and
                     pajek_edgelist_filename is not None)
         assert num_nodes is not None or pajek_edgelist_filename is not None
-        #self.G = None  # dict of dicts as described above
-        #does not work: self.G = numba.typed.Dict.empty(key_type = numba.types.int32 ,value_type = numba.typed.Dict.empty(key_type = numba.types.int32, value_type = numba.types.int32))
-        #does not work: self.G = numba.typed.Dict.empty(key_type = numba.types.int32 , value_type = numba.types.int32)
-        #self.G =  numba.types.int32() # even this fails with an error - cannot get numba to work at all
+#        self.G = None  # dict of dicts as described above
         self.binattr = None # binary attributes: dict name, list by node (int not boolean)
         self.contattr = None # continuous attributes: dict name, list by node
         self.catattr = None  # categorical attributes: dict name, list by node
@@ -134,7 +131,14 @@ class Graph:
             n = num_nodes
 
         # empty graph n nodes        
-        self.G = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
+        #self.G = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
+        ## Does not work ("unexpected keyword argument 'key_type'):
+        # self.G = numba.typed.Dict.empty(numba.types.int32,
+        #                                 numba.types.DictType(
+        #                                     key_type = numba.types.int32,
+        #                                     value_type = numba.types.int32))
+        ## even this simple one (not even what I need) fails:
+        self.G = numba.typed.Dict.empty(numba.types.int32, numba.types.int32)
 
         if pajek_edgelist_filename is not None:
             while l and l.rstrip().lower() != "*edges":
