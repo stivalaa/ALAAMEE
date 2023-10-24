@@ -596,8 +596,9 @@ def changeLogContagion(G, A, i):
             for v in G.neighbourIterator(j):
                 if A[v] == 1:
                     djplus += 1
-            delta += (math.log(djplus + 2) -
-                      math.log(djplus + 1))
+            # delta += (math.log(djplus + 2) -
+            #           math.log(djplus + 1))
+            delta += math.log((djplus + 2) / (djplus + 1))
     delta += math.log(diplus + 1)
     return delta
 
