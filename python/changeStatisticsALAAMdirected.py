@@ -614,6 +614,8 @@ def changeGWReceiver(alpha, G, A, i):
     return math.exp(-alpha * G.indegree(i))
 
 
+# ======================= experimental statistics ============================
+
 def changeGWContagion(alpha, G, A, i):
     """Change statistic for Geometrically Weighted Contagion.
 
@@ -637,6 +639,19 @@ def changeGWContagion(alpha, G, A, i):
     geometic decay to help prevent near-degeneracy problems, just as
     GWSender and GWReceiver does when used instead of Sender and Receiver
     (and EgoInTwoStar, EgoOutTwoStar, etc.)
+
+    Note that this statistic may not actually be useful (in particular
+    difficult or impossible to interpret its corresponding parameter)
+    as this change statistic can be negative or positive, depending
+    on the number of neighbour nodes of i with the outcome variable,
+    and the number of neighbour nodes of those neigbbours with the outcome
+    varaible.
+
+    Doing simulation experiments, if we vary GWContagion (keeping other
+    paramters fixed), and plot the value of the Contagion statistic against
+    the value of the GWContagion parameter,
+    then it can be increasing, or decreasing, depending on the network.
+
 
     Implemented with only (ugly and more code) loops, as it is faster
     than more elegant implementation using list comprehensions.
@@ -748,6 +763,18 @@ def changeGWContagion_LISTCOMP(alpha, G, A, i):
     geometic decay to help prevent near-degeneracy problems, just as
     GWSender and GWReceiver does when used instead of Sender and Receiver
     (and EgoInTwoStar, EgoOutTwoStar, etc.)
+
+    Note that this statistic may not actually be useful (in particular
+    difficult or impossible to interpret its corresponding parameter)
+    as this change statistic can be negative or positive, depending
+    on the number of neighbour nodes of i with the outcome variable,
+    and the number of neighbour nodes of those neigbbours with the outcome
+    varaible.
+
+    Doing simulation experiments, if we vary GWContagion (keeping other
+    paramters fixed), and plot the value of the Contagion statistic against
+    the value of the GWContagion parameter,
+    then it can be increasing, or decreasing, depending on the network.
 
     This version uses list comprehensions meaning there is less code
     and it is more elegant and readable, but unfortunately slower.
