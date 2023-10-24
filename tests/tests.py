@@ -299,6 +299,21 @@ def directedGWContagion(alpha, G, A):
 
 
 
+def LogContagion(G, A):
+    """Logarithmic Contagion statistic
+
+       *
+      /
+     *--*
+      \ :
+       *
+
+    """
+    ## Note adding one to degree so never have log(0)
+    return sum(log(sum((A[u] == 1) for u in G.neighbourIterator(i)) + 1)
+               for i in G.nodeIterator() if A[i] == 1)
+
+
 ######################### test functions #####################################
 #
 ##############################################################################
@@ -529,6 +544,10 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(GWContagion_kiter, alpha), partial(changeGWContagion, alpha), epsilon = 1e-08)
         compare_changestats_implementations(g, outcome_binvar, partial(changeGWContagion_LISTCOMP, alpha), partial(changeGWContagion, alpha), num_tests, epsilon = 1e-08)
+
+    print("LogContagion")
+    compare_statistic_sum_changestatistic(g, outcome_binvar, LogContagion, changeLogContagion, epsilon = 1e-08)
+
     print("OK,", time.time() - start, "s")
     print()
 
