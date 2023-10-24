@@ -135,10 +135,10 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
     start = time.time()
     change_stat_sum = computeObservedStatistics(g, outcome_binvar,
                                                 [changestats_func])[0]
-    print("sum changestats time:  ", time.time() - start, "s")
+    #print("sum changestats time:  ", time.time() - start, "s")
     start = time.time()
     stat_value =  stat_func(g, outcome_binvar)
-    print("direct statistic time: ", time.time() - start, "s")
+    #print("direct statistic time: ", time.time() - start, "s")
     #print(stat_value)
     #print(change_stat_sum)
     if epsilon is not None:
