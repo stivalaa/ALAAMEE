@@ -318,6 +318,31 @@ def LogContagion(G, A):
                for i in G.nodeIterator() if A[i] == 1)
 
 
+def directedLogContagion(G, A):
+    """Directed Log Contagion statistic
+
+        >*
+      /
+     *-->*
+      \ :
+       >*
+
+          *
+        /
+      <
+     *<--*
+      <  :
+        \
+         *
+    """
+    ## Note adding one to degree so never have log(0)
+    return  ( sum(log(sum((A[u] == 1) for u in G.outIterator(i)) + 1)
+                  for i in G.nodeIterator() if A[i] == 1) +
+              sum(log(sum((A[u] == 1) for u in G.inIterator(i)) + 1)
+                  for i in G.nodeIterator() if A[i] == 1) )
+
+
+
 ######################### test functions #####################################
 #
 ##############################################################################
@@ -740,6 +765,9 @@ def test_regression_directed_change_stats(netfilename, outcomefilename,
     for alpha in [log(2)] + [x * 0.2 for x in range(1,25)]:
         compare_statistic_sum_changestatistic(g, outcome_binvar, partial(directedGWContagion, alpha), partial(changeStatisticsALAAMdirected.changeGWContagion, alpha), epsilon = 1e-08)
         compare_changestats_implementations(g, outcome_binvar, partial(changeStatisticsALAAMdirected.changeGWContagion_LISTCOMP, alpha), partial(changeStatisticsALAAMdirected.changeGWContagion, alpha), num_tests, epsilon = 1e-08)
+
+    print("changeLogContagion")
+    compare_statistic_sum_changestatistic(g, outcome_binvar, directedLogContagion, changeStatisticsALAAMdirected.changeLogContagion, epsilon = 1e-08)
 
     print("OK,", time.time() - start, "s")
     print()

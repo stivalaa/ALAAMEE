@@ -685,6 +685,59 @@ def changeGWContagion(alpha, G, A, i):
     return delta
 
 
+def changeLogContagion(G, A, i):
+    """Change statistic for Log Contagion.
+
+        >*
+      /
+     *-->*
+      \ :
+       >*
+
+          *
+        /
+      <
+     *<--*
+      <  :
+        \
+         *
+
+
+    Implemented with only (ugly and more code) loops, as it is faster
+    than more elegant implementation using list comprehensions.
+
+    """
+    ## Note adding one to degree so never have log(0)
+    delta = 0
+    diplus = 0
+    for j in G.outIterator(i):
+        djplus = 0
+        if A[j] == 1:
+            diplus += 1
+            for v in G.inIterator(j):
+                if A[v] == 1:
+                    djplus += 1
+            # delta += (math.log(djplus + 2) -
+            #           math.log(djplus + 1))
+            delta += math.log((djplus + 2) / (djplus + 1))
+    delta += math.log(diplus + 1)
+
+    diplus = 0
+    for j in G.inIterator(i):
+        djplus = 0
+        if A[j] == 1:
+            diplus += 1
+            for v in G.outIterator(j):
+                if A[v] == 1:
+                    djplus += 1
+            # delta += (math.log(djplus + 2) -
+            #           math.log(djplus + 1))
+            delta += math.log((djplus + 2) / (djplus + 1))
+    delta += math.log(diplus + 1)
+
+    return delta
+
+
 # ================== old versions for regression testing ======================
 
 def changeContagion_OLD(G, A, i):
