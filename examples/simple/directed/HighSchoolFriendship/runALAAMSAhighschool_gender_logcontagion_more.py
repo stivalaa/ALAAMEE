@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    runALAAMSAhighschool_gender_gwcontagion_more.py
+# File:    runALAAMSAhighschool_gender_logcontagion_more.py
 # Author:  Alex Stivala
 # Created: October 2023
 #
@@ -18,7 +18,7 @@ import estimateALAAMSA
 from changeStatisticsALAAMdirected import *
 from changeStatisticsALAAM import changeDensity, param_func_to_label
 
-param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), partial(changeGWContagion, log(2.0)), changeReciprocity, changeContagionReciprocity, changeMixedTwoStarSource, changeMixedTwoStarSink, changeTransitiveTriangleT1, changeTransitiveTriangleT3, partial(changeSenderMatch, "class"), partial(changeReceiverMatch, "class"), partial(changeReciprocityMatch, "class")]
+param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeLogContagion, changeReciprocity, changeContagionReciprocity, changeMixedTwoStarSource, changeMixedTwoStarSink, changeTransitiveTriangleT1, changeTransitiveTriangleT3, partial(changeSenderMatch, "class"), partial(changeReceiverMatch, "class"), partial(changeReciprocityMatch, "class")]
 
 estimateALAAMSA.run_on_network_attr(
         '../../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net',

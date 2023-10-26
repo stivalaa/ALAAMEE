@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# File:    runALAAMSAhighschool_gender_gwcontagion.py
+# File:    runALAAMSAhighschool_gender_logcontagion.py
 # Author:  Alex Stivala
 # Created: October 2023
 #
@@ -18,7 +18,7 @@ import estimateALAAMSA
 from changeStatisticsALAAMdirected import *
 from changeStatisticsALAAM import changeDensity, param_func_to_label
 
-param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), partial(changeGWContagion, log(2.0))]
+param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeLogContagion]
 
 estimateALAAMSA.run_on_network_attr(
         '../../../data/directed/HighSchoolFriendship/highschool_friendship_arclist.net',
