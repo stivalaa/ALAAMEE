@@ -20,7 +20,7 @@ from changeStatisticsALAAM import *
 ##
 ## main
 ##
-param_func_list = [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changePartnerActivityTwoPath, changeContagion, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute, changeTriangleT1, changeTriangleT2, changeTriangleT3, partial(changeGWActivity, log(2.0)), partial(changeGWContagion, log(2.0))]
+param_func_list = [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changePartnerActivityTwoPath, changeContagion, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute, changeTriangleT1, changeTriangleT2, changeTriangleT3, partial(changeGWActivity, log(2.0)), partial(changeGWContagion, log(2.0)), changeLogContagion]
 
 get_observed_stats_from_network_attr(
         '../../../deezerEuropeSimulations/data//deezer_europe.net',

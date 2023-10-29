@@ -108,7 +108,7 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
 ## main
 ##
 
-param_func_list  =  [changeDensity, changeSender, changeReceiver, changeContagion, changeReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar,  changeContagionReciprocity, changeAlterOutTwoStar2, changeTransitiveTriangleT1, changeTransitiveTriangleT3, partial(changeGWSender, log(2.0)),  partial(changeGWReceiver, log(2.0)), partial(changeGWContagion, log(2.0))]
+param_func_list  =  [changeDensity, changeSender, changeReceiver, changeContagion, changeReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar,  changeContagionReciprocity, changeAlterOutTwoStar2, changeTransitiveTriangleT1, changeTransitiveTriangleT3, partial(changeGWSender, log(2.0)),  partial(changeGWReceiver, log(2.0)), partial(changeGWContagion, log(2.0)), changeLogContagion]
 
 get_observed_stats_from_network_attr(
         '../../../HighSchoolFriendship/data/highschool_friendship_arclist.net',
