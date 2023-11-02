@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name="ALAAMEE_jobarray"
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-96:00:00
 #SBATCH --output=alaamee_higgs-%A_%a.out
 #SBATCH --error=alaamee_higgs-%A_%a.err
 #SBATCH --ntasks=1

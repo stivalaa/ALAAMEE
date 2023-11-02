@@ -24,7 +24,7 @@ from model import param_func_list
 ##
 
 ## Add extra statistics not in model for goodness-of-fit
-statfuncs =  [changeSender, changeReceiver, changeReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar,  changeContagionReciprocity]  
+statfuncs =  [changeSender, changeReceiver, changeReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar, changeContagion,  changeContagionReciprocity]  
 param_func_list += [f for f in statfuncs if f not in param_func_list]
 
 get_observed_stats_from_network_attr(

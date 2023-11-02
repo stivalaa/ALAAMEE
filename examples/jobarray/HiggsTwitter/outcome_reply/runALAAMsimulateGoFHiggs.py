@@ -33,7 +33,7 @@ assert paramnames == labels
 theta = np.array(estimates)
 
 ## Add extra statistics not in model for goodness-of-fit
-statfuncs =  [changeSender, changeReceiver, changeReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar,  changeContagionReciprocity]  
+statfuncs =  [changeSender, changeReceiver, changeReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar, changeContagion,  changeContagionReciprocity]  
 param_func_list += [f for f in statfuncs if f not in param_func_list]
 labels =  [param_func_to_label(f) for f in param_func_list]
 
