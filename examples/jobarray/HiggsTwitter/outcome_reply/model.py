@@ -9,6 +9,9 @@ from changeStatisticsALAAM import *
 from changeStatisticsALAAMdirected import *
 
 
+## bad sim gof on all:
+#param_func_list =  [changeDensity, changeSender, changeReceiver, changeLogContagion]
+
 ## sim gof bad on LogContagion (OK on others in model):
 param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeLogContagion]
 
