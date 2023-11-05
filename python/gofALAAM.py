@@ -86,3 +86,25 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
 
     return tratio
 
+
+def mahalanobis(u, X):
+    """
+    Mahalanobis distance of the observation vector u from the reference
+    samples in X.
+
+    Parameters:
+       u  -  numpy vector of observation
+       X  -  numpy array where each row is a sample (so columns are variables)
+
+    Retrurn value:
+      Mahalanobis distance of u from distribution described by samples in X
+    """
+    colmeans = np.mean(X, axis=0) # axis=0 gives mean of each column
+    # rowvar=False means each column is a variable, each row is an observation
+    # in computing the covariance matrix
+    Sigma = np.cov(X, rowvar = False)
+    SigmaInv = np.linalg.inv(Sigma) # inverse covariance matrix
+    diffmean = u - colmeans
+    Dsquared = np.dot(np.dot(diffmean, SigmaInv), diffmean) # diffmean^T*SimaInv*diffmean
+    return math.sqrt(Dsquared)
+    
