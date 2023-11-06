@@ -71,8 +71,6 @@ source_local('simFitPlots.R')
 
 args <- commandArgs(trailingOnly=TRUE)
 
-args <- commandArgs(trailingOnly=TRUE)
-
 option_list <- list(
   make_option(c("-a", "--assortativity"), action="store_true", default=FALSE,
                  help="include assortativity on outcome attribute"),
