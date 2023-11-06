@@ -56,7 +56,10 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
                                Default 10000.
 
     Return value:
-       vector of t-ratios
+       tuple(tratios, mdist) where
+          tratios is vector of t-ratios (one for each statistic)
+          and mdist is Mahalanobis distance of observed statistics from
+          statistics simualted from model
     """
     n = len(changestats_func_list)
     assert len(theta) == n
@@ -84,7 +87,10 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
     # compute t-statistics
     tratio = (Zmean - Zobs) / Zsd
 
-    return tratio
+    # compute Mahalanobis distance
+    mahaldist = mahalanobis(Zobs, Zmatrix)
+
+    return (tratio,mahaldist)
 
 
 def mahalanobis(u, X):

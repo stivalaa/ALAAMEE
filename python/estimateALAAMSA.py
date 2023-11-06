@@ -257,7 +257,10 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         
         sys.stdout.write(30*' ' + '  t-ratio\n')
         for j in range(n):
-            sys.stdout.write('%30.30s % 7.3f\n' % (goflabels[j], gofresult[j]))
+            sys.stdout.write('%30.30s % 7.3f\n' %
+                             (goflabels[j], gofresult[0][j]))
+        sys.stdout.write("%30.30s %f\n" %
+                         ('Mahalanobis_distance', gofresult[1]))
         print()
 
         if isinstance(G, BipartiteGraph):
