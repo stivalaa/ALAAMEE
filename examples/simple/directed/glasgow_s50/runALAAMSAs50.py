@@ -26,5 +26,6 @@ estimateALAAMSA.run_on_network_attr(
         binattr_filename = 's50-binattr.txt',
         contattr_filename = 's50-contattr.txt',
         catattr_filename = 's50-catattr.txt',
-        directed = True
+        directed = True,
+        gof_param_func_list = [changeDensity, changeSender, changeReceiver, changeContagion, changeReciprocity, changeContagionReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar, changeTransitiveTriangleT1, changeAlterInTwoStar2, changeAlterOutTwoStar2, changeTransitiveTriangleT3, changeCyclicTriangleC3, partial(changeoOc, "sport"), partial(changeoOc, "alcohol")]
     )
