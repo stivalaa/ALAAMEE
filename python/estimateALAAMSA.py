@@ -267,6 +267,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         for j in range(n):
             sys.stdout.write('%30.30s % 7.3f\n' %
                              (goflabels[j], gofresult[0][j]))
+        # Note that MPNet outputs the squared Mahalanobis distance,
+        # not the Mahalanobis distance as done here.
         sys.stdout.write("%30.30s %f\n" %
                          ('Mahalanobis_distance', gofresult[1]))
         print()
