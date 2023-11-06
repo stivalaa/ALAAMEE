@@ -94,7 +94,8 @@ def mahalanobis(u, X):
 
     Parameters:
        u  -  numpy vector of observation
-       X  -  numpy array where each row is a sample (so columns are variables)
+       X  -  numpy array where each row is a sample (so columns are variables,
+             the number of columns must equal the dimension of u)
 
     Retrurn value:
       Mahalanobis distance of u from distribution described by samples in X
@@ -107,4 +108,4 @@ def mahalanobis(u, X):
     diffmean = u - colmeans
     Dsquared = np.dot(np.dot(diffmean, SigmaInv), diffmean) # diffmean^T*SimaInv*diffmean
     return math.sqrt(Dsquared)
-    
+
