@@ -269,6 +269,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                              (goflabels[j], gofresult[0][j]))
         # Note that MPNet outputs the squared Mahalanobis distance,
         # not the Mahalanobis distance as done here.
+        print()  # blank line so not picked up by
+                 # stochasticApproxGoF2textableMultiModels.sh
         sys.stdout.write("%30.30s %f\n" %
                          ('Mahalanobis_distance', gofresult[1]))
         print()
