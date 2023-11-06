@@ -20,15 +20,20 @@
 from functools import partial
 import  estimateALAAMSA
 from changeStatisticsALAAMdirected import *
-from changeStatisticsALAAM import changeDensity, changeoOc
+from changeStatisticsALAAM import changeDensity, changeoOc, param_func_to_label
+
+model_param_funcs =  [changeDensity, changeContagion, changeContagionReciprocity, partial(changeoOc, "sport"), partial(changeoOc, "alcohol"), changeSender, changeReciprocity]
+
+gof_param_funcs = [changeDensity, changeSender, changeReceiver, changeContagion, changeReciprocity, changeContagionReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar, changeTransitiveTriangleT1, changeAlterInTwoStar2, changeAlterOutTwoStar2, changeTransitiveTriangleT3, changeCyclicTriangleC3]
 
 estimateALAAMSA.run_on_network_attr(
         's50-friendships-directed.net',
-        [changeDensity, changeContagion, changeContagionReciprocity, partial(changeoOc, "sport"), partial(changeoOc, "alcohol"), changeSender, changeReciprocity],
-        ["Density",     "Contagion",     "ContagionReciprocity",     "sport_oOc",                 "alcohol_oOc",                 "Sender",     "Reciprocity"],
+        model_param_funcs,
+        [param_func_to_label(f) for f in model_param_funcs],    
         outcome_bin_filename = 's50-outcome.txt',
         binattr_filename = 's50-binattr.txt',
         contattr_filename = 's50-contattr.txt',
         catattr_filename = 's50-catattr.txt',
-        directed = True
+        directed = True,
+        gof_param_func_list = model_param_funcs + [f for f in gof_param_funcs if f not in model_param_funcs]    
     )
