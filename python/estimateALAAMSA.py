@@ -111,10 +111,11 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                  in GoF simulation, for when outcome
                                  variable not defined for that mode,
                                  or None. Default None.
-         gof_param_func_list - List of change statistics functions
-                               for goodness-of-fit. If None, then
-                               param_func_list and a set of default
-                               functions are used depending on network
+         gof_param_func_list - List of change statistics functions,
+                               in addition to those in param_func_list,
+                               for goodness-of-fit. Note that 
+                               If None, then  param_func_list and an additional
+                               set of default are used depending on network
                                type. Default None.
     Write output to stdout.
 
