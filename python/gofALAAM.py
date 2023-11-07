@@ -19,6 +19,7 @@
 """
 import math
 import numpy as np         # used for matrix & vector data types and functions
+import sys
 
 from Graph import Graph,NA_VALUE,int_or_na
 from changeStatisticsALAAM import *
@@ -110,7 +111,13 @@ def mahalanobis(u, X):
     # rowvar=False means each column is a variable, each row is an observation
     # in computing the covariance matrix
     Sigma = np.cov(X, rowvar = False)
-    SigmaInv = np.linalg.inv(Sigma) # inverse covariance matrix
+    try:
+        SigmaInv = np.linalg.inv(Sigma) # inverse covariance matrix
+    except np.linalg.LinAlgError:
+        warnmsg = "WARNING: covariance matrix is computationally singular, using pseudo-inverse of covariance matrix\n"
+        sys.stderr.write(warnmsg)
+        sys.stdout.write(warnmsg)
+        SigmaInv = np.linalg.pinv(Sigma) # Moore-Penrose pseuo-inverse
     diffmean = u - colmeans
     Dsquared = np.dot(np.dot(diffmean, SigmaInv), diffmean) # diffmean^T*SimaInv*diffmean
     return math.sqrt(Dsquared)
