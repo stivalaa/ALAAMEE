@@ -117,6 +117,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                estimation) at the start (in the same order)
                                so it lines up with the estimated parameter
                                vector estimated in this function.
+                               [TODO change so supply only ADDITIONAL
+                               change stats, appened with check for
+                               duplicates in param_func_list here instead].
                                If None, then  param_func_list and an additional
                                set of default are used depending on network
                                type. Default None.
@@ -199,6 +202,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             goflabels = [param_func_to_label(f) for f in gof_param_func_list]
         else:
             # change stats functions to add to GoF if not already in estimation
+            # TODO use is_same() intead of [not in param_func_list]
             if directed:
                 statfuncs = [changeSender, changeReceiver, changeReciprocity,
                              changeEgoInTwoStar, changeEgoOutTwoStar,
@@ -227,7 +231,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                 # here with functools.partial() as used in specifying model,
                 # as partial() even with the same parameters will give a different
                 # function address so the comparison "if f not in param_func_list"
-                # will always be True.
+                # will always be True. (TODO is_same() fixes this)
                 statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
                              changeIndirectPartnerAttribute,
                              changePartnerAttributeActivity,

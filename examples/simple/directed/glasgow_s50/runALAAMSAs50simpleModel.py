@@ -35,5 +35,5 @@ estimateALAAMSA.run_on_network_attr(
         contattr_filename = 's50-contattr.txt',
         catattr_filename = 's50-catattr.txt',
         directed = True,
-        gof_param_func_list = model_param_funcs + [f for f in gof_param_funcs if f not in model_param_funcs]    
+        gof_param_func_list = model_param_funcs + [f for f in gof_param_funcs if f not in model_param_funcs]     #TODO do this inside func instead
     )

@@ -29,5 +29,5 @@ estimateALAAMSA.run_on_network_attr(
         outcome_bin_filename = '../../../data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt', # 1 means male
         catattr_filename = '../../../data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt',
         directed = True,
-        gof_param_func_list = param_func_list + [f for f in gof_funcs if not any(is_same(f, g) for g in param_func_list)]
+        gof_param_func_list = param_func_list + [f for f in gof_funcs if not any(is_same(f, g) for g in param_func_list)] #TODO do this in run_on_network_attr instead
     )
