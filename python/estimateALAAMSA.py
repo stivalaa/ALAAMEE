@@ -112,8 +112,11 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                  variable not defined for that mode,
                                  or None. Default None.
          gof_param_func_list - List of change statistics functions,
-                               in addition to those in param_func_list,
-                               for goodness-of-fit. Note that 
+                               for goodness-of-fit. Note that this
+                               MUST contain the param_func_list (used for
+                               estimation) at the start (in the same order)
+                               so it lines up with the estimated parameter
+                               vector estimated in this function.
                                If None, then  param_func_list and an additional
                                set of default are used depending on network
                                type. Default None.
@@ -192,6 +195,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
         # Do goodness-of-fit test
         if gof_param_func_list is not None:
+            assert len(gof_param_func_list) >= len(param_func_list)
             goflabels = [param_func_to_label(f) for f in gof_param_func_list]
         else:
             # change stats functions to add to GoF if not already in estimation
@@ -250,6 +254,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                          if f not in labels])
         n = len(gof_param_func_list)
         assert len(goflabels) == n
+        assert n >= len(param_func_list)
         # pad theta vector with zeros for the added parameters
         gof_theta = np.array(list(theta) + (n-len(theta))*[0])
 

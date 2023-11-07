@@ -96,6 +96,24 @@ def param_func_to_label(param_func):
     return label
 
 
+def is_same(func1, func2):
+    """Return True if two change statistic funcions are the same, else False.
+    This is needed for example when we use functools.partial(), as two of
+    these will be different function addresses and hence not equal, even
+    if they have the same parameter.
+
+    Parameters:
+        func1 - change statistic function
+        func2 - another change setatistic function
+
+    Return value:
+        True if func1 and func2 are the same change statistic function else
+        False
+    """
+    # We will take advantage of the param_func_to_label() function
+    # to just check if they have the same string representation.
+    return param_func_to_label(func1) == param_func_to_label(func2)
+
 
 def changeDensity(G, A, i):
     """
