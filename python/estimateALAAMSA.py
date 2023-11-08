@@ -67,7 +67,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         GoFiterationInStep = 1000,
                         GoFburnIn = 10000,
                         bipartiteGoFfixedMode = None,
-                        gof_param_func_list = None
+                        add_gof_param_func_list = None
                         ):
     """Run estimation using stochastic approximation algorithm
     on specified network with binary and/or continuous and
@@ -111,15 +111,12 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                  in GoF simulation, for when outcome
                                  variable not defined for that mode,
                                  or None. Default None.
-         gof_param_func_list - List of change statistics functions,
-                               for goodness-of-fit. Note that this
-                               MUST contain the param_func_list (used for
-                               estimation) at the start (in the same order)
-                               so it lines up with the estimated parameter
-                               vector estimated in this function.
-                               [TODO change so supply only ADDITIONAL
-                               change stats, appened with check for
-                               duplicates in param_func_list here instead].
+         add_gof_param_func_list - List of change statistics functions,
+                               in addition to the model parameters in
+                               param_func_list, for goodness-of-fit.
+                               These are appended to the model parameters,
+                               removing any that are already in the
+                               model parameters in param_func_list.
                                If None, then  param_func_list and an additional
                                set of default are used depending on network
                                type. Default None.
@@ -197,12 +194,16 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         print()
 
         # Do goodness-of-fit test
-        if gof_param_func_list is not None:
-            assert len(gof_param_func_list) >= len(param_func_list)
+        if add_gof_param_func_list is not None:
+            # caller specified stats functions for GoF to add to model stats
+            # so add them, excluding those already in model stats
+            gof_param_func_list = (list(param_func_list) +
+                                   [f for f in add_gof_param_func_list
+                                    if not any(is_same_changestat(f, g)
+                                               for g in param_func_list)])
             goflabels = [param_func_to_label(f) for f in gof_param_func_list]
         else:
             # change stats functions to add to GoF if not already in estimation
-            # TODO use is_same() intead of [not in param_func_list]
             if directed:
                 statfuncs = [changeSender, changeReceiver, changeReciprocity,
                              changeEgoInTwoStar, changeEgoOutTwoStar,
@@ -220,18 +221,15 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                 statlabels = [param_func_to_label(f) for f in statfuncs]
                 gof_param_func_list = (list(param_func_list) +
                                        [f for f in statfuncs
-                                    if f not in param_func_list])
+                                        if not any(is_same_changestat(f, g)
+                                                   for g in param_func_list)])
                 goflabels = (list(labels) + [f for f in statlabels
                                          if f not in labels])
             elif bipartite:
                 # TODO better GoF statitsics for bipartite.
                 # Note that some of these are the same as bipartite stats
                 # usually used, e.g. changeThreeStar is bipartiteEgoThreeStar
-                # etc. Note also cannot use the attribute or bipatite functions
-                # here with functools.partial() as used in specifying model,
-                # as partial() even with the same parameters will give a different
-                # function address so the comparison "if f not in param_func_list"
-                # will always be True. (TODO is_same() fixes this)
+                # etc. 
                 statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
                              changeIndirectPartnerAttribute,
                              changePartnerAttributeActivity,
@@ -239,7 +237,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                 statlabels = [param_func_to_label(f) for f in statfuncs]
                 gof_param_func_list = (list(param_func_list) +
                                        [f for f in statfuncs
-                                    if f not in param_func_list])
+                                        if not any(is_same_changestat(f, g)
+                                                   for g in param_func_list)])
                 goflabels = (list(labels) + [f for f in statlabels
                                          if f not in labels])
             else:
@@ -253,7 +252,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                 statlabels = [param_func_to_label(f) for f in statfuncs]
                 gof_param_func_list = (list(param_func_list) +
                                        [f for f in statfuncs
-                                    if f not in param_func_list])
+                                        if not any(is_same_changestat(f, g)
+                                                   for g in param_func_list)])
                 goflabels = (list(labels) + [f for f in statlabels
                                          if f not in labels])
         n = len(gof_param_func_list)

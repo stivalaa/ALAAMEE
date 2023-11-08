@@ -96,7 +96,7 @@ def param_func_to_label(param_func):
     return label
 
 
-def is_same(func1, func2):
+def is_same_changestat(func1, func2):
     """Return True if two change statistic funcions are the same, else False.
     This is needed for example when we use functools.partial(), as two of
     these will be different function addresses and hence not equal, even
