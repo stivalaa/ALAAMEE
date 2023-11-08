@@ -789,6 +789,9 @@ def test_changestats_comparison():
     assert not is_same_changestat(partial(changeoOc, "age"), partial(changeoOc, "height"))
     assert is_same_changestat(partial(changeGWActivity, log(2.0)), partial(changeGWActivity, log(2.0)))
     assert not is_same_changestat(partial(changeGWActivity, log(2.0)), partial(changeGWActivity, 2.0))
+    assert is_same_changestat(partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteActivity, MODE_A))
+    assert not is_same_changestat(partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteActivity, MODE_B))
+    assert not is_same_changestat(partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteDensity, MODE_A))
     print("OK")
 
 
