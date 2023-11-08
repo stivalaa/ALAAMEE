@@ -806,7 +806,7 @@ def test_mahalanobis():
     # s50_sim.txt is a saved copy of MPNet GoF simulated stats from
     # ../examples/simple/directed/glasgow_s50
     Z = numpy.loadtxt('s50_sim.txt', skiprows=1, usecols=range(1, 17))
-
+    assert numpy.shape(Z) == (1000, 16)
     ## Verified manually with R:
     # > sqrt( mahalanobis(obs_stats, colMeans(Z), cov(Z)) ) # mahalanobis() returns squared Mahalanobis dist
     # [1] 2.874224
