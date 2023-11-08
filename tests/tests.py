@@ -772,7 +772,25 @@ def test_regression_directed_change_stats(netfilename, outcomefilename,
     print("OK,", time.time() - start, "s")
     print()
 
-    
+
+def test_changestats_comparison():
+    """
+    Test the function that tests if two change stats functions are
+    the same (needed as we cannot just compare functions due to use
+    of functools.partial for example, resulting equality operator showing
+    them different when really they are not).
+    """
+    print("testing changestats comparison...")
+    assert is_same_changestat(changeContagion, changeContagion)
+    assert not is_same_changestat(changeContagion, changeLogContagion)
+    assert is_same_changestat(partial(changeoOc, "age"), partial(changeoOc, "age"))
+    # We need this because e.g.: assert partial(changeoOc, "age") != partial(changeoOc, "age")
+    assert not is_same_changestat(partial(changeoOc, "age"), partial(changeoOc, "height"))
+    assert is_same_changestat(partial(changeGWActivity, log(2.0)), partial(changeGWActivity, log(2.0)))
+    assert not is_same_changestat(partial(changeGWActivity, log(2.0)), partial(changeGWActivity, 2.0))
+    print("OK")
+
+
 ############################### main #########################################
 
 def main():
@@ -792,7 +810,7 @@ def main():
     test_regression_bipartite_change_stats("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net", "../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt")
     #too slow (and data large for GitHub): test_regression_bipartite_change_stats("../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_bipartite.net", "../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_outcome.txt", 10)
     test_regression_directed_change_stats("../examples/data/directed/HighSchoolFriendship/highschool_friendship_arclist.net", '../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt', None, None, '../examples/data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt')
-
+    test_changestats_comparison()
 
 if __name__ == "__main__":
     main()
