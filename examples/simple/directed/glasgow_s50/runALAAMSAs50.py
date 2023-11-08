@@ -18,9 +18,10 @@ import  estimateALAAMSA
 from changeStatisticsALAAMdirected import *
 from changeStatisticsALAAM import changeDensity, changeoOc, param_func_to_label
 
+from gof_stats import gof_funcs
+
 model_param_funcs = [changeDensity, changeSender, changeReceiver, changeContagion, changeReciprocity, changeContagionReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar, changeTransitiveTriangleT1, partial(changeoOc, "sport"), partial(changeoOc, "alcohol")]
 
-gof_param_funcs = [changeDensity, changeSender, changeReceiver, changeContagion, changeReciprocity, changeContagionReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar, changeTransitiveTriangleT1, changeAlterInTwoStar2, changeAlterOutTwoStar2, changeTransitiveTriangleT3, changeCyclicTriangleC3]
 
 estimateALAAMSA.run_on_network_attr(
         's50-friendships-directed.net',
@@ -31,5 +32,5 @@ estimateALAAMSA.run_on_network_attr(
         contattr_filename = 's50-contattr.txt',
         catattr_filename = 's50-catattr.txt',
         directed = True,
-        gof_param_func_list = model_param_funcs + [f for f in gof_param_funcs if f not in model_param_funcs] #TODO do this inside func instead
+        add_gof_param_func_list = gof_funcs
     )
