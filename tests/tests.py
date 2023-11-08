@@ -809,7 +809,7 @@ def test_mahalanobis():
 
     ## Verified manually with R:
     # > sqrt( mahalanobis(obs_stats, colMeans(Z), cov(Z)) ) # mahalanobis() returns squared Mahalanobis dist
-    # [1,] 8.261166
+    # [1] 2.874224
     # > sqrt( (obs_stats - colMeans(Z)) %*% solve(cov(Z)) %*% (obs_stats - colMeans(Z)) )
     #          [,1]
     # [1,] 2.874224
