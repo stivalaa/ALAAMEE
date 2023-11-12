@@ -19,8 +19,6 @@ module load foss/2022b
 module load python/3.10.8
 module load numpy/1.24.2-scipy-bundle-2023.02
 
-NUM_RUNS=4
-
 
 ROOT=${HOME}/ALAAMEE
 export PYTHONPATH=${ROOT}/python/:${PYTHONPATH}
