@@ -66,7 +66,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         bipartite = False,
                         GoFiterationInStep = 1000,
                         GoFburnIn = 10000,
-                        bipartiteGoFfixedMode = None
+                        bipartiteGoFfixedMode = None,
+                        add_gof_param_func_list = None
                         ):
     """Run estimation using stochastic approximation algorithm
     on specified network with binary and/or continuous and
@@ -110,7 +111,15 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                  in GoF simulation, for when outcome
                                  variable not defined for that mode,
                                  or None. Default None.
-
+         add_gof_param_func_list - List of change statistics functions,
+                               in addition to the model parameters in
+                               param_func_list, for goodness-of-fit.
+                               These are appended to the model parameters,
+                               removing any that are already in the
+                               model parameters in param_func_list.
+                               If None, then  param_func_list and an additional
+                               set of default are used depending on network
+                               type. Default None.
     Write output to stdout.
 
     """
@@ -185,63 +194,71 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         print()
 
         # Do goodness-of-fit test
-
-        # change stats functions to add to GoF if not already in estimation
-        if directed:
-            statfuncs = [changeSender, changeReceiver, changeReciprocity,
-                         changeEgoInTwoStar, changeEgoOutTwoStar,
-                         changeMixedTwoStar, changeMixedTwoStarSource,
-                         changeMixedTwoStarSink, changeContagion,
-                         changeContagionReciprocity,
-                         changeTransitiveTriangleT1,
-                         changeTransitiveTriangleT3,
-                         changeTransitiveTriangleD1,
-                         changeTransitiveTriangleU1,
-                         changeCyclicTriangleC1,
-                         changeCyclicTriangleC3,
-                         changeAlterInTwoStar2,
-                         changeAlterOutTwoStar2]
-            statlabels = [param_func_to_label(f) for f in statfuncs]
+        if add_gof_param_func_list is not None:
+            # caller specified stats functions for GoF to add to model stats
+            # so add them, excluding those already in model stats
             gof_param_func_list = (list(param_func_list) +
-                                   [f for f in statfuncs
-                                if f not in param_func_list])
-            goflabels = (list(labels) + [f for f in statlabels
-                                     if f not in labels])
-        elif bipartite:
-            # TODO better GoF statitsics for bipartite.
-            # Note that some of these are the same as bipartite stats
-            # usually used, e.g. changeThreeStar is bipartiteEgoThreeStar
-            # etc. Note also cannot use the attribute or bipatite functions
-            # here with functools.partial() as used in specifying model,
-            # as partial() even with the same parameters will give a different
-            # function address so the comparison "if f not in param_func_list"
-            # will always be True.
-            statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
-                         changeIndirectPartnerAttribute,
-                         changePartnerAttributeActivity,
-                         changePartnerPartnerAttribute]
-            statlabels = [param_func_to_label(f) for f in statfuncs]
-            gof_param_func_list = (list(param_func_list) +
-                                   [f for f in statfuncs
-                                if f not in param_func_list])
-            goflabels = (list(labels) + [f for f in statlabels
-                                     if f not in labels])
+                                   [f for f in add_gof_param_func_list
+                                    if not any(is_same_changestat(f, g)
+                                               for g in param_func_list)])
+            goflabels = [param_func_to_label(f) for f in gof_param_func_list]
         else:
-            statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
-                         changeTriangleT1, changeStatisticsALAAM.changeContagion,
-                         changeIndirectPartnerAttribute,
-                         changePartnerAttributeActivity,
-                         changePartnerPartnerAttribute,
-                         changeTriangleT2,
-                         changeTriangleT3]
-            statlabels = [param_func_to_label(f) for f in statfuncs]
-            gof_param_func_list = (list(param_func_list) +
-                                   [f for f in statfuncs
-                                if f not in param_func_list])
-            goflabels = (list(labels) + [f for f in statlabels
-                                     if f not in labels])
+            # change stats functions to add to GoF if not already in estimation
+            if directed:
+                statfuncs = [changeSender, changeReceiver, changeReciprocity,
+                             changeEgoInTwoStar, changeEgoOutTwoStar,
+                             changeMixedTwoStar, changeMixedTwoStarSource,
+                             changeMixedTwoStarSink, changeContagion,
+                             changeContagionReciprocity,
+                             changeTransitiveTriangleT1,
+                             changeTransitiveTriangleT3,
+                             changeTransitiveTriangleD1,
+                             changeTransitiveTriangleU1,
+                             changeCyclicTriangleC1,
+                             changeCyclicTriangleC3,
+                             changeAlterInTwoStar2,
+                             changeAlterOutTwoStar2]
+                statlabels = [param_func_to_label(f) for f in statfuncs]
+                gof_param_func_list = (list(param_func_list) +
+                                       [f for f in statfuncs
+                                        if not any(is_same_changestat(f, g)
+                                                   for g in param_func_list)])
+                goflabels = (list(labels) + [f for f in statlabels
+                                         if f not in labels])
+            elif bipartite:
+                # TODO better GoF statitsics for bipartite.
+                # Note that some of these are the same as bipartite stats
+                # usually used, e.g. changeThreeStar is bipartiteEgoThreeStar
+                # etc. 
+                statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
+                             changeIndirectPartnerAttribute,
+                             changePartnerAttributeActivity,
+                             changePartnerPartnerAttribute]
+                statlabels = [param_func_to_label(f) for f in statfuncs]
+                gof_param_func_list = (list(param_func_list) +
+                                       [f for f in statfuncs
+                                        if not any(is_same_changestat(f, g)
+                                                   for g in param_func_list)])
+                goflabels = (list(labels) + [f for f in statlabels
+                                         if f not in labels])
+            else:
+                statfuncs = [changeTwoStar, changeThreeStar, changePartnerActivityTwoPath,
+                             changeTriangleT1, changeStatisticsALAAM.changeContagion,
+                             changeIndirectPartnerAttribute,
+                             changePartnerAttributeActivity,
+                             changePartnerPartnerAttribute,
+                             changeTriangleT2,
+                             changeTriangleT3]
+                statlabels = [param_func_to_label(f) for f in statfuncs]
+                gof_param_func_list = (list(param_func_list) +
+                                       [f for f in statfuncs
+                                        if not any(is_same_changestat(f, g)
+                                                   for g in param_func_list)])
+                goflabels = (list(labels) + [f for f in statlabels
+                                         if f not in labels])
         n = len(gof_param_func_list)
         assert len(goflabels) == n
+        assert n >= len(param_func_list)
         # pad theta vector with zeros for the added parameters
         gof_theta = np.array(list(theta) + (n-len(theta))*[0])
 
@@ -253,11 +270,18 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         burnIn = GoFburnIn)
         print('GoF took',time.time() - start, 's')
         print('           ',goflabels)
-        print('t_ratios = ',gofresult)
+        print('t_ratios = ',gofresult[0])
         
         sys.stdout.write(30*' ' + '  t-ratio\n')
         for j in range(n):
-            sys.stdout.write('%30.30s % 7.3f\n' % (goflabels[j], gofresult[j]))
+            sys.stdout.write('%30.30s % 7.3f\n' %
+                             (goflabels[j], gofresult[0][j]))
+        # Note that MPNet outputs the squared Mahalanobis distance,
+        # not the Mahalanobis distance as done here.
+        print()  # blank line so not picked up by
+                 # stochasticApproxGoF2textableMultiModels.sh
+        sys.stdout.write("%30.30s %f\n" %
+                         ('Mahalanobis_distance', gofresult[1]))
         print()
 
         if isinstance(G, BipartiteGraph):

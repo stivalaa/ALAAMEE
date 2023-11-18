@@ -20,15 +20,20 @@ from functools import partial
 from math import log
 import  estimateALAAMSA
 from changeStatisticsALAAMdirected import *
-from changeStatisticsALAAM import changeDensity, changeoOc
+from changeStatisticsALAAM import changeDensity, changeoOc, param_func_to_label
+
+from gof_stats import gof_funcs
+
+model_param_funcs =         [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeContagion, changeReciprocity, changeContagionReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar, changeTransitiveTriangleT1, partial(changeoOc, "sport"), partial(changeoOc, "alcohol")]
 
 estimateALAAMSA.run_on_network_attr(
         's50-friendships-directed.net',
-        [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeContagion, changeReciprocity, changeContagionReciprocity, changeEgoInTwoStar, changeEgoOutTwoStar, changeMixedTwoStar, changeTransitiveTriangleT1, partial(changeoOc, "sport"), partial(changeoOc, "alcohol")],
-        ["Density",     "GWSender",     "GWReceiver",     "Contagion",     "Reciprocity",     "ContagionReciprocity",     "EgoInTwoStar",     "EgoOutTwoStar",     "MixedTwoStar",     "TransitiveTriangleT1",      "sport_oOc",                 "alcohol_oOc"],
+        model_param_funcs,
+        [param_func_to_label(f) for f in model_param_funcs],
         outcome_bin_filename = 's50-outcome.txt',
         binattr_filename = 's50-binattr.txt',
         contattr_filename = 's50-contattr.txt',
         catattr_filename = 's50-catattr.txt',
-        directed = True
+        directed = True,
+        add_gof_param_func_list = gof_funcs    
     )

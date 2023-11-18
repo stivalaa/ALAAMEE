@@ -21,6 +21,7 @@ from computeObservedStatistics import computeObservedStatistics
 from changeStatisticsALAAM import *
 import changeStatisticsALAAMdirected
 from changeStatisticsALAAMbipartite import *
+from gofALAAM import mahalanobis
 
 DEFAULT_NUM_TESTS = 10000 # number of random node samples
 
@@ -772,7 +773,52 @@ def test_regression_directed_change_stats(netfilename, outcomefilename,
     print("OK,", time.time() - start, "s")
     print()
 
-    
+
+def test_changestats_comparison():
+    """
+    Test the function that tests if two change stats functions are
+    the same (needed as we cannot just compare functions due to use
+    of functools.partial for example, resulting equality operator showing
+    them different when really they are not).
+    """
+    print("testing changestats comparison...")
+    assert is_same_changestat(changeContagion, changeContagion)
+    assert not is_same_changestat(changeContagion, changeLogContagion)
+    assert is_same_changestat(partial(changeoOc, "age"), partial(changeoOc, "age"))
+    # We need this because e.g.: assert partial(changeoOc, "age") != partial(changeoOc, "age")
+    assert not is_same_changestat(partial(changeoOc, "age"), partial(changeoOc, "height"))
+    assert is_same_changestat(partial(changeGWActivity, log(2.0)), partial(changeGWActivity, log(2.0)))
+    assert not is_same_changestat(partial(changeGWActivity, log(2.0)), partial(changeGWActivity, 2.0))
+    assert is_same_changestat(partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteActivity, MODE_A))
+    assert not is_same_changestat(partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteActivity, MODE_B))
+    assert not is_same_changestat(partial(changeBipartiteActivity, MODE_A), partial(changeBipartiteDensity, MODE_A))
+    print("OK")
+
+
+def test_mahalanobis():
+    """
+    Test the Mahalanobis distance function
+    """
+    print("testing Mahalanobis distance...")
+    # Manually entered and checked observed statistics of SIENA example
+    # data used in ../examples/simple/directed/glasgow_s50:
+    # DensityA SenderAttrA ReceiverAttrA ReciprocityAttrA ContagionArcA ContagionReciprocityA EgoIn2StarA AlterIn2Star2A EgoOut2StarA AlterOut2Star2A Mixed2StarA T1TA T3TA T3CA sport_oOA alcohol_oOA
+    obs_stats = numpy.array([17, 43, 40, 26, 25, 7, 57, 20, 44, 40, 88, 27, 13, 3, 28, 59])
+    # get Z as matrix where rows are observations and columns are variables.
+    # The first row is skipped (header) and first column is skipped (Sample_id)
+    # s50_sim.txt is a saved copy of MPNet GoF simulated stats from
+    # ../examples/simple/directed/glasgow_s50
+    Z = numpy.loadtxt('s50_sim.txt', skiprows=1, usecols=range(1, 17))
+    assert numpy.shape(Z) == (1000, 16)
+    ## Verified manually with R:
+    # > sqrt( mahalanobis(obs_stats, colMeans(Z), cov(Z)) ) # mahalanobis() returns squared Mahalanobis dist
+    # [1] 2.874224
+    # > sqrt( (obs_stats - colMeans(Z)) %*% solve(cov(Z)) %*% (obs_stats - colMeans(Z)) )
+    #          [,1]
+    # [1,] 2.874224
+    assert math.isclose(mahalanobis(obs_stats, Z), 2.874224, abs_tol = 0.000001)
+    print("OK")
+
 ############################### main #########################################
 
 def main():
@@ -792,7 +838,8 @@ def main():
     test_regression_bipartite_change_stats("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net", "../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome.txt")
     #too slow (and data large for GitHub): test_regression_bipartite_change_stats("../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_bipartite.net", "../examples/data/bipartite/Evtusehnko_Gastner_directors/evtushenko_directors_outcome.txt", 10)
     test_regression_directed_change_stats("../examples/data/directed/HighSchoolFriendship/highschool_friendship_arclist.net", '../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt', None, None, '../examples/data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt')
-
+    test_changestats_comparison()
+    test_mahalanobis()
 
 if __name__ == "__main__":
     main()

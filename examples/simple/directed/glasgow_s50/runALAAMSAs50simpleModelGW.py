@@ -22,15 +22,20 @@ from functools import partial
 from math import log
 import  estimateALAAMSA
 from changeStatisticsALAAMdirected import *
-from changeStatisticsALAAM import changeDensity, changeoOc
+from changeStatisticsALAAM import changeDensity, changeoOc, param_func_to_label
+
+from gof_stats import gof_funcs
+
+model_param_funcs =         [changeDensity, changeContagion, changeContagionReciprocity, partial(changeoOc, "sport"), partial(changeoOc, "alcohol"), partial(changeGWSender, log(2.0)), changeReciprocity]
 
 estimateALAAMSA.run_on_network_attr(
         's50-friendships-directed.net',
-        [changeDensity, changeContagion, changeContagionReciprocity, partial(changeoOc, "sport"), partial(changeoOc, "alcohol"), partial(changeGWSender, log(2.0)), changeReciprocity],
-        ["Density",     "Contagion",     "ContagionReciprocity",     "sport_oOc",                 "alcohol_oOc",                 "GWSender",     "Reciprocity"],
+        model_param_funcs,
+        [param_func_to_label(f) for f in model_param_funcs],
         outcome_bin_filename = 's50-outcome.txt',
         binattr_filename = 's50-binattr.txt',
         contattr_filename = 's50-contattr.txt',
         catattr_filename = 's50-catattr.txt',
-        directed = True
+        directed = True,
+        add_gof_param_func_list = gof_funcs
     )

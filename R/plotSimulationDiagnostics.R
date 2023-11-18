@@ -32,7 +32,9 @@
 ## 80.0 526.0 95.0 58.0 47.54103699999999
 ##
 ##
-## The t-ratios of the statistics are also computed and written to stdout.
+## The t-ratios of the statistics are also computed and written to stdout,
+## as is Mahalanobis distance of the observed stats vector from the
+## distribution of the simulated stats vectors.
 ##
 ## Output is postscrpt file basename.eps where basename is from the input
 ## file e.g. stats_sim_n1000_binattr_sample-plots.eps
@@ -43,6 +45,7 @@ library(gridExtra)
 library(ggplot2)
 library(reshape)
 library(scales)
+library(MASS) #for ginv()
 
 zSigma <- 1.96 # number of standard deviations for 95% confidence interval
 
@@ -70,6 +73,7 @@ if (length(args) == 2) {
 
 
 simstats <- read.table(simstats_filename, header=TRUE, stringsAsFactors=FALSE)
+simstats0 <- data.frame(simstats)
 
 statnames <- names(simstats)[names(simstats) != "t"]
 
@@ -139,3 +143,50 @@ postscript(paste(basefilename, '-plots.eps', sep=''), onefile=FALSE,
 do.call(grid.arrange, plotlist)
 dev.off()
 
+##
+## Mahalanobis distance
+##
+
+if (do_obs) {  # only possible if we have observed stats vector
+  ## First get stats in both observed and simulatd, and reorder so
+  ## they match
+  
+  Z <- simstats0[ , names(simstats0)[!(names(simstats0) %in% c('t', 'AcceptanceRate', 'acceptance_rate', 'meanDegree1', 'varDegree1', 'meanDegree0', 'varDegree0'))]]
+  statnames <- intersect(names(Z), names(obsstats))
+  Z <- Z[ , names(Z)[names(Z) %in% statnames]]
+  obsstats <- obsstats[, names(obsstats)[names(obsstats) %in% statnames]]
+  nameorder <- order(statnames)
+  Z <- Z[ , nameorder]
+  obsstats <- obsstats[ , nameorder]
+  obsstats <- as.matrix(obsstats) # convert from dataframe to 1d matrix
+  
+  cat("Using statistics: ", statnames[nameorder], "\n")
+  
+  ## Recompute t-ratios just as a check
+  cat('t-ratios:\n')
+  print( (colMeans(Z) - obsstats) / apply(Z, 2, sd) )
+  
+  ## Get covariance matrix and invert, checking for ill-conditioned
+  ## (computationally singular) covariance matrix first, and if so,
+  ## use instead Moore-Penrose pseudoinverse.
+  Sigma <- cov(Z)
+  if (rcond(Sigma) < .Machine$double.eps) {
+    warnmsg <- "WARNING: covariance matrix is computationally singular, using pseudo-inverse of covariance matrix\n"
+    cat(warnmsg, file=stderr())
+    cat(warnmsg)
+    SigmaInverse <- ginv(Sigma) # generalized (Moore-Penrose) inverse
+  } else {
+    SigmaInverse <- solve(Sigma) # matrix inverse
+  }
+  #print(Sigma)#XXX
+  #print(SigmaInverse)#XXX
+  
+  ## mahalanobis() returns squared Mahalanobis distance
+  mdist1 <- sqrt(mahalanobis(obsstats, colMeans(Z), SigmaInverse, inverted=TRUE))
+  #print(dim(obsstats - colMeans(Z)))#XXX
+  #print(dim(SigmaInverse))#XXX
+  mdist2 <- sqrt((obsstats - colMeans(Z)) %*% SigmaInverse %*% t(obsstats - colMeans(Z))) #XXX check same as mahalanobis()
+  print(mdist1)#XXX
+  print(mdist2)#XXX
+  cat('Mahalanobis distance: ', mdist1, '\n')
+}

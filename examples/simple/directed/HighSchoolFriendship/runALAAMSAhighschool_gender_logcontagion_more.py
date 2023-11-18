@@ -18,6 +18,8 @@ import estimateALAAMSA
 from changeStatisticsALAAMdirected import *
 from changeStatisticsALAAM import changeDensity, param_func_to_label
 
+from gof_stats import gof_funcs
+
 param_func_list =  [changeDensity, partial(changeGWSender, log(2.0)), partial(changeGWReceiver, log(2.0)), changeLogContagion, changeReciprocity, changeContagionReciprocity, changeMixedTwoStarSource, changeMixedTwoStarSink, changeTransitiveTriangleT1, changeTransitiveTriangleT3, partial(changeSenderMatch, "class"), partial(changeReceiverMatch, "class"), partial(changeReciprocityMatch, "class")]
 
 estimateALAAMSA.run_on_network_attr(
@@ -26,5 +28,6 @@ estimateALAAMSA.run_on_network_attr(
         [param_func_to_label(f) for f in param_func_list],
         outcome_bin_filename = '../../../data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt', # 1 means male
         catattr_filename = '../../../data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt',
-        directed = True
+        directed = True,
+        add_gof_param_func_list = gof_funcs
     )

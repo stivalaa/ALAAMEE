@@ -19,6 +19,7 @@
 """
 import math
 import numpy as np         # used for matrix & vector data types and functions
+import sys
 
 from Graph import Graph,NA_VALUE,int_or_na
 from changeStatisticsALAAM import *
@@ -56,7 +57,10 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
                                Default 10000.
 
     Return value:
-       vector of t-ratios
+       tuple(tratios, mdist) where
+          tratios is vector of t-ratios (one for each statistic)
+          and mdist is Mahalanobis distance of observed statistics from
+          statistics simualted from model
     """
     n = len(changestats_func_list)
     assert len(theta) == n
@@ -84,5 +88,37 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
     # compute t-statistics
     tratio = (Zmean - Zobs) / Zsd
 
-    return tratio
+    # compute Mahalanobis distance
+    mahaldist = mahalanobis(Zobs, Zmatrix)
+
+    return (tratio,mahaldist)
+
+
+def mahalanobis(u, X):
+    """
+    Mahalanobis distance of the observation vector u from the reference
+    samples in X.
+
+    Parameters:
+       u  -  numpy vector of observation
+       X  -  numpy array where each row is a sample (so columns are variables,
+             the number of columns must equal the dimension of u)
+
+    Retrurn value:
+      Mahalanobis distance of u from distribution described by samples in X
+    """
+    colmeans = np.mean(X, axis=0) # axis=0 gives mean of each column
+    # rowvar=False means each column is a variable, each row is an observation
+    # in computing the covariance matrix
+    Sigma = np.cov(X, rowvar = False)
+    try:
+        SigmaInv = np.linalg.inv(Sigma) # inverse covariance matrix
+    except np.linalg.LinAlgError:
+        warnmsg = "WARNING: covariance matrix is computationally singular, using pseudo-inverse of covariance matrix\n"
+        sys.stderr.write(warnmsg)
+        sys.stdout.write(warnmsg)
+        SigmaInv = np.linalg.pinv(Sigma) # Moore-Penrose pseuo-inverse
+    diffmean = u - colmeans
+    Dsquared = np.dot(np.dot(diffmean, SigmaInv), diffmean) # diffmean^T*SimaInv*diffmean
+    return math.sqrt(Dsquared)
 
