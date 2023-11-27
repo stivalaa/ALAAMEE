@@ -10,7 +10,11 @@ from changeStatisticsALAAMdirected import *
 
 
 ## sim gof good on Density,GWSender,GWReceiver, but bad on LogContagion
-param_func_list =  [changeDensity, partial(changeGWSender, 0.2), partial(changeGWReceiver, 2.0), changeLogContagion]
+## Note fot not in model, good on Receiver (but not Sender), borderline on Contagion
+param_func_list =  [changeDensity, partial(changeGWSender, 5.0), partial(changeGWReceiver, 5.0), changeLogContagion]
+
+## sim gof good on Density,GWSender,GWReceiver, but bad on LogContagion
+#param_func_list =  [changeDensity, partial(changeGWSender, 0.2), partial(changeGWReceiver, 2.0), changeLogContagion]
 
 ## sim gof good on Density,GWSender,GWReceiver, but bad on LogContagion (marginally OK on Contagion, good on Receiver bad on Sender, not in model)
 #param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 2.0), changeLogContagion]
