@@ -343,6 +343,21 @@ def directedLogContagion(G, A):
                   for i in G.nodeIterator() if A[i] == 1) )
 
 
+def PowerContagion(beta, G, A):
+    """Power Contagion statistic
+
+       *
+      /
+     *--*
+      \ :
+       *
+
+    """
+    return sum(math.pow(sum((A[u] == 1) for u in G.neighbourIterator(i)),
+                        1/beta)
+               for i in G.nodeIterator() if A[i] == 1)
+
+
 
 ######################### test functions #####################################
 #
@@ -578,6 +593,9 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     print("LogContagion")
     compare_statistic_sum_changestatistic(g, outcome_binvar, LogContagion, changeLogContagion, epsilon = 1e-08)
 
+    print("PowerContagion")
+    for beta in range(2,11):
+        compare_statistic_sum_changestatistic(g, outcome_binvar, partial(PowerContagion, beta), partial(changePowerContagion, beta), epsilon = 1e-08)
     print("OK,", time.time() - start, "s")
     print()
 
