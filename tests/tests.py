@@ -11,6 +11,7 @@ import time
 import random
 from functools import partial
 from math import log,exp,isclose
+import math
 from collections import Counter
 import numpy
 
@@ -357,6 +358,28 @@ def PowerContagion(beta, G, A):
                         1/beta)
                for i in G.nodeIterator() if A[i] == 1)
 
+
+def directedPowerContagion(beta, G, A):
+    """Directed Power Contagion statistic
+
+        >*
+      /
+     *-->*
+      \ :
+       >*
+
+          *
+        /
+      <
+     *<--*
+      <  :
+        \
+         *
+    """
+    return  ( sum(math.pow(sum((A[u] == 1) for u in G.outIterator(i)), 1/beta)
+                  for i in G.nodeIterator() if A[i] == 1) +
+              sum(math.pow(sum((A[u] == 1) for u in G.inIterator(i)), 1/beta)
+                  for i in G.nodeIterator() if A[i] == 1) )
 
 
 ######################### test functions #####################################
@@ -787,6 +810,10 @@ def test_regression_directed_change_stats(netfilename, outcomefilename,
 
     print("changeLogContagion")
     compare_statistic_sum_changestatistic(g, outcome_binvar, directedLogContagion, changeStatisticsALAAMdirected.changeLogContagion, epsilon = 1e-08)
+
+    print("changePowerContagion")
+    for beta in range(2,11):
+        compare_statistic_sum_changestatistic(g, outcome_binvar, partial(directedPowerContagion, beta), partial(changeStatisticsALAAMdirected.changePowerContagion, beta), epsilon = 1e-08)
 
     print("OK,", time.time() - start, "s")
     print()

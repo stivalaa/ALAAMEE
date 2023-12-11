@@ -738,6 +738,76 @@ def changeLogContagion(G, A, i):
     return delta
 
 
+def changePowerContagion(beta, G, A, i):
+    """Change statistic for Power Contagion.
+
+        >*
+      /
+     *-->*
+      \ :
+       >*
+
+          *
+        /
+      <
+     *<--*
+      <  :
+        \
+         *
+
+    beta > 0 specifies the power 1/beta that the contagion statisic
+    is raised to.
+
+    This is based on the idea from Wilson et al. (2017) described
+    in Blackburn & Handockc (2022) of raising network statistics
+    to a positive power less than one. So e.g. would hvae beta = 2
+    for square root.
+
+    Implemented with only (ugly and more code) loops, as it is faster
+    than more elegant implementation using list comprehensions.
+
+    References:
+
+    Blackburn, B., & Handcock, M. S. (2023). Practical network
+    modeling via tapered exponential-family random graph models.
+    Journal of Computational and Graphical Statistics, 32(2), 388-401.
+
+    Wilson, J. D., Denny, M. J., Bhamidi, S., Cranmer, S. J., &
+    Desmarais, B. A. (2017). Stochastic weighted graphs: Flexible
+    model specification and simulation. Social Networks, 49, 37-47.
+
+
+    Implemented with only (ugly and more code) loops, as it is faster
+    than more elegant implementation using list comprehensions.
+
+    """
+    delta = 0
+    diplus = 0
+    for j in G.outIterator(i):
+        djplus = 0
+        if A[j] == 1:
+            diplus += 1
+            for v in G.inIterator(j):
+                if A[v] == 1:
+                    djplus += 1
+            delta += (math.pow(djplus + 1, 1/beta) -
+                      math.pow(djplus, 1/beta))
+    delta += math.pow(diplus, 1/beta)
+
+    diplus = 0
+    for j in G.inIterator(i):
+        djplus = 0
+        if A[j] == 1:
+            diplus += 1
+            for v in G.outIterator(j):
+                if A[v] == 1:
+                    djplus += 1
+            delta += (math.pow(djplus + 1, 1/beta) -
+                      math.pow(djplus, 1/beta))
+    delta += math.pow(diplus, 1/beta)
+
+    return delta
+
 # ================== old versions for regression testing ======================
 
 def changeContagion_OLD(G, A, i):
