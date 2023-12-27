@@ -8,10 +8,19 @@ from math import log
 from changeStatisticsALAAM import *
 from changeStatisticsALAAMdirected import *
 
+param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 2.0), partial(changePowerContagion, 6)]
 
+## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
+#param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 0.2), partial(changePowerContagion, 6)]
+
+## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
+#param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 0.2), partial(changePowerContagion, 4)]
+
+## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
+#param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 0.2), partial(changePowerContagion, 2)]
 
 ## sim gof OK on Density,GWSender,GWReceiver, but bad on LogContagion
-param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 0.2), changeLogContagion]
+#param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 0.2), changeLogContagion]
 
 ## Very large GWSender parameter estimate
 ## sim gof OK on Density,GWSender,GWReceiver, but bad on LogContagion
