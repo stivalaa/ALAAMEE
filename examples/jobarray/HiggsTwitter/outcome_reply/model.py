@@ -8,6 +8,7 @@ from math import log
 from changeStatisticsALAAM import *
 from changeStatisticsALAAMdirected import *
 
+## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
 param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 2.0), partial(changePowerContagion, 6)]
 
 ## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
