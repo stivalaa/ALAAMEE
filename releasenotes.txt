@@ -1,0 +1,13 @@
+v2.4.0 (8 January 2024)
+
+* Implemented BipartiteGWActivity change statistic
+* Implemented bipariteFixedMode on simulation
+* Added -e (--eiindex) option for Krackhardt & Stern (1988) E-I index on plotALAAMEEsimfit.R
+* Added ALAAM examples with badger data from Silk et al. (2017)
+* Implemented oO_OsameContagion change statistic
+* Implemented distance matrix and ContagionDist and GeographicHomophily change statistics
+* Added Hamilton et al. (2020) Tasmanian Devil replication data and TERGM models, and new models for the Tasmanian Devil data using SAOM (RSiena) and ALAAM (ALAAMEE stochastic approximation)
+* Added test cases and regression tests for new change statistics
+* Added experimental change statistics LogContagion and PowerContagion including high school example models and simulation experiments scripts
+* Added Mahalanobis distance to goodness-of-fit, including test cases for Mahalanobis distance computation
+* Added add_gof_param_func_list parameter to estimateALAAMSA() to allow user-specified goodness-of-fit statistics
