@@ -9,7 +9,7 @@ from changeStatisticsALAAM import *
 from changeStatisticsALAAMdirected import *
 
 ## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
-param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 2.0), partial(changePowerContagion, 6)]
+param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 2.0), partial(changePowerContagion, 10)]
 
 ## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
 #param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 0.2), partial(changePowerContagion, 6)]
