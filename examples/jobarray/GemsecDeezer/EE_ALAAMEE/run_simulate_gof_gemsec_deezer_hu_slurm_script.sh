@@ -39,7 +39,7 @@ command -v module >/dev/null 2>&1 && module load r/4.2.1
 
 Rscript ${ROOT}/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
-Hscript ${ROOT}/R/plotALAAMEEsimFit.R -a -e ../data/deezer_hu_friendship.net ../data/deezer_hu_outcome.txt sim_deezer_hu_outcome
+Rscript ${ROOT}/R/plotALAAMEEsimFit.R -a -e ../data/deezer_hu_friendship.net ../data/deezer_hu_outcome.txt sim_deezer_hu_outcome
 
 times
 echo -n "ended at: "; date
