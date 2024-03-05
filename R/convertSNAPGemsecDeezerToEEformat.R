@@ -184,10 +184,11 @@ for (country in c("RO", "HR", "HU")) {
   ## The outcome binary attribute is 1 for liking any genre that
   ## contains "jazz" or 0 otherwise
   unique_genres <- unique(unlist(genres))
-  cat(country, "jazz genres:", unique_genres[
-                            unlist(sapply(unique_genres,
+  cat(country, "jazz genres:\n")
+  cat(unique_genres[ unlist(sapply(unique_genres,
                             function(s) grepl("jazz", s,ignore.case=TRUE)))],
-      '\n')
+      '\n', sep = '|' )
+
   anyJazz <- lapply(genres, function(s) any(grepl("jazz", s,
                                                   ignore.case=TRUE)))
   outcomebinattr <- data.frame(anyJazz = as.integer(anyJazz))
