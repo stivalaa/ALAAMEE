@@ -5,8 +5,8 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=200MB
 #SBATCH --time=0-48:00:00
-#SBATCH --output=alaam_sa_deezer-%j.out
-#SBATCH --error=alaam_sa_deezer-%j.err
+#SBATCH --output=alaam_sa_deezer_ro-%j.out
+#SBATCH --error=alaam_sa_deezer_ro-%j.err
 
 echo -n "started at: "; date
 
