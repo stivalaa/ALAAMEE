@@ -24,7 +24,7 @@ SIMSTATS_FILE=stats_sim_gof_deezer_ro.txt
 # output file of observed ALAAM statistics
 OBSTATS_FILE=obs_stats_sim_deezer_ro.txt
 
-ROOT=${DOCUMENTS}/USI/ALAAMEE
+ROOT=../../../../
 
 export PYTHONPATH=${ROOT}/python:${PYTHONPATH}
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
@@ -39,7 +39,7 @@ command -v module >/dev/null 2>&1 && module load r/4.2.1
 
 Rscript ${ROOT}/R/plotSimulationDiagnostics.R  ${SIMSTATS_FILE} ${OBSTATS_FILE}
 
-Rscript ${ROOT}/R/plotALAAMEEsimFit.R -a -e deezer_ro_friendship.net deezer_ro_outcome.txt sim_deezer_ro_outcome
+Rscript ${ROOT}/R/plotALAAMEEsimFit.R -a -e ../data/deezer_ro_friendship.net ../data/deezer_ro_outcome.txt sim_deezer_ro_outcome
 
 times
 echo -n "ended at: "; date

@@ -9,8 +9,7 @@
 #SBATCH --mem=8GB
 
 echo -n "started at: "; date
-#RSCRIPTSDIR=${HOME}/ALAAMEE/R
-RSCRIPTSDIR=${DOCUMENTS}/USI/ALAAMEE/R
+RSCRIPTSDIR=../../../../R
 
 uname -a
 

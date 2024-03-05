@@ -44,14 +44,13 @@ assert len(theta) == len(param_func_list)
 
 
 simulate_from_network_attr(
-    'deezer_ro_friendship.net',
+    '../data/deezer_ro_friendship.net',
     param_func_list, labels, theta,
-    binattr_filename = 'deezer_ro_binattr.txt',
-    contattr_filename = 'deezer_ro_contattr.txt',
+    contattr_filename = '../data/deezer_ro_contattr.txt',
     iterationInStep = 100000,
     burnIn = 1000000,
     outputSimulatedVectors = True,
-    simvecFilePrefix = 'sim_deezer_ro_outcome'
+    simvecFilePrefix = '../data/sim_deezer_ro_outcome'
     )
 
 

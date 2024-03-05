@@ -47,12 +47,11 @@ def main():
     runNumber = int(args[0])
 
     estimateALAAMEE.run_on_network_attr(
-        'deezer_ro_friendship.net',
+        '../data/deezer_ro_friendship.net',
         param_func_list,
         [param_func_to_label(f) for f in param_func_list],
-        'deezer_ro_outcome.txt',
-        binattr_filename = 'deezer_ro_binattr.txt',
-        contattr_filename = 'deezer_ro_contattr.txt',
+        '../data/deezer_ro_outcome.txt',
+        contattr_filename = '../data/deezer_ro_contattr.txt',
         run = runNumber,
         learningRate = 0.01
         )

@@ -10,7 +10,7 @@
 
 echo -n "started at: "; date
 
-ROOT=$DOCUMENTS/USI/ALAAMEE
+ROOT=../../../../
 
 #NUM_RUNS=10
 NUM_RUNS=6

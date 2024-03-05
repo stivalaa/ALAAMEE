@@ -8,3 +8,5 @@ deezer_ro_contattr.txt
 deezer_ro_friendship.net
 deezer_ro_outcome.txt
 get_gemsec_deezer_data_slurm_script.out
+get_gemsec_deezer_data-*.err
+get_gemsec_deezer_data-*.out

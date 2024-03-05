@@ -25,7 +25,7 @@ module load python/3.10.8
 module load numpy/1.24.2-scipy-bundle-2023.02
 
 
-export PYTHONPATH=${HOME}/ALAAMEE/python/:${PYTHONPATH}
+export PYTHONPATH=../../../..//python/:${PYTHONPATH}
 python3 ./runALAAMEEGemsecDeezerROParallel.py ${SLURM_ARRAY_TASK_ID}
 
 
