@@ -2,7 +2,7 @@
 
 
 # use the 
-# run_submit_deezer_process_jobarray_slurm_script.sh
+# run_submit_gemsec_deezer_ro_process_jobarray_slurm_script.sh
 # job to submit this job and then process output with R scripts 
 # on completion
 
@@ -19,7 +19,11 @@ echo -n "started at: "; date
 
 echo SLURM_ARRAY_TASK_ID = ${SLURM_ARRAY_TASK_ID}
 
-module load python/3.9.0
+# module version numbers are required on OzStar (Ngarrgu Tindebeek)
+module load foss/2022b
+module load python/3.10.8
+module load numpy/1.24.2-scipy-bundle-2023.02
+
 
 export PYTHONPATH=${HOME}/ALAAMEE/python/:${PYTHONPATH}
 python3 ./runALAAMEEGemsecDeezerROParallel.py ${SLURM_ARRAY_TASK_ID}
