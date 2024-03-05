@@ -50,7 +50,7 @@ simulate_from_network_attr(
     iterationInStep = 100000,
     burnIn = 1000000,
     outputSimulatedVectors = True,
-    simvecFilePrefix = '../data/sim_deezer_ro_outcome'
+    simvecFilePrefix = 'sim_deezer_ro_outcome'
     )
 
 
