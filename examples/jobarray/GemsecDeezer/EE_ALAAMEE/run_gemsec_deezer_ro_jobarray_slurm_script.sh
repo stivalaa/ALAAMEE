@@ -11,7 +11,7 @@
 #SBATCH --output=alaamee_GEMSEC_Deezer_RO-%A_%a.out
 #SBATCH --error=alaamee_GEMSEC_Deezer_RO-%A_%a.err
 #SBATCH --ntasks=1
-#SBATCH --mem=500MB
+#SBATCH --mem=100MB
 #SBATCH --array=0-99
 
 
