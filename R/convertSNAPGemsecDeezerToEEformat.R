@@ -140,6 +140,12 @@ for (country in c("RO", "HR", "HU")) {
   cat("density: ", graph.density(g), "\n")
   cat("transitivity: ", transitivity(g), "\n")
 
+  ##
+  ## Write network
+  ##
+  cat(outfilename_undirected, "\n")
+  write.graph(g, outfilename_undirected, format="pajek")
+
 
   ##
   ## read genre information in JSON format
@@ -162,14 +168,38 @@ for (country in c("RO", "HR", "HU")) {
   cat(country, "genre frequency:\n")
   print(table(unlist(genres)))
 
+  ##
+  ## Build continuous attributes
+  ##
+
+  ## number of genres that the user likes
+  contattr <- data.frame(num_genres = sapply(genres, length))
+  print(summary(contattr))
+
 
   ##
-  ## Write network
+  ## Build outcome binary attribute
   ##
-  cat(outfilename_undirected, "\n")
-  write.graph(g, outfilename_undirected, format="pajek")
 
-
+  ## The outcome binary attribute is 1 for liking any genre that
+  ## contains "jazz" or 0 otherwise
+  unique_genres <- unique(unlist(genres))
+  cat(country, "jazz genres:", unique_genres[
+                            unlist(sapply(unique_genres,
+                            function(s) grepl("jazz", s,ignore.case=TRUE)))],
+      '\n')
+  anyJazz <- lapply(genres, function(s) any(grepl("jazz", s,
+                                                  ignore.case=TRUE)))
+  outcomebinattr <- data.frame(anyJazz = as.integer(anyJazz))
+  print(summary(outcomebinattr))
+  
+  ##
+  ## Write continuous attributes
+  ##
+  cat(contattr_filename, "\n")
+  write.table(contattr, file = contattr_filename, row.names = FALSE,
+              col.names = TRUE, quote = FALSE)
+  
   ##
   ## write outcome binary attribute
   ##
