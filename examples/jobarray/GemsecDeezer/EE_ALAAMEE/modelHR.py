@@ -7,6 +7,7 @@ from math import log
 from changeStatisticsALAAM import *
 
 
+## [HR] sim gof ok (in 95% CI) on all (density abs t-ratio > 1.5 though)
 param_func_list = [changeDensity, partial(changeGWActivity, 2.0),
                    changeContagion,
                    partial(changeoOc, "num_genres"),
