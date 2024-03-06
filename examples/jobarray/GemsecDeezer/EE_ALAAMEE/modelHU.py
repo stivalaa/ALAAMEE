@@ -7,11 +7,11 @@ from math import log
 from changeStatisticsALAAM import *
 
 ## [HU] GoF sim bad (well outside 95% CI) on all but GWActivity(2)
-param_func_list = [changeDensity, partial(changeGWActivity, 2.0),
-                   partial(changePowerContagion, 2),
-                   changeTriangleT1, changeTriangleT2, changeTriangleT3,
-                   partial(changeoOc, "num_genres"),
-                   partial(changeo_Oc, "num_genres")]
+#param_func_list = [changeDensity, partial(changeGWActivity, 2.0),
+#                   partial(changePowerContagion, 2),
+#                   changeTriangleT1, changeTriangleT2, changeTriangleT3,
+#                   partial(changeoOc, "num_genres"),
+#                   partial(changeo_Oc, "num_genres")]
 
 ## [HU] GoF sim OK on model parameters and also others
 ## (particularly Activity) except Contagion, IndirectPartnerAttribute,
@@ -28,9 +28,9 @@ param_func_list = [changeDensity, partial(changeGWActivity, 2.0),
 #                   partial(changeoOc, "num_genres")]
 
 ## [HU] GoF sim OK in model parameters, bad on all others
-#param_func_list = [changeDensity, partial(changeGWActivity, 2.0),
-#                   changeContagion,
-#                   partial(changeoOc, "num_genres")]
+param_func_list = [changeDensity, partial(changeGWActivity, 2.0),
+                   changeContagion,
+                   partial(changeoOc, "num_genres")]
 
 ## [HU] GoF sim OK in model parameters, bad on all others
 ## (except PartnerPArtnerAttribute, T2, T3, but not T1, OK)
