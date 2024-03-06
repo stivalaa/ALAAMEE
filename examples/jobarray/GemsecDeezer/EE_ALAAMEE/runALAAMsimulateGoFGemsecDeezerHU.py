@@ -14,7 +14,7 @@ from changeStatisticsALAAM import *
 from simulateALAAM import simulate_from_network_attr
 from parseEstimationEEOutput import parseEstimationEEOutput
 
-from model import param_func_list
+from modelHU import param_func_list
 
 
 ###

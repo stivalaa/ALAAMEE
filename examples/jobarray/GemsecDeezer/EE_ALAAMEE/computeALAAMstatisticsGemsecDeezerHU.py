@@ -14,7 +14,7 @@ from functools import partial
 from computeObservedStatistics import get_observed_stats_from_network_attr
 from changeStatisticsALAAM import *
 
-from model import param_func_list
+from modelHU import param_func_list
 
 ## Add extra statistics not in model for goodness-of-fit
 statfuncs = [changeDensity, changeActivity, changeTwoStar, changeThreeStar, changePartnerActivityTwoPath, changeContagion, changeIndirectPartnerAttribute, changePartnerAttributeActivity, changePartnerPartnerAttribute, changeTriangleT1, changeTriangleT2, changeTriangleT3]
