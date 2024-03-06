@@ -18,7 +18,7 @@ from functools import partial
 import  estimateALAAMEE
 from changeStatisticsALAAM import param_func_to_label
 
-from model import param_func_list
+from modelHR import param_func_list
 
 
 def usage(progname):
