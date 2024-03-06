@@ -6,15 +6,22 @@ from functools import partial
 from math import log
 from changeStatisticsALAAM import *
 
+
+param_func_list = [changeDensity, partial(changeGWActivity, 2.0),
+                   changeContagion,
+                   partial(changeoOc, "num_genres"),
+                   partial(changeo_Oc, "num_genres")]
+
 ## [RO] gof sim ok (but not great on Density, Activity in particular),
 ## ok on TwoStar (just), Threestar, PArtnerActivityTwoPath,
 ## PartnerAttributeActivity, PartnerPartnerAttribute, but 
 ## bad on IndirectPartnerAttribute:
-param_func_list = [changeDensity, changeActivity,
-                   changeContagion,
-                   changeTriangleT1, changeTriangleT2, changeTriangleT3,
-                   partial(changeoOc, "num_genres"),
-                   partial(changeo_Oc, "num_genres")]
+## [HU] GoF sim bad (no stats in 95% CI)
+#param_func_list = [changeDensity, changeActivity,
+#                   changeContagion,
+#                   changeTriangleT1, changeTriangleT2, changeTriangleT3,
+#                   partial(changeoOc, "num_genres"),
+#                   partial(changeo_Oc, "num_genres")]
 
 
 ## [RO] Gof sim OK on all but IndirectPartnerAttribute 
