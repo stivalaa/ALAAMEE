@@ -41,14 +41,17 @@
 ##   deezer_ro_binattr.txt
 ##   deezer_ro_contattr.txt
 ##   deezer_ro_outcome.txt
+##   deezer_ro_outcome_alternative.txt
 ##   deezer_hu_friendship.net
 ##   deezer_hu_binattr.txt
 ##   deezer_hu_contattr.txt
 ##   deezer_hu_outcome.txt
+##   deezer_hu_outcome_alternative.txt
 ##   deezer_hr_friendship.net
 ##   deezer_hr_binattr.txt
 ##   deezer_hr_contattr.txt
 ##   deezer_hr_outcome.txt
+##   deezer_hr_outcome_alternative.txt
 ##
 
 library(igraph)
@@ -105,6 +108,8 @@ for (country in c("RO", "HR", "HU")) {
                                   sep = "_")
   outcome_filename <- paste("deezer", tolower(country), "outcome.txt",
                             sep = "_")
+  outcome_alt_filename <- paste("deezer", tolower(country),
+                                "outcome_alternative.txt", sep = "_")  
   binattr_filename <-  paste("deezer", tolower(country), "binattr.txt",
                              sep = "_")
   contattr_filename <- paste("deezer", tolower(country), "contattr.txt",
@@ -183,6 +188,7 @@ for (country in c("RO", "HR", "HU")) {
 
   ## The outcome binary attribute is 1 for liking any genre that
   ## contains "jazz" or 0 otherwise
+  ## Approx 5% in each have this one
   unique_genres <- unique(unlist(genres))
   cat(country, "jazz genres:\n")
   cat(unique_genres[ unlist(sapply(unique_genres,
@@ -193,6 +199,15 @@ for (country in c("RO", "HR", "HU")) {
                                                   ignore.case=TRUE)))
   outcomebinattr <- data.frame(anyJazz = as.integer(anyJazz))
   print(summary(outcomebinattr))
+
+  ## The alternative outcome attribute is 1 for liking the "Alternative"
+  ## genre
+  ## Approx 30% to 40% in each have this one
+  outcome_alt_binattr <- data.frame(alternative = as.integer(
+                                      lapply(genres,
+                                             function(v)
+                                               "Alternative" %in% v)))
+  print(summary(outcome_alt_binattr))
   
   ##
   ## Write continuous attributes
@@ -207,4 +222,9 @@ for (country in c("RO", "HR", "HU")) {
   cat(outcome_filename, "\n")
   write.table(outcomebinattr, file = outcome_filename, row.names = FALSE,
               col.names = TRUE, quote = FALSE)
+
+  cat(outcome_alt_filename, "\n")
+  write.table(outcome_alt_binattr, file = outcome_alt_filename,
+              row.names = FALSE, col.names = TRUE, quote = FALSE)
+
 }
