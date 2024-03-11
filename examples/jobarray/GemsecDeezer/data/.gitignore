@@ -1,12 +1,15 @@
 deezer_hr_contattr.txt
 deezer_hr_friendship.net
 deezer_hr_outcome.txt
+deezer_hr_outcome_alternative.txt
 deezer_hu_contattr.txt
 deezer_hu_friendship.net
 deezer_hu_outcome.txt
+deezer_hu_outcome_altnerative.txt
 deezer_ro_contattr.txt
 deezer_ro_friendship.net
 deezer_ro_outcome.txt
+deezer_ro_outcome_alternative.txt
 get_gemsec_deezer_data_slurm_script.out
 get_gemsec_deezer_data-*.err
 get_gemsec_deezer_data-*.out
