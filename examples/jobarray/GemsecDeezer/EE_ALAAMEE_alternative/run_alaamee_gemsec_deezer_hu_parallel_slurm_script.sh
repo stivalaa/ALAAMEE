@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name="ALAAMEE_parallel"
-#SBATCH --time=0-02:00:00
+#SBATCH --time=0-04:00:00
 #SBATCH --output=alaamee_gemsec_deezer_hu-%j.out
 #SBATCH --error=alaamee_gemsec_deezer_hu-%j.err
 #SBATCH --ntasks=10

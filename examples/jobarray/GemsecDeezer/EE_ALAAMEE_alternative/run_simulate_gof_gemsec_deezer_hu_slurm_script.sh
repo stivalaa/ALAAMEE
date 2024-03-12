@@ -1,6 +1,6 @@
 #!/bin/sh
 #SBATCH --job-name="gof_ALAAM_GEMSEC_HU"
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-02:00:00
 #SBATCH --output=gof_alaam_sim_gemsec_deezer_hu-%j.out
 #SBATCH --error=gof_alaam_sim_gemsec_deezer_hu-%j.err
 #SBATCH --ntasks=1

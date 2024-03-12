@@ -7,7 +7,7 @@
 # on completion
 
 #SBATCH --job-name="ALAAMEE_HU_jobarray_parallel"
-#SBATCH --time=0-02:00:00
+#SBATCH --time=0-04:00:00
 #SBATCH --output=alaamee_GEMSEC_Deezer_HU-%A_%a.out
 #SBATCH --error=alaamee_GEMSEC_Deezer_HU-%A_%a.err
 #SBATCH --ntasks=1
