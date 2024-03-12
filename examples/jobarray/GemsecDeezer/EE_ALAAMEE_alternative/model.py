@@ -7,6 +7,7 @@ from math import log
 from changeStatisticsALAAM import *
 
 
+## Good (but bad gof on TwoStar, ThreeStar)
 param_func_list = [changeDensity, partial(changeGWActivity, 2.0),
                    changeContagion,
                    changeTriangleT1, changeTriangleT2, changeTriangleT3,
