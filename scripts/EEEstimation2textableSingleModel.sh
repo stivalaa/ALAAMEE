@@ -110,4 +110,4 @@ echo '\hline'
 #echo '\bottomrule'
 echo '\end{tabular}'
 
-##rm ${estimnet_tmpfile}
+rm ${estimnet_tmpfile}
