@@ -35,7 +35,7 @@ echo "% On: " `uname -a`
 
 echo '\begin{tabular}{lrrrc}'
 echo '\hline'
-echo 'Effect & Estimate & Std. error \\'
+echo 'Effect & Estimate & Std. error & t-ratio \\'
 echo '\hline'
 
 #
@@ -66,14 +66,13 @@ echo '\hline'
 cat ${estimationresults} | sed -n -e '/^Converged/,/^$/{p}' | sed '1d;$d'  | fgrep -vw 'Estimate' > ${tmpfile}
 cat ${tmpfile} | while read line
 do
-    effect=`echo "${line}" | awk '{print $1}'`
+    effect=`echo "${line}" | awk '{print $1}' | tr '_' ' '`
     point=`echo "${line}" | awk '{print $2}'`
     stderr=`echo "${line}" | awk '{print $3}'`
     tratio=`echo "${line}" | awk '{print $4}'`
     signif=`echo "${line}" | awk '{print $5}'`
-    printf '%s & %s & %s & %s & %s \\\\ \n' ${effect} ${point} ${stderr} ${tratio} "${signif}"
+    printf '%s & %s & %s & %s & %s \\\\ \n' "${effect}" ${point} ${stderr} ${tratio} "${signif}"
 done
-echo '\\'
 echo '\hline'  
 echo '\end{tabular}'
 
