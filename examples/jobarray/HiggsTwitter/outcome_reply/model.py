@@ -10,7 +10,11 @@ from changeStatisticsALAAMdirected import *
 
 ## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
 ## (sim < obs, outside 95% interval but not hugely)
-param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 2.0), partial(changePowerContagion, 30)]
+param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 2.0), partial(changePowerContagion, 50)]
+
+## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
+## (sim < obs, outside 95% interval but not hugely)
+#param_func_list =  [changeDensity, partial(changeGWSender, 2.0), partial(changeGWReceiver, 2.0), partial(changePowerContagion, 30)]
 
 ## sim gof OK on Density,GWSender,GWReceiver, but bad on PowerContagion
 ## (sim < obs, outside 95% interval but not hugely)
