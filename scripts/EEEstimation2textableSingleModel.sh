@@ -19,6 +19,11 @@
 # Output is to stdout
 #
 # Uses various GNU utils options on echo, etc.
+#
+# Note requires
+#   \usepackage[T1]{fontenc}
+# in LaTeX that includes the table so that the "< 0.001" is handled
+# correctly otherwise "<" shows up as upside-down exclamation mark.
 
 
 zSigma=2 # multiplier of estimated standard error for nominal 95% C.I.
@@ -105,4 +110,4 @@ echo '\hline'
 #echo '\bottomrule'
 echo '\end{tabular}'
 
-##rm ${estimnet_tmpfile}
+rm ${estimnet_tmpfile}
