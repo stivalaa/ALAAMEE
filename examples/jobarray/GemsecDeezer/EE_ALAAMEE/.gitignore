@@ -12,3 +12,10 @@ obs_stats_sim_deezer_??.txt
 stats_sim_gof_deezer_??-plots.eps
 stats_sim_gof_deezer_??.txt
 sim_deezer_??_outcome.pdf
+plot_model_degeneracy_checks.out
+model_stats_sim_gof_deezer_hr-plots.eps
+model_stats_sim_gof_deezer_hu-plots.eps
+model_stats_sim_gof_deezer_ro-plots.eps
+model_stats_sim_gof_deezer_hr.txt
+model_stats_sim_gof_deezer_hu.txt
+model_stats_sim_gof_deezer_ro.txt
