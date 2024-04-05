@@ -1,3 +1,10 @@
+v2.4.1 (25 March 2024)
+
+* Added GEMSEC Deezer examples (as used in new manuscript Stivala, Wang, & Lomi (2024) "ALAAMEE: Open-source software for fitting autologistic actor attribute models")
+
+* Added scripts to convert multiple EE estimations to LaTeX table and single SA estimation to LaTeX table
+
+
 v2.4.0 (8 January 2024)
 
 * Implemented BipartiteGWActivity change statistic
