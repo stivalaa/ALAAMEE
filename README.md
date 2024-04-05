@@ -39,6 +39,8 @@ Stivala, A. D., Gallagher, H. C., Rolls, D. A., Wang, P., & Robins, G. L. (2020)
 
 Stivala, A., Robins, G., & Lomi, A. (2020). Exponential random graph model parameter estimation for very large directed networks. *PloS ONE*, 15(1), e0227804. https://arxiv.org/abs/1904.08063
 
+Stivala, A., Wang, P., & Lomi, A. (2024). ALAAMEE: Open-source software for fitting autologistic actor attribute models. arXiv preprint arXiv:2404.03116. https://arxiv.org/abs/2404.03116
+
 Wang, P., Robins, G., & Pattison, P. (2009). PNet: A program for the simulation and estimation of exponential random graph  models. University of Melbourne. http://www.melnet.org.au/s/PNetManual.pdf
 
 Wang, P., Robins, G., Pattison, P., & Koskinen, J. (2014). MPNet: A program for the simulation and estimation of exponential random graph models for multilevel networks. University of Melbourne. http://www.melnet.org.au/s/MPNetManual.pdf
