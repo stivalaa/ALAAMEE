@@ -8,6 +8,12 @@ This software is applicable to one-mode networks (directed or undirected), and u
 
 This Python implementation uses the [NumPy](https://numpy.org/) library for vector and matrix data types and functions. In addition, there are R scripts for estimating standard errors and plotting results from the output.
 
+## Citing
+
+If you use this software in your research, please cite:
+
+Stivala, A., Wang, P., & Lomi, A. (2024). ALAAMEE: Open-source software for fitting autologistic actor attribute models. arXiv preprint arXiv:2404.03116. https://arxiv.org/abs/2404.03116
+
 ## Other ALAAM software
 
 * For the original Windows GUI implementation using stochastic approximation, for one-mode, two-mode, and multilevel networks, [MPNet](http://www.melnet.org.au/pnet).
