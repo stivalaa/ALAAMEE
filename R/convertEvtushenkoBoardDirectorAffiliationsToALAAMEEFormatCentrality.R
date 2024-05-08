@@ -30,7 +30,8 @@
 ##     evtushenko_directors_binattr.txt
 ##     evtushenko_directors_catattr.txt
 ##     evtushenko_directors_contattr.txt
-##     evtushenko_directors_outcome
+##     evtushenko_directors_outcome.txt
+##     evtushenko_directors_outcome_na0.txt
 ##
 ## If -g (giant component) is specified, then filenames hae _gc appended before
 ## .txt suffix.
@@ -299,6 +300,12 @@ summary(contattr)
 ##
 outcome <- data.frame(female = binattr$female)
 
+## And version with NA values converted to 0 (on person nodes only)
+outcome_na0 <- data.frame(female = ifelse(binattr$company, binattr$female,
+                                          ifelse(is.na(binattr$female),
+                                                 0, binattr$female)))
+
+
 ###
 ### convert type to logical so Pajek bipartite format output works
 ###
@@ -362,4 +369,14 @@ write.table(outcome,
                           "evtushenko_directors_outcome_gc.txt", 
                           "evtushenko_directors_outcome.txt"),
             row.names = FALSE, col.names = TRUE, quote = FALSE)
+
+## and version with NA replaced with 0 for person nodes only
+
+write.table(outcome_na0,
+            file = ifelse(get_giantcomponent,
+                          "evtushenko_directors_outcome_na0_gc.txt", 
+                          "evtushenko_directors_outcome_na0.txt"),
+            row.names = FALSE, col.names = TRUE, quote = FALSE)
+
+
 ## end
