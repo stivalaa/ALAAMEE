@@ -9,8 +9,11 @@
 
 import sys
 import random
+import math
 from Graph import Graph
 from SparseMatrix import SparseMatrix
+from utils import NA_VALUE
+
 
 
 # Mode (node type) of a node for bipartite (two-mode) networks
@@ -90,7 +93,31 @@ class BipartiteGraph(Graph):
         print('Bipartite graph')
         print('number of mode A nodes = ', self.num_A_nodes)
         print('number of mode B nodes = ', self.num_B_nodes)
-        super().printSummary()
+        print('graph density = ', self.density())
+        
+
+        if self.binattr is not None:
+            for attrname in self.binattr.keys():
+                print('Binary attribute', attrname, 'has', self.binattr[attrname].count(NA_VALUE), 'NA values (', self.binattr[attrname][:self.num_A_nodes].count(NA_VALUE), 'in mode A and', self.binattr[attrname][self.num_A_nodes:].count(NA_VALUE), 'in mode B)' )
+        else:
+            print('No binary attributes')
+        if self.contattr is not None:
+            for attrname in self.contattr.keys():
+                print('Continuous attribute', attrname, 'has', sum([math.isnan(x) for x in self.contattr[attrname]]), 'NA values (', sum([math.isnan(x) for x in self.contattr[attrname][:self.num_A_nodes]]), 'in mode A and ', sum([math.isnan(x) for x in self.contattr[attrname][self.num_A_nodes:]]), 'in mode B')
+        else:
+            print('No continuous attributes')
+        if self.catattr is not None:
+            for attrname in self.catattr.keys():
+                print('Categorical attribute', attrname, 'has', self.catattr[attrname].count(NA_VALUE), 'NA values (', self.catattr[attrname][:self.num_A_nodes].count(NA_VALUE), 'in mode A and ', self.catattr[attrname][self.num_A_nodes:].count(NA_VALUE), 'in mode B')
+        else:
+            print('No categorical attributes')
+
+
+        if self.zone is not None:
+            print('There are', self.max_zone, 'snowball sample waves, with', len(self.inner_nodes), 'nodes in inner waves')
+        else:
+            print('No snowball zones')
+
 
 
     def bipartite_node_mode(self, i):
