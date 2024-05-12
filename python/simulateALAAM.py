@@ -106,7 +106,6 @@ def simulateALAAM(G, changestats_func_list, theta, numSamples,
     assert len(theta) == len(changestats_func_list)
     assert bipartiteFixedMode in [None, MODE_A, MODE_B]
     assert not (bipartiteFixedMode is not None and not bipartite)
-    assert not (Ainitial is not None and bipartiteFixedMode is not None)
     assert not (G.zone is not None and bipartite)
 
 
@@ -267,7 +266,6 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
     """
     assert(len(param_func_list) == len(labels))
     assert not (bipartiteFixedMode is not None and not bipartite)
-    assert not (Ainitial is not None and bipartiteFixedMode is not None)
 
     if directed:
         if bipartite:
