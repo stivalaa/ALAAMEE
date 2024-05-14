@@ -267,7 +267,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         gofresult = gof(G, A, gof_param_func_list, gof_theta,
                         sampler_func = sampler_func,
                         iterationInStep = GoFiterationInStep,
-                        burnIn = GoFburnIn)
+                        burnIn = GoFburnIn,
+                        bipartiteFixedMode = bipartiteGoFfixedMode)
         print('GoF took',time.time() - start, 's')
         print('           ',goflabels)
         print('t_ratios = ',gofresult[0])

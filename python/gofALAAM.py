@@ -30,7 +30,8 @@ from basicALAAMsampler import basicALAAMsampler
 
 def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
         sampler_func = basicALAAMsampler, Ainitial = None,
-        iterationInStep = 1000, burnIn = 10000):
+        iterationInStep = 1000, burnIn = 10000,
+        bipartiteFixedMode = None):
     """
     ALAAM goodness-of-fit by simulating from estimated parameters, and 
     comparing observed statistics to statistics of simulated outcome vectors,
@@ -55,7 +56,11 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
                                Default 1000.
        burnIn                - number of iterations to discard at start.
                                Default 10000.
-
+       bipartiteFixedMode    - for bipartite networks only, the mode
+                               (MODE_A or MODE_B that is fixed to NA
+                               in simulation, for when outcome
+                               variable not defined for that mode,
+                               or None. Default None.
     Return value:
        tuple(tratios, mdist) where
           tratios is vector of t-ratios (one for each statistic)
@@ -73,7 +78,8 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
     # Compute simulated outcome vector statistics from MCMC
     sim_results = simulateALAAM(G, changestats_func_list,  theta,
                                 numSamples, iterationInStep, burnIn,
-                                sampler_func, Ainitial, Aobs = Aobs)
+                                sampler_func, Ainitial,
+                                bipartiteFixedMode, Aobs)
     #simulateALAAM() return list of tuples (simvec,stats,acceptance_rate,t)
     # convert to matrix where each row is sample, each column is statistic
     Zmatrix = np.stack([r[1] for r in sim_results])
