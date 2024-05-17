@@ -1,0 +1,39 @@
+ALAAM estimations of the Seierstad & Opsahl (2011) Norwegian director
+interlock data with female gender as 'outcome' ALAAM attribute.
+
+See convertNorwegianDirectorInterlockDataToALAAMEEFormat.R for details.
+
+
+## Citation for data:
+##
+## Seierstad, C., & Opsahl, T. (2011). For the few not the many? The
+## effects of affirmative action on presence, prominence, and social
+## capital of women directors in Norway. Scandinavian journal of
+## management, 27(1), 44-54.
+##
+##
+## Note uses only the network for August 1, 2009, the one used in:
+##
+## Opsahl, T. (2013). Triadic closure in two-mode networks: Redefining
+## the global and local clustering coefficients. Social networks,
+## 35(2), 159-167.
+##
+
+Note that the data source http://www.boardsandgender.com
+is no longer available, but I
+downloaded all the data on 29 June 2020 and this is stored in the data/
+directory.
+
+Note that the data was made available under a 
+"Creative Commons Attribution-Noncommercial 3.0-license"
+[https://creativecommons.org/licenses/by-nc/3.0/]
+license (see data/view-source_www.boardsandgender.com_data.php.html or
+data/Boards and Gender.pdf) sor sharing (copy and redistribute) and adapt
+is legitimate, with attribution for non-commerical purposes.
+The attribution is the citation to Seierstad & Opsahl (2011) above.
+
+Tried first with ALAAMEE stochastic approximation (48 hour time limit, but
+turns out only to require a couple of hours).
+
+ADS
+Fri May 17 14:01:33 AEST 2024

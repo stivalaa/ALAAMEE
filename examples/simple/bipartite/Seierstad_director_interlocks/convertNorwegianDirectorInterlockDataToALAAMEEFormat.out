@@ -1,0 +1,161 @@
+[1] "Thu May 16 11:10:26 2024"
+R version 4.2.1 (2022-06-23)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Rocky Linux 9.4 (Blue Onyx)
+
+Matrix products: default
+BLAS/LAPACK: /apps/modules/software/FlexiBLAS/3.2.0-GCC-11.3.0/lib64/libflexiblas.so.3.2
+
+locale:
+[1] C
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] birankr_1.0.1     data.table_1.14.2 Matrix_1.4-1      igraph_1.3.2     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.2.1  magrittr_2.0.3  grid_4.2.1      pkgconfig_2.0.3
+[5] lattice_0.20-45
+num_Persons =  1495 
+num_Companies =  367 
+IGRAPH 8656f24 UN-B 1862 1834 -- 
++ attr: type (v/l), name (v/c)
+IGRAPH 8656f24 UN-B 1862 1834 -- 
++ attr: type (v/l), name (v/c)
++ edges from 8656f24 (vertex names):
+ [1] Person.2149--Company.1 Person.2910--Company.1 Person.3684--Company.1
+ [4] Person.3754--Company.1 Person.4308--Company.1 Person.4991--Company.2
+ [7] Person.5476--Company.2 Person.5505--Company.2 Person.2242--Company.3
+[10] Person.2606--Company.3 Person.2745--Company.3 Person.2242--Company.4
+[13] Person.2606--Company.4 Person.4391--Company.4 Person.207 --Company.5
+[16] Person.1290--Company.5 Person.1576--Company.5 Person.2606--Company.5
+[19] Person.4391--Company.5 Person.2745--Company.6 Person.3302--Company.6
+[22] Person.3558--Company.6 Person.313 --Company.7 Person.409 --Company.7
++ ... omitted several edges
+[1] "removing multiple edges..."
+IGRAPH 0b05fed UN-B 1862 1834 -- 
++ attr: type (v/l), name (v/c)
+[1] "adding node attributes to graph..."
+[1] "verifying that person attributes are consistent..."
+[1] "verifying that company attributes are consistent..."
+     gender        postcode             city          
+ Min.   :1.000   Length:1862        Length:1862       
+ 1st Qu.:1.000   Class :character   Class :character  
+ Median :1.000   Mode  :character   Mode  :character  
+ Mean   :1.384                                        
+ 3rd Qu.:2.000                                        
+ Max.   :2.000                                        
+ NA's   :367                                          
+[1] "gender"
+[1] "1" "2"
+[1] "postcode"
+  [1] "0020" "0050" "0101" "0106" "0107" "0113" "0114" "0116" "0119" "0122"
+ [11] "0125" "0134" "0150" "0151" "0152" "0154" "0157" "0158" "0160" "0161"
+ [21] "0164" "0165" "0170" "0175" "0180" "0184" "0185" "0186" "0230" "0247"
+ [31] "0250" "0251" "0252" "0253" "0254" "0255" "0256" "0257" "0260" "0272"
+ [41] "0274" "0276" "0277" "0278" "0283" "0349" "0352" "0354" "0355" "0368"
+ [51] "0369" "0370" "0373" "0377" "0459" "0473" "0484" "0485" "0575" "0579"
+ [61] "0580" "0605" "0658" "0663" "0667" "0668" "0694" "0855" "0884" "1065"
+ [71] "1323" "1324" "1326" "1330" "1331" "1337" "1344" "1363" "1364" "1366"
+ [81] "1383" "1385" "1395" "1396" "1397" "1414" "1639" "1653" "1671" "1738"
+ [91] "1890" "2004" "2005" "2027" "2208" "2211" "2317" "2390" "3036" "3037"
+[101] "3111" "3133" "3204" "3221" "3222" "3228" "3241" "3262" "3601" "3616"
+[111] "3712" "3724" "3970" "4001" "4003" "4005" "4006" "4008" "4020" "4032"
+[121] "4033" "4035" "4056" "4065" "4120" "4280" "4313" "4340" "4353" "4355"
+[131] "4370" "4612" "4632" "4700" "4820" "4836" "4841" "5003" "5004" "5009"
+[141] "5011" "5012" "5014" "5058" "5067" "5072" "5147" "5224" "5231" "5232"
+[151] "5257" "5342" "5392" "5443" "5525" "5700" "6002" "6063" "6065" "6090"
+[161] "6092" "6222" "6230" "6386" "6405" "6700" "6706" "6800" "6993" "7010"
+[171] "7011" "7014" "7037" "7041" "7044" "7052" "7080" "7266" "7467" "7800"
+[181] "7994" "8002" "8037" "8120" "8370" "8408" "8514" "8850" "8900" "8905"
+[191] "9008" "9018" "9620" "9900"
+[1] "city"
+ [1] "&Aring;LESUND"             "ARENDAL"                  
+ [3] "ASKER"                     "B&Oslash;MLO"             
+ [5] "BERGEN"                    "BILLINGSTAD"              
+ [7] "BOD&Oslash;"               "BORGENHAUGEN"             
+ [9] "BR&Oslash;NN&Oslash;YSUND" "BRYNE"                    
+[11] "DRAMMEN"                   "DUKEN"                    
+[13] "EGERSUND"                  "EGGESB&Oslash;NES"        
+[15] "F&Oslash;RDE"              "FORNEBU"                  
+[17] "FOSNAV&Aring;G"            "FROLAND"                  
+[19] "FYLLINGSDALEN"             "GAMLE FREDRIKSTAD"        
+[21] "H&Oslash;VIK"              "H&Oslash;YANGER"          
+[23] "HAMAR"                     "HASLUM"                   
+[25] "HAUGESUND"                 "HEIMDAL"                  
+[27] "HER&Oslash;Y"              "HJ&Oslash;RUNGAV&Aring;G" 
+[29] "HVALSTAD"                  "IKORNNES"                 
+[31] "KIRKENES"                  "KJELLER"                  
+[33] "KLEPP STASJON"             "KOKSTAD"                  
+[35] "KONGSBERG"                 "KONGSVINGER"              
+[37] "KR&Aring;KER&Oslash;Y"     "KRISTIANSAND S"           
+[39] "KVALSUND"                  "KVERNALAND"               
+[41] "KVERVA"                    "LANGESUND"                
+[43] "LARVIK"                    "LEKA"                     
+[45] "LEKNES"                    "LILLESTR&Oslash;M"        
+[47] "LYSAKER"                   "M&Aring;L&Oslash;Y"       
+[49] "M&Aring;NDALEN"            "MOELV"                    
+[51] "MOLDE"                     "NAMSOS"                   
+[53] "NARVIK"                    "NES&Oslash;YA"            
+[55] "NESTTUN"                   "NYG&Aring;RDSJ&Oslash;EN" 
+[57] "OSLO"                      "PARADIS"                  
+[59] "R&AElig;LINGEN"            "RAKKESTAD"                
+[61] "SANDEFJORD"                "SANDNES"                  
+[63] "SANDSET"                   "SANDVIKA"                 
+[65] "SELLEBAKK"                 "SKIEN"                    
+[67] "SKUDENESHAVN"              "STAVANGER"                
+[69] "STOREB&Oslash;"            "STRAUME"                  
+[71] "SYKKYLVEN"                 "T&Oslash;NSBERG"          
+[73] "TANANGER"                  "TAU"                      
+[75] "TROLL&Aring;SEN"           "TROMS&Oslash;"            
+[77] "TRONDHEIM"                 "ULSTEINVIK"               
+[79] "VENNESLA"                  "VOSS"                     
+  gender       postcode           city     
+ 1   :921   0250   :  30   OSLO     : 175  
+ 2   :574   1366   :  15   STAVANGER:  25  
+ NA's:367   0161   :   9   LYSAKER  :  17  
+            0278   :   9   BERGEN   :  15  
+            0160   :   8   TRONDHEIM:  12  
+            (Other): 296   (Other)  : 123  
+            NA's   :1495   NA's     :1495  
+     female      
+ Min.   :0.0000  
+ 1st Qu.:0.0000  
+ Median :0.0000  
+ Mean   :0.3839  
+ 3rd Qu.:1.0000  
+ Max.   :1.0000  
+ NA's   :367     
+     gender         postcode           city           female          male    
+ Min.   :1.000   Min.   :  1.00   Min.   : 1.00   Min.   :1      Min.   :1    
+ 1st Qu.:1.000   1st Qu.: 31.00   1st Qu.:47.00   1st Qu.:1      1st Qu.:1    
+ Median :1.000   Median : 77.00   Median :57.00   Median :1      Median :1    
+ Mean   :1.384   Mean   : 82.17   Mean   :49.77   Mean   :1      Mean   :1    
+ 3rd Qu.:2.000   3rd Qu.:127.00   3rd Qu.:57.00   3rd Qu.:1      3rd Qu.:1    
+ Max.   :2.000   Max.   :194.00   Max.   :80.00   Max.   :1      Max.   :1    
+ NA's   :367     NA's   :1495     NA's   :1495    NA's   :1288   NA's   :941  
+Computing betweeneess centrality...
+   user  system elapsed 
+  0.034   0.000   0.035 
+Computing birank centrality...
+   user  system elapsed 
+  0.050   0.002   0.058 
+Computing harmonic centrality...
+   user  system elapsed 
+  0.022   0.000   0.022 
+  betweenness         birank          harmonic.cent      birank.scaled.V1  
+ Min.   :     0   Min.   :0.0007456   Min.   :  1.00   Min.   :-0.8947786  
+ 1st Qu.:     0   1st Qu.:0.0008571   1st Qu.:  4.00   1st Qu.:-0.6612615  
+ Median :     0   Median :0.0009215   Median : 73.67   Median :-0.5263774  
+ Mean   :  3185   Mean   :0.0011729   Mean   : 56.53   Mean   : 0.0000000  
+ 3rd Qu.:    15   3rd Qu.:0.0012632   3rd Qu.:100.84   3rd Qu.: 0.1892603  
+ Max.   :102798   Max.   :0.0025254   Max.   :157.06   Max.   : 2.8321310  
+ betweenness.scaled.V1 harmonic.cent.scaled.V1
+ Min.   :-0.318681     Min.   :-1.1278595     
+ 1st Qu.:-0.318681     1st Qu.:-1.0669318     
+ Median :-0.318681     Median : 0.3479280     
+ Mean   : 0.000000     Mean   : 0.0000000     
+ 3rd Qu.:-0.317180     3rd Qu.: 0.8998361     
+ Max.   : 9.968464     Max.   : 2.0416431     

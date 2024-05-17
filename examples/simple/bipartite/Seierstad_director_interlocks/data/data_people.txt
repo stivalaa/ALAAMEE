@@ -1,0 +1,5768 @@
+"id" "name" "gender"
+1 "Aage Jakobsen" 1
+2 "Aage Johan Remøy" 1
+3 "Aage Rasmus Bjelland Figenschou" 1
+4 "Aagot Irene Skjeldal" 2
+5 "Aase Gundersen" 2
+6 "Aase Øverland" 2
+7 "Aasmund Frøseth" 1
+8 "Aasmund Rygnestad" 1
+9 "Aasulv Tveitereid" 1
+10 "Ada Merethe Stokstad Kjeseth" 2
+11 "Adine Charlotte Grate Axen" 2
+12 "Adler Ekanger" 1
+13 "Ådne Kverneland" 1
+14 "Adrien Yves Patrick Bjørnskau" 1
+15 "Åge Andersen" 1
+16 "Åge Jan Danielsen" 1
+17 "Åge Korsvold" 1
+18 "Åge Øren" 1
+19 "Åge Thoresen" 1
+20 "Agnar Gravdal" 1
+21 "Agnes Beathe Lindeman Steen Fosse" 2
+22 "Agnes Eva Cecilia Hellner" 2
+23 "Aileen Utkvitne" 2
+24 "Aina Tekle" 2
+25 "Aino Kristin Lindal Olaisen" 2
+26 "Åke Hugo Hugosson" 1
+27 "Aksel Conrad Olesen" 1
+28 "Aksel Hroar Gresvig" 1
+29 "Aksel Martin Økland" 1
+30 "Aksel Olav Hillestad" 1
+31 "Alain Fernand Angelil" 1
+32 "Albert Graff Øverby" 1
+33 "Alberto Fresco" 1
+34 "Aleksander Kibsgaard" 1
+35 "Aleksander Roman Jazdzyk" 1
+36 "Alexander Farquhar Savage" 1
+37 "Alexander Kristjan Gudmundsson" 1
+38 "Alexander Maria Paiusco" 1
+39 "Alexander Munch Thore" 1
+40 "Alexander Rødsten" 1
+41 "Alexander Sunde" 1
+42 "Alexander Vicefield" 1
+43 "Alexander Wilhelm Skare Gundersen" 1
+44 "Alexandra Bech Gjørv" 2
+45 "Alexandra Rullen" 2
+46 "Alexey Kruzhkov" 1
+47 "Alf Bjørseth" 1
+48 "Alf Boy Asheim" 1
+49 "Alf Christian Thorkildsen" 1
+50 "Alf Egil Bogen" 1
+51 "Alf Engdal" 1
+52 "Alf Erik Veipe" 1
+53 "Alf Georg Aarthun" 1
+54 "Alf Gerald Engstrøm" 1
+55 "Alf Gudleik Dale" 1
+56 "Alf Helge Omre" 1
+57 "Alf Jostein Skjærvik" 1
+58 "Alf Kenneth Moberg Topstad" 1
+59 "Alf Oddvar Bjånes" 1
+60 "Alf Olsen" 1
+61 "Alf Rasmussen" 1
+62 "Alf Steine" 1
+63 "Alfons Louis Jozef Brusselmans" 1
+64 "Alfred Ydstebø" 1
+65 "Ali Jourabchi" 1
+66 "Allan Åkerstedt" 1
+67 "Allan Boye Hansen" 1
+68 "Almar Nils Johan Markussen" 1
+69 "Alvhild Hedstein" 2
+70 "Amirali Pyarali Hudda" 1
+71 "Amram Hadida" 1
+72 "Amund Saxrud" 1
+73 "Amund Skarholt" 1
+74 "Åmund Tobias Lunde" 1
+75 "Amy Elizabeth Humphreys" 2
+76 "Anbjørg Leite" 2
+77 "Anders-Preben Tengs" 1
+78 "Anders Almestad" 1
+79 "Anders Berggren" 1
+80 "Anders Bjertness" 1
+81 "Anders Brandt" 1
+82 "Anders Christian Stray Ryssdal" 1
+83 "Anders Eckhoff" 1
+84 "Anders Engh Bade" 1
+85 "Anders Farestveit" 1
+86 "Anders Fledsberg" 1
+87 "Anders Georg Bjørkman" 1
+88 "Anders Gunnestad Pedersen" 1
+89 "Anders Haukeland Sørensen" 1
+90 "Anders Hedeboe Jakobsen" 1
+91 "Anders Hvide" 1
+92 "Anders Ivar Hagen" 1
+93 "Anders Ivar Olsen" 1
+94 "Anders Jørgen Lenborg" 1
+95 "Anders Karlsson" 1
+96 "Anders Kvarberg" 1
+97 "Anders Lægreid" 1
+98 "Anders Langerød" 1
+99 "Anders Lindås" 1
+100 "Anders Meland" 1
+101 "Anders Misund" 1
+102 "Anders Onarheim" 1
+103 "Anders Østby" 1
+104 "Anders Paul Wiklund" 1
+105 "Anders Renolen" 1
+106 "Anders Skjævestad" 1
+107 "Anders Sølvberg" 1
+108 "Anders Sven-Gøran Eldh" 1
+109 "Anders Talleraas" 1
+110 "Anders Thuve" 1
+111 "Anders Tobias Utne" 1
+112 "Anders Tom Aagenæs" 1
+113 "Anders Ullestad" 1
+114 "Anders Ulseth" 1
+115 "Andre Aarøen" 1
+116 "Andre Atema" 1
+117 "André Steffensen" 1
+118 "Andre Trengereid Helland" 1
+119 "Andre V Demarest" 1
+120 "Andre Vogt" 1
+121 "Andrea Cheryl Båsen" 2
+122 "Andreas Arnesen" 1
+123 "Andreas Daae-Qvale" 1
+124 "Andreas Elling Jensen" 1
+125 "Andreas Fredrik Brattlund Klein" 1
+126 "Andreas Kristian Nordvoll" 1
+127 "Andreas Mollatt" 1
+128 "Andreas Myrvang" 1
+129 "Andreas Nordbryhn" 1
+130 "Andreas Rørvik" 1
+131 "Andreas Wiele" 1
+132 "Andrew Frederick Mann" 1
+133 "Andrew Martin Miller" 1
+134 "Andrew Richard Armour" 1
+135 "Andrew Scot Stephens" 1
+136 "Andrew Seth Weinberg" 1
+137 "Andrew Wareing March" 1
+138 "Ane Gjennestad" 2
+139 "Ane Varden" 2
+140 "Anett Cathrine Andersen" 2
+141 "Anette Sofie Olsen" 2
+142 "Anette Solstad" 2
+143 "Anette Willumsen" 2
+144 "Angela Donata Hopfen" 2
+145 "Aniela Gabriela Gjøs" 2
+146 "Anil Gajanan Deshpande" 1
+147 "Anita Bemer Korsvold" 2
+148 "Anita Finserås Bretun" 2
+149 "Anita Furuvik" 2
+150 "Anita Helene Lien" 2
+151 "Anita Karin Patrick" 2
+152 "Anita Krohn Thrane" 2
+153 "Anita Krohn Traaseth" 2
+154 "Anita Kvamme" 2
+155 "Anita Malmin Skretting" 2
+156 "Anita Marie Hjerkinn Aarnæs" 2
+157 "Anita Øy" 2
+158 "Anita Utseth" 2
+159 "Anitra Linnéa Steen" 2
+160 "Anja Kildal Gabrielsen" 2
+161 "Ann-Jorid Pedersen" 2
+162 "Ann-Kari Amundsen Heier" 2
+163 "Ann-Kristin Hageløkken" 2
+164 "Ann-Kristin Nielsen" 2
+165 "Ann-Mari Gjøstein" 2
+166 "Ann-Mari Kerstin Waldell" 2
+167 "Ann-Sofie Karblom" 2
+168 "Ann-Tove Kongsnes" 2
+169 "Ann Charlott Endresen" 2
+170 "Ann Elizabeth Seabrook" 2
+171 "Ann Jorunn Olsen" 2
+172 "Ann Katrine Kolstad" 2
+173 "Ann Sølvi Larsen" 2
+174 "Anna-Stina Nordmark Nilsson" 2
+175 "Anna Cecilie Holst" 2
+176 "Anna Elin Kristina Rasin" 2
+177 "Anna Kristina Skjevesland" 2
+178 "Anna Kvithyld" 2
+179 "Anna Maria Carolo Marchesi Carbone" 2
+180 "Anna Maria Lund" 2
+181 "Anna Sophie Eleonor Øhlander" 2
+182 "Anna Synnøve Bye" 2
+183 "Anna Veronica Janzon" 2
+184 "Anna Yvonne Monica Malm Bernsten" 2
+185 "Anne-Christene Joys" 2
+186 "Anne-Gro Gulla" 2
+187 "Anne-Gro Vonlanthen" 2
+188 "Anne-Karin Fosen Bjerkestrand" 2
+189 "Anne-Lene Midseim" 2
+190 "Anne-Lise Aspengren" 2
+191 "Anne-Lise Aukner" 2
+192 "Anne-Lise Hedda Løfsgaard" 2
+193 "Anne-Lise Mørch von Der Fehr" 2
+194 "Anne-Lise Strand" 2
+195 "Anne-Marie Brenaas" 2
+196 "Anne-Marie Erdal" 2
+197 "Anne Barbro Nygård" 2
+198 "Anne Beate Ellevog" 2
+199 "Anne Berit Nordhaug" 2
+200 "Anne Berit Sandnes" 2
+201 "Anne Berit Tryggestad" 2
+202 "Anne Birgitte Fossum" 2
+203 "Anne Birgitte Lundholt" 2
+204 "Anne Breiby" 2
+205 "Anne Breive" 2
+206 "Anne Brit Enge" 2
+207 "Anne Brit Liseth" 2
+208 "Anne Brit Sandberg" 2
+209 "Anne Britt Bekken" 2
+210 "Anne Carine Smith" 2
+211 "Anne Carine Tanum" 2
+212 "Anne Cathrine Dolva Essebaggers" 2
+213 "Anne Cathrine Fodstad" 2
+214 "Anne Cathrine Magelssen" 2
+215 "Anne Catrine Kleive-Mathisen" 2
+216 "Anne Cecilie Fagerlie" 2
+217 "Anne Cecilie Underthun Marstein" 2
+218 "Anne Dæhlie" 2
+219 "Anne Drinkwater" 2
+220 "Anne Eriksdatter Bjørnebye Vik" 2
+221 "Anne Eva Catharina Nystedt Ringborg" 2
+222 "Anne Fredriksen" 2
+223 "Anne Gaathaug" 2
+224 "Anne Gine Hestetun" 2
+225 "Anne Gisken Moe Winther" 2
+226 "Anne Grete Ellingsen" 2
+227 "Anne Grethe Dalane" 2
+228 "Anne Grethe Hage" 2
+229 "Anne Grethe Wichstrøm" 2
+230 "Anne Gro Sundby" 2
+231 "Anne Gyland Lie" 2
+232 "Anne Helene Tryti" 2
+233 "Anne Helga Seltveit" 2
+234 "Anne Hjelle" 2
+235 "Anne Hovi Worsøe" 2
+236 "Anne Johanne Botterud" 2
+237 "Anne Johnsrud Hagen" 2
+238 "Anne Jorun Aas" 2
+239 "Anne Karin Gjerulfsen Bedringås" 2
+240 "Anne Karin Kvam" 2
+241 "Anne Karine Stenshorne" 2
+242 "Anne Kathrine Høeg Rasmussen" 2
+243 "Anne Kathrine Slungård" 2
+244 "Anne Kjølseth" 2
+245 "Anne Kristin Kvam Tønseth" 2
+246 "Anne Kristin Wadahl" 2
+247 "Anne Kristine Baltzersen" 2
+248 "Anne Kverneland Bogsnes" 2
+249 "Anne Lise Meyer" 2
+250 "Anne Margrete Gromsrud" 2
+251 "Anne Margrethe Horst Lund" 2
+252 "Anne Margrethe Sødahl Wessel" 2
+253 "Anne Marie Cannon" 2
+254 "Anne Marit Steen" 2
+255 "Anne Mette Hoel" 2
+256 "Anne Mürer" 2
+257 "Anne Nerbøvik" 2
+258 "Anne Øian" 2
+259 "Anne Ombye" 2
+260 "Anne Paula Ekeren Bjone" 2
+261 "Anne Sætrang Holm" 2
+262 "Anne Sauro Hellsten" 2
+263 "Anne Skranefjell" 2
+264 "Anne Sofie Bjørkholt" 2
+265 "Anne Sofie Myrmel Bruun-Olsen" 2
+266 "Anne Sofie Nilsen" 2
+267 "Anne Sofie Utne" 2
+268 "Anne Solveig Olstad" 2
+269 "Anne Strøm Nakstad" 2
+270 "Anne Toril Kasin" 2
+271 "Anne Valen Stärk-Johansen" 2
+272 "Anne Young Syrrist" 2
+273 "Annelin Aas Henriksen" 2
+274 "Annelise Kleven Godø" 2
+275 "Annette Aubert Gilje" 2
+276 "Annette Beate Wacknitz Malm Justad" 2
+277 "Annette Clancy" 2
+278 "Annette M Mc Evoy" 2
+279 "Annette Maria Brodin Rampe" 2
+280 "Annette Marianne Berkhahn" 2
+281 "Annette Nora Thorvik Pettersen" 2
+282 "Annette Ommundsen" 2
+283 "Annfrid Eli Standal" 2
+284 "Annica Gudrun Yvonne Hglund" 2
+285 "Annichen Fische" 2
+286 "Annika Billström" 2
+287 "Annika Birgitta Sten Pärson" 2
+288 "Annika Elisabeth Lindblom" 2
+289 "Annika Lunndius" 2
+290 "Annika Marie Lundius" 2
+291 "Anniken Merete Jermstad" 2
+292 "Anthony Paul Brennan" 1
+293 "Anthony Philip Morris" 1
+294 "Anthony Tripodo" 1
+295 "Anthony William Brierley" 1
+296 "Anton Edvard Evjen" 1
+297 "Anton Ernst Tronstad" 1
+298 "Anton Kvithyll" 1
+299 "Anton Raymond Abrahamsen" 1
+300 "Antti Mikael Auno" 1
+301 "Antti Samuli Oksanen" 1
+302 "Are Andersen" 1
+303 "Are Eldar Kristiansen" 1
+304 "Are Langmoen" 1
+305 "Are Pettersen" 1
+306 "Are Remseth Gløersen" 1
+307 "Are Skindlo" 1
+308 "Ari Antero Kaperi" 1
+309 "Ari Jay Benacerraf" 1
+310 "Ari Juhani Martonen" 1
+311 "Ariane Stiebitz" 2
+312 "Aril Resen" 1
+313 "Arild Abel Engh" 1
+314 "Arild Eriksen" 1
+315 "Arild Fredriksen" 1
+316 "Arild Frøseth" 1
+317 "Arild Gjerde" 1
+318 "Arild Hallvar Hassel" 1
+319 "Arild Håvik" 1
+320 "Arild Inge Aubert" 1
+321 "Arild Ingierd" 1
+322 "Arild Jacobsen" 1
+323 "Arild Jæger" 1
+324 "Arild Magne Hagen" 1
+325 "Arild Mathisen" 1
+326 "Arild Nilsen" 1
+327 "Arild Peder Aarseth" 1
+328 "Arild Robert Grønbech" 1
+329 "Arild Sletta" 1
+330 "Arild Stalheim" 1
+331 "Arild Steen Birkelund" 1
+332 "Arild Steinsland" 1
+333 "Arild Sundberg" 1
+334 "Arild Thoresen" 1
+335 "Arild Tolfsen" 1
+336 "Arild Ulmo" 1
+337 "Arild Warland" 1
+338 "Armin Theodor Papperger" 1
+339 "Arna Kristine Gjerland" 2
+340 "Arne Aarnes" 1
+341 "Arne Austreid" 1
+342 "Arne Berg" 1
+343 "Arne Berger" 1
+344 "Arne Bergh" 1
+345 "Arne Birkeland" 1
+346 "Arne Blikstad Sperre" 1
+347 "Arne Blystad" 1
+348 "Arne Boye Hansen" 1
+349 "Arne Braathen Thyholdt" 1
+350 "Arne Brynjulv Ramstad" 1
+351 "Arne Che Sveen" 1
+352 "Arne Dalslaaen" 1
+353 "Arne Giske" 1
+354 "Arne Græe" 1
+355 "Arne Grip" 1
+356 "Arne Guttorm Tande" 1
+357 "Arne Handeland" 1
+358 "Arne Hansteen" 1
+359 "Arne Haugseth" 1
+360 "Arne Hjeltnes" 1
+361 "Arne Hygen Tørnkvist" 1
+362 "Arne Incoronato" 1
+363 "Arne Jan Eggan" 1
+364 "Arne Kaardal" 1
+365 "Arne Kåre Nore" 1
+366 "Arne Karl Martin Lillandt" 1
+367 "Arne Kervel" 1
+368 "Arne Kjell Raustøl" 1
+369 "Arne Kjell Skeie" 1
+370 "Arne Kjensmo" 1
+371 "Arne Knoph" 1
+372 "Arne Kristian Mæland" 1
+373 "Arne Kristian Wilhelmsen" 1
+374 "Arne Kristoffer Vindenæs" 1
+375 "Arne Loen" 1
+376 "Arne Magne Kolberg" 1
+377 "Arne Magnus Rise" 1
+378 "Arne Marius Westbye" 1
+379 "Arne Martinus Johansen" 1
+380 "Arne Mjøs" 1
+381 "Arne Møgster" 1
+382 "Arne Nicander" 1
+383 "Arne Norheim" 1
+384 "Arne Nyhaug" 1
+385 "Arne Øfsthus" 1
+386 "Arne Økland" 1
+387 "Arne Otto Rogne" 1
+388 "Arne Peder Hansen" 1
+389 "Arne Rødø" 1
+390 "Arne Røthe" 1
+391 "Arne Smedal" 1
+392 "Arne Sodefjed" 1
+393 "Arne Solberg" 1
+394 "Arne Solheim" 1
+395 "Arne Stang" 1
+396 "Arne Thorolf Wiese Tønjum" 1
+397 "Arne Torbjørn Paulsen" 1
+398 "Arne Wendelbo Aanensen" 1
+399 "Arne Wenger" 1
+400 "Arne Wøien" 1
+401 "Arnfinn Eirik Thomassen" 1
+402 "Arnfinn Hansen" 1
+403 "Arnfinn Stensø" 1
+404 "Arnfinn Torgnes" 1
+405 "Arnfinn Vognild" 1
+406 "Arnhild Dyrhaug Odfjell" 2
+407 "Arnhild Schia" 2
+408 "Arnold Johansen" 1
+409 "Arnold Rørholt" 1
+410 "Arnor Petter Laumann" 1
+411 "Arnstein Edgard Johannessen" 1
+412 "Arnstein Gunnestad Endresen" 1
+413 "Arnstein Olav Wigestrand" 1
+414 "Arnstein Øvsthus" 1
+415 "Arnt Harald Jerpstad" 1
+416 "Arnt Holger Sollie" 1
+417 "Arnt Marelius Winther" 1
+418 "Arnt Ree" 1
+419 "Arnulf Bergum" 1
+420 "Arnulv Haukeland" 1
+421 "Arpad Vilmos Jozef Krizsan" 1
+422 "Arthur Duus" 1
+423 "Arthur Leon George Jr" 1
+424 "Arthur Sletteberg" 1
+425 "Artur Rastrogin" 1
+426 "Arve-Olav Solumsmo" 1
+427 "Arve Andersson" 1
+428 "Arve Dahl Nielsen" 1
+429 "Arve Føyen" 1
+430 "Arve Giske" 1
+431 "Arve Haug" 1
+432 "Arve Håvard Stengelsrud" 1
+433 "Arve Jakobsen" 1
+434 "Arve Johansen" 1
+435 "Arve Johnsen" 1
+436 "Arve Kenneth Vestvik" 1
+437 "Arve Michael Haugland" 1
+438 "Arve Rørholt" 1
+439 "Arve Slenes" 1
+440 "Arve Smogeli Zahl" 1
+441 "Arve Ståle Myklebust" 1
+442 "Arve Toft" 1
+443 "Arve Vange" 1
+444 "Arvid Andenæs" 1
+445 "Arvid Axberg" 1
+446 "Arvid Birger Smith" 1
+447 "Arvid Fristad" 1
+448 "Arvid Frode Strand" 1
+449 "Arvid Grundekjøn" 1
+450 "Arvid Kristiansen" 1
+451 "Arvid Lie" 1
+452 "Arvid Melvin Thompsen" 1
+453 "Arvid Moss" 1
+454 "Arvid Sjølyst" 1
+455 "Arvid Sveen" 1
+456 "Arvid Trobe" 1
+457 "Arvid Vestvik" 1
+458 "Åsa Gunilla Grübb Weinberg" 2
+459 "Åsa Helena Kristina Mossberg" 2
+460 "Åsa Helena Otterlund" 2
+461 "Asa Matti Lyytinen" 1
+462 "Asbjørn Fredrik Larsen" 1
+463 "Asbjørn Inge Skotte" 1
+464 "Asbjørn Magne Blakstad" 1
+465 "Asbjørn Michailoff Pettersen" 1
+466 "Asbjørn Oddvar Moen" 1
+467 "Asbjørn Raunholm" 1
+468 "Asbjørn Reinkind" 1
+469 "Asbjørn Resell Søvik" 1
+470 "Asbjørn Rønne" 1
+471 "Asbjørn Sie" 1
+472 "Åse Aulie Michelet" 2
+473 "Åse Karin Tennebekk" 2
+474 "Åse Koll Lunde" 2
+475 "Åse Lise Chatwin Olsen" 2
+476 "Åse Marie Nilsen" 2
+477 "Åse Simonsen" 2
+478 "Asgeir Grøneng Hartveit" 1
+479 "Åsgeir Nord" 1
+480 "Asgeir Stensrud" 1
+481 "Åshild Marianne Bendiktsen" 2
+482 "Åshild Merete Andreassen" 2
+483 "Åshild Ørbech Tangen" 2
+484 "Aslak Bestul" 1
+485 "Aslaug Olden Mala" 2
+486 "Aslaug Stenseth" 2
+487 "Åsmund Botnen" 1
+488 "Åsmund Dybedahl" 1
+489 "Åsmund Knutsen" 1
+490 "Åsmund Olav Løset" 1
+491 "Åsmund Pålerud" 1
+492 "Åsmund Paulsen" 1
+493 "Åsmund Reidar Sløgedal" 1
+494 "Åsmund Simonsen" 1
+495 "Åsmund Skår" 1
+496 "Åsne Cornelia Moseid" 2
+497 "Åste Victoria Hvistendahl" 2
+498 "Astri Karin Bjørnevik" 2
+499 "Astrid Cathrine Løken Øyehaug" 2
+500 "Astrid Evenseth Sørgaard" 2
+501 "Astrid Karin Svenheim" 2
+502 "Astrid Kårstad" 2
+503 "Astrid Kløve-Graue" 2
+504 "Astrid Koppernæs" 2
+505 "Astrid Madsen" 2
+506 "Astrid Moe Eikrem" 2
+507 "Astrid Rangnes Bråten" 2
+508 "Astrid Rebekka Norheim" 2
+509 "Astrid Rosseland" 2
+510 "Astrid Skrautvol Nybråten" 2
+511 "Åsulv Cato Prytz" 1
+512 "Atle Berntzen" 1
+513 "Atle Degré" 1
+514 "Atle Jacobsen" 1
+515 "Atle Kåre Tranøy" 1
+516 "Atle Lygren" 1
+517 "Atle Marøen" 1
+518 "Atle Ryssmo" 1
+519 "Atle Sveinung Eide" 1
+520 "Atle Teigland" 1
+521 "Atle Ulveseth" 1
+522 "Atul Damji Shah" 1
+523 "Au Fook Yew" 1
+524 "Aud-Vera Thorsen" 2
+525 "Aud Agnes Mørtvedt" 2
+526 "Aud Ingrid Espeland" 2
+527 "Aud Lysenstøen" 2
+528 "Aud Sakshaug" 2
+529 "Aud Wenche Haaland Sandkleiva" 2
+530 "Audhild Bang Rande" 2
+531 "Audun Bø" 1
+532 "Audun Bondkall" 1
+533 "Audun Hordvik" 1
+534 "Audun Jan Myrhol" 1
+535 "Audun Jarle Pettersen" 1
+536 "Audun Ludvig Olsen" 1
+537 "Audun Netland" 1
+538 "Audun Olav Solberg" 1
+539 "Audun Rønningen Danielsen" 1
+540 "Audun Solås" 1
+541 "Audun Stensvold" 1
+542 "Audun Wickstrand Iversen" 1
+543 "Augusto Konestabo" 1
+544 "Axel Borge" 1
+545 "Axel Camillo Eitzen" 1
+546 "Axel Dammann" 1
+547 "Axel Erling Dønnum Jensen" 1
+548 "Axel Ramm" 1
+549 "Axel Stove Lorentzen" 1
+550 "Azra Resulbegovic" 2
+551 "Baard Arild Nordvang" 1
+552 "Baard Snekkevik" 1
+553 "Baard Syrrist" 1
+554 "Barbara Ofstad" 2
+555 "Barbara Rose Milian Thoralfsson" 2
+556 "Barbara Singer Lady Judge" 2
+557 "Barbro Lill Hætta-Jacobsen" 2
+558 "Bård Arve Lærum" 1
+559 "Bård Brath Ingerø" 1
+560 "Bård Gjertsen" 1
+561 "Bård Idar Kvam" 1
+562 "Bård Martin Mikkelsen" 1
+563 "Bård Olaf Antonsen" 1
+564 "Bård Wæhle" 1
+565 "Baste Nepstad" 1
+566 "Beate Jelstad" 2
+567 "Beate Sæther" 2
+568 "Ben Francis Allen" 1
+569 "Benedicte Elisabeth Bakke Agerup" 2
+570 "Benedicte Elisabeth Schilbred Fasmer" 2
+571 "Benedicte Heidenreich Fossum" 2
+572 "Benedicte Tostrup" 2
+573 "Benedikte Bettina Bjørn" 2
+574 "Bengt-Göran Viktor Liljenberg" 1
+575 "Bengt-Gøran Wallgren" 1
+576 "Bengt Arne Akselsen" 1
+577 "Bengt Arve Rem" 1
+578 "Bengt Einar Andersson" 1
+579 "Bengt Ernest Broman" 1
+580 "Bengt Henrik Olof Olsen" 1
+581 "Bengt Lie Hansen" 1
+582 "Bengt Olof Belfrage" 1
+583 "Bengt Olof Thuresson" 1
+584 "Bengt Olsen" 1
+585 "Bengt Roland Sandström" 1
+586 "Benjamin Cabarrubias Bye" 1
+587 "Benjamin John Latimer Stanway" 1
+588 "Benjamin Schei" 1
+589 "Benny Ravn Bonde" 1
+590 "Benoit Louis Marcel Timmermans" 1
+591 "Bent Brugård" 1
+592 "Bent Jørgen Fuglesang" 1
+593 "Bent Pedersen" 1
+594 "Bente-Lill Bjerkelund Romøren" 2
+595 "Bente-Lise Melås" 2
+596 "Bente Anita Fjeld" 2
+597 "Bente Avnung Landsnes" 2
+598 "Bente Bømark Hanssen" 2
+599 "Bente Catherine Iversen" 2
+600 "Bente Franck-Sætervoll" 2
+601 "Bente Frantzen" 2
+602 "Bente Gudveig Brevik" 2
+603 "Bente Hagem" 2
+604 "Bente Helen Overvik Herfjord" 2
+605 "Bente Holm Mejdell" 2
+606 "Bente Iren Falch-Larsen" 2
+607 "Bente Iren Larsen" 2
+608 "Bente Johanne Sørensen" 2
+609 "Bente Kotte Norvik" 2
+610 "Bente Larsen" 2
+611 "Bente Lia Hansen" 2
+612 "Bente Lie Nilsen" 2
+613 "Bente Milde" 2
+614 "Bente Myhre" 2
+615 "Bente Negård Halvorsen" 2
+616 "Bente Rathe" 2
+617 "Bente Sollid" 2
+618 "Bente Sollid-Hansen" 2
+619 "Bente Thiis Thornton" 2
+620 "Bente Thomassen" 2
+621 "Bente Titlestad Skarbø" 2
+622 "Benthe Elisabeth Løvenskiold Kveseth" 2
+623 "Beret Luise Sundet" 2
+624 "Berge Gerdt Larsen" 2
+625 "Bergit Singusdal Våle" 2
+626 "Bergljot Hilda Antonsen" 2
+627 "Berit Aarvaag Stokke" 2
+628 "Berit Bjerg" 2
+629 "Berit Christine Pedersen" 2
+630 "Berit Forsbakk" 2
+631 "Berit Hofvander" 2
+632 "Berit Kjøll" 2
+633 "Berit Langaas" 2
+634 "Berit Normann" 2
+635 "Berit Rynning" 2
+636 "Berit Simenstad" 2
+637 "Berit Slåtto Neerbye" 2
+638 "Berit Sørland Wennersberg" 2
+639 "Berit Stokke" 2
+640 "Berit Svendsen" 2
+641 "Berit Synnøve Aagren Aas" 2
+642 "Berit Vardenær Hertz" 2
+643 "Bernd Hubert Joachim Bothe" 1
+644 "Berndt Kenneth Karlberg" 1
+645 "Bernhard Mellbye" 1
+646 "Bernt Aksel Larsen" 1
+647 "Bernt Daniel Odfjell" 1
+648 "Bernt Erik Thorvik" 1
+649 "Bernt Gregar Røsholt" 1
+650 "Bernt Håkon Nygård" 1
+651 "Bernt Harald Kilnes" 1
+652 "Bernt Jacob Schwings Pettersen" 1
+653 "Bernt Olufsen" 1
+654 "Bernt Reinhardt Pedersen" 1
+655 "Bernt Reitan" 1
+656 "Bernt Stilluf Karlsen" 1
+657 "Bernt Theodor Walther" 1
+658 "Bernt Torgny Erling Eriksson" 1
+659 "Bert Lars-Johan Jarnheimer" 1
+660 "Bertel Oliver Humlen" 1
+661 "Bertel Otto Steen" 1
+662 "Bertil Thornes Einvik" 1
+663 "Bertrand Francis Georges Facon" 1
+664 "Bettina Banoun" 2
+665 "Bijan Mossavar Rahmani" 1
+666 "Bill Schjelderup" 1
+667 "Billy Robert Fredagsvik" 1
+668 "Birger Helen Cotta Schønberg" 1
+669 "Birger Henry Sørensen" 1
+670 "Birger Magnus" 1
+671 "Birger Morland" 1
+672 "Birger Nergaard" 1
+673 "Birger Skeie" 1
+674 "Birger Steen" 1
+675 "Birgit Agneta Stattin Norinder" 2
+676 "Birgit Løitegaard" 2
+677 "Birgit Nørgaard" 2
+678 "Birgitte Anna Caroline Natorp" 2
+679 "Birgitte Feginn Angelil" 2
+680 "Birgitte Helene Larsen" 2
+681 "Birgitte Nielsen" 2
+682 "Birgitte Nordvik" 2
+683 "Birgitte Sørheim" 2
+684 "Birgitte Teigland" 2
+685 "Birk Ravndal" 1
+686 "Birte Almeland" 2
+687 "Birte Noer Borrevik" 2
+688 "Birte Norheim" 2
+689 "Birthe Cecilie Jørgensen" 2
+690 "Birthe Cecilie Lepsøe" 2
+691 "Bjarne Aamodt" 1
+692 "Bjarne Borgersen" 1
+693 "Bjarne Egil Kristiansen" 1
+694 "Bjarne Egill Skeie" 1
+695 "Bjarne Eia" 1
+696 "Bjarne Fikse" 1
+697 "Bjarne Gravdahl" 1
+698 "Bjarne Kristoffersen" 1
+699 "Bjarne Lien" 1
+700 "Bjarne Rieber" 1
+701 "Bjarne Rogdaberg" 1
+702 "Bjarne Sælensminde" 1
+703 "Bjarni Armannsson" 1
+704 "Bjarte Bogstad" 1
+705 "Bjarte Fagerås" 1
+706 "Bjarte Gudmundsen" 1
+707 "Bjarte Henry Bruheim" 1
+708 "Bjarte Kvåle" 1
+709 "Bjarte Røyrvik" 1
+710 "Bjarte Solheim" 1
+711 "Bjarte Tunold" 1
+712 "Bjørg Knapstad" 2
+713 "Bjørg Strøm" 2
+714 "Bjørg Ven" 2
+715 "Bjørg Wiers" 2
+716 "Bjørge Andre Gretland" 1
+717 "Bjørgulv Løgith Moe" 2
+718 "Bjørn Ågotnes" 1
+719 "Bjørn Allan Troelsen" 1
+720 "Bjørn Anders Fossum" 1
+721 "Bjørn Anders Tandstad" 1
+722 "Bjørn Andre Anderssen" 1
+723 "Bjørn Andre Haukås" 1
+724 "Bjørn Ansgar Ingebrigtsen" 1
+725 "Bjørn Arne Fredrik Sellæg" 1
+726 "Bjørn Arne Østli" 1
+727 "Bjørn Arne Skogstad" 1
+728 "Bjørn Arnestad" 1
+729 "Bjørn Arve Ofstad" 1
+730 "Bjørn Asp" 1
+731 "Bjørn Atle Holter-Hovind" 1
+732 "Bjørn Bergsland" 1
+733 "Bjørn Beston" 1
+734 "Bjørn Brenna" 1
+735 "Bjørn Christian Ask" 1
+736 "Bjørn Christian Eide" 1
+737 "Bjørn Dahle" 1
+738 "Bjørn Edvart Kristiansen" 1
+739 "Bjørn Egil Haugland" 1
+740 "Bjørn Egil Jørgensrud" 1
+741 "Bjørn Eidem" 1
+742 "Bjørn Eie Henriksen" 1
+743 "Bjørn Einar Fische" 1
+744 "Bjørn Elvestad" 1
+745 "Bjørn Elvin Stanger" 1
+746 "Bjørn Erik Birkeland" 1
+747 "Bjørn Erik Egeland" 1
+748 "Bjørn Erik Lippestad" 1
+749 "Bjørn Erik Næss" 1
+750 "Bjørn Erik Reinseth" 1
+751 "Bjørn Erik Saven" 1
+752 "Bjørn Erling Knappskog" 1
+753 "Bjørn Fredrik Davik" 1
+754 "Bjørn Frogner" 1
+755 "Bjørn Gabriel Reed" 1
+756 "Bjørn Gunnar Bjørnsen" 1
+757 "Bjørn Haakon Steive" 1
+758 "Bjørn Halvor Kise" 1
+759 "Bjørn Harald Borg" 1
+760 "Bjørn Harald Plyhn" 1
+761 "Bjørn Havnes" 1
+762 "Bjørn Helge Olaisen" 1
+763 "Bjørn Henry Maarud" 1
+764 "Bjørn Henry Rosvoll" 1
+765 "Bjørn Ivan Espnes" 1
+766 "Bjørn Ivar Carlsen" 1
+767 "Bjørn Ivar Flatgård" 1
+768 "Bjørn Jan Solheim" 1
+769 "Bjørn Jarle Netland" 1
+770 "Bjørn Johan Farestveit" 1
+771 "Bjørn Johan Sjaastad" 1
+772 "Bjørn Johansen" 1
+773 "Bjørn Jonny Aunan" 1
+774 "Bjørn Jostein Aagård" 1
+775 "Bjørn Kaldhol" 1
+776 "Bjørn Kjos" 1
+777 "Bjørn Kleven" 1
+778 "Bjørn Kristian Stangeland" 1
+779 "Bjørn Løvlie" 1
+780 "Bjørn Lunde" 1
+781 "Bjørn Maaseide" 1
+782 "Bjørn Mæhlum" 1
+783 "Bjørn Margido Wiggen" 1
+784 "Bjørn Martin Gottschlich" 1
+785 "Bjørn Mikael Broberg" 1
+786 "Bjørn Morten Mehammer" 1
+787 "Bjørn Myrseth" 1
+788 "Bjørn Norvald Larsen" 1
+789 "Bjørn Olaf Bratz" 1
+790 "Bjørn Olaf Davidsen" 1
+791 "Bjørn Olaf Halvorsen" 1
+792 "Bjørn Olaf Holter" 1
+793 "Bjørn Olafsson" 1
+794 "Bjørn Olav Ragnar Øiulfstad" 1
+795 "Bjørn Ottar Wille" 1
+796 "Bjørn Pedersen" 1
+797 "Bjørn Petter Paulsen" 1
+798 "Bjørn Pettersen" 1
+799 "Bjørn Poul Ringvold" 1
+800 "Bjørn Roger Jensen" 1
+801 "Bjørn Rune Henriksen" 1
+802 "Bjørn Scholz Iversen" 1
+803 "Bjørn Sigvard Ask" 1
+804 "Bjørn Simonsen" 1
+805 "Bjørn Skaug" 1
+806 "Bjørn Sletvold" 1
+807 "Bjørn Solberg Antonsen" 1
+808 "Bjørn Stray" 1
+809 "Bjørn Strømme" 1
+810 "Bjørn Sund" 1
+811 "Bjørn Sverre Havsgård" 1
+812 "Bjørn Tore Godal" 1
+813 "Bjørn Trondsen" 1
+814 "Bjørn Vidar Formo" 1
+815 "Bjørn Walle" 1
+816 "Bjørnar Hermann Larsen" 1
+817 "Bo Bernhard Borgstrøm" 1
+818 "Bo Lennart Christer Thorbjørnsson" 1
+819 "Bo Lennart Krantz" 1
+820 "Bo Lundqvist" 1
+821 "Bo Magnus Jonsson" 1
+822 "Bo Wilhelm Kielland" 1
+823 "Bodil Alteren" 2
+824 "Bodil Gunhildsbu" 2
+825 "Bodil Marie Berg" 2
+826 "Bodil Palma Hollingsæter" 2
+827 "Børge Astrup" 1
+828 "Børge Krogsrud" 1
+829 "Borger Arildssøn Lenth" 1
+830 "Borghild Eldøen" 2
+831 "Borgny Eidesvik" 2
+832 "Børre Anton Bonnevie Grønningsæter" 1
+833 "Børre Loe Nordheim-Larsen" 1
+834 "Børre Sofus Arnet" 1
+835 "Børre Tharaldsen" 1
+836 "Botholf Are Stolt-Nielsen" 1
+837 "Bradley King" 2
+838 "Brian Chang" 1
+839 "Brian Frederick Gregory" 1
+840 "Brian Ole Jepsen" 1
+841 "Brigitta Monica Caneman" 2
+842 "Brit Evelyn Kystad" 2
+843 "Brit Gunn Ersland" 2
+844 "Brit Hagelund" 2
+845 "Brit Kristin Sæbø Rugland" 2
+846 "Brit Østby Fredriksen" 2
+847 "Brita Eilertsen" 2
+848 "Brita Holstad" 2
+849 "Britt Helina Visedo" 2
+850 "Britt Hjellegjerde" 2
+851 "Britt Iren Melgård Haugen" 2
+852 "Britt Kathrine Drivenes" 2
+853 "Britt Kollstrøm" 2
+854 "Britt Mari Andersson" 2
+855 "Britt Mjellem" 2
+856 "Britt Randi Tjønneland" 2
+857 "Britt Sæle" 2
+858 "Britt Stene" 2
+859 "Bror Magnus Heegaard" 1
+860 "Bror Ragnvald Risan" 1
+861 "Bruce Thurman Faulk" 1
+862 "Brynjar Einvik" 1
+863 "Brynjar Kristian Forbergskog" 1
+864 "Brynjar Kroknes" 1
+865 "Brynjulf Freberg" 1
+866 "Burckhard Bergmann" 1
+867 "Byron Allen Dunn" 1
+868 "Cameron Garry Belsher" 1
+869 "Camilla Berg" 2
+870 "Camilla Elisabeth Magnus" 2
+871 "Camilla Fiskevoll" 2
+872 "Camilla Holler Skovdahl" 2
+873 "Camilla Hudtloff" 2
+874 "Camilla Jarlsby" 2
+875 "Camilla Marianne Grieg" 2
+876 "Camilla Romero" 2
+877 "Camilla Røsjø" 2
+878 "Camilla Tellefsdal Robstad" 2
+879 "Carina Grorud Ballamy" 2
+880 "Carina Reppesgård Ytre-Eide" 2
+881 "Carl-Johan Gustav Granvik" 1
+882 "Carl Anders Erik Lindh" 1
+883 "Carl Anders Løvvik" 1
+884 "Carl Anders Udden" 1
+885 "Carl Arnold Johansen" 1
+886 "Carl Astrup" 1
+887 "Carl Bretteville" 1
+888 "Carl Christian Gilhuus-Moe" 1
+889 "Carl Christian Krefting" 1
+890 "Carl Diderik Cappelen" 1
+891 "Carl Einar Ianssen" 1
+892 "Carl Erik Haavaldsen" 1
+893 "Carl Erik Krefting" 1
+894 "Carl Erik Mathias Uhlen" 1
+895 "Carl Erik Steen" 1
+896 "Carl Espen Wollebekk" 1
+897 "Carl Fredrik Boheman" 1
+898 "Carl Fredrik Carlsson" 1
+899 "Carl Fredrik Øisjøfoss Nilsen" 1
+900 "Carl Fredrik Stenson Rystedt" 1
+901 "Carl Georg Graff-Wang" 1
+902 "Carl Gustaf Evert Palmstierna" 1
+903 "Carl Heikki Giverholt" 1
+904 "Carl Henrik Aaby" 1
+905 "Carl Henrik Eriksen" 1
+906 "Carl Johan Jakhelln" 1
+907 "Carl Jonas Birgersson" 1
+908 "Carl Lieungh" 1
+909 "Carl Morten Gjeldnes" 1
+910 "Carl Norvald Tysnes" 1
+911 "Carl Peder Adam Holm" 1
+912 "Carol Barbara Armitage" 2
+913 "Carol Bell" 2
+914 "Carole Callebaut" 2
+915 "Caroline Mary Devine" 2
+916 "Carsten Andreas Mellbye" 1
+917 "Carsten Gottschalk" 1
+918 "Casper Henrich Magnus" 1
+919 "Catharina Margaretha Maria Weisenborn" 2
+920 "Catharina Petronella Johanna Pos" 2
+921 "Catherine Birgit Hauge" 2
+922 "Catherine Gianelly Myren" 2
+923 "Catherine Monique Nicole Marchand Støle" 2
+924 "Cathrine Foss Stene" 2
+925 "Cathrine Klouman" 2
+926 "Cathrine Lønning Halle" 2
+927 "Cathrine Riddervold Devold" 2
+928 "Cathrine Ringstad" 2
+929 "Cathrine Rosalie Flod" 2
+930 "Cathrine Ulrichsen" 2
+931 "Cato Andreas Holmsen" 1
+932 "Cato Moen" 1
+933 "Cato Schiøtz" 1
+934 "Cato Wæhle" 1
+935 "Catrine Birkevold Liem" 2
+936 "Cecilie Aarseth Eide" 2
+937 "Cecilie Amdahl" 2
+938 "Cecilie Arentz" 2
+939 "Cecilie Astrup" 2
+940 "Cecilie Astrup Fredriksen" 2
+941 "Cecilie Blydt Heuch" 2
+942 "Cecilie Ditlev-Simonsen" 2
+943 "Cecilie Gjedebo Andersland" 2
+944 "Cecilie Grue Ruud" 2
+945 "Cecilie Haavik" 2
+946 "Cecilie Helene Bakke" 2
+947 "Cecilie Johnsen" 2
+948 "Cecilie Kirsten Wammer Serck-Hanssen" 2
+949 "Cecilie Kvalheim" 2
+950 "Cecilie Marie Vanem" 2
+951 "Cecilie Steenhoff Lind" 2
+952 "Cecilie Willgohs Melbye" 2
+953 "Celina Midelfart" 2
+954 "Charles Cavendish Mccathienevile" 1
+955 "Charles Dupont" 1
+956 "Charles Giles Clarke" 1
+957 "Charles William Pedersen" 1
+958 "Charlotte Bjørn Gamst" 2
+959 "Charlotte Cecilie Solberg Håkonsen" 2
+960 "Charlotte Dyrkorn" 2
+961 "Charlotte Fische" 2
+962 "Charlotte Fredrikke Hartvigsen Lem" 2
+963 "Charlotte Jansdotter Brogren" 2
+964 "Charlotte Sofie Bergsagel Berg-Svendsen" 2
+965 "Chee Yen Low" 2
+966 "Cher Yew Ng" 2
+967 "Christel Arpalice Piron" 2
+968 "Christen Knudsen" 1
+969 "Christen Sveaas" 1
+970 "Christen Tischbein" 1
+971 "Christer Jan Olov Ignell" 1
+972 "Christian Albech" 1
+973 "Christian Alexander Landaas" 1
+974 "Christian Andreas Bredal Beck" 1
+975 "Christian Atle Lundstrøm Selmer" 1
+976 "Christian Bartlett Teig" 1
+977 "Christian Berg" 1
+978 "Christian Bjelland" 1
+979 "Christian Borch Sandsdalen" 1
+980 "Christian Bruusgaard" 1
+981 "Christian Bull" 1
+982 "Christian Bull Eriksson" 1
+983 "Christian Clausen" 1
+984 "Christian Due" 1
+985 "Christian Flod Stangeland" 1
+986 "Christian Frederik Ness" 1
+987 "Christian Fredrik Falkenberg Kjøde" 1
+988 "Christian Fredrik Løken" 1
+989 "Christian Fredrik Thyholdt" 1
+990 "Christian Henrik Thommessen" 1
+991 "Christian Herchenrøder Johansen" 1
+992 "Christian Horn" 1
+993 "Christian Hysing-Dahl" 1
+994 "Christian Jebsen" 1
+995 "Christian Joseph Jean Marcel Tordo" 1
+996 "Christian Loe Muri" 1
+997 "Christian Lorck" 1
+998 "Christian Lund" 1
+999 "Christian Martin Falster" 1
+1000 "Christian Maureira" 1
+1001 "Christian Nicolay Brinch" 1
+1002 "Christian Otto Sinding" 1
+1003 "Christian Picot" 1
+1004 "Christian Ringnes" 1
+1005 "Christian Roger Picot" 1
+1006 "Christian Rytter" 1
+1007 "Christian Stabell Eriksen" 1
+1008 "Christian Syverstad" 1
+1009 "Christian Thomas Fekete" 1
+1010 "Christian Torp Saure" 1
+1011 "Christian Tunge" 1
+1012 "Christian Wessel" 1
+1013 "Christian Wilhelm Rynning-Tønnesen" 1
+1014 "Christin Sanders" 2
+1015 "Christin Steen-Nilsen" 2
+1016 "Christina Gunilla König" 2
+1017 "Christina Karlsson" 2
+1018 "Christina Margaretha Norrbring" 2
+1019 "Christina Stray" 2
+1020 "Christina Susanna Marianne Jonsson" 2
+1021 "Christine Bosse" 2
+1022 "Christine Cross" 2
+1023 "Christine Rødsæther" 2
+1024 "Christine Weierholt Middelthon" 2
+1025 "Christoffer Inge Hovda" 1
+1026 "Christoph Vancauwenbergh" 1
+1027 "Christopher Alan Wright" 1
+1028 "Christopher Maxwell Buraas" 1
+1029 "Christopher Michel Iversen" 1
+1030 "Chrysoula Kandylidi" 2
+1031 "Claes Erik Axel Østberg" 1
+1032 "Claes Henrik Unger" 1
+1033 "Claes Martin Falkevall" 1
+1034 "Clara Emily Nelson Skålhegg" 2
+1035 "Clare Anne White" 2
+1036 "Clare Mary Joan Spottiswoode" 2
+1037 "Claus Clausen" 1
+1038 "Claus Kampmann" 1
+1039 "Clifford Paul Triniman" 1
+1040 "Clive Marcus Packman" 1
+1041 "Colette Lewiner" 2
+1042 "Colin John Tenwick" 1
+1043 "Connie Astrup-Larsen" 2
+1044 "Corey Ross Maple" 1
+1045 "Cornelia Ann O Neill Kormeseth" 2
+1046 "Curt Willy Germundsson" 1
+1047 "Dag-Erik Rasmussen" 1
+1048 "Dag Andersen" 1
+1049 "Dag Andresen" 1
+1050 "Dag Aslaksrud" 1
+1051 "Dag Birger Sørsdahl" 1
+1052 "Dag Cederstrøm" 1
+1053 "Dag Elgar Sønsterud" 1
+1054 "Dag Fasmer Wittusen" 1
+1055 "Dag Foss Lilleaas" 1
+1056 "Dag Fredrik Jebsen Arnesen" 1
+1057 "Dag Halvar Sehlin" 1
+1058 "Dag Herland Honningsvåg" 1
+1059 "Dag Ivar Thobroe" 1
+1060 "Dag Jakob Opedal" 1
+1061 "Dag Johnny Seljeset" 1
+1062 "Dag Ketil Bolstad" 1
+1063 "Dag Korsled Engelsvoll" 1
+1064 "Dag Mejdell" 1
+1065 "Dag Nikolai Ryste" 1
+1066 "Dag Oddvar Larsen" 1
+1067 "Dag Øivind Dvergsten" 1
+1068 "Dag Pedersen" 1
+1069 "Dag Rune Gjengedal" 1
+1070 "Dag Tangevald-Jensen" 1
+1071 "Dag Zakariassen" 1
+1072 "Dagfinn Gjøstein" 1
+1073 "Dagfinn Lyngvær" 1
+1074 "Dagfinn Rommetvedt Parnas" 1
+1075 "Dagfinn Teigland" 1
+1076 "Dagne Hordvei" 2
+1077 "Dan-Anders Edvard Hagberg" 1
+1078 "Dan-Viggo Bergtun" 1
+1079 "Dan Ola Berglund" 1
+1080 "Daniel Andreas Skjeldam" 1
+1081 "Daniel Joseph Piette" 1
+1082 "Daniel Paul Henry Laroque" 1
+1083 "Daniel Seth Farkas" 1
+1084 "David Andre Armann Syversen" 1
+1085 "David Anla Llewelyn Bandele" 1
+1086 "David Antony Peter Williamson" 1
+1087 "David Arthur Feinburg" 1
+1088 "David Benjamin Krieger" 1
+1089 "David Colin Sinclair Veitch" 1
+1090 "David Edward Smith" 1
+1091 "David Eric Evans" 1
+1092 "David Fell" 1
+1093 "David Gustaf Mindus" 1
+1094 "David Lawrence Shuler" 1
+1095 "David Lee" 1
+1096 "David Mathew Leuschen" 1
+1097 "David Olsen" 1
+1098 "David Parker" 1
+1099 "David Patrick Russell" 1
+1100 "David Pelosof" 1
+1101 "David Stanly Ottesen" 1
+1102 "David Tai Wai Fung" 1
+1103 "David Winslaw Worthington" 1
+1104 "Davide De Picciotto" 2
+1105 "Davor Peter Sutija" 1
+1106 "de Mora Hanne Jimenez" 2
+1107 "Dean Zuzic" 1
+1108 "Deborah Ann Sandven" 1
+1109 "Deborah Anne Mckee" 2
+1110 "Dennis George Hackl" 1
+1111 "Dia Stompanato Weil" 2
+1112 "Diana Lorentzen" 2
+1113 "Diana Stokes Moore" 2
+1114 "Diderik Børsting Schnitler" 1
+1115 "Didrik Johannes Vigsnæs" 1
+1116 "Didrik Oskar Munch" 1
+1117 "Dimitrios Loumpounis" 1
+1118 "Dionne Rochelle Chouest" 2
+1119 "Dirk Blaauw" 1
+1120 "Ditlev Gustav Wedell-Wedellsborg" 1
+1121 "Dorthe Lie" 2
+1122 "Duncan Ivar Bates" 1
+1123 "Ebba Cecilia Margareta Åsly Fåhraeus" 2
+1124 "Edel Palma Storelvmo" 2
+1125 "Edgar Inge Damås" 1
+1126 "Edgar Pascal Louis Robert Frank" 1
+1127 "Edith Refvik" 2
+1128 "Edmun Agnar Skjelsvik" 1
+1129 "Edvard Harald Bakkejord" 1
+1130 "Edvart Treldal Høyåsen" 1
+1131 "Edvin André Grothaug Haugen" 1
+1132 "Edward Karol Sikora" 1
+1133 "Edward S Weil Jr" 1
+1134 "Edward Welbourne" 1
+1135 "Edwin Andries Myrvold-Sijtsma" 1
+1136 "Eelke Sjouke Titus Strikwerda" 1
+1137 "Eggert Agust Sverrisson" 1
+1138 "Egil Arne Fjeld" 1
+1139 "Egil Blakstad" 1
+1140 "Egil Bodd" 1
+1141 "Egil Flakk" 1
+1142 "Egil Hestnes" 1
+1143 "Egil Holgersen" 1
+1144 "Egil Indgjerd" 1
+1145 "Egil Ingvar Bergsager" 1
+1146 "Egil Jacobsen" 1
+1147 "Egil Kristian Sundbye" 1
+1148 "Egil Kvam Randeberg" 1
+1149 "Egil Kvannli" 1
+1150 "Egil Laksholm" 1
+1151 "Egil Lorang Tandberg Bråthen" 1
+1152 "Egil Martin Ullebø" 1
+1153 "Egil Myklebust" 1
+1154 "Egil Rogne" 1
+1155 "Egil Steinberg" 1
+1156 "Egil Stokka" 1
+1157 "Egil Sverre Skibenes" 1
+1158 "Egon Mogens Moen" 1
+1159 "Eigel Ingvar Thom" 1
+1160 "Eigil Koch" 1
+1161 "Eilert Giertsen Hanoa" 1
+1162 "Eilif Kiland" 1
+1163 "Eiliv Gjesdal" 1
+1164 "Eiliv Indrekvam" 1
+1165 "Eiliv Lokna Staalesen" 1
+1166 "Einar Arne Engedahl" 1
+1167 "Einar Arne Iversen" 1
+1168 "Einar Askvig" 1
+1169 "Einar Christopher Nagell-Erichsen" 1
+1170 "Einar Erga" 1
+1171 "Einar Førde" 1
+1172 "Einar Fredrik Åke Tinius Nagell-Erichsen" 1
+1173 "Einar Hannisdal" 1
+1174 "Einar Haugstad" 1
+1175 "Einar Henry Vestnes" 1
+1176 "Einar Ianssen" 1
+1177 "Einar Idar Bjørgen" 1
+1178 "Einar Inge Ellingsen" 1
+1179 "Einar Jørgen Greve" 1
+1180 "Einar Kloster" 1
+1181 "Einar Maartmann" 1
+1182 "Einar Magnus Hauge" 1
+1183 "Einar Magnus Jensen" 1
+1184 "Einar Mårstad" 1
+1185 "Einar Nielsen" 1
+1186 "Einar Olof Lyche" 1
+1187 "Einar Otto Vangsnes" 1
+1188 "Einar Pedersen" 1
+1189 "Einar Rønnestad" 1
+1190 "Einar Salbu" 1
+1191 "Einar Sindre Weme" 1
+1192 "Einar Støfringshaug" 1
+1193 "Einar Støldal" 1
+1194 "Einar Torbjørnsson Eggen" 1
+1195 "Einar Wahlstrøm" 1
+1196 "Eiolf Jarle Stein" 1
+1197 "Eira Monstad" 2
+1198 "Eirik Andreas Pedersen" 1
+1199 "Eirik Andreas Wekre" 1
+1200 "Eirik Austlid" 1
+1201 "Eirik Bornø" 1
+1202 "Eirik Folstad Wahl" 1
+1203 "Eirik Høiby Ausland" 1
+1204 "Eirik Josefsen" 1
+1205 "Eirik Øijordsbakken" 1
+1206 "Eirik Robert Langum" 1
+1207 "Eirik Steen Nøding" 1
+1208 "Eirik Stenberg" 1
+1209 "Eirik Ubøe" 1
+1210 "Eirik Wahl" 1
+1211 "Eirik Waldeland Henningsen" 1
+1212 "Eirill Pettersen Buvik" 2
+1213 "Eivald Mikal Qvernheim Røren" 1
+1214 "Eivind Asbjørn Holvik" 1
+1215 "Eivind Bøe" 1
+1216 "Eivind Eidesvik" 1
+1217 "Eivind Grimsø Moe" 1
+1218 "Eivind Haddeland" 1
+1219 "Eivind Hadler-Olsen" 1
+1220 "Eivind Johan Steinholt" 1
+1221 "Eivind Kinck" 1
+1222 "Eivind Kristofer Reiten" 1
+1223 "Eivind Lyngar" 1
+1224 "Eivind Thomas Haaland" 1
+1225 "Eivind Wingsternæs" 1
+1226 "Ekaterina Zhdan" 2
+1227 "Eldar Andreas Eilertsen" 1
+1228 "Eldar Johnsen" 1
+1229 "Eldar Mathisen" 1
+1230 "Eldar Myhre" 1
+1231 "Eldbjørg Løwer" 2
+1232 "Eldbjørg Sture" 2
+1233 "Eldri Prestegård" 2
+1234 "Elen Bente Loe" 2
+1235 "Elen Roaldset" 2
+1236 "Eli Arnstad" 2
+1237 "Eli Folkestadås" 2
+1238 "Eli Johanne Riset" 2
+1239 "Eli Jorunn Jakobsen" 2
+1240 "Eli Marie Giske" 2
+1241 "Eli Sætersmoen" 2
+1242 "Eli Skyberg" 2
+1243 "Eli Ystad" 2
+1244 "Elin Bue" 2
+1245 "Elin Ertsås" 2
+1246 "Elin Karfjell" 2
+1247 "Elin Mathisen" 2
+1248 "Elin Rostveit" 2
+1249 "Elin Sjødin Drange" 2
+1250 "Elin Steinsland Vasstrand" 2
+1251 "Elisabeth Aarvaag" 2
+1252 "Elisabeth Agnete Weme Bjerkestrand" 2
+1253 "Elisabeth Bang Jakhelln" 2
+1254 "Elisabeth Bjøre" 2
+1255 "Elisabeth Endrestad" 2
+1256 "Elisabeth Grieg" 2
+1257 "Elisabeth Gunilla Andreasson Andreassen" 2
+1258 "Elisabeth Harstad" 2
+1259 "Elisabeth Hegle" 2
+1260 "Elisabeth Johansen" 2
+1261 "Elisabeth Krokeide" 2
+1262 "Elisabeth Line Saupstad" 2
+1263 "Elisabeth Magnus" 2
+1264 "Elisabeth Mannsverk" 2
+1265 "Elisabeth Oddrun Bergesen Soltveit" 2
+1266 "Elisabeth Runa Hurlen" 2
+1267 "Elisabeth Wille" 2
+1268 "Elise Brøchner Larsen" 2
+1269 "Elise Henriette Novik" 2
+1270 "Elizabeth Schilling" 2
+1271 "Elizabeth Schilling Nielsen" 2
+1272 "Elke Elfriede Holinski-Feder" 2
+1273 "Ella Skjørestad" 2
+1274 "Ellen Cathrine Rasmussen" 2
+1275 "Ellen Christine Christiansen" 2
+1276 "Ellen Christine Orvin Raaholt" 2
+1277 "Ellen Lande" 2
+1278 "Ellen Merete Hanetho" 2
+1279 "Ellen Merete Kruse Brække" 2
+1280 "Ellen Olsen" 2
+1281 "Ellen Paasche Birkeland" 2
+1282 "Ellen Randi Opsal" 2
+1283 "Ellen Sandra Bratland" 2
+1284 "Ellen Solstad" 2
+1285 "Ellen Stensrud" 2
+1286 "Ellen Susanne Math Henrichsen" 2
+1287 "Ellen Vigdis Baadstø" 2
+1288 "Elna Berner" 2
+1289 "Elsa Mäyrä Irgens" 2
+1290 "Else Bugge Fougner" 2
+1291 "Else Feiring Olsen" 2
+1292 "Else Johanne Hellum" 2
+1293 "Else Kirsti Vika Furu" 2
+1294 "Else Kristine Krüger Hagen" 2
+1295 "Else Margrete Wessel" 2
+1296 "Else Naustdal" 2
+1297 "Elsebeth Budolfsen" 2
+1298 "Emil Aubert" 1
+1299 "Emma Nunez" 2
+1300 "Endre Kolbjørnsen" 1
+1301 "Endre Ording Sund" 1
+1302 "Endre Røsjø" 1
+1303 "Endre Sekse" 1
+1304 "Endre Storløkken" 1
+1305 "Endre Tarald Glastad" 1
+1306 "Endre Witzø" 1
+1307 "Eric Cameron" 1
+1308 "Eric Harry Evenson" 1
+1309 "Eric Jerker Gøsta Pohl" 1
+1310 "Eric Sandtrø" 1
+1311 "Erik Amble" 1
+1312 "Erik Amlie" 1
+1313 "Erik Anders Jesper Eliasson" 1
+1314 "Erik Anders Lønneborg" 1
+1315 "Erik Arne Liljedahl" 1
+1316 "Erik Arvid Franck" 1
+1317 "Erik Bakkejord" 1
+1318 "Erik Bartnes" 1
+1319 "Erik Berg" 1
+1320 "Erik Berntzen" 1
+1321 "Erik Bjørn-Hansen" 1
+1322 "Erik Bøckmann" 1
+1323 "Erik Borgen" 1
+1324 "Erik Bringedal" 1
+1325 "Erik Christian Must" 1
+1326 "Erik Edvard Tønnesen" 1
+1327 "Erik Eik" 1
+1328 "Erik Engebretsen" 1
+1329 "Erik Espeset" 1
+1330 "Erik Fjeldberg" 1
+1331 "Erik Forgaard" 1
+1332 "Erik Frithjof Haagensen" 1
+1333 "Erik Frogner" 1
+1334 "Erik Gjellestad" 1
+1335 "Erik Gjeruldsen" 1
+1336 "Erik Glende Johnsen" 1
+1337 "Erik Gunnar Braathen" 1
+1338 "Erik Hagen" 1
+1339 "Erik Haug Hansen" 1
+1340 "Erik Haugane" 1
+1341 "Erik Henriksen" 1
+1342 "Erik Hilding Thedeen" 1
+1343 "Erik Hillesund" 1
+1344 "Erik Hokholt" 1
+1345 "Erik Hornnæss" 1
+1346 "Erik Jebsen" 1
+1347 "Erik Jensen" 1
+1348 "Erik Johan Frydenbø" 1
+1349 "Erik Johan Samuelsen" 1
+1350 "Erik Klausen" 1
+1351 "Erik Kristian Seterlund" 1
+1352 "Erik Langaker" 1
+1353 "Erik Marthon Olsen" 1
+1354 "Erik Martin Sune Gunnarsson" 1
+1355 "Erik Mauritzen" 1
+1356 "Erik Mogens Mathiesen" 1
+1357 "Erik Must" 1
+1358 "Erik Myking" 1
+1359 "Erik Nes" 1
+1360 "Erik Nicolaj Rønnov" 1
+1361 "Erik Niklas Johansson" 1
+1362 "Erik Ola Moe" 1
+1363 "Erik Olger Jacobsen" 1
+1364 "Erik Øren" 1
+1365 "Erik Osmundsen" 1
+1366 "Erik Ramm" 1
+1367 "Erik Ranberg" 1
+1368 "Erik Reime Reinertsen" 1
+1369 "Erik Reinhold Geijer" 1
+1370 "Erik Richard Thrane" 1
+1371 "Erik Rønning" 1
+1372 "Erik Ronny Pinnås" 1
+1373 "Erik Samuelsen" 1
+1374 "Erik Simonsen" 1
+1375 "Erik Skogen" 1
+1376 "Erik Solheim" 1
+1377 "Erik Solvang" 1
+1378 "Erik Sture Larre" 1
+1379 "Erik Sverker Reinhold Teodor Hallberg" 1
+1380 "Erik Thorsen" 1
+1381 "Erik Wahlstrøm" 1
+1382 "Erik William Kirksæther" 1
+1383 "Erkki Jukka Tapani Mäkinen" 1
+1384 "Erland Peter Bassøe" 1
+1385 "Erlend Aagesen" 1
+1386 "Erlend Bonesvoll" 1
+1387 "Erlend Hanssen" 1
+1388 "Erlend Hjelle" 1
+1389 "Erlend Trygve Grimstad" 1
+1390 "Erling Christiansen" 1
+1391 "Erling Hjertnes" 1
+1392 "Erling Lind" 1
+1393 "Erling Magnar Boland" 1
+1394 "Erling Magnar Brandsnes" 1
+1395 "Erling Magnus Hærem Sundrehagen" 1
+1396 "Erling Olav Opdahl" 1
+1397 "Erling Øverland" 1
+1398 "Erling Pettersen" 1
+1399 "Erling Ueland" 1
+1400 "Erling Vegar Andreassen" 1
+1401 "Erna Margrethe Holmboe Askeland" 2
+1402 "Ernst Aasen" 1
+1403 "Ernst Mudde" 1
+1404 "Ernst Niklas Wilhelm Flyborg" 1
+1405 "Ernst Ravnaas" 1
+1406 "Ernst Rolf Von During" 1
+1407 "Esben Hanssen" 1
+1408 "Eskil Vogt" 1
+1409 "Eskild Wold" 1
+1410 "Eskill Johan Ahlgren" 1
+1411 "Espen Andreas Pay" 1
+1412 "Espen Asle Vad Fjeldberg" 1
+1413 "Espen Brodin" 1
+1414 "Espen Edwin Wiik" 1
+1415 "Espen Fjogstad" 1
+1416 "Espen Glende" 1
+1417 "Espen Holthe" 1
+1418 "Espen Jarle Vestre" 1
+1419 "Espen Johan Dege" 1
+1420 "Espen Klevmark" 1
+1421 "Espen Kværnstuen" 1
+1422 "Espen Lundaas" 1
+1423 "Espen Seidel" 1
+1424 "Espen Tallaksen" 1
+1425 "Espen Ulvin" 1
+1426 "Esther Meier Strømme" 2
+1427 "Eva Andersen Røraas" 2
+1428 "Eva Anna-Lee Bergtun" 2
+1429 "Eva Anne Marie Bergquist" 2
+1430 "Eva Annika Christiansson" 2
+1431 "Eva Birgitta Persson" 2
+1432 "Eva Christina Eriksson" 2
+1433 "Eva Elisabet Kempe Forsberg" 2
+1434 "Eva Helene Skøelv" 2
+1435 "Eva Helene Sydskjør" 2
+1436 "Eva Katarina Teresia Johansson" 2
+1437 "Eva Konttorp" 2
+1438 "Eva Kristine Schei" 2
+1439 "Eva Lilly Granly Fredriksen" 2
+1440 "Eva Løkeland Lerøy" 2
+1441 "Eva Margareta Wetterstrand Wickbers" 2
+1442 "Eva Margrete Henderson Kristensen" 2
+1443 "Eva Margrete Holt Kristensen" 2
+1444 "Eva Maria Jäderberg" 2
+1445 "Eva Maria Klein Stene" 2
+1446 "Eva Maud Lindqvist" 2
+1447 "Eva Merete Søfelde Berneke" 2
+1448 "Eva Nygård" 2
+1449 "Eva Rød" 2
+1450 "Eva Steiness" 2
+1451 "Eva Ueland" 2
+1452 "Eva Von Hirsch" 2
+1453 "Evald Holstad" 1
+1454 "Evall Richard Moe" 1
+1455 "Even Gjesdal" 1
+1456 "Even Mengshoel" 1
+1457 "Even Nilsen" 1
+1458 "Evy Marita Røymo" 2
+1459 "Ewa Popiolek" 2
+1460 "Eystein Aspesletten" 1
+1461 "Eystein Eriksrud" 1
+1462 "Eyvin Magne Olsen" 1
+1463 "Eyvind Aven" 1
+1464 "Fabian Tobias Falch" 1
+1465 "Fabian Tobias Falch-Larsen" 1
+1466 "Fabian Tobias Roan" 1
+1467 "Farouk Abdul Aziz Al-Kasim" 1
+1468 "Felix Henry Tschudi" 1
+1469 "Finn-Espen Arnesen" 1
+1470 "Finn Arild Hvistendahl" 1
+1471 "Finn Arthur Midtgård" 1
+1472 "Finn Aurdal" 1
+1473 "Finn Berg Jacobsen" 1
+1474 "Finn Bjørn Ruyter" 1
+1475 "Finn Bjørnstad" 1
+1476 "Finn Eide" 1
+1477 "Finn Einar Krogh" 1
+1478 "Finn Einar Steen" 1
+1479 "Finn Haadem" 1
+1480 "Finn Harald Monge Stokland" 1
+1481 "Finn Haugan" 1
+1482 "Finn Helge Lunde" 1
+1483 "Finn Johnsen" 1
+1484 "Finn Johnsson" 1
+1485 "Finn Jørgen Roll" 1
+1486 "Finn Kristensen" 1
+1487 "Finn Lervik" 1
+1488 "Finn Marum Jebsen" 1
+1489 "Finn Myhre" 1
+1490 "Finn Nygaard" 1
+1491 "Finn Nygård" 1
+1492 "Finn Øistein Nordam" 1
+1493 "Finn Olav Berglie" 1
+1494 "Finn Pedersen" 1
+1495 "Finn Victor Willumsen" 1
+1496 "Fiona Forbes Walker" 2
+1497 "Flemming Bo Hegerstrøm" 1
+1498 "Flemming Devor" 1
+1499 "Flemming Ørnskov" 1
+1500 "Francis Robert Gugen" 1
+1501 "Frank Alexander Schmid-Lössberg" 1
+1502 "Frank Andersen" 1
+1503 "Frank Arthur Bakke" 1
+1504 "Frank Aune" 1
+1505 "Frank Bjørnar Ebbesen" 1
+1506 "Frank Blaker" 1
+1507 "Frank Edvard Sve" 1
+1508 "Frank Erikstad Bjordal" 1
+1509 "Frank Homo" 1
+1510 "Frank Inge Hanssen" 1
+1511 "Frank Johan Johansen" 1
+1512 "Frank Oddane" 1
+1513 "Frank Olav Larsen" 1
+1514 "Frank Øren" 1
+1515 "Frank Ove Reite" 1
+1516 "Frank Robert Kjelsli" 1
+1517 "Frank Stuvland" 1
+1518 "Frank Willy Johansen" 1
+1519 "Frans Uyttendaele" 1
+1520 "Franz Peter Göran Lindelöv" 1
+1521 "Fred Anton Ingebrigtsen" 1
+1522 "Fred Holbæk Lundberg" 1
+1523 "Freddy Sollibråten" 1
+1524 "Frede Klinkby Uldbæk" 1
+1525 "Frederick Matthew Thomas Ponsonby" 1
+1526 "Frederik Magnus Steenbuch" 1
+1527 "Fredrik Alexander Woxen" 1
+1528 "Fredrik Brodtkorb" 1
+1529 "Fredrik Christopher Lykke" 1
+1530 "Fredrik Conradi Schreuder" 1
+1531 "Fredrik Halvorsen" 1
+1532 "Fredrik Jansen Sommernes" 1
+1533 "Fredrik Larsson" 1
+1534 "Fredrik Rolf Mowill" 1
+1535 "Fredrik Stange" 1
+1536 "Fredrik Strömholm" 1
+1537 "Fredrik Vogt-Lorentzen" 1
+1538 "Fredrikke Aaeng" 2
+1539 "Fredrikke Aaeng Sellæg" 2
+1540 "Fridthjov Haavardsson" 1
+1541 "Fridtjof Andreas Ask" 1
+1542 "Fridtjof Botvid Falck" 1
+1543 "Fridtjof Mogens Gjermundsen" 1
+1544 "Friedrich Roth" 1
+1545 "Frits Laurits Totsås" 1
+1546 "Fritz Marinius Børresen" 1
+1547 "Fritz Martin Urban Jansson" 1
+1548 "Fritz Thorkil Rieber" 1
+1549 "Frode Aakvik" 1
+1550 "Frode Alhaug" 1
+1551 "Frode Botnevik" 1
+1552 "Frode Eriksen" 1
+1553 "Frode Erling Foss" 1
+1554 "Frode Gunnar Orderud" 1
+1555 "Frode Hassel" 1
+1556 "Frode Haugen" 1
+1557 "Frode Helge Nilsen" 1
+1558 "Frode Husan" 1
+1559 "Frode Kværneng" 1
+1560 "Frode Kvarsnes" 1
+1561 "Frode Larsen" 1
+1562 "Frode Marc Bohan" 1
+1563 "Frode Nordseth" 1
+1564 "Frode Sælen" 1
+1565 "Frode Sandnes" 1
+1566 "Frode Sigurd Berg" 1
+1567 "Frode Solberg" 1
+1568 "Frode Stevik" 1
+1569 "Frode Strand-Nielsen" 1
+1570 "Frode Strand Nielsen" 1
+1571 "Frode Svaboe" 1
+1572 "Frode Teigen" 1
+1573 "Frode Vihovde" 1
+1574 "Frode Wikan" 1
+1575 "Frøydis Orderud" 2
+1576 "Gabriel Smith" 1
+1577 "Gabriella Teodora Bastiani" 2
+1578 "Gary Allen Stimac" 1
+1579 "Gary Kent Wunderlich Jr" 1
+1580 "Gaute Holm" 1
+1581 "Gaute Nyerrød Kjærås" 1
+1582 "Gaute Simen Gravir" 1
+1583 "Gaute Ytterstad" 1
+1584 "Gavin Maitland Kerr" 1
+1585 "Geert Jonker" 1
+1586 "Geir-Elling Nygård" 1
+1587 "Geir Andersen" 1
+1588 "Geir Arne Drangeid" 1
+1589 "Geir Atle Sjøberg" 1
+1590 "Geir Aune" 1
+1591 "Geir Bergskaug" 1
+1592 "Geir Bjarne Myre" 1
+1593 "Geir Blankvandsbråten" 1
+1594 "Geir Bredo Larsen" 1
+1595 "Geir Christian Melen" 1
+1596 "Geir Dalsegg" 1
+1597 "Geir Dvergastein" 1
+1598 "Geir Førre" 1
+1599 "Geir Gabrielsen" 1
+1600 "Geir Håkon Mikalsen" 1
+1601 "Geir Haugersveen" 1
+1602 "Geir Heggem" 1
+1603 "Geir Holmgren" 1
+1604 "Geir Ingar Søtorp" 1
+1605 "Geir Inge Solberg" 1
+1606 "Geir Inge Stenseth" 1
+1607 "Geir Ivarsøy" 1
+1608 "Geir Jimmy Karlsen" 1
+1609 "Geir Johansen" 1
+1610 "Geir Kristian Ytreland" 1
+1611 "Geir Liabø" 1
+1612 "Geir Lie" 1
+1613 "Geir Løvnes" 1
+1614 "Geir Lunde" 1
+1615 "Geir Nilsen" 1
+1616 "Geir Nordahl-Pedersen" 1
+1617 "Geir Odd Johnsen" 1
+1618 "Geir Oddvar Bergvoll" 1
+1619 "Geir Olav Drangsland" 1
+1620 "Geir Olav Sundbø" 1
+1621 "Geir Olsen" 1
+1622 "Geir Onarheim" 1
+1623 "Geir Ove Kjesbu" 1
+1624 "Geir Petter Solstad" 1
+1625 "Geir Reigstad" 1
+1626 "Geir Ringstad" 1
+1627 "Geir Runge Vedøy" 1
+1628 "Geir Sandvik" 1
+1629 "Geir Solberg" 1
+1630 "Geir Stormorken" 1
+1631 "Geir Thomassen" 1
+1632 "Geir Thorson Solvi" 1
+1633 "Geir Tore Hjelle" 1
+1634 "Geir Veland" 1
+1635 "Geir Vinghøg" 1
+1636 "Geir Worum" 1
+1637 "Geirr Mosgaard-Lier" 1
+1638 "Geirr Remen Frostmann" 1
+1639 "Geirulv Lode" 1
+1640 "Georg Edvard Gunnerød" 1
+1641 "Georg Eldor Fjermestad" 1
+1642 "Georg Haakon Aasen" 1
+1643 "Georg Kervel" 1
+1644 "Georg Philip Rikard Krog" 1
+1645 "Georg Richard Fuglesang" 1
+1646 "Georg Salte" 1
+1647 "Georg Stahl Gundersen" 1
+1648 "Georg Størmer" 1
+1649 "George Emil Aubert" 1
+1650 "George Stephen Finley" 1
+1651 "Georgios Demathas" 1
+1652 "Georgios Oikonomou" 1
+1653 "Georgios Xiradakis" 1
+1654 "Gerd-Inger Kaasen" 2
+1655 "Gerd Charlotte Cecilia Amle" 2
+1656 "Gerd Elisabet Wik" 2
+1657 "Gerd Flatebø Schlezinger" 2
+1658 "Gerd Ingeborg Kristoffersen" 2
+1659 "Gerd Magna Wold" 2
+1660 "Gerd Saanum Gulstad" 2
+1661 "Gerd Sigrid Nilsen" 2
+1662 "Gerd Solem" 2
+1663 "Gerhard Christian Stang Våland" 1
+1664 "Gerry Johannessen" 1
+1665 "Gert August Paul Caspritz" 1
+1666 "Gert Wilhelm Munthe" 1
+1667 "Gian Angelo Perrucci" 1
+1668 "Gisela Marie Sitbon" 2
+1669 "Gisle Glück Evensen" 1
+1670 "Gisle Halvorsen" 1
+1671 "Gisle Hannemyr" 1
+1672 "Giuditta Cordero-Moss" 2
+1673 "Giuditta Cordero Moss" 2
+1674 "Giuseppe Zocco" 1
+1675 "Gizella Bengtsson" 2
+1676 "Gjermund Sjøsaasen" 1
+1677 "Gjermund Torp" 1
+1678 "Gjertrud Bolstad" 2
+1679 "Gledis Ebbesen Vonheim" 1
+1680 "Glen Kurt Gustav Nilsson" 1
+1681 "Glen Ole Rødland" 1
+1682 "Glenn Fred Arne Eilertsen" 1
+1683 "Goran Sigfrid Gunnar Sigfridsson" 1
+1684 "Gøte Gunnar Emanuel Dahlin" 1
+1685 "Gotfred Ingebrigtsen Andenes" 1
+1686 "Gottfred Langseth" 1
+1687 "Grace Montgomery Reksten Skaugen" 2
+1688 "Graham James Hearne" 1
+1689 "Gregory Steven Garvey" 1
+1690 "Greta Bentzen" 2
+1691 "Greta Remø Klokk" 2
+1692 "Grete Brå" 2
+1693 "Grete Faremo" 2
+1694 "Grete Komissar" 2
+1695 "Grete Nanna Hogstad" 2
+1696 "Grete Rustad" 2
+1697 "Grete Sønsteby" 2
+1698 "Grete Tveit" 2
+1699 "Grethe Aasved" 2
+1700 "Grethe Drange" 2
+1701 "Grethe Helene Viksaas" 2
+1702 "Grethe Høiland" 2
+1703 "Gro Aschim" 2
+1704 "Gro Bakstad" 2
+1705 "Gro Becher" 2
+1706 "Gro Fjellheim" 2
+1707 "Gro Gauthun Kielland" 2
+1708 "Gro Lindberg" 2
+1709 "Gro Merete Brækken" 2
+1710 "Gro Myking" 2
+1711 "Gry Anita Ranum" 2
+1712 "Gry Hege Ahlgren" 2
+1713 "Gry Hege Sølsnes" 2
+1714 "Gry Ingunn Flataker" 2
+1715 "Gry Mølleskog" 2
+1716 "Gudleik Njå" 2
+1717 "Gudmund Joar Bratrud" 1
+1718 "Gudmund Per Olsen" 1
+1719 "Gudmund Rønningen" 1
+1720 "Gudmund Sagen" 1
+1721 "Gudmund Strømsnes" 1
+1722 "Gudmundur Asgeirsson" 1
+1723 "Gudmundur Einarsson" 1
+1724 "Gudmundur Ørn Gunnarsson" 1
+1725 "Gudrid Eide" 2
+1726 "Gudrun Gulldahl" 2
+1727 "Gudrun Gunnarsdottir" 2
+1728 "Gudveig Margrethe Johannessen" 2
+1729 "Guido Guidetti" 1
+1730 "Gun Lisbeth Gustafsson" 2
+1731 "Gun Marit Stenersen" 2
+1732 "Gun Monika Bengtsson" 2
+1733 "Gunhild Marie Liabø" 2
+1734 "Gunilla Kristina Åstrand Berg" 2
+1735 "Gunn Inger Åsen" 2
+1736 "Gunn Jane Håland" 2
+1737 "Gunn Mangerud" 2
+1738 "Gunn Marit Helgesen" 2
+1739 "Gunn Oland" 2
+1740 "Gunn Ovesen" 2
+1741 "Gunn Sissel Jaklin" 2
+1742 "Gunnar Bjønness" 1
+1743 "Gunnar Dolven" 1
+1744 "Gunnar Domstein" 1
+1745 "Gunnar Edvard Tandberg" 1
+1746 "Gunnar Eiken" 1
+1747 "Gunnar Espeland" 1
+1748 "Gunnar Fredrik Hesse" 1
+1749 "Gunnar Gjerdrum Kagge" 1
+1750 "Gunnar Gjørtz" 1
+1751 "Gunnar Håkon Eide" 1
+1752 "Gunnar Halvorsen" 1
+1753 "Gunnar Haug" 1
+1754 "Gunnar Henriksen" 1
+1755 "Gunnar Hirsti" 1
+1756 "Gunnar Holen" 1
+1757 "Gunnar Hvammen" 1
+1758 "Gunnar Hviding" 1
+1759 "Gunnar Inge Iversen" 1
+1760 "Gunnar Jerven" 1
+1761 "Gunnar Kjell Bjørkavåg" 1
+1762 "Gunnar Kluge" 1
+1763 "Gunnar Kulia" 1
+1764 "Gunnar Moe" 1
+1765 "Gunnar Myhr" 1
+1766 "Gunnar Nordby" 1
+1767 "Gunnar Norheim" 1
+1768 "Gunnar Patrick Brand" 1
+1769 "Gunnar Reitan" 1
+1770 "Gunnar Rørstad" 1
+1771 "Gunnar Rydning" 1
+1772 "Gunnar Sten Bøckmann" 1
+1773 "Gunnar Stephen Meinich-Bache" 1
+1774 "Gunnar Webjørn Holand" 1
+1775 "Gunnhild Engan Haug" 2
+1776 "Gunnlaugur Jônsson" 1
+1777 "Günter Siegfried Wolf" 1
+1778 "Günther Lehmann" 1
+1779 "Gunvald Mathisen" 1
+1780 "Gunvald Ottesen" 1
+1781 "Gunvor Djønne" 2
+1782 "Gunvor Halvorsen" 2
+1783 "Gunvor Ulstein" 2
+1784 "Guri Helene Ingebrigtsen" 2
+1785 "Guri Kogstad" 2
+1786 "Guri Mai Elmar" 2
+1787 "Guro Steine" 2
+1788 "Guro Vale Kvavik" 2
+1789 "Gustaf Mikael Hjerpe" 1
+1790 "Gustaf Ragnar Løfroth Christensen" 1
+1791 "Gustaf Solerød Christensen" 1
+1792 "Gustav Heiberg Simonsen" 1
+1793 "Gustav Ingemar Kihlström" 1
+1794 "Gustav Magnus Gasslander" 1
+1795 "Gustav Pedersen" 1
+1796 "Gustav Sydsæter Pedersen" 1
+1797 "Gustav Witzøe" 1
+1798 "Gustave Brun-Lie" 1
+1799 "Guttorm Brekke" 1
+1800 "Guy Whitmore Mace" 1
+1801 "Gyrid Skalleberg Ingerø" 2
+1802 "Haakon Ambjørndalen" 1
+1803 "Haakon Berg" 1
+1804 "Haakon Blaauw" 1
+1805 "Haakon Bredrup" 1
+1806 "Haakon Bryhni" 1
+1807 "Haakon Emil Shetelig" 1
+1808 "Haakon Morten Sæter" 1
+1809 "Haakon Sandborg" 1
+1810 "Haakon Skaarer" 1
+1811 "Haavard Lien" 1
+1812 "Haavard Nord" 1
+1813 "Haico Halbesma" 1
+1814 "Håkan Mogren" 1
+1815 "Håkon Birkenes" 1
+1816 "Håkon Helland" 1
+1817 "Håkon Jahr" 1
+1818 "Håkon Johannes Follestad" 1
+1819 "Håkon Langballe" 1
+1820 "Håkon Letvik" 1
+1821 "Håkon Olav Edgren" 1
+1822 "Håkon Olav Kjernsmo" 1
+1823 "Håkon Persen" 1
+1824 "Håkon Rene Bach Mikkelsen" 1
+1825 "Håkon Sæterøy" 1
+1826 "Håkon Wibstad" 1
+1827 "Håkon Wium Lie" 1
+1828 "Halle Ragnar Sivertsen" 1
+1829 "Hallgeir Skogen" 1
+1830 "Hallgrim Sagen" 1
+1831 "Hallstein Gravråk" 1
+1832 "Hallstein Wilhelm von Hanno Bast" 1
+1833 "Hallvar Ulfstein" 1
+1834 "Hallvard Austlid" 1
+1835 "Hallvard Lerøy" 1
+1836 "Hallvard Sandvik" 1
+1837 "Halvard Nils Sæther" 1
+1838 "Halvdan Carstens" 1
+1839 "Halvor Bjørken" 1
+1840 "Halvor Kristian Bjerke" 1
+1841 "Halvor Stenstadvold" 1
+1842 "Halvor Torsøn Svartdal" 1
+1843 "Halvor Urrang" 1
+1844 "Halvor Vatnar" 1
+1845 "Halvor Weider" 1
+1846 "Hanna-Kaisa Nikkanen" 2
+1847 "Hanna Erika Ok K Kristensson Sjölin" 2
+1848 "Hanna Kirsti Koch Christensen" 2
+1849 "Hanne Bævre" 2
+1850 "Hanne Bævre Johansson" 2
+1851 "Hanne Bettum" 2
+1852 "Hanne Camilla Wien" 2
+1853 "Hanne Cathrine Enger" 2
+1854 "Hanne Halén" 2
+1855 "Hanne Hanssen" 2
+1856 "Hanne Harlem" 2
+1857 "Hanne Høvding" 2
+1858 "Hanne Hovland" 2
+1859 "Hanne Jimenez De Mora" 2
+1860 "Hanne Johansen" 2
+1861 "Hanne Karoline Kræmer" 2
+1862 "Hanne Marie Løyning" 2
+1863 "Hanne Marie Løyning Dale" 2
+1864 "Hanne Merete Gaarder Almgren" 2
+1865 "Hanne Notøy" 2
+1866 "Hanne Olsen" 2
+1867 "Hanne Opsahl" 2
+1868 "Hanne Refsholt" 2
+1869 "Hanne Rolén" 2
+1870 "Hanne Stokke Moen" 2
+1871 "Hanne Vian" 2
+1872 "Hannu Arimo Uusitalo" 1
+1873 "Hans- Petter Salvesen" 1
+1874 "Hans-Arne L'orange" 1
+1875 "Hans-Axel Jahren" 1
+1876 "Hans-Fredrik Bassøe" 1
+1877 "Hans-Jakob Gram" 1
+1878 "Hans-Jürgen Kai Von Uthmann" 1
+1879 "Hans-Kristian Sætrum" 1
+1880 "Hans-Olav Rekdal" 1
+1881 "Hans-Ole Jochumsen" 1
+1882 "Hans Alfred Lundell" 1
+1883 "Hans Alfred Svensen" 1
+1884 "Hans Anders Jonny Bengtsson" 1
+1885 "Hans Andreas Tvedt" 1
+1886 "Hans Anfinn Eide Helland" 1
+1887 "Hans Berg" 1
+1888 "Hans Christian Aksel Melbye" 1
+1889 "Hans Christian Børresen" 1
+1890 "Hans Christian Juul" 1
+1891 "Hans Christian Krogh Riise" 1
+1892 "Hans Christian Lous" 1
+1893 "Hans Christian Qvist" 1
+1894 "Hans Christian Thrane Nielsen" 1
+1895 "Hans Eirik Kåsa" 1
+1896 "Hans Erik Ringkjøb" 1
+1897 "Hans Erik Solmunde" 1
+1898 "Hans Geelmuyden" 1
+1899 "Hans Georg Jelsa" 1
+1900 "Hans Göran Thorshag" 1
+1901 "Hans Gude Gudesen" 1
+1902 "Hans Gudmund Bugge Knudsen" 1
+1903 "Hans Gunnar Martinsen" 1
+1904 "Hans Harald Løkke" 1
+1905 "Hans Henning Mikalsen" 1
+1906 "Hans Henrik Klouman" 1
+1907 "Hans Henry Sandbæk" 1
+1908 "Hans Herman Horn" 1
+1909 "Hans Hille Halvorsen" 1
+1910 "Hans Inge Balchen Slethei" 1
+1911 "Hans Inge Nerby" 1
+1912 "Hans Ivar Kolden" 1
+1913 "Hans Jacob Starheim" 1
+1914 "Hans Johan Hekland" 1
+1915 "Hans Jonsebråten" 1
+1916 "Hans Jørgen Lorentzen" 1
+1917 "Hans Kristian Aspenberg" 1
+1918 "Hans Kristian Heier" 1
+1919 "Hans Kristian Nilsen" 1
+1920 "Hans Kristian Rød" 1
+1921 "Hans Kristian Roseth" 1
+1922 "Hans Kristian Strand" 1
+1923 "Hans Lødrup" 1
+1924 "Hans Martin Bjørge" 1
+1925 "Hans Martin Gravdal" 1
+1926 "HANS MARTIN STORØ" 1
+1927 "Hans Middelthon" 1
+1928 "Hans Ødegård" 1
+1929 "Hans Olav Hugdahl" 1
+1930 "Hans Olav Karde" 1
+1931 "Hans Olav Lindal" 1
+1932 "Hans Olav Torsen" 1
+1933 "Hans Peter Lennarth Hansson" 1
+1934 "Hans Petter Amundsen Klohs" 1
+1935 "Hans Petter Bugge" 1
+1936 "Hans Petter Evensen" 1
+1937 "Hans Petter Hellerøy" 1
+1938 "Hans Petter Horsgaard" 1
+1939 "Hans Petter Lien" 1
+1940 "Hans Petter Slettebø" 1
+1941 "Hans Petter Vestre" 1
+1942 "Hans Pieterman" 1
+1943 "Hans Rasmus Holte" 1
+1944 "Hans Remi Kittelsen" 1
+1945 "Hans Richard Pedersen" 1
+1946 "Hans Roset" 1
+1947 "Hans Rune Jensen" 1
+1948 "Hans Sauro" 1
+1949 "Hans Troye" 1
+1950 "Hans Viggo Kristoffersen" 1
+1951 "Hans Vigmostad" 1
+1952 "Hans Walter Lyngholm" 1
+1953 "Harald Arnet" 1
+1954 "Harald Arnkværn" 1
+1955 "Harald Bjørn Gløersen" 1
+1956 "Harald Bøyum" 1
+1957 "Harald Carsten Folke Hermansen" 1
+1958 "Harald Christiansen" 1
+1959 "Harald Dagfinn Kjelstad" 1
+1960 "Harald Dahl" 1
+1961 "Harald Ellefsen" 1
+1962 "Harald Espedal" 1
+1963 "Harald Gaupen" 1
+1964 "Harald Grimelund" 1
+1965 "Harald Grimsrud" 1
+1966 "Harald Hjort" 1
+1967 "Harald Hvidsten" 1
+1968 "Harald Ingebrikt Volden" 1
+1969 "Harald Jeremiassen" 1
+1970 "Harald Johan Norvik" 1
+1971 "Harald Johannes Karlstrøm" 1
+1972 "Harald Johnsen" 1
+1973 "Harald Kristian Gjøsæter" 1
+1974 "Harald Liverud" 1
+1975 "Harald Løkkesveen" 1
+1976 "Harald Lunde" 1
+1977 "Harald Magne Bjørnsen" 1
+1978 "Harald Magne Eikesdal" 1
+1979 "Harald Mellerud" 1
+1980 "Harald Moræus-Hanssen" 1
+1981 "Harald Moræus Hanssen" 1
+1982 "Harald Niclas Tøsti" 1
+1983 "Harald Odin Smedsvik" 1
+1984 "Harald Off" 1
+1985 "Harald Oldeide" 1
+1986 "Harald Overvaag" 1
+1987 "Harald Reimers Madsen" 1
+1988 "Harald Sigurd Pedersen" 1
+1989 "Harald Solberg" 1
+1990 "Harald Sperlin Thorstensen" 1
+1991 "Harald Stavn" 1
+1992 "Harald Tiedemann Hansen" 1
+1993 "Harald Tyrdal" 1
+1994 "Harald Vabø" 1
+1995 "Harald Voigt" 1
+1996 "Harald Walther" 1
+1997 "Harold Clive Mather" 1
+1998 "Harold Egil Nilsen" 1
+1999 "Harold Magne Sævik" 1
+2000 "Harri Tapio Takanen" 1
+2001 "Harry Ivar Sævrøy" 1
+2002 "Harry Kleven" 1
+2003 "Hauke Matthias Jürgens" 1
+2004 "Håvar Poulsson" 1
+2005 "Håvard Bakke Wangensteen" 1
+2006 "Håvard Farseth Ramstad" 1
+2007 "Håvard Haugland" 1
+2008 "Håvard Ketil Hoelsæter" 1
+2009 "Håvard Kristiansen" 1
+2010 "Håvard Myrvold" 1
+2011 "Håvard Sunde" 1
+2012 "Hedda Foss Five" 2
+2013 "Hedda Henriette Grundt" 2
+2014 "Hedvig Aaberg Mortensen" 2
+2015 "Hege Bodil Espedal" 2
+2016 "Hege Bømark" 2
+2017 "Hege Buer" 2
+2018 "Hege Charlotte Bakken" 2
+2019 "Hege Christin Lien" 2
+2020 "Hege Eikeland" 2
+2021 "Hege Gran" 2
+2022 "Hege Høistad" 2
+2023 "Hege Holstad" 2
+2024 "Hege Holter Brekke" 2
+2025 "Hege Hyggen" 2
+2026 "Hege Lyngved Odinsen" 2
+2027 "Hege Marie Finberg Selvig" 2
+2028 "Hege Marie Norheim" 2
+2029 "Hege Michelsen Laberg" 2
+2030 "Hege Myren" 2
+2031 "Hege Ramona Johnsen" 2
+2032 "Hege Sævik Rabben" 2
+2033 "Hege Sjo" 2
+2034 "Hege Skryseth" 2
+2035 "Hege Tinnen" 2
+2036 "Hege Wullum" 2
+2037 "Hege Yli Melhus" 2
+2038 "Heidi Åberg" 2
+2039 "Heidi Adshead Baugstø" 2
+2040 "Heidi Andreassen" 2
+2041 "Heidi Christin Ekrem" 2
+2042 "Heidi Elisabeth Hem" 2
+2043 "Heidi Ellingsberg Hjellestad" 2
+2044 "Heidi Frost Eriksen" 2
+2045 "Heidi Iren Karlsen" 2
+2046 "Heidi Irene Blengsli Aabel" 2
+2047 "Heidi Johanne Aanstad" 2
+2048 "Heidi Johannessen" 2
+2049 "Heidi Johansen" 2
+2050 "Heidi Karlsen" 2
+2051 "Heidi Marie Petersen" 2
+2052 "Heidi Orderud Øian" 2
+2053 "Heidi Skaaret" 2
+2054 "Heidi Storruste" 2
+2055 "Heidi Ulmo" 2
+2056 "Heidi Van Der Kooij" 2
+2057 "Heiki-Sune Bjørkmo" 1
+2058 "Heikki Lehmoinen Oltedal" 1
+2059 "Heine Sebjørnsen" 1
+2060 "Helen Bistrup Karlsen" 2
+2061 "Helen Johanna De Jong" 2
+2062 "Helen Johanne Nordtun Leversund" 2
+2063 "Helen Juell" 2
+2064 "Helen Marie Skjerven Rød" 2
+2065 "Helene Brinchmann Halvorsen" 2
+2066 "Helene Jebsen Anker" 2
+2067 "Helene Langlo Volle" 2
+2068 "Helene Margareta Vibbleus Bergquist" 2
+2069 "Helga Skjeie" 2
+2070 "Helge Aarseth" 1
+2071 "Helge Andre Sundt" 1
+2072 "Helge Arne Bjerkan" 1
+2073 "Helge Arvid Møgster" 1
+2074 "Helge Brøvig Andresen" 1
+2075 "Helge Eide" 1
+2076 "Helge Enger" 1
+2077 "Helge Engum Havskjold" 1
+2078 "Helge Evju" 1
+2079 "Helge Friestad" 1
+2080 "Helge Haakonsen" 1
+2081 "Helge Halvard Helgø" 1
+2082 "Helge Holen" 1
+2083 "Helge Jarl Bruvoll" 1
+2084 "Helge Kragh" 1
+2085 "Helge Kroghrud" 1
+2086 "Helge Leiro Baastad" 1
+2087 "Helge Lintvedt" 1
+2088 "Helge Lund" 1
+2089 "Helge Mæland" 1
+2090 "Helge Midttun" 1
+2091 "Helge Nielsen" 1
+2092 "Helge Olav Henriksen" 1
+2093 "Helge Orstad" 1
+2094 "Helge Ranvik" 1
+2095 "Helge Ressem" 1
+2096 "Helge Ringdal" 1
+2097 "Helge Singelstad" 1
+2098 "Helge Urstrømmen" 1
+2099 "Helge Vinorum" 1
+2100 "Helge Witzø" 1
+2101 "Heljar Wlodarek Heradstveit" 1
+2102 "Helle Cathrin Hvalvik Rønningen" 2
+2103 "Helle Cecilie Lauvstad" 2
+2104 "Helle Hobæk Vaagen" 2
+2105 "Helle Kruse Nielsen" 2
+2106 "Helle Sissener" 2
+2107 "Helmut Paul Merch" 1
+2108 "Henning Hansen" 1
+2109 "Henning Jarl Forsberg" 1
+2110 "Henning Karlsen" 1
+2111 "Henning Larsen" 1
+2112 "Henning Leo Knudsen" 1
+2113 "Henning Øglænd" 1
+2114 "Henning Olset" 1
+2115 "Henning Vest" 1
+2116 "Henny Oddrun Sandblåst Eidem" 2
+2117 "Henrik August Christensen" 1
+2118 "Henrik Bessermann" 1
+2119 "Henrik Feragen" 1
+2120 "Henrik Gøsta Axel von Platen" 1
+2121 "Henrik Gøsta Axel Von Platen" 1
+2122 "Henrik Heiberg" 1
+2123 "Henrik Julius Ager-Hanssen" 1
+2124 "Henrik Lid Scharff" 1
+2125 "Henrik Lisæth" 1
+2126 "Henrik Lund" 1
+2127 "Henrik Sverre Hesselmann" 1
+2128 "Henrik Tangen" 1
+2129 "Henry Haywood Hamilton" 1
+2130 "Herbrand G Skriudalen" 1
+2131 "Herdis Meldahl" 2
+2132 "Herman Alf Billung" 1
+2133 "Herman Fjeldet" 1
+2134 "Herman Friele" 1
+2135 "Hermod Stener" 1
+2136 "Herodd Ingulf Widding" 1
+2137 "Hessel Halbesma" 1
+2138 "Hilde Birgitte Buene Mjaaland" 2
+2139 "Hilde Bjertnæs Bækken" 2
+2140 "Hilde Charlotte Thon" 2
+2141 "Hilde Drønen" 2
+2142 "Hilde Furberg" 2
+2143 "Hilde Harbo" 2
+2144 "Hilde Hermansen Steineger" 2
+2145 "Hilde Irene Nebb" 2
+2146 "Hilde Karlsen" 2
+2147 "Hilde Kristin Mork" 2
+2148 "Hilde Lovise Ringereide" 2
+2149 "Hilde Maren Haugnes Schjager" 2
+2150 "Hilde Marie Redi" 2
+2151 "Hilde Merete Aasheim" 2
+2152 "Hilde Midthjell" 2
+2153 "Hilde Myrberg" 2
+2154 "Hilde Petra Aarseth Krøgenes" 2
+2155 "Hilde Rolandsen" 2
+2156 "Hilde Sønderland" 2
+2157 "Hilde Vatne" 2
+2158 "Hilde Waage" 2
+2159 "Hiroko Mowill" 2
+2160 "Hjalmar A Sigurthorsson" 1
+2161 "Hjalmar Moldskred" 1
+2162 "Hjørdis Henriksen" 2
+2163 "Hogne Vik" 1
+2164 "Hogne Wegar Fjellstad" 1
+2165 "Holger Georg Dilling" 1
+2166 "Hølje Tefre" 1
+2167 "Holly Ann Van Deursen" 2
+2168 "Hroar Nilsen" 1
+2169 "Hubert Gauseweg" 1
+2170 "Hugo Asbjørn Tønsberg" 1
+2171 "Hugo Lund Maurstad" 1
+2172 "Hugo Walter Chumbez Panesi" 1
+2173 "Hugo William Bauer" 1
+2174 "Hussain Darawati" 2
+2175 "Ian Christopher Hague" 1
+2176 "Ian David Gilham" 1
+2177 "Ian Francisco Lozano Jeffs" 1
+2178 "Ian Hartvik Parker" 1
+2179 "Ian William Caxton Spencer" 1
+2180 "Ib Kunøe" 1
+2181 "Ida Bjerke Olsen" 2
+2182 "Ida Helliesen" 2
+2183 "Ida Jane Hinkley" 2
+2184 "Ida Kathrine Holm Grindstrand" 2
+2185 "Ida Lau Borch" 2
+2186 "Ida Margrethe Aagaard" 2
+2187 "Ida Miriam Espolin Johnson" 2
+2188 "Idar Arild Furø" 1
+2189 "Idar Arnold Iversen" 1
+2190 "Idar Harry Vollvik" 1
+2191 "Idar Jan Ekeland" 1
+2192 "Idar Kreutzer" 1
+2193 "Idar Lars Ulstein" 1
+2194 "Idun Heier" 2
+2195 "Ilkka Juhani Silvanto" 1
+2196 "Ina Eldøy" 2
+2197 "Ina Merete Flaatin" 2
+2198 "Ina Michaloff Pettersen" 2
+2199 "Indra Maria Åsander" 2
+2200 "Inga Lise Lien Moldestad" 2
+2201 "Inga Margrethe Ulstein Loen" 2
+2202 "Ingar Mathisen" 1
+2203 "Ingar Østby" 1
+2204 "Ingar Owren Solheim" 1
+2205 "Ingar Sletten Kolloen" 1
+2206 "Ingar Sverre Sørensen" 1
+2207 "Inge Andre Haraldstad Johansen" 1
+2208 "Inge Andre Ottesen" 1
+2209 "Inge Arve Orheim" 1
+2210 "Inge Bergesen" 2
+2211 "Inge Elof Duna" 2
+2212 "Inge Falck Olsen" 1
+2213 "Inge Five" 1
+2214 "Inge Forseth" 1
+2215 "Inge Furu" 1
+2216 "Inge Gjærde" 1
+2217 "Inge Harald Berg" 1
+2218 "Inge Ketil Hansen" 1
+2219 "Inge Lars Larsen" 1
+2220 "Inge Leif Sleipnes" 1
+2221 "Inge Lene Villumsen" 2
+2222 "Inge Magnar Valen" 1
+2223 "Inge Myrlund" 1
+2224 "Inge Nicolaysen" 1
+2225 "Inge Ørstad" 1
+2226 "Inge Ramsdal" 1
+2227 "Inge Ronald Røyset" 1
+2228 "Inge Sørum" 1
+2229 "Inge Steensland" 1
+2230 "Ingebjørg Helene Glad Pedersen" 2
+2231 "Ingebjørg Storeide Folgerø" 2
+2232 "Ingeborg Ådnanes" 2
+2233 "Ingeborg Hatlem" 2
+2234 "Ingebreth Forus" 2
+2235 "Ingebrigt Steen Jensen" 1
+2236 "Ingegerd Kleppen Rafn" 2
+2237 "Ingelin Drøpping" 2
+2238 "Ingelise Arntsen" 2
+2239 "Inger-Gunn Sande" 2
+2240 "Inger Adele Myklebust" 2
+2241 "Inger Alice Torskangerpoll Valerio" 2
+2242 "Inger Beate Svenneby Herland" 2
+2243 "Inger Charlotte Ferner Heglund" 2
+2244 "Inger Elisabeth Prebensen" 2
+2245 "Inger Flesland Strass" 2
+2246 "Inger Heidi Slungård" 2
+2247 "Inger Hilde Waaler" 2
+2248 "Inger Holthe" 2
+2249 "Inger Hygen Flostrand" 2
+2250 "Inger Jacobsen" 2
+2251 "Inger Johanne Solhaug" 2
+2252 "Inger Johanne Wiese" 2
+2253 "Inger Lise Egeland" 2
+2254 "Inger Margrethe Robertsen" 2
+2255 "Inger Merete Dyring" 2
+2256 "Inger Sangnæs Glendrange" 2
+2257 "Inger Tone Ødegård" 2
+2258 "Ingerid Ulstein" 2
+2259 "Ingjald Ørbeck Sørheim" 1
+2260 "Ingjerd Cecilie Hafsteen Blekeli Spiten" 2
+2261 "Ingjerd Juel Ingeborgrud" 2
+2262 "Ingjerd Skjeldrum" 2
+2263 "Ingmar Johan Høgøy" 1
+2264 "Ingolf Arne Marifjæren" 1
+2265 "Ingolf Jarle Rui" 1
+2266 "Ingrid Alfheim" 2
+2267 "Ingrid Anette Wulff" 2
+2268 "Ingrid Beichmann Wiik" 2
+2269 "Ingrid Dahl Hovland" 2
+2270 "Ingrid Elvira Leisner" 2
+2271 "Ingrid Helene Eia Ryvarden" 2
+2272 "Ingrid Kassen" 2
+2273 "Ingrid Lund" 2
+2274 "Ingrid Maria Magdalena Hartman" 2
+2275 "Ingrid Maria Stenmark" 2
+2276 "Ingrid Namdal" 2
+2277 "Ingrid Sanne Andersen" 2
+2278 "Ingrid Simunic" 2
+2279 "Ingrid Solberg" 2
+2280 "Ingun Ranneberg-Nilsen" 2
+2281 "Ingun Stray Schmidt" 2
+2282 "Ingunn Anita Tronsmed" 2
+2283 "Ingunn Flytør" 2
+2284 "Ingunn Frislid Solheim" 2
+2285 "Ingunn Rogstad" 2
+2286 "Ingunn Saltbones Leine" 2
+2287 "Ingvald Rune Wangenstein Baugstø" 1
+2288 "Ingvar Magnar Sviggum" 1
+2289 "Ingvar Straume" 1
+2290 "Ingvil Marie Smines" 2
+2291 "Ingvild Anita Resaland" 2
+2292 "Ingvild Hovland" 2
+2293 "Ingvild Huseby" 2
+2294 "Ingvild Johansen" 2
+2295 "Ingvild Ragna Myhre" 2
+2296 "Ingvild Synnøve Andersen" 2
+2297 "Ingvild Vartdal" 2
+2298 "Irene Grastveit" 2
+2299 "Irene Lindhjem Grytnes" 2
+2300 "Irene Vold" 2
+2301 "Irene Waage Basili" 2
+2302 "Irma Ruth Tystad" 2
+2303 "Isabelle Lodding Gresvig" 2
+2304 "Ivan Borner" 1
+2305 "Ivan Eduardo Orlic Ticeran" 1
+2306 "Ivan Franjo Orlic" 1
+2307 "Ivar Aarseth" 1
+2308 "Ivar Birger Ramberg" 1
+2309 "Ivar Brandvold" 1
+2310 "Ivar Formo" 1
+2311 "Ivar Fredrik Pettersen" 1
+2312 "Ivar Hauler Halvorsen" 1
+2313 "Ivar Johannes Koteng" 1
+2314 "Ivar John Saunes" 1
+2315 "Ivar Karl Jørgensen" 1
+2316 "Ivar Kjell Eriksen" 1
+2317 "Ivar Kleiven" 1
+2318 "Ivar Moss" 1
+2319 "Ivar Olsen" 1
+2320 "Ivar Qvist" 1
+2321 "Ivar Sigmund Williksen" 1
+2322 "Ivar Sigurd Eide" 1
+2323 "Ivar Skoglunn" 1
+2324 "Ivar Søvold" 1
+2325 "Iver Melby" 1
+2326 "Iver Tønnessen Mathiesen" 1
+2327 "Jack Reidar Holmlund" 1
+2328 "Jack Roald Høifødt" 1
+2329 "Jack Selven" 1
+2330 "Jacob Andreas Engelbreth Svendsen" 1
+2331 "Jacob Andreas Møller" 1
+2332 "Jacob Sømme Middelthon" 1
+2333 "Jacques Paul Pierre Racloz" 1
+2334 "Jakob Bleie" 1
+2335 "Jakob Erling Rugset" 1
+2336 "Jakob Rugland" 1
+2337 "Jakob Stausholm" 1
+2338 "James Edward Haynes" 1
+2339 "James Eugene Newsome" 1
+2340 "James Frithjof Skouverøe" 1
+2341 "James Harry Miller" 1
+2342 "James Joseph Mullins" 1
+2343 "James Stove Lorentzen" 1
+2344 "James William Hazeldean" 1
+2345 "Jan-Aage Strand" 1
+2346 "Jan-Åge Johannessen" 1
+2347 "Jan-Åke Kristian Kark" 1
+2348 "Jan-Emil Johannessen" 1
+2349 "Jan-Erik Lennart Fiske" 1
+2350 "Jan-Erik Slørstad" 1
+2351 "Jan-Erik Standahl" 1
+2352 "Jan-Fredrik Wilhelmsen" 1
+2353 "Jan-Otto Bakkland" 1
+2354 "Jan-Petter Enbusk" 1
+2355 "Jan-Robert Røli-Gjervik" 1
+2356 "Jan Aksel Coll" 1
+2357 "Jan Anders Oksum" 1
+2358 "Jan Anders Vestrum" 1
+2359 "Jan Arild Hoem" 1
+2360 "Jan Arne Ludvigsen" 1
+2361 "Jan Audun Reinås" 1
+2362 "Jan Bendt Eskil Starrsjø" 1
+2363 "Jan Beyer" 1
+2364 "Jan Bjørn Kjærvik" 1
+2365 "Jan Borø" 1
+2366 "Jan Brevig Remmereit" 1
+2367 "Jan Brevik Bjerke" 1
+2368 "Jan Byberg Torstensen" 1
+2369 "Jan Christian Gruner Sundt" 1
+2370 "Jan Christian Waldrop Opsahl" 1
+2371 "Jan Clarence Tylestedt" 1
+2372 "Jan Dankert Skagen" 1
+2373 "Jan Egil Andresen" 1
+2374 "Jan Egil Moe" 1
+2375 "Jan Egil Sletteng" 1
+2376 "Jan Eiler Bjørnstad" 1
+2377 "Jan Einar Greve" 1
+2378 "Jan Einar Sandnes" 1
+2379 "Jan Erik Andersen" 1
+2380 "Jan Erik Clausen" 1
+2381 "Jan Erik Engebretsen" 1
+2382 "Jan Erik Grøndahl" 1
+2383 "Jan Erik Hagen" 1
+2384 "Jan Erik Johansen" 1
+2385 "Jan Erik Korssjøen" 1
+2386 "Jan Erik Larsen" 1
+2387 "Jan Erik Mikkelborg" 1
+2388 "Jan Erik Sangro" 1
+2389 "Jan Erik Saugestad" 1
+2390 "Jan Erik Schulien" 1
+2391 "Jan Erik Skaug" 1
+2392 "Jan Erik Slattum" 1
+2393 "Jan Erik Tveteraas" 1
+2394 "Jan Erling Arveschoug" 1
+2395 "Jan Frederik Dyvi" 1
+2396 "Jan Gerhard Thoresen" 1
+2397 "Jan Gøsta Carlzon" 1
+2398 "Jan Gunnar Hartvig" 1
+2399 "Jan Gunnar Opsal" 1
+2400 "Jan Gustaf Stenberg" 1
+2401 "Jan Håkan Martin Dahlström" 1
+2402 "Jan Håkon Pettersen" 1
+2403 "Jan Haudemann-Andersen" 1
+2404 "Jan Helge Dahl" 1
+2405 "Jan Helge Førde" 1
+2406 "Jan Helge Hassel" 1
+2407 "Jan Helge Øvrehus" 1
+2408 "Jan Henning Næss" 1
+2409 "Jan Henning Windegaard" 1
+2410 "Jan Henrik Arvesen" 1
+2411 "Jan Henrik Gaarder" 1
+2412 "Jan Henrik Knudsen" 1
+2413 "Jan Henrik Nilsson" 1
+2414 "Jan Henrik Paulsson" 1
+2415 "Jan Hillesland" 1
+2416 "Jan Holm" 1
+2417 "Jan Hopland" 1
+2418 "Jan Husby" 1
+2419 "Jan Hvashovd" 1
+2420 "Jan Inge Nore" 1
+2421 "Jan Ivar Stølan" 1
+2422 "Jan Joachim Meidell Bjerke" 1
+2423 "Jan Kaare Hellevang" 1
+2424 "Jan Kåre Aurdal" 1
+2425 "Jan Ketil Tung Tosbakken" 1
+2426 "Jan Kristian Omsland" 1
+2427 "Jan Larsen" 1
+2428 "Jan Leif Kristiansen" 1
+2429 "Jan Lenborg" 1
+2430 "Jan Lindstad" 1
+2431 "Jan Løkling" 1
+2432 "Jan Ludolph Andersen" 1
+2433 "Jan Ludvig Eskedal" 1
+2434 "Jan Magnar Drange" 1
+2435 "Jan Magne Borgen" 1
+2436 "Jan Magne Galåen" 1
+2437 "Jan Magne Kvalbein" 1
+2438 "Jan Marius Melandsø" 1
+2439 "Jan Markus Kim Backlund" 1
+2440 "Jan Martin Kristiansen" 1
+2441 "Jan Molven Moberg" 1
+2442 "Jan Morits Skaugen" 1
+2443 "Jan Nilsen" 1
+2444 "Jan Nylund" 1
+2445 "Jan Oddvar Minde" 1
+2446 "Jan Ohldieck" 1
+2447 "Jan Øistein Nielsen" 1
+2448 "Jan Olaf Willums" 1
+2449 "Jan Olav Steensland" 1
+2450 "Jan Ole Stangeland" 1
+2451 "Jan Olof Magnusson" 1
+2452 "Jan Oscar Frøshaug" 1
+2453 "Jan Otto Kalnberzs Brante" 1
+2454 "Jan Ove Frisendal" 1
+2455 "Jan Ove Hovdenak" 1
+2456 "Jan Pedersen" 1
+2457 "Jan Peter Sunde" 1
+2458 "Jan Peter Valheim" 1
+2459 "Jan Petter Collier" 1
+2460 "Jan Petter Storetvedt" 1
+2461 "Jan Petter Wilhelm Courvoisier Sissener" 1
+2462 "Jan Pihl Grimnes" 1
+2463 "Jan Raa" 1
+2464 "Jan Reinhardt Kopstad" 1
+2465 "Jan Reinhardt Næss" 1
+2466 "Jan Richard Håseth Bjørkmann" 1
+2467 "Jan Roald Nysæther" 1
+2468 "Jan Robert Danielsen" 1
+2469 "Jan Robert Hansen" 1
+2470 "Jan Roger Bjerkestrand" 1
+2471 "Jan Rune Steinsland" 1
+2472 "Jan Sigurd Otterlei" 1
+2473 "Jan Sigurd Wøien" 1
+2474 "Jan Sigve Helgeland" 1
+2475 "Jan Skaar" 1
+2476 "Jan Skøien" 1
+2477 "Jan Sturle Fjellman" 1
+2478 "Jan Svein Krokeide" 1
+2479 "Jan Sverre Hellstrøm" 1
+2480 "Jan Tellef Thorleifsson" 1
+2481 "Jan Terje Bjelland" 1
+2482 "Jan Thorstein Jørgensen" 1
+2483 "Jan Tore Hamnes" 1
+2484 "Jan Tore Jørgensen" 1
+2485 "Jan Tore Kopperud" 1
+2486 "Jan Torleif Ericson" 1
+2487 "Jan Tveita" 1
+2488 "Jan Våbenø Larsen" 1
+2489 "Jan Vatsvåg" 1
+2490 "Jan Verner Stenvold" 1
+2491 "Jan Vidar Grini" 1
+2492 "Jan Wilhelm Gorgas" 1
+2493 "Jane Coenen" 2
+2494 "Jane Hennie Sandvik Rasmussen" 2
+2495 "Jane Maria Birgitta Stymne Gøransson" 2
+2496 "Janicke Buck" 2
+2497 "Janicke Førde" 2
+2498 "Janicke Westlie Driveklepp" 2
+2499 "Janike Knutsen" 2
+2500 "Jann Håvar Martinsen" 1
+2501 "Jann Karstein Lindberg" 1
+2502 "Janne-Rita Korsfur" 2
+2503 "Janne Carin Sundby" 2
+2504 "Janne Garvik" 2
+2505 "Janne Grethe Strand Aasnæs" 2
+2506 "Janniche Engum" 2
+2507 "Janniche Kvarven" 2
+2508 "Jannicke Klemsdahl Orsteen Stuge" 2
+2509 "Jannik Lindbæk" 2
+2510 "Jarl Kjeldstadli" 1
+2511 "Jarle Bergo" 1
+2512 "Jarle Brandt" 1
+2513 "Jarle Dyrdal" 1
+2514 "Jarle Erik Sandvik" 1
+2515 "Jarle Graff" 1
+2516 "Jarle Halvorsen" 1
+2517 "Jarle Hammer" 1
+2518 "Jarle Helland" 1
+2519 "Jarle Jøsok" 1
+2520 "Jarle Ketil Rasmussen" 1
+2521 "Jarle Kjell Roth" 1
+2522 "Jarle Maaren" 1
+2523 "Jarle Øyvind Gundersen" 1
+2524 "Jason Mark Donahue" 1
+2525 "Jay Marshall Ellison" 1
+2526 "Jean-Claude Marchand" 1
+2527 "Jean Einar Bollie" 1
+2528 "Jean P Størk Flament" 1
+2529 "Jeanette Behrens" 2
+2530 "Jeanette Christina Edsjö" 2
+2531 "Jeanne Stampe" 2
+2532 "Jebanathan Sithamparanathan" 1
+2533 "Jeffrey Alan Harris" 1
+2534 "Jennifer Andrea Mcnee" 2
+2535 "Jenny Paaske Sevaldson" 2
+2536 "Jens-Magnus Hauger" 1
+2537 "Jens-Uwe Kraeber" 1
+2538 "Jens Bjørner Owren Ugland" 1
+2539 "Jens Christian Huus Hernes" 1
+2540 "Jens Dag Ulltveit-Moe" 1
+2541 "Jens Ensted Danielsen" 1
+2542 "Jens Eric Jepsen Christensen" 1
+2543 "Jens Gerhard Heiberg" 1
+2544 "Jens Hetland" 1
+2545 "Jens Jesper Ovesen" 1
+2546 "Jens Kristian Birkely" 1
+2547 "Jens Kristian Ellingsen" 1
+2548 "Jens Kristian Longum Gulbransen" 1
+2549 "Jens Kristian Thommesen" 1
+2550 "Jens Leiding" 1
+2551 "Jens Liisberg" 1
+2552 "Jens Moe" 1
+2553 "Jens Olof Henriksson" 1
+2554 "Jens Otto Tage Müffelmann" 1
+2555 "Jens Paludan Heyerdahl" 1
+2556 "Jens Petter Ekornes" 1
+2557 "Jens Petter Falck" 1
+2558 "Jeremiah Jesaja Janse Van Vuuren" 1
+2559 "Jerome Marie Contamine" 2
+2560 "Jesper Frid Jeppesen" 1
+2561 "Jesper Helmuth Larsen" 1
+2562 "Jetfred Sellevåg" 1
+2563 "Jetmund Hanssen" 1
+2564 "Jette Wigand Knudsen" 2
+2565 "Jiang Wen" 1
+2566 "Jiangang Xu" 1
+2567 "Jie Bockelie" 2
+2568 "Jill Annette Aasen" 2
+2569 "Jim Egil Hansen" 1
+2570 "Jim Krister Denrell" 1
+2571 "Jim Roger Nordly" 1
+2572 "Jim Schødts" 1
+2573 "Jinghui Mou" 2
+2574 "Jo Ann Benell" 1
+2575 "Jo Arne Lervik" 1
+2576 "Jo Arnstad" 1
+2577 "Jo Børre Eikås" 1
+2578 "Jo Erik Johnsrud Klaveness" 1
+2579 "Jo Helge Dimmen" 1
+2580 "Jo Olav Lunder" 1
+2581 "Joakim Ole-Jakob Østensen" 1
+2582 "Joan Kristin Frost Urstad" 2
+2583 "Joan Margaret Kristensen" 2
+2584 "Joar Terjesen" 1
+2585 "Jochen Markus Felbel" 1
+2586 "Joe T Ford" 1
+2587 "Joey Shaista Horn" 1
+2588 "Jogeir Romestrand" 1
+2589 "Jogvan Ziska Djurhuus" 1
+2590 "Johan Behrentz" 1
+2591 "Johan Ditlef De Vibe" 1
+2592 "Johan Enger Nygaard" 1
+2593 "Johan Frederik Mowinckel" 1
+2594 "Johan Fredrik Friis" 1
+2595 "Johan Fredrik Odfjell" 1
+2596 "Johan Fredrik Thorne" 1
+2597 "Johan Herman Wildenvey Michelet" 1
+2598 "Johan Johannson" 1
+2599 "Johan Kleven" 1
+2600 "Johan Nicolai Vold" 1
+2601 "Johan Olof Cervin" 1
+2602 "Johan Reinsli" 1
+2603 "Johan Roar Hauge-Nilsen" 1
+2604 "Johan Roger Axel Karlsson" 1
+2605 "Johan Rokstad" 1
+2606 "Johan Solbu Braaten" 1
+2607 "Johan Svensson" 1
+2608 "Johanna Reidun Sølvberg" 2
+2609 "Johannes Buhagen" 1
+2610 "Johannes Hatlø" 1
+2611 "Johannes Jamne" 1
+2612 "Johannes Ove Svenningsen" 1
+2613 "Johannes Rauboti" 1
+2614 "Johannes Sandvik" 1
+2615 "Johannes Sjøflot" 1
+2616 "Johannes Solstad" 1
+2617 "Johannes Sønstebø" 1
+2618 "Johannes Wilhelmus Albers" 1
+2619 "John-Erik Lauring Pedersen" 1
+2620 "John-Inge Løvdal" 1
+2621 "John-Kjetil Hass" 1
+2622 "John-Steinar Kvitvang" 1
+2623 "John Afseth" 1
+2624 "John Alexander Rein" 1
+2625 "John Anders Ouren" 1
+2626 "John Andrew Heap" 1
+2627 "John Andrew Sydness" 1
+2628 "John Anthony Hogan" 1
+2629 "John Anthony Howell" 1
+2630 "John Arild Ertvaag" 1
+2631 "John Arthur Olafsen" 1
+2632 "John Bjørn Brattebø" 1
+2633 "John Cameron Wallace" 1
+2634 "John Christian George Hambro" 1
+2635 "John Christopher Burch" 1
+2636 "John Edward Berriman" 1
+2637 "John Einar Høsteland" 1
+2638 "John Einar Kilnes" 1
+2639 "John Erik Olstad" 1
+2640 "John Erik Setsaas" 1
+2641 "John Fenger" 1
+2642 "John Gary Shansby" 1
+2643 "John Giverholt" 1
+2644 "John Gordon Bernander" 1
+2645 "John Gunnar Eggen" 1
+2646 "John Gunnar Strøm" 1
+2647 "John Harry Skoglund" 1
+2648 "John Hatleskog" 1
+2649 "John Inge Brungot" 1
+2650 "John Ingvar Brekke" 1
+2651 "John Magne Fosen" 1
+2652 "John Magne Lunde" 1
+2653 "John Markus Lervik" 1
+2654 "John Martin Rose" 1
+2655 "John Moholt" 1
+2656 "John Nigel Reynolds" 1
+2657 "John Ole Skeide" 1
+2658 "John Olof Niclas Ljungblom" 1
+2659 "John Olof Solberg" 1
+2660 "John Ove Aspnes" 1
+2661 "John Ove Ottestad" 1
+2662 "John Øyvind Friberg" 1
+2663 "John Paul Caseley" 1
+2664 "John Rae Pickard" 1
+2665 "John Reidar Rørnes" 1
+2666 "John Roald Nygaard" 1
+2667 "John Robert Milligan" 1
+2668 "John Rowland Wilson" 1
+2669 "John Russel Patrick" 1
+2670 "John Smith" 1
+2671 "John Staunsbjerg Dueholm" 1
+2672 "John Thomas Aalstad" 1
+2673 "John Thoresen" 1
+2674 "John Vemmestad" 1
+2675 "John William Gardner" 1
+2676 "Johnny Ballestad" 1
+2677 "Johnny Christiansen" 1
+2678 "Johnny Kjønås" 1
+2679 "Johnny Nielsen" 1
+2680 "Johnny Torvund" 1
+2681 "Johny Husveg" 1
+2682 "Jomar Eldøy" 1
+2683 "Jon-Aksel Torgersen" 1
+2684 "Jon-Ole Ruud" 1
+2685 "Jon Alexander Kristiansen" 1
+2686 "Jon Andreas Elde" 1
+2687 "Jon Arnt Jacobsen" 1
+2688 "Jon Asbjørn Bø" 1
+2689 "Jon Asbjørn Solheim" 1
+2690 "Jon Atle Midtbø" 1
+2691 "Jon Christian Syvertsen" 1
+2692 "Jon Didrik Jonsson" 1
+2693 "Jon Edward Riekeles" 1
+2694 "Jon Eigil Ørn" 1
+2695 "Jon Einar Kristensen" 1
+2696 "Jon Erik Bjørstad" 1
+2697 "Jon Erik Brøndmo" 1
+2698 "Jon Erik Lyng" 1
+2699 "Jon Erik Reinhardsen" 1
+2700 "Jon Erling Børresen" 1
+2701 "Jon Erling Skjørshammer" 1
+2702 "Jon Fredrik Baksaas" 1
+2703 "Jon Frode Vaksvik" 1
+2704 "Jon Georg Husby" 1
+2705 "Jon Gotfred Schultz" 1
+2706 "Jon Gregers Bjørtuft" 1
+2707 "Jon Grude Gjedebo" 1
+2708 "Jon Gunnar Pedersen" 1
+2709 "Jon Harald Nordbrekken" 1
+2710 "Jon Helge Hoem" 1
+2711 "Jon Helge Nistad" 1
+2712 "Jon Henrik Bruvoll" 1
+2713 "Jon Hindar" 1
+2714 "Jon Ledaal" 1
+2715 "Jon Lereim" 1
+2716 "Jon Maarten Langfeldt" 1
+2717 "Jon Magnar Sigmund Sletthaug" 1
+2718 "Jon Mathias Hippe" 1
+2719 "Jon Melle" 1
+2720 "Jon Ola Frankplads" 1
+2721 "Jon Reidar Gundersen" 1
+2722 "Jon Rømer Sandberg" 1
+2723 "Jon Sigurd Svenningsen" 1
+2724 "Jon Steen Petersen" 1
+2725 "Jon Stephenson Von Tetzchner" 1
+2726 "Jon Terje Øverland" 1
+2727 "Jon V Tetzchner Stephenson" 1
+2728 "Jon Wiggen" 1
+2729 "Jonas Einarsson" 1
+2730 "Jonas Kartum" 1
+2731 "Jonas Lennart Persson" 1
+2732 "Jonas Per Jonhede" 1
+2733 "Jonathan Harry Lourie" 1
+2734 "Jonathan Robert Aisbitt" 1
+2735 "Jone Edland" 1
+2736 "Jone Idsøe" 1
+2737 "Jone Skaara" 1
+2738 "Jonny Andersen" 1
+2739 "Jonny Hanssen" 1
+2740 "Jonny Helge Nordal" 1
+2741 "Jonny Hemb-Selvåg" 1
+2742 "Jonny Selvåg" 1
+2743 "Jonny Stenberg" 1
+2744 "Jørg Peter Aronsen Andersland" 1
+2745 "Jørgen Aaby" 1
+2746 "Jørgen Bredesen" 1
+2747 "Jørgen Gregardsøn Heje" 1
+2748 "Jørgen Gustaf Valdemar Latte" 1
+2749 "Jørgen Herman Vogt" 1
+2750 "Jørgen Kildahl" 1
+2751 "Jørgen Kristian Andersen" 1
+2752 "Jørgen Lindegaard" 1
+2753 "Jørgen Lund" 1
+2754 "Jørgen Myrland" 1
+2755 "Jørgen Nyhus" 1
+2756 "Jørgen Ole Haslestad" 1
+2757 "Jorgen Per-Erik Johansson" 1
+2758 "Jørgen Pleym Ulvness" 1
+2759 "Jørgen Pran" 1
+2760 "Jørgen Randers" 1
+2761 "Jørgen Skotnes" 1
+2762 "Jørgen Stang Heffermehl" 1
+2763 "Jørgen Strand Sivertsen" 1
+2764 "Jørgen Tømmerås" 1
+2765 "Jørgen von Tangen" 1
+2766 "Jørgen Von Tangen" 1
+2767 "Jørgen Winness Aspenes" 1
+2768 "Jørn Åsgeir Døving" 1
+2769 "Jørn Bjarne Lilleby" 1
+2770 "Jørn Eldby" 1
+2771 "Jørn Engberg" 1
+2772 "Jørn Erik Pedersen" 1
+2773 "Jørn Georg Johansen" 1
+2774 "Jørn Helgestad Eriksen" 1
+2775 "Jørn Henry Hammer" 1
+2776 "Jørn Holger Fagerland" 1
+2777 "Jørn Inge Løvik" 1
+2778 "Jørn Irving Goldstein" 1
+2779 "Jørn Mikal Bergeland" 1
+2780 "Jørn Mobæk" 1
+2781 "Jørn Normann Lurud" 1
+2782 "Jørn Omholt Kvilhaug" 1
+2783 "Jørn Ottar Opdahl" 1
+2784 "Jørn Standal" 1
+2785 "Jørn Terje Viken" 1
+2786 "Jørn Trygve Røkaas" 1
+2787 "Jorun Vintervold" 2
+2788 "Jorunn Birkeland" 2
+2789 "Jorunn Haugen" 2
+2790 "Jorunn Karin Løvås" 2
+2791 "Jorunn Kjellaug Skagen Challman" 2
+2792 "Jorunn Lødemel" 2
+2793 "Jorunn Petrine Frøyen" 2
+2794 "Jorunn Ygre Storjohann" 2
+2795 "Joseph Alan Rosen" 1
+2796 "Joseph Anderson" 1
+2797 "Joseph Gary Mandel" 1
+2798 "Jostein Arild Edvardsen" 1
+2799 "Jostein Christian Dalland" 1
+2800 "Jostein Devold" 1
+2801 "Jostein Eikeland" 1
+2802 "Jostein Gunnleiv Egeland" 1
+2803 "Jostein Hiller" 1
+2804 "Jostein Landa" 1
+2805 "Jostein Refsnes" 1
+2806 "Jostein Refvik" 1
+2807 "Jostein Sørvoll" 1
+2808 "Jostein Vidar Solheim" 1
+2809 "Jostein Vik" 1
+2810 "Jostein Viken" 1
+2811 "Joyce Eileen Swanson Falkenberg" 2
+2812 "Judith Ann Hemberger" 2
+2813 "Judith Catarina Einarsdotter Fagerholm" 2
+2814 "Judith Lee Bollinger" 2
+2815 "Juha-Pekka Tolvanen" 1
+2816 "Juha  Matti Sakari Kekkonen" 1
+2817 "Jukka Ville Jokinen" 1
+2818 "Julian Deutz" 1
+2819 "Julian Ryszard Selwa" 1
+2820 "Julie Johnson Robertson" 2
+2821 "June Helene Larsen" 2
+2822 "Jürgen Kurt Harnisch" 1
+2823 "Kaare Frydenberg" 1
+2824 "Kaare Ingar Sletta" 1
+2825 "Kaare Magnus Risung" 1
+2826 "Kaare Moursund Gisvold" 1
+2827 "Kai Åge Engedal" 1
+2828 "Kai Bogen" 1
+2829 "Kai Ivan Guldberg" 1
+2830 "Kai Johansen" 1
+2831 "Kai Korsen" 1
+2832 "Kai Morten Lilleng" 1
+2833 "Kai Nyland" 1
+2834 "Kai Ole Romay Togstad" 1
+2835 "Kai Thøgersen" 1
+2836 "Kai Tonning Nygaard" 1
+2837 "Kai Tore Myklebust" 1
+2838 "Kai Vidar Anthonisen" 1
+2839 "Kalle Strandberg" 1
+2840 "Kapil Dhingra" 1
+2841 "Kåre Bruland" 1
+2842 "Kåre Flø" 1
+2843 "Kåre Gunnar Fjørstad" 1
+2844 "Kåre Henning Aurvåg Gardshol" 1
+2845 "Kåre Leira" 1
+2846 "Kåre Netland" 1
+2847 "Kåre Rommetveit" 1
+2848 "Kåre Sande" 1
+2849 "Kåre Storenes" 1
+2850 "Kåre Svendsen" 1
+2851 "Kåre Syvertsen" 1
+2852 "Kåre Wessel" 1
+2853 "Karen Bergliot Michelet" 2
+2854 "Karen Bibow" 2
+2855 "Karen Helene Ulltveit-Moe" 2
+2856 "Karen Marie Ulshagen" 2
+2857 "Karen Slatford" 2
+2858 "Karen Sund" 2
+2859 "Karen Torine Mørkestøl" 2
+2860 "Kari-Anne Haug" 2
+2861 "Kari Anne Døli" 2
+2862 "Kari Bentzen" 2
+2863 "Kari Berte Daasvatn Bye" 2
+2864 "Kari Blegen" 2
+2865 "Kari Broberg" 2
+2866 "Kari Eian Krogstad" 2
+2867 "Kari Elisabeth Breirem" 2
+2868 "Kari Elisabeth Olrud Moen" 2
+2869 "Kari Elise Dahle" 2
+2870 "Kari Fredriksen" 2
+2871 "Kari Gjeseth Sumstad" 2
+2872 "Kari Gjesteby" 2
+2873 "Kari Helene Mordt Fjær" 2
+2874 "Kari Henriksen" 2
+2875 "Kari Lilia Bidar" 2
+2876 "Kari Liltved" 2
+2877 "Kari Lokna" 2
+2878 "Kari Magnussen" 2
+2879 "Kari Marie Aftret Ready" 2
+2880 "Kari Marie Lotsberg" 2
+2881 "Kari Mette Ski" 2
+2882 "Kari Mette Tjølsen Pah" 2
+2883 "Kari Moe" 2
+2884 "Kari Øverby" 2
+2885 "Kari Riddervold" 2
+2886 "Kari Rolstad" 2
+2887 "Kari Rønnaug Møgster Våge" 2
+2888 "Kari Schultz Geier" 2
+2889 "Kari Solheim Larsen" 2
+2890 "Kari Stautland" 2
+2891 "Kari Stenersen" 2
+2892 "Karianne Buck" 2
+2893 "Karianne Guttormsen Olsen" 2
+2894 "Karianne Weyergang Marcussen" 2
+2895 "Karin Annika Spegel Harving" 2
+2896 "Karin Bakke" 2
+2897 "Karin Bing Orgland" 2
+2898 "Karin Cecilie Kullmann Five" 2
+2899 "Karin Inga Margareta Josefsson" 2
+2900 "Karin Joys Vabø" 2
+2901 "Karin Judith Meyer" 2
+2902 "Karin Lovisa Grip" 2
+2903 "Karin Magdalena Kvarnemar Gjefle" 2
+2904 "Karin Sigrid Thorburn" 2
+2905 "Karin Synnøve Løkke" 2
+2906 "Karin Ylva Karlgren" 2
+2907 "Karita Bekkemellem" 2
+2908 "Karl-Erik Staubo" 1
+2909 "Karl-Magnus Tobiassen" 1
+2910 "Karl Anders Grønland" 1
+2911 "Karl Anders Hasler Følstad" 1
+2912 "Karl Anders Øygard" 1
+2913 "Karl Axel Stefan Elving" 1
+2914 "Karl Christian Agerup" 1
+2915 "Karl Edvard Juul" 1
+2916 "Karl Erik Kjelstad" 1
+2917 "Karl Fredrik Sandvik" 1
+2918 "Karl Glad" 1
+2919 "Karl Gunnar Opdal" 1
+2920 "Karl Heine Ulvebne" 1
+2921 "Karl Heinz Achinger" 1
+2922 "Karl Henrik Hallin" 1
+2923 "Karl Johan Bakken" 1
+2924 "Karl Johan Jakola" 1
+2925 "Karl Johan Reitan" 1
+2926 "Karl Johann Torgnes" 1
+2927 "Karl Marcus Lindstedt" 1
+2928 "Karl Martin Gjertsen" 1
+2929 "Karl Martin Stang" 1
+2930 "Karl Mats Gustavsen" 1
+2931 "Karl Moursund" 1
+2932 "Karl Otto Eidem" 1
+2933 "Karl Peter Thelin" 1
+2934 "Karl Petter Borthen" 1
+2935 "Karl Ramstad" 1
+2936 "Karl Robert Karlsson" 1
+2937 "Karl Runar Lillandt" 1
+2938 "Karl Tore Mæland" 1
+2939 "Karla Elisa Smith" 2
+2940 "Karoline Aaberg Mortensen" 2
+2941 "Karoline Nystrøm" 2
+2942 "Karstein Bremnes" 1
+2943 "Karstein Gjersvik" 1
+2944 "Karstein Harald Rystad" 1
+2945 "Karstein Sie" 1
+2946 "Karstein Sund" 1
+2947 "Karsten Aleksander Kongshavn" 1
+2948 "Karsten Flemming Hansen" 1
+2949 "Karsten Klaus Rüdiger Heuchert" 1
+2950 "Kaspar Johan Overå" 1
+2951 "Kasper Andreas Amadeuz Ljungkvist" 1
+2952 "Katarina Elisabeth Segerborg" 2
+2953 "Katarina Espolin Johnson" 2
+2954 "Kate Edvardsen Grenby" 2
+2955 "Katha Birgitte Thommesen-Kähler" 2
+2956 "Katharina Eriksen" 2
+2957 "Katharina Ringen Asting" 2
+2958 "Katherine Hatlen Støvring" 2
+2959 "Kathleen Ruth Arthur" 2
+2960 "Kathrine Dursett Sjølund" 2
+2961 "Kathrine Mo" 2
+2962 "Kathryn Baker Pettersen" 2
+2963 "Kathryn Moore Baker" 2
+2964 "Katja Maria Hydle" 2
+2965 "Katrine Riddervold Mourud" 2
+2966 "Katrine Samuelsen" 2
+2967 "Katrine Trovik" 2
+2968 "Keith Graham Mccullagh" 1
+2969 "Keith Nicholas Henry" 1
+2970 "Ken-Vidar Ananiassen" 1
+2971 "Kenneth Bukten" 1
+2972 "Kenneth Fosse" 1
+2973 "Kenneth Hansen Gavoll" 1
+2974 "Kenneth Idland" 1
+2975 "Kenneth Malcolm Bailey" 1
+2976 "Kenneth Peter Herry Hertz" 1
+2977 "Kenneth Solvik" 1
+2978 "Kenneth Utsikt" 1
+2979 "Kenneth Vestby" 1
+2980 "Kent Alan Gossett" 1
+2981 "Kent Inge Eliassen" 1
+2982 "Kent Mikael Rosseland" 1
+2983 "Kerstin Birgitta Johansson Hedberg" 2
+2984 "Kerstin Louise Folvik" 2
+2985 "Kerstin Monika Stenberg" 2
+2986 "Ketil Arnesen" 1
+2987 "Ketil Harald Danielsen" 1
+2988 "Ketil Høigaard" 1
+2989 "Ketil Johnsen" 1
+2990 "Ketil Jørgen Arvesen" 1
+2991 "Ketil Lenning" 1
+2992 "Ketil Løfblad" 1
+2993 "Ketil Olset" 1
+2994 "Ketil Sandhaug" 1
+2995 "Ketil Watz" 1
+2996 "Kevin Brendan Devlin" 1
+2997 "Kevin John Burrell" 1
+2998 "Kim Dobrowen" 1
+2999 "Kim Jelle" 1
+3000 "Kim Jensen" 1
+3001 "Kim Romero Sanchez" 1
+3002 "Kim Wahl" 1
+3003 "Kine Beyer Bruvik" 2
+3004 "Kirill Dragun" 1
+3005 "Kirsten English" 2
+3006 "Kirsten Idebøen" 2
+3007 "Kirsti Charlotte Østby" 2
+3008 "Kirsti Haugland" 2
+3009 "Kirsti Johnsen" 2
+3010 "Kirsti Kierulf" 2
+3011 "Kirsti Kleivdal" 2
+3012 "Kirsti Valborgland" 2
+3013 "Kirsti Valborgland Fløystøl" 2
+3014 "Kirstin Lillevåg Mobakken" 2
+3015 "Kirstin Merete Morfjord Kvandal" 2
+3016 "Kjartan Christensen" 1
+3017 "Kjeld Bredo Holmsen" 1
+3018 "Kjeld Per Rimberg" 1
+3019 "Kjeld Thomas Bugge" 1
+3020 "Kjell-Erik Tenold" 1
+3021 "Kjell Aamot" 1
+3022 "Kjell Arild Thu" 1
+3023 "Kjell Arne Corneliussen" 1
+3024 "Kjell Arne Ingebrigtsen" 1
+3025 "Kjell Arne Kristiansen" 1
+3026 "Kjell Arne Skålevik" 1
+3027 "Kjell Arvid Storeide" 1
+3028 "Kjell Berg" 1
+3029 "Kjell Bjordal" 1
+3030 "Kjell Bjørndalen" 1
+3031 "Kjell Børre Hansen" 1
+3032 "Kjell Bråthen" 1
+3033 "Kjell Christian Ulrichsen" 1
+3034 "Kjell Dahl" 1
+3035 "Kjell Eikeland" 1
+3036 "Kjell Erik Almskog" 1
+3037 "Kjell Erik Jacobsen" 1
+3038 "Kjell Fordal" 1
+3039 "Kjell Frank Kjønigsen" 1
+3040 "Kjell Gregersen" 1
+3041 "Kjell Grimsø" 1
+3042 "Kjell Gunnar Finstad" 1
+3043 "Kjell Gunnar Frøyslid" 1
+3044 "Kjell Gunnar Ramberg" 1
+3045 "Kjell Halvor Faraasen" 1
+3046 "Kjell Hammeren" 1
+3047 "Kjell Hande" 1
+3048 "Kjell Hans Bakke" 1
+3049 "Kjell Harald Trælnes" 1
+3050 "Kjell Harry Reberg" 1
+3051 "Kjell Haugland" 1
+3052 "Kjell Håvard Husby" 1
+3053 "Kjell Hetland" 1
+3054 "Kjell Inge Røkke" 1
+3055 "Kjell Inge Skaldebø" 1
+3056 "Kjell Inge Torgersen" 1
+3057 "Kjell Johan Hellesvik" 1
+3058 "Kjell Jon Standal" 1
+3059 "Kjell Karlsrud" 1
+3060 "Kjell Lindås" 1
+3061 "Kjell Magnus Reitan" 1
+3062 "Kjell Mareno Harstad" 1
+3063 "Kjell Marthon Roaldsøy" 1
+3064 "Kjell Martin Grimeland" 1
+3065 "Kjell Myren" 1
+3066 "Kjell Oddvar Heggvoll" 1
+3067 "Kjell Øivind Hansen" 1
+3068 "Kjell Ola Jørgensen" 1
+3069 "Kjell Olaf Kongelf" 1
+3070 "Kjell Olav Opseth" 1
+3071 "Kjell Olav Overå" 1
+3072 "Kjell Olav Skogen" 1
+3073 "Kjell Ole Straumsnes" 1
+3074 "Kjell Otto Sebergsen" 1
+3075 "Kjell Øyvind Stamnes" 1
+3076 "Kjell Pettersen" 1
+3077 "Kjell Robert Nyland Hammen" 1
+3078 "Kjell Runar Evju" 1
+3079 "Kjell Rune Molvik" 1
+3080 "Kjell Rune Røhme" 1
+3081 "Kjell Rusti" 1
+3082 "Kjell Sigurd Mjøsund" 1
+3083 "Kjell Staffan Granander" 1
+3084 "Kjell Sundsli" 1
+3085 "Kjell Sverre Aasheim" 1
+3086 "Kjell Trygve Høgberg" 1
+3087 "Kjell Viggo Halvorsen" 1
+3088 "Kjell Waage" 1
+3089 "Kjellaug Egeland" 2
+3090 "Kjersti Amundsen" 2
+3091 "Kjersti Enkerud Ringdal" 2
+3092 "Kjersti Espeset Lie" 2
+3093 "Kjersti Grimsrud" 2
+3094 "Kjersti Hønstad" 2
+3095 "Kjersti Kleven" 2
+3096 "Kjersti Narum" 2
+3097 "Kjersti Nystad Skeie" 2
+3098 "Kjersti Pedersen Eknes" 2
+3099 "Kjersti Sørensen Nystad" 2
+3100 "Kjerstin Elisabeth Rasmussen Braathen" 2
+3101 "Kjerstin Fyllingen" 2
+3102 "Kjetil Agnar Rivelsrud" 1
+3103 "Kjetil Alsaker" 1
+3104 "Kjetil Annstein Haanes" 1
+3105 "Kjetil Arnljot Haugli" 1
+3106 "Kjetil Bakkan" 1
+3107 "Kjetil Bakken" 1
+3108 "Kjetil Dahl" 1
+3109 "Kjetil Førsvoll" 1
+3110 "Kjetil Grønskag" 1
+3111 "Kjetil Hestdal" 1
+3112 "Kjetil Holta" 1
+3113 "Kjetil Jørgensen-Dahl" 1
+3114 "Kjetil Kvamme" 1
+3115 "Kjetil Kvammen" 1
+3116 "Kjetil Larsen" 1
+3117 "Kjetil Martin Stuland" 1
+3118 "Kjetil Onstad" 1
+3119 "Kjetil Reinsberg" 1
+3120 "Kjetil Soma" 1
+3121 "Kjetil Steinar Blomvik" 1
+3122 "Kjetil Tasken" 1
+3123 "Klas Olof Hillstrøm" 1
+3124 "Klaus-Anders Nysteen" 1
+3125 "Klaus Henrik Wiese-Hansen" 1
+3126 "Klaus Peter Tollefsen" 1
+3127 "Klaus Terje Nærø" 1
+3128 "Knut-Harald Paulsen" 1
+3129 "Knut Aleksander Vistnes" 1
+3130 "Knut Åm" 1
+3131 "Knut Andreas Raeng" 1
+3132 "Knut Arctander Pedersen" 1
+3133 "Knut Arnfinn Hansen" 1
+3134 "Knut Berge" 1
+3135 "Knut Boye" 1
+3136 "Knut Brandrud" 1
+3137 "Knut Brundtland" 1
+3138 "Knut Brynilsen" 1
+3139 "Knut Christen Abotnes" 1
+3140 "Knut Collett Mellbye" 1
+3141 "Knut Drange" 1
+3142 "Knut Dyre Haug" 1
+3143 "Knut Eidissen" 1
+3144 "Knut Eikehaug" 1
+3145 "Knut Erik Langtvedt Karlsen" 1
+3146 "Knut Erik Mikalsen" 1
+3147 "Knut Erik Robertsen" 1
+3148 "Knut Finn Strøm-Gundersen" 1
+3149 "Knut Godø" 1
+3150 "Knut Gregardsøn Heje" 1
+3151 "Knut Grønvik" 1
+3152 "Knut Hage" 1
+3153 "Knut Haraldson" 1
+3154 "Knut Harry Helland Johansen" 1
+3155 "Knut Hartvig Johannson" 1
+3156 "Knut Haukland" 1
+3157 "Knut Helgeland" 1
+3158 "Knut Henrik Mikalsen" 1
+3159 "Knut Hundhammer" 1
+3160 "Knut Inge Nicolaysen" 1
+3161 "Knut Ivar Knutsen" 1
+3162 "Knut Johan Giske" 1
+3163 "Knut Jørstad" 1
+3164 "Knut Kristian Eide" 1
+3165 "Knut Langeteig" 1
+3166 "Knut Løvli Fredriksen" 1
+3167 "Knut Magne Domstein" 1
+3168 "Knut Martin Juhlin Winther" 1
+3169 "Knut Nilsen" 1
+3170 "Knut Nordby" 1
+3171 "Knut Norheim Kjær" 1
+3172 "Knut Ola Evensen" 1
+3173 "Knut Øversjøen" 1
+3174 "Knut Rabbe" 1
+3175 "Knut Radmann" 1
+3176 "Knut Ravnå" 1
+3177 "Knut Rosness" 1
+3178 "Knut Sirevåg" 1
+3179 "Knut Skabo" 1
+3180 "Knut Torgeir Møystad" 1
+3181 "Knut Trygve Flakk" 1
+3182 "Knut Werner Larsen" 1
+3183 "Knut Wik Opheim" 1
+3184 "Knut Wilhelm Bøhm Wang" 1
+3185 "Kolbein Kåre Rege" 1
+3186 "Kolbjørn Johan Jektvik" 1
+3187 "Kolbjørn Lie" 1
+3188 "Kolbjørn Opsahl Selmer" 1
+3189 "Kristen Fretheim" 1
+3190 "Kristen Stein Jakobsen" 1
+3191 "Kristian Dohn" 1
+3192 "Kristian Egeland Eliassen" 1
+3193 "Kristian Eidesvik" 1
+3194 "Kristian Haslum" 1
+3195 "Kristian Huseby" 1
+3196 "Kristian Jarl Thorsen" 1
+3197 "Kristian Lund" 1
+3198 "Kristian Martin Utkilen" 1
+3199 "Kristian Nergaard" 1
+3200 "Kristian Pedersen" 1
+3201 "Kristijane Cook Bulukin" 2
+3202 "Kristin Ankile" 2
+3203 "Kristin Aubert" 2
+3204 "Kristin Aurdal" 2
+3205 "Kristin Birkeland" 2
+3206 "Kristin Bjella" 2
+3207 "Kristin Blix" 2
+3208 "Kristin Blix-Elton" 2
+3209 "Kristin Braa" 2
+3210 "Kristin Clemet" 2
+3211 "Kristin Dahl Rolfsen" 2
+3212 "Kristin Dyb" 2
+3213 "Kristin Farstad" 2
+3214 "Kristin Gjertsen" 2
+3215 "Kristin Johanne Selnes" 2
+3216 "Kristin Kathrine Saastad Ottesen" 2
+3217 "Kristin Malonæs" 2
+3218 "Kristin Margrethe Devold" 2
+3219 "Kristin Margrethe Krohn Devold" 2
+3220 "Kristin Marie Nimsger" 2
+3221 "Kristin Mulleng Sezer" 2
+3222 "Kristin Natasha Røhne" 2
+3223 "Kristin Nergaard Berg" 2
+3224 "Kristin Normann" 2
+3225 "Kristin Reitan" 2
+3226 "Kristin Reitan Husebø" 2
+3227 "Kristin Skogen Lund" 2
+3228 "Kristin Solheim Genton" 2
+3229 "Kristin Sylvei Nordal" 2
+3230 "Kristin Undheim" 2
+3231 "Kristin Urdahl" 2
+3232 "Kristin Vestgren Sæterøy" 2
+3233 "Kristin Vold" 2
+3234 "Kristin Vold Hetland" 2
+3235 "Kristin Waatland Kestler" 2
+3236 "Kristina Jacobsen" 2
+3237 "Kristine Aasheim" 2
+3238 "Kristine Birgitte Eiken" 2
+3239 "Kristine Bodil Schüssler" 2
+3240 "Kristine Hauge" 2
+3241 "Kristine Haukalid" 2
+3242 "Kristine Holm" 2
+3243 "Kristine Landmark" 2
+3244 "Kristine Markusson Madsen" 2
+3245 "Kristine Solberg Hjermann" 2
+3246 "Kristjan T Davidsson" 1
+3247 "Kristoffer Bøe Henriksen" 1
+3248 "Kristoffer Danielsen" 1
+3249 "Kristoffer Engenes" 1
+3250 "Kurt Allan Lindblom" 1
+3251 "Kurt Anker Nielsen" 1
+3252 "Kurt Dmitri Clemens Swakhoven" 1
+3253 "Kurt Eirik Bekkevold" 1
+3254 "Kurt Helge Kristiansen" 1
+3255 "Kurt Steinar Helland" 1
+3256 "Kyrre Dale" 1
+3257 "Lage Colling Westerbø" 1
+3258 "Lage Ødemark" 1
+3259 "Laila Eirin Hundseid" 2
+3260 "Laimonis Richards Alexanders Jaucis" 1
+3261 "Lajla Ellingsen" 2
+3262 "Lance Lloyd Hirt" 1
+3263 "Larry Ivan Boyle" 1
+3264 "Lars-Eric Samuel Samuelsson" 1
+3265 "Lars-Fredrik Smeby" 1
+3266 "Lars-Gøran Nordstrøm" 1
+3267 "Lars-Henrik Qvernheim Røren" 1
+3268 "Lars-Kaspar Andersen" 1
+3269 "Lars-Krister Dahlqvist" 1
+3270 "Lars-Olof Vilhelm Gustafsson" 1
+3271 "Lars Aasulv Løddesøl" 1
+3272 "Lars Abrahamsen Grinde" 1
+3273 "Lars Andreas Buer" 1
+3274 "Lars Arne Bauge" 1
+3275 "Lars Arne Takla" 1
+3276 "Lars Arvid Sjølstad" 1
+3277 "Lars Åsmund Mæhle" 1
+3278 "Lars August Christensen" 1
+3279 "Lars Benny William Løfgren" 1
+3280 "Lars Bertil Tell" 1
+3281 "Lars Biørn Eilertsen" 1
+3282 "Lars Bjørn Thoresen" 1
+3283 "Lars Christian Christensen" 1
+3284 "Lars Christian Ly" 1
+3285 "Lars Ditlev Ditlevsen" 1
+3286 "Lars Eidesvik" 1
+3287 "Lars Erik Byström" 1
+3288 "Lars Erik Rosén" 1
+3289 "Lars Erik Torjussen" 1
+3290 "Lars Eriksson" 1
+3291 "Lars Even Moe" 1
+3292 "Lars Fredrik Bakke" 1
+3293 "Lars Fredrik Windfeldt" 1
+3294 "Lars Gøran Forsstrøm" 1
+3295 "Lars Gunnar Klasson" 1
+3296 "Lars Gunnar Lindegren" 1
+3297 "Lars Gunnar Lundgren" 1
+3298 "Lars Gustaf Ander" 1
+3299 "Lars Halvard Egedahl" 1
+3300 "Lars Henrik Haggquist" 1
+3301 "Lars Henrik Høie" 1
+3302 "Lars Henrik Otterbeck" 1
+3303 "Lars Henrik Thunell" 1
+3304 "Lars Holter-Sørensen" 1
+3305 "Lars Hoven" 1
+3306 "Lars Hovland" 1
+3307 "Lars Inge Gresdal" 1
+3308 "Lars Ingemar Grønberg" 1
+3309 "Lars Ivar Eide" 1
+3310 "Lars Johan Frigstad" 1
+3311 "Lars Johannes Nordli" 1
+3312 "Lars Klemens Iwarson Lundin" 1
+3313 "Lars Kvarekval" 1
+3314 "Lars Magne Ingebrigtsen" 1
+3315 "Lars Magnus Berg" 1
+3316 "Lars Magnus Mattsson" 1
+3317 "Lars Marcus Hansson" 1
+3318 "Lars Marius Brelin Furu" 1
+3319 "Lars Martin Ångman" 1
+3320 "Lars Martin Fjellheim" 1
+3321 "Lars Martin Haugen" 1
+3322 "Lars Moldestad" 1
+3323 "Lars Nicolaisen" 1
+3324 "Lars Niklas Hermansson" 1
+3325 "Lars Nilsen" 1
+3326 "Lars Øberg" 1
+3327 "Lars Oddgeir Andresen" 1
+3328 "Lars Ødeskaug" 1
+3329 "Lars Ola Ingmar Frithiof" 1
+3330 "Lars Ole Sixten Skarin" 1
+3331 "Lars Ole Viddal" 1
+3332 "Lars Omdal" 1
+3333 "Lars Omund Enevoldsen" 1
+3334 "Lars Ørjan Kenneth Reinholdsson" 1
+3335 "Lars Øvrum" 1
+3336 "Lars Peder Brekk" 1
+3337 "Lars Peder Solstad" 1
+3338 "Lars Per Eikeland" 1
+3339 "Lars Petter Lillelid" 1
+3340 "Lars Rabæk Boilesen" 1
+3341 "Lars Reidar Gylterud" 1
+3342 "Lars Rise" 1
+3343 "Lars Roger Steen" 1
+3344 "Lars Rønn" 1
+3345 "Lars Sevald Skaare" 1
+3346 "Lars Solbakken" 1
+3347 "Lars Sundell" 1
+3348 "Lars Thore Wibe Aarrestad" 1
+3349 "Lars Torben Traberg" 1
+3350 "Lars Tronsgaard" 1
+3351 "Lars Vadsager Petersen" 1
+3352 "Lars Wenaas" 1
+3353 "Lars Wilhelm Grøholt" 1
+3354 "Larus Welding" 1
+3355 "Lasse Andre Fosby" 1
+3356 "Lasse Berg Andersen" 1
+3357 "Lasse David Nergaard" 1
+3358 "Lasse Gimnes" 1
+3359 "Lasse Holm" 1
+3360 "Lasse Ove Hansen" 1
+3361 "Lasse Ruud" 1
+3362 "Lawren Scott Thomson" 1
+3363 "Lawrence W Lepard" 1
+3364 "Lee Anthony Wright" 1
+3365 "Leif Åge Jørgensen" 1
+3366 "Leif Agnar Ellevset" 1
+3367 "Leif Andreas Bjørgan" 1
+3368 "Leif Arne Christer Persson" 1
+3369 "Leif Arne Langøy" 1
+3370 "Leif Arnold Thomas" 1
+3371 "Leif Arvid Høiland" 1
+3372 "Leif Bergheim" 1
+3373 "Leif Claes Johan Lindqvist" 1
+3374 "Leif Corinth-Hansen" 1
+3375 "Leif Edvardsen" 1
+3376 "Leif Egil Thorsen" 1
+3377 "Leif Erik Larsen" 1
+3378 "Leif Erik Skilnand" 1
+3379 "Leif Flemming Bakke" 1
+3380 "Leif Frode Onarheim" 1
+3381 "Leif Gunnar Furre" 1
+3382 "Leif Håkon Strøm" 1
+3383 "Leif Håvard Strømhaug" 1
+3384 "Leif Hejø Borge" 1
+3385 "Leif Helge Kristensen" 1
+3386 "Leif Henriksen" 1
+3387 "Leif Holst" 1
+3388 "Leif Inge Håland" 1
+3389 "Leif Jarle Aure" 1
+3390 "Leif Johan Laugen" 1
+3391 "Leif Johansen" 1
+3392 "Leif Jørgen Moger" 1
+3393 "Leif Karl Robert Andersson" 1
+3394 "Leif Klevan" 1
+3395 "Leif Olav Aaker" 1
+3396 "Leif Ole Strand" 1
+3397 "Leif Roar Høiland" 1
+3398 "Leif Rune Eide" 1
+3399 "Leif Rune Rinnan" 1
+3400 "Leif Sigmund Bach" 1
+3401 "Leif Søreng" 1
+3402 "Leif Ståle Søfting" 1
+3403 "Leif Sven Helmich Pedersen" 1
+3404 "Leif Teksum" 1
+3405 "Leif Terje Løddesøl" 1
+3406 "Leif Tore Stenby Rønning" 1
+3407 "Leif Willy Finsveen" 1
+3408 "Leiv Askvig" 1
+3409 "Leiv Grønnevet" 1
+3410 "Leiv Lea Nergaard" 1
+3411 "Lena Beate Lorentzen" 2
+3412 "Lena Eva Britt Alfvén" 2
+3413 "Lena Hansen" 2
+3414 "Lena Kristina Samuelsson" 2
+3415 "Lena Maria Sjöblom" 2
+3416 "Lena Marianne Falk" 2
+3417 "Lena Marie Olving Öhberg" 2
+3418 "Lena Schøning" 2
+3419 "Lene Aspen Johannessen" 2
+3420 "Lene Gulbrandsen" 2
+3421 "Lene Risløw" 2
+3422 "Lennart Christer Ivan Jeansson" 1
+3423 "Lennart Flemming Meineche" 1
+3424 "Lennart Lorentzen" 1
+3425 "Leo D A Jacobs" 1
+3426 "Liang Liu" 1
+3427 "Lidar Jan Pollestad" 1
+3428 "Lidvard Liaset" 1
+3429 "Lill-Ann Bråthen" 2
+3430 "Lill Beate Pedersen" 2
+3431 "Lill Heidi Bakkerud" 2
+3432 "Lill Nyseter Kortgaard" 2
+3433 "Lillian Olsen" 2
+3434 "Lillian Wenaas" 2
+3435 "Lim Kok Thay" 1
+3436 "Linda Alskog Olsen" 2
+3437 "Linda Anita Haugen" 2
+3438 "Linda Dowding" 2
+3439 "Linda Iversen" 2
+3440 "Linda Kristin Evensen" 2
+3441 "Linda Kristoffersen" 2
+3442 "Linda Litlekalsøy Aase" 2
+3443 "Linda Therese Melstveit" 2
+3444 "Linda Virkesdal" 2
+3445 "Lindsay Poston" 2
+3446 "Lindy Kristoffersen" 2
+3447 "Line Beate Bøhler Jebsen" 2
+3448 "Line Cathrine Jørgensdatter Heje" 2
+3449 "Line Cathrine Jørgensdatter Heje Brekke" 2
+3450 "Line Geheb" 2
+3451 "Line Nilsen" 2
+3452 "Line Noer Borrevik" 2
+3453 "Line Ravlo-Losvik" 2
+3454 "Line Rugsveen" 2
+3455 "Line Thorsdalen" 2
+3456 "Line Willumsen Solem" 2
+3457 "Linn Langeland" 2
+3458 "Linne Fromm-Christiansen" 2
+3459 "Linni Tiller" 2
+3460 "Lisa Ann Cooper" 2
+3461 "Lisa Margaret Michelsen" 2
+3462 "Lisbet Karin Nærø" 2
+3463 "Lisbeth Berg-Hansen" 2
+3464 "Lisbeth Schou Tolpinrud" 2
+3465 "Lise Andrea Dahl Karlsen" 2
+3466 "Lise Bedsvaag Mjøsund" 2
+3467 "Lise Caroline Mortensen" 2
+3468 "Lise Eriksen" 2
+3469 "Lise Graaten" 2
+3470 "Lise Marie Heien Langaard" 2
+3471 "Lise Merethe Holen" 2
+3472 "Lise Sofie Haug Nissen-Meyer" 2
+3473 "Lise Vedde-Fjærestad" 2
+3474 "Liselott Kilaas" 2
+3475 "Liselotte Maria Fröstad" 2
+3476 "Liselotte Vibeke Kiørboe" 2
+3477 "Litt Woon Long" 2
+3478 "Liv-Kari Kroken" 2
+3479 "Liv-Runi Ekeland Syvertsen" 2
+3480 "Liv Allison Vaage" 2
+3481 "Liv Anne Lønseth Gunvaldsen" 2
+3482 "Liv Bente Fagerbakke Storebø" 2
+3483 "Liv Bergthorsdottir" 2
+3484 "Liv Berstad" 2
+3485 "Liv Bortne Ulriksen" 2
+3486 "Liv Dingsør" 2
+3487 "Liv Ester Johansen" 2
+3488 "Liv Gisele Marchand" 2
+3489 "Liv Grete Kristoffersen Ellingsen" 2
+3490 "Liv Irene Haug" 2
+3491 "Liv Johannson" 2
+3492 "Liv Kari Engeland" 2
+3493 "Liv Kristin Fines Hansen" 2
+3494 "Liv Marit Lundby" 2
+3495 "Liv Monica Bargem Stubholt" 2
+3496 "Liv Randi Høydahl Ohme" 2
+3497 "Liv Toril Storøy" 2
+3498 "Livar Haugland" 1
+3499 "Live Bertha Haukvik Aker" 2
+3500 "Live Leer" 2
+3501 "Live Synnøve Grønnevik Spandow" 2
+3502 "Liz Irene Ovesen" 2
+3503 "Lone Fønss Gjørup Schrøder" 2
+3504 "Lourdes Patricia De Las Mercedes Guerra" 2
+3505 "Loyd Aasen" 1
+3506 "Loyd Hans Skretting" 1
+3507 "Luciana Berger" 2
+3508 "Luis Gayosso Paulsen" 1
+3509 "Luitjen Rolf Ennenga" 1
+3510 "Lynne Blakey Beutlich" 2
+3511 "M Hadley Mullin" 2
+3512 "Maalfrid Brath" 2
+3513 "Mads Aamodt" 1
+3514 "Mads Ansgar Ellefsen" 1
+3515 "Mads Dahl" 1
+3516 "Mads Helge Sørensen" 1
+3517 "Mads Henrik Syversen" 1
+3518 "Mads Ryum Larsen" 1
+3519 "Magnar Aaseth" 1
+3520 "Magnar Hagen" 1
+3521 "Magnar Jarle Førde" 1
+3522 "Magnar Kåre Furset" 1
+3523 "Magnar Kåre Kleveland" 1
+3524 "Magnar Mindur Svellingen" 1
+3525 "Magnar Oanes" 1
+3526 "Magne Amundsen" 1
+3527 "Magne Fjeld" 1
+3528 "Magne Johansen" 1
+3529 "Magne Jordanger" 1
+3530 "Magne Jostein Schille" 1
+3531 "Magne Kvamme" 1
+3532 "Magne Martinsen" 1
+3533 "Magne Mjølver Oksholen" 1
+3534 "Magne Myrmo" 1
+3535 "Magne Omestad" 1
+3536 "Magne Revheim" 1
+3537 "Magne Roar Nordhus" 1
+3538 "Magne Ruus Simensen" 1
+3539 "Magne Staalstrøm" 1
+3540 "Magne Sulebust" 1
+3541 "Magne Sveen" 1
+3542 "Magnus Andreassen" 1
+3543 "Magnus Bjørheim Lindseth" 1
+3544 "Magnus Breidne" 1
+3545 "Magnus Drageset" 1
+3546 "Magnus Erik Uppsäll" 1
+3547 "Magnus Ingvar Henrik Jansson" 1
+3548 "Magnus Johan Ytterstad" 1
+3549 "Magnus Sigvard Elgebrant" 1
+3550 "Magnus Stangeland" 1
+3551 "Magny Hilda Øvrebø" 2
+3552 "Mah Soot Khiang Edmund" 1
+3553 "Mai-Lill Ibsen" 2
+3554 "Mai Buch" 2
+3555 "Mai Gaardsted" 2
+3556 "Maj Elisabeth Vangsnes" 2
+3557 "Malcolm Shaw Thoms" 1
+3558 "Malin Birgitta Af Petersens" 2
+3559 "Malin Elisabet Flor Helgesen" 2
+3560 "Malvin Nils Høydal" 1
+3561 "Malvin Villabø" 1
+3562 "Måns Anders Hultman" 1
+3563 "Manuel Nicholas Stamatakis" 1
+3564 "Marc Henry Schneider" 1
+3565 "Marcel Egmond Brenninkmeijer" 1
+3566 "Marcia Lynn Pettersen" 2
+3567 "Margaret Lesley Hawkins" 2
+3568 "Margaret Lesley Jones" 2
+3569 "Margarita Hoffmann" 2
+3570 "Margarita Paulina Ospina Duran Tidemand" 2
+3571 "Margarita Strømmen" 2
+3572 "Margit Ulla-Britt Gunhild Fräjdin Hellqvist" 2
+3573 "Margith Alise Enge Moen" 2
+3574 "Margrete Risbakk Vegsund" 2
+3575 "Margrete Sommernes" 2
+3576 "Margrethe Hauge" 2
+3577 "Margrethe Henriette Schilbred" 2
+3578 "Margrethe Konstanse Roalsø Kielland" 2
+3579 "Mari-Anne Tyssøy" 1
+3580 "Mari Ann Knutsen" 2
+3581 "Mari Anne Hoff" 2
+3582 "Mari Borgen" 2
+3583 "Mari Elisabeth Broman" 2
+3584 "Mari Forberg" 2
+3585 "Mari Hagerup" 2
+3586 "Mari Lill Gjerde Holm" 2
+3587 "Mari Line Myren" 2
+3588 "Mari Skjærstad" 2
+3589 "Mari Thjømøe" 2
+3590 "Mari Trønnblom Skjærstad" 2
+3591 "Maria Birgitte Holmlund" 2
+3592 "Maria Borch Helsengreen" 2
+3593 "Maria Elisabet Andreassen" 2
+3594 "Maria Loen" 2
+3595 "Maria Lønborg-Andersen" 2
+3596 "Maria Moræus Hanssen" 2
+3597 "Maria Naziana Jensen-Eian" 2
+3598 "Maria Nøstvik Pedersen" 2
+3599 "Maria Susana Kristiansen" 2
+3600 "Maria Tallaksen" 2
+3601 "Maria Victoria Hernandez Valcarcel" 2
+3602 "Mariann Berby Ambjørnsen" 2
+3603 "Mariann Heggelien" 2
+3604 "Marianne Aamodt" 2
+3605 "Marianne Bergflødt Lier Wear" 2
+3606 "Marianne Bergmann Røren" 2
+3607 "Marianne Bostrøm" 2
+3608 "Marianne Broholm Einarsen" 2
+3609 "Marianne Draugsvoll" 2
+3610 "Marianne Elisabeth Johnsen" 2
+3611 "Marianne Elisabeth Sigurdson Lyngvi" 2
+3612 "Marianne Engstrøm" 2
+3613 "Marianne Gran Andersen Finsrud" 2
+3614 "Marianne Heien Blystad" 2
+3615 "Marianne Heier" 2
+3616 "Marianne Hinna Fjogstad" 2
+3617 "Marianne Katrine Lindboe Ramstad Malone" 2
+3618 "Marianne Kjørstad" 2
+3619 "Marianne Klingen" 2
+3620 "Marianne Leite" 2
+3621 "Marianne Lie" 2
+3622 "Marianne Loe Borchgrevink" 2
+3623 "Marianne Lønmo" 2
+3624 "Marianne Losnegaard Jensen" 2
+3625 "Marianne Marker Holsing" 2
+3626 "Marianne Michelsen" 2
+3627 "Marianne Morris" 2
+3628 "Marianne Østlie" 2
+3629 "Marianne Øverli Jahren" 2
+3630 "Marianne Sevaldsen" 2
+3631 "Marianne Sommerro Evensen" 2
+3632 "Marianne Telle" 2
+3633 "Marianne Torp" 2
+3634 "Marianne Ulrichsen" 2
+3635 "Marianne Urdahl" 2
+3636 "Marianne Vangsnes" 2
+3637 "Marianne Wergeland Jenssen" 2
+3638 "Marichen Winsnes Lenæs" 1
+3639 "Marie-Christine Jansby" 2
+3640 "Marie-Louise Papworth" 1
+3641 "Marie Elisabeth Ehrling" 2
+3642 "Marie Elisabeth Gaup Moe" 2
+3643 "Marie Helena Levander" 2
+3644 "Marie Louise B Erbing Falkland" 2
+3645 "Marie Skarbøvik Buchmann" 2
+3646 "Marie Smith-Solbakken" 2
+3647 "Marie Storhaug" 2
+3648 "Marit Arnstad" 2
+3649 "Marit Bakke" 2
+3650 "Marit Christensen" 2
+3651 "Marit Dahlviken Hagen" 2
+3652 "Marit Elisabeth Døving" 2
+3653 "Marit Elise Kirkhusmo" 2
+3654 "Marit Falch" 2
+3655 "Marit Haavik" 2
+3656 "Marit Hilde Engeseth" 2
+3657 "Marit Jannecke Olstad" 2
+3658 "Marit Kristin Instanes" 2
+3659 "Marit Monsen" 2
+3660 "Marit Näumann" 2
+3661 "Marit Røed Ødegaard" 2
+3662 "Marit Røgeberg" 2
+3663 "Marit Rolseth" 2
+3664 "Marit Skog" 2
+3665 "Marit Solberg" 2
+3666 "Marit Synnøve Berg" 2
+3667 "Marit Synnøve Loland Tveit" 2
+3668 "Marit Teigland" 2
+3669 "Marit Vollan" 2
+3670 "Marit Wetterhus" 2
+3671 "Marit Wiig" 2
+3672 "Marita Nesvik" 2
+3673 "Marius Bruu" 1
+3674 "Marius Moursund Gisvold" 1
+3675 "Mark Andre Bond" 1
+3676 "Mark Georg Frantz" 1
+3677 "Mark Henry Herrmann" 1
+3678 "Mark Stephen Singel" 1
+3679 "Mark Steven Leonard" 1
+3680 "Markku Lauri Juhani Pohjola" 1
+3681 "Markus Bakka Hjertø" 1
+3682 "Marlen Oddhild Hauge" 2
+3683 "Marlow Lokshall" 1
+3684 "Marte Kopperstad" 2
+3685 "Mårten Lunde" 1
+3686 "Mårten Rød" 1
+3687 "Mårten Wigstøl" 1
+3688 "Martha Kold Bakkevig" 2
+3689 "Marthe Dyrud" 2
+3690 "Martin Bachmann" 1
+3691 "Martin Dombestein" 1
+3692 "Martin Edvin Stangeland" 1
+3693 "Martin Fauchald" 1
+3694 "Martin Jack Mattison" 1
+3695 "Martin Kværnstuen" 1
+3696 "Martin Mæland" 1
+3697 "Martin Mickal Petersen" 1
+3698 "Martin Niclasen" 1
+3699 "Martin Nordaas" 1
+3700 "Martin Reitan" 1
+3701 "Martin Sigmundstad" 1
+3702 "Martin Wilhelm Hollenhorst" 1
+3703 "Martine Evelyn Vice Holter" 2
+3704 "Martinus Brandal" 1
+3705 "Mary Helene Moe" 2
+3706 "Mary Kate Moen Nilsen" 2
+3707 "Mary Kay Gould" 2
+3708 "Masha Paule Nathalie Legris Strømme" 2
+3709 "Mathias Eivind Krüger" 1
+3710 "Mathias Sellæg" 1
+3711 "Mats-Olof Wilhelm Ljungquist" 1
+3712 "Mats Benny Richard Johansson" 1
+3713 "Mats Georg Ringesten" 1
+3714 "Mats Gøran Kummelstedt" 1
+3715 "Mats Göran Salomonsson" 1
+3716 "Mats Gøran Salomonsson" 1
+3717 "Mats Gunnar Pettersson" 1
+3718 "Mats Robert Tilly" 1
+3719 "Matti Kinnunen" 1
+3720 "Matti Verneri Lehti" 1
+3721 "Mavis Robinson Hawkes" 2
+3722 "May-Brith Solberg" 2
+3723 "May-Britt Næss Strand" 2
+3724 "May Britt Gundersen" 2
+3725 "May Britt Manin" 2
+3726 "May Britt Myhr" 2
+3727 "May Elisabeth Krosby" 2
+3728 "Melanie Montague Trent" 2
+3729 "Melvin Teigen" 1
+3730 "Merete Alnes Mostue" 2
+3731 "Merete Amdam Holand" 2
+3732 "Merete Anne Lütken" 2
+3733 "Merete Borg Larsen" 2
+3734 "Merete Haugli" 2
+3735 "Merete Lindhjem Stensrud" 2
+3736 "Merete Løvset Nylund" 2
+3737 "Merete Norli" 2
+3738 "Merete Nygaard Kristiansen" 2
+3739 "Merethe Nordhelle Jørgensen" 2
+3740 "Mertine Evelyn Vice Holter" 2
+3741 "Mette Cecilie Skaug" 2
+3742 "Mette Espedal" 2
+3743 "Mette Frøge Abrahamsen" 2
+3744 "Mette Haug Hensrud" 2
+3745 "Mette Karin Johnsen" 2
+3746 "Mette Krabberød" 2
+3747 "Mette Kristin Andersen" 2
+3748 "Mette Krogsrud" 2
+3749 "Mette Margrethe Molland" 2
+3750 "Mette Nora Sætre" 2
+3751 "Mette Smisetfoss" 2
+3752 "Mette Stendahl Plomgaard" 2
+3753 "Michael Andre Lyngøy" 1
+3754 "Michael Grant Jacobs" 1
+3755 "Michael Jan Momyr" 1
+3756 "Michael Joseph Maher" 1
+3757 "Michael Parker" 1
+3758 "Michael Scott" 1
+3759 "Michael Steensland Brun" 1
+3760 "Michael Steven Swavely" 1
+3761 "Michael Stone Mathews" 1
+3762 "Michael Vågen Sivertsen" 1
+3763 "Michael von Tetzschner" 1
+3764 "Mika Antero Paljakka" 1
+3765 "Mikael Arvid Planting" 1
+3766 "Mikael Ingemarsson Odenberg" 1
+3767 "Mikael Løken" 1
+3768 "Mikael Per Rikard Bergqvist" 1
+3769 "Mikael Voss Mogensen" 1
+3770 "Mikal Lade Rønes" 1
+3771 "Mikal Løken" 1
+3772 "Mikal Rohde" 1
+3773 "Mikhail Alyautdinov" 1
+3774 "Mikkel Dennis Helweg" 1
+3775 "Mikkel Vislie" 1
+3776 "Milana Sajdyjevna Zubajrajeva" 2
+3777 "Mimi Kristine Berdal" 2
+3778 "Mina Louise Blair" 2
+3779 "Mitra Hagen Negård" 1
+3780 "Mogens Jessen" 1
+3781 "Mohammed Shahzad Ahmed Malik" 1
+3782 "Mona Christine Stensvik" 2
+3783 "Mona Elisabeth Møller" 2
+3784 "Mona Hansen" 2
+3785 "Mona Ingebrigtsen" 2
+3786 "Mona Irene Lyngbø" 2
+3787 "Mona Lindal" 2
+3788 "Mona Lucille Tellnes Halvorsen" 2
+3789 "Mona Sivertsen" 2
+3790 "Mona Winn Katigbak" 2
+3791 "Monica Eriksson" 2
+3792 "Monica Gundersen" 2
+3793 "Monica Hanna Viola Ulfhielm" 2
+3794 "Monica Håvik" 2
+3795 "Monica Havskjold" 2
+3796 "Monica Helene Hansen" 2
+3797 "Monica June Myklebust Øyen" 2
+3798 "Monica Karlsen" 2
+3799 "Monica Nielsen" 2
+3800 "Monica Siv Salthella" 2
+3801 "Monica Staff" 2
+3802 "Monicha Seternes" 2
+3803 "Monika Johansen" 2
+3804 "Mons Svendal Aase" 1
+3805 "Mons Tore Nakken" 1
+3806 "Morten Ågnes" 1
+3807 "Morten Andersen" 1
+3808 "Morten Andreas Viul" 1
+3809 "Morten Berentsen" 1
+3810 "Morten Berger Gunnerud" 1
+3811 "Morten Berntsen" 1
+3812 "Morten Birkeland" 1
+3813 "Morten Bjarne Olsen" 1
+3814 "Morten Bjørnsen" 1
+3815 "Morten Borge" 1
+3816 "Morten Bryn" 1
+3817 "Morten Corneliussen" 1
+3818 "Morten Dammen" 1
+3819 "Morten Elde" 1
+3820 "Morten Eriksrud" 1
+3821 "Morten Fallstein" 1
+3822 "Morten Fernand Angelil" 1
+3823 "Morten Finborud" 1
+3824 "Morten Flørenæss" 1
+3825 "Morten Frogner" 1
+3826 "Morten Gabrielsen" 1
+3827 "Morten Garmann" 1
+3828 "Morten Georg Jørgensen Lia" 1
+3829 "Morten Gisle Johnsen" 1
+3830 "Morten Grongstad" 1
+3831 "Morten Hasmo" 1
+3832 "Morten Heiseldal" 1
+3833 "Morten Heiss Schøyen" 1
+3834 "Morten Helge" 1
+3835 "Morten Henriksen" 1
+3836 "Morten Hofstad" 1
+3837 "Morten Holsve Johansen" 1
+3838 "Morten Husom" 1
+3839 "Morten Huth" 1
+3840 "Morten Ileby" 1
+3841 "Morten Jacobsen" 1
+3842 "Morten Jarand Hansen" 1
+3843 "Morten Jurs" 1
+3844 "Morten Lindseth" 1
+3845 "Morten Moe" 1
+3846 "Morten Molven" 1
+3847 "Morten Njåstad Bråten" 1
+3848 "Morten Nordby" 1
+3849 "Morten Ødegård" 1
+3850 "Morten Opstad" 1
+3851 "Morten Reintz" 1
+3852 "Morten Sigval Bergesen" 1
+3853 "Morten Steenstrup" 1
+3854 "Morten Støver" 1
+3855 "Morten Sundstø" 1
+3856 "Morten Svaan" 1
+3857 "Morten Ulstein" 1
+3858 "Morten Ween" 1
+3859 "Morten Westye Høegh" 1
+3860 "Morten Wilfred Rødsten" 1
+3861 "Morten Wilhelm Wilhelmsen" 1
+3862 "Naja Dannow" 2
+3863 "Nanna Gjerde" 2
+3864 "Naren Chandrakant Bhatt" 1
+3865 "Narve Reiten" 1
+3866 "Neal Benedict Brady" 1
+3867 "Neil Alexander Rimer" 1
+3868 "Nerijus Dagilis" 1
+3869 "Neville John Lancaster Jr" 1
+3870 "Ngiam Jih Wong" 1
+3871 "Nicholas James Humphries" 1
+3872 "Nicolai Jarlsby" 1
+3873 "Nicolas Brun Lie" 1
+3874 "Nicolas Jacques Delaunay" 1
+3875 "Niels Christian Møller" 1
+3876 "Niels Christian Nøkleby" 1
+3877 "Niels Erik Feilberg" 1
+3878 "Niels Jørgen Krogsgård" 1
+3879 "Niels Petter Wright" 1
+3880 "Niels Werring" 1
+3881 "Nigel John Rose" 1
+3882 "Nigel Kenneth Wilson" 1
+3883 "Niilo Nikolai Pellonmaa" 1
+3884 "Nikolai Stefanovic" 1
+3885 "Nils-Christian Meyer Hellevig" 1
+3886 "Nils-Ivar Larsen" 1
+3887 "Nils-Petter Nilsen" 1
+3888 "Nils Aga" 1
+3889 "Nils Andreas Arnesen" 1
+3890 "Nils Andreas Foldal" 1
+3891 "Nils Andreassen" 1
+3892 "Nils Are Karstad Lysø" 1
+3893 "Nils Arne Vasaasen" 1
+3894 "Nils Arve Drønen" 1
+3895 "Nils Bjarne Bjørnebekk" 1
+3896 "Nils Byrge Gulnes" 1
+3897 "Nils Egil Nilsen" 1
+3898 "Nils Erik Iversen" 1
+3899 "Nils Erik Jacobsen" 1
+3900 "Nils Erik Skarsgård" 1
+3901 "Nils Fredrik Drabløs" 1
+3902 "Nils Gunnar Arne Gunnarsson" 1
+3903 "Nils Harald Thommessen" 1
+3904 "Nils Henrik Pettersson" 1
+3905 "Nils Hugo Sand" 1
+3906 "Nils Inge Hitland" 1
+3907 "Nils Inge Lundheim" 1
+3908 "Nils Ingemund Hoff" 1
+3909 "Nils Jarle Solevåg" 1
+3910 "Nils Johannes Vanebo" 1
+3911 "Nils Kloumann Selte" 1
+3912 "Nils Kristian Gundersen" 1
+3913 "Nils Kristian Krogh" 1
+3914 "Nils Kristian Mortensen" 1
+3915 "Nils Kristian Nakstad" 1
+3916 "Nils Lennart Simon Andersson" 1
+3917 "Nils Magne Fjereide" 1
+3918 "Nils Moe" 1
+3919 "Nils Nilsen Trulsvik" 1
+3920 "Nils Olav Aardal" 1
+3921 "Nils Olof Johansson" 1
+3922 "Nils Olof Söderqvist" 1
+3923 "Nils Pedersen" 1
+3924 "Nils Peter Sandehed" 1
+3925 "Nils Petter Hansson" 1
+3926 "Nils Petter Nordskar" 1
+3927 "Nils Ringheim" 1
+3928 "Nils Robert Hodnesdal" 1
+3929 "Nils Rune Dahl" 1
+3930 "Nils Rütger Carl Rydbeck" 1
+3931 "Nils Thomas Lien" 1
+3932 "Nils Thomas Von Koch" 1
+3933 "Nils Wenaas" 1
+3934 "Nina Braaten Eitzen" 2
+3935 "Nina Bråthen" 2
+3936 "Nina Britt Husebø" 2
+3937 "Nina Cecilie Herud" 2
+3938 "Nina Christine Juel Arstal" 2
+3939 "Nina Dahl" 2
+3940 "Nina Elisabeth Smeby" 2
+3941 "Nina Karlsen" 2
+3942 "Nina Kristin Ombustvedt Seem" 2
+3943 "Nina Lie" 2
+3944 "Nina Margareth Hjort" 2
+3945 "Nina Merete Iversen Hjellestad" 2
+3946 "Nina Merethe Moen" 2
+3947 "Nina Merethe Wiley" 2
+3948 "Nina Udnes Tronstad" 2
+3949 "Ninette Solveig Banoun" 2
+3950 "Nini Eugenie Høegh Nergaard" 2
+3951 "Njål Sævik" 1
+3952 "Nora Førisdal Larssen" 2
+3953 "Nordis Vik Olausson" 1
+3954 "Norunn Dale Seland" 2
+3955 "Norvald Fretheim" 1
+3956 "Norvald Hjellegjerde" 1
+3957 "Odd Andre Olsen" 1
+3958 "Odd Arild Grefstad" 1
+3959 "Odd Arild Nielsen" 1
+3960 "Odd Arne Pedersen" 1
+3961 "Odd Christopher Hansen" 1
+3962 "Odd Eide" 1
+3963 "Odd Eivind Berg" 1
+3964 "Odd Endre Aadnøy" 1
+3965 "Odd Gunnar Nilssen" 1
+3966 "Odd Håkon Hoelsæter" 1
+3967 "Odd Hammer" 1
+3968 "Odd Helge Hatland" 1
+3969 "Odd Henrik Vanebo" 1
+3970 "Odd Ingar Skaug" 1
+3971 "Odd Ingar Solbakken" 1
+3972 "Odd Inge Godhavn" 1
+3973 "Odd Ivar Øverland" 1
+3974 "Odd Jarle Nese" 1
+3975 "Odd Johnny Winge" 1
+3976 "Odd Jøran Oldervik" 1
+3977 "Odd Kjørholt" 1
+3978 "Odd Lorentz Strøm" 1
+3979 "Odd Martinsen" 1
+3980 "Odd Medhus" 1
+3981 "Odd Mikael Moen" 1
+3982 "Odd Næss" 1
+3983 "Odd Øygarden" 1
+3984 "Odd Ragnar Lorentsen" 1
+3985 "Odd Reidar Øie" 1
+3986 "Odd Rune Austgulen" 1
+3987 "Odd Rune Olden" 1
+3988 "Odd Semstrøm" 1
+3989 "Odd Svein Hagen" 1
+3990 "Odd Svein Hjelmeland" 1
+3991 "Odd Sverre Arnøy" 1
+3992 "Odd Thorvik" 1
+3993 "Odd Tøfte Røhjell" 1
+3994 "Odd Tore Finnøy" 1
+3995 "Odd Werring Werner" 1
+3996 "Oddbjørg Mølslet" 2
+3997 "Oddbjørn Aannestad" 1
+3998 "Oddbjørn Skjørestad" 1
+3999 "Oddbjørn Sverre Langlo" 1
+4000 "Oddmund Edvard Åsen" 1
+4001 "Oddmund Hatletun" 1
+4002 "Oddmund Helge Håkon Helgesen" 1
+4003 "Oddmund Langlo" 1
+4004 "Oddmund Larsen" 1
+4005 "Oddmunn Johan Olsen" 1
+4006 "Oddvar Aam" 1
+4007 "Oddvar Aaserud" 1
+4008 "Oddvar Aglen" 1
+4009 "Oddvar Arild Bakke" 1
+4010 "Oddvar Arne Vanberg" 1
+4011 "Oddvar Fodstad" 1
+4012 "Oddvar Frigstad" 1
+4013 "Oddvar Hesjedal" 1
+4014 "Oddvar Hølland" 1
+4015 "Oddvar Indergård" 1
+4016 "Oddvar Kjekstad" 1
+4017 "Oddvar Lervik" 1
+4018 "Oddvar Magne Grønsberg" 1
+4019 "Oddvar Nicolai Sørtømme" 1
+4020 "Oddvar Skjegstad" 1
+4021 "Oddvar Stangeland" 1
+4022 "Øistein Høimyr" 1
+4023 "Øistein Nyberg" 1
+4024 "Øivin Fjeldstad" 1
+4025 "Øivind Amundsen" 1
+4026 "Øivind Aspeng" 1
+4027 "Øivind Jensen" 1
+4028 "Øivind Jørgen Godaker Risberg" 1
+4029 "Øivind Karsten Kristiansen" 1
+4030 "Øivind Kristian Rue" 1
+4031 "Øivind Lund" 1
+4032 "Øivind Møinichen Kvammen" 1
+4033 "Øivind Settli" 1
+4034 "Øivind Solvang" 1
+4035 "Ola Dybvik" 1
+4036 "Ola Holen" 1
+4037 "Ola Krohn-Fagervoll" 1
+4038 "Ola Mæle" 1
+4039 "Ola Mørkved Rinnan" 1
+4040 "Ola Petter Tollefsen" 1
+4041 "Ola Røthe" 1
+4042 "Ola Sætre" 1
+4043 "Ola Skjæret" 1
+4044 "Ola Sundt Ravnestad" 1
+4045 "Ola Toftegaard Hox" 1
+4046 "Olaf Andreas Larsen" 1
+4047 "Olaf Eie" 1
+4048 "Olaf Osmundsen" 1
+4049 "Olaf Thorsheim" 1
+4050 "Olaf Vethe" 1
+4051 "Olaug Johanne Svarva" 2
+4052 "Olav Aasmund Smidsrød" 1
+4053 "Olav Arvid Smørdal" 1
+4054 "Olav Berg" 1
+4055 "Olav Berg Thomassen" 1
+4056 "Olav Dalen Zahl" 1
+4057 "Olav Ellingsen" 1
+4058 "Olav Endre Venås" 1
+4059 "Olav Fjell" 1
+4060 "Olav Hans Jurgen Av Montrose Christie" 1
+4061 "Olav Hørsdal" 1
+4062 "Olav Hytta" 1
+4063 "Olav K Eimstad" 1
+4064 "Olav Ketilsson" 1
+4065 "Olav Kjell Holtan" 1
+4066 "Olav Klungreseth" 1
+4067 "Olav Kongsvoll" 1
+4068 "Olav Korshaug" 1
+4069 "Olav Lanes" 1
+4070 "Olav Madland" 1
+4071 "Olav Madsen" 1
+4072 "Olav Nils Sunde" 1
+4073 "Olav Nummedal" 1
+4074 "Olav Ognedal" 1
+4075 "Olav Revhaug" 1
+4076 "Olav Sem Austmo" 1
+4077 "Olav Skogmo" 1
+4078 "Olav Smeland" 1
+4079 "Olav Stoud Platou" 1
+4080 "Olav Terje Bogen" 1
+4081 "Olav Thon" 1
+4082 "Olav Volldal" 1
+4083 "Ole-Kristian Sivertsen" 1
+4084 "Ole-Martin Lund Andreassen" 1
+4085 "Ole-Morten Settevik" 1
+4086 "Ole-Reinhart Pettersen Notø" 1
+4087 "Ole-Sivert Prytz" 1
+4088 "Ole Andre Heggheim" 1
+4089 "Ole Bård Jacobsen" 1
+4090 "Ole Birger Giæver" 1
+4091 "Ole Bjørn Hansen" 1
+4092 "Ole Christen Wiborg" 1
+4093 "Ole Dag Rustad" 1
+4094 "Ole Eirik Lerøy" 1
+4095 "Ole Enger" 1
+4096 "Ole Ertvaag" 1
+4097 "Ole Fredrik Anker-Rasch" 1
+4098 "Ole Fredrik Hienn" 1
+4099 "Ole Geir Hagen" 1
+4100 "Ole Grøterud" 1
+4101 "Ole Haaland" 1
+4102 "Ole Henning Fredriksen" 1
+4103 "Ole Henrik Bjørge" 1
+4104 "Ole Henrik Eide" 1
+4105 "Ole Henrik Nesheim" 1
+4106 "Ole Jacob Molland" 1
+4107 "Ole Jacob Myre" 1
+4108 "Ole Jacob Sunde" 1
+4109 "Ole Jakob Sværk" 1
+4110 "Ole Jan Korsnes" 1
+4111 "Ole Jarl Rettedal" 1
+4112 "Ole Johnny Drevland" 1
+4113 "Ole Jørgen Fredriksen" 1
+4114 "Ole Julian Eilertsen" 1
+4115 "Ole Laurits Lønnum" 1
+4116 "Ole Lund" 1
+4117 "Ole Martin Andreassen" 1
+4118 "Ole Melberg" 1
+4119 "Ole Mørkved" 1
+4120 "Ole Morten Hustad" 1
+4121 "Ole Morten Kristiansen" 1
+4122 "Ole Morten Løfsnæs" 1
+4123 "Ole Nygaard" 1
+4124 "Ole Peter Ludvig Lorentzen" 1
+4125 "Ole Petter Børmer" 1
+4126 "Ole Petter Haavik" 1
+4127 "Ole Pettersen" 1
+4128 "Ole Ragnar Gåsmo" 1
+4129 "Ole Rasmus Møgster" 1
+4130 "Ole Revhaug" 1
+4131 "Ole Robert Reitan" 1
+4132 "Ole Rugland" 1
+4133 "Ole Svehaug Solvang" 1
+4134 "Ole Theodor Holth" 1
+4135 "Ole Thomas Bertel" 1
+4136 "Ole Thoralf Ruud" 1
+4137 "Ole Tolstrup Krogsgaard" 1
+4138 "Ole Verner Salvén" 1
+4139 "Olena Anfimova" 2
+4140 "Oliver Møystad" 1
+4141 "Olivier Pierre-Yves Garrigue" 1
+4142 "Olli Kalevi Hirvonen" 1
+4143 "Olof Emil Curt Franksson" 1
+4144 "Olof Skragge Adolfsson Hermelin" 1
+4145 "Oluf Ulseth" 1
+4146 "Ørjan Olsvik" 1
+4147 "Ørjan Svanevik" 1
+4148 "Ørnulf Myrvoll" 1
+4149 "Oskar Baldvin Hauksson" 1
+4150 "Oskar Magnusson" 1
+4151 "Oskar Mykland" 1
+4152 "Osterlin Luis Dyer Ampuida" 1
+4153 "Osvald Karl Julian Floa" 1
+4154 "Ottar Ertzeid" 1
+4155 "Ottar Nakken" 1
+4156 "Otto Annkjell Hageberg" 1
+4157 "Otto Magne Strømmegjerde" 1
+4158 "Otto Rune Stokke" 1
+4159 "Otto Skurve" 1
+4160 "Otto Søberg" 1
+4161 "Ove Ågedal" 1
+4162 "Ove Ellefsen" 1
+4163 "Ove Gusevik" 1
+4164 "Ove Helgesplass" 1
+4165 "Ove Iversen" 1
+4166 "Ove Lind" 1
+4167 "Ove Magne Anseth" 1
+4168 "Ove Magnus Johansson" 1
+4169 "Ove Per Skåre" 1
+4170 "Ove Steinar Farstad" 1
+4171 "Øystein Bøe" 1
+4172 "Øystein Elgan" 1
+4173 "Øystein Eskeland" 1
+4174 "Øystein Hay" 1
+4175 "Øystein Kjellsen" 1
+4176 "Øystein Moan" 1
+4177 "Øystein Myrvold" 1
+4178 "Øystein Pedersen" 1
+4179 "Øystein Robert Marensius Simensen" 1
+4180 "Øystein Rushfeldt" 1
+4181 "Øystein Sigurd Josefsen" 1
+4182 "Øystein Stephansen" 1
+4183 "Øystein Stray Spetalen" 1
+4184 "Øystein Trøseid" 1
+4185 "Øystein Vestvik" 1
+4186 "Øyvin Anders Brøymer" 1
+4187 "Øyvind Aasbø" 1
+4188 "Øyvind Berntsen" 1
+4189 "Øyvind Birkeland" 1
+4190 "Øyvind Bjørn Kristiansen" 1
+4191 "Øyvind Bjørnstad" 1
+4192 "Øyvind Bunes" 1
+4193 "Øyvind Egil Skaugrud" 1
+4194 "Øyvind Eriksen" 1
+4195 "Øyvind Hauge" 1
+4196 "Øyvind Hopland" 1
+4197 "Øyvind Hornnæss" 1
+4198 "Øyvind Jensen-Eian" 1
+4199 "Øyvind Jordanger" 1
+4200 "Øyvind Karlsen" 1
+4201 "Øyvind Lien" 1
+4202 "Øyvind Midtbø" 1
+4203 "Øyvind Nordahl Refsnes" 1
+4204 "Øyvind Norli" 1
+4205 "Øyvind Robert Rafto" 1
+4206 "Øyvind Ryan" 1
+4207 "Øyvind Sandaa" 1
+4208 "Øyvind Sandvold" 1
+4209 "Øyvind Skålevik" 1
+4210 "Øyvind Steira Mikkelsen" 1
+4211 "Øyvind Stene" 1
+4212 "Øyvind Sverre Bruland" 1
+4213 "Øyvind Sverre Glückstad" 1
+4214 "Øyvind Thoresen" 1
+4215 "Øyvind Tveit" 1
+4216 "Øyvind Wiik" 1
+4217 "Paal Christian Krüger" 1
+4218 "Paal Espen Johnsen" 1
+4219 "Paal Fredrik Olafsen" 1
+4220 "Paal Hveem" 1
+4221 "Paal Lauritzen" 1
+4222 "Paal Scheen Raaholt" 1
+4223 "Paal Sprakehaug" 1
+4224 "Pål Adrian Hellman" 1
+4225 "Pål Bråthen" 1
+4226 "Pål Eivind Vegard" 1
+4227 "Pål Erik Mellquist" 1
+4228 "Pål Frithjof Tandberg" 1
+4229 "Pål Gunnar Nord" 1
+4230 "Pål Hvammen" 1
+4231 "Pål Kristian Tønder" 1
+4232 "Pål Kruger" 1
+4233 "Pål Listuen" 1
+4234 "Pål Magne Hisdal" 1
+4235 "Pål Reinert Bredvei" 1
+4236 "Pål Rune Johansen" 1
+4237 "Pål Skoe" 1
+4238 "Pål Svenheim" 1
+4239 "Pål Tajet" 1
+4240 "Pål Terje Rullestad" 1
+4241 "Pål Thygesen" 1
+4242 "Pål Torleif Raaum" 1
+4243 "Pål Warset" 1
+4244 "Pall Eydal Reynisson" 1
+4245 "Paolo Giorgio Bassi" 1
+4246 "Patricia Benedicte Stang Auseth" 2
+4247 "Patricia Chapman-Pincher" 2
+4248 "Patrick Pak-Tin Lee" 1
+4249 "Patrick Sandahl" 1
+4250 "Paul Anders Ramm" 1
+4251 "Paul Assar Bergkvist" 1
+4252 "Paul Birger Torgnes" 1
+4253 "Paul Christian Rieber" 1
+4254 "Paul Drageset" 1
+4255 "Paul Eirik Lødøen" 1
+4256 "Paul Emil Hjelm-Hansen" 1
+4257 "Paul Gunnar Brastad" 1
+4258 "Paul Gunstein Lunde" 1
+4259 "Paul Hallan Svendsen" 1
+4260 "Paul Jan Pedersen" 1
+4261 "Paul Jørgen Ektvedt" 1
+4262 "Paul Maurice Garvey" 1
+4263 "Paul Ronny Kristiansen" 1
+4264 "Paul Sigurd Bakke" 1
+4265 "Pauline Mary Walsh" 2
+4266 "Paulo Avelino De Souza Costa" 1
+4267 "Paulus Henri Leo Kloppenborg" 1
+4268 "Peder Christian Løvenskiold" 1
+4269 "Peder Engeset" 1
+4270 "Peder Nærbø" 1
+4271 "Peder Ruud" 1
+4272 "Peer Sørensen" 1
+4273 "Peggy Finboe" 2
+4274 "Pentti Elias Kølhi" 1
+4275 "Per-Allan Røsand" 1
+4276 "Per-Christian Endsjø" 1
+4277 "Per-Erik Åsmyr" 1
+4278 "Per-Erik Mohlin" 1
+4279 "Per-Helge Isaksen" 1
+4280 "Per-Morthen Johannessen" 1
+4281 "Per-Ola Baalerud" 1
+4282 "Per-Olof Mårtenson" 1
+4283 "Per Anders Elind" 1
+4284 "Per Anders Göte Samuelsson" 1
+4285 "Per Anders Grudén" 1
+4286 "Per Anders Hugo Ovin" 1
+4287 "Per Andreas Boasson" 1
+4288 "Per Andreas Swensson" 1
+4289 "Per Andreas Vogt" 1
+4290 "Per Ansgar Benjaminsen" 1
+4291 "Per Anton Hansen" 1
+4292 "Per Arild Bjørklund" 1
+4293 "Per Arne Eggen" 1
+4294 "Per Arne Eide" 1
+4295 "Per Arne Johnsen" 1
+4296 "Per Arne Sandström" 1
+4297 "Per Arne Sørlien" 1
+4298 "Per Arne Watle" 1
+4299 "Per Arnfinn Solberg" 1
+4300 "Per Arthur Sørlie" 1
+4301 "Per Atle Sjåstad" 1
+4302 "Per Audun Lillebø" 1
+4303 "Per Axel Koch" 1
+4304 "Per Bolstad" 1
+4305 "Per Braadland" 1
+4306 "Per Broch Mathisen" 1
+4307 "Per Carl Arne Molin" 1
+4308 "Per Christian Evers" 1
+4309 "Per Christian Goller" 1
+4310 "Per Christian Greter Hoel" 1
+4311 "Per Christian Skauen" 1
+4312 "Per Christian Winsnes" 1
+4313 "Per Ditlev-Simonsen" 1
+4314 "Per Eilif Fjermestad" 1
+4315 "Per Eilif Thorvaldsen" 1
+4316 "Per Endre Skårvik" 1
+4317 "Per Erik Bøhlerengen" 1
+4318 "Per Erik Burud" 1
+4319 "Per Erik Hagen" 1
+4320 "Per Espseth" 1
+4321 "Per Freddy Olsen" 1
+4322 "Per Fredrik Blom" 1
+4323 "Per Fredrik Steffensen" 1
+4324 "Per Georg Braathen" 1
+4325 "Per Gjessing Høiland" 1
+4326 "Per Grieg" 1
+4327 "Per Gulbrandsen" 1
+4328 "Per Gunnar Løge" 1
+4329 "Per Gunnar Salomonsen" 1
+4330 "Per Gunnar Solstad" 1
+4331 "Per Håkon Karlsrud" 1
+4332 "Per Halvard Garnes" 1
+4333 "Per Hans Lennart Hammarberg" 1
+4334 "Per Hatlem" 1
+4335 "Per Havdal" 1
+4336 "Per Hedley Aarvåg" 1
+4337 "Per Heidenreich" 1
+4338 "Per Helge Johansen" 1
+4339 "Per Henning Hanssen" 1
+4340 "Per Henning Vollan" 1
+4341 "Per Henrik Rundberget" 1
+4342 "Per Hoffmann" 1
+4343 "Per Holmen" 1
+4344 "Per Inge Krossen" 1
+4345 "Per Inge Remmen" 1
+4346 "Per Ivar Steinsund" 1
+4347 "Per Jahren" 1
+4348 "Per Jakob Stamnes" 1
+4349 "Per Jon Moen" 1
+4350 "Per Jonny Hanøy" 1
+4351 "Per Just Skaret" 1
+4352 "Per Kåre Hollund Otteren" 1
+4353 "Per Kristian Jacobsen" 1
+4354 "Per Kristian Olsen" 1
+4355 "Per Kumle" 1
+4356 "Per Kverneland" 1
+4357 "Per Kyllingstad" 1
+4358 "Per Leonhard Brun Offerdahl" 1
+4359 "Per Luneborg" 1
+4360 "Per Magne Bårdsgjerde" 1
+4361 "Per Magne Ristvedt" 1
+4362 "Per Magnus Nordqvist" 1
+4363 "Per Martin Johansson" 1
+4364 "Per Nicklas Larsson" 1
+4365 "Per Niklas Johansson" 1
+4366 "Per Nitter Bondevik" 1
+4367 "Per Norvald Sperre" 1
+4368 "Per Olav Borgsø" 1
+4369 "Per Olav Fjell" 1
+4370 "Per Olav Førland" 1
+4371 "Per Olav Heide" 1
+4372 "Per Olav Juul" 1
+4373 "Per Olav Wågen" 1
+4374 "Per Ole Johansen" 1
+4375 "Per Onshuus Bjørnsen" 1
+4376 "Per Orfjell" 1
+4377 "Per Oscar Lund" 1
+4378 "Per Ottar Skaaret" 1
+4379 "Per Otto Dyb" 1
+4380 "Per Otto Furre" 1
+4381 "Per Ove Morberg" 1
+4382 "Per Ove Nerland" 1
+4383 "Per Øverbø" 1
+4384 "Per Øyvind Lie" 1
+4385 "Per Øyvind Schiong" 1
+4386 "Per Øyvind Sørsveen" 1
+4387 "Per Ravlo" 1
+4388 "Per Rolf Sævik" 1
+4389 "Per Rosenberg" 1
+4390 "Per Rune Reime" 1
+4391 "Per Samuelsen" 1
+4392 "Per Sandven" 1
+4393 "Per Sigbjørn Aarsland" 1
+4394 "Per Simon Slettebø" 1
+4395 "Per Skustad" 1
+4396 "Per Stølsnes Ravlo" 1
+4397 "Per Syversen" 1
+4398 "Per Terje Vold" 1
+4399 "Per Trygve Berg" 1
+4400 "Per Trygve Kongsnes" 1
+4401 "Per Victor Nordan" 1
+4402 "Per Willy Holseter" 1
+4403 "Per Wold" 1
+4404 "Percy Henrik Mikael Lilius" 1
+4405 "Pernille Fische" 2
+4406 "Peter Allan Goode" 1
+4407 "Peter Andreas Behncke" 1
+4408 "Peter Arne Ruzicka" 1
+4409 "Peter Böhret" 1
+4410 "Peter Chester Warren" 1
+4411 "Peter Constantine Georgiopoulos" 1
+4412 "Peter Ditlef Knudsen" 1
+4413 "Peter Gard Norberg" 1
+4414 "Peter Groth" 1
+4415 "Peter Hagerup" 1
+4416 "Peter Hald Appel" 1
+4417 "Peter Lauritz Bernhardt" 1
+4418 "Peter Malcolm Brooks" 1
+4419 "Peter Martin Anker" 1
+4420 "Peter Ola Tveit" 1
+4421 "Peter Pay" 1
+4422 "Peter Schutze" 1
+4423 "Peter Thomas Smedvig" 1
+4424 "Peter Ulrik Hammerich" 1
+4425 "Peter Verney Mc Kee" 1
+4426 "Peter Verney Mckee" 1
+4427 "Peter William Jackson" 1
+4428 "Petter Alex Marthinsen" 1
+4429 "Petter Andrup" 1
+4430 "Petter Anker Stordalen" 1
+4431 "Petter Bakken" 1
+4432 "Petter Berge" 1
+4433 "Petter Bjørnstad" 1
+4434 "Petter Conrad Fjugstad" 1
+4435 "Petter Eiken" 1
+4436 "Petter Faye-Lund" 1
+4437 "Petter Fredrik Neslein" 1
+4438 "Petter Frisenfeldt Schmedling" 1
+4439 "Petter Harald Tomren" 1
+4440 "Petter Inge Longva" 1
+4441 "Petter Jakob Bjerve" 1
+4442 "Petter Jan Fjellstad" 1
+4443 "Petter Jansen" 1
+4444 "Petter Kapstad" 1
+4445 "Petter Kleppe" 1
+4446 "Petter Kyrre Dahlberg" 1
+4447 "Petter Mannsverk Andresen" 1
+4448 "Petter Nicolay Holm Urdal" 1
+4449 "Petter Skrikerud" 1
+4450 "Petter Støa" 1
+4451 "Petter Torp" 1
+4452 "Philip Hughes" 1
+4453 "Philip Martin Napier Sharpe" 1
+4454 "Philip Richard Zanone Jr" 1
+4455 "Philippa Dale Wright" 2
+4456 "Philippe Come Francois Delion" 1
+4457 "Philippe E A Snick" 1
+4458 "Pia Anette Dahlqvist" 2
+4459 "Pia Catarina Thomasdotter Göthe" 2
+4460 "Pia Magnhild Helena Gideon" 2
+4461 "Piergiorgio Lo Greco" 1
+4462 "Piero Martin Dyer Coriat" 1
+4463 "Pieter Klaas Van Voorst" 1
+4464 "Praveen Sharma" 2
+4465 "Preben-Alexander Jensen" 1
+4466 "Preben Jensen" 1
+4467 "Rabbe Oscar Elfving Lund" 1
+4468 "Ragna Marie Høgstad Quale" 2
+4469 "Ragnar Arne Jørgensen" 1
+4470 "Ragnar Horn" 1
+4471 "Ragnar Per Fritsvold" 1
+4472 "Ragnar Sjoner" 1
+4473 "Ragnhild Aaberg" 2
+4474 "Ragnhild Apelseth" 2
+4475 "Ragnhild Broen" 2
+4476 "Ragnhild Engebretsen" 2
+4477 "Ragnhild Hedemann" 2
+4478 "Ragnhild Kvålshaugen" 2
+4479 "Ragnhild Laura Kvamme Hundere" 2
+4480 "Ragnhild Merete Myhrstad" 2
+4481 "Ragnhild Rønneberg" 2
+4482 "Ragnvald Holm Lie" 1
+4483 "Ragnvald Magne Bjelde" 1
+4484 "Ragnvald Stokken" 1
+4485 "Ragny Bergesen" 2
+4486 "Rainer Arno Rüppel" 1
+4487 "Rainer Ingebrigtsen" 1
+4488 "Ralf Ernest Hess" 1
+4489 "Ralf Schmidt" 1
+4490 "Ralf Wilfried Baumann" 1
+4491 "Ralph Høibakk" 1
+4492 "Ralph Inge Johnnie Gullenborn" 1
+4493 "Ralph John Whelan" 1
+4494 "Randee Day" 2
+4495 "Randi Anita Næsheim" 2
+4496 "Randi Eidsmo Reinertsen" 2
+4497 "Randi Elin Hognestad" 2
+4498 "Randi Elisabeth Mørk" 2
+4499 "Randi Gunnhild Nørstebø" 2
+4500 "Randi Hammervoll Skipnes" 2
+4501 "Randi Heggelund" 2
+4502 "Randi Helene Førsund" 2
+4503 "Randi Helene Røed" 2
+4504 "Randi Holen" 2
+4505 "Randi Kvissel Haugen" 2
+4506 "Randi Morvik" 2
+4507 "Ranveig Egenes" 2
+4508 "Ranveig Marie Johansen" 2
+4509 "Rebecca Brit-Elin Ottestad" 2
+4510 "Rebekka Glasser Herlofsen" 2
+4511 "Reidar Charles Fredrik Fougner" 1
+4512 "Reidar Christian Lien" 1
+4513 "Reidar Eggert Stockfleth" 1
+4514 "Reidar Hanssen Sande" 1
+4515 "Reidar Huglen" 1
+4516 "Reidar Langmo" 1
+4517 "Reidar Lund" 1
+4518 "Reidar Michaelsen" 1
+4519 "Reidar Ørmen" 1
+4520 "Reidar Skjeggerød" 1
+4521 "Reidulf Gerhard Juliussen" 1
+4522 "Reidun Irene Brekke" 2
+4523 "Reidun Karlsen" 2
+4524 "Reier Hans Sigmond" 1
+4525 "Reinhard Stephan Schiebeler" 1
+4526 "Reinold Ellingsen" 1
+4527 "Renata Maria-Anna Jungo Brüngger" 2
+4528 "Renate Mørch" 2
+4529 "Reno Dimmen" 1
+4530 "Reno Modahl Aadnøy" 1
+4531 "Reynir Kjær Indahl" 1
+4532 "Richard Charles Graves" 1
+4533 "Richard David Dunlop" 1
+4534 "Richard Fredrik Clemm Von Hohenberg" 1
+4535 "Richard Julian Robert Faber" 1
+4536 "Richard Michael Schaffer" 1
+4537 "Richard Olav Aa" 1
+4538 "Richard Philip Kosowsky" 1
+4539 "Rigmor Erna Sand" 2
+4540 "Rikard Arne Storvestre" 1
+4541 "Rikke Kathrine Tobiasson Reinemo" 2
+4542 "Rita Anette Bergesen" 2
+4543 "Rita Brokstad" 2
+4544 "Rita Glenne" 2
+4545 "Rita Mælen" 2
+4546 "Rita Mirriann Bakkejord" 2
+4547 "Rita Villanger" 2
+4548 "Riulf Karsten Rustad" 1
+4549 "Roald Dolmen" 1
+4550 "Roald Georg Bergsaker" 1
+4551 "Roald Laurans Hoem" 1
+4552 "Roald Moi" 1
+4553 "Roar Aasvang" 1
+4554 "Roar Arntzen" 1
+4555 "Roar Bye" 1
+4556 "Roar Engeland" 1
+4557 "Roar Flaathen" 1
+4558 "Roar Flom" 1
+4559 "Roar Kyvik" 1
+4560 "Roar Leidulf Øyahals" 1
+4561 "Roar Marthiniussen" 1
+4562 "Roar Martin Wedding" 1
+4563 "Roar Nyhus" 1
+4564 "Roar Rein Lyslo" 1
+4565 "Roar Roksvåg" 1
+4566 "Roar Sejersted" 1
+4567 "Roar Sundt" 1
+4568 "Roar Thoresen" 1
+4569 "Roar Vardeberg" 1
+4570 "Robert Andreas Boqvist" 1
+4571 "Robert Arnfinn Tønne" 1
+4572 "Robert Blair Thomas" 1
+4573 "Robert Boer" 1
+4574 "Robert Earl Daniel" 1
+4575 "Robert Edward Bruce Allnutt" 1
+4576 "Robert Fjelli" 1
+4577 "Robert Fullarton Fulton" 1
+4578 "Robert Høyland" 1
+4579 "Robert Keith" 1
+4580 "Robert Lillefloth" 1
+4581 "Robert Lønseth Alvestad" 1
+4582 "Robert Müller Monsen" 1
+4583 "Robert Nicholas Caruso" 1
+4584 "Robert Nicolai Von Hirsch" 1
+4585 "Robert Paul Curt" 1
+4586 "Robert Skarpnes" 1
+4587 "Robert Svarva" 1
+4588 "Robert Verner Ahlgren" 1
+4589 "Robert William Schult" 1
+4590 "Robert Wilson" 1
+4591 "Robin Sporsheim" 1
+4592 "Roe Dag Strømmen" 1
+4593 "Roger Anders Midthun" 1
+4594 "Roger Andre Hansen" 1
+4595 "Roger Brynjulf Mosand" 1
+4596 "Roger Flølo" 1
+4597 "Roger Granheim" 1
+4598 "Roger Hansen" 1
+4599 "Roger Hollund" 1
+4600 "Roger Kristiansen" 1
+4601 "Roger Løkvik" 1
+4602 "Roger Nedrebø" 1
+4603 "Roger O Neil" 1
+4604 "Roger Rønning" 1
+4605 "Roger Simmenes" 1
+4606 "Roger Trones" 1
+4607 "Roger Tuen" 1
+4608 "Roger Vangen" 1
+4609 "Roland Pieper" 1
+4610 "Rolf Albert Wilhelm Tolle" 1
+4611 "Rolf Andersson" 1
+4612 "Rolf Arne Ueland" 1
+4613 "Rolf Asgeir Erstad" 1
+4614 "Rolf Bertil Johansson" 1
+4615 "Rolf Birger Nilsen" 1
+4616 "Rolf Dammann" 1
+4617 "Rolf Egil Pedersen Gullestad" 1
+4618 "Rolf Eide" 1
+4619 "Rolf Eigil Bygdnes" 1
+4620 "Rolf Einar Ahlqvist" 1
+4621 "Rolf Erik Holmen" 1
+4622 "Rolf Erik Rolfsen" 1
+4623 "Rolf Fritjov Aarsheim" 1
+4624 "Rolf Henning Romero Sanchez" 1
+4625 "Rolf Hjellegjerde" 1
+4626 "Rolf Inge Sivertsen" 1
+4627 "Rolf Ivar Fiskum" 1
+4628 "Rolf Jahren" 1
+4629 "Rolf Jan Mowill" 1
+4630 "Rolf Johan Ringdal" 1
+4631 "Rolf Jøran Halvorsen" 1
+4632 "Rolf Karsten Smith" 1
+4633 "Rolf Knut Lennart Åberg" 1
+4634 "Rolf Leistad" 1
+4635 "Rolf Martin Madsen" 1
+4636 "Rolf Mogens Gjermundsen" 1
+4637 "Rolf Nikolai Andersen" 1
+4638 "Rolf Olaf Larsen" 1
+4639 "Rolf Ottar Emblem" 1
+4640 "Rolf Otto Hansen" 1
+4641 "Rolf Qvenild" 1
+4642 "Rolf Randen" 1
+4643 "Rolf Rønning" 1
+4644 "Rolf Rune Forsberg" 1
+4645 "Rolf Seljelid" 1
+4646 "Rolf Smedvig Hodne" 1
+4647 "Rolf Steinar Domstein" 1
+4648 "Rolf Tannergård" 1
+4649 "Rolf Tore Spjelkavik" 1
+4650 "Rolf Uve Grøttjord" 1
+4651 "Rolf Viggo Leisner" 1
+4652 "Rolf Waldemar Karlsen" 1
+4653 "Rolv Bakke" 1
+4654 "Rolv Erik Ryssdal" 1
+4655 "Rolv Leander Jonassen" 1
+4656 "Ronald Jay Gould" 1
+4657 "Ronald Peter Moolenaar" 1
+4658 "Ronald Steen" 1
+4659 "Ronaldo Camargo Veirano" 1
+4660 "Ronny Antonsen" 1
+4661 "Ronny Boy Jakobsen" 1
+4662 "Ronny Fagervik Larsen" 1
+4663 "Ronny Granly" 1
+4664 "Ronny Hermansen" 1
+4665 "Ronny Johan Langeland" 1
+4666 "Ronny Nipen" 1
+4667 "Rosa Amelia Coriat Valera" 2
+4668 "Roy Alexander Franklin" 1
+4669 "Roy Arne Nilsen" 1
+4670 "Roy Arne Rimestad" 1
+4671 "Roy Eilertsen" 1
+4672 "Roy Harald Hove" 1
+4673 "Roy Hartvig Larsen" 1
+4674 "Roy Mersland" 1
+4675 "Roy Oddvar Myklebust" 1
+4676 "Roy Tessem" 1
+4677 "Roy Torvild Mosvold" 1
+4678 "Roy Trøen Nedal" 1
+4679 "Roy Widar Furulund" 1
+4680 "Rudi Aas" 1
+4681 "Rudolf Giuseppe Galligani" 1
+4682 "Rudolf Stäger" 1
+4683 "Runa Skyttersæter" 2
+4684 "Runar Jacobsen" 1
+4685 "Runar Krokvik" 1
+4686 "Runar Lie" 1
+4687 "Runar Vige" 1
+4688 "Rune Aamodt" 1
+4689 "Rune Alne" 1
+4690 "Rune Askeland" 1
+4691 "Rune Bjerke" 1
+4692 "Rune Eikeland" 1
+4693 "Rune Fossum" 1
+4694 "Rune Ingve Fløgstad" 1
+4695 "Rune Jakobsen" 1
+4696 "Rune Johan Meltzer" 1
+4697 "Rune Kilebu" 1
+4698 "Rune Kleppe" 1
+4699 "Rune Kornør" 1
+4700 "Rune Kvernland" 1
+4701 "Rune Lillesveen" 1
+4702 "Rune Malmo" 1
+4703 "Rune Martinsen" 1
+4704 "Rune Øidne Reinertsen" 1
+4705 "Rune Rafdal" 1
+4706 "Rune Rudolf Haglund" 1
+4707 "Rune Selmar" 1
+4708 "Rune Skarveland" 1
+4709 "Rune Sørensen" 1
+4710 "Rune Sørli" 1
+4711 "Rune Sørum" 1
+4712 "Rune Svindland" 1
+4713 "Rune Valle" 1
+4714 "Rune Vesterkjær" 1
+4715 "Rune Viggo Dale" 1
+4716 "Rune Westeng" 1
+4717 "Rune Wiseth" 1
+4718 "Rut Eva Elisabeth Westberg" 2
+4719 "Ruth Elisabeth Ropstad" 2
+4720 "Sam Carsten Syvertsen" 1
+4721 "Samuel Edward Dyer Ampudia" 1
+4722 "Samuel Langhammer Kvernes" 1
+4723 "Sandra Nan Shaw" 2
+4724 "Sanjiv Ahuja" 1
+4725 "Sarah Elizabeth Ryan" 2
+4726 "Scilla Sofie Treschow Hokholt" 2
+4727 "Scott Irving Kerr" 1
+4728 "Sebastian Sanne Andersen" 1
+4729 "Sebjørn Madsen" 1
+4730 "Selma Kveim" 2
+4731 "Sem Åsland Lima" 1
+4732 "Sem Johannes Ueland" 1
+4733 "Sergio Ivan Dyer Osorio" 1
+4734 "Shahzad Asghar Rana" 2
+4735 "Shelley Margaret Watson" 2
+4736 "Sheyla Dyer Coriat" 2
+4737 "Siavash Payani" 1
+4738 "Sidney Joseph Hynes" 1
+4739 "Sidsel Eidam Kjeldaas Salte" 2
+4740 "Sidsel Marie Roang Johnsen" 2
+4741 "Siew Khim Yar" 2
+4742 "Sigbjørn Bjørkås" 1
+4743 "Sigbjørn Johnsen" 1
+4744 "Sigmund Ekornes" 1
+4745 "Sigmund Monrad Johansen" 1
+4746 "Sigmund Thorsell" 1
+4747 "Signar Kulseth" 1
+4748 "Signe Holta Ringertz" 2
+4749 "Signe Marie Jore Ritterberg" 2
+4750 "Signe Moland" 2
+4751 "Signy Bjørg Leknes" 2
+4752 "Sigrid Benedicte Berg Schilbred" 2
+4753 "Sigrid Ljones" 2
+4754 "Sigrid Narmo" 2
+4755 "Sigrid Opedal Lisæth" 2
+4756 "Sigrun Ingrid Hjelmqvist" 2
+4757 "Sigurd Geir Amland" 1
+4758 "Sigurd Gulbrandsen" 1
+4759 "Sigurd Lange" 1
+4760 "Sigurd Larsen" 1
+4761 "Sigurd Moe Paulsen" 1
+4762 "Sigurd Mølstre" 1
+4763 "Sigurd Peder Viseth" 1
+4764 "Sigurd Strand Teige" 1
+4765 "Sigurdur Einarsson" 1
+4766 "Sigurdur Vidarsson" 1
+4767 "Sigvart Erling Hovland" 1
+4768 "Sigve Medhaug" 1
+4769 "Silje Bue Andreassen" 2
+4770 "Silje Johnsen" 2
+4771 "Silje Steinbakk Nordbø" 2
+4772 "Silvija Seres" 2
+4773 "Silvio Markus Vogel" 1
+4774 "Simen Lieungh" 1
+4775 "Simen Mørdre" 1
+4776 "Simen Skjønsberg" 1
+4777 "Simen Timian Thoresen" 1
+4778 "Simon Eidesvik" 1
+4779 "Simon Hewakilipitige Gunapala" 1
+4780 "Simon John Duncan Campbell" 1
+4781 "Simon Matthew Dudgeon Oliver" 1
+4782 "Simon Munro" 1
+4783 "Simon Øverås" 1
+4784 "Simon Simonsen" 1
+4785 "Sindre Helland" 1
+4786 "Sindre Sæther" 1
+4787 "Sindre Steine Ims" 1
+4788 "Sindre Vattøy" 1
+4789 "Siobhan Moira Ryan" 2
+4790 "Siri-Lill Stensby" 2
+4791 "Siri Beate Hatlen" 2
+4792 "Siri Birgit Teigum" 2
+4793 "Siri Flack" 2
+4794 "Siri Fürst" 2
+4795 "Siri Hamnvik" 2
+4796 "Siri Johnsrud" 2
+4797 "Siri Pettersen Strandenes" 2
+4798 "Siri Røsberg" 2
+4799 "Siri Solheim" 2
+4800 "Siril Steinsholt Visnes" 2
+4801 "Sissel Anette Bergh Bakke" 2
+4802 "Sissel Anita Engen" 2
+4803 "Sissel Berdal Haga" 2
+4804 "Sissel Elisabeth Bache" 2
+4805 "Sissel Gjelstad Vårum" 2
+4806 "Sissel Grefsrud" 2
+4807 "Sissel Kinn Berg" 2
+4808 "Sissel Magny Bakker" 2
+4809 "Sissel Nina Lillevik Larsen" 2
+4810 "Sissel Olsvik" 2
+4811 "Siukoch Payani" 1
+4812 "Siv Anita Eriksen Midtskogen" 2
+4813 "Siv Aunaas" 2
+4814 "Siv Bakke Rivenes" 2
+4815 "Siv Beate Hjellegjerde Martinsen" 2
+4816 "Siv Blanca Børge-Ask" 2
+4817 "Siv Bleikvassli" 2
+4818 "Siv Buhagen" 2
+4819 "Siv Fagerland Christensen" 2
+4820 "Siv Gausdal Eriksen" 2
+4821 "Siv Grete Lea" 2
+4822 "Siv Jønland Staubo" 2
+4823 "Siv Karin Einstabland Kvåli" 2
+4824 "Siv Lippert" 2
+4825 "Siv Sandvik" 2
+4826 "Siw Hege Dahl" 2
+4827 "Sjur Bjarte Talstad" 1
+4828 "Sjur Børve" 1
+4829 "Sjur Erik Lohne" 1
+4830 "Sjur Jørgen Øvrevik" 1
+4831 "Sjur Lars Galtung" 1
+4832 "Sjur Maurstad Bjørnerud" 1
+4833 "Sjur Storaas" 1
+4834 "Slawomir Stochnialek" 1
+4835 "Snorre Marthin Grimsby" 1
+4836 "Snorre Tilseth" 1
+4837 "Solfrid Stavehaug Dalum" 2
+4838 "Solveig Ekeberg" 2
+4839 "Solveig Fredriksen" 2
+4840 "Solveig Jerijærvi" 2
+4841 "Solveig Johanne Busch Svendsen" 2
+4842 "Solveig Kvidal" 2
+4843 "Solveig Marit Krogstad Willumsen" 2
+4844 "Solveig Steinmo" 2
+4845 "Solveig Strand" 2
+4846 "Solveig Tone Høyvik Garten" 2
+4847 "Solveig Torsvik" 2
+4848 "Songul Nordly" 2
+4849 "Sonja Sundgot Johansen" 2
+4850 "Sonny Hoffmann Nielsen" 1
+4851 "Søren Eriksen" 1
+4852 "Søren Poulsen" 1
+4853 "Søren Reinholt Thomsen" 1
+4854 "Søren Stefan Halck Johannsen" 1
+4855 "Staale Waagan Aasestrand" 1
+4856 "Staffan Bohman" 1
+4857 "Ståle Emil Johansen" 1
+4858 "Ståle Knoff Johansen" 1
+4859 "Ståle Kroken" 1
+4860 "Ståle Kyllingstad" 1
+4861 "Ståle Leitvoll" 1
+4862 "Ståle Melvær" 1
+4863 "Ståle Risa" 1
+4864 "Ståle Svenning" 1
+4865 "Steen Parsholt" 1
+4866 "Stefan Bo Gustaf Brolin" 1
+4867 "Stein Aamdal" 1
+4868 "Stein Andre Herigstad Olsen" 1
+4869 "Stein Arne Martinsen" 1
+4870 "Stein Aukner" 1
+4871 "Stein Eirik Bastesen" 1
+4872 "Stein Eirik Johannesen" 1
+4873 "Stein Erik Eliasson" 1
+4874 "Stein Erik Hagen" 1
+4875 "Stein Erik Halvorsen" 1
+4876 "Stein Fines" 1
+4877 "Stein Gunnar Ulve" 1
+4878 "Stein Harald Simonsen" 1
+4879 "Stein Helge Tennebø" 1
+4880 "Stein Holst Annexstad" 1
+4881 "Stein Kvarekvål" 1
+4882 "Stein Martin Mossige" 1
+4883 "Stein Matre" 1
+4884 "Stein Morten Bjelland" 1
+4885 "Stein Ole Larsen" 1
+4886 "Stein Roar Eriksen" 1
+4887 "Stein Roger Godlien" 1
+4888 "Stein Sørevik" 1
+4889 "Stein Ståle Bredal" 1
+4890 "Stein Stugu" 1
+4891 "Stein Surlien" 1
+4892 "Stein Vidar Håland" 1
+4893 "Stein Vidar Westbye" 1
+4894 "Stein Wessel-Aas" 1
+4895 "Steinar Alfred Hansen" 1
+4896 "Steinar Aune" 1
+4897 "Steinar Bertrand Skoland" 1
+4898 "Steinar Børresen" 1
+4899 "Steinar Breidsvoll Hoen" 1
+4900 "Steinar Eikeland" 1
+4901 "Steinar Fossen" 1
+4902 "Steinar Fredriksen" 1
+4903 "Steinar Furan" 1
+4904 "Steinar Gabrielsen" 1
+4905 "Steinar Hennum Johnsen" 1
+4906 "Steinar Ingolf Klausmark" 1
+4907 "Steinar Jacobsen" 1
+4908 "Steinar Johan Engelsen" 1
+4909 "Steinar Krogstad" 1
+4910 "Steinar Kurås" 1
+4911 "Steinar Lindberg" 1
+4912 "Steinar Madsen" 1
+4913 "Steinar Marthinsen" 1
+4914 "Steinar Mykløy" 1
+4915 "Steinar Nickelsen" 1
+4916 "Steinar Nordengen" 1
+4917 "Steinar Normann Johansen" 1
+4918 "Steinar Olaisen" 1
+4919 "Steinar Olsen" 1
+4920 "Steinar Richmond Paulsen" 1
+4921 "Steinar Rødli" 1
+4922 "Steinar Skarstein" 1
+4923 "Steinar Sønsteby" 1
+4924 "Steinar Sørensen" 1
+4925 "Steinar Sørlie" 1
+4926 "Steinar Talmoen" 1
+4927 "Steinar Ter Jung" 1
+4928 "Steinar Vasaasen" 1
+4929 "Steinar Vikingstad" 1
+4930 "Sten Ihlebakke" 1
+4931 "Sten Ole Birger Arntsen" 1
+4932 "Sten Roar Martinsen" 1
+4933 "Sten Sture Larre" 1
+4934 "Stener Kvinnsland" 1
+4935 "Stephan Magni Rune Dahlstrøm" 1
+4936 "Stephan Marc Zeppelin" 1
+4937 "Stephan Omer Theophiel Temmerman" 1
+4938 "Stephen Gravlie Kunz" 1
+4939 "Stephen Knudtzon" 1
+4940 "Stephen Thomas Reeders" 1
+4941 "Stephenie Katherine Grafton" 2
+4942 "Steven Alan Morrell" 1
+4943 "Steven Alan Webster" 1
+4944 "Steven Earl Lambert" 1
+4945 "Steven Rafferty" 1
+4946 "Stewart Gordon Smith" 1
+4947 "Stian Ekornes" 1
+4948 "Stian Erik Gulbrandsen Danenbarger" 1
+4949 "Stian Helgøy" 1
+4950 "Stian Mikkelborg" 1
+4951 "Stian Rustad" 1
+4952 "Stian Skotnes" 1
+4953 "Stig-Gunnar Ødegaard" 1
+4954 "Stig Andersen" 1
+4955 "Stig Andreas Dalen" 1
+4956 "Stig Arne Engen" 1
+4957 "Stig Arve Holmstrand" 1
+4958 "Stig Bakketun" 1
+4959 "Stig Bjarne Larsen" 1
+4960 "Stig Brekke" 1
+4961 "Stig Eide Sivertsen" 1
+4962 "Stig Endre Landrø" 1
+4963 "Stig Fische" 1
+4964 "Stig Göran Martin" 1
+4965 "Stig Grimsgaard Andersen" 1
+4966 "Stig Gunde Haglund" 1
+4967 "Stig Gunnar Røthe" 1
+4968 "Stig Gunnar Stendahl" 1
+4969 "Stig Halvorsen" 1
+4970 "Stig Harald Trygstad" 1
+4971 "Stig Harry Christiansen" 1
+4972 "Stig Hetlevik" 1
+4973 "Stig Johansen" 1
+4974 "Stig Jørgen Stensrud" 1
+4975 "Stig Lande" 1
+4976 "Stig Lennart Karlsson" 1
+4977 "Stig Lennart Vilhelmsson" 1
+4978 "Stig Magnus Herbern" 1
+4979 "Stig Myrland" 1
+4980 "Stig Nesset" 1
+4981 "Stig Olav Jacobsen" 1
+4982 "Stig Roar Fische" 1
+4983 "Stig Terje Sunde" 1
+4984 "Stig Torvund" 1
+4985 "Stig Vold" 1
+4986 "Stig Walter Vikedal" 1
+4987 "Stig Willy Faraas" 1
+4988 "Stina Margareta Gestrelius" 2
+4989 "Stine Fjell" 2
+4990 "Stine Haukanes" 2
+4991 "Stine Rolstad Brenna" 2
+4992 "Stine Steen" 2
+4993 "Sture Fredrik Sandelin" 1
+4994 "Sturla Rusånes" 1
+4995 "Sturla Sand" 1
+4996 "Sturle Skeidsvoll" 1
+4997 "Sujou Kim" 1
+4998 "Sune Sven Morgan Ekberg" 1
+4999 "Susan Christel Schnabel" 2
+5000 "Susan Gail Swenson" 2
+5001 "Susan Guri Peto Scotford" 2
+5002 "Susan Guro Peto Undrum" 2
+5003 "Susan Margaret Cox" 2
+5004 "Susane Keene" 2
+5005 "Susanne Elise Munch Thore" 2
+5006 "Susanne Lene Rangnes Schneider" 2
+5007 "Susanne Lene Schneider" 2
+5008 "Suzanne Dahl" 2
+5009 "Suzanne Marie Lacasse" 2
+5010 "Svanhild Helene Dalsbø" 2
+5011 "Svanhild Torun Odden" 2
+5012 "Svein-Erik Skjelbred" 1
+5013 "Svein-Erik Stiansen" 1
+5014 "Svein-Tore Andersen" 1
+5015 "Svein Aaser" 1
+5016 "Svein Agnarson Lindbak" 1
+5017 "Svein Anders Tunheim" 1
+5018 "Svein Anderssen" 1
+5019 "Svein Anton Bjørnholmen" 1
+5020 "Svein Arild Mathisen" 1
+5021 "Svein Arne Kristoffersen" 1
+5022 "Svein Arne Olsen" 1
+5023 "Svein Atle Daae" 1
+5024 "Svein Bernhard Mathiassen" 1
+5025 "Svein Brustad" 1
+5026 "Svein Dahl" 1
+5027 "Svein Eggen" 1
+5028 "Svein Egil Fjellstad" 1
+5029 "Svein Egil Jansen" 1
+5030 "Svein Eivind Solheim" 1
+5031 "Svein Eivindson Skorstad" 1
+5032 "Svein Ellingsrud" 1
+5033 "Svein Erik Amundsen" 1
+5034 "Svein Erik Nicolaysen" 1
+5035 "Svein Erik Sigurdssøn" 1
+5036 "Svein Erik Veie" 1
+5037 "Svein Flatebø" 1
+5038 "Svein Fuglerud" 1
+5039 "Svein Gåsvær" 1
+5040 "Svein Guldvik Ebeltoft" 1
+5041 "Svein Gullik Eskedal" 1
+5042 "Svein Haare" 1
+5043 "Svein Holbø" 1
+5044 "Svein Ivar Haugom" 1
+5045 "Svein Johnny Høiden" 1
+5046 "Svein Kåre Johnsen" 1
+5047 "Svein Kjell Pettersen" 1
+5048 "Svein Klev" 1
+5049 "Svein Kristian Leer-Salvesen" 1
+5050 "Svein Lang" 1
+5051 "Svein Leif Ytreland" 1
+5052 "Svein Lerberg" 1
+5053 "Svein Lien" 1
+5054 "Svein Magnus Nilsen" 1
+5055 "Svein Milford" 1
+5056 "Svein Mygland" 1
+5057 "Svein Nilsen" 1
+5058 "Svein Olsen" 1
+5059 "Svein Ove Bjørnestad" 1
+5060 "Svein Ove Eimhjellen" 1
+5061 "Svein Ove Strømmen" 1
+5062 "Svein Øvrebø" 1
+5063 "Svein Petter Mørk" 1
+5064 "Svein Ramsay Goli" 1
+5065 "Svein Rennemo" 1
+5066 "Svein Roar Myklevold" 1
+5067 "Svein Roar Sivertsen" 1
+5068 "Svein Sandvik" 1
+5069 "Svein Sigurd Jacobsen" 1
+5070 "Svein Sivertsen" 1
+5071 "Svein Skeie" 1
+5072 "Svein Steen Thomassen" 1
+5073 "Svein Støle" 1
+5074 "Svein Sundsbø" 1
+5075 "Svein Tømmerdal" 1
+5076 "Svein Tore Andersen" 1
+5077 "Svein Tore Holsether" 1
+5078 "Svein Vidar Lia" 1
+5079 "Svein Vier Simensen" 1
+5080 "Svein Wilhelm Faye Lien" 1
+5081 "Sveinulf Øydne" 1
+5082 "Sveinung Andreas Flem" 1
+5083 "Sveinung Dyrdal" 1
+5084 "Sveinung Fagervik" 1
+5085 "Sveinung Hestnes" 1
+5086 "Sveinung Olsen" 1
+5087 "Sveinung Skolt" 1
+5088 "Sveinung Stensland" 1
+5089 "Sveinung Thorvik" 1
+5090 "Sven-Didrik Cappelen Christiansen" 1
+5091 "Sven Aage Lysebo" 1
+5092 "Sven Aage Thoen" 1
+5093 "Sven Anders Gerhard Svensson" 1
+5094 "Sven Arild Andersen" 1
+5095 "Sven Erga" 1
+5096 "Sven Erik Karlsson" 1
+5097 "Sven Erik Klepp" 1
+5098 "Sven Irgens Nilsen" 1
+5099 "Sven Iver Steen" 1
+5100 "Sven Madsen" 1
+5101 "Sven Martin Jönsson" 1
+5102 "Sven Nørgaard" 1
+5103 "Sven Rong" 1
+5104 "Sven Tore Kaasa" 1
+5105 "Sven Tore Larsen" 1
+5106 "Svend Sigaard" 1
+5107 "Svenn Are Jenssen" 1
+5108 "Sverre Aam" 1
+5109 "Sverre Andreas Farstad" 1
+5110 "Sverre Christian Solheim Eriksen" 1
+5111 "Sverre Dale Moen" 1
+5112 "Sverre Eilifssøn Koch" 1
+5113 "Sverre Finn Hurum" 1
+5114 "Sverre Finstad" 1
+5115 "Sverre Halland" 1
+5116 "Sverre Henriksen" 1
+5117 "Sverre Isaksen" 1
+5118 "Sverre Jørgen Tidemand" 1
+5119 "Sverre Kjenne" 1
+5120 "Sverre Kristian Tangen" 1
+5121 "Sverre Leiro" 1
+5122 "Sverre Lorentzen" 1
+5123 "Sverre Magne Sondbø" 1
+5124 "Sverre Morten Blix" 1
+5125 "Sverre Narvesen" 1
+5126 "Sverre Ravnsborg Lie" 1
+5127 "Sverre Skogen" 1
+5128 "Sverre Stavseth" 1
+5129 "Sverre Thornes" 1
+5130 "Sverre Tore Evensen" 1
+5131 "Sverre Tveit" 1
+5132 "Sverre Vagle" 1
+5133 "Sverre Valvik" 1
+5134 "Synne Syrrist" 2
+5135 "Synnøve Aschim Hofsmarken" 2
+5136 "Synnøve Grinnen Ervik" 2
+5137 "Synnøve Janne Brudevoll" 2
+5138 "Synnøve Jensen" 2
+5139 "Synnøve Ramstad" 2
+5140 "Synnøve Seglem" 2
+5141 "Synnøve Tverlid" 2
+5142 "Tage Benedikt Bundgaard" 1
+5143 "Tarmo Johan Tuominen" 1
+5144 "Tatjana Ilic" 2
+5145 "Ted Andreas Mollan" 1
+5146 "Ted Gunnar Christer Kalborg" 1
+5147 "Ted Gunnat C Kalborg" 1
+5148 "Terhi Helin Koipijrvi" 2
+5149 "Terje Andersen" 1
+5150 "Terje Ask-Henriksen" 1
+5151 "Terje Birger Hannisdahl" 1
+5152 "Terje Børresen" 1
+5153 "Terje Eidsvåg" 1
+5154 "Terje Engeseth" 1
+5155 "Terje Espeland" 1
+5156 "Terje Finn Schøyen" 1
+5157 "Terje Frafjord" 1
+5158 "Terje Friestad" 1
+5159 "Terje Gromholt" 1
+5160 "Terje Gunnulfsen" 1
+5161 "Terje Hagevang" 1
+5162 "Terje Halvorsen" 1
+5163 "Terje Hamre" 1
+5164 "Terje Harry Sparbo" 1
+5165 "Terje Heggem" 1
+5166 "Terje Ivar Wilhelmsen" 1
+5167 "Terje Jensvik" 1
+5168 "Terje Johan Wulff" 1
+5169 "Terje Johannes Kolberg Andersen" 1
+5170 "Terje Johansen" 1
+5171 "Terje Johnsen" 1
+5172 "Terje Kobro" 1
+5173 "Terje Landsgård" 1
+5174 "Terje Lie" 1
+5175 "Terje Løver Andersen" 1
+5176 "Terje Mathisen" 1
+5177 "Terje Melaa" 1
+5178 "Terje Mellemstrand" 1
+5179 "Terje Meyer Olsen" 1
+5180 "Terje Moe Gustavsen" 1
+5181 "Terje Morten Eidsmo" 1
+5182 "Terje Myhre" 1
+5183 "Terje Namtvedt" 1
+5184 "Terje Nautnes" 1
+5185 "Terje Navjord" 1
+5186 "Terje Nesbakken" 1
+5187 "Terje Nordskaug" 1
+5188 "Terje Olav Hellebø" 1
+5189 "Terje Olav Olsson" 1
+5190 "Terje Osmundsen" 1
+5191 "Terje Petter Tellefsen" 1
+5192 "Terje Ramm" 1
+5193 "Terje Rekdal" 1
+5194 "Terje Richard Venold" 1
+5195 "Terje Rogne" 1
+5196 "Terje Roll Danielsen" 1
+5197 "Terje Sæterli" 1
+5198 "Terje Sætrevik" 1
+5199 "Terje Sandberg" 1
+5200 "Terje Søland" 1
+5201 "Terje Solberg" 1
+5202 "Terje Sølna" 1
+5203 "Terje Sommer" 1
+5204 "Terje Stabæk" 1
+5205 "Terje Thon" 1
+5206 "Terje Uthus" 1
+5207 "Terje Utstrand" 1
+5208 "Terje Vareberg" 1
+5209 "Terje Vidar Iversen" 1
+5210 "Terje Wahl" 1
+5211 "Terje Walther Christoffersen" 1
+5212 "Terje Werner Straume" 1
+5213 "Terry-Ole Whittall" 1
+5214 "Tharald Brøvig" 1
+5215 "Theresa Comiskey Olsen" 2
+5216 "Therese Fische" 2
+5217 "Therese Log Bergjord" 2
+5218 "Thom Erik Borgen" 1
+5219 "Thomas Aanmoen" 1
+5220 "Thomas Axel Kielland" 1
+5221 "Thomas Axel Wilhelm Wachtmeister" 1
+5222 "Thomas Beck" 1
+5223 "Thomas Christian Høegh" 1
+5224 "Thomas Emanuel Gram" 1
+5225 "Thomas Falck" 1
+5226 "Thomas Fredrick Borgen" 1
+5227 "Thomas Fredrik Olsen" 1
+5228 "Thomas Gitlesen" 1
+5229 "Thomas Glück" 1
+5230 "Thomas Gunnar Røed" 1
+5231 "Thomas Hoel" 1
+5232 "Thomas Høgebøl" 1
+5233 "Thomas Holtan Leskovsky" 1
+5234 "Thomas Jan Folke Karlsson" 1
+5235 "Thomas Joseph Fussell" 1
+5236 "Thomas Leander Øybø" 1
+5237 "Thomas Nils Robert Nilsson" 1
+5238 "Thomas Nørgaard" 1
+5239 "Thomas Reppe Wetting" 1
+5240 "Thomas Riddervold Wolff" 1
+5241 "Thomas Risstubben" 1
+5242 "Thomas Robert Bates" 1
+5243 "Thomas Sassan Farhang" 1
+5244 "Thomas Støkken" 1
+5245 "Thomas von Westen Engelhart" 1
+5246 "Thomas Wilhelmsen" 1
+5247 "Thor Alexander Krafft" 1
+5248 "Thor Andersen" 1
+5249 "Thor Arild Bolstad" 1
+5250 "Thor Arne Falkanger" 1
+5251 "Thor Arne Talseth" 1
+5252 "Thor Atle Refsdal" 1
+5253 "Thor Christian Rønning" 1
+5254 "Thor Egil Five" 1
+5255 "Thor Erik Sem" 1
+5256 "Thor Espen Bråten" 1
+5257 "Thor Fagerthun" 1
+5258 "Thor Gullik Kamfjord" 1
+5259 "Thor Håkstad" 1
+5260 "Thor Inge Bernhardsen" 1
+5261 "Thor Inge Willumsen" 1
+5262 "Thor Johan Østby" 1
+5263 "Thor Lien" 1
+5264 "Thor Magne Stifoss" 1
+5265 "Thoralf Granerød" 1
+5266 "Thorbjørn Fjærtoft Pedersen" 1
+5267 "Thorbjørn Foss" 1
+5268 "Thorbjørn Graarud" 1
+5269 "Thorbjørn Øybø" 1
+5270 "Thore Haakon Johnsen" 1
+5271 "Thore Kornmo" 1
+5272 "Thore Michalsen" 1
+5273 "Thorleif Birger Hellesøy" 1
+5274 "Thorleif Enger" 1
+5275 "Thorleif Krarup" 1
+5276 "Thorleif Kristiansen" 1
+5277 "Thorleif Thormodsen" 1
+5278 "Thorolf Kildal" 1
+5279 "Thorstein Berg" 1
+5280 "Thorstein Bostad" 1
+5281 "Thorstein Øverland" 1
+5282 "Thorsteinn Mar Baldvinsson" 1
+5283 "Thorulf Hartmann" 1
+5284 "Tielong Liu" 1
+5285 "Ties Tiessen" 1
+5286 "Timothy Storrs Jenks" 1
+5287 "Tina Christensen" 2
+5288 "Tine Gottlob Kirstan Wollebekk" 2
+5289 "Titas Sereika" 1
+5290 "Tito Botelho Martins Junior" 1
+5291 "Tollak Melberg" 1
+5292 "Tom-Even Mortensen" 1
+5293 "Tom-Henry Knudsen" 1
+5294 "Tom Arne Skullestad" 1
+5295 "Tom Arne Solhaug" 1
+5296 "Tom Arthur Solberg" 1
+5297 "Tom Berby" 1
+5298 "Tom Bernhard Knudsen" 1
+5299 "Tom Bjørnsen" 1
+5300 "Tom Bringsværd" 1
+5301 "Tom Buhl" 1
+5302 "Tom Buvang" 1
+5303 "Tom Coward" 1
+5304 "Tom Edward Pike" 1
+5305 "Tom Egil Flata" 1
+5306 "Tom Furulund" 1
+5307 "Tom Grøndahl" 1
+5308 "Tom Haviland Knoff" 1
+5309 "Tom Herulf Holtermann Andersen" 1
+5310 "Tom Johannessen" 1
+5311 "Tom Kjetil Bøe" 1
+5312 "Tom Kornelius Jensen" 1
+5313 "Tom Kristiansen" 1
+5314 "Tom Kristoffersen" 1
+5315 "Tom Lieske Nielsen" 1
+5316 "Tom Lysaker" 1
+5317 "Tom Nystad" 1
+5318 "Tom Petersen" 1
+5319 "Tom Robin Edvardsen" 1
+5320 "Tom Røhne" 1
+5321 "Tom Roland Nyman" 1
+5322 "Tom Røtjer" 1
+5323 "Tom Rune Stokstad" 1
+5324 "Tom Ruud" 1
+5325 "Tom Scharning" 1
+5326 "Tom Stemre" 1
+5327 "Tom Thorstensen" 1
+5328 "Tom Vidar Rygh" 1
+5329 "Tom Yngve Melbye Eide" 1
+5330 "Tomas Åke Alopaeus" 1
+5331 "Tomas Kucinskas" 1
+5332 "Tommy Angeltveit" 1
+5333 "Tommy Eikrem" 1
+5334 "Tommy Fjelde" 1
+5335 "Tommy Højland Andersen" 1
+5336 "Tommy Jørgensen" 1
+5337 "Tommy Kristensen" 1
+5338 "Tommy Sander Aldrin" 1
+5339 "Tommy Sveen" 1
+5340 "Tommy Wedel" 1
+5341 "Tone-Merethe Gamlemshaug" 2
+5342 "Tone Bjørnov" 2
+5343 "Tone Cathrine Lunde Bakker" 2
+5344 "Tone Dybedal" 2
+5345 "Tone Helen Hanken" 2
+5346 "Tone Høibakk" 2
+5347 "Tone Kvåle" 2
+5348 "Tone Liset" 2
+5349 "Tone Margrethe Reierselmoen" 2
+5350 "Tone Margrethe Reiertsen" 2
+5351 "Tone Merete Østensen" 2
+5352 "Tone Mohn-Haukland" 2
+5353 "Tone Petersheim" 2
+5354 "Tone Sandsdalen Elton" 2
+5355 "Tone Tveito Eidnes" 2
+5356 "Tone Wåge" 2
+5357 "Tonje Sivesindtajet" 2
+5358 "Tonje Solvang" 2
+5359 "Tonje Vegarud" 2
+5360 "Tønnes Herman Thomstad" 1
+5361 "Tonny Mastad" 1
+5362 "Tor-Åge Schei" 1
+5363 "Tor-Erik Schumann Olsen" 1
+5364 "Tor Alfheim" 1
+5365 "Tor Amundsen" 1
+5366 "Tor Anders Braun" 1
+5367 "Tor Anders Elvegård" 1
+5368 "Tor Arild Østbø" 1
+5369 "Tor Arne Simonsen" 1
+5370 "Tor Arne Viksjø" 1
+5371 "Tor Bergstrøm" 1
+5372 "Tor Bjerkan" 1
+5373 "Tor Christen Nielsen" 1
+5374 "Tor Dagfinn Schåthun" 1
+5375 "Tor Dahl" 1
+5376 "Tor Dahle" 1
+5377 "Tor Edvard Hestvik" 1
+5378 "Tor Eivind Åsland" 1
+5379 "Tor Elholm" 1
+5380 "Tor Erik Håland" 1
+5381 "Tor Erik Mørk" 1
+5382 "Tor Fredrik Johansen" 1
+5383 "Tor Fredrik Kielland" 1
+5384 "Tor Fredrik Wisløff" 1
+5385 "Tor Haddeland" 1
+5386 "Tor Hamnes" 1
+5387 "Tor Heyerdahl Augdal" 1
+5388 "Tor Hjelmaas Larsen" 1
+5389 "Tor Jeppestøl Strandberg" 1
+5390 "Tor Johan Bjerkedal" 1
+5391 "Tor Johan Strand" 1
+5392 "Tor Johan Stuve" 1
+5393 "Tor Kristian Larsen" 1
+5394 "Tor Magne Lønnum" 1
+5395 "Tor Magne Pettersen" 1
+5396 "Tor Melvin Nordvold" 1
+5397 "Tor Mørne" 1
+5398 "Tor Nygaard" 1
+5399 "Tor Nygård" 1
+5400 "Tor Øivind Kirkeng" 1
+5401 "Tor Olav Trøim" 1
+5402 "Tor Ole Hanssen" 1
+5403 "Tor Ole Olsen" 1
+5404 "Tor Olsen" 1
+5405 "Tor Olsen Husø" 1
+5406 "Tor Søve Syverud" 1
+5407 "Tor Stian Holte" 1
+5408 "Tor Ytre-Eide" 1
+5409 "Toralf Egil Hvidsten" 1
+5410 "Toralf Ekelund" 1
+5411 "Toralf Østli" 1
+5412 "Torbjørn Gladsø" 1
+5413 "Torbjørn Haugen" 1
+5414 "Torbjørn Johannson" 1
+5415 "Torbjørn Johnsen" 1
+5416 "Torbjørn Lindrup Bjørklund" 1
+5417 "Torbjørn Martinsen" 1
+5418 "Torbjørn Øgle Rud" 1
+5419 "Torbjørn Per Hjertø" 1
+5420 "Tord Anders Magnus Wallgren" 1
+5421 "Tordis Birgitte Vitsø Kjørsvik" 2
+5422 "Tore Amundsen" 1
+5423 "Tore Anders Finnvik" 1
+5424 "Tore Andersen" 1
+5425 "Tore Andre Haugen" 1
+5426 "Tore Berntsen" 1
+5427 "Tore Birkeland" 1
+5428 "Tore Børre Torgersen" 1
+5429 "Tore Borthen" 1
+5430 "Tore Egil Holte" 1
+5431 "Tore Engebretsen" 1
+5432 "Tore Enger" 1
+5433 "Tore Georg Høghaug" 1
+5434 "Tore Gjedebo" 1
+5435 "Tore Grønbech" 1
+5436 "Tore Grøttum" 1
+5437 "Tore Gustav Drivenes" 1
+5438 "Tore Haarberg" 1
+5439 "Tore Hammer" 1
+5440 "Tore Hansen Lind" 1
+5441 "Tore Heldrup Rasmussen" 1
+5442 "Tore Hopen" 1
+5443 "Tore Jarl Hjelseth" 1
+5444 "Tore Johan Fjell" 1
+5445 "Tore Kjelsrud" 1
+5446 "Tore Kjos" 1
+5447 "Tore Lilloe-Olsen" 1
+5448 "Tore Martin Svanheld" 1
+5449 "Tore Medhus" 1
+5450 "Tore Mengshoel" 1
+5451 "Tore Moger" 1
+5452 "Tore Mong" 1
+5453 "Tore Morten Randen" 1
+5454 "Tore Nedland" 1
+5455 "Tore Nielsen" 1
+5456 "Tore Nyhus" 1
+5457 "Tore Obrestad" 1
+5458 "Tore Oddbjørn Andreassen" 1
+5459 "Tore Oddmund Berg" 1
+5460 "Tore Olaf Rimmereid" 1
+5461 "Tore Reed Mohn" 1
+5462 "Tore Reidar Bergersen" 1
+5463 "Tore Sandnæs" 1
+5464 "Tore Schiøtz" 1
+5465 "Tore Slåttsveen" 1
+5466 "Tore Tenold" 1
+5467 "Tore Thorstensen" 1
+5468 "Tore Ulstein" 1
+5469 "Tore Valderhaug" 1
+5470 "Tore Vestheim" 1
+5471 "Tore Vrålstad" 1
+5472 "Tore Wendelbo Røtvold" 1
+5473 "Torfinn Helge Fjellstad" 1
+5474 "Torfinn Kildal" 1
+5475 "Torfinn Steinar Ege" 1
+5476 "Torgeir Dahl" 1
+5477 "Torgeir Haugland" 1
+5478 "Torgeir Laberg" 1
+5479 "Torgeir Mjør Grimsrud" 1
+5480 "Torgeir Strøm" 1
+5481 "Torger Nils Lien" 1
+5482 "Torger Reve" 1
+5483 "Torgrim Redalen" 1
+5484 "Torgrim Reitan" 1
+5485 "Torhild Widvey" 2
+5486 "Toril Anita Nagelhus Hernes" 2
+5487 "Toril Britt Brandtzæg" 2
+5488 "Toril Eidesvik" 2
+5489 "Toril Evy Jeremiassen" 2
+5490 "Toril Garntangen" 2
+5491 "Toril Nag" 2
+5492 "Torild Bratt Lothe" 2
+5493 "Torild Skogsholm" 2
+5494 "Torill Eek" 2
+5495 "Torill Evy Jeremiassen" 2
+5496 "Torill Muren" 2
+5497 "Torill Øyvik" 2
+5498 "Torill Rambjør" 2
+5499 "Torill Sivertsen Lie" 2
+5500 "Torill Tysnes Lund" 2
+5501 "Torkel Ystgaard" 1
+5502 "Torkil Jevnaker" 1
+5503 "Torleif Algerøy" 1
+5504 "Tormod Andreas Nordli" 1
+5505 "Tormod Hans Petter Fjärem" 1
+5506 "Tormod Hermansen" 1
+5507 "Tormod Schartum" 1
+5508 "Tormod Sigfred Haug" 1
+5509 "Tormod Stene-Johansen" 1
+5510 "Tormod Stensland" 1
+5511 "Torolf Rein" 1
+5512 "Torstein Amund Opdahl" 1
+5513 "Torstein Bomann-Larsen" 1
+5514 "Torstein Ingvald Tvenge" 1
+5515 "Torstein Lange Larssen" 1
+5516 "Torstein Moe" 1
+5517 "Torstein Nesje" 1
+5518 "Torstein Søland" 1
+5519 "Torsteinn Erlingsson" 1
+5520 "Torunn Elin Eide Olsen" 2
+5521 "Torunn Elise Kvisberg" 2
+5522 "Torunn Kverneland Thiemer" 2
+5523 "Torunn Lange Gjedebo" 2
+5524 "Torunn Nerby" 2
+5525 "Torunn Stangeland" 2
+5526 "Torvald Eriksen" 1
+5527 "Torvall Arne Lind" 1
+5528 "Tov Ole-Jacob Westby" 1
+5529 "Tove Auset" 2
+5530 "Tove Elin Nedreberg" 2
+5531 "Tove Elisabeth Pettersen" 2
+5532 "Tove Hassel" 2
+5533 "Tove Heggum Elshøy" 2
+5534 "Tove Helen Tyberø" 2
+5535 "Tove Hjellegjerde" 2
+5536 "Tove Irene Steen" 2
+5537 "Tove Johanne Wangensten" 2
+5538 "Tove Larsen Berntsen" 2
+5539 "Tove Magnussen" 2
+5540 "Tove Marie Egeness" 2
+5541 "Tove Pedersen Berge" 2
+5542 "Tove Raanes" 2
+5543 "Tove Svensen" 2
+5544 "Trine Birgitte Waag" 2
+5545 "Trine Bjøro" 2
+5546 "Trine Danielsen" 2
+5547 "Trine Eilefsen" 2
+5548 "Trine Folkow" 2
+5549 "Trine Garshol" 2
+5550 "Trine Gerd Haudemann-Andersen" 2
+5551 "Trine Hartmann Klungland" 2
+5552 "Trine Kloster" 2
+5553 "Trine Loe" 2
+5554 "Trine Lyngaas Higson" 2
+5555 "Trine Margrethe Seeberg" 2
+5556 "Trine Margrethe Seeberg Rommetveit" 2
+5557 "Trine Must" 2
+5558 "Trine Sæther Romuld" 2
+5559 "Trine Sellæg Aulie" 2
+5560 "Trine Syvertsen" 2
+5561 "Trine Theie Gustavsen" 2
+5562 "Trond Andreas Andersen" 1
+5563 "Trond Andreas Hatlestad" 1
+5564 "Trond Arvid Førde" 1
+5565 "Trond Asle Strand" 1
+5566 "Trond Bakke" 1
+5567 "Trond Berger" 1
+5568 "Trond Bjørnøy" 1
+5569 "Trond Brandsrud" 1
+5570 "Trond Egil Thorrud" 1
+5571 "Trond Elde" 1
+5572 "Trond Erik Wennberg" 1
+5573 "Trond Gravem" 1
+5574 "Trond Gullaksen" 1
+5575 "Trond Gunnar Karlsen" 1
+5576 "Trond Håkon Øverland" 1
+5577 "Trond Hermansen" 1
+5578 "Trond Horneland" 1
+5579 "Trond Indrebø Hovland" 1
+5580 "Trond Inge Rødland" 1
+5581 "Trond Jaabæk" 1
+5582 "Trond Jelsnes Undrum" 1
+5583 "Trond Johannesen Laeng" 1
+5584 "Trond Knutsen" 1
+5585 "Trond Kristian Bjerke" 1
+5586 "Trond Lindøe" 1
+5587 "Trond Løkke" 1
+5588 "Trond Morten Hassum" 1
+5589 "Trond Oppedal" 1
+5590 "Trond Rino Delbekk" 1
+5591 "Trond Sæther" 1
+5592 "Trond Sandbu" 1
+5593 "Trond Skalstad Pedersen" 1
+5594 "Trond Søraas" 1
+5595 "Trond Staff" 1
+5596 "Trond Syvertsen" 1
+5597 "Trond Tviberg" 1
+5598 "Trond Utne" 1
+5599 "Trond Vernegg" 1
+5600 "Trond Von Zernichow Fladvad" 1
+5601 "Tronn Åskar Skjerstad" 1
+5602 "Trude Malterud" 2
+5603 "Trude Slettli" 2
+5604 "Trude Solveig Eidsheim" 2
+5605 "Trude Svartdal Husebø" 2
+5606 "Trude Wenaas" 2
+5607 "Truls August Christensen" 1
+5608 "Truls Berntsen" 1
+5609 "Truls Holthe" 1
+5610 "Truls Ragnar Kleiven" 1
+5611 "Truls Roll" 1
+5612 "Truls Ståle Larsen" 1
+5613 "Trygve Arnesen" 1
+5614 "Trygve Bruvik" 1
+5615 "Trygve Grindheim" 1
+5616 "Trygve Hegnar" 1
+5617 "Trygve Holtskog" 1
+5618 "Trygve Kristian Størseth" 1
+5619 "Trygve Kroepelien" 1
+5620 "Trygve Nordby" 1
+5621 "Trygve Stener Sletteberg" 1
+5622 "Trym Jacobsen" 1
+5623 "Trym Skeie" 1
+5624 "Turid Elisabeth Solvang" 2
+5625 "Turid Enoksen" 2
+5626 "Turid Fluge Svenneby" 2
+5627 "Turid Grotmoll" 2
+5628 "Turid Lande Solheim" 2
+5629 "Tuva Kristine Aas Bakke" 2
+5630 "Tyra Marie Hetland" 2
+5631 "Uffe Gardel" 1
+5632 "Ulf Atle Hansen" 1
+5633 "Ulf Dahl Ryen" 1
+5634 "Ulf Einar Lem" 1
+5635 "Ulf Karlsen" 1
+5636 "Ulf Kielland-Lund" 1
+5637 "Ulf Martin Henricson" 1
+5638 "Ulf Olof Petersson" 1
+5639 "Ulf Ristebråten" 1
+5640 "Ulf Sture Rolfsen" 1
+5641 "Ulrica Slåne" 2
+5642 "Ulrich Gellert" 1
+5643 "Ulrich Janbernd Heinz Georg Holtz" 1
+5644 "Ulrik Andrew Smith" 1
+5645 "Ulrik Hoff" 1
+5646 "Ulrika Dellby" 2
+5647 "Ulrika Elisabeth Carlsson" 2
+5648 "Ulrike Handel" 2
+5649 "Unni Engan" 2
+5650 "Unni Fossberg Tefre" 2
+5651 "Unni Iren Kristiansen" 2
+5652 "Unni Irene Tenold" 2
+5653 "Unni Marie Rådalen" 2
+5654 "Uno Helge Grønlie" 1
+5655 "Uta Stoltenberg" 2
+5656 "Valborg Lundegaard" 2
+5657 "Valerie Edith Bosse" 2
+5658 "Valgeir Palsson" 2
+5659 "Vasileios Theofanopoulos" 1
+5660 "Vegard Sævik" 1
+5661 "Vegard Sondre Annweiler" 1
+5662 "Vegard Stuan" 1
+5663 "Vegard Wollan" 1
+5664 "Velaug Golten" 2
+5665 "Venche Grinderud Leirmo" 2
+5666 "Veroslav Sedlak" 1
+5667 "Vibeke Bjørkavåg" 2
+5668 "Vibeke Hammer Madsen" 2
+5669 "Vibeke Heidenreich" 2
+5670 "Vibeke Holsen" 2
+5671 "Vibeke Kristin Svendsby" 2
+5672 "Vibeke Strømme" 2
+5673 "Vicki Ruth Messer" 2
+5674 "Victoria Høydal" 2
+5675 "Vidar Fjeld Lillebø" 1
+5676 "Vidar Furuholt" 1
+5677 "Vidar Hansson" 1
+5678 "Vidar Iversen" 1
+5679 "Vidar Kjesbu" 1
+5680 "Vidar Lande" 1
+5681 "Vidar Mortensen" 1
+5682 "Vidar Nordtømme" 1
+5683 "Vidar Skaar" 1
+5684 "Vidar Torsøe" 1
+5685 "Vidar Udjus" 1
+5686 "Vidar Wang Ullenrød" 1
+5687 "Vigdis Abrahamsen Grøndahl" 2
+5688 "Vigdis Diesen" 2
+5689 "Vigdis Elsfjordstrand" 2
+5690 "Vigdis Foldøy" 2
+5691 "Vigdis Føllesdal" 2
+5692 "Vigdis Mathisen" 2
+5693 "Vigdis Vollset" 2
+5694 "Viktor Bela Sandland" 1
+5695 "Viktor Helmer Sørensen" 1
+5696 "Villy Andre Gjersvik" 1
+5697 "Vivi-Ann Ekanger" 2
+5698 "Vivi Klinge-Osen" 2
+5699 "Vivian Årdal" 2
+5700 "Viviane Maria Bonini Carolo" 2
+5701 "Volker Hermann Ullrich" 1
+5702 "Walter Sognnes" 1
+5703 "Wenche Aannestad" 2
+5704 "Wenche Brateng" 2
+5705 "Wenche Christenson Olstad" 2
+5706 "Wenche Collett Gordon" 2
+5707 "Wenche Elvegård Fannemel" 2
+5708 "Wenche Helene Kaspersen" 2
+5709 "Wenche Henriksen Redzepi" 2
+5710 "Wenche Holen" 2
+5711 "Wenche Karin Nistad" 2
+5712 "Wenche Kjølås" 2
+5713 "Wenche Kristine Rettedal" 2
+5714 "Wenche Marie Agerup" 2
+5715 "Wenche Nelly A Eimo" 2
+5716 "Wenche Nelly Albertina Rolfsen Sandsborg" 2
+5717 "Wenche Ødeskaug" 2
+5718 "Wenche Skorge" 2
+5719 "Wenche Stuvland Knygh" 2
+5720 "Werner Herbert Fuchs" 1
+5721 "Werner Larsen" 1
+5722 "Werner Østbye" 1
+5723 "Whitney Ashley Bower" 2
+5724 "Widar Olsen" 1
+5725 "Widar Salbuvik" 1
+5726 "Wilfredo Angel Caceres Monroe" 1
+5727 "Wilhelm Christian Magelssen" 1
+5728 "Wilhelm Loennecken Holst" 1
+5729 "Willem Korndörffer" 1
+5730 "William Clelland Lowe" 1
+5731 "William Gregory Coleman" 1
+5732 "William Herman Crown" 1
+5733 "William J Raduchel" 1
+5734 "William Mccall" 1
+5735 "William Paus" 1
+5736 "William Raymond Leclair" 1
+5737 "William Raymond Salaneck" 1
+5738 "William Roger Kearsley" 1
+5739 "Willow-Ann Melissa Keats" 2
+5740 "Willy Anker Hansen" 1
+5741 "Willy Arnold Bjørnli" 1
+5742 "Willy Furnes" 1
+5743 "Willy G E Vandomael" 1
+5744 "Willy Gautvik" 1
+5745 "Wojtech Andrzej Sargalski" 1
+5746 "Wolfgang Michael Schnetzer" 1
+5747 "Wollert Hvide" 1
+5748 "Xavier Denis Yon" 1
+5749 "Xu Chen" 2
+5750 "Yaping Wang" 2
+5751 "Yngvar Andreas Aagaard" 1
+5752 "Yngvar Backer Heide" 1
+5753 "Yngvar Paus" 1
+5754 "Yngvar Reinholdt Wernersen" 1
+5755 "Yngvar Skoland" 1
+5756 "Yngve Gjethammer" 1
+5757 "Yngve Haldorsen" 1
+5758 "Yngve Helmer Johan Hågensen" 1
+5759 "Yngve Myhre" 1
+5760 "Yngve Nyheim" 1
+5761 "Yngvil Bjerve" 2
+5762 "Yrjö Matti Kalervo Julin" 1
+5763 "Yuhong Jin Hermansen" 2
+5764 "Yvonne Berntzen" 2
+5765 "Yvonne Skramstad" 2
+5766 "Zhong Bei" 2
+5767 "Zuzana Muranska" 2

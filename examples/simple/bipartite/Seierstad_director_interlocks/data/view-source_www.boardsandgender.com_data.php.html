@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/><title>Boards and Gender</title>
+<style type="text/css" media="screen">
+@import url(style.css);
+</style>
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="application-name" content="Boards and Gender" />
+<meta name="msapplication-starturl" content="http://www.boardsandgender.com/" />
+
+</head>
+<body>
+<div id="thebox">
+  <div id="logo"><strong>Boards</strong> and <strong>Gender</strong></div>
+  <div id="nav">
+  <ul>
+    <li><a href="index.php">Home</a></li>
+	<li>|</li>
+	<li><a href="trends_proportion.php">Proportion</a></li>
+	<li>|</li>
+	<li><a href="trends_prominence.php">Prominence</a></li>
+	<li>|</li>
+	<li><a href="trends_social_capital.php">Social Capital</a></li>
+	<li>|</li>
+	<li><a href="data.php">Underlying Data</a></li>
+  </ul>
+</div>
+<div id="content">
+
+<p>The key goal of the paper where to understand the Norwegian gender representation law. We went through substantial effort to collect the necessary data to only investigate one side of the law. To allow other researchers to build on our work, we have made the data used for this research project available.</p>
+
+<p>This work has taken up quite a bit of our time on the side of our main projects. Please cite the paper if you use the data.</p>
+<p class="padding">Seierstad, C., Opsahl, T. (2011). For the few not the many? The effects of affirmative action on presence, prominence, and social capital of female directors in Norway. Scandinavian Journal of Management 27 (1), 44-54</p>
+
+<h1>The companies studied</h1>
+<p>We collected a list of all the 384 public limited companies in Norway (Allmennaksjeselskap or ASA) that were available online through the Norwegian Business Register on August 5, 2009. We chose these companies as they are the ones bound by the gender representation law. The <a href="data/data_companies.txt" target="_blank">companies-file</a> contains the list of companies with the following columns:</p>
+<ol><li>An identifier that we assigned to each company</li><li>The organisation number</li><li>The full name</li><li>The registered postcode and city</li></ol>
+
+<h1>People included in our study</h1>
+<p>Based on the companies' boards of directors, we extracted a list with the names of all the directors. From this list, we excluded employee representatives as the legislation does not affect them in the same way. Since mistakes could have occurred while entering the data and people can change their name, this list was manually cleaned by studying the compositions over time and comparing the changes. For example, Alexandra Bech Gjørv has been a director of Schibsted ASA from 2001 until 2007. However, in 2001 and 2002, her name was listed as simply Alexandra Bech. Without the manual cleaning, she would have been included as two people in the dataset.</p>
+<p>To determine the sex of the directors in our dataset, we collected lists of all male and all female first names belonging to more than 200 people in Norway from Statistics Norway. We cross-referenced these two lists with the first names of the directors. However, some first names were not in either of the lists, and some first names were included in both lists. In an effort to avoid having missing data, we conducted a web search to determine the gender of directors with these names.</p>
+<p>The <a href="data/data_people.txt" target="_blank">people-file</a> contains the list of directors with the following columns:</p>
+<ol><li>An identifier that we assigned to each individual</li><li>The full name</li><li>The gender</li></ol>
+
+<h1>Relational data</h1>
+<p>For each month from May 2002, we have the affiliation of directors to boards (two-mode network) and the inter-personal network among directors (one-mode network). The two-mode network files is a list of affilitations with the company identifier that we assigned first and then the individual identified. Similarly, the inter-personal network files is a list of ties between individuals.</p>
+
+<table class="tore" align="center">
+  <tr><th>Month</th><th>Two-mode network</th><th>One-mode network</th><th>&nbsp;&nbsp;&nbsp;</th><th>Month</th><th>Two-mode network</th><th>One-mode network</th>
+  </tr>
+  <tr>
+<td>May 2002</td><td><a href="data/net2m/net2m_2002-05-01.txt" target="_blank">net2m_2002-05-01</a></td><td><a href="data/net1m/net1m_2002-05-01.txt" target="_blank">net1m_2002-05-01</a></td>
+<td></td>
+<td>June 2002</td><td><a href="data/net2m/net2m_2002-06-01.txt" target="_blank">net2m_2002-06-01</a></td><td><a href="data/net1m/net1m_2002-06-01.txt" target="_blank">net1m_2002-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2002</td><td><a href="data/net2m/net2m_2002-07-01.txt" target="_blank">net2m_2002-07-01</a></td><td><a href="data/net1m/net1m_2002-07-01.txt" target="_blank">net1m_2002-07-01</a></td>
+<td></td>
+<td>August 2002</td><td><a href="data/net2m/net2m_2002-08-01.txt" target="_blank">net2m_2002-08-01</a></td><td><a href="data/net1m/net1m_2002-08-01.txt" target="_blank">net1m_2002-08-01</a></td>
+  </tr>
+  <tr>
+<td>September 2002</td><td><a href="data/net2m/net2m_2002-09-01.txt" target="_blank">net2m_2002-09-01</a></td><td><a href="data/net1m/net1m_2002-09-01.txt" target="_blank">net1m_2002-09-01</a></td>
+<td></td>
+<td>October 2002</td><td><a href="data/net2m/net2m_2002-10-01.txt" target="_blank">net2m_2002-10-01</a></td><td><a href="data/net1m/net1m_2002-10-01.txt" target="_blank">net1m_2002-10-01</a></td>
+  </tr>
+  <tr>
+<td>November 2002</td><td><a href="data/net2m/net2m_2002-11-01.txt" target="_blank">net2m_2002-11-01</a></td><td><a href="data/net1m/net1m_2002-11-01.txt" target="_blank">net1m_2002-11-01</a></td>
+<td></td>
+<td>December 2002</td><td><a href="data/net2m/net2m_2002-12-01.txt" target="_blank">net2m_2002-12-01</a></td><td><a href="data/net1m/net1m_2002-12-01.txt" target="_blank">net1m_2002-12-01</a></td>
+  </tr>
+  <tr>
+<td>January 2003</td><td><a href="data/net2m/net2m_2003-01-01.txt" target="_blank">net2m_2003-01-01</a></td><td><a href="data/net1m/net1m_2003-01-01.txt" target="_blank">net1m_2003-01-01</a></td>
+<td></td>
+<td>February 2003</td><td><a href="data/net2m/net2m_2003-02-01.txt" target="_blank">net2m_2003-02-01</a></td><td><a href="data/net1m/net1m_2003-02-01.txt" target="_blank">net1m_2003-02-01</a></td>
+  </tr>
+  <tr>
+<td>March 2003</td><td><a href="data/net2m/net2m_2003-03-01.txt" target="_blank">net2m_2003-03-01</a></td><td><a href="data/net1m/net1m_2003-03-01.txt" target="_blank">net1m_2003-03-01</a></td>
+<td></td>
+<td>April 2003</td><td><a href="data/net2m/net2m_2003-04-01.txt" target="_blank">net2m_2003-04-01</a></td><td><a href="data/net1m/net1m_2003-04-01.txt" target="_blank">net1m_2003-04-01</a></td>
+  </tr>
+  <tr>
+<td>May 2003</td><td><a href="data/net2m/net2m_2003-05-01.txt" target="_blank">net2m_2003-05-01</a></td><td><a href="data/net1m/net1m_2003-05-01.txt" target="_blank">net1m_2003-05-01</a></td>
+<td></td>
+<td>June 2003</td><td><a href="data/net2m/net2m_2003-06-01.txt" target="_blank">net2m_2003-06-01</a></td><td><a href="data/net1m/net1m_2003-06-01.txt" target="_blank">net1m_2003-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2003</td><td><a href="data/net2m/net2m_2003-07-01.txt" target="_blank">net2m_2003-07-01</a></td><td><a href="data/net1m/net1m_2003-07-01.txt" target="_blank">net1m_2003-07-01</a></td>
+<td></td>
+<td>August 2003</td><td><a href="data/net2m/net2m_2003-08-01.txt" target="_blank">net2m_2003-08-01</a></td><td><a href="data/net1m/net1m_2003-08-01.txt" target="_blank">net1m_2003-08-01</a></td>
+  </tr>
+  <tr>
+<td>September 2003</td><td><a href="data/net2m/net2m_2003-09-01.txt" target="_blank">net2m_2003-09-01</a></td><td><a href="data/net1m/net1m_2003-09-01.txt" target="_blank">net1m_2003-09-01</a></td>
+<td></td>
+<td>October 2003</td><td><a href="data/net2m/net2m_2003-10-01.txt" target="_blank">net2m_2003-10-01</a></td><td><a href="data/net1m/net1m_2003-10-01.txt" target="_blank">net1m_2003-10-01</a></td>
+  </tr>
+  <tr>
+<td>November 2003</td><td><a href="data/net2m/net2m_2003-11-01.txt" target="_blank">net2m_2003-11-01</a></td><td><a href="data/net1m/net1m_2003-11-01.txt" target="_blank">net1m_2003-11-01</a></td>
+<td></td>
+<td>December 2003</td><td><a href="data/net2m/net2m_2003-12-01.txt" target="_blank">net2m_2003-12-01</a></td><td><a href="data/net1m/net1m_2003-12-01.txt" target="_blank">net1m_2003-12-01</a></td>
+  </tr>
+  <tr>
+<td>January 2004</td><td><a href="data/net2m/net2m_2004-01-01.txt" target="_blank">net2m_2004-01-01</a></td><td><a href="data/net1m/net1m_2004-01-01.txt" target="_blank">net1m_2004-01-01</a></td>
+<td></td>
+<td>February 2004</td><td><a href="data/net2m/net2m_2004-02-01.txt" target="_blank">net2m_2004-02-01</a></td><td><a href="data/net1m/net1m_2004-02-01.txt" target="_blank">net1m_2004-02-01</a></td>
+  </tr>
+  <tr>
+<td>March 2004</td><td><a href="data/net2m/net2m_2004-03-01.txt" target="_blank">net2m_2004-03-01</a></td><td><a href="data/net1m/net1m_2004-03-01.txt" target="_blank">net1m_2004-03-01</a></td>
+<td></td>
+<td>April 2004</td><td><a href="data/net2m/net2m_2004-04-01.txt" target="_blank">net2m_2004-04-01</a></td><td><a href="data/net1m/net1m_2004-04-01.txt" target="_blank">net1m_2004-04-01</a></td>
+  </tr>
+  <tr>
+<td>May 2004</td><td><a href="data/net2m/net2m_2004-05-01.txt" target="_blank">net2m_2004-05-01</a></td><td><a href="data/net1m/net1m_2004-05-01.txt" target="_blank">net1m_2004-05-01</a></td>
+<td></td>
+<td>June 2004</td><td><a href="data/net2m/net2m_2004-06-01.txt" target="_blank">net2m_2004-06-01</a></td><td><a href="data/net1m/net1m_2004-06-01.txt" target="_blank">net1m_2004-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2004</td><td><a href="data/net2m/net2m_2004-07-01.txt" target="_blank">net2m_2004-07-01</a></td><td><a href="data/net1m/net1m_2004-07-01.txt" target="_blank">net1m_2004-07-01</a></td>
+<td></td>
+<td>August 2004</td><td><a href="data/net2m/net2m_2004-08-01.txt" target="_blank">net2m_2004-08-01</a></td><td><a href="data/net1m/net1m_2004-08-01.txt" target="_blank">net1m_2004-08-01</a></td>
+  </tr>
+  <tr>
+<td>September 2004</td><td><a href="data/net2m/net2m_2004-09-01.txt" target="_blank">net2m_2004-09-01</a></td><td><a href="data/net1m/net1m_2004-09-01.txt" target="_blank">net1m_2004-09-01</a></td>
+<td></td>
+<td>October 2004</td><td><a href="data/net2m/net2m_2004-10-01.txt" target="_blank">net2m_2004-10-01</a></td><td><a href="data/net1m/net1m_2004-10-01.txt" target="_blank">net1m_2004-10-01</a></td>
+  </tr>
+  <tr>
+<td>November 2004</td><td><a href="data/net2m/net2m_2004-11-01.txt" target="_blank">net2m_2004-11-01</a></td><td><a href="data/net1m/net1m_2004-11-01.txt" target="_blank">net1m_2004-11-01</a></td>
+<td></td>
+<td>December 2004</td><td><a href="data/net2m/net2m_2004-12-01.txt" target="_blank">net2m_2004-12-01</a></td><td><a href="data/net1m/net1m_2004-12-01.txt" target="_blank">net1m_2004-12-01</a></td>
+  </tr>
+  <tr>
+<td>January 2005</td><td><a href="data/net2m/net2m_2005-01-01.txt" target="_blank">net2m_2005-01-01</a></td><td><a href="data/net1m/net1m_2005-01-01.txt" target="_blank">net1m_2005-01-01</a></td>
+<td></td>
+<td>February 2005</td><td><a href="data/net2m/net2m_2005-02-01.txt" target="_blank">net2m_2005-02-01</a></td><td><a href="data/net1m/net1m_2005-02-01.txt" target="_blank">net1m_2005-02-01</a></td>
+  </tr>
+  <tr>
+<td>March 2005</td><td><a href="data/net2m/net2m_2005-03-01.txt" target="_blank">net2m_2005-03-01</a></td><td><a href="data/net1m/net1m_2005-03-01.txt" target="_blank">net1m_2005-03-01</a></td>
+<td></td>
+<td>April 2005</td><td><a href="data/net2m/net2m_2005-04-01.txt" target="_blank">net2m_2005-04-01</a></td><td><a href="data/net1m/net1m_2005-04-01.txt" target="_blank">net1m_2005-04-01</a></td>
+  </tr>
+  <tr>
+<td>May 2005</td><td><a href="data/net2m/net2m_2005-05-01.txt" target="_blank">net2m_2005-05-01</a></td><td><a href="data/net1m/net1m_2005-05-01.txt" target="_blank">net1m_2005-05-01</a></td>
+<td></td>
+<td>June 2005</td><td><a href="data/net2m/net2m_2005-06-01.txt" target="_blank">net2m_2005-06-01</a></td><td><a href="data/net1m/net1m_2005-06-01.txt" target="_blank">net1m_2005-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2005</td><td><a href="data/net2m/net2m_2005-07-01.txt" target="_blank">net2m_2005-07-01</a></td><td><a href="data/net1m/net1m_2005-07-01.txt" target="_blank">net1m_2005-07-01</a></td>
+<td></td>
+<td>August 2005</td><td><a href="data/net2m/net2m_2005-08-01.txt" target="_blank">net2m_2005-08-01</a></td><td><a href="data/net1m/net1m_2005-08-01.txt" target="_blank">net1m_2005-08-01</a></td>
+  </tr>
+  <tr>
+<td>September 2005</td><td><a href="data/net2m/net2m_2005-09-01.txt" target="_blank">net2m_2005-09-01</a></td><td><a href="data/net1m/net1m_2005-09-01.txt" target="_blank">net1m_2005-09-01</a></td>
+<td></td>
+<td>October 2005</td><td><a href="data/net2m/net2m_2005-10-01.txt" target="_blank">net2m_2005-10-01</a></td><td><a href="data/net1m/net1m_2005-10-01.txt" target="_blank">net1m_2005-10-01</a></td>
+  </tr>
+  <tr>
+<td>November 2005</td><td><a href="data/net2m/net2m_2005-11-01.txt" target="_blank">net2m_2005-11-01</a></td><td><a href="data/net1m/net1m_2005-11-01.txt" target="_blank">net1m_2005-11-01</a></td>
+<td></td>
+<td>December 2005</td><td><a href="data/net2m/net2m_2005-12-01.txt" target="_blank">net2m_2005-12-01</a></td><td><a href="data/net1m/net1m_2005-12-01.txt" target="_blank">net1m_2005-12-01</a></td>
+  </tr>
+  <tr>
+<td>January 2006</td><td><a href="data/net2m/net2m_2006-01-01.txt" target="_blank">net2m_2006-01-01</a></td><td><a href="data/net1m/net1m_2006-01-01.txt" target="_blank">net1m_2006-01-01</a></td>
+<td></td>
+<td>February 2006</td><td><a href="data/net2m/net2m_2006-02-01.txt" target="_blank">net2m_2006-02-01</a></td><td><a href="data/net1m/net1m_2006-02-01.txt" target="_blank">net1m_2006-02-01</a></td>
+  </tr>
+  <tr>
+<td>March 2006</td><td><a href="data/net2m/net2m_2006-03-01.txt" target="_blank">net2m_2006-03-01</a></td><td><a href="data/net1m/net1m_2006-03-01.txt" target="_blank">net1m_2006-03-01</a></td>
+<td></td>
+<td>April 2006</td><td><a href="data/net2m/net2m_2006-04-01.txt" target="_blank">net2m_2006-04-01</a></td><td><a href="data/net1m/net1m_2006-04-01.txt" target="_blank">net1m_2006-04-01</a></td>
+  </tr>
+  <tr>
+<td>May 2006</td><td><a href="data/net2m/net2m_2006-05-01.txt" target="_blank">net2m_2006-05-01</a></td><td><a href="data/net1m/net1m_2006-05-01.txt" target="_blank">net1m_2006-05-01</a></td>
+<td></td>
+<td>June 2006</td><td><a href="data/net2m/net2m_2006-06-01.txt" target="_blank">net2m_2006-06-01</a></td><td><a href="data/net1m/net1m_2006-06-01.txt" target="_blank">net1m_2006-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2006</td><td><a href="data/net2m/net2m_2006-07-01.txt" target="_blank">net2m_2006-07-01</a></td><td><a href="data/net1m/net1m_2006-07-01.txt" target="_blank">net1m_2006-07-01</a></td>
+<td></td>
+<td>August 2006</td><td><a href="data/net2m/net2m_2006-08-01.txt" target="_blank">net2m_2006-08-01</a></td><td><a href="data/net1m/net1m_2006-08-01.txt" target="_blank">net1m_2006-08-01</a></td>
+  </tr>
+  <tr>
+<td>September 2006</td><td><a href="data/net2m/net2m_2006-09-01.txt" target="_blank">net2m_2006-09-01</a></td><td><a href="data/net1m/net1m_2006-09-01.txt" target="_blank">net1m_2006-09-01</a></td>
+<td></td>
+<td>October 2006</td><td><a href="data/net2m/net2m_2006-10-01.txt" target="_blank">net2m_2006-10-01</a></td><td><a href="data/net1m/net1m_2006-10-01.txt" target="_blank">net1m_2006-10-01</a></td>
+  </tr>
+  <tr>
+<td>November 2006</td><td><a href="data/net2m/net2m_2006-11-01.txt" target="_blank">net2m_2006-11-01</a></td><td><a href="data/net1m/net1m_2006-11-01.txt" target="_blank">net1m_2006-11-01</a></td>
+<td></td>
+<td>December 2006</td><td><a href="data/net2m/net2m_2006-12-01.txt" target="_blank">net2m_2006-12-01</a></td><td><a href="data/net1m/net1m_2006-12-01.txt" target="_blank">net1m_2006-12-01</a></td>
+  </tr>
+  <tr>
+<td>January 2007</td><td><a href="data/net2m/net2m_2007-01-01.txt" target="_blank">net2m_2007-01-01</a></td><td><a href="data/net1m/net1m_2007-01-01.txt" target="_blank">net1m_2007-01-01</a></td>
+<td></td>
+<td>February 2007</td><td><a href="data/net2m/net2m_2007-02-01.txt" target="_blank">net2m_2007-02-01</a></td><td><a href="data/net1m/net1m_2007-02-01.txt" target="_blank">net1m_2007-02-01</a></td>
+  </tr>
+  <tr>
+<td>March 2007</td><td><a href="data/net2m/net2m_2007-03-01.txt" target="_blank">net2m_2007-03-01</a></td><td><a href="data/net1m/net1m_2007-03-01.txt" target="_blank">net1m_2007-03-01</a></td>
+<td></td>
+<td>April 2007</td><td><a href="data/net2m/net2m_2007-04-01.txt" target="_blank">net2m_2007-04-01</a></td><td><a href="data/net1m/net1m_2007-04-01.txt" target="_blank">net1m_2007-04-01</a></td>
+  </tr>
+  <tr>
+<td>May 2007</td><td><a href="data/net2m/net2m_2007-05-01.txt" target="_blank">net2m_2007-05-01</a></td><td><a href="data/net1m/net1m_2007-05-01.txt" target="_blank">net1m_2007-05-01</a></td>
+<td></td>
+<td>June 2007</td><td><a href="data/net2m/net2m_2007-06-01.txt" target="_blank">net2m_2007-06-01</a></td><td><a href="data/net1m/net1m_2007-06-01.txt" target="_blank">net1m_2007-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2007</td><td><a href="data/net2m/net2m_2007-07-01.txt" target="_blank">net2m_2007-07-01</a></td><td><a href="data/net1m/net1m_2007-07-01.txt" target="_blank">net1m_2007-07-01</a></td>
+<td></td>
+<td>August 2007</td><td><a href="data/net2m/net2m_2007-08-01.txt" target="_blank">net2m_2007-08-01</a></td><td><a href="data/net1m/net1m_2007-08-01.txt" target="_blank">net1m_2007-08-01</a></td>
+  </tr>
+  <tr>
+<td>September 2007</td><td><a href="data/net2m/net2m_2007-09-01.txt" target="_blank">net2m_2007-09-01</a></td><td><a href="data/net1m/net1m_2007-09-01.txt" target="_blank">net1m_2007-09-01</a></td>
+<td></td>
+<td>October 2007</td><td><a href="data/net2m/net2m_2007-10-01.txt" target="_blank">net2m_2007-10-01</a></td><td><a href="data/net1m/net1m_2007-10-01.txt" target="_blank">net1m_2007-10-01</a></td>
+  </tr>
+  <tr>
+<td>November 2007</td><td><a href="data/net2m/net2m_2007-11-01.txt" target="_blank">net2m_2007-11-01</a></td><td><a href="data/net1m/net1m_2007-11-01.txt" target="_blank">net1m_2007-11-01</a></td>
+<td></td>
+<td>December 2007</td><td><a href="data/net2m/net2m_2007-12-01.txt" target="_blank">net2m_2007-12-01</a></td><td><a href="data/net1m/net1m_2007-12-01.txt" target="_blank">net1m_2007-12-01</a></td>
+  </tr>
+  <tr>
+<td>January 2008</td><td><a href="data/net2m/net2m_2008-01-01.txt" target="_blank">net2m_2008-01-01</a></td><td><a href="data/net1m/net1m_2008-01-01.txt" target="_blank">net1m_2008-01-01</a></td>
+<td></td>
+<td>February 2008</td><td><a href="data/net2m/net2m_2008-02-01.txt" target="_blank">net2m_2008-02-01</a></td><td><a href="data/net1m/net1m_2008-02-01.txt" target="_blank">net1m_2008-02-01</a></td>
+  </tr>
+  <tr>
+<td>March 2008</td><td><a href="data/net2m/net2m_2008-03-01.txt" target="_blank">net2m_2008-03-01</a></td><td><a href="data/net1m/net1m_2008-03-01.txt" target="_blank">net1m_2008-03-01</a></td>
+<td></td>
+<td>April 2008</td><td><a href="data/net2m/net2m_2008-04-01.txt" target="_blank">net2m_2008-04-01</a></td><td><a href="data/net1m/net1m_2008-04-01.txt" target="_blank">net1m_2008-04-01</a></td>
+  </tr>
+  <tr>
+<td>May 2008</td><td><a href="data/net2m/net2m_2008-05-01.txt" target="_blank">net2m_2008-05-01</a></td><td><a href="data/net1m/net1m_2008-05-01.txt" target="_blank">net1m_2008-05-01</a></td>
+<td></td>
+<td>June 2008</td><td><a href="data/net2m/net2m_2008-06-01.txt" target="_blank">net2m_2008-06-01</a></td><td><a href="data/net1m/net1m_2008-06-01.txt" target="_blank">net1m_2008-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2008</td><td><a href="data/net2m/net2m_2008-07-01.txt" target="_blank">net2m_2008-07-01</a></td><td><a href="data/net1m/net1m_2008-07-01.txt" target="_blank">net1m_2008-07-01</a></td>
+<td></td>
+<td>August 2008</td><td><a href="data/net2m/net2m_2008-08-01.txt" target="_blank">net2m_2008-08-01</a></td><td><a href="data/net1m/net1m_2008-08-01.txt" target="_blank">net1m_2008-08-01</a></td>
+  </tr>
+  <tr>
+<td>September 2008</td><td><a href="data/net2m/net2m_2008-09-01.txt" target="_blank">net2m_2008-09-01</a></td><td><a href="data/net1m/net1m_2008-09-01.txt" target="_blank">net1m_2008-09-01</a></td>
+<td></td>
+<td>October 2008</td><td><a href="data/net2m/net2m_2008-10-01.txt" target="_blank">net2m_2008-10-01</a></td><td><a href="data/net1m/net1m_2008-10-01.txt" target="_blank">net1m_2008-10-01</a></td>
+  </tr>
+  <tr>
+<td>November 2008</td><td><a href="data/net2m/net2m_2008-11-01.txt" target="_blank">net2m_2008-11-01</a></td><td><a href="data/net1m/net1m_2008-11-01.txt" target="_blank">net1m_2008-11-01</a></td>
+<td></td>
+<td>December 2008</td><td><a href="data/net2m/net2m_2008-12-01.txt" target="_blank">net2m_2008-12-01</a></td><td><a href="data/net1m/net1m_2008-12-01.txt" target="_blank">net1m_2008-12-01</a></td>
+  </tr>
+  <tr>
+<td>January 2009</td><td><a href="data/net2m/net2m_2009-01-01.txt" target="_blank">net2m_2009-01-01</a></td><td><a href="data/net1m/net1m_2009-01-01.txt" target="_blank">net1m_2009-01-01</a></td>
+<td></td>
+<td>February 2009</td><td><a href="data/net2m/net2m_2009-02-01.txt" target="_blank">net2m_2009-02-01</a></td><td><a href="data/net1m/net1m_2009-02-01.txt" target="_blank">net1m_2009-02-01</a></td>
+  </tr>
+  <tr>
+<td>March 2009</td><td><a href="data/net2m/net2m_2009-03-01.txt" target="_blank">net2m_2009-03-01</a></td><td><a href="data/net1m/net1m_2009-03-01.txt" target="_blank">net1m_2009-03-01</a></td>
+<td></td>
+<td>April 2009</td><td><a href="data/net2m/net2m_2009-04-01.txt" target="_blank">net2m_2009-04-01</a></td><td><a href="data/net1m/net1m_2009-04-01.txt" target="_blank">net1m_2009-04-01</a></td>
+  </tr>
+  <tr>
+<td>May 2009</td><td><a href="data/net2m/net2m_2009-05-01.txt" target="_blank">net2m_2009-05-01</a></td><td><a href="data/net1m/net1m_2009-05-01.txt" target="_blank">net1m_2009-05-01</a></td>
+<td></td>
+<td>June 2009</td><td><a href="data/net2m/net2m_2009-06-01.txt" target="_blank">net2m_2009-06-01</a></td><td><a href="data/net1m/net1m_2009-06-01.txt" target="_blank">net1m_2009-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2009</td><td><a href="data/net2m/net2m_2009-07-01.txt" target="_blank">net2m_2009-07-01</a></td><td><a href="data/net1m/net1m_2009-07-01.txt" target="_blank">net1m_2009-07-01</a></td>
+<td></td>
+<td>August 2009</td><td><a href="data/net2m/net2m_2009-08-01.txt" target="_blank">net2m_2009-08-01</a></td><td><a href="data/net1m/net1m_2009-08-01.txt" target="_blank">net1m_2009-08-01</a></td>
+  </tr>
+  <tr>
+<td>September 2009</td><td><a href="data/net2m/net2m_2009-09-01.txt" target="_blank">net2m_2009-09-01</a></td><td><a href="data/net1m/net1m_2009-09-01.txt" target="_blank">net1m_2009-09-01</a></td>
+<td></td>
+<td>October 2009</td><td><a href="data/net2m/net2m_2009-10-01.txt" target="_blank">net2m_2009-10-01</a></td><td><a href="data/net1m/net1m_2009-10-01.txt" target="_blank">net1m_2009-10-01</a></td>
+  </tr>
+  <tr>
+<td>November 2009</td><td><a href="data/net2m/net2m_2009-11-01.txt" target="_blank">net2m_2009-11-01</a></td><td><a href="data/net1m/net1m_2009-11-01.txt" target="_blank">net1m_2009-11-01</a></td>
+<td></td>
+<td>December 2009</td><td><a href="data/net2m/net2m_2009-12-01.txt" target="_blank">net2m_2009-12-01</a></td><td><a href="data/net1m/net1m_2009-12-01.txt" target="_blank">net1m_2009-12-01</a></td>
+  </tr>
+  <tr>
+<td>January 2010</td><td><a href="data/net2m/net2m_2010-01-01.txt" target="_blank">net2m_2010-01-01</a></td><td><a href="data/net1m/net1m_2010-01-01.txt" target="_blank">net1m_2010-01-01</a></td>
+<td></td>
+<td>February 2010</td><td><a href="data/net2m/net2m_2010-02-01.txt" target="_blank">net2m_2010-02-01</a></td><td><a href="data/net1m/net1m_2010-02-01.txt" target="_blank">net1m_2010-02-01</a></td>
+  </tr>
+  <tr>
+<td>March 2010</td><td><a href="data/net2m/net2m_2010-03-01.txt" target="_blank">net2m_2010-03-01</a></td><td><a href="data/net1m/net1m_2010-03-01.txt" target="_blank">net1m_2010-03-01</a></td>
+<td></td>
+<td>April 2010</td><td><a href="data/net2m/net2m_2010-04-01.txt" target="_blank">net2m_2010-04-01</a></td><td><a href="data/net1m/net1m_2010-04-01.txt" target="_blank">net1m_2010-04-01</a></td>
+  </tr>
+  <tr>
+<td>May 2010</td><td><a href="data/net2m/net2m_2010-05-01.txt" target="_blank">net2m_2010-05-01</a></td><td><a href="data/net1m/net1m_2010-05-01.txt" target="_blank">net1m_2010-05-01</a></td>
+<td></td>
+<td>June 2010</td><td><a href="data/net2m/net2m_2010-06-01.txt" target="_blank">net2m_2010-06-01</a></td><td><a href="data/net1m/net1m_2010-06-01.txt" target="_blank">net1m_2010-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2010</td><td><a href="data/net2m/net2m_2010-07-01.txt" target="_blank">net2m_2010-07-01</a></td><td><a href="data/net1m/net1m_2010-07-01.txt" target="_blank">net1m_2010-07-01</a></td>
+<td></td>
+<td>August 2010</td><td><a href="data/net2m/net2m_2010-08-01.txt" target="_blank">net2m_2010-08-01</a></td><td><a href="data/net1m/net1m_2010-08-01.txt" target="_blank">net1m_2010-08-01</a></td>
+  </tr>
+  <tr>
+<td>September 2010</td><td><a href="data/net2m/net2m_2010-09-01.txt" target="_blank">net2m_2010-09-01</a></td><td><a href="data/net1m/net1m_2010-09-01.txt" target="_blank">net1m_2010-09-01</a></td>
+<td></td>
+<td>October 2010</td><td><a href="data/net2m/net2m_2010-10-01.txt" target="_blank">net2m_2010-10-01</a></td><td><a href="data/net1m/net1m_2010-10-01.txt" target="_blank">net1m_2010-10-01</a></td>
+  </tr>
+  <tr>
+<td>November 2010</td><td><a href="data/net2m/net2m_2010-11-01.txt" target="_blank">net2m_2010-11-01</a></td><td><a href="data/net1m/net1m_2010-11-01.txt" target="_blank">net1m_2010-11-01</a></td>
+<td></td>
+<td>December 2010</td><td><a href="data/net2m/net2m_2010-12-01.txt" target="_blank">net2m_2010-12-01</a></td><td><a href="data/net1m/net1m_2010-12-01.txt" target="_blank">net1m_2010-12-01</a></td>
+  </tr>
+  <tr>
+<td>January 2011</td><td><a href="data/net2m/net2m_2011-01-01.txt" target="_blank">net2m_2011-01-01</a></td><td><a href="data/net1m/net1m_2011-01-01.txt" target="_blank">net1m_2011-01-01</a></td>
+<td></td>
+<td>February 2011</td><td><a href="data/net2m/net2m_2011-02-01.txt" target="_blank">net2m_2011-02-01</a></td><td><a href="data/net1m/net1m_2011-02-01.txt" target="_blank">net1m_2011-02-01</a></td>
+  </tr>
+  <tr>
+<td>March 2011</td><td><a href="data/net2m/net2m_2011-03-01.txt" target="_blank">net2m_2011-03-01</a></td><td><a href="data/net1m/net1m_2011-03-01.txt" target="_blank">net1m_2011-03-01</a></td>
+<td></td>
+<td>April 2011</td><td><a href="data/net2m/net2m_2011-04-01.txt" target="_blank">net2m_2011-04-01</a></td><td><a href="data/net1m/net1m_2011-04-01.txt" target="_blank">net1m_2011-04-01</a></td>
+  </tr>
+  <tr>
+<td>May 2011</td><td><a href="data/net2m/net2m_2011-05-01.txt" target="_blank">net2m_2011-05-01</a></td><td><a href="data/net1m/net1m_2011-05-01.txt" target="_blank">net1m_2011-05-01</a></td>
+<td></td>
+<td>June 2011</td><td><a href="data/net2m/net2m_2011-06-01.txt" target="_blank">net2m_2011-06-01</a></td><td><a href="data/net1m/net1m_2011-06-01.txt" target="_blank">net1m_2011-06-01</a></td>
+  </tr>
+  <tr>
+<td>July 2011</td><td><a href="data/net2m/net2m_2011-07-01.txt" target="_blank">net2m_2011-07-01</a></td><td><a href="data/net1m/net1m_2011-07-01.txt" target="_blank">net1m_2011-07-01</a></td>
+<td></td>
+<td>August 2011</td><td><a href="data/net2m/net2m_2011-08-01.txt" target="_blank">net2m_2011-08-01</a></td><td><a href="data/net1m/net1m_2011-08-01.txt" target="_blank">net1m_2011-08-01</a></td>
+</tr>
+</table>
+
+</div></div>
+<br /><br />
+<div id="foot">The information on this website is published under the <a href="http://creativecommons.org/licenses/by-nc/3.0/" target="_blank">Creative Commons Attribution-Noncommercial 3.0-license</a>.<br>Do cite <a href="citation.php">Seierstad and Opsahl (2011)</a> if you use any information on this page.</div>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V5.4 START -->
+<script type='text/javascript' src='https://count.carrierzone.com/app/count_server/count.js'></script>
+<script type='text/javascript'><!--
+wm_custnum='a5bba009e62bf723';
+wm_page_name='data.php';
+wm_group_name='/services/webpages/b/o/boardsandgender.com/public';
+wm_campaign_key='campaign_id';
+wm_track_alt='';
+wiredminds.count();
+// -->
+</script>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V5.4 END -->
+</body></html>
