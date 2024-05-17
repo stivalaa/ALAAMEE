@@ -1,0 +1,33 @@
+"""
+Defines the model in terms of the list of parameters to estimate
+(also used for computing observed statistics and simulation for GoF)
+"""
+from functools import partial
+from math import log
+from BipartiteGraph import MODE_A,MODE_B
+from changeStatisticsALAAMbipartite import *
+from changeStatisticsALAAM import changeoOc,changeo_Oc,changeo_Ob
+
+
+## good convergence plots (default 50000 iterations) without ThreeStar;
+## good sim gof on all (inc. ThreeStar not in model):
+param_func_list =[partial(changeBipartiteDensity, MODE_A),
+                  partial(changeBipartiteActivity, MODE_A),
+                  partial(changeBipartiteEgoTwoStar, MODE_A),
+                  partial(changeBipartiteAlterTwoStar1,MODE_A),
+                  partial(changeBipartiteAlterTwoStar2,MODE_A),
+                  partial(changeBipartiteFourCycle1, MODE_A),
+                  partial(changeBipartiteFourCycle2, MODE_A)]
+
+## dzA good except on EgoThreeStar not great; theta converges slowly,
+## need more iterations (than default 50000 used here); good sim
+## gof (although bimodal/outliers on EgoThreeStar, like dzA plot):
+#param_func_list =[partial(changeBipartiteDensity, MODE_A),
+#                  partial(changeBipartiteActivity, MODE_A),
+#                  partial(changeBipartiteEgoTwoStar, MODE_A),
+#                  partial(changeBipartiteEgoThreeStar, MODE_A),
+#                  partial(changeBipartiteAlterTwoStar1,MODE_A),
+#                  partial(changeBipartiteAlterTwoStar2,MODE_A),
+#                  partial(changeBipartiteFourCycle1, MODE_A),
+#                  partial(changeBipartiteFourCycle2, MODE_A)]
+

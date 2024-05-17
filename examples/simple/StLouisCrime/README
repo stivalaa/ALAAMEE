@@ -1,0 +1,39 @@
+ALAAM estimations on St Louis crime data
+(see convertStLouisCrimeDataToALAAMEEFormat.R for details). 
+
+## Citation for data:
+##
+## S. Decker, C. W. Kohfeld, R. Rosenfeld, & J. Sprague, "St. Louis
+## Homicide Project: Local Responses to a National Problem."
+## University of Missouri-St. Louis (1991)
+## https://books.google.com/books/about/The_St_Louis_Homicide_Project.html?id=umVAPQAACAAJ
+##
+## Note also available from archive of Freeman data sets (see below)
+## in original UCINET format, and also from David Schoch's networkdata
+## R package:
+##
+## https://github.com/schochastics/networkdata
+##
+## David Schoch. (2022). networkdata: Repository of Network Datasets
+## (v0.1.14). Zenodo. https://doi.org/10.5281/zenodo.7189928
+##
+
+Using stochastic approximation after first experimenting with EE,
+as it is small enough for stochatic approximation to take a reasonable
+amount of time (approx. one hour).
+
+Note using female as ALAAM "outcome" variable, similar to:
+
+Diviák, T., Coutinho, J.A. & Stivala, A.D. A Man’s world?
+Comparing the structural positions of men and women in an organized 
+criminal network. Crime Law Soc Change 74, 547–569 (2020).
+https://doi.org/10.1007/s10611-020-09910-5
+
+
+Run on Lenovo Legion PC:
+CYGWIN_NT-10.0-19045 DESKTOP-6548G10 3.4.6-1.x86_64 2023-02-14 13:23 UTC x86_64 Cygwin
+
+
+ADS
+Tue May 14 15:09:23 AEST 2024
+

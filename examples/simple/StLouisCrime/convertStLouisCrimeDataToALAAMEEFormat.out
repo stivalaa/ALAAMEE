@@ -1,0 +1,78 @@
+[1] "Tue May 14 11:10:51 2024"
+R version 4.2.1 (2022-06-23)
+Platform: x86_64-pc-cygwin (64-bit)
+Running under: CYGWIN_NT-10.0-19045 DESKTOP-6548G10 3.4.6-1.x86_64 2023-02-14 13:23 UTC x86_64 Cygwin
+
+Matrix products: default
+LAPACK: /usr/lib/R/modules/lapack.dll
+
+locale:
+[1] C.UTF-8/en_US.UTF-8/C.UTF-8/C/C.UTF-8/C
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] networkdata_0.1.9 birankr_1.0.1     data.table_1.14.4 Matrix_1.5-1     
+[5] igraph_1.3.5     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.2.1  magrittr_2.0.3  cli_3.6.1       tools_4.2.1    
+[5] grid_4.2.1      rlang_1.1.2     pkgconfig_2.0.3 lattice_0.20-45
+IGRAPH 58ccb2b UNWB 1427 1487 -- 
++ attr: type (v/l), name (v/c), gender (v/n), weight (e/n)
+IGRAPH 58ccb2b UNWB 1427 1487 -- 
++ attr: type (v/l), name (v/c), gender (v/n), weight (e/n)
++ edges from 58ccb2b (vertex names):
+ [1] AbelDennis --950160 AbelDennis --960314 AbelDennis --960364
+ [4] AbelDennis --970473 AbramsChad --930029 AbramsChad --940121
+ [7] AbramsChad --940126 AbramsChad --940146 AbramsChad --950159
+[10] AbramsChad --950163 AbramsChad --950174 AbramsChad --950177
+[13] AbramsChad --950182 AbramsChad --950202 AbramsChad --950224
+[16] AbramsChad --960247 AbramsChad --960252 AbramsChad --960256
+[19] AbramsChad --960271 AbramsChad --960281 AbramsChad --960341
+[22] AbramsChad --960384 AbramsChad --960392 AbramsChad --970414
++ ... omitted several edges
+     female      
+ Min.   :0.0000  
+ 1st Qu.:0.0000  
+ Median :0.0000  
+ Mean   :0.3253  
+ 3rd Qu.:1.0000  
+ Max.   :1.0000  
+ NA's   :557     
+     gender           female          male    
+ Min.   :0.0000   Min.   :1      Min.   :1    
+ 1st Qu.:0.0000   1st Qu.:1      1st Qu.:1    
+ Median :1.0000   Median :1      Median :1    
+ Mean   :0.6747   Mean   :1      Mean   :1    
+ 3rd Qu.:1.0000   3rd Qu.:1      3rd Qu.:1    
+ Max.   :1.0000   Max.   :1      Max.   :1    
+ NA's   :557      NA's   :1144   NA's   :840  
+Computing betweeneess centrality...
+   user  system elapsed 
+  0.062   0.000   0.065 
+Computing harmonic centrality...
+   user  system elapsed 
+  0.031   0.000   0.044 
+  betweenness     harmonic.cent   
+ Min.   :     0   Min.   :  0.00  
+ 1st Qu.:     0   1st Qu.: 97.77  
+ Median :     0   Median :115.08  
+ Mean   :  6678   Mean   :108.82  
+ 3rd Qu.:  2520   3rd Qu.:136.15  
+ Max.   :352785   Max.   :214.10  
+  betweenness     harmonic.cent    betweenness.scaled.V1
+ Min.   :     0   Min.   :  0.00   Min.   :-0.267861    
+ 1st Qu.:     0   1st Qu.: 97.77   1st Qu.:-0.267861    
+ Median :     0   Median :115.08   Median :-0.267861    
+ Mean   :  6678   Mean   :108.82   Mean   : 0.000000    
+ 3rd Qu.:  2520   3rd Qu.:136.15   3rd Qu.:-0.166788    
+ Max.   :352785   Max.   :214.10   Max.   :13.881652    
+ harmonic.cent.scaled.V1
+ Min.   :-2.4550718     
+ 1st Qu.:-0.2492429     
+ Median : 0.1414271     
+ Mean   : 0.0000000     
+ 3rd Qu.: 0.6167276     
+ Max.   : 2.3754612     
