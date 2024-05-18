@@ -6,3 +6,5 @@ stats_sim_gof_evtusehnko_bipartite-plots.eps
 stats_sim_gof_evtusehnko_bipartite.txt
 theta_values_crime_bipartite.pdf
 
+alaam_sa_stlouiscrime_*.out
+alaam_sa_stlouiscrime_*.err
