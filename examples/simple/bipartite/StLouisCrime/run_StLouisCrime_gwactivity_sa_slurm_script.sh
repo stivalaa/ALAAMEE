@@ -12,13 +12,11 @@ echo -n "started at: "; date
 uname -a
 
 # module version numbers are required on OzStar (Ngarrgu Tindebeek)
-module load foss/2022b
-module load python/3.10.8
-module load numpy/1.24.2-scipy-bundle-2023.02
+command -v module >/dev/null 2>&1 && module load foss/2022b
+command -v module >/dev/null 2>&1 && module load python/3.10.8
+command -v module >/dev/null 2>&1 && module load numpy/1.24.2-scipy-bundle-2023.02
 
-
-export PYTHONPATH=${DOCUMENTS}/USI/ALAAMEE/python/:${PYTHONPATH}
-#export PYTHONPATH=../../../../python/:${PYTHONPATH}
+export PYTHONPATH=../../../../python/:${PYTHONPATH}
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
 time python3 ./runALAAMSAStLouisCrime_gwactivity.py
