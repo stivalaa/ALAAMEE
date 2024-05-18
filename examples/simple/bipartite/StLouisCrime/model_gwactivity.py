@@ -9,8 +9,9 @@ from changeStatisticsALAAMbipartite import *
 from changeStatisticsALAAM import changeoOc,changeo_Oc,changeo_Ob
 
 
+## gof t-ratio slightly above 0.1 with BipartiteGWActivity(log(2))
 param_func_list =[partial(changeBipartiteDensity, MODE_A),
-                  partial(changeBipartiteGWActivity, MODE_A, log(2)),
+                  partial(changeBipartiteGWActivity, MODE_A, 1.0),
                   partial(changeBipartiteAlterTwoStar1,MODE_A),
                   partial(changeBipartiteAlterTwoStar2,MODE_A),
                   partial(changeBipartiteFourCycle1, MODE_A),
