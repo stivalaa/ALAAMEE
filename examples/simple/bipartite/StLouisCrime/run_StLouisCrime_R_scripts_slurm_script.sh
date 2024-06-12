@@ -13,7 +13,7 @@ echo -n "started at: "; date
 command -v module >/dev/null 2>&1 && module load r
 
 #RSCRIPTSDIR=${HOME}/ALAAMEE/R
-RSCRIPTSDIR=${DOCUMENTS}/USI/ALAAMEE/R
+RSCRIPTSDIR=../../../../R
 
 uname -a
 

@@ -21,7 +21,7 @@ echo SLURM_ARRAY_TASK_ID = ${SLURM_ARRAY_TASK_ID}
 
 module load python/3.9.0
 
-export PYTHONPATH=${HOME}/ALAAMEE/python/:${PYTHONPATH}
+export PYTHONPATH=../../../../python/:${PYTHONPATH}
 python3 ./runALAAMEEStLouisCrimeParallel.py ${SLURM_ARRAY_TASK_ID}
 
 

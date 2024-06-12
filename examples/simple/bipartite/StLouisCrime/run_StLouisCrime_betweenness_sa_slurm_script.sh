@@ -17,8 +17,8 @@ module load python/3.10.8
 module load numpy/1.24.2-scipy-bundle-2023.02
 
 
-export PYTHONPATH=${DOCUMENTS}/USI/ALAAMEE/python/:${PYTHONPATH}
-#export PYTHONPATH=../../../../python/:${PYTHONPATH}
+#export PYTHONPATH=${DOCUMENTS}/USI/ALAAMEE/python/:${PYTHONPATH}
+export PYTHONPATH=../../../../python/:${PYTHONPATH}
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
 time python3 ./runALAAMSAStLouisCrime_betweenness.py
