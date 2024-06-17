@@ -168,5 +168,5 @@ class BipartiteGraph(Graph):
         """
         assert mode == MODE_A or mode == MODE_B
         return (random.randint(0, self.num_A_nodes-1) if mode == MODE_A else
-                random.randint(num_A_nodes, self.numNodes()-1))
+                random.randint(self.num_A_nodes, self.numNodes()-1))
 
