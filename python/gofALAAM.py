@@ -31,7 +31,10 @@ from basicALAAMsampler import basicALAAMsampler
 def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
         sampler_func = basicALAAMsampler, Ainitial = None,
         iterationInStep = 1000, burnIn = 10000,
-        bipartiteFixedMode = None):
+        bipartiteFixedMode = None,
+        outputStatsFilename = None,
+        labels = None
+        ):
     """
     ALAAM goodness-of-fit by simulating from estimated parameters, and 
     comparing observed statistics to statistics of simulated outcome vectors,
@@ -61,6 +64,14 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
                                in simulation, for when outcome
                                variable not defined for that mode,
                                or None. Default None.
+       outputStatsFilename   = Filename to write simulated statistics to or
+                               None. Default None. WARNING: file overwritten.
+       labels                - list of strings corresponding to param_func_list
+                               to label output (header line) in
+                               simulated statistics writte to
+                               outputStatsFilename.. Default None.
+                               Must be set if outputStatsFilename is not None.
+
     Return value:
        tuple(tratios, mdist) where
           tratios is vector of t-ratios (one for each statistic)
@@ -69,6 +80,7 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
     """
     n = len(changestats_func_list)
     assert len(theta) == n
+    assert not (outputStatsFilename is not None and labels is None)
 
     print('Gof numSamples =', numSamples, 'iterationInStep =', iterationInStep, 'burnIn = ', burnIn)
 
@@ -80,7 +92,24 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
                                 numSamples, iterationInStep, burnIn,
                                 sampler_func, Ainitial,
                                 bipartiteFixedMode, Aobs)
-    #simulateALAAM() return list of tuples (simvec,stats,acceptance_rate,t)
+
+    # write simulated statistics if output filename provided
+    if outputStatsFilename is not None:
+        # sim_results is an iterator from simulateALAAM() so convert
+        # to list since we need to use it again below in computing t-ratios etc
+        # only include the parts we need (notably not simvec which might
+        # use a lot of memory)
+        # simulateALAAM() yields tuples (simvec,stats,acceptance_rate,t)
+        sim_results = [(None, r[1], r[2], r[3]) for r in sim_results]
+        with open(outputStatsFilename, 'w') as outfile:
+            outfile.write(' '.join(['t'] + labels +
+                                   ['acceptance_rate']) + '\n')
+            for (simvec, stats, acceptance_rate, t) in sim_results:
+                outfile.write(' '.join([str(t)] +
+                                       [str(x) for x in list(stats)] +
+                                       [str(acceptance_rate)]) + '\n')
+
+    # simulateALAAM() return list of tuples (simvec,stats,acceptance_rate,t)
     # convert to matrix where each row is sample, each column is statistic
     Zmatrix = np.stack([r[1] for r in sim_results])
     assert(np.shape(Zmatrix) == (numSamples, n))

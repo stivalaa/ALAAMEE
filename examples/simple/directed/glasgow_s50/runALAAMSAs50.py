@@ -32,5 +32,6 @@ estimateALAAMSA.run_on_network_attr(
         contattr_filename = 's50-contattr.txt',
         catattr_filename = 's50-catattr.txt',
         directed = True,
-        add_gof_param_func_list = gof_funcs
+        add_gof_param_func_list = gof_funcs,
+        outputStatsFilename = 's50_gof_stats.txt'
     )
