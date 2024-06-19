@@ -18,4 +18,10 @@ export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 
 time python3 runALAAMSAs50.py
 
+command -v module >/dev/null 2>&1 && module load gcc/11.3.0 # needed by r/4.2.1
+command -v module >/dev/null 2>&1 && module load openmpi/4.1.4 # needed by r/4.2.1
+command -v module >/dev/null 2>&1 && module load r/4.2.1
+
+../../../../R/plotSimulationDiagnostics.R  s50_gof_stats.txt
+
 echo -n "ended at: "; date
