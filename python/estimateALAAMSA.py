@@ -68,7 +68,8 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         GoFburnIn = 10000,
                         bipartiteGoFfixedMode = None,
                         add_gof_param_func_list = None,
-                        outputStatsFilename = None
+                        outputStatsFilename = None,
+                        outputObsStatsFilename = None
                         ):
     """Run estimation using stochastic approximation algorithm
     on specified network with binary and/or continuous and
@@ -121,7 +122,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                                If None, then  param_func_list and an additional
                                set of default are used depending on network
                                type. Default None.
-         outputStatsFilename   = Filename to write simulated statistics to or
+         outputStatsFilename   - Filename to write simulated statistics to or
+                                 None. Default None. WARNING: file overwritten.
+         outputObsStatsFilename- Filename to write observed statistics to or
                                  None. Default None. WARNING: file overwritten.
 
     Writes output to stdout.
@@ -274,6 +277,7 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
                         burnIn = GoFburnIn,
                         bipartiteFixedMode = bipartiteGoFfixedMode,
                         outputStatsFilename = outputStatsFilename,
+                        outputObsStatsFilename = outputObsStatsFilename,
                         labels = goflabels)
         print('GoF took',time.time() - start, 's')
         print('           ',goflabels)

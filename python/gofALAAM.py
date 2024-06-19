@@ -33,6 +33,7 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
         iterationInStep = 1000, burnIn = 10000,
         bipartiteFixedMode = None,
         outputStatsFilename = None,
+        outputObsStatsFilename = None,
         labels = None
         ):
     """
@@ -64,13 +65,16 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
                                in simulation, for when outcome
                                variable not defined for that mode,
                                or None. Default None.
-       outputStatsFilename   = Filename to write simulated statistics to or
+       outputStatsFilename   - Filename to write simulated statistics to or
+                               None. Default None. WARNING: file overwritten.
+       outputObsStatsFilename- Filename to write observed statistics to or
                                None. Default None. WARNING: file overwritten.
        labels                - list of strings corresponding to param_func_list
                                to label output (header line) in
                                simulated statistics writte to
                                outputStatsFilename.. Default None.
-                               Must be set if outputStatsFilename is not None.
+                               Must be set if outputStatsFilename or
+                               outputObsStatsFilename is not None.
 
     Return value:
        tuple(tratios, mdist) where
@@ -80,12 +84,19 @@ def gof(G, Aobs, changestats_func_list, theta, numSamples = 1000,
     """
     n = len(changestats_func_list)
     assert len(theta) == n
-    assert not (outputStatsFilename is not None and labels is None)
+    assert not ((outputStatsFilename is not None or
+                 outputObsStatsFilename is not None) and labels is None)
 
     print('Gof numSamples =', numSamples, 'iterationInStep =', iterationInStep, 'burnIn = ', burnIn)
 
     # Calculate observed statistics by summing change stats for each 1 variable
     Zobs = computeObservedStatistics(G, Aobs, changestats_func_list)
+
+    # Write obseved statistics if output filename provided
+    if outputObsStatsFilename is not None:
+        with open(outputObsStatsFilename, 'w') as outfile:
+            outfile.write(' '.join(labels) + '\n')
+            outfile.write(' '.join([str(z) for z in Zobs]) + '\n')
 
     # Compute simulated outcome vector statistics from MCMC
     sim_results = simulateALAAM(G, changestats_func_list,  theta,
