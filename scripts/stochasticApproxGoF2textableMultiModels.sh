@@ -58,66 +58,82 @@ echo '\hline'
 # Estimation output looks like this:
 #...
 #                                 t-ratio
-#              bipartiteDensityA   0.067
-#             bipartiteActivityA   0.050
-#           bipartiteEgoTwoStarA   0.028
-#         bipartiteEgoThreeStarA   0.038
-#        bipartiteAlterTwoStar1A   0.050
-#        bipartiteAlterTwoStar2A   0.062
-#           bipartiteFourCycle1A  -0.023
-#           bipartiteFourCycle2A  -0.017
-#                        age_oOc  -0.015
-#               notAustralia_oOb  -0.051
-#              logMarketCap_o_Oc   0.051
-#               ListingYear_o_Oc   0.051
-#              notAustralia_o_Ob  -0.046
-#               country_oO_Odiff   0.005
-#                betweenness_oOc   0.020
-#   industryGroup.Materials_o_Ob   0.018
-#       industryGroup.Banks_o_Ob   0.015
-#                       Two-Star   0.028
-#                     Three-Star   0.038
-#                   Alter-2Star1   0.050
-#                      Contagion     nan
-#                   Alter-2Star2   0.062
-#               Partner-Activity     nan
-#               Partner-Resource     nan
+#             BipartiteDensity.B   0.017
+#            BipartiteActivity.B   0.000
+#          BipartiteEgoTwoStar.B  -0.015
+#        BipartiteEgoThreeStar.B  -0.026
+#       BipartiteAlterTwoStar1.B   0.008
+#       BipartiteAlterTwoStar2.B  -0.011
+#               oOb.notAustralia  -0.026
+#               oOc.logMarketCap   0.005
+#                oOc.ListingYear   0.015
+#    oOb.industryGroup.Materials   0.094
+#        oOb.industryGroup.Banks  -0.039
+#              o_Ob.notAustralia  -0.024
+#                       o_Oc.age   0.007
+#               oO_Odiff.country  -0.023
+#              oOc.birank.scaled   0.021
+#          BipartiteFourCycle1.B   0.986
+#          BipartiteFourCycle2.B   0.207
+#         oOc.betweenness.scaled  -0.209
+#       oOc.harmonic.cent.scaled   0.208
+#
+#           Mahalanobis_distance 3.291206
 #
 # twoPaths cache info:  CacheInfo(hits=0, misses=0, maxsize=None, currsize=0)
 #
+#
 # We will parse from after the "                t-ratio" header line to get
-# parameter names and t-ratios.
+# parameter names and t-ratios, and also separately get the Mahalanobis
+# distance if present.
 #
 
-
 model=1
+has_mahal=0
 for estimationresults in $*
 do
     cat ${estimationresults} | sed -n -e '/^[[:space:]]*t-ratio$/,/^$/{p}' | sed '1d;$d'  | fgrep -vw 'Estimate' | awk '{print $1,$2}'  |  tr ' ' '\t' | sed "s/^/${model}\t/" >> ${tmpfile}
+    fgrep -q 'Mahalanobis_distance' ${estimationresults}
+    if [ $? -eq 0 ]; then
+        mahal_dist=`fgrep Mahalanobis_distance ${estimationresults} | awk '{print $2}'`
+        echo -e "${model}\tMahalanobis_distance\t${mahal_dist}" >> ${tmpfile}
+        has_mahal=1
+    fi
     model=`expr $model + 1`
 done
 
+effectlist=`cat ${tmpfile} | fgrep -v Mahalanobis_distance | awk '{print $2}' | sort | uniq`
 
-effectlist=`cat ${tmpfile} | awk '{print $2}' | sort | uniq`
-
-for effect in ${effectlist}
+for effect in ${effectlist} Mahalanobis_distance
 do
+    if [ ${has_mahal} -ne 0 -a ${effect} = "Mahalanobis_distance" ]; then
+        echo '\hline'
+    fi
     model=1
-    echo -n "${effect} " | tr '_' ' '
+    if [ ${effect} != "Mahalanobis_distance" -o ${has_mahal} -ne 0 ]; then
+        echo -n "${effect} " | tr '_' ' '
+    fi
     while [ $model -le $num_models ]; 
     do
-        tratio=`grep -w ${effect} ${tmpfile} | awk -vmodel=$model '$1 == model {print $3}'`
-        if [ "${tratio}" = "" ];  then
-            echo -n " & ---"
-        elif [ "${tratio}" = "nan" ];  then
-            echo -n " & ---"
+        if [ ${effect} = "Mahalanobis_distance" ]; then
+            if [ ${has_mahal} -ne 0 ]; then
+                mahal_dist=`grep -w ${effect} ${tmpfile} | awk -vmodel=$model '$1 == model {print $3}'`
+                echo -n " & ${mahal_dist}"
+            fi
         else
-            abs_tratio=`echo "if (${tratio} < 0) -(${tratio}) else ${tratio}" | bc -l`
-            good_fit=`echo "${abs_tratio} < ${tratioThreshold}" | bc -l`
-            if [ $good_fit -eq 1 ]; then
-                printf ' & $%.3f$' ${tratio}
+            tratio=`grep -w ${effect} ${tmpfile} | awk -vmodel=$model '$1 == model {print $3}'`
+            if [ "${tratio}" = "" ];  then
+                echo -n " & ---"
+            elif [ "${tratio}" = "nan" ];  then
+                echo -n " & ---"
             else
-                printf ' & $\\mathbf{%.3f}$' ${tratio}
+                abs_tratio=`echo "if (${tratio} < 0) -(${tratio}) else ${tratio}" | bc -l`
+                good_fit=`echo "${abs_tratio} < ${tratioThreshold}" | bc -l`
+                if [ $good_fit -eq 1 ]; then
+                    printf ' & $%.3f$' ${tratio}
+                else
+                    printf ' & $\\mathbf{%.3f}$' ${tratio}
+                fi
             fi
         fi
         model=`expr $model + 1`
