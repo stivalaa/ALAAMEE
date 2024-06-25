@@ -138,7 +138,9 @@ do
         fi
         model=`expr $model + 1`
     done
-    echo '\\'
+    if [ ${effect} != "Mahalanobis_distance" -o ${has_mahal} -ne 0 ]; then
+        echo '\\'
+    fi
 done
 
 echo '\hline'  
