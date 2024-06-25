@@ -118,7 +118,7 @@ do
         if [ ${effect} = "Mahalanobis_distance" ]; then
             if [ ${has_mahal} -ne 0 ]; then
                 mahal_dist=`grep -w ${effect} ${tmpfile} | awk -vmodel=$model '$1 == model {print $3}'`
-                echo -n " & ${mahal_dist}"
+                printf ' & $%.3f$' ${mahal_dist}
             fi
         else
             tratio=`grep -w ${effect} ${tmpfile} | awk -vmodel=$model '$1 == model {print $3}'`
