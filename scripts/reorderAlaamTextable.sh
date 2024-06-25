@@ -11,12 +11,14 @@
 # permute the table rows according to specified order, in order to
 # present the rows in an order we determine as best for presentation.
 # 
-# Usage: reorderAlaamTextable.sh [-r] <intable> <permutation>
+# Usage: reorderAlaamTextable.sh [-r|-m] <intable> <permutation>
 #
 # where <intable> is the input tex file and
 #       <permutation> is a permutation of 0..n-1 e.g. 2 0 1
-# if -r is specfied, this means input contains extra row for TotalRuns
+# if -r is specfied, this means input contains extra rows for TotalRuns
 #    and ConvergedRuns
+# if -m is specified, this means intput contains extra row for Mahalanobis
+#    distance (for GoF output in stochastic approximation)
 #
 # E.g.:
 #   reorderAlaamTextable.sh  ecoli_estimations.tex  1 5 4 2 3 0 9 10 7 6
@@ -37,12 +39,16 @@ function schwartzianTransform {
 }
 
 if [ $# -lt 2 ]; then
-  echo "Usage: $0 <infile> <permutation>" >&2
+  echo "Usage: $0 [-r|-m] <infile> <permutation>" >&2
   exit 1
 fi
 has_runs=0
+has_mahal=0
 if [ $1 = "-r" ]; then
   has_runs=1
+  shift 1
+elif [ $1 = "-m" ]; then
+  has_mahal=1
   shift 1
 fi
 
@@ -65,9 +71,11 @@ fi
 # 7 header rows and 2 trailer rows
 headrows=7
 if [ $has_runs -eq 1 ]; then
-  tailrows=5
+    tailrows=5
+elif [ $has_mahal -eq 1 ]; then
+    tailrows=4
 else
-  tailrows=2
+    tailrows=2
 fi
 head -n${headrows} ${infile}
 cat ${infile} | tail -n+`expr ${headrows} + 1` |head -n-${tailrows} > ${tmpfile}
