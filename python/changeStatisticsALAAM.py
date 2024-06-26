@@ -640,6 +640,49 @@ def changeMismatchingIndirectPartnerAttribute(attrname, G, A, i):
     return delta
 
 
+def changeAlterBinaryTwoStar1(binattr, G, A, i):
+    """Change statistic for AlterBinaryTwoStar1, tendency of an actor
+    with the attribute to have a tie to another actor, which has the
+    binary attribute binattr, with a tie to a third actor.
+
+    *--[o]--o
+
+    Like changePartnerActivityTwoPath (change statistic for partner
+    activity actor two-path (Alter-2Star1)), but with the added
+    requirement that the binary attribute for the central node in the
+    two-path is true.
+
+    """
+    return sum([G.degree(v) - 1 for v in G.neighbourIterator(i)
+                if G.binattr[attrname][v] != NA_VALUE and
+                G.binattr[attrname][v]])
+
+
+def changeAlterBinaryTwoStar2(binattr, G, A, i):
+    """Change statistic for AlterBinaryTwoStar2, structural
+    equivalence of actors with the attribute (two-path equivalence, or
+    tendency of actors with the attribute to have the same network
+    partner in common), when that common network partner has the binary
+    attribute binattr.
+    
+    *--[o]--*
+
+    Like changeIndirectedPartnerAttribute (change statistic for
+    indirect partner attribute (Alter-2Star2); structural equivalence
+    between actors with attribute (two-path equivalence)), but with the
+    added requirement that the binary attribute for the central node in the
+    two-path is true.
+
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        if (G.binattr[attrname][u] != NA_VALUE and G.binattr[attrname][u]):
+            for v in G.neighbourIterator(u):
+                if v != i and A[v] == 1:
+                    delta += 1
+    return delta
+
+
 # ======================= experimental statistics ============================
 
 def changeGWContagion(alpha, G, A, i):
