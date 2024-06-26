@@ -539,6 +539,107 @@ def changeContagionDist(distmatrix, G, A, i):
     return delta
 
 
+
+def changeMatchingPartnerActivityTwoPath(attrname, G, A, i):
+    """Change statistic for MatchingPartnerActivityTwoPath,
+    two-path from a node with outcome attribute where both ends
+    of two-path have same value of cateogorical attribute attrname.
+
+    {*}--o--{o}
+
+    This is like changePartnerActivityTwoPath (change statistic for
+    partner activity actor two-path (Alter-2Star1)), but with the
+    additional requirement that the two nodes on the ends of the two-path
+    have the same value of the supplied categorical attribute.
+
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        for v in G.neighbourIterator(u):
+            if (v != i and
+                G.catattr[attrname][i] != NA_VALUE and
+                G.catattr[attrname][v] != NA_VALUE and
+                G.catattr[attrname][i] == G.catattr[attrname][v]):
+                delta += 1
+    return delta
+
+
+def changeMismatchingPartnerActivityTwoPath(attrname, G, A, i):
+    """Change statistic for MismatchingPartnerActivityTwoPath,
+    two-path from a node with outcome attribute where ends
+    of two-path have different values of cateogorical attribute attrname.
+
+    {*}--o--<o>
+
+    This is like changePartnerActivityTwoPath (change statistic for
+    partner activity actor two-path (Alter-2Star1)), but with the
+    additional requirement that the two nodes on the ends of the two-path
+    have different values of the supplied categorical attribute.
+
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        for v in G.neighbourIterator(u):
+            if (v != i and
+                G.catattr[attrname][i] != NA_VALUE and
+                G.catattr[attrname][v] != NA_VALUE and
+                G.catattr[attrname][i] != G.catattr[attrname][v]):
+                delta += 1
+    return delta
+
+
+def changeMatchingIndirectPartnerAttribute(attrname, G, A, i):
+    """Change statistic for MatchingIndirectPartnerAttribute,
+    structural equivalence between actors with attribute (two-path
+    equivalence) which also have the same value of the supplied
+    categorical attribute attrname.
+
+    {*}--o--{*}
+
+    This is like changeIndrectPartnerAttribute (indirect partner
+    attribute (Alter-2Star2); structural equivalence between actors
+    with attribute (two-path equivalence), but with the additional
+    requirement that the two structurally equivalent nodes also have
+    the same value of the categorical attribute attrname.
+
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        for v in G.neighbourIterator(u):
+            if (v != i and A[v] == 1 and
+                G.catattr[attrname][i] != NA_VALUE and
+                G.catattr[attrname][v] != NA_VALUE and
+                G.catattr[attrname][i] == G.catattr[attrname][v]):
+                delta += 1
+    return delta
+
+
+def changeMismatchingIndirectPartnerAttribute(attrname, G, A, i):
+    """Change statistic for MismatchingIndirectPartnerAttribute,
+    structural equivalence between actors with attribute (two-path
+    equivalence) which also have different values of the supplied
+    categorical attribute attrname.
+
+    {*}--o--<*>
+
+    This is like changeIndrectPartnerAttribute (indirect partner
+    attribute (Alter-2Star2); structural equivalence between actors
+    with attribute (two-path equivalence), but with the additional
+    requirement that the two structurally equivalent nodes also have
+    the same value of the categorical attribute attrname.
+
+    """
+    delta = 0
+    for u in G.neighbourIterator(i):
+        for v in G.neighbourIterator(u):
+            if (v != i and A[v] == 1 and
+                G.catattr[attrname][i] != NA_VALUE and
+                G.catattr[attrname][v] != NA_VALUE and
+                G.catattr[attrname][i] != G.catattr[attrname][v]):
+                delta += 1
+    return delta
+
+
 # ======================= experimental statistics ============================
 
 def changeGWContagion(alpha, G, A, i):
