@@ -347,6 +347,37 @@ def changeBipartiteAlterMismatchingTwoStar2(mode, attrname, G, A, i):
 
 
 
+def changeBipartiteAlterBinaryTwoStar1(mode, attrname, G, A, i):
+    """Change statistic for bipartite alter two-star 1 with binary
+    attribute on central node.
+
+    x--[o]--*
+
+    This is like changeBipartiteAlterTwoStar1 but with the additional
+    requirement that the node (of the other mode) in the center of the
+    two-path (star) has the supplied binary attribute attrname true.
+
+    """
+    return (changeStatisticsALAAM.changeAlterBinaryTwoStar1(attrname, G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
+
+
+def changeBipartiteAlterBinaryTwoStar2(mode, attrname, G, A, i):
+    """Change statistic for bipartite alter two-star 2
+    with binary attribute on central node.
+
+    *--[o]--*
+
+    This is like changeBiparxtiteAlterTwoStar2 but with the additional
+    requirement that the node (of the other mode) in teh center of  the
+    two-path (star) has the supplied binary attribute attrname true.
+
+    """
+    return (changeStatisticsALAAM.changeAlterBinaryTwoStar2(attrname, G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
+
+
+
 # ================== old versions for regression testing ======================
 
 def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
