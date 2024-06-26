@@ -285,6 +285,68 @@ def changeBipartiteGWActivity(mode, alpha, G, A, i):
             else 0)
 
 
+def changeBipartiteAlterMatchingTwoStar1(mode, attrname, G, A, i):
+    """
+    Change statistic for bipartite alter two-star 1
+    with matching categorical attribute attrname.
+
+    {x}--o--{*}
+
+    This is like changeBipartiteAlterTwoStar1 but with the additional
+    requirement that the two nodes on the ends of the two-path have
+    the same value of the categorical attribute.
+    """
+    return (changeStatisticsALAAM.changeMatchingPartnerActivityTwoPath(attrname, G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
+
+
+def changeBipartiteAlterMismatchingTwoStar1(mode, attrname, G, A, i):
+    """
+    Change statistic for bipartite alter two-star 1
+    with mismatching categorical attribute attrname.
+
+    {x}--o--<*>
+
+    This is like changeBipartiteAlterTwoStar1 but with the additional
+    requirement that the two nodes on the ends of the two-path have
+    different values of the categorical attribute.
+    """
+    return (changeStatisticsALAAM.changeMismatchingPartnerActivityTwoPath(attrname, G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
+
+
+
+def changeBipartiteAlterMatchingTwoStar2(mode, attrname, G, A, i):
+    """Change statistic for bipartite alter two-star 2
+    with matching categorical attribute attrname.
+
+    {*}--o--<*>
+
+    This is like changeBiparxtiteAlterTwoStar2 but with the additional
+    requirement that the two nodes on the ends of the two-path have the
+    same value of the named categorical attribute.
+
+    """
+    return (changeStatisticsALAAM.changeMatchingIndirectPartnerAttribute(attrname, G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
+
+
+def changeBipartiteAlterMismatchingTwoStar2(mode, attrname, G, A, i):
+    """Change statistic for bipartite alter two-star 2
+    with mismatching categorical attribute attrname.
+
+    {*}--o--<*>
+
+    This is like changeBiparxtiteAlterTwoStar2 but with the additional
+    requirement that the two nodes on the ends of the two-path have
+    different values of the named categorical attribute.
+
+    """
+    return (changeStatisticsALAAM.changeMismatchingIndirectPartnerAttribute(attrname, G, A, i)
+            if G.bipartite_node_mode(i) == mode else 0)
+
+
+
 # ================== old versions for regression testing ======================
 
 def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
