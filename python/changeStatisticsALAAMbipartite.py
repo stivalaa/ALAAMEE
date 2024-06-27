@@ -285,7 +285,7 @@ def changeBipartiteGWActivity(mode, alpha, G, A, i):
             else 0)
 
 
-def changeBipartiteAlterMatchingTwoStar1(mode, attrname, G, A, i):
+def changeBpAlterSameTwoStar1(mode, attrname, G, A, i):
     """
     Change statistic for bipartite alter two-star 1
     with matching categorical attribute attrname.
@@ -296,11 +296,11 @@ def changeBipartiteAlterMatchingTwoStar1(mode, attrname, G, A, i):
     requirement that the two nodes on the ends of the two-path have
     the same value of the categorical attribute.
     """
-    return (changeStatisticsALAAM.changeMatchingPartnerActivityTwoPath(attrname, G, A, i)
+    return (changeStatisticsALAAM.changeSamePartnerActivityTwoPath(attrname, G, A, i)
             if G.bipartite_node_mode(i) == mode else 0)
 
 
-def changeBipartiteAlterMismatchingTwoStar1(mode, attrname, G, A, i):
+def changeBpAlterDiffTwoStar1(mode, attrname, G, A, i):
     """
     Change statistic for bipartite alter two-star 1
     with mismatching categorical attribute attrname.
@@ -311,12 +311,12 @@ def changeBipartiteAlterMismatchingTwoStar1(mode, attrname, G, A, i):
     requirement that the two nodes on the ends of the two-path have
     different values of the categorical attribute.
     """
-    return (changeStatisticsALAAM.changeMismatchingPartnerActivityTwoPath(attrname, G, A, i)
+    return (changeStatisticsALAAM.changeDiffPartnerActivityTwoPath(attrname, G, A, i)
             if G.bipartite_node_mode(i) == mode else 0)
 
 
 
-def changeBipartiteAlterMatchingTwoStar2(mode, attrname, G, A, i):
+def changeBpAlterSameTwoStar2(mode, attrname, G, A, i):
     """Change statistic for bipartite alter two-star 2
     with matching categorical attribute attrname.
 
@@ -327,11 +327,11 @@ def changeBipartiteAlterMatchingTwoStar2(mode, attrname, G, A, i):
     same value of the named categorical attribute.
 
     """
-    return (changeStatisticsALAAM.changeMatchingIndirectPartnerAttribute(attrname, G, A, i)
+    return (changeStatisticsALAAM.changeSameIndirectPartnerAttribute(attrname, G, A, i)
             if G.bipartite_node_mode(i) == mode else 0)
 
 
-def changeBipartiteAlterMismatchingTwoStar2(mode, attrname, G, A, i):
+def changeBpAlterDiffTwoStar2(mode, attrname, G, A, i):
     """Change statistic for bipartite alter two-star 2
     with mismatching categorical attribute attrname.
 
@@ -342,12 +342,12 @@ def changeBipartiteAlterMismatchingTwoStar2(mode, attrname, G, A, i):
     different values of the named categorical attribute.
 
     """
-    return (changeStatisticsALAAM.changeMismatchingIndirectPartnerAttribute(attrname, G, A, i)
+    return (changeStatisticsALAAM.changeDiffIndirectPartnerAttribute(attrname, G, A, i)
             if G.bipartite_node_mode(i) == mode else 0)
 
 
 
-def changeBipartiteAlterBinaryTwoStar1(mode, attrname, G, A, i):
+def changeBpAlterBinaryTwoStar1(mode, attrname, G, A, i):
     """Change statistic for bipartite alter two-star 1 with binary
     attribute on central node.
 
@@ -362,7 +362,7 @@ def changeBipartiteAlterBinaryTwoStar1(mode, attrname, G, A, i):
             if G.bipartite_node_mode(i) == mode else 0)
 
 
-def changeBipartiteAlterBinaryTwoStar2(mode, attrname, G, A, i):
+def changeBpAlterBinaryTwoStar2(mode, attrname, G, A, i):
     """Change statistic for bipartite alter two-star 2
     with binary attribute on central node.
 

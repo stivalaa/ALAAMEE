@@ -540,8 +540,8 @@ def changeContagionDist(distmatrix, G, A, i):
 
 
 
-def changeMatchingPartnerActivityTwoPath(attrname, G, A, i):
-    """Change statistic for MatchingPartnerActivityTwoPath,
+def changeSamePartnerActivityTwoPath(attrname, G, A, i):
+    """Change statistic for SamePartnerActivityTwoPath,
     two-path from a node with outcome attribute where both ends
     of two-path have same value of cateogorical attribute attrname.
 
@@ -564,8 +564,8 @@ def changeMatchingPartnerActivityTwoPath(attrname, G, A, i):
     return delta
 
 
-def changeMismatchingPartnerActivityTwoPath(attrname, G, A, i):
-    """Change statistic for MismatchingPartnerActivityTwoPath,
+def changeDiffPartnerActivityTwoPath(attrname, G, A, i):
+    """Change statistic for DiffPartnerActivityTwoPath,
     two-path from a node with outcome attribute where ends
     of two-path have different values of cateogorical attribute attrname.
 
@@ -588,8 +588,8 @@ def changeMismatchingPartnerActivityTwoPath(attrname, G, A, i):
     return delta
 
 
-def changeMatchingIndirectPartnerAttribute(attrname, G, A, i):
-    """Change statistic for MatchingIndirectPartnerAttribute,
+def changeSameIndirectPartnerAttribute(attrname, G, A, i):
+    """Change statistic for SameIndirectPartnerAttribute,
     structural equivalence between actors with attribute (two-path
     equivalence) which also have the same value of the supplied
     categorical attribute attrname.
@@ -614,8 +614,8 @@ def changeMatchingIndirectPartnerAttribute(attrname, G, A, i):
     return delta
 
 
-def changeMismatchingIndirectPartnerAttribute(attrname, G, A, i):
-    """Change statistic for MismatchingIndirectPartnerAttribute,
+def changeDiffIndirectPartnerAttribute(attrname, G, A, i):
+    """Change statistic for DiffIndirectPartnerAttribute,
     structural equivalence between actors with attribute (two-path
     equivalence) which also have different values of the supplied
     categorical attribute attrname.

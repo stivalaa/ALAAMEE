@@ -879,18 +879,18 @@ def test_new_bipartite_change_stats_tiny():
                        catattr_filename = "../examples/data/bipartite/tiny/tiny_catattr.txt")
     g.printSummary()
     outcome_binvar = list(map(int, open("../examples/data/bipartite/tiny/tiny_outcome.txt").read().split()[1:]))
-    obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteAlterMatchingTwoStar1, MODE_A, 'catattr'), partial(changeBipartiteAlterMatchingTwoStar2, MODE_A, 'catattr'), partial(changeBipartiteAlterMismatchingTwoStar1, MODE_A, 'catattr'), partial(changeBipartiteAlterMismatchingTwoStar2, MODE_A, 'catattr'), partial(changeBipartiteAlterBinaryTwoStar1, MODE_A, 'binattr'), partial(changeBipartiteAlterBinaryTwoStar1, MODE_A, 'binattr')])
+    obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBpAlterSameTwoStar1, MODE_A, 'catattr'), partial(changeBpAlterSameTwoStar2, MODE_A, 'catattr'), partial(changeBpAlterDiffTwoStar1, MODE_A, 'catattr'), partial(changeBpAlterDiffTwoStar2, MODE_A, 'catattr'), partial(changeBpAlterBinaryTwoStar1, MODE_A, 'binattr'), partial(changeBpAlterBinaryTwoStar1, MODE_A, 'binattr')])
     assert all(obs_stats == numpy.array([0, 0, 0, 0, 0, 0])) #mode A all zero
 
-    obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteAlterMatchingTwoStar1, MODE_B, 'catattr'), partial(changeBipartiteAlterMatchingTwoStar2, MODE_B, 'catattr'), partial(changeBipartiteAlterMismatchingTwoStar1, MODE_B, 'catattr'), partial(changeBipartiteAlterMismatchingTwoStar2, MODE_B, 'catattr'), partial(changeBipartiteAlterBinaryTwoStar1, MODE_B, 'binattr'), partial(changeBipartiteAlterBinaryTwoStar2, MODE_B, 'binattr')])
+    obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBpAlterSameTwoStar1, MODE_B, 'catattr'), partial(changeBpAlterSameTwoStar2, MODE_B, 'catattr'), partial(changeBpAlterDiffTwoStar1, MODE_B, 'catattr'), partial(changeBpAlterDiffTwoStar2, MODE_B, 'catattr'), partial(changeBpAlterBinaryTwoStar1, MODE_B, 'binattr'), partial(changeBpAlterBinaryTwoStar2, MODE_B, 'binattr')])
     assert all(obs_stats == numpy.array([0, 0, 2, 0, 1, 0]))
 
-    assert changeBipartiteAlterMatchingTwoStar1(MODE_B, 'catattr', g, outcome_binvar, 3) == 0
-    assert changeBipartiteAlterMatchingTwoStar2(MODE_B, 'catattr', g, outcome_binvar, 3) == 0
-    assert changeBipartiteAlterMismatchingTwoStar1(MODE_B, 'catattr', g, outcome_binvar, 3) == 2
-    assert changeBipartiteAlterMismatchingTwoStar2(MODE_B, 'catattr', g, outcome_binvar, 3) == 2
-    assert changeBipartiteAlterBinaryTwoStar1(MODE_B, 'binattr', g, outcome_binvar, 3) == 1
-    assert changeBipartiteAlterBinaryTwoStar2(MODE_B, 'binattr', g, outcome_binvar, 3) == 1
+    assert changeBpAlterSameTwoStar1(MODE_B, 'catattr', g, outcome_binvar, 3) == 0
+    assert changeBpAlterSameTwoStar2(MODE_B, 'catattr', g, outcome_binvar, 3) == 0
+    assert changeBpAlterDiffTwoStar1(MODE_B, 'catattr', g, outcome_binvar, 3) == 2
+    assert changeBpAlterDiffTwoStar2(MODE_B, 'catattr', g, outcome_binvar, 3) == 2
+    assert changeBpAlterBinaryTwoStar1(MODE_B, 'binattr', g, outcome_binvar, 3) == 1
+    assert changeBpAlterBinaryTwoStar2(MODE_B, 'binattr', g, outcome_binvar, 3) == 1
     print("OK")
     print()
 
