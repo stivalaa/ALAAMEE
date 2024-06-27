@@ -627,7 +627,7 @@ def test_bipartite_change_stats_tiny():
     """ test BipartiteGraph object and bipartite undirected change stats on
     tiny example (manually verified)
     """
-    print("testing bipartrite change stats on tiny example...")
+    print("testing bipartite change stats on tiny example...")
     start = time.time()
     g = BipartiteGraph("../examples/data/bipartite/tiny/tiny_bipartite.net")
     assert g.numNodes() == 5
@@ -657,7 +657,7 @@ def test_bipartite_change_stats_inouye():
     """ test BipartiteGraph object and bipartite undirected change stats on
     Inouye-Pyke pollinator web example
     """
-    print("testing bipartrite change stats on Inouye-Pyke example...")
+    print("testing bipartite change stats on Inouye-Pyke example...")
     start = time.time()
     g = BipartiteGraph("../examples/data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net")
     assert g.numNodes() == 133
@@ -873,7 +873,7 @@ def test_new_bipartite_change_stats_tiny():
     just directly call the general (one-mode) implementations, but intended
     specifically for two-mode graphs.
     """
-    print("testing new bipartrite change stats on tiny example...")
+    print("testing new bipartite change stats on tiny example...")
     g = BipartiteGraph("../examples/data/bipartite/tiny/tiny_bipartite.net",
                        binattr_filename = "../examples/data/bipartite/tiny/tiny_binattr.txt",
                        catattr_filename = "../examples/data/bipartite/tiny/tiny_catattr.txt")
@@ -900,7 +900,6 @@ def test_new_bipartite_change_stats_tiny():
 def main():
     """main: run all tests
     """
-    test_new_bipartite_change_stats_tiny()#XXX
     test_undirected_graph()
     test_undirected_change_stats_karate()
     test_directed_change_stats_highschool()
@@ -917,6 +916,7 @@ def main():
     test_regression_directed_change_stats("../examples/data/directed/HighSchoolFriendship/highschool_friendship_arclist.net", '../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt', None, None, '../examples/data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt')
     test_changestats_comparison()
     test_mahalanobis()
+    test_new_bipartite_change_stats_tiny()
 
 if __name__ == "__main__":
     main()
