@@ -196,9 +196,9 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     if converged:
         print('Converged.')
         significant = np.abs(theta) > 2 * std_error
-        sys.stdout.write(30*' ' + '  Estimate  Std.Error t-ratio\n')
+        sys.stdout.write(40*' ' + '  Estimate  Std.Error t-ratio\n')
         for j in range(len(theta)):
-            sys.stdout.write('%30.30s % 7.3f   % 7.3f   % 7.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
+            sys.stdout.write('%40.40s % 7.3f   % 7.3f   % 7.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
         print()
 
         # Do goodness-of-fit test
@@ -284,15 +284,15 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         print('           ',goflabels)
         print('t_ratios = ',gofresult[0])
         
-        sys.stdout.write(30*' ' + '  t-ratio\n')
+        sys.stdout.write(40*' ' + '  t-ratio\n')
         for j in range(n):
-            sys.stdout.write('%30.30s % 7.3f\n' %
+            sys.stdout.write('%40.40s % 7.3f\n' %
                              (goflabels[j], gofresult[0][j]))
         # Note that MPNet outputs the squared Mahalanobis distance,
         # not the Mahalanobis distance as done here.
         print()  # blank line so not picked up by
                  # stochasticApproxGoF2textableMultiModels.sh
-        sys.stdout.write("%30.30s %f\n" %
+        sys.stdout.write("%40.40s %f\n" %
                          ('Mahalanobis_distance', gofresult[1]))
         print()
 
