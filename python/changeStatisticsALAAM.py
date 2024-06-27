@@ -640,10 +640,10 @@ def changeMismatchingIndirectPartnerAttribute(attrname, G, A, i):
     return delta
 
 
-def changeAlterBinaryTwoStar1(binattr, G, A, i):
+def changeAlterBinaryTwoStar1(attrname, G, A, i):
     """Change statistic for AlterBinaryTwoStar1, tendency of an actor
     with the attribute to have a tie to another actor, which has the
-    binary attribute binattr, with a tie to a third actor.
+    binary attribute attrname, with a tie to a third actor.
 
     *--[o]--o
 
@@ -658,12 +658,12 @@ def changeAlterBinaryTwoStar1(binattr, G, A, i):
                 G.binattr[attrname][v]])
 
 
-def changeAlterBinaryTwoStar2(binattr, G, A, i):
+def changeAlterBinaryTwoStar2(attrname, G, A, i):
     """Change statistic for AlterBinaryTwoStar2, structural
     equivalence of actors with the attribute (two-path equivalence, or
     tendency of actors with the attribute to have the same network
     partner in common), when that common network partner has the binary
-    attribute binattr.
+    attribute attrname.
     
     *--[o]--*
 
