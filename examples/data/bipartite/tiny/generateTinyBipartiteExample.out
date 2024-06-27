@@ -1,6 +1,6 @@
-IGRAPH bd7bd27 U--B 5 5 -- 
-+ attr: type (v/l), outcome (v/n)
-+ edges from bd7bd27:
+IGRAPH 0f37414 U--B 5 5 -- 
++ attr: type (v/l), outcome (v/n), binattr (v/n), catattr (v/n)
++ edges from 0f37414:
 [1] 1--4 1--5 2--4 3--5 3--4
      [,1] [,2] [,3] [,4] [,5]
 [1,]    0    0    0    1    1

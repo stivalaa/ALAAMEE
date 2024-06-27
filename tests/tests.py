@@ -864,11 +864,34 @@ def test_mahalanobis():
     assert math.isclose(mahalanobis(obs_stats, Z), 2.874224, abs_tol = 0.000001)
     print("OK")
 
+
+
+def test_new_bipartite_change_stats_tiny():
+    """ test new bipartite undirected change stats Alter
+    match/mismatch on TwoStar1 and Twostar2 and Alter binary TwoStar1
+    and TwoStar2 on tiny example (manually verified). Note that these
+    just directly call the general (one-mode) implementations, but intended
+    specifically for two-mode graphs.
+    """
+    print("testing new bipartrite change stats on tiny example...")
+    g = BipartiteGraph("../examples/data/bipartite/tiny/tiny_bipartite.net",
+                       binattr_filename = "../examples/data/bipartite/tiny/tiny_binattr.txt",
+                       catattr_filename = "../examples/data/bipartite/tiny/tiny_catattr.txt")
+    g.printSummary()
+    outcome_binvar = list(map(int, open("../examples/data/bipartite/tiny/tiny_outcome.txt").read().split()[1:]))
+    obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteAlterMatchingTwoStar1, MODE_A, 'catattr'), partial(changeBipartiteAlterMatchingTwoStar2, MODE_A, 'catattr'), partial(changeBipartiteAlterMismatchingTwoStar1, MODE_A, 'catattr'), partial(changeBipartiteAlterMismatchingTwoStar2, MODE_A, 'catattr'), partial(changeBipartiteAlterBinaryTwoStar1, MODE_A, 'binattr'), partial(changeBipartiteAlterBinaryTwoStar1, MODE_A, 'binattr')])
+    assert all(obs_stats == numpy.array([0, 0, 0, 0, 0, 0])) #mode A all zero
+
+    print("OK")
+    print()
+
+    
 ############################### main #########################################
 
 def main():
     """main: run all tests
     """
+    test_new_bipartite_change_stats_tiny()#XXX
     test_undirected_graph()
     test_undirected_change_stats_karate()
     test_directed_change_stats_highschool()

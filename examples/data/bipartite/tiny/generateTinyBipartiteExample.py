@@ -6,15 +6,18 @@
 ###
 ### Generate tiny bipartite network and write bipartite network in Pajek
 ### format along with an outcome binary variable for ALAAM testing.
+### Also some categorical and binary attributes for testing new change stats.
 ###
 ### Usage:
 ### 
 ### Rscript generateTinyBipartiteExample.py
 ###
 ### Output files (WARNING overwritten)
-###    tiny_biparti   te.net       - network in Pajek format
+###    tiny_bipartite.ne   t       - network in Pajek format
 ###    tiny_biadjacency_matrix.txt - biadjacency matrix for MPNet
 ###    tiny_outcome.txt            - outcome binary variable
+###    tiny_catattr.txt            - categorical attribute
+###    tiny_binattr.txt            - binary attribute
 ###    tiny.pdf                    - plot of network coloured by outcome var
 ###
 ### Note that the variables and their types to write to the output files
@@ -61,6 +64,12 @@ stopifnot(vcount(g) == m + n)
 ##  binary outcome variable
 V(g)$outcome <- c(0, 0, 0, 0, 1)
 
+## binary fixed variable
+V(g)$binattr <- c(1, 0, 0, 0, 0)
+
+## categorical fixed variable
+V(g)$catattr <- c(0, 0, 0, 1, 2)
+      
 print(g)
 
 
@@ -93,11 +102,27 @@ write.table(B, paste(network_name, "_biadjacency_matrix.txt", sep=''),
 ##
 ## write binary outcome attribute 
 ##
-binattr <- data.frame(outcome = ifelse(is.na(V(g)$outcome), 0,
+outbinattr <- data.frame(outcome = ifelse(is.na(V(g)$outcome), 0,
                                        ifelse(V(g)$outcome, 1, 0)))
-write.table(binattr, file = paste(network_name, "outcome.txt", sep="_"),
+write.table(outbinattr, file = paste(network_name, "outcome.txt", sep="_"),
             row.names = FALSE, col.names = TRUE, quote=FALSE, sep='\t')
 
+
+##
+## write binary attribute 
+##
+binattr <- data.frame(binattr = ifelse(is.na(V(g)$binattr), 0,
+                                       ifelse(V(g)$binattr, 1, 0)))
+write.table(binattr, file = paste(network_name, "binattr.txt", sep="_"),
+            row.names = FALSE, col.names = TRUE, quote=FALSE, sep='\t')
+
+##
+## write categorical attribute 
+##
+catattr <- data.frame(catattr = ifelse(is.na(V(g)$catattr), 'NA',
+                                       V(g)$catattr))
+write.table(catattr, file = paste(network_name, "catattr.txt", sep="_"),
+            row.names = FALSE, col.names = TRUE, quote=FALSE, sep='\t')
 
 ###
 ### write PDF file with network diagram
