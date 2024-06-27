@@ -884,6 +884,11 @@ def test_new_bipartite_change_stats_tiny():
 
     obs_stats = computeObservedStatistics(g, outcome_binvar, [partial(changeBipartiteAlterMatchingTwoStar1, MODE_B, 'catattr'), partial(changeBipartiteAlterMatchingTwoStar2, MODE_B, 'catattr'), partial(changeBipartiteAlterMismatchingTwoStar1, MODE_B, 'catattr'), partial(changeBipartiteAlterMismatchingTwoStar2, MODE_B, 'catattr'), partial(changeBipartiteAlterBinaryTwoStar1, MODE_B, 'binattr'), partial(changeBipartiteAlterBinaryTwoStar2, MODE_B, 'binattr')])
     assert all(obs_stats == numpy.array([0, 0, 2, 0, 1, 0]))
+
+    assert changeBipartiteAlterMatchingTwoStar1(MODE_B, 'catattr', g, outcome_binvar, 3) == 0
+    assert changeBipartiteAlterMatchingTwoStar2(MODE_B, 'catattr', g, outcome_binvar, 3) == 0
+    assert changeBipartiteAlterMismatchingTwoStar1(MODE_B, 'catattr', g, outcome_binvar, 3) == 2
+    assert changeBipartiteAlterMismatchingTwoStar2(MODE_B, 'catattr', g, outcome_binvar, 3) == 2    
     print("OK")
     print()
 
