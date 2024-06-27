@@ -888,7 +888,9 @@ def test_new_bipartite_change_stats_tiny():
     assert changeBipartiteAlterMatchingTwoStar1(MODE_B, 'catattr', g, outcome_binvar, 3) == 0
     assert changeBipartiteAlterMatchingTwoStar2(MODE_B, 'catattr', g, outcome_binvar, 3) == 0
     assert changeBipartiteAlterMismatchingTwoStar1(MODE_B, 'catattr', g, outcome_binvar, 3) == 2
-    assert changeBipartiteAlterMismatchingTwoStar2(MODE_B, 'catattr', g, outcome_binvar, 3) == 2    
+    assert changeBipartiteAlterMismatchingTwoStar2(MODE_B, 'catattr', g, outcome_binvar, 3) == 2
+    assert changeBipartiteAlterBinaryTwoStar1(MODE_B, 'binattr', g, outcome_binvar, 3) == 1
+    assert changeBipartiteAlterBinaryTwoStar2(MODE_B, 'binattr', g, outcome_binvar, 3) == 1
     print("OK")
     print()
 
