@@ -320,7 +320,7 @@ def changeBpAlterSameTwoStar2(mode, attrname, G, A, i):
     """Change statistic for bipartite alter two-star 2
     with matching categorical attribute attrname.
 
-    {*}--o--<*>
+    {*}--o--{*}
 
     This is like changeBiparxtiteAlterTwoStar2 but with the additional
     requirement that the two nodes on the ends of the two-path have the
