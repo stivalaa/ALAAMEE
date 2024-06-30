@@ -369,7 +369,7 @@ def changeBpAlterBinaryTwoStar2(mode, attrname, G, A, i):
     *--[o]--*
 
     This is like changeBiparxtiteAlterTwoStar2 but with the additional
-    requirement that the node (of the other mode) in teh center of  the
+    requirement that the node (of the other mode) in the center of  the
     two-path (star) has the supplied binary attribute attrname true.
 
     """
