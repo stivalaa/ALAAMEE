@@ -18,8 +18,11 @@ uname -a
 echo SLURM_CPUS_PER_TASK = $SLURM_CPUS_PER_TASK
 echo -n "started at: "; date
 
-module purge # otherwise module load python/3.9.0 sometimes fails
-module load python/3.9.0
+# module version numbers are required on OzStar (Ngarrgu Tindebeek)
+module load foss/2022b
+module load python/3.10.8
+module load numpy/1.24.2-scipy-bundle-2023.02
+
 
 OLD_NUM_RUNS=@OLD_NUM_RUNS
 NEW_NUM_RUNS=@NEW_NUM_RUNS
