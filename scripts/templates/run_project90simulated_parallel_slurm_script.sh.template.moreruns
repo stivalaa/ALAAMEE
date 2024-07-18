@@ -7,12 +7,12 @@
 # on completion
 
 #SBATCH --job-name="ALAAMEE_parallel_@JOBSUFFIX"
-#SBATCH --time=0-08:00:00
+#SBATCH --time=0-28:00:00
 #SBATCH --output=alaamee_project90sim-more-%j.out
 #SBATCH --error=alaamee_project90sim-more-%j.err
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=20
-#SBATCH --mem=2GB
+#SBATCH --cpus-per-task=50
+#SBATCH --mem=16GB
 
 uname -a
 echo SLURM_CPUS_PER_TASK = $SLURM_CPUS_PER_TASK

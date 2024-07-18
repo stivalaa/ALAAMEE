@@ -16,8 +16,8 @@
 #   @NEW_NUM_RUNS
 #
 
-OLD_NUM_RUNS=20
-NEW_NUM_RUNS=100
+OLD_NUM_RUNS=100
+NEW_NUM_RUNS=500
 
 
 SCRIPTDIR=`dirname $0`
@@ -41,6 +41,9 @@ do
   #echo $template
   mv ${sampledir}/run_project90simulated_parallel_slurm_script.sh ${sampledir}/run_project90simulated_parallel_slurm_script.sh.OLD
   cat ${template} | sed "s/@JOBSUFFIX/${jobsuffix}/g" | sed "s/@OLD_NUM_RUNS/${OLD_NUM_RUNS}/g" | sed "s/@NEW_NUM_RUNS/${NEW_NUM_RUNS}/g" > ${sampledir}/`basename ${template} .template.moreruns`
+  # also update R script just to get new module load commands for ozstar
+  template=${TEMPLATE_DIR}/run_project90sim_R_scripts_slurm_script.sh.template
+  cat ${template} | sed "s/@JOBSUFFIX/${jobsuffix}/g"  > ${sampledir}/`basename ${template} .template`
 done
 
 
