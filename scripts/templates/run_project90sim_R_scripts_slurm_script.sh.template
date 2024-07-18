@@ -6,6 +6,7 @@
 #SBATCH --time=0-01:00:00
 #SBATCH --output=alaamee_covariance_project90-%j.out
 #SBATCH --error=alaamee_covariance_project90-%j.err
+#SBATCH --mem=8GB
 
 
 module load gcc/11.3.0 # needed by r/4.2.1
