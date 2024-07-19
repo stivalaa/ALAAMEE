@@ -17,7 +17,9 @@
 #
 # Uses various GNU utils options on echo, etc.
 
-command -v module >/dev/null 2>&1 && module load r
+module load gcc/11.3.0 # needed by r/4.2.1
+module load openmpi/4.1.4 # needed by r/4.2.1
+module load r/4.2.1
 
 SCRIPTDIR=`dirname $0`
 RSCRIPTDIR=${SCRIPTDIR}/../R
