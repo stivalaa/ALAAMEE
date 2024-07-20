@@ -221,6 +221,7 @@ if (keptcount < totalruns) {
 full_theta <- theta
 full_dzA <- dzA
 full_totalruns <- totalruns
+full_keptcount <- keptcount
 
 for (this_max_runs in seq(1, max_runs)) {
 
@@ -230,8 +231,9 @@ for (this_max_runs in seq(1, max_runs)) {
     theta <- full_theta
     dzA <- full_dzA
     totalruns <- full_totalruns
-    stopifnot(totalruns == length(unique(theta$run)))
-    stopifnot(totalruns == length(unique(dzA$run)))
+    keptcount <- full_keptcount
+    stopifnot(keptcount == length(unique(theta$run)))
+    stopifnot(keptcount == length(unique(dzA$run)))
     theta <- theta[which(theta$run < this_max_runs), ]
     dzA <- dzA[which(dzA$run < this_max_runs), ]
     totalruns <- min(this_max_runs, totalruns)
