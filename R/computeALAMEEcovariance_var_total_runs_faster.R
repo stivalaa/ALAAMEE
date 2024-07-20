@@ -226,6 +226,7 @@ for (this_max_runs in seq(1, max_runs)) {
 
   if (this_max_runs > 0) {
     cat("Using maximum of", this_max_runs, "runs\n", file=stderr())
+    cat("MaxRuns = ", this_max_runs, '\n', sep='')
     theta <- full_theta
     dzA <- full_dzA
     totalruns <- full_totalruns
@@ -305,18 +306,18 @@ for (this_max_runs in seq(1, max_runs)) {
         ## get z-score for alpha (e.g. approx. 1.96 for alpha=0.05)
         zSigma <- qnorm(alpha/2, lower.tail=FALSE)
         
-        ## output estimates for this run
-        cat('\nRun ', run, '\n')
-        for (paramname in paramnames) {
-          signif <- ''
-            if (!is.na(est_t_ratio[paramname]) &&
-                abs(est_t_ratio[paramname]) <= t_ratio_threshold &&
-                abs(est_theta[paramname]) > zSigma*est_stderr[paramname]) {
-              signif <- '*'
-            }
-            cat(paramname, est_theta[paramname], theta_sd[paramname],
-                est_stderr[paramname], est_t_ratio[paramname], signif, '\n')
-        }
+#        ## output estimates for this run
+#        cat('\nRun ', run, '\n')
+#        for (paramname in paramnames) {
+#          signif <- ''
+#            if (!is.na(est_t_ratio[paramname]) &&
+#                abs(est_t_ratio[paramname]) <= t_ratio_threshold &&
+#                abs(est_theta[paramname]) > zSigma*est_stderr[paramname]) {
+#              signif <- '*'
+#            }
+#            cat(paramname, est_theta[paramname], theta_sd[paramname],
+#                est_stderr[paramname], est_t_ratio[paramname], signif, '\n')
+#        }
       }
   }
     
@@ -328,7 +329,7 @@ for (this_max_runs in seq(1, max_runs)) {
   alphaPooled <- alpha
   zSigma <- qnorm(alphaPooled/2, lower.tail=FALSE)
   
-  cat('\nPooled\n')
+#  cat('\nPooled\n')
   if (keptcount > 0) {
     for (paramname in paramnames) {
         pooled_est <- inverse_variance_wm(theta_estimates[, paramname],

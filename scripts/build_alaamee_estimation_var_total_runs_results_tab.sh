@@ -17,7 +17,7 @@
 #
 # Uses various GNU utils options on echo, etc.
 
-## NOTE: Tool slow when there are many more runs than 100, as the R script
+## NOTE: Too slow when there are many more runs than 100, as the R script
 ## computeALAMEEcovariance.R has to read all the data each time, and for (e.g.)
 ## 500 runs this was found to be impractically slow for this use, so use
 ## new script build_alaamee_estimation_var_total_runs_results_tab_faster.sh
