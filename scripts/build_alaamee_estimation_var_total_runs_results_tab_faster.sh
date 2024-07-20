@@ -40,7 +40,7 @@ fi
 
 joboutputroot=$1
 
-MAX_RUNS=3
+MAX_RUNS=500
 
 tmpfile=`mktemp` || exit 1
 
@@ -60,8 +60,8 @@ do
     sampleid=`basename "${sampledir}" | sed 's/sample//g'`
     nodecount=`wc -l ${sampledir}/sample-*sim${sampleid}.txt | awk '{print $1}'`
     nodecount=`expr ${nodecount} - 1`  # less 1 for header line
-    totalruns=`cat ${tmpfile} |  awk "/^MaxRuns = $totalRuns/,/^TotalRuns/" | fgrep -w TotalRuns | awk '{print $2}'`
-    convergedruns=`cat ${tmpfile} |  awk "/^MaxRuns = $totalRuns/,/^ConvergedRuns/" | fgrep -w TotalRuns | awk '{print $2}'`
+    totalruns=`cat ${tmpfile} |  awk "/^MaxRuns = ${totalRuns}\$/,/^ConvergedRuns/" | fgrep -w TotalRuns | awk '{print $2}'`
+    convergedruns=`cat ${tmpfile} |  awk "/^MaxRuns = ${totalRuns}\$/,/^ConvergedRuns/" | fgrep -w ConvergedRuns | awk '{print $2}'`
     # note messy special case where cannot backslash escape ! in double quotes in bash as the backslash is retaines so gives sed error, have to use single quotes
     cat ${tmpfile} |  sed -n -e "/^MaxRuns = ${totalRuns}/,/^TotalRuns/{//"'!p}' | tr -d '*' | fgrep -vw AcceptanceRate | fgrep -vw TotalRuns | fgrep -vw ConvergedRuns |  tr ' ' '\t'  | sed "s/\$/\t${sampleid}\t${nodecount}\t${convergedruns}\t${totalruns}/"
   done
