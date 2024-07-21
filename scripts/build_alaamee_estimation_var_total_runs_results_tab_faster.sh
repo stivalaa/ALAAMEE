@@ -63,7 +63,7 @@ do
     totalruns=`cat ${tmpfile} |  awk "/^MaxRuns = ${totalRuns}\$/,/^ConvergedRuns/" | fgrep -w TotalRuns | awk '{print $2}'`
     convergedruns=`cat ${tmpfile} |  awk "/^MaxRuns = ${totalRuns}\$/,/^ConvergedRuns/" | fgrep -w ConvergedRuns | awk '{print $2}'`
     # note messy special case where cannot backslash escape ! in double quotes in bash as the backslash is retaines so gives sed error, have to use single quotes
-    cat ${tmpfile} |  sed -n -e "/^MaxRuns = ${totalRuns}/,/^TotalRuns/{//"'!p}' | tr -d '*' | fgrep -vw AcceptanceRate | fgrep -vw TotalRuns | fgrep -vw ConvergedRuns |  tr ' ' '\t'  | sed "s/\$/\t${sampleid}\t${nodecount}\t${convergedruns}\t${totalruns}/"
+    cat ${tmpfile} |  sed -n -e "/^MaxRuns = ${totalRuns}\$/,/^TotalRuns/{//"'!p}' | tr -d '*' | fgrep -vw AcceptanceRate | fgrep -vw TotalRuns | fgrep -vw ConvergedRuns |  tr ' ' '\t'  | sed "s/\$/\t${sampleid}\t${nodecount}\t${convergedruns}\t${totalruns}/"
   done
 done
 rm ${tmpfile}
