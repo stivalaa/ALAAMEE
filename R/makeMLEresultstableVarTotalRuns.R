@@ -100,7 +100,7 @@ for (results_filename in results_filenames) {
           oldn <- nrow(De)
           De <- De[which(De$t.ratio <= 0.1), ]
           if (nrow(De) != oldn) {
-            write(paste('removed',oldn-nrow(De),'unconverged estimates\n'),stderr())
+            write(paste('removed',oldn-nrow(De),'unconverged estimates'),stderr())
           }
         }
 
@@ -126,6 +126,9 @@ for (results_filename in results_filenames) {
         num_in_ci <- sum((De$Estimate < this_true_parameters[i] & De$Estimate + zSigma*De$StdErr >= this_true_parameters[i]) | (De$Estimate >= this_true_parameters[i] & De$Estimate - zSigma*De$StdErr <= this_true_parameters[i]))
         perc_in_ci <- 100 * num_in_ci / length(De$Estimate)
 
+        num_samples <- length(unique(De$sampleId))
+        cat("totalRuns = ", totalRuns, ", effect = ", effect, ", length(De$Estimate) = ", length(De$Estimate), ", num_samples = ", num_samples, "\n", file=stderr())#XXX
+        
         ## for purely inference (sign and significance, not actual value of estimate)
         ## compute False Negative rate, as the number of times the estimate
         ## is the right sign, but the CI includes zero; or, is the wrong sign.
