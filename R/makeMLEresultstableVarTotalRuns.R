@@ -9,11 +9,11 @@
 ## build_alaamee_estimation_var_total_runs_results_tab.sh
 ## and make table of estimates and standard errors and false negative rates.
 ##
-## Usage: Rscript [-s] makeMLEresultsTableVarTotalRuns.R 
+## Usage: Rscript [-s] makeMLEresultsTableVarTotalRuns.R results_filename
 ##
 ## Output is to stdout
 ##
-## e.g.: Rscript makeMLEresultsTableVarTotalRuns.R
+## e.g.: Rscript makeMLEresultsTableVarTotalRuns.R alaamee_estimates_var_total_runs_simulated_Project90.txt
 ## 
 
 library(PropCIs) # for Wilson score test for false negative rate
@@ -26,15 +26,17 @@ zSigma <- 2 # nominal 95% CI
 options(digits=4) # for printing rmse etc. values
 
 
-results_filenames <- c('alaamee_estimates_var_total_runs_simulated_Project90.txt')
 
 args <- commandArgs(trailingOnly=TRUE)
 use_sd_theta <- FALSE
-if (length(args) > 0 ) {
+if (length(args) > 1 ) {
    if (args[1] == "-s") {
       use_sd_theta <- TRUE
     }
-}  
+    results_filenames <- args[2]
+} else {
+  results_filenames <- args[1]
+}
 
 ## write header line
 cat("N Descr ErrorAnalysis FixedDensity Effect Bias RMSE FNRpercent MeanStdErr StdDevEstimate NumConverged FNRpercentLower FNRpercentUpper TotalNetworksConverged TotalRuns PercentInCI\n")

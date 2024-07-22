@@ -9,12 +9,12 @@
 # Read estimation results (from buildresults.sh) and make table
 # of estimates and standard errors
 #
-# Usage: Rscript [-s] makeMLEresultstable.R 
+# Usage: Rscript [-s] makeMLEresultstable.R resultsfilename
 #
 #
 # Output is to stdout
 #
-# e.g.: Rscript makeMLEresultstable.R
+# e.g.: Rscript makeMLEresultstable.R alaamee_estimates_simulated_Project90.txt
 # 
 
 library(PropCIs) # for Wilson score test for false negative rate
@@ -27,15 +27,17 @@ zSigma <- 2 # nominal 95% CI
 options(digits=4) # for printing rmse etc. values
 
 
-results_filenames <- c('alaamee_estimates_simulated_Project90.txt')
 
 args <- commandArgs(trailingOnly=TRUE)
 use_sd_theta <- FALSE
-if (length(args) > 0 ) {
+if (length(args) > 1 ) {
    if (args[1] == "-s") {
       use_sd_theta <- TRUE
     }
-}  
+    results_filenames <- args[2]
+}  else {
+  results_filenames <- args[1]
+}
 
 # now only write the rows, use shell script to sort and add header
 

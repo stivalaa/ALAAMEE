@@ -10,12 +10,12 @@
 # and make table of estimates and standard errors and false positive rates.
 #
 #
-# Usage: Rscript makeMLEresultstableFalsePositivesVarTotalRuns.R 
+# Usage: Rscript makeMLEresultstableFalsePositivesVarTotalRuns.R reults_filenames_prefix
 #
 #
 # Output is to stdout
 #
-# e.g.: Rscript makeMLEresultstableFalsePositivesVarTotalRuns.R
+# e.g.: Rscript makeMLEresultstableFalsePositivesVarTotalRuns.R alaamee_estimates_var_total_runs_simulated_Project90_
 # 
 
 library(PropCIs) # for Wilson score test for false positive rate
@@ -29,10 +29,13 @@ zSigma <- 2 # nominal 95% CI
 options(digits=4) # for printing rmse etc. values
 
 
-results_filenames <- c('alaamee_estimates_var_total_runs_simulated_Project90_activity0.txt',
-                       'alaamee_estimates_var_total_runs_simulated_Project90_contagion0.txt',
-                       'alaamee_estimates_var_total_runs_simulated_Project90_binary0.txt',
-                       'alaamee_estimates_var_total_runs_simulated_Project90_continuous0.txt')
+args <- commandArgs(trailingOnly=TRUE)
+prefix <- args[1]
+
+results_filenames <- c(paste(prefix, 'activity0.txt', sep=''),
+                       paste(prefix, 'contagion0.txt', sep=''),
+                       paste(prefix, 'binary0.txt', sep=''),
+                       paste(prefix, 'continuous0.txt', sep=''))
  
 
 # write header line
