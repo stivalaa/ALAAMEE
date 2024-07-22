@@ -164,12 +164,16 @@ for (statname in statnames) {
 }
 
 if (do_shading) {
-    ## shading (alpha transparency) does not work with eps so use pdf instead
-    pdf(paste(basefilename, '-plots.pdf', sep=''))
+    ## shading (alpha transparency) does not work with eps so use pdf instead.
+    ## This means we also need to specify paper size as there is no
+    ## "horizontal" for PDF, unlike EPS, and if we do not then ends up
+    ## square when this looks much better wider than it is tall
+    ## (applies to each individual graph not just overall page)
+    pdf(paste(basefilename, '-plots.pdf', sep=''),
+              paper="special", width=9, height=6)
 } else {
     postscript(paste(basefilename, '-plots.eps', sep=''), onefile=FALSE,
                horizontal = TRUE)
-    ##               paper="special", horizontal=FALSE, width=9, height=6)
 }
 do.call(grid.arrange, plotlist)
 dev.off()
