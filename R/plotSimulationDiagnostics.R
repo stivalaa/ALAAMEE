@@ -135,8 +135,10 @@ for (statname in statnames) {
                           color = "red")
     }
     if (do_shading) {
-#        p <- p + geom_ribbon(aes(xmin = mean(value)-zSigma*sd(value),
-#                                 xmax = mean(value)+zSigma*sd(value)))
+        p <- p + geom_ribbon(aes(xmin = mean(value)-zSigma*sd(value),
+                                 xmax = mean(value)+zSigma*sd(value),
+                                 ymin = 0, ymax = Inf), # makes no sense but get error withtout it
+                             alpha = 0.2, fill = 'blue')
     } else {
         p <- p + geom_vline(aes(xintercept = mean(value) -
                                 zSigma*sd(value)), 
