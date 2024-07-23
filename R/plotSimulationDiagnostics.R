@@ -135,24 +135,28 @@ for (statname in statnames) {
                           color = "red")
     }
     if (do_shading) {
-        confint <- c(mean(simstats_statname$value) - zSigma * sd(simstats_statname$value),
+        conf_int <- c(mean(simstats_statname$value) - zSigma * sd(simstats_statname$value),
                      mean(simstats_statname$value) + zSigma * sd(simstats_statname$value))
-        #cat("XXX", confint, "\n")
+        #cat("XXX", conf_int, "\n")
+        ## Gives wrong results - shading is way outside where xmin,xmax are:
+        #p <- p + geom_ribbon(aes(xmin = conf_int[1], xmax = conf_int[2],
+        #                         ymin=0,ymax=Inf),
+        #                     alpha = 0.2)
         ## Gives wrong results - shading its outside where xmin,xmax are:
-        #p <- p + geom_ribbon(xmin = confint[1], xmax = confint[2],
+        #p <- p + geom_ribbon(xmin = conf_int[1], xmax = conf_int[2],
         #                     aes(ymin=0,ymax=Inf),
         #                     alpha = 0.2)
         ## Fails with error "! geom_ribbon requires the following missing aesthetics: x, ymin and ymax or y":
-        #p <- p + geom_ribbon(xmin = confint[1], xmax = confint[2],
+        #p <- p + geom_ribbon(xmin = conf_int[1], xmax = conf_int[2],
         #                     alpha = 0.2)
         ## these are for debugging, show where shaded area should be,
         ## because R/ggplot2/geom_ribbon is giving wrong output
         ## (shading min/max is NOT location specified) - makes no sense
         ## at all (why is everything in R/ggplot2 always so incredibly
         ## difficult?!):
-        p <- p + geom_vline(xintercept = confint[1],
+        p <- p + geom_vline(xintercept = conf_int[1],
                             colour='blue', linetype='dotted')
-        p <- p + geom_vline(xintercept = confint[2],
+        p <- p + geom_vline(xintercept = conf_int[2],
                             colour='blue', linetype='dotted')
         ## Actually, giving up, just have to use vertical lines as
         ## original version did on histograms, after hours of wasted
