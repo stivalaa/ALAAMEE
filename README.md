@@ -17,7 +17,7 @@ Stivala, A., Wang, P., & Lomi, A. (2024). ALAAMEE: Open-source software for fitt
 ## Other ALAAM software
 
 * For the original Windows GUI implementation using stochastic approximation, for one-mode, two-mode, and multilevel networks, [MPNet](http://www.melnet.org.au/pnet).
-* For a Bayesian version handling missing ties and sampled networks (Koskinen & Daraganova, 2022), implemented in R, https://github.com/johankoskinen/ALAAM
+* For a Bayesian version handling missing data and sampled networks (Koskinen & Daraganova, 2022), implemented in R, https://github.com/johankoskinen/ALAAM
 
 ## Funding
 
