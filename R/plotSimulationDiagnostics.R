@@ -12,10 +12,13 @@
 ## statisics, for use on UNIX version instead of the SPSS script.
 ##
 ## Loess smoothed line on scatterplot and mean on histogram are plotted
-## in blue dashed lines. On histogram 95% CI is ploted as dotted blue lines.
+## in blue dashed lines. On histogram 95% CI is ploted as dotted blue lines,
+## or if --shading (-s) is specified, as a shaded area, in which
+## case the shading is also applied to the trace plot (and the output
+## is PDF rather than EPS as the latter does not support transparency).
 ##
 ##
-## Usage: Rscript plotSimulationDiagnostics.R simulation_stats_output.txt
+## Usage: Rscript [--shading] plotSimulationDiagnostics.R simulation_stats_output.txt
 ##                                            [obs_stats.txt]
 ##
 ## e.g.: Rscript ../scripts/plotSimulationDiagnostics.R stats_sim_n1000_binattr_sample.txt  obs_stats_n1000_sample_0.txt
@@ -38,6 +41,7 @@
 ##
 ## Output is postscrpt file basename.eps where basename is from the input
 ## file e.g. stats_sim_n1000_binattr_sample-plots.eps
+## or if --shading (-s) is specified, then basename.pdf.
 ##
 ##
 library(grid)
@@ -46,6 +50,7 @@ library(ggplot2)
 library(reshape)
 library(scales)
 library(MASS) #for ginv()
+library(optparse)
 
 zSigma <- 1.96 # number of standard deviations for 95% confidence interval
 
@@ -59,10 +64,19 @@ my_scientific_10 <- function(x) {
 }
 
 args <- commandArgs(trailingOnly=TRUE)
-if (length(args) < 1 || length(args) > 2) {
-    cat("Usage: Rscript plotSimulationDiagnostics.R simulation_stats.txt [obs_stats.txt]\n")
-    quit(save='no')
-}
+
+option_list <- list(
+  make_option(c("-s", "--shading"), action="store_true", default=FALSE,
+                 help="shade 95% confidence interval and output PDF not EPS")
+  )
+parser <- OptionParser(usage = "%prog [options] simulation_stats.txt [obs_stats.txt]",
+                       option_list = option_list)
+arguments <- parse_args(parser, positional_arguments = c(1,2))
+opt <- arguments$options
+args <- arguments$args
+
+do_shading <- opt$shading
+
 simstats_filename <- args[1]
 basefilename <- sub("(.+)[.].+", "\\1", basename(simstats_filename))
 do_obs <- FALSE
@@ -94,6 +108,11 @@ for (statname in statnames) {
     p <- p + geom_point()
     p <- p + geom_smooth(method = loess, color = "blue", linetype = "dashed",
                          se = FALSE)
+    if (do_shading) {
+        p <- p + geom_ribbon(aes(ymin = mean(value)-zSigma*sd(value),
+                                 ymax = mean(value)+zSigma*sd(value)),
+                             alpha = 0.2)
+    }
     if (do_obs && !(statname %in% c("AcceptanceRate", "acceptance_rate"))) {
       p <- p + geom_hline(yintercept = obsstats[1,statname],
                           color = "red")
@@ -111,15 +130,45 @@ for (statname in statnames) {
     p <- p + geom_histogram()
     p <- p + geom_vline(aes(xintercept = mean(value)), color = "blue",
                         linetype = "dashed")
-    p <- p + geom_vline(aes(xintercept = mean(value) -
-                            zSigma*sd(value)), 
-                        colour='blue', linetype='dotted')
-    p <- p + geom_vline(aes(xintercept = mean(value) +
-                            zSigma*sd(value)), 
-                        colour='blue', linetype='dotted')
     if (do_obs &&  !(statname %in% c("AcceptanceRate", "acceptance_rate"))) {
       p <- p + geom_vline(xintercept = obsstats[1,statname],
                           color = "red")
+    }
+    if (do_shading) {
+        conf_int <- c(mean(simstats_statname$value) - zSigma * sd(simstats_statname$value),
+                     mean(simstats_statname$value) + zSigma * sd(simstats_statname$value))
+        #cat("XXX", conf_int, "\n")
+        ## Gives wrong results - shading is way outside where xmin,xmax are:
+        #p <- p + geom_ribbon(aes(xmin = conf_int[1], xmax = conf_int[2],
+        #                         ymin=0,ymax=Inf),
+        #                     alpha = 0.2)
+        ## Gives wrong results - shading its outside where xmin,xmax are:
+        #p <- p + geom_ribbon(xmin = conf_int[1], xmax = conf_int[2],
+        #                     aes(ymin=0,ymax=Inf),
+        #                     alpha = 0.2)
+        ## Fails with error "! geom_ribbon requires the following missing aesthetics: x, ymin and ymax or y":
+        #p <- p + geom_ribbon(xmin = conf_int[1], xmax = conf_int[2],
+        #                     alpha = 0.2)
+        ## these are for debugging, show where shaded area should be,
+        ## because R/ggplot2/geom_ribbon is giving wrong output
+        ## (shading min/max is NOT location specified) - makes no sense
+        ## at all (why is everything in R/ggplot2 always so incredibly
+        ## difficult?!):
+        p <- p + geom_vline(xintercept = conf_int[1],
+                            colour='blue', linetype='dotted')
+        p <- p + geom_vline(xintercept = conf_int[2],
+                            colour='blue', linetype='dotted')
+        ## Actually, giving up, just have to use vertical lines as
+        ## original version did on histograms, after hours of wasted
+        ## time/effort simply cannot get shading to work.
+        print("no shading on histogram, could not get it to work")
+    } else {
+        p <- p + geom_vline(aes(xintercept = mean(value) -
+                                zSigma*sd(value)), 
+                            colour='blue', linetype='dotted')
+        p <- p + geom_vline(aes(xintercept = mean(value) +
+                                zSigma*sd(value)), 
+                            colour='blue', linetype='dotted')
     }
     p <- p + xlab(statname)
     p <- p + scale_x_continuous(guide = guide_axis(check.overlap = TRUE,
@@ -137,9 +186,18 @@ for (statname in statnames) {
     }
 }
 
-postscript(paste(basefilename, '-plots.eps', sep=''), onefile=FALSE,
-           horizontal = TRUE)
-##           paper="special", horizontal=FALSE, width=9, height=6)
+if (do_shading) {
+    ## shading (alpha transparency) does not work with eps so use pdf instead.
+    ## This means we also need to specify paper size as there is no
+    ## "horizontal" for PDF, unlike EPS, and if we do not then ends up
+    ## square when this looks much better wider than it is tall
+    ## (applies to each individual graph not just overall page)
+    pdf(paste(basefilename, '-plots.pdf', sep=''),
+              paper="special", width=9, height=6)
+} else {
+    postscript(paste(basefilename, '-plots.eps', sep=''), onefile=FALSE,
+               horizontal = TRUE)
+}
 do.call(grid.arrange, plotlist)
 dev.off()
 
