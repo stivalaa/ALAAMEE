@@ -27,6 +27,8 @@ do
     python3 ./extractModelStats_${country}.py ${SIMSTATS_FILE} > ${MODEL_SIMSTATS_FILE}
 
     
+    ## generate both EPS and PDF file, only the latter has shading 
     Rscript ${ROOT}/R/plotSimulationDiagnostics.R  ${MODEL_SIMSTATS_FILE} ${OBSTATS_FILE}
+    Rscript ${ROOT}/R/plotSimulationDiagnostics.R  --shading ${MODEL_SIMSTATS_FILE} ${OBSTATS_FILE}
 done
 
