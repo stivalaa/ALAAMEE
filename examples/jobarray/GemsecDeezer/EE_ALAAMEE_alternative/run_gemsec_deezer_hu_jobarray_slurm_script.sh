@@ -12,7 +12,7 @@
 #SBATCH --error=alaamee_GEMSEC_Deezer_HU-%A_%a.err
 #SBATCH --ntasks=1
 #SBATCH --mem=150MB
-#SBATCH --array=0-99
+#SBATCH --array=0-199
 
 
 echo -n "started at: "; date

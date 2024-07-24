@@ -9,7 +9,7 @@ echo ${country}
 outfile=jobtimes_${country}.txt
 hist_outfile=jobtimes_${country}_histogram.txt
 
-../../../../scripts/getbashtimes.sh  alaamee_GEMSEC_Deezer_RO-49061538_*.out| awk '{print $1 / 60}'  >  ${outfile}
+../../../../scripts/getbashtimes.sh  alaamee_GEMSEC_Deezer_RO-59288253_*.out| awk '{print $1 / 60}'  >  ${outfile}
 
 # histogram.py does not work on OzSTAR as it requires python 2 so use 
 # histogram.sh intead to load thie python 2 module
@@ -20,7 +20,7 @@ echo ${country}
 outfile=jobtimes_${country}.txt
 hist_outfile=jobtimes_${country}_histogram.txt
 
-../../../../scripts/getbashtimes.sh alaamee_GEMSEC_Deezer_HR-49061551_*.out| awk '{print $1 / 60}'  >  ${outfile}
+../../../../scripts/getbashtimes.sh alaamee_GEMSEC_Deezer_HR-59288119_*.out| awk '{print $1 / 60}'  >  ${outfile}
 
 # histogram.py does not work on OzSTAR as it requires python 2 so use 
 # histogram.sh intead to load thie python 2 module
@@ -31,7 +31,7 @@ echo ${country}
 outfile=jobtimes_${country}.txt
 hist_outfile=jobtimes_${country}_histogram.txt
 
-../../../../scripts/getbashtimes.sh alaamee_GEMSEC_Deezer_HU-49061554_*.out  | awk '{print $1 / 60}'  >  ${outfile}
+../../../../scripts/getbashtimes.sh alaamee_GEMSEC_Deezer_HU-59288200_*.out  | awk '{print $1 / 60}'  >  ${outfile}
 
 # histogram.py does not work on OzSTAR as it requires python 2 so use 
 # histogram.sh intead to load thie python 2 module
