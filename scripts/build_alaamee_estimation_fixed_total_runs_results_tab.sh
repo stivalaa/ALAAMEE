@@ -2,7 +2,7 @@
 #
 # File:    build_alaamee_estimation_fixed_total_runs_results_tab.sh
 # Author:  Alex Stivala
-# Created: August 2024
+# Created: July 2024
 #
 # Build table for reading into R of results of ALAAMEE estimation,
 # with specified number of total runs (instead of all
