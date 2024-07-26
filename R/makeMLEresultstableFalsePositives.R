@@ -12,12 +12,12 @@
 # networks each with one effect set to zero, to identifify false positvies
 # in the inference (rather than false negatives).
 #
-# Usage: Rscript makeMLEresultstableFalsePositives.R 
+# Usage: Rscript makeMLEresultstableFalsePositives.R  results_filename_prefix
 #
 #
 # Output is to stdout
 #
-# e.g.: Rscript makeMLEresultstableFalsePositives.R
+# e.g.: Rscript makeMLEresultstableFalsePositives.R alaamee_estimates_simulated_Project90_
 # 
 
 library(PropCIs) # for Wilson score test for false negative rate
@@ -30,11 +30,14 @@ zSigma <- 2 # nominal 95% CI
 
 options(digits=4) # for printing rmse etc. values
 
+args <- commandArgs(trailingOnly=TRUE)
+prefix <- args[1]
 
-results_filenames <- c('alaamee_estimates_simulated_Project90_activity0.txt',
-                       'alaamee_estimates_simulated_Project90_contagion0.txt',
-                       'alaamee_estimates_simulated_Project90_binary0.txt',
-                       'alaamee_estimates_simulated_Project90_continuous0.txt')
+results_filenames <- c(paste(prefix, 'activity0.txt', sep=''),
+                       paste(prefix, 'contagion0.txt', sep=''),
+                       paste(prefix, 'binary0.txt', sep=''),
+                       paste(prefix, 'continuous0.txt', sep=''))
+
  
 args <- commandArgs(trailingOnly=TRUE)
 use_sd_theta <- FALSE
