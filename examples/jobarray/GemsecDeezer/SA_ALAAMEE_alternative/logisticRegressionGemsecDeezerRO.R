@@ -1,0 +1,5 @@
+outcome <- read.table('../data/deezer_ro_outcome_alternative.txt', header=T)
+contattr <- read.table('../data/deezer_ro_contattr.txt',header=T)
+dat <- data.frame(likes_alternative = outcome$alternative, num_genres = contattr$num_genres)
+summary(dat)
+summary(glm(likes_alternative ~ num_genres, family=binomial(link='logit'), data=dat))
