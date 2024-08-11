@@ -1,7 +1,25 @@
+v2.4.2 (12 August 2024)
+
+* Print summaries of NA values by mode in bipartite networks
+* Added outcome with NA set to 0 for persons and scale and centre centrality measures in Evtushenko director interlock data example
+* Allow Ainitial to be specified in simulation for bipartite networks
+* Fixed bug with not passing bipartiteGoFfixedMode in estimateALAAMSA through to simulation function
+* Added Seierstad & Opsahl (2011) Norwegian company boards example
+* Added St Louis crime data (Decker et al. 1991) example
+* Fixed bug with getting random node in mode B in bipartite graphs
+* Implemented outputGoFstatsFilename and outputObsStatsFilename parameters in estimateALAAMSA.run_on_network_attr() for gof()
+* Implemented new parameters bipartiteFixedMode, outputStatsFilename, outputObsSttatsFilename and labels in gof()
+* Scripts to convert SA output to LaTeX now handle Mahalanobis distance from GoF output
+* Implemented new change statistics for two-paths with matching or mismatching categorical attributes: changeSamePartnerActivityTwoPath, changeDiffPartnerActivityTwoPath, changeSameIndirectPartnerAttribute, changeDiffIndirectPartnerAttribute, changeAlterBinaryTwoStar1, changeAlterBinaryTwoStar2, changeBpAlterSameTwoStar1, changeBpAlterDiffTwoStar1, changeBpAlterSameTwoStar2, changeBpAlterDiffTwoStar2, changeBpAlterBinaryTwoStar1, changeBpAlterBinaryTwoStar2
+* Increased parameter name field with in formatted output in estimateALAAMSA.run_on_network_attr()
+* Implemented new --shading (-s) option on plotSimulationDiagnostics.R to plot shaded area on trace plots for 95% interval, which also means using PDF instead of EPS when this option is used
+* New and modified scripts for more simulation experiments for revised manuscript, use max. 500 runs
+* This is the version used for the journal revision of manuscript arXiv:2404.03116 
+
+
 v2.4.1 (25 March 2024)
 
 * Added GEMSEC Deezer examples (as used in new manuscript Stivala, Wang, & Lomi (2024) "ALAAMEE: Open-source software for fitting autologistic actor attribute models")
-
 * Added scripts to convert multiple EE estimations to LaTeX table and single SA estimation to LaTeX table
 
 
