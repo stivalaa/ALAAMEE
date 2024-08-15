@@ -41,14 +41,17 @@ class BipartiteGraph(Graph):
     
     """
 
-    def __init__(self, pajek_edgelist_filename, binattr_filename=None,
+    def __init__(self, pajek_edgelist_filename=None, binattr_filename=None,
                  contattr_filename=None, catattr_filename=None,
-                 zone_filename=None):
+                 zone_filename=None, num_nodes=None):
         """
         Construct graph from Pajek format network and binary attributes.
 
         Parameters:
             pajek_edgelist_filename - edge list in Pajek format
+                                      If None then num_nodes must be
+                                      used instead to make empty graph
+                                      Default None
             binattr_filename  - binary attributes
                                 Default None: no binary attributes loaded
             contattr_filename - continuous attributes
@@ -57,25 +60,42 @@ class BipartiteGraph(Graph):
                                 Default None: no categorical attributes loaded
             zone_filename    - snowball sample zone for each node
                                 Deafult None: no zone information loaded
+            num_nodes        - tuple (num_A_nodes, num_B_nodes) for
+                               number of mode A and B nodes respctively
+                                in empty graph to create
+                               (only if pajek_edgelist_filename = None)
+                               Default None
+
         """
-        f =  open(pajek_edgelist_filename)
-        l = f.readline() # first line must be e.g. "*vertices 500 200"
-        n = int(l.split()[1])
-        f.close()
+        assert not (num_nodes is not None and
+                    pajek_edgelist_filename is not None)
+        assert num_nodes is not None or pajek_edgelist_filename is not None
 
-        # sparse matrix of two-path counts
-        self.twoPathsMatrix = SparseMatrix(n)
 
-        try:
-            self.num_A_nodes = int(l.split()[2])
-        except IndexError:
-            raise ValueError('expecting "*vertices num_nodes num_A_nodes" for two-mode network')
-        super().__init__(pajek_edgelist_filename, binattr_filename,
-                         contattr_filename, catattr_filename, zone_filename)
-        self.num_B_nodes = self.numNodes() - self.num_A_nodes
-        assert(self.num_A_nodes <= self.numNodes())
-        assert(n == self.numNodes())
 
+        if pajek_edgelist_filename is not None:
+            f =  open(pajek_edgelist_filename)
+            l = f.readline() # first line must be e.g. "*vertices 500 200"
+            n = int(l.split()[1])
+            f.close()
+            try:
+                self.num_A_nodes = int(l.split()[2])
+            except IndexError:
+                raise ValueError('expecting "*vertices num_nodes num_A_nodes" for two-mode network')
+            # sparse matrix of two-path counts
+            self.twoPathsMatrix = SparseMatrix(n)
+            super().__init__(pajek_edgelist_filename, binattr_filename,
+                             contattr_filename, catattr_filename, zone_filename)
+            self.num_B_nodes = self.numNodes() - self.num_A_nodes
+            assert(self.num_A_nodes <= self.numNodes())
+            assert(n == self.numNodes())
+        else:
+            n = num_nodes[0] + num_nodes[1]
+            # sparse matrix of two-path counts
+            self.twoPathsMatrix = SparseMatrix(n)
+            super().__init__(num_nodes = n)
+            self.num_A_nodes = num_nodes[0]
+            self.num_B_nodes = num_nodes[1]
 
         
     def density(self):
