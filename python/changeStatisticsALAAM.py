@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 #
 # File:    changeStatisticsALAAM.py
 # Author:  Alex Stivala
