@@ -11,7 +11,6 @@
 echo -n "started at: "; date
 uname -a
 
-module purge # otherwise sometimes module load fails
 module load python/3.9.0
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs

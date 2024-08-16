@@ -266,6 +266,8 @@ def run_sa(G, outcome_vector, param_func_list, labels,
     assert bipartiteGoFfixedMode in [None, MODE_A, MODE_B]
     assert not (bipartiteGoFfixedMode is not None and not bipartite)
     assert not (G.zone is not None and bipartite)
+    if directed and bipartite:
+        raise Exception("directed bipartite network not suppored")
 
     G.printSummary()
 

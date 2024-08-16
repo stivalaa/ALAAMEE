@@ -109,23 +109,16 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
 
 
 
-    Write output to ifd_theta_values_<basename>_<run>.txt and
-                    ifd_dzA_values_<basename>_<run>.txt
+    Write output to theta_values_<basename>_<run>.txt and
+                    dzA_values_<basename>_<run>.txt
     where <basename> is the baesname of edgelist filename e..g
-    if edgelist_filename is edges.txt then ifd_theta_values_edges_0.txt
-    and ifd_dzA_values_edges_0.txt etc.
+    if edgelist_filename is edges.txt then theta_values_edges_0.txt
+    and dzA_values_edges_0.txt etc.
     WARNING: these files are overwritten.
 
     """
     assert(len(param_func_list) == len(labels))
     basename = os.path.splitext(os.path.basename(edgelist_filename))[0]
-    THETA_OUTFILENAME = THETA_PREFIX + basename
-    DZA_OUTFILENAME = DZA_PREFIX + basename
-    if run is not None:
-        THETA_OUTFILENAME += '_' + str(run)
-        DZA_OUTFILENAME += '_' + str(run)
-    THETA_OUTFILENAME += os.extsep + 'txt'
-    DZA_OUTFILENAME   += os.extsep + 'txt'
 
     if directed:
         if bipartite:
@@ -141,11 +134,94 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
             G = Graph(edgelist_filename, binattr_filename,
                       contattr_filename, catattr_filename, zone_filename)
 
-    G.printSummary()
-    
     outcome_binvar = list(map(int_or_na, open(outcome_bin_filename).read().split()[1:]))
     assert(len(outcome_binvar) == G.numNodes())
-    A = outcome_binvar
+
+    run_ee(G, outcome_vector = outcome_binvar, basename = basename,
+           param_func_list = param_func_list,
+           labels = labels,
+           EEiterations    = EEiterations,
+           run = run,
+           learningRate = learningRate,
+           sampler_func = sampler_func)
+
+    
+
+def run_example():
+    """
+    example run on simulated 500 node network
+    """
+    run_on_network_attr(
+        '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
+        [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
+        ["Density", "Activity", "Contagion", "Binary", "Continuous"],
+        '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
+        '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
+        '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt'
+    )
+
+
+
+
+def run_ee(G, outcome_vector, basename, param_func_list, labels,           
+           EEiterations    = 50000,
+           run = None,
+           learningRate = 0.01,
+           sampler_func = basicALAAMsampler):
+    """Run estimation using EE algorithm with supplied Graph (or Digraph
+    or BipartiteGraph) object (which also contains (fixed) nodal
+    attributes and snowball sampling zone information) and outcome
+    attribute vector (list).
+    
+    Parameters:
+         G                 - Graph (or Digraph or BipartiteGraph) object
+                             containing network and node covariates and
+                             any snowball sampling zone information.
+         outcome_vector    - list of binary (0 or 1) outcome variables,
+                             corresponding to nodes in G
+         basename          - basename for theta and dzA output files
+                             theta_values_<basename>_<run>.txt and
+                             dzA_values_<basename>_<run>.txt
+         param_func_list   - list of change statistic functions corresponding
+                             to parameters to estimate
+         labels            - list of strings corresponding to param_func_list
+                             to label output (header line)
+         EEiterations     - Number of iterations of the EE algorithm.
+                            Default 50000.
+         run              - run number for parallel runs, used as suffix on 
+                            output filenames. Default None
+                            in which case no suffix added to output files.
+         learningRate        - learning rate (step size multiplier, a)
+                               defult 0.01
+         sampler_func        - ALAAM sampler function with signature
+                               (G, A, changestats_func_list, theta, performMove,
+                                sampler_m); see basicALAAMsampler.py
+                               default basicALAAMsampler
+
+    Write output to theta_values_<basename>_<run>.txt and
+                    dzA_values_<basename>_<run>.txt
+    WARNING: these files are overwritten.
+
+    """
+    bipartite = isinstance(G, BipartiteGraph)
+    directed = isinstance(G, Digraph)
+    assert(len(param_func_list) == len(labels))
+    THETA_OUTFILENAME = THETA_PREFIX + basename
+    DZA_OUTFILENAME = DZA_PREFIX + basename
+    if run is not None:
+        THETA_OUTFILENAME += '_' + str(run)
+        DZA_OUTFILENAME += '_' + str(run)
+    THETA_OUTFILENAME += os.extsep + 'txt'
+    DZA_OUTFILENAME   += os.extsep + 'txt'
+
+
+    if directed and bipartite:
+        raise Exception("directed bipartite network not suppored")
+
+    G.printSummary()
+    
+    assert(len(outcome_vector) == G.numNodes())
+    A = list(outcome_vector)
     print('positive outcome attribute = ', (float(A.count(1))/len(A))*100.0, '%')
     assert( all([x in [0,1,NA_VALUE] for x in A]) )
 
@@ -192,18 +268,3 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
     print
     if isinstance(G, BipartiteGraph):
         print("twoPaths cache info: ", G.twoPaths.cache_info())
-
-    
-
-def run_example():
-    """
-    example run on simulated 500 node network
-    """
-    run_on_network_attr(
-        '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
-        [changeDensity, changeActivity, changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
-        ["Density", "Activity", "Contagion", "Binary", "Continuous"],
-        '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
-        '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
-        '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt'
-    )
