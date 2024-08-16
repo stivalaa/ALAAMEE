@@ -27,6 +27,27 @@ import igraph
 from Graph import Graph
 from Digraph import Digraph
 from BipartiteGraph import BipartiteGraph
+from utils import NA_VALUE
+
+def convert_to_int_cat(attrs):
+    """
+    convert_to_int_cat() - convert string categorical attrs to integer
+
+    Like factor() in R, convert categories represented as strings into
+    integers.
+
+    Parameters:
+       attrs - list of string attributes
+    
+    Return value:
+       list of integer attributes corresponding to the strings
+    
+    """
+    # build dict mapping string to integer for unique strings in attrs list
+    fdict = dict([(y,x) for (x,y) in enumerate(set(attrs))])
+    ##print(fdict) # output for possible future reversal (TODO write to file)
+    return [NA_VALUE if x == 'NA' else fdict[x] for x in attrs]
+
 
 def igraphConvert(g):
     """Convert the igraph.Graph object g to an ALAAMEE Graph, Digraph or 
@@ -46,7 +67,7 @@ def igraphConvert(g):
     # bipartite_mapping() in R/igraph. This is not what we want here,
     # so we just check for the presence of the 'type' vertex attribute
     # directly (like R/igraph is_bipartite() does).
-    if 'type' in g.vs[0].attribute_names():
+    if 'type' in g.vs.attribute_names():
         num_B = sum(g.vs['type'])
         num_A = g.vcount() - num_B
         gnew = BipartiteGraph(num_nodes = (num_A, num_B))
@@ -61,4 +82,34 @@ def igraphConvert(g):
     for edge in g.get_edgelist():
         gnew.insertEdge(edge[0], edge[1])
 
+    # Now convert vertex attributes. Boolean atributes are converted to
+    # binary attributes, float to continuous, and integer to categorical.
+    # String attributes are converted to categorical by first being conerted
+    # to integers repsrenting unique values, like as.factor() in R.
+    for attrname in g.vs.attribute_names():
+        if isinstance(g.vs[attrname][0], bool):
+            if gnew.binattr is None:
+                gnew.binattr = dict([(attrname, list(g.vs[attrname]))])
+            else:
+                gnew.binattr[attrname] = list(g.vs[attrname])
+        elif isinstance(g.vs[attrname][0], float):
+            if gnew.contattr is None:
+                gnew.contattr = dict([(attrname, list(g.vs[attrname]))])
+            else:
+                gnew.contattr[attrname] = list(g.vs[attrname])
+        elif isinstance(g.vs[attrname][0], int):
+            if gnew.catattr is None:
+                gnew.catattr = dict([(attrname, list(g.vs[attrname]))])
+            else:
+                gnew.catattr[attrname] = list(g.vs[attrname])
+        elif isinstance(g.vs[attrname][0], str):
+            if gnew.catattr is None:
+                gnew.catattr = dict([(attrname, list(g.vs[attrname]))])
+            else:
+                gnew.catattr[attrname] = list(g.vs[attrname])
+        else:
+            raise ValueError('Unsupported type ' +
+                             str(type(g.vs[attrname][0])) +
+                             ' for vertex attribute ' + attrname)
+        
     return gnew
