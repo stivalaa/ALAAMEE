@@ -104,9 +104,9 @@ def igraphConvert(g):
                 gnew.catattr[attrname] = list(g.vs[attrname])
         elif isinstance(g.vs[attrname][0], str):
             if gnew.catattr is None:
-                gnew.catattr = dict([(attrname, list(g.vs[attrname]))])
+                gnew.catattr = dict([(attrname, convert_to_int_cat(g.vs[attrname]))])
             else:
-                gnew.catattr[attrname] = list(g.vs[attrname])
+                gnew.catattr[attrname] = convert_to_int_cat(g.vs[attrname])
         else:
             raise ValueError('Unsupported type ' +
                              str(type(g.vs[attrname][0])) +
