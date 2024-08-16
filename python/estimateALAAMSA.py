@@ -149,14 +149,128 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         else:
             G = Graph(edgelist_filename, binattr_filename,
                       contattr_filename, catattr_filename, zone_filename)
-        
+
+    outcome_binvar = list(map(int_or_na, open(outcome_bin_filename).read().split()[1:]))
+
+    run_sa(G, outcome_vector = outcome_binvar,
+           param_func_list = param_func_list,
+           labels = labels,
+           sampler_func = sampler_func,
+           GoFiterationInStep = GoFiterationInStep,
+           GoFburnIn = GoFburnIn,
+           bipartiteGoFfixedMode = bipartiteGoFfixedMode,
+           add_gof_param_func_list = add_gof_param_func_list,
+           outputGoFstatsFilename = outputGoFstatsFilename,
+           outputObsStatsFilename = outputObsStatsFilename)
+
+
+
+def run_example():
+    """
+    example run on simulated 500 node network
+    """
+    run_on_network_attr(
+        '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
+        [changeDensity, changeActivity, changeStatisticsALAAM.changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
+        ["Density", "Activity", "Contagion", "Binary", "Continuous"],
+        '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
+        '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
+        '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt'
+    )
+
+
+def run_bipartite_example():
+    """
+    example run on bipartite network
+    """
+    run_on_network_attr('../data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net',
+                        [partial(changeBipartiteDensity, MODE_A),
+                         partial(changeBipartiteActivity, MODE_A),
+                         partial(changeBipartiteEgoTwoStar, MODE_A),
+                         partial(changeBipartiteAlterTwoStar1,MODE_A),
+                         partial(changeBipartiteAlterTwoStar2,MODE_A),
+                         partial(changeBipartiteFourCycle1, MODE_A),
+                         partial(changeBipartiteFourCycle2, MODE_A)],
+                        ['bipartiteDensityA',
+                         'bipartiteActivityA',
+                         'bipartiteEgoTwoStarA',
+                         'bipartiteAlterTwoStar1A',
+                         'bipartiteAlterTwoStar2A',
+                         'bipartiteFourCycle1A',
+                         'bipartiteFourCycle2A'],
+                        '../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome_BNA.txt',
+                        sampler_func = partial(bipartiteALAAMsampler, MODE_A),
+                        bipartite = True,
+                        bipartiteGoFfixedMode = MODE_B)
+
+
+
+def run_sa(G, outcome_vector, param_func_list, labels,
+           sampler_func = basicALAAMsampler,
+           GoFiterationInStep = 1000,
+           GoFburnIn = 10000,
+           bipartiteGoFfixedMode = None,
+           add_gof_param_func_list = None,
+           outputGoFstatsFilename = None,
+           outputObsStatsFilename = None
+           ):
+    """Run estimation using stochastic approximation algorithm with
+    supplied Graph (or Digraph or BipartiteGraph) object (which also
+    contains (fixed) nodal attributes and snowball sampling zone
+    information) and outcome attribute vector (list).
+    
+    Parameters:
+         G                 - Graph (or Digraph or BipartiteGraph) object
+                             containing network and node covariates and
+                             any snowball sampling zone information.
+         outcome_vector    - list of binary (0 or 1) outcome variables,
+                             corresponding to nodes in G
+         param_func_list   - list of change statistic functions corresponding
+                             to parameters to estimate
+         labels            - list of strings corresponding to param_func_list
+                             to label output (header line)
+         sampler_func        - ALAAM sampler function with signature
+                               (G, A, changestats_func_list, theta, performMove,
+                                sampler_m); see basicALAAMsampler.py
+                               default basicALAAMsampler
+          GoFiterationInStep - number of MCMC steps between each sample in GoF.
+                              Default 1000.
+         GoFburnIn         - number of iterations to discard at start for GoF.
+                             Default 10000.
+         bipartiteGoFfixedMode - for bipartite networks only, the mode
+                                 (MODE_A or MODE_B that is fixed to NA
+                                 in GoF simulation, for when outcome
+                                 variable not defined for that mode,
+                                 or None. Default None.
+         add_gof_param_func_list - List of change statistics functions,
+                               in addition to the model parameters in
+                               param_func_list, for goodness-of-fit.
+                               These are appended to the model parameters,
+                               removing any that are already in the
+                               model parameters in param_func_list.
+                               If None, then  param_func_list and an additional
+                               set of default are used depending on network
+                               type. Default None.
+         outputGoFstatsFilename- Filename to write GoF simulated statistics 
+                                 to or None. Default None.
+                                 WARNING: file overwritten.
+         outputObsStatsFilename- Filename to write observed statistics to or
+                                 None. Default None. WARNING: file overwritten.
+
+    Writes output to stdout.
+
+    """
+    bipartite = isinstance(G, BipartiteGraph)
+    directed = isinstance(G, Digraph)
+    assert(len(param_func_list) == len(labels))
+    assert bipartiteGoFfixedMode in [None, MODE_A, MODE_B]
+    assert not (bipartiteGoFfixedMode is not None and not bipartite)
+    assert not (G.zone is not None and bipartite)
 
     G.printSummary()
 
-    outcome_binvar = list(map(int_or_na, open(outcome_bin_filename).read().split()[1:]))
-    assert(len(outcome_binvar) == G.numNodes())
-    A = outcome_binvar
-
+    assert(len(outcome_vector) == G.numNodes())
+    A = list(outcome_vector)
     assert( all([x in [0,1,NA_VALUE] for x in A]) )
     print('positive outcome attribute = ', (float(A.count(1))/len(A))*100.0, '%')
     if NA_VALUE in A:
@@ -299,40 +413,3 @@ def run_on_network_attr(edgelist_filename, param_func_list, labels,
         if isinstance(G, BipartiteGraph):
             print("twoPaths cache info: ", G.twoPaths.cache_info())
     
-def run_example():
-    """
-    example run on simulated 500 node network
-    """
-    run_on_network_attr(
-        '../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt',
-        [changeDensity, changeActivity, changeStatisticsALAAM.changeContagion, partial(changeoOb, "binaryAttribute"), partial(changeoOc, "continuousAttribute")],
-        ["Density", "Activity", "Contagion", "Binary", "Continuous"],
-        '../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt',
-        '../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt',
-        '../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt'
-    )
-
-
-def run_bipartite_example():
-    """
-    example run on bipartite network
-    """
-    run_on_network_attr('../data/bipartite/Inouye_Pyke_pollinator_web/inouye_bipartite.net',
-                        [partial(changeBipartiteDensity, MODE_A),
-                         partial(changeBipartiteActivity, MODE_A),
-                         partial(changeBipartiteEgoTwoStar, MODE_A),
-                         partial(changeBipartiteAlterTwoStar1,MODE_A),
-                         partial(changeBipartiteAlterTwoStar2,MODE_A),
-                         partial(changeBipartiteFourCycle1, MODE_A),
-                         partial(changeBipartiteFourCycle2, MODE_A)],
-                        ['bipartiteDensityA',
-                         'bipartiteActivityA',
-                         'bipartiteEgoTwoStarA',
-                         'bipartiteAlterTwoStar1A',
-                         'bipartiteAlterTwoStar2A',
-                         'bipartiteFourCycle1A',
-                         'bipartiteFourCycle2A'],
-                        '../data/bipartite/Inouye_Pyke_pollinator_web/inouye_outcome_BNA.txt',
-                        sampler_func = partial(bipartiteALAAMsampler, MODE_A),
-                        bipartite = True,
-                        bipartiteGoFfixedMode = MODE_B)
