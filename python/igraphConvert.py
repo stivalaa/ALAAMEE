@@ -37,15 +37,28 @@ def igraphConvert(g):
 
     Return value:
         If g is bipartite then BipartiteGraph, else if g is directed then
-        Digraph, else Graph, representnig the same graph as g.
+        Digraph, else Graph, representing the same graph as g.
     """
-    if g.is_bipartite():
-        num_B = sum(g.vs()['type'])
+
+    # Note that in R/igraph, is_bipartite() just checks for the presence
+    # of the 'type' node attribute. However in igraph-python, instead
+    # it actually tests if the graph is bipartite i.e. equivalent to
+    # bipartite_mapping() in R/igraph. This is not what we want here,
+    # so we just check for the presence of the 'type' vertex attribute
+    # directly (like R/igraph is_bipartite() does).
+    if 'type' in g.vs[0].attribute_names():
+        num_B = sum(g.vs['type'])
         num_A = g.vcount() - num_B
         gnew = BipartiteGraph(num_nodes = (num_A, num_B))
     elif g.is_directed():
         gnew = Digraph(num_nodes = g.vcount())
     else:
         gnew = Graph(num_nodes = g.vcount())
+
+    # This depends on get_edgelist() returning list of tuples
+    # representing edges (i, j) where nodes (i, j) are numbered from
+    # 0..N-1, just as used in ALAAMEE Graph etc. internally
+    for edge in g.get_edgelist():
+        gnew.insertEdge(edge[0], edge[1])
 
     return gnew
