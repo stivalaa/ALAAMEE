@@ -224,6 +224,14 @@ class Digraph:
         self.G[i][j] = w
         self.Grev[j][i] = w
 
+    def insertEdge(self, i, j, w = 1):
+        """
+        Insert arc i -> j with arc weight (or label) w, in place.
+        This just calls insertArc(), and is here so we can use consistently
+        insertEdge() for Graph, BipartiteGraph and Digraph.
+        """
+        self.insertArc(i, j, w)
+        
     def removeArc(self, i, j):
         """
         Delete arc i -> j in place
