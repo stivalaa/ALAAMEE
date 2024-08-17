@@ -89,9 +89,10 @@ def igraphConvert(g):
     for attrname in g.vs.attribute_names():
         if isinstance(g.vs[attrname][0], bool):
             if gnew.binattr is None:
-                gnew.binattr = dict([(attrname, list(g.vs[attrname]))])
+                gnew.binattr = dict([(attrname,
+                                      [int(x) for x in g.vs[attrname]])])
             else:
-                gnew.binattr[attrname] = list(g.vs[attrname])
+                gnew.binattr[attrname] = [int(x) for x in g.vs[attrname]]
         elif isinstance(g.vs[attrname][0], float):
             if gnew.contattr is None:
                 gnew.contattr = dict([(attrname, list(g.vs[attrname]))])
