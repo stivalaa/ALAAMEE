@@ -3,7 +3,7 @@
 # Author:  Alex Stivala
 # Created: February 2022
 #
-"""Functions to compute change statistics for ALAAM on directed
+r"""Functions to compute change statistics for ALAAM on directed
 graphs.  Each function takes a Digraph G and outcome vector A and
 returns the change statistic for changing outcome of node i to 1.
 
@@ -64,7 +64,7 @@ from Digraph import Digraph
 
 
 def changeSender(G, A, i):
-    """
+    r"""
     change statistic for Sender
 
     *->o
@@ -73,7 +73,7 @@ def changeSender(G, A, i):
 
 
 def changeReceiver(G, A, i):
-    """
+    r"""
     change statistic for Receiver
 
     *<-o
@@ -82,7 +82,7 @@ def changeReceiver(G, A, i):
 
 
 def changeReciprocity(G, A, i):
-    """
+    r"""
     change statistic for Reciprocity
 
     *<->o
@@ -95,7 +95,7 @@ def changeReciprocity(G, A, i):
 
 
 def changeEgoInTwoStar(G, A, i):
-    """
+    r"""
     Change statistic for EgoIn2Star
 
     *<--o
@@ -107,7 +107,7 @@ def changeEgoInTwoStar(G, A, i):
 
 
 def changeEgoInThreeStar(G, A, i):
-    """
+    r"""
     Change statistic for EgoIn3Star
 
         o
@@ -122,7 +122,7 @@ def changeEgoInThreeStar(G, A, i):
              if G.indegree(i) > 2 else 0 )
 
 def changeEgoOutTwoStar(G, A, i):
-    """
+    r"""
     Change statistic for EgoOut2Star
 
     *-->o
@@ -148,7 +148,7 @@ def changeEgoOutThreeStar(G, A, i):
              if G.outdegree(i) > 2 else 0 )
 
 def changeMixedTwoStar(G, A, i):
-    """
+    r"""
     Change statistic for Mixed2Star (broker position)
 
     *<--o
@@ -161,7 +161,7 @@ def changeMixedTwoStar(G, A, i):
 
 
 def changeMixedTwoStarSource(G, A, i):
-    """
+    r"""
     Change statistic for Mixed2StarSource
 
     o<--*
@@ -176,7 +176,7 @@ def changeMixedTwoStarSource(G, A, i):
 
 
 def changeMixedTwoStarSink(G, A, i):
-    """
+    r"""
     Change statistic for Mixed2StarSink
 
     o<--o
@@ -192,7 +192,7 @@ def changeMixedTwoStarSink(G, A, i):
 
 
 def changeContagion(G, A, i):
-    """
+    r"""
     change statistic for Contagion (partner attribute)
 
     *->*
@@ -208,7 +208,7 @@ def changeContagion(G, A, i):
 
 
 def changeContagionReciprocity(G, A, i):
-    """
+    r"""
     change statistic for Contagion Reciprocity (mutual contagion)
 
     *<->*
@@ -221,7 +221,7 @@ def changeContagionReciprocity(G, A, i):
 
 
 def changeTransitiveTriangleT1(G, A, i):
-    """
+    r"""
     Change statistic for transitive triangle T1
 
        *
@@ -239,7 +239,7 @@ def changeTransitiveTriangleT1(G, A, i):
 
 
 def changeTransitiveTriangleT3(G, A, i):
-    """
+    r"""
     Change statistic for transitive triangle T3 (contagion clustering)
 
       *
@@ -268,7 +268,7 @@ def changeTransitiveTriangleT3(G, A, i):
 
 
 def changeTransitiveTriangleD1(G, A, i):
-    """
+    r"""
     Change statistic for transitive triangle D1
 
       o
@@ -286,7 +286,7 @@ def changeTransitiveTriangleD1(G, A, i):
 
 
 def changeTransitiveTriangleU1(G, A, i):
-    """
+    r"""
     Change statistic for transitive triangle U1
 
       o
@@ -304,7 +304,7 @@ def changeTransitiveTriangleU1(G, A, i):
 
 
 def changeCyclicTriangleC1(G, A, i):
-    """
+    r"""
     Change statistic for cyclic triangle C1
 
        *
@@ -322,7 +322,7 @@ def changeCyclicTriangleC1(G, A, i):
 
 
 def changeCyclicTriangleC3(G, A, i):
-    """
+    r"""
     Change statistic for cyclic triangle C3
 
        *
@@ -341,7 +341,7 @@ def changeCyclicTriangleC3(G, A, i):
 
 
 def changeAlterInTwoStar2(G, A, i):
-    """
+    r"""
     Change statistic for AlterInTwoStar2
     (structural equivalence between actors with attribute, sharing
     same network partner with arcs directed to them)
@@ -357,7 +357,7 @@ def changeAlterInTwoStar2(G, A, i):
 
 
 def changeAlterOutTwoStar2(G, A, i):
-    """
+    r"""
     Change statistic for AlterOutTwoStar2
     (structural equivalence between actors with attribute, sharing
     same network partner with arcs directed from them)
@@ -373,7 +373,7 @@ def changeAlterOutTwoStar2(G, A, i):
 
 
 def changeSenderMatch(attrname, G, A, i):
-    """
+    r"""
     Change statistic for categorical matching exogenous attributes
     [attrname]_o->Match
     (outcome attribtue related to matching categorical exogenous attributes on
@@ -389,7 +389,7 @@ def changeSenderMatch(attrname, G, A, i):
     return delta
 
 def changeReceiverMatch(attrname, G, A, i):
-    """
+    r"""
     Change statistic for categorical matching exogenous attributes
     [attrname]_o<-Match
     (outcome attribtue related to matching categorical exogenous attributes on
@@ -405,7 +405,7 @@ def changeReceiverMatch(attrname, G, A, i):
     return delta
 
 def changeReciprocityMatch(attrname, G, A, i):
-    """
+    r"""
     Change statistic for categorical matching exogenous attributes
     [attrname]_o<->Match
     (outcome attribtue related to matching categorical exogenous attributes on
@@ -423,7 +423,7 @@ def changeReciprocityMatch(attrname, G, A, i):
     return delta
 
 def changeSenderMismatch(attrname, G, A, i):
-    """Change statistic for categorical mismatching exogenous
+    r"""Change statistic for categorical mismatching exogenous
     attributes [attrname]_o->Mismatch (outcome attribtue related to
     mismatching categorical exogenous attributes on this and node
     receiving tie from this node)
@@ -439,7 +439,7 @@ def changeSenderMismatch(attrname, G, A, i):
     return delta
 
 def changeReceiverMismatch(attrname, G, A, i):
-    """Change statistic for categorical mismatching exogenous
+    r"""Change statistic for categorical mismatching exogenous
     attributes [attrname]_o<-Mismatch (outcome attribtue related to
     mismatching categorical exogenous attributes on this and node
     sending tie to this node)
@@ -455,7 +455,7 @@ def changeReceiverMismatch(attrname, G, A, i):
     return delta
 
 def changeReciprocityMismatch(attrname, G, A, i):
-    """Change statistic for categorical mismatching exogenous
+    r"""Change statistic for categorical mismatching exogenous
     attributes [attrname]_o<->Mismatch (outcome attribtue related to
     mismatching categorical exogenous attributes on this and node with
     mutual (reciprocated) ties with this node)
@@ -474,7 +474,7 @@ def changeReciprocityMismatch(attrname, G, A, i):
 
 
 def changeGWSender(alpha, G, A, i):
-    """Change statistic for Geometrically Weighted Sender.
+    r"""Change statistic for Geometrically Weighted Sender.
 
         >o
       /
@@ -543,7 +543,7 @@ def changeGWSender(alpha, G, A, i):
 
 
 def changeGWReceiver(alpha, G, A, i):
-    """Change statistic for Geometrically Weighted Receiver.
+    r"""Change statistic for Geometrically Weighted Receiver.
     
           o
         /
@@ -616,7 +616,7 @@ def changeGWReceiver(alpha, G, A, i):
 # ======================= experimental statistics ============================
 
 def changeGWContagion(alpha, G, A, i):
-    """Change statistic for Geometrically Weighted Contagion.
+    r"""Change statistic for Geometrically Weighted Contagion.
 
         >*
       /
@@ -685,7 +685,7 @@ def changeGWContagion(alpha, G, A, i):
 
 
 def changeLogContagion(G, A, i):
-    """Change statistic for Log Contagion.
+    r"""Change statistic for Log Contagion.
 
         >*
       /
@@ -738,7 +738,7 @@ def changeLogContagion(G, A, i):
 
 
 def changePowerContagion(beta, G, A, i):
-    """Change statistic for Power Contagion.
+    r"""Change statistic for Power Contagion.
 
         >*
       /
@@ -810,7 +810,7 @@ def changePowerContagion(beta, G, A, i):
 # ================== old versions for regression testing ======================
 
 def changeContagion_OLD(G, A, i):
-    """
+    r"""
     change statistic for Contagion (partner attribute)
 
     *->*
@@ -824,7 +824,7 @@ def changeContagion_OLD(G, A, i):
     return delta
 
 def changeContagion_GENCOMP(G, A, i):
-    """
+    r"""
     change statistic for Contagion (partner attribute)
 
     *->*
@@ -841,7 +841,7 @@ def changeContagion_GENCOMP(G, A, i):
     return delta
 
 def changeContagionReciprocity_OLD(G, A, i):
-    """
+    r"""
     change statistic for Contagion Reciprocity (mutual contagion)
 
     *<->*
@@ -852,7 +852,7 @@ def changeContagionReciprocity_OLD(G, A, i):
     return sum([(G.isArc(u, i) and A[u] == 1) for u in G.outIterator(i)])
 
 def changeReciprocity_OLD(G, A, i):
-    """
+    r"""
     change statistic for Reciprocity
 
     *<->o
@@ -863,7 +863,7 @@ def changeReciprocity_OLD(G, A, i):
     return sum([G.isArc(u, i) for u in G.outIterator(i)])
 
 def changeGWContagion_LISTCOMP(alpha, G, A, i):
-    """Change statistic for Geometrically Weighted Contagion.
+    r"""Change statistic for Geometrically Weighted Contagion.
 
         >*
       /

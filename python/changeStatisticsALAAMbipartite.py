@@ -3,7 +3,7 @@
 # Author:  Alex Stivala
 # Created: August 2022
 #
-"""Functions to compute change statistics for ALAAM on bipartite
+r"""Functions to compute change statistics for ALAAM on bipartite
 (two-mode) graphs (undirected). Each function takes a BipartiteGraph G and
 outcome vector A and returns the change statistic for changing outcome
 of node i to 1.
@@ -110,7 +110,7 @@ import changeStatisticsALAAM
 
 
 def changeBipartiteDensity(mode, G, A, i):
-    """
+    r"""
     change statistic for bipartite [outcome attribute] Density
     DensityX[mode]
 
@@ -120,7 +120,7 @@ def changeBipartiteDensity(mode, G, A, i):
 
 
 def changeBipartiteActivity(mode, G, A, i):
-    """
+    r"""
     change statistic for bipartite Activity
     ActivityX[mode]
 
@@ -130,7 +130,7 @@ def changeBipartiteActivity(mode, G, A, i):
 
 
 def changeBipartiteEgoTwoStar(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite ego two-star
     EgoX-2Star[mode]
 
@@ -141,7 +141,7 @@ def changeBipartiteEgoTwoStar(mode, G, A, i):
 
 
 def changeBipartiteEgoThreeStar(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite ego three-star
     EgoX-3Star[mode]
 
@@ -155,7 +155,7 @@ def changeBipartiteEgoThreeStar(mode, G, A, i):
             if G.bipartite_node_mode(i) == mode else 0)
 
 def changeBipartiteAlterTwoStar1(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite alter two-star 1
     AlterX-2Star1[mode]
 
@@ -166,7 +166,7 @@ def changeBipartiteAlterTwoStar1(mode, G, A, i):
 
 
 def changeBipartiteAlterTwoStar2(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite alter two-star 2
     AlterX-2Star2[mode]
 
@@ -178,7 +178,7 @@ def changeBipartiteAlterTwoStar2(mode, G, A, i):
 
 
 def changeBipartiteFourCycle1(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite four-cycle 1
     C4X-1[mode]
 
@@ -194,7 +194,7 @@ def changeBipartiteFourCycle1(mode, G, A, i):
 
 
 def changeBipartiteFourCycle2(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite four-cycle 2
     C4X-2[mode]
 
@@ -213,7 +213,7 @@ def changeBipartiteFourCycle2(mode, G, A, i):
 
 
 def changeBipartiteGWActivity(mode, alpha, G, A, i):
-    """
+    r"""
     change statistic for Geometrically Weighted Bipartite Activity
 
        o
@@ -285,7 +285,7 @@ def changeBipartiteGWActivity(mode, alpha, G, A, i):
 
 
 def changeBpAlterSameTwoStar1(mode, attrname, G, A, i):
-    """
+    r"""
     Change statistic for bipartite alter two-star 1
     with matching categorical attribute attrname.
 
@@ -300,7 +300,7 @@ def changeBpAlterSameTwoStar1(mode, attrname, G, A, i):
 
 
 def changeBpAlterDiffTwoStar1(mode, attrname, G, A, i):
-    """
+    r"""
     Change statistic for bipartite alter two-star 1
     with mismatching categorical attribute attrname.
 
@@ -316,7 +316,7 @@ def changeBpAlterDiffTwoStar1(mode, attrname, G, A, i):
 
 
 def changeBpAlterSameTwoStar2(mode, attrname, G, A, i):
-    """Change statistic for bipartite alter two-star 2
+    r"""Change statistic for bipartite alter two-star 2
     with matching categorical attribute attrname.
 
     {*}--o--{*}
@@ -331,7 +331,7 @@ def changeBpAlterSameTwoStar2(mode, attrname, G, A, i):
 
 
 def changeBpAlterDiffTwoStar2(mode, attrname, G, A, i):
-    """Change statistic for bipartite alter two-star 2
+    r"""Change statistic for bipartite alter two-star 2
     with mismatching categorical attribute attrname.
 
     {*}--o--<*>
@@ -347,7 +347,7 @@ def changeBpAlterDiffTwoStar2(mode, attrname, G, A, i):
 
 
 def changeBpAlterBinaryTwoStar1(mode, attrname, G, A, i):
-    """Change statistic for bipartite alter two-star 1 with binary
+    r"""Change statistic for bipartite alter two-star 1 with binary
     attribute on central node.
 
     x--[o]--*
@@ -362,7 +362,7 @@ def changeBpAlterBinaryTwoStar1(mode, attrname, G, A, i):
 
 
 def changeBpAlterBinaryTwoStar2(mode, attrname, G, A, i):
-    """Change statistic for bipartite alter two-star 2
+    r"""Change statistic for bipartite alter two-star 2
     with binary attribute on central node.
 
     *--[o]--*
@@ -380,7 +380,7 @@ def changeBpAlterBinaryTwoStar2(mode, attrname, G, A, i):
 # ================== old versions for regression testing ======================
 
 def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite alter two-star 1
     AlterX-2Star1[mode]
 
@@ -399,7 +399,7 @@ def changeBipartiteAlterTwoStar1_SLOW(mode, G, A, i):
     return delta3
 
 def changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite alter two-star 2
     AlterX-2Star2[mode]
 
@@ -419,7 +419,7 @@ def changeBipartiteAlterTwoStar2_SLOW(mode, G, A, i):
     return delta3
 
 def changeBipartiteFourCycle1_OLD(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite four-cycle 1
     C4X-1[mode]
 
@@ -441,7 +441,7 @@ def changeBipartiteFourCycle1_OLD(mode, G, A, i):
 
 @functools.cache # Memoize the following function (Python 3.9)
 def changeBipartiteFourCycle1_OLD2(mode, G, i):
-    """
+    r"""
     Does not have numpy array A as parameter (not hashable), so we
     can use functools.cache
     
@@ -465,7 +465,7 @@ def changeBipartiteFourCycle1_OLD2(mode, G, i):
     
 
 def changeBipartiteFourCycle2_OLD(mode, G, A, i):
-    """
+    r"""
     Change statistic for bipartite four-cycle 2
     C4X-2[mode]
 
