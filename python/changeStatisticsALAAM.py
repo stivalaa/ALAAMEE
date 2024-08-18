@@ -4,7 +4,7 @@
 # Author:  Alex Stivala
 # Created: February 2020
 #
-"""Functions to compute change statistics for ALAAM. Each function
+r"""Functions to compute change statistics for ALAAM. Each function
 takes a Graph G and outcome vector A and returns the change statistic
 for changing outcome of node i to 1.
 
@@ -62,7 +62,7 @@ from Graph import Graph
 
 
 def param_func_to_label(param_func):
-    """Return string label for a change statistic function, for
+    r"""Return string label for a change statistic function, for
    use in automatically generating the labels for the param_func_list
    list of functions in the estimation functions like
    estimateALAAMEE.run_on_network_attr()
@@ -97,7 +97,7 @@ def param_func_to_label(param_func):
 
 
 def is_same_changestat(func1, func2):
-    """Return True if two change statistic funcions are the same, else False.
+    r"""Return True if two change statistic funcions are the same, else False.
     This is needed for example when we use functools.partial(), as two of
     these will be different function addresses and hence not equal, even
     if they have the same parameter.
@@ -116,7 +116,7 @@ def is_same_changestat(func1, func2):
 
 
 def changeDensity(G, A, i):
-    """
+    r"""
     change statistic for [outcome attribute] Density
 
     *
@@ -125,7 +125,7 @@ def changeDensity(G, A, i):
 
 
 def changeActivity(G, A, i):
-    """
+    r"""
     change statistic for Activity
 
     *--o
@@ -134,7 +134,7 @@ def changeActivity(G, A, i):
 
 
 def changeTwoStar(G, A, i):
-    """
+    r"""
     Change statistic for two-star
 
     *--o
@@ -145,7 +145,7 @@ def changeTwoStar(G, A, i):
 
 
 def changeThreeStar(G, A, i):
-    """
+    r"""
     Change statistic for three-star
 
       o
@@ -159,7 +159,7 @@ def changeThreeStar(G, A, i):
         
 
 def changePartnerActivityTwoPath(G, A, i):
-    """
+    r"""
     Change statistic for partner activity actor two-path (Alter-2Star1)
 
     *--o--o
@@ -168,7 +168,7 @@ def changePartnerActivityTwoPath(G, A, i):
     
 
 def changeTriangleT1(G, A, i):
-    """
+    r"""
     Change statistic for actor triangle (T1)
 
       o
@@ -188,7 +188,7 @@ def changeTriangleT1(G, A, i):
 
 
 def changeContagion(G, A, i):
-    """
+    r"""
     change statistic for Contagion (partner attribute)
 
     *--*
@@ -201,7 +201,7 @@ def changeContagion(G, A, i):
 
 
 def changeIndirectPartnerAttribute(G, A, i):
-    """
+    r"""
     Change statistic for indirect partner attribute (Alter-2Star2);
     structural equivalence between actors with attribute (two-path equivalence)
 
@@ -216,7 +216,7 @@ def changeIndirectPartnerAttribute(G, A, i):
 
 
 def changePartnerAttributeActivity(G, A, i):
-    """Change statistic for partner attribute activity (NB called
+    r"""Change statistic for partner attribute activity (NB called
     "Partner-Activity" in PNet manual IPNet graph statistics (p. 42))
 
     *--*--o
@@ -230,7 +230,7 @@ def changePartnerAttributeActivity(G, A, i):
     
 
 def changePartnerPartnerAttribute(G, A, i):
-    """
+    r"""
     Change statistic for partner-partner-attribute (partner-resource)
 
     *--*--*
@@ -248,7 +248,7 @@ def changePartnerPartnerAttribute(G, A, i):
 
 
 def changeTriangleT2(G, A, i):
-    """
+    r"""
     Change statistic for partner attribute triangle (T2)
 
       *
@@ -268,7 +268,7 @@ def changeTriangleT2(G, A, i):
         
 
 def changeTriangleT3(G, A, i):
-    """
+    r"""
     Change statistic for partner-partner attribute triangle (T3)
 
       *
@@ -290,7 +290,7 @@ def changeTriangleT3(G, A, i):
 
 
 def changeoOb(attrname, G, A, i):
-    """change statistic for binary exogenous attribute oOb (outcome
+    r"""change statistic for binary exogenous attribute oOb (outcome
     attribute related to binary attribute on same node)
 
     [*]
@@ -299,7 +299,7 @@ def changeoOb(attrname, G, A, i):
 
 
 def changeo_Ob(attrname, G, A, i):
-    """change statistic for binary exogenous partner attribute o_Ob (outcome
+    r"""change statistic for binary exogenous partner attribute o_Ob (outcome
     attribute related to binary attribute on partner node)
 
     *--[o]
@@ -311,7 +311,7 @@ def changeo_Ob(attrname, G, A, i):
 
 
 def changeoOc(attrname, G, A, i):
-    """change statistic for continuous exogenous attribute oOc (outcome
+    r"""change statistic for continuous exogenous attribute oOc (outcome
     attribute related to continuous attribute on same node)
 
     (*)
@@ -320,7 +320,7 @@ def changeoOc(attrname, G, A, i):
 
 
 def changeo_Oc(attrname, G, A, i):
-    """change statistic for continuous exogenous partner attribute o_Oc (outcome
+    r"""change statistic for continuous exogenous partner attribute o_Oc (outcome
     attribute related to continuous attribute on partner node)
 
     *--(o)
@@ -333,7 +333,7 @@ def changeo_Oc(attrname, G, A, i):
 
 
 def changeoO_Osame(attrname, G, A, i):
-    """
+    r"""
     Change statistic for categorical matching exogenous attributes oO_Osame
     (outcome attribtue related to matching categorical exogenous attributes on
     this and partner node)
@@ -349,7 +349,7 @@ def changeoO_Osame(attrname, G, A, i):
 
 
 def changeoO_OsameContagion(attrname, G, A, i):
-    """
+    r"""
     Change statistic for categorical matching exogenous attributes oO_Osame
     contagion (outcome attribtue on both nodes with matching categorical
     exogenous attributes)
@@ -366,7 +366,7 @@ def changeoO_OsameContagion(attrname, G, A, i):
 
 
 def changeoO_Odiff(attrname, G, A, i):
-    """Change statistic for categorical mismatching exogenous attributes
+    r"""Change statistic for categorical mismatching exogenous attributes
     oO_Odiff (outcome attribtue related to mismatching categorical
     exogenous attributes on this and partner node)
 
@@ -382,7 +382,7 @@ def changeoO_Odiff(attrname, G, A, i):
 
 
 def changeSettingHomophily(settingGraph, G, A, i):
-    """Change statistic for Setting-Homophily, outcome attribute on two actors
+    r"""Change statistic for Setting-Homophily, outcome attribute on two actors
     connected in the setting network.
     
     *...*
@@ -405,7 +405,7 @@ def changeSettingHomophily(settingGraph, G, A, i):
 
 
 def changeGWActivity(alpha, G, A, i):
-    """Change statistic for Geometrically Weighted Activity.
+    r"""Change statistic for Geometrically Weighted Activity.
 
        o
       /
@@ -477,7 +477,7 @@ def changeGWActivity(alpha, G, A, i):
 
 
 def changeGeographicHomophily(distmatrix, G, A, i):
-    """Change statistic for GeographicHomophily, outcome attribute on
+    r"""Change statistic for GeographicHomophily, outcome attribute on
     two actors related to the distance betwen them
     
     *...*
@@ -512,7 +512,7 @@ def changeGeographicHomophily(distmatrix, G, A, i):
 
 
 def changeContagionDist(distmatrix, G, A, i):
-    """Change statistic for ContagionDist, outcome attribute on two
+    r"""Change statistic for ContagionDist, outcome attribute on two
     directly connected actors related to the distance betwen them
     
     *...*
@@ -541,7 +541,7 @@ def changeContagionDist(distmatrix, G, A, i):
 
 
 def changeSamePartnerActivityTwoPath(attrname, G, A, i):
-    """Change statistic for SamePartnerActivityTwoPath,
+    r"""Change statistic for SamePartnerActivityTwoPath,
     two-path from a node with outcome attribute where both ends
     of two-path have same value of cateogorical attribute attrname.
 
@@ -565,7 +565,7 @@ def changeSamePartnerActivityTwoPath(attrname, G, A, i):
 
 
 def changeDiffPartnerActivityTwoPath(attrname, G, A, i):
-    """Change statistic for DiffPartnerActivityTwoPath,
+    r"""Change statistic for DiffPartnerActivityTwoPath,
     two-path from a node with outcome attribute where ends
     of two-path have different values of cateogorical attribute attrname.
 
@@ -589,7 +589,7 @@ def changeDiffPartnerActivityTwoPath(attrname, G, A, i):
 
 
 def changeSameIndirectPartnerAttribute(attrname, G, A, i):
-    """Change statistic for SameIndirectPartnerAttribute,
+    r"""Change statistic for SameIndirectPartnerAttribute,
     structural equivalence between actors with attribute (two-path
     equivalence) which also have the same value of the supplied
     categorical attribute attrname.
@@ -615,7 +615,7 @@ def changeSameIndirectPartnerAttribute(attrname, G, A, i):
 
 
 def changeDiffIndirectPartnerAttribute(attrname, G, A, i):
-    """Change statistic for DiffIndirectPartnerAttribute,
+    r"""Change statistic for DiffIndirectPartnerAttribute,
     structural equivalence between actors with attribute (two-path
     equivalence) which also have different values of the supplied
     categorical attribute attrname.
@@ -641,7 +641,7 @@ def changeDiffIndirectPartnerAttribute(attrname, G, A, i):
 
 
 def changeAlterBinaryTwoStar1(attrname, G, A, i):
-    """Change statistic for AlterBinaryTwoStar1, tendency of an actor
+    r"""Change statistic for AlterBinaryTwoStar1, tendency of an actor
     with the attribute to have a tie to another actor, which has the
     binary attribute attrname, with a tie to a third actor.
 
@@ -659,7 +659,7 @@ def changeAlterBinaryTwoStar1(attrname, G, A, i):
 
 
 def changeAlterBinaryTwoStar2(attrname, G, A, i):
-    """Change statistic for AlterBinaryTwoStar2, structural
+    r"""Change statistic for AlterBinaryTwoStar2, structural
     equivalence of actors with the attribute (two-path equivalence, or
     tendency of actors with the attribute to have the same network
     partner in common), when that common network partner has the binary
@@ -686,7 +686,7 @@ def changeAlterBinaryTwoStar2(attrname, G, A, i):
 # ======================= experimental statistics ============================
 
 def changeGWContagion(alpha, G, A, i):
-    """Change statistic for Geometrically Weighted Contagion.
+    r"""Change statistic for Geometrically Weighted Contagion.
 
 
        *
@@ -734,7 +734,7 @@ def changeGWContagion(alpha, G, A, i):
 
 
 def changeLogContagion(G, A, i):
-    """Change statistic for Logarithmic Contagion.
+    r"""Change statistic for Logarithmic Contagion.
 
 
        *
@@ -766,7 +766,7 @@ def changeLogContagion(G, A, i):
 
 
 def changePowerContagion(beta, G, A, i):
-    """Change statistic for Power Contagion
+    r"""Change statistic for Power Contagion
 
 
        *
@@ -816,7 +816,7 @@ def changePowerContagion(beta, G, A, i):
 # ================== old versions for regression testing ======================
 
 def changePartnerPartnerAttribute_OLD(G, A, i):
-    """
+    r"""
     Change statistic for partner-partner-attribute (partner-resource)
 
     *--*--*
@@ -837,7 +837,7 @@ def changePartnerPartnerAttribute_OLD(G, A, i):
 
 
 def changeTriangleT1_OLD(G, A, i):
-    """
+    r"""
     Change statistic for actor triangle (T1)
 
       o
@@ -854,7 +854,7 @@ def changeTriangleT1_OLD(G, A, i):
 
 
 def changeContagion_LISTCOMP(G, A, i):
-    """
+    r"""
     change statistic for Contagion (partner attribute)
 
     *--*
@@ -865,7 +865,7 @@ def changeContagion_LISTCOMP(G, A, i):
     return sum([(A[u] == 1) for u in G.neighbourIterator(i)])
 
 def changeContagion_GENEXP(G, A, i):
-    """
+    r"""
     change statistic for Contagion (partner attribute)
 
     *--*
@@ -877,7 +877,7 @@ def changeContagion_GENEXP(G, A, i):
 
 
 def changeGWContagion_LISTCOMP(alpha, G, A, i):
-    """Change statistic for Geometrically Weighted Contagion.
+    r"""Change statistic for Geometrically Weighted Contagion.
 
 
        *
