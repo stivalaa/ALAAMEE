@@ -105,8 +105,38 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
 
     outcome_binvar = list(map(int_or_na, open(outcome_bin_filename).read().split()[1:]))
     assert(len(outcome_binvar) == G.numNodes())
-    A = outcome_binvar
+    get_observed_stats(G, outcome_binvar, param_func_list, labels,
+                       degreestats)
 
+
+
+
+def get_observed_stats(G, outcome_vector, param_func_list,
+                       labels, degreestats=False):
+    """Compute observed stats for outcome on specified network with binary
+    and/or continuous and categorical attributes.
+
+    Parameters:
+         G                 - Graph (or Digraph or BipartiteGraph) object
+                             containing network and node covariates and
+                             any snowball sampling zone information.
+         outcome_vector    - list of binary (0 or 1) outcome variables,
+                             corresponding to nodes in G
+         param_func_list   - list of change statistic functions corresponding
+                             to statistics to compute
+         labels            - list of strings corresponding to param_func_list
+                             to label output (header line)
+         degreestats     - Default False.
+                           If True then also compute mean and variance
+                           of nodes with outcome variable = 1 (and also 0).
+
+    Write output to stdout in format readable by R script
+    plotSimulationDiagnostics.R
+
+    """
+    assert(len(param_func_list) == len(labels))
+    assert(len(outcome_vector) == G.numNodes())
+    A = outcome_vector
     assert( all([x in [0,1,NA_VALUE] for x in A]) )
 
     # Calculate observed statistics by summing change stats for each 1 variable
@@ -130,3 +160,4 @@ def get_observed_stats_from_network_attr(edgelist_filename, param_func_list,
 
     sys.stdout.write(' '.join(labels) + '\n')
     sys.stdout.write(' '.join([str(z) for z in Zobs]) + '\n')
+
