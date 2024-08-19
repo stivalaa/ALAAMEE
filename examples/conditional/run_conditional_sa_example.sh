@@ -16,7 +16,6 @@ num_seeds=10
 
 time Rscript ../../R/snowballSampleFromExampleData.R $num_waves $num_seeds ../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt ../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt ../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt  ../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt
 
-module purge # otherwise cannot load python after r
 module load python/3.9.0
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
