@@ -20,7 +20,7 @@ except ImportError:
     print("Could not import igraph, skipping tests.")
     sys.exit(0)
 
-from igraphConvert import igraphConvert
+from igraphConvert import fromIgraph
 from Graph import Graph
 from Digraph import Digraph
 from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
@@ -44,7 +44,7 @@ def test_undirected_graph():
     start = time.time()
     g_igraph = igraph.Graph.Read("../examples/data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt", format="pajek")
     print(g_igraph.summary())
-    g = igraphConvert(g_igraph)
+    g = fromIgraph(g_igraph)
 
     # specific to this graph
     assert g.numNodes() == 1000
@@ -84,7 +84,7 @@ def test_directed_graph():
     g_igraph = igraph.Graph.TupleList(edgelist_tuples, directed = True)
     
     print(g_igraph.summary())
-    g = igraphConvert(g_igraph)
+    g = fromIgraph(g_igraph)
 
     # specific to this graph
     assert g.numNodes() == 134
@@ -135,7 +135,7 @@ def test_bipartite_graph():
     #print(edgelist)#XXX
     g_igraph = igraph.Graph.Bipartite(types, edgelist, directed = False)
     print(g_igraph.summary())
-    g = igraphConvert(g_igraph)
+    g = fromIgraph(g_igraph)
 
     # specific to this graph
     assert g.numNodes() == 133
@@ -222,7 +222,7 @@ def test_attributes_digraph_stats():
     # Convert to directed graph (Digraph) object for ALAAMEE
     #
 
-    G = igraphConvert(Gigraph)
+    G = fromIgraph(Gigraph)
     G.printSummary()
 
     # following must be true for any Digraph

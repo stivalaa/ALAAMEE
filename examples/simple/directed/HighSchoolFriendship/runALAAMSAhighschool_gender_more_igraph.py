@@ -23,7 +23,7 @@ import os
 import gzip
 from functools import partial
 import igraph
-from igraphConvert import igraphConvert
+from igraphConvert import fromIgraph
 import estimateALAAMSA
 from changeStatisticsALAAMdirected import *
 from changeStatisticsALAAM import changeDensity, param_func_to_label
@@ -81,7 +81,7 @@ Gigraph.vs["male"] = [True if sex == "M" else False for sex in Gigraph.vs["sex"]
 # Convert to directed graph (Digraph) object for ALAAMEE
 #
 
-G = igraphConvert(Gigraph)
+G = fromIgraph(Gigraph)
 
 
 #

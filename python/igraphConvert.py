@@ -49,7 +49,7 @@ def convert_to_int_cat(attrs):
     return [NA_VALUE if x == 'NA' else fdict[x] for x in attrs]
 
 
-def igraphConvert(g):
+def fromIgraph(g):
     """Convert the igraph.Graph object g to an ALAAMEE Graph, Digraph or 
     BipartiteGraph object as appropriate.
 
