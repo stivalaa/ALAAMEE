@@ -281,7 +281,80 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
             G = Graph(arclist_filename, binattr_filename,
                       contattr_filename, catattr_filename, zone_filename)
 
-    #G.printSummary()
+    do_simulate(G, param_func_list, labels, theta, sampler_func,
+                numSamples, iterationInStep, burnIn, degreestats,
+                outputSimulatedVectors, simvecFilePrefix, Ainitial,
+                bipartiteFixedMode)
+
+
+
+
+def do_simulate(G, param_func_list, labels,
+                theta,
+                sampler_func = basicALAAMsampler,
+                numSamples = 100,
+                iterationInStep = None,
+                burnIn = None,
+                degreestats = False,
+                outputSimulatedVectors = False,
+                simvecFilePrefix = "sim_outcome",
+                Ainitial = None,
+                bipartiteFixedMode = None):
+    """Simulate ALAAM from on specified network with binary and/or continuous
+    and categorical attributes. supplied as Graph (or Digraph or
+    BipartiteGraph)object.
+
+    Parameters:
+         G                 - Graph (or Digraph or BipartiteGraph) object
+                             containing network and node covariates and
+                             any snowball sampling zone information.
+         param_func_list   - list of change statistic functions corresponding
+                             to parameters to estimate
+         labels            - list of strings corresponding to param_func_list
+                             to label output (header line)
+         theta             - correponding vector of theta values
+         sampler_func        - ALAAM sampler function with signature
+                               (G, A, changestats_func_list, theta, performMove,
+                                sampler_m); see basicALAAMsampler.py
+                               default basicALAAMsampler
+         iterationInStep  - number of sampler iterations
+                             i.e. the number of iterations between samples
+                             (or 10*numNodes if None)
+         numSamples       - Number of samples (default 100)
+         burnIn           - Number of sampels to discard at start
+                            (or 10*iterationInStep if None)
+         degreestats     - Default False.
+                           If True then also compute mean and variance
+                           of nodes with outcome variable = 1 (and also 0).
+         outputSimulatedVectors - if True, output each simulated vector
+                                as a file with single column with header
+                                line 'outcome' and each subsequent line
+                                0 or 1 (or NA) for outcome binary value
+                                for each node (i.e. same format as
+                                observed outcome binary vector as used
+                                in estimation functions like
+                                estimateALAAMEE.run_on_network_attr().
+                                Default False. WARNING: files are overwritten.
+         simvecFilePrefix - Prefix of simulation outcome vector files, if
+                            outputSimulatedVectors = True. The iteration
+                            number and ".txt" is appened to form names like
+                            "sim_outcome_1000.txt". Default "sim_outcome".
+       Ainitial              - vector of 0/1 outcome variables to initialize
+                               the outcome vector to before simulation process,
+                               rather than starting from all 0 or random.
+                               Default None, for random initialization here.
+      bipartiteFixedMode - for bipartite networks only, the mode
+                                 (MODE_A or MODE_B that is fixed to NA
+                                 in simulation, for when outcome
+                                 variable not defined for that mode,
+                                 or None. Default None.
+
+    The output is written to stdout in a format for reading by
+    the R script plotSimulationDiagnostics.R.
+    """
+    assert(len(param_func_list) == len(labels))
+    bipartite = isinstance(G, BipartiteGraph)
+    assert not (bipartiteFixedMode is not None and not bipartite)
 
     if degreestats:
         ##TODO directed and bipartite degrees
@@ -315,3 +388,4 @@ def simulate_from_network_attr(arclist_filename, param_func_list, labels,
                 f.write("outcome\n")
                 f.write("\n".join(["NA" if int(x) == NA_VALUE else str(int(x))
                                    for x in simvec]))
+                
