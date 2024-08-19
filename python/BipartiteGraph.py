@@ -113,7 +113,7 @@ class BipartiteGraph(Graph):
         print('Bipartite graph')
         print('number of mode A nodes = ', self.num_A_nodes)
         print('number of mode B nodes = ', self.num_B_nodes)
-        print('graph density = ', self.density())
+        print('bipartite graph density = ', self.density())
         
 
         if self.binattr is not None:
