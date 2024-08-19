@@ -109,9 +109,9 @@ def test_directed_graph():
 def test_bipartite_graph():
 
     """
-    test Digraph object from igraph
+    test BipartiteGraph object from igraph
     """
-    print("testing Digraph object converted from igraph...")
+    print("testing BipartiteGraph object converted from igraph...")
     start = time.time()
     datadir = os.path.join("..", "examples", "data", "bipartite", "Inouye_Pyke_pollinator_web/")
     #with open(os.path.join(datadir, "inouye_matrix.txt")) as f:
