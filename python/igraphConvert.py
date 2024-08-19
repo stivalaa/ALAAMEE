@@ -78,7 +78,13 @@ def fromIgraph(g):
 
     # This depends on get_edgelist() returning list of tuples
     # representing edges (i, j) where nodes (i, j) are numbered from
-    # 0..N-1, just as used in ALAAMEE Graph etc. internally
+    # 0..N-1, just as used in ALAAMEE Graph etc. internally,
+    # Note also we do not try to convert directly into internal
+    # dict of dict representation, but instead use the insertEdge()
+    # function, not only for consistency checks etc., but also
+    # (in the case of BipartiteGraph for example) that other data
+    # structures are kept up to date e,g,the sparse two-paths matrix
+    # in BipartiteGraph.
     for edge in g.get_edgelist():
         gnew.insertEdge(edge[0], edge[1])
 
