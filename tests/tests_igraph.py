@@ -8,6 +8,8 @@
 (i.e. conversion from igraph to ALAAMEE internal format, particularly
 change statistics computations.
 
+Developed with igraph 0.9.9 on python 3.9.16 (cygwin)
+
 """
 import sys,os,time,random,gzip
 
@@ -18,6 +20,11 @@ except ImportError:
     sys.exit(0)
 
 from igraphConvert import igraphConvert
+from Graph import Graph
+from Digraph import Digraph
+from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
+from bipartitematrix import read_bipartite_matrix,bipartite_to_adjmatrix
+
 
 ######################### test functions #####################################
 #
@@ -37,7 +44,6 @@ def test_undirected_graph():
     # specific to this graph
     assert g.numNodes() == 1000
     assert g.numEdges() == 3001
-    assert round(g.density(), 9) == round(g_igraph.density(), 9)
     assert round(g.density(), 9) == 0.006008008 # from R/igraph
     g.printSummary()
 
@@ -47,8 +53,12 @@ def test_undirected_graph():
     assert all([len(list(g.neighbourIterator(i))) == g.degree(i) for i in g.nodeIterator()])
     for i in g.nodeIterator():
         assert(len(list(g.neighbourIterator(i))) == len(set(g.neighbourIterator(i)))) # check no repeated neighbours in iterator
-
     assert g.numEdges() == len(list(g.edgeIterator()))
+
+    # following must be true from any Graph constructed from igraph
+    assert isinstance(g, Graph)
+    assert round(g.density(), 9) == round(g_igraph.density(), 9)
+
 
     print("OK,", time.time() - start, "s")
     print()
@@ -61,7 +71,7 @@ def test_directed_graph():
     """
     test Digraph object from igraph
     """
-    print("testing Diraph object converted from igraph...")
+    print("testing Digraph object converted from igraph...")
     start = time.time()
     datadir = os.path.join("..", "examples", "data", "directed", "HighSchoolFriendship")
     edgelist_text = gzip.open(os.path.join(datadir,"Friendship-network_data_2013.csv.gz"), mode="rt").readlines()
@@ -74,7 +84,6 @@ def test_directed_graph():
     # specific to this graph
     assert g.numNodes() == 134
     assert g.numArcs() == 668
-    assert round(g.density(), 9) == round(g_igraph.density(), 9)
     assert round(g.density(), 9) == 0.037481764 # calculated manually 
     g.printSummary()
 
@@ -88,12 +97,68 @@ def test_directed_graph():
         assert(len(list(g.outIterator(i))) == len(set(g.outIterator(i)))) # check no repeated neighbours in iterator
         assert(len(list(g.inIterator(i))) == len(set(g.inIterator(i)))) # check no repeated neighbours in iterator        
 
+    # following must be true from any Diraph constructed from igraph
+    assert isinstance(g, Digraph)
+    assert round(g.density(), 9) == round(g_igraph.density(), 9)
 
     print("OK,", time.time() - start, "s")
     print()
     
 
 
+def test_bipartite_graph():
+
+    """
+    test Digraph object from igraph
+    """
+    print("testing Digraph object converted from igraph...")
+    start = time.time()
+    datadir = os.path.join("..", "examples", "data", "bipartite", "Inouye_Pyke_pollinator_web/")
+    #with open(os.path.join(datadir, "inouye_matrix.txt")) as f:
+    #    biadj_matrix = [[int(num) for num in line.split()] for line in f]
+    #Not available in python-igraph 0.9.9?: g_igraph = igraph.Graph.Biadjacency(biadj_matrix)
+    with open(os.path.join(datadir, "inouye_matrix.txt")) as f:    
+        (m, bipartite_graph) = read_bipartite_matrix(f)
+    n = len(bipartite_graph)
+    edgelist = []
+    for i in range(n):
+        for j in range(m):
+            if j in bipartite_graph[i]:
+                edgelist.append((i, n+j))
+    types = n*[0] + m*[1]
+    #gprint(types)#XXX
+    #print(edgelist)#XXX
+    g_igraph = igraph.Graph.Bipartite(types, edgelist, directed = False)
+    print(g_igraph.summary())
+    g = igraphConvert(g_igraph)
+
+    # specific to this graph
+    assert g.numNodes() == 133
+    assert g.num_A_nodes == 91
+    assert g.num_B_nodes == 42
+    assert g.numEdges() == 281
+    g.printSummary()
+
+    # following must be true for any BipartiteGraph
+    assert len(list(g.nodeIterator())) == g.numNodes()
+    assert len(list(g.nodeModeIterator(MODE_A))) + len(list(g.nodeModeIterator(MODE_B))) == g.numNodes()
+    assert all([g.isEdge(i, j) for i in g.nodeIterator() for j in g.neighbourIterator(i)])
+    assert all([len(list(g.neighbourIterator(i))) == g.degree(i) for i in g.nodeIterator()])
+    for i in g.nodeIterator():
+        assert(len(list(g.neighbourIterator(i))) == len(set(g.neighbourIterator(i)))) # check no repeated neighbours in iterator
+    assert g.numEdges() == len(list(g.edgeIterator()))
+
+    # following must be true from any BipartiteGraph constructed from igraph
+    assert isinstance(g, BipartiteGraph)
+    num_B = sum(g_igraph.vs["type"])
+    num_A = g_igraph.vcount() - num_B
+    assert round(g.density(), 9) == round(g.numEdges() / (num_A * num_B), 9)
+
+    print("OK,", time.time() - start, "s")
+    print()
+    
+
+    
 
 ############################### main #########################################
 
@@ -102,6 +167,7 @@ def main():
     """
     test_undirected_graph()
     test_directed_graph()
+    test_bipartite_graph()
 
 
     
