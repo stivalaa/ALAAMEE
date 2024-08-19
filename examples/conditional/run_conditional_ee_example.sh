@@ -8,16 +8,16 @@
 #SBATCH --output=alaam_conditonal_ee_simn500-%j.out
 #SBATCH --error=alaam_conditonal_ee_simn500-%j.err
 
-module unload python #otherwise cannot module load r on cluster
-module load r
+
+module load gcc/11.3.0 # needed by r/4.2.1
+module load openmpi/4.1.4 # needed by r/4.2.1
+module load r/4.2.1
 
 num_waves=2
 num_seeds=10
 
 time Rscript ../../R/snowballSampleFromExampleData.R $num_waves $num_seeds ../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt ../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt ../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt  ../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt
 
-module purge # otherwise cannot load python after r
-module load python
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 

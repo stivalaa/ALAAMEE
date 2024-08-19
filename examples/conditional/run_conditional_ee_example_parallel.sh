@@ -17,13 +17,12 @@ NUM_RUNS=100
 echo NUM_RUNS = $NUM_RUNS
 NUM_RUNS_MINUS_ONE=`expr ${NUM_RUNS} - 1`
 
-module unload python # otherwise module load r does not work on cluster
-module load r
+module load gcc/11.3.0 # needed by r/4.2.1
+module load openmpi/4.1.4 # needed by r/4.2.1
+module load r/4.2.1
 
 time Rscript ../../R/snowballSampleFromExampleData.R $num_waves $num_seeds ../data/simulated_n500_bin_cont2/n500_kstar_simulate12750000.txt ../data/simulated_n500_bin_cont2/binaryAttribute_50_50_n500.txt ../data/simulated_n500_bin_cont2/continuousAttributes_n500.txt  ../data/simulated_n500_bin_cont2/sample-n500_bin_cont6700000.txt
 
-module purge # otherwise cannot load python module again after module load r
-module load python/3.8.5
 
 export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 # use with --keep-order and --line-buffer on GNU parallel
@@ -31,8 +30,6 @@ export PYTHONUNBUFFERED=1    # unbuffered stdout to see progress as it runs
 # use defulat (no --jobs option) jobs in parallel (one per CPU default)
 seq 0 ${NUM_RUNS_MINUS_ONE} | parallel  --progress --joblog parallel.log --keep-order --line-buffer ../../python/runALAAMEESimpleDemoSnowballParallel.py ${num_waves} ${num_seeds}
 
-module unload python
-module load r
 
 Rscript ../../R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000 dzA_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000
 
