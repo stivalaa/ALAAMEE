@@ -148,7 +148,7 @@ def get_observed_stats(G, outcome_vector, param_func_list,
         ## TODO directed and bipartite degrees
         labels += ['meanDegree1', 'varDegree1', 'meanDegree0', 'varDegree0']
         degseq = np.array([G.degree(v) for v in G.nodeIterator()])
-        A = np.array(outcome_binvar)
+        A = np.array(outcome_vector)
         ## mean and variance of degrees of nodes with outcome = 1
         meanDegree1 = np.mean(degseq[np.nonzero(A == 1)[0]])
         varDegree1 = np.var(degseq[np.nonzero(A == 1)[0]])
