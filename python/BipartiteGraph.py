@@ -123,12 +123,12 @@ class BipartiteGraph(Graph):
             print('No binary attributes')
         if self.contattr is not None:
             for attrname in self.contattr.keys():
-                print('Continuous attribute', attrname, 'has', sum([math.isnan(x) for x in self.contattr[attrname]]), 'NA values (', sum([math.isnan(x) for x in self.contattr[attrname][:self.num_A_nodes]]), 'in mode A and ', sum([math.isnan(x) for x in self.contattr[attrname][self.num_A_nodes:]]), 'in mode B')
+                print('Continuous attribute', attrname, 'has', sum([math.isnan(x) for x in self.contattr[attrname]]), 'NA values (', sum([math.isnan(x) for x in self.contattr[attrname][:self.num_A_nodes]]), 'in mode A and ', sum([math.isnan(x) for x in self.contattr[attrname][self.num_A_nodes:]]), 'in mode B)')
         else:
             print('No continuous attributes')
         if self.catattr is not None:
             for attrname in self.catattr.keys():
-                print('Categorical attribute', attrname, 'has', self.catattr[attrname].count(NA_VALUE), 'NA values (', self.catattr[attrname][:self.num_A_nodes].count(NA_VALUE), 'in mode A and ', self.catattr[attrname][self.num_A_nodes:].count(NA_VALUE), 'in mode B')
+                print('Categorical attribute', attrname, 'has', self.catattr[attrname].count(NA_VALUE), 'NA values (', self.catattr[attrname][:self.num_A_nodes].count(NA_VALUE), 'in mode A and ', self.catattr[attrname][self.num_A_nodes:].count(NA_VALUE), 'in mode B)')
         else:
             print('No categorical attributes')
 
