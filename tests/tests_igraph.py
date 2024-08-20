@@ -284,6 +284,35 @@ def test_to_undirected_graph():
     print()
 
 
+def test_to_directed_graph():
+
+    """
+    test Digraph object to igraph
+    """
+    print("testing Digraph object converted to igraph...")
+    start = time.time()
+    datadir = os.path.join("..", "examples", "data", "directed", "HighSchoolFriendship")
+    g = Digraph(os.path.join(datadir, "highschool_friendship_arclist.net"),
+                os.path.join(datadir, "highschool_friendship_binattr.txt"),
+                None, # continuous attributes
+                os.path.join(datadir, "highschool_friendship_catattr.txt"))
+    
+    g.printSummary()
+    g_igraph = toIgraph(g)
+    print(g_igraph.summary())
+
+    # specific to this graph
+    assert g_igraph.vcount() == 134
+    assert g_igraph.ecount() == 668
+    assert round(g_igraph.density(), 9) == 0.037481764 # calculated manually 
+
+    # following must be true from any Digraph constructed from igraph
+    assert round(g.density(), 9) == round(g_igraph.density(), 9)
+
+    print("OK,", time.time() - start, "s")
+    print()
+
+    
 ############################### main #########################################
 
 def main():
@@ -294,7 +323,8 @@ def main():
     test_from_bipartite_graph()
     test_from_attributes_digraph_stats()
     test_to_undirected_graph()
-
+    test_to_directed_graph()
     
+
 if __name__ == "__main__":
     main()
