@@ -22,7 +22,6 @@ the new preprint (not cited anywhere yet):
 
 Developed with igraph 0.11.6 on python 3.10.18 (Linux)
 """
-
 import igraph
 from Graph import Graph
 from Digraph import Digraph
@@ -68,7 +67,12 @@ def fromIgraph(g):
     # so we just check for the presence of the 'type' vertex attribute
     # directly (like R/igraph is_bipartite() does).
     if 'type' in g.vs.attribute_names():
-        num_B = sum(g.vs['type'])
+        # for some reason type can be float (0.0 or 1.0) not int,
+        # at least in python-igraph 0.9.9 for a bipartite graph read from
+        # Pajek format, so convert to int
+        # (if this is not done then node counts are also float and
+        # causes type errors in e.g. constructing sparse matrix for two-paths)
+        num_B = sum([int(i) for i in g.vs['type']])
         num_A = g.vcount() - num_B
         gnew = BipartiteGraph(num_nodes = (num_A, num_B))
     elif g.is_directed():
@@ -120,3 +124,18 @@ def fromIgraph(g):
                              ' for vertex attribute ' + attrname)
         
     return gnew
+
+def toIgraph(g):
+    """Convert the ALAAMEE Graph, Digraph or BipartiteGraph object to an
+    igraph Graph object.
+
+    Parameters:
+        g - a Graph, DigRaph or BipartiteGraph object
+
+    Return value:
+        igraph.Graph object representing same graph as g
+
+    """
+    # to_dict_dict() is not available in python-igraph 0.9.9?
+    # so costructing igraph grpaph object this way instead
+    pass #TODO
