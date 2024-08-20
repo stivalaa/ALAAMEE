@@ -35,7 +35,7 @@ from bipartitematrix import read_bipartite_matrix,bipartite_to_adjmatrix
 #
 ##############################################################################
 
-def test_undirected_graph():
+def test_from_undirected_graph():
 
     """
     test Graph object from igraph
@@ -71,7 +71,7 @@ def test_undirected_graph():
 
 
 
-def test_directed_graph():
+def test_from_directed_graph():
 
     """
     test Digraph object from igraph
@@ -111,7 +111,7 @@ def test_directed_graph():
     
 
 
-def test_bipartite_graph():
+def test_from_bipartite_graph():
 
     """
     test BipartiteGraph object from igraph
@@ -164,7 +164,7 @@ def test_bipartite_graph():
     
 
 
-def test_attributes_digraph_stats():
+def test_from_attributes_digraph_stats():
     """ Test Digraph converted from igraph object with attributes, making
     sure computing statistics gets same results as for same data converted
     previously with R script.Using the high school data for this.
@@ -258,10 +258,10 @@ def test_attributes_digraph_stats():
 def main():
     """main: run all tests
     """
-    test_undirected_graph()
-    test_directed_graph()
-    test_bipartite_graph()
-    test_attributes_digraph_stats()
+    test_from_undirected_graph()
+    test_from_directed_graph()
+    test_from_bipartite_graph()
+    test_from_attributes_digraph_stats()
 
     
 if __name__ == "__main__":
