@@ -275,3 +275,18 @@ class Digraph:
         """
         return iter(self.G.keys())
 
+
+    def edgeIterator(self):
+        """Iterate over arcs in graph
+
+        This is a generator function that yields a tuple (i, j) for
+        each arc (i, j) in the graph
+
+        This is called edgeIterator(), rather than arcIterator() so we
+        can use consistently edgeIterator() for Graph, BipartiteGraph
+        and Digraph.
+
+        """
+        for i in self.G.keys():
+            for j in self.G[i].keys():
+                yield (i, j)

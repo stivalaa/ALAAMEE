@@ -456,10 +456,24 @@ def test_directed_change_stats_highschool():
                 "../examples/data/directed/HighSchoolFriendship/highschool_friendship_binattr.txt",
                 None, # continuous attributes
                 "../examples/data/directed/HighSchoolFriendship/highschool_friendship_catattr.txt")
+
+    # specific to this graph    
     assert g.numNodes() == 134
     assert g.numArcs() == 668
     assert round(g.density(), 8) == 0.03748176 # from R/igraph
 
+    # following must be true for any Digraph
+    assert len(list(g.nodeIterator())) == g.numNodes()
+    assert all([g.isArc(i, j) for i in g.nodeIterator() for j in g.outIterator(i)])
+    assert all([g.isArc(j, i) for i in g.nodeIterator() for j in g.inIterator(i)])    
+    assert all([len(list(g.outIterator(i))) == g.outdegree(i) for i in g.nodeIterator()]) 
+    assert all([len(list(g.inIterator(i))) == g.indegree(i) for i in g.nodeIterator()])   
+    for i in g.nodeIterator():
+        assert(len(list(g.outIterator(i))) == len(set(g.outIterator(i)))) # check no repeated neighbours in iterator
+        assert(len(list(g.inIterator(i))) == len(set(g.inIterator(i)))) # check no repeated neighbours in iterator
+    assert g.numArcs() == len(list(g.edgeIterator()))
+    
+    
     # There is a single NA value for the sex categorical attribute.
     # That node has an indegree of 4 and an outdegree of 4.
     # It has a total of 8 arcs incident to it (counting each direction as

@@ -100,7 +100,8 @@ def test_from_directed_graph():
     assert all([len(list(g.inIterator(i))) == g.indegree(i) for i in g.nodeIterator()])   
     for i in g.nodeIterator():
         assert(len(list(g.outIterator(i))) == len(set(g.outIterator(i)))) # check no repeated neighbours in iterator
-        assert(len(list(g.inIterator(i))) == len(set(g.inIterator(i)))) # check no repeated neighbours in iterator        
+        assert(len(list(g.inIterator(i))) == len(set(g.inIterator(i)))) # check no repeated neighbours in iterator
+    assert g.numArcs() == len(list(g.edgeIterator()))        
 
     # following must be true from any Digraph constructed from igraph
     assert isinstance(g, Digraph)
