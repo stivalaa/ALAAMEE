@@ -52,11 +52,13 @@ def main():
     runNumber = int(args[0])
 
     g = read_ro_data()
-    estimateALAAMEE.run_ee(g, g.vs['outcome'],
-        param_func_list,
-        [param_func_to_label(f) for f in param_func_list],
-        run = runNumber,
-        learningRate = 0.01
+    estimateALAAMEE.run_ee(g,  # Graph object with node attributes
+        g.binattr['outcome'],  # outcome binary attribute vector
+        "deezer_ro_friendship",# theta_values_<name>_* and dzA_values_<name>_*
+        param_func_list,       # model parameters
+        [param_func_to_label(f) for f in param_func_list], # labels for params
+        run = runNumber,       # parallel run number from job array
+        learningRate = 0.01    # learning rate r for EE algorithm
         )
 
 

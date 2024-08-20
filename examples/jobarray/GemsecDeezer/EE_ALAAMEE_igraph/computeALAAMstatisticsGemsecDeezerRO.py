@@ -31,7 +31,7 @@ param_func_list += [f for f in statfuncs if not any(is_same_changestat(f, g) for
 ##
 
 g = read_ro_data()
-get_observed_stats(g, g.vs['outcome'],
+get_observed_stats(g, g.binattr['outcome'],
         param_func_list,
         [param_func_to_label(f) for f in param_func_list],
         degreestats = True
