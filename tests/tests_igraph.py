@@ -20,7 +20,7 @@ except ImportError:
     print("Could not import igraph, skipping tests.")
     sys.exit(0)
 
-from igraphConvert import fromIgraph
+from igraphConvert import fromIgraph,toIgraph
 from Graph import Graph
 from Digraph import Digraph
 from BipartiteGraph import BipartiteGraph,MODE_A,MODE_B
@@ -254,6 +254,36 @@ def test_from_attributes_digraph_stats():
     print("OK,", time.time() - start, "s")
     print()
 
+
+
+def test_to_undirected_graph():
+
+    """
+    test igraph object from Graph
+    """
+    print("testing Graph object converted to igraph...")
+    start = time.time()
+    g = Graph("../examples/data/simulated_n1000_bin_cont/n1000_kstar_simulate12750000.txt",
+              "../examples/data/simulated_n1000_bin_cont/binaryAttribute_50_50_n1000.txt",
+              "../examples/data/simulated_n1000_bin_cont/continuousAttributes_n1000.txt")
+    
+    g.printSummary()
+    g_igraph = toIgraph(g)
+    print(g_igraph.summary())
+
+    # specific to this graph
+    assert g_igraph.vcount() == 1000
+    assert g_igraph.ecount() == 3001
+    assert round(g_igraph.density(), 9) == 0.006008008 # from R/igraph
+
+
+    # following must be true for any igraph construct from Graph
+    assert round(g.density(), 9) == round(g_igraph.density(), 9)
+
+    print("OK,", time.time() - start, "s")
+    print()
+
+
 ############################### main #########################################
 
 def main():
@@ -263,6 +293,7 @@ def main():
     test_from_directed_graph()
     test_from_bipartite_graph()
     test_from_attributes_digraph_stats()
+    test_to_undirected_graph()
 
     
 if __name__ == "__main__":
