@@ -125,12 +125,14 @@ def fromIgraph(g):
         
     return gnew
 
+
+
 def toIgraph(g):
     """Convert the ALAAMEE Graph, Digraph or BipartiteGraph object to an
     igraph Graph object.
 
     Parameters:
-        g - a Graph, DigRaph or BipartiteGraph object
+        g - a Graph, Digraph or BipartiteGraph object
 
     Return value:
         igraph.Graph object representing same graph as g
@@ -138,4 +140,9 @@ def toIgraph(g):
     """
     # to_dict_dict() is not available in python-igraph 0.9.9?
     # so costructing igraph grpaph object this way instead
-    pass #TODO
+    if isinstance(g, BipartiteGraph):
+        pass
+    else:
+        gi = igraph.Graph.TupleList(g.edgeIterator(),
+                                    directed = isinstance(g, Digraph))
+    return gi
