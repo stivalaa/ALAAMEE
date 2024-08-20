@@ -138,9 +138,7 @@ def toIgraph(g):
         igraph.Graph object representing same graph as g
 
     """
-    # to_dict_dict() is not available in python-igraph 0.9.9?
-    # so costructing igraph grpaph object this way instead.
-    # Also note not just using igraph.Graph.TupleList() as this
+    # Note not just using igraph.Graph.TupleList() as this
     # infers the node count from the tuple (edge) list, so if there
     # are any isolates, they will be excluded and will have wrong number
     # of nodes.
@@ -152,6 +150,16 @@ def toIgraph(g):
         gi = igraph.Graph(n = g.numNodes(), edges = g.edgeIterator(),
                           directed = isinstance(g, Digraph))
 
-    # TODO convert vertex attributes
-
+    # Now convert vertex attributes
+    # Use list() or list comprehension to make sure it is a copy not reference
+    if g.binattr is not None:
+        for attrname in g.binattr.keys():
+            gi.vs[attrname] = [bool(x) for x in g.binattr[attrname]]
+    if g.contattr is not None:
+        for attrname in g.contattr.keys():
+            gi.vs[attrname] = list(g.contattr[attrname])
+    if g.catattr is not None:
+        for attrname in g.catattr.keys():
+            gi.vs[attrname] = list(g.catattr[attrname])
+        
     return gi

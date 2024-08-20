@@ -337,6 +337,44 @@ def test_to_bipartite_graph():
     print()
 
 
+def test_to_attributes_digraph_stats():
+    """Test Digraph converted to igraph object and back with
+    attributes, making sure computing statistics gets same results as
+    for same data converted previously with R script.Using the high
+    school data for this.
+    """
+    print("testing Digraph object converted to igraph and back with attributes...")
+    start = time.time()
+    datadir = os.path.join("..", "examples", "data", "directed", "HighSchoolFriendship")
+    g = Digraph(os.path.join(datadir, "highschool_friendship_arclist.net"),
+                os.path.join(datadir, "highschool_friendship_binattr.txt"),
+                None, # continuous attributes
+                os.path.join(datadir, "highschool_friendship_catattr.txt"))
+    g.printSummary()
+    g_igraph = toIgraph(g)
+    print(g_igraph.summary())
+    G = fromIgraph(g_igraph)
+    G.printSummary()
+
+    # following must be true from any Digraph converted from igraph
+    assert isinstance(G, Digraph)
+    assert round(G.density(), 9) == round(g_igraph.density(), 9)
+    
+    #
+    # Verify the observed statistics are the same as from data converted
+    # with original R sript
+    #
+
+    param_func_list =  [changeDensity, changeSender, changeReceiver, changeEgoInTwoStar, changeEgoInThreeStar, changeEgoOutTwoStar, changeEgoOutThreeStar, changeContagion, changeReciprocity, changeContagionReciprocity, changeMixedTwoStarSource, changeMixedTwoStarSink, changeTransitiveTriangleT1, changeTransitiveTriangleT3, partial(changeSenderMatch, "class"), partial(changeReceiverMatch, "class"), partial(changeReciprocityMatch, "class")]
+
+    Zobs_orig = np.array([  54,  293,  285,  855, 1881,  993, 2583,  156,  209,   52, 1633, 1584,  785,  267,  227,  221,  171 ]) # Zobs output of runALAAMSAhighschool_gender_more.py    
+    Zobs = computeObservedStatistics(G, G.binattr['male'], param_func_list)
+    assert(np.all(Zobs == Zobs_orig))
+
+    print("OK,", time.time() - start, "s")
+    print()
+
+
 ############################### main #########################################
 
 def main():
@@ -349,7 +387,8 @@ def main():
     test_to_undirected_graph()
     test_to_directed_graph()
     test_to_bipartite_graph()
-    
+    test_to_attributes_digraph_stats()
+
 
 if __name__ == "__main__":
     main()
