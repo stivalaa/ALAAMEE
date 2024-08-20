@@ -139,10 +139,14 @@ def toIgraph(g):
 
     """
     # to_dict_dict() is not available in python-igraph 0.9.9?
-    # so costructing igraph grpaph object this way instead
+    # so costructing igraph grpaph object this way instead.
+    # Also note not just using igraph.Graph.TupleList() as this
+    # infers the node count from the tuple (edge) list, so if there
+    # are any isolates, they will be excluded and will have wrong number
+    # of nodes.
     if isinstance(g, BipartiteGraph):
         pass
     else:
-        gi = igraph.Graph.TupleList(g.edgeIterator(),
-                                    directed = isinstance(g, Digraph))
+        gi = igraph.Graph(n = g.numNodes(), edges = g.edgeIterator(),
+                          directed = isinstance(g, Digraph))
     return gi
