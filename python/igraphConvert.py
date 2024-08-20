@@ -145,8 +145,13 @@ def toIgraph(g):
     # are any isolates, they will be excluded and will have wrong number
     # of nodes.
     if isinstance(g, BipartiteGraph):
-        pass
+        gi = igraph.Graph.Bipartite(
+            types = g.num_A_nodes*[0] + g.num_B_nodes*[1],
+            edges = g.edgeIterator())
     else:
         gi = igraph.Graph(n = g.numNodes(), edges = g.edgeIterator(),
                           directed = isinstance(g, Digraph))
+
+    # TODO convert vertex attributes
+
     return gi

@@ -236,7 +236,7 @@ def test_from_attributes_digraph_stats():
         assert(len(list(G.outIterator(i))) == len(set(G.outIterator(i)))) # check no repeated neighbours in iterator
         assert(len(list(G.inIterator(i))) == len(set(G.inIterator(i)))) # check no repeated neighbours in iterator        
 
-    # following must be true from any Digraph constructed from igraph
+    # following must be true from any Digraph converted to igraph
     assert isinstance(G, Digraph)
     assert round(G.density(), 9) == round(Gigraph.density(), 9)
     
@@ -306,13 +306,37 @@ def test_to_directed_graph():
     assert g_igraph.ecount() == 668
     assert round(g_igraph.density(), 9) == 0.037481764 # calculated manually 
 
-    # following must be true from any Digraph constructed from igraph
+    # following must be true from any Digraph covnerted to igraph
     assert round(g.density(), 9) == round(g_igraph.density(), 9)
 
     print("OK,", time.time() - start, "s")
     print()
 
+
+
+def test_to_bipartite_graph():
+
+    """
+    test BipartiteGraph object to igraph
+    """
+    print("testing BipartiteGraph object converted to igraph...")
+    start = time.time()
+    datadir = os.path.join("..", "examples", "data", "bipartite", "Inouye_Pyke_pollinator_web/")
+    g = BipartiteGraph(os.path.join(datadir, "inouye_bipartite.net"))
+    g.printSummary()
+    g_igraph = toIgraph(g)
+    print(g_igraph.summary())
     
+    # specific to this graph
+    assert g_igraph.vcount() == 133
+    assert g_igraph.vcount() - sum(g_igraph.vs['type']) == 91
+    assert sum(g_igraph.vs['type']) == 42
+    assert g_igraph.ecount() == 281
+
+    print("OK,", time.time() - start, "s")
+    print()
+
+
 ############################### main #########################################
 
 def main():
@@ -324,6 +348,7 @@ def main():
     test_from_attributes_digraph_stats()
     test_to_undirected_graph()
     test_to_directed_graph()
+    test_to_bipartite_graph()
     
 
 if __name__ == "__main__":
