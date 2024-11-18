@@ -1,3 +1,10 @@
+v2.4.3 (18 November 2024)
+
+* New module to convert igraph graph objects to/from ALAAMEE internal format
+* Added insertEdge() as alias for insertArc() on Digraph so that it can be used consistently for Graph, BipartiteGraph and Digraph objects
+* run_sa() and run_ee() functions in estimateALAAMSA and estimateALAAMEE modules respectively to run estimation with supplied Graph (or Digraph or BipartiteGraph) object (which contains attributes, rather than supplying attributes as filenames of attribute data files)
+
+
 v2.4.2 (12 August 2024)
 
 * Print summaries of NA values by mode in bipartite networks
