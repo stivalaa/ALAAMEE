@@ -14,7 +14,7 @@ If you use this software in your research, please cite:
 
 Stivala, A., Wang, P., & Lomi, A. (2024). [ALAAMEE: Open-source software for fitting autologistic actor attribute models](https://doi.org/10.1371/journal.pcsy.0000021). *PLOS Complex Systems* **1**(4):e0000021. https://doi.org/10.1371/journal.pcsy.0000021
 
-The software itself is citable with a DOI from Zenodo: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15216789.svg)](https://doi.org/10.5281/zenodo.15216789)
+The software itself is citable with a DOI from Zenodo: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15216788.svg)](https://doi.org/10.5281/zenodo.15216788)
 
 
 
