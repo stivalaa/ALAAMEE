@@ -1,3 +1,8 @@
+v2.4.4 (15 April 2025)
+
+* Updated README.md and CITATION.cff with publication details.
+
+
 v2.4.3 (18 November 2024)
 
 * New module to convert igraph graph objects to/from ALAAMEE internal format
