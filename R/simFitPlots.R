@@ -409,10 +409,28 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
   ## for each of the simulated outcome vectors (ineffcient, so many
   ## copies of same graph just with different outcome attribute, but
   ## simple) (Can't work out how to "deep copy" igraph graphs in R -
-  ## assignment shares the data so modifying one modifies all - so do
-  ## it by constructing from edgelist)
-  sim_graphs <- rep(list(graph_from_edgelist(as_edgelist(g_obs))), num_sim)
+  ## assignment shares the data so modifying one modifies allr).
+  ## Note that the simple way of  constructing from edgelist:
+  ##  sim_graphs <- rep(list(graph_from_edgelist(as_edgelist(g_obs))), num_sim)
+  ## is no good because if there are isolates (so not present in edge list)
+  ## then the number of nodes might be wrong (too small).
+  ## so instead  make the edges vector in the correct format for make_graph()
+  ## I.e.:
+  ##  "A vector defining the edges, the first edge points from the first
+  ##   element to the second, the second edge from the third to the fourth, etc.
+  ##   For a numeric vector, these are interpreted as internal vertex ids.
+  ##   For character vectors, they are interpreted as vertex names. "
+  ## [https://search.r-project.org/CRAN/refmans/igraph/html/make_graph.html]
+  ##
+  ## For the transpose and concatenate method to convert the two column
+  ## edge list to this format, see
+  ## https://stackoverflow.com/questions/41051823/convert-a-two-column-matrix-into-a-comma-separated-vector
+  gedges <- c(t(as.matrix(as_edgelist(g_obs))))
+  sim_graphs <- rep(list(make_graph(edges = gedges, isolates = V(g_obs)[which(degree(g_obs) == 0)], directed = is_directed(g_obs))), num_sim)
   for (i in 1:length(sim_graphs)) {
+    cat('XXX sim_graphs[[',i,']]:')
+    print(sim_graphs[[i]])#XXX
+    cat('XXX length(sim_outcomevects[[',i,']] = ', length(sim_outcomevecs[[i]]), '\n')
     V(sim_graphs[[i]])$outcome <- sim_outcomevecs[[i]]
     ## for bipartite graphs, we also have to reconstruct the node type
     if (is.bipartite(g_obs)) {
@@ -421,7 +439,7 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
   }
   if (!is.null(sim2_outcomevecs)) {
     num_sim2 <- length(sim2_outcomevecs)
-    sim2_graphs <- rep(list(graph_from_edgelist(as_edgelist(g_obs))), num_sim2)
+    sim2_graphs <- rep(list(make_graph(edges = gedges, isolates = V(g_obs)[which(degree(g_obs) == 0)], directed = is_directed(g_obs))), num_sim2)
     for (i in 1:length(sim2_graphs)) {
       V(sim2_graphs[[i]])$outcome <- sim2_outcomevecs[[i]]
       ## for bipartite graphs, we also have to reconstruct the node type
