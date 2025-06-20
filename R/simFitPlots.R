@@ -409,7 +409,7 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
   ## for each of the simulated outcome vectors (ineffcient, so many
   ## copies of same graph just with different outcome attribute, but
   ## simple) (Can't work out how to "deep copy" igraph graphs in R -
-  ## assignment shares the data so modifying one modifies allr).
+  ## assignment shares the data so modifying one modifies all).
   ## Note that the simple way of  constructing from edgelist:
   ##  sim_graphs <- rep(list(graph_from_edgelist(as_edgelist(g_obs))), num_sim)
   ## is no good because if there are isolates (so not present in edge list)
@@ -428,9 +428,6 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
   gedges <- c(t(as.matrix(as_edgelist(g_obs))))
   sim_graphs <- rep(list(make_graph(edges = gedges, isolates = V(g_obs)[which(degree(g_obs) == 0)], directed = is_directed(g_obs))), num_sim)
   for (i in 1:length(sim_graphs)) {
-    cat('XXX sim_graphs[[',i,']]:')
-    print(sim_graphs[[i]])#XXX
-    cat('XXX length(sim_outcomevects[[',i,']] = ', length(sim_outcomevecs[[i]]), '\n')
     V(sim_graphs[[i]])$outcome <- sim_outcomevecs[[i]]
     ## for bipartite graphs, we also have to reconstruct the node type
     if (is.bipartite(g_obs)) {
