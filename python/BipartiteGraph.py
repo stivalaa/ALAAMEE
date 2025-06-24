@@ -11,7 +11,6 @@ import sys
 import random
 import math
 from Graph import Graph
-from SparseMatrix import SparseMatrix
 from utils import NA_VALUE
 
 
@@ -83,7 +82,6 @@ class BipartiteGraph(Graph):
             except IndexError:
                 raise ValueError('expecting "*vertices num_nodes num_A_nodes" for two-mode network')
             # sparse matrix of two-path counts
-            self.twoPathsMatrix = SparseMatrix(n)
             super().__init__(pajek_edgelist_filename, binattr_filename,
                              contattr_filename, catattr_filename, zone_filename)
             self.num_B_nodes = self.numNodes() - self.num_A_nodes
@@ -91,8 +89,6 @@ class BipartiteGraph(Graph):
             assert(n == self.numNodes())
         else:
             n = num_nodes[0] + num_nodes[1]
-            # sparse matrix of two-path counts
-            self.twoPathsMatrix = SparseMatrix(n)
             super().__init__(num_nodes = n)
             self.num_A_nodes = num_nodes[0]
             self.num_B_nodes = num_nodes[1]
@@ -154,7 +150,6 @@ class BipartiteGraph(Graph):
         if self.bipartite_node_mode(i) == self.bipartite_node_mode(j):
             raise ValueError("edge in bipartite graph inserted between nodes in same mode")
         super().insertEdge(i, j)
-        self.updateTwoPathsMatrix(i, j)
 
     def nodeModeIterator(self, mode):
         """
@@ -164,22 +159,6 @@ class BipartiteGraph(Graph):
         return filter(
             lambda v: self.bipartite_node_mode(v) == mode, self.G.keys())
 
-    def updateTwoPathsMatrix(self, i, j):
-        """
-        Update the two-paths sparse matrix used for fast computation
-        of some change statistics (specifically 4-cycles), for addition
-        of the edge i -- j.
-        """
-        for u in self.neighbourIterator(i):
-            if u == i or u == j:
-                continue
-            self.twoPathsMatrix.incrementValue(u, j)
-            self.twoPathsMatrix.incrementValue(j, u)
-        for u in self.neighbourIterator(j):
-            if u == i or u == j:
-                continue
-            self.twoPathsMatrix.incrementValue(u, i)
-            self.twoPathsMatrix.incrementValue(i, u)
 
     def random_node(self, mode):
         """

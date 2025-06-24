@@ -10,7 +10,7 @@
 import math
 import functools
 from utils import int_or_na,float_or_na,NA_VALUE
-
+from SparseMatrix import SparseMatrix
 
 
 
@@ -119,6 +119,9 @@ class Graph:
         else:
             n = num_nodes
 
+        # sparse matrix of two-path counts
+        self.twoPathsMatrix = SparseMatrix(n)
+
         # empty graph n nodes        
         self.G = dict(list(zip(list(range(n)), [dict() for i in range(n)])))
 
@@ -214,6 +217,24 @@ class Graph:
         assert i != j # do not allow loops (self-edges)
         self.G[i][j] = 1
         self.G[j][i] = 1
+        self.updateTwoPathsMatrix(i, j)
+
+    def updateTwoPathsMatrix(self, i, j):
+        """
+        Update the two-paths sparse matrix used for fast computation
+        of some change statistics (specifically 4-cycles), for addition
+        of the edge i -- j.
+        """
+        for u in self.neighbourIterator(i):
+            if u == i or u == j:
+                continue
+            self.twoPathsMatrix.incrementValue(u, j)
+            self.twoPathsMatrix.incrementValue(j, u)
+        for u in self.neighbourIterator(j):
+            if u == i or u == j:
+                continue
+            self.twoPathsMatrix.incrementValue(u, i)
+            self.twoPathsMatrix.incrementValue(i, u)
 
 
     def removeEdge(self, i, j):
