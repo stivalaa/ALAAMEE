@@ -247,17 +247,12 @@ def changeTriangleT2(G, A, i):
       *
      / \
     *---o
+
+    Fast version using cached two-paths function
     """
-    delta = 0
-    if G.degree(i) < 2:
-        return 0
-    else:
-        for u in G.neighbourIterator(i):
-            if A[u] == 1:
-                for v in G.neighbourIterator(u):
-                    if v != i and G.isEdge(i, v):
-                        delta += 1
-    return delta
+    return (0 if G.degree(i) < 2 else
+            sum([G.twoPaths(i, v) for
+                 v in G.neighbourIterator(i) if A[v] == 1]))
         
 
 def changeTriangleT3(G, A, i):
@@ -867,6 +862,26 @@ def changeTriangleT1_OLD2(G, A, i):
                     delta += 1
     assert delta % 2 == 0
     return delta / 2.0
+
+
+def changeTriangleT2_OLD(G, A, i):
+    r"""
+    Change statistic for partner attribute triangle (T2)
+
+      *
+     / \
+    *---o
+    """
+    delta = 0
+    if G.degree(i) < 2:
+        return 0
+    else:
+        for u in G.neighbourIterator(i):
+            if A[u] == 1:
+                for v in G.neighbourIterator(u):
+                    if v != i and G.isEdge(i, v):
+                        delta += 1
+    return delta
 
 
 def changeContagion_LISTCOMP(G, A, i):
