@@ -167,7 +167,7 @@ def compare_statistic_sum_changestatistic(g, outcome_binvar, stat_func,
 ##############################################################################
 
 def Activity(G, A):
-    """
+    r"""
     Activity statistic (undirected)
 
     *--o
@@ -176,7 +176,7 @@ def Activity(G, A):
 
 
 def Contagion(G, A):
-    """
+    r"""
     Undirected Contagtion statistic (partner attribute)
 
     *--*
@@ -185,7 +185,7 @@ def Contagion(G, A):
     return sum(int(A[i] == A[j] == 1) for (i, j) in G.edgeIterator())
 
 def Contagion_nodeiter(G, A):
-    """
+    r"""
     Undirected Contagion statistic (partner attribute)
 
     *--*
@@ -199,7 +199,7 @@ def Contagion_nodeiter(G, A):
                                for i in G.nodeIterator() if A[i] == 1) // 2
 
 def GWActivity(alpha, G, A):
-    """Geometrically Weighted Activity statistic
+    r"""Geometrically Weighted Activity statistic
 
        o
       /
@@ -219,7 +219,7 @@ def GWActivity(alpha, G, A):
 
 
 def GWActivity_kiter(alpha, G, A):
-    """Geometrically Weighted Activity statistic
+    r"""Geometrically Weighted Activity statistic
 
        o
       /
@@ -247,7 +247,7 @@ def GWActivity_kiter(alpha, G, A):
 
 
 def GWContagion_kiter(alpha, G, A):
-    """Geometrically Weighted Contagion statistic
+    r"""Geometrically Weighted Contagion statistic
 
        *
       /
@@ -269,7 +269,7 @@ def GWContagion_kiter(alpha, G, A):
 
 
 def GWContagion(alpha, G, A):
-    """Geometrically Weighted Contagion statistic
+    r"""Geometrically Weighted Contagion statistic
 
        *
       /
@@ -282,7 +282,7 @@ def GWContagion(alpha, G, A):
                for i in G.nodeIterator() if A[i] == 1)
 
 def directedGWContagion(alpha, G, A):
-    """Directed Geometrically Weighted Contagion statistic
+    r"""Directed Geometrically Weighted Contagion statistic
 
         >*
       /
@@ -306,7 +306,7 @@ def directedGWContagion(alpha, G, A):
 
 
 def LogContagion(G, A):
-    """Logarithmic Contagion statistic
+    r"""Logarithmic Contagion statistic
 
        *
       /
@@ -321,7 +321,7 @@ def LogContagion(G, A):
 
 
 def directedLogContagion(G, A):
-    """Directed Log Contagion statistic
+    r"""Directed Log Contagion statistic
 
         >*
       /
@@ -345,7 +345,7 @@ def directedLogContagion(G, A):
 
 
 def PowerContagion(beta, G, A):
-    """Power Contagion statistic
+    r"""Power Contagion statistic
 
        *
       /
@@ -360,7 +360,7 @@ def PowerContagion(beta, G, A):
 
 
 def directedPowerContagion(beta, G, A):
-    """Directed Power Contagion statistic
+    r"""Directed Power Contagion statistic
 
         >*
       /
