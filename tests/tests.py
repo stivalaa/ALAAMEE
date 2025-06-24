@@ -606,6 +606,7 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     print("changeTriangleT1")
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_OLD, changeTriangleT1, num_tests)
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_OLD2, changeTriangleT1, num_tests)
+    compare_changestats_implementations(g, outcome_binvar, changeTriangleT1_CACHE, changeTriangleT1, num_tests)    
 
     print("changeTriangleT2")
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT2_OLD, changeTriangleT2, num_tests)

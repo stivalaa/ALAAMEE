@@ -174,10 +174,11 @@ def changeTriangleT1(G, A, i):
      / \
     *---o
 
-    Fast version using cached two-paths function
+    Fast version using two-paths count sparse matrix
     """
     return (0 if G.degree(i) < 2 else
-            sum([G.twoPaths(i, v) for v in G.neighbourIterator(i)]) // 2)
+            sum([G.twoPathsMatrix.getValue(i, v)
+                 for v in G.neighbourIterator(i)]) // 2)
 
 
 def changeContagion(G, A, i):
@@ -862,6 +863,21 @@ def changeTriangleT1_OLD2(G, A, i):
                     delta += 1
     assert delta % 2 == 0
     return delta / 2.0
+
+
+def changeTriangleT1_CACHE(G, A, i):
+    r"""
+    Change statistic for actor triangle (T1)
+
+      o
+     / \
+    *---o
+
+    Fast version using cached two-paths function
+    """
+    return (0 if G.degree(i) < 2 else
+            sum([G.twoPaths(i, v) for v in G.neighbourIterator(i)]) // 2)
+
 
 
 def changeTriangleT2_OLD(G, A, i):
