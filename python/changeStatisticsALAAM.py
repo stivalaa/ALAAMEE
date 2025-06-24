@@ -173,17 +173,11 @@ def changeTriangleT1(G, A, i):
       o
      / \
     *---o
+
+    Fast version using cached two-paths function
     """
-    delta = 0
-    if G.degree(i) < 2:
-        return 0
-    else:
-        for u in G.neighbourIterator(i):
-            for v in G.neighbourIterator(u):
-                if v != i and G.isEdge(i, v):
-                    delta += 1
-    assert delta % 2 == 0
-    return delta / 2.0
+    return (0 if G.degree(i) < 2 else
+            sum([G.twoPaths(i, v) for v in G.neighbourIterator(i)]) // 2)
 
 
 def changeContagion(G, A, i):
@@ -850,6 +844,29 @@ def changeTriangleT1_OLD(G, A, i):
             sum([int(G.isEdge(i, v))
                  for u in G.neighbourIterator(i)
                  for v in G.neighbourIterator(u)]) // 2)
+
+
+def changeTriangleT1_OLD2(G, A, i):
+    r"""
+    Change statistic for actor triangle (T1)
+
+      o
+     / \
+    *---o
+
+    Version using explicit loops, which is faster than more elegant
+    version using list comprehension.
+    """
+    delta = 0
+    if G.degree(i) < 2:
+        return 0
+    else:
+        for u in G.neighbourIterator(i):
+            for v in G.neighbourIterator(u):
+                if v != i and G.isEdge(i, v):
+                    delta += 1
+    assert delta % 2 == 0
+    return delta / 2.0
 
 
 def changeContagion_LISTCOMP(G, A, i):
