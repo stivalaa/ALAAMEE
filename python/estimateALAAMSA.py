@@ -412,6 +412,6 @@ def run_sa(G, outcome_vector, param_func_list, labels,
                          ('Mahalanobis_distance', gofresult[1]))
         print()
 
-        if isinstance(G, BipartiteGraph):
+        if isinstance(G, Graph):
             print("twoPaths cache info: ", G.twoPaths.cache_info())
     

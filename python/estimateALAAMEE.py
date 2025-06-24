@@ -266,5 +266,5 @@ def run_ee(G, outcome_vector, basename, param_func_list, labels,
     print('at end theta = ', theta)
 
     print
-    if isinstance(G, BipartiteGraph):
+    if isinstance(G, Graph):
         print("twoPaths cache info: ", G.twoPaths.cache_info())
