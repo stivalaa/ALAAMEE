@@ -114,6 +114,29 @@ def is_same_changestat(func1, func2):
     return param_func_to_label(func1) == param_func_to_label(func2)
 
 
+def changestat_is_gwactivity(param_func):
+    r"""Return True if param_func is the GWActivity or GWSender or
+    GWReceiver change statistic with the alpha parameter removed by
+    applying functools.partial() else False.
+
+    Parameters:
+        param_func - change statistic function from changeStatisticsALAAM.py
+                     etc. e.g changeActivity or partial(GWActivity, log(2)).
+
+    Return value:
+        True if param_func is changeGWActivity, changeGWSender or
+        changeGWReceiver (with alpha removed via partial) else False.
+
+    """
+    if isinstance(param_func, functools.partial):
+        funcname = param_func.func.__name__
+        return funcname in ["changeGWActivity",
+                            "changeGWSender", "changeGWReceiver"]
+    else:
+        return False
+
+
+
 def changeDensity(G, A, i):
     r"""
     change statistic for [outcome attribute] Density

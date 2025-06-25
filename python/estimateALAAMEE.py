@@ -265,6 +265,11 @@ def run_ee(G, outcome_vector, basename, param_func_list, labels,
     dzA_outfile.close()
     print('at end theta = ', theta)
 
-    print
+    print()
+    if any([changestat_is_gwactivity(f) for f in param_func_list]):
+        print('Note: model contains one or more of the GWActivity, GWSender or GWReceiver\nparameters, which are not straightforward to interpret. Please read (and cite)\nthis paper for guidance:\n')
+        print('  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic actor\n  attribute model. arXiv preprint arXiv:2309.07338.\n  https://arxiv.org/abs/2309.07338')
+        print()
+
     if isinstance(G, BipartiteGraph):
         print("twoPaths cache info: ", G.twoPaths.cache_info())
