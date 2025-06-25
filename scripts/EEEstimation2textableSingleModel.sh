@@ -159,4 +159,12 @@ if [ $plaintext -eq 0 ]; then
     echo '\end{tabular}'
 fi
 
+if [ $plaintext -eq 1 ]; then
+    echo "${effectlist}" | grep -q 'GWActivity\|GWSender\|GWReceiver'
+    if [ $? -eq 0 ] ; then
+        printf '\nNote: model contains one or more of the GWActivity, GWSender or GWReceiver\nparameters, which are not straightforward to interpret. Please read (and cite)\nthis paper for guidance:\n\n'
+        printf '  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic actor\n  attribute model. arXiv preprint arXiv:2309.07338.\n  https://arxiv.org/abs/2309.07338\n\n'
+    fi
+fi
+
 rm ${estimnet_tmpfile}
