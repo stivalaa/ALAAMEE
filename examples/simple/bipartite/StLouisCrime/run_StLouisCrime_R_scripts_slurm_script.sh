@@ -13,14 +13,21 @@ echo -n "started at: "; date
 command -v module >/dev/null 2>&1 && module load r
 
 #RSCRIPTSDIR=${HOME}/ALAAMEE/R
-RSCRIPTSDIR=../../../../R
+ROOT=../../../../
+RSCRIPTSDIR=${ROOT}/R
+SCRIPTSDIR=${ROOT}/scripts
 
 uname -a
+
+ESTIM_FILE=estimation_StLouisCrime_bipartite.txt
 
 time Rscript ${RSCRIPTSDIR}/plotALAAMEEResults.R theta_values_crime_bipartite dzA_values_crime_bipartite
 
 
-time Rscript ${RSCRIPTSDIR}/computeALAMEEcovariance.R theta_values_crime_bipartite dzA_values_crime_bipartite | tee estimation_StLouisCrime_bipartite.txt
+time Rscript ${RSCRIPTSDIR}/computeALAMEEcovariance.R theta_values_crime_bipartite dzA_values_crime_bipartite | tee ${ESTIM_FILE}
+
+${SCRIPTSDIR}/EEEstimation2textableSingleModel.sh -t ${ESTIM_FILE}
+${SCRIPTSDIR}/EEEstimation2textableSingleModel.sh  ${ESTIM_FILE} > estimated_model_StLouisCrime_bipartite.tex
 
 times
 echo -n "ended at: "; date
