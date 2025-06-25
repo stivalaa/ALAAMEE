@@ -60,7 +60,9 @@ echo '\hline'
 #ConvergedRuns 2
 # (see computeALAAMEECovariance.R)
 # https://unix.stackexchange.com/questions/78472/print-lines-between-start-and-end-using-sed
-cat ${estimationresults} | sed -n -e '/^Pooled/,${//!p}'  | tr -d '*' | fgrep -vw AcceptanceRate |  awk '{print $1,$2,$4,$5}'  |  tr ' ' '\t' >> ${estimnet_tmpfile}
+# get lines from Pooled up to blank line (may be followed by further
+# text e.g. note on GWActivity parameter interpretation) or end.
+cat ${estimationresults} | sed -n -e '/^Pooled/,/^$/{//!p}'  | tr -d '*' | fgrep -vw AcceptanceRate |  awk '{print $1,$2,$4,$5}'  |  tr ' ' '\t' >> ${estimnet_tmpfile}
 
 effectlist=`cat ${estimnet_tmpfile} | grep -wv ConvergedRuns | grep -wv TotalRuns |  awk '{print $1}' | sort | uniq`
 

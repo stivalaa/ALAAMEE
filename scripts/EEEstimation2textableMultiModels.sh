@@ -67,7 +67,9 @@ model=1
 for estimationresults in $*
 do
     # https://unix.stackexchange.com/questions/78472/print-lines-between-start-and-end-using-sed
-    cat ${estimationresults} | sed -n -e '/^Pooled/,${//!p}'  | tr -d '*' | fgrep -vw AcceptanceRate | awk '{print $1,$2,$4,$5}'  |  tr ' ' '\t' | sed "s/^/${model}\t/" >> ${estimnet_tmpfile}
+    # get lines from Pooled up to blank line (may be followed by further
+    # text e.g. note on GWActivity parameter interpretation) or end.
+    cat ${estimationresults} | sed -n -e '/^Pooled/,/^$/{//!p}'  | tr -d '*' | fgrep -vw AcceptanceRate | awk '{print $1,$2,$4,$5}'  |  tr ' ' '\t' | sed "s/^/${model}\t/" >> ${estimnet_tmpfile}
     model=`expr $model + 1`
 done
 
