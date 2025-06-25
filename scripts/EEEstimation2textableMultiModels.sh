@@ -114,14 +114,14 @@ do
                 estimnet_point=`echo "${estimnet_point}" | sed -e 's/[eE]+*/*10^/'`
                 estimnet_tratio=`echo "${estimnet_tratio}" | sed -e 's/[eE]+*/*10^/'`
                 estimnet_stderr=`echo "${estimnet_stderr}" | sed -e 's/[eE]+*/*10^/'`
-                echo AAA "${estimnet_point}">&2
+                ##echo AAA "${estimnet_point}">&2
                 abs_estimate=`echo "if (${estimnet_point} < 0) -(${estimnet_point}) else ${estimnet_point}" | bc -l`
                 abs_tratio=`echo "if (${estimnet_tratio} < 0) -(${estimnet_tratio}) else ${estimnet_tratio}" | bc -l`
-                echo YYY ${abs_estimate} >&2
-                echo QQQ ${abs_tratio} >&2
-                echo XXX "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" >&2
+                ##echo YYY ${abs_estimate} >&2
+                ##echo QQQ ${abs_tratio} >&2
+                ##echo XXX "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" >&2
                 signif=`echo "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" | bc -l`
-                echo ZZZ ${signif} >&2 
+                ##echo ZZZ ${signif} >&2 
                 if [ ${signif} -eq 0 ]; then
                     printf ' & $\\light{\\underset{(%.3f, %.3f)}{%.3f}}$' ${estimnet_lower} ${estimnet_upper} ${estimnet_point_scinotation}
                 else

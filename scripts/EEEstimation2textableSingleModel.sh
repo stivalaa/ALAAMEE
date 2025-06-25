@@ -88,16 +88,16 @@ do
             estimnet_point=`echo "${estimnet_point}" | sed -e 's/[eE]+*/*10^/'`
             estimnet_tratio=`echo "${estimnet_tratio}" | sed -e 's/[eE]+*/*10^/'`
             estimnet_stderr=`echo "${estimnet_stderr}" | sed -e 's/[eE]+*/*10^/'`
-            echo AAA "${estimnet_point}">&2
+            ##echo AAA "${estimnet_point}">&2
             abs_estimate=`echo "if (${estimnet_point} < 0) -(${estimnet_point}) else ${estimnet_point}" | bc -l`
             abs_tratio=`echo "if (${estimnet_tratio} < 0) -(${estimnet_tratio}) else ${estimnet_tratio}" | bc -l`
-            echo YYY ${abs_estimate} >&2
-            echo QQQ ${abs_tratio} >&2
-            echo XXX "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" >&2
+            ##echo YYY ${abs_estimate} >&2
+            ##echo QQQ ${abs_tratio} >&2
+            ##echo XXX "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" >&2
             signif=`echo "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" | bc -l`
-            echo ZZZ ${signif} >&2
-            echo WWWW `echo "${estimnet_stderr}" | awk '{printf("%g", $0)}'` >&2
-            echo EEE `echo "${estimnet_stderr}" | awk '{printf("%d", sprintf("%g", $0) < 0.001)}'` >&2
+            ##echo ZZZ ${signif} >&2
+            ##echo WWWW `echo "${estimnet_stderr}" | awk '{printf("%g", $0)}'` >&2
+            ##echo EEE `echo "${estimnet_stderr}" | awk '{printf("%d", sprintf("%g", $0) < 0.001)}'` >&2
             format_stderr=`echo "${estimnet_stderr}" | awk '{printf("%s", (sprintf("%g", $0) < 0.001 ? "< 0.001" : sprintf("%.3f", $0)))}'`
             printf ' & %.3f & %s & ' ${estimnet_point} "${format_stderr} "
             if [ ${signif} -ne 0 ]; then

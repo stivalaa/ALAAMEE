@@ -12,10 +12,12 @@ echo -n "started at: "; date
 
 num_waves=3
 num_seeds=5
-NUM_RUNS=100
+NUM_RUNS=6
 
 echo NUM_RUNS = $NUM_RUNS
 NUM_RUNS_MINUS_ONE=`expr ${NUM_RUNS} - 1`
+
+ESTIMATION_OUT=estimation.txt
 
 module load gcc/11.3.0 # needed by r/4.2.1
 module load openmpi/4.1.4 # needed by r/4.2.1
@@ -34,7 +36,9 @@ seq 0 ${NUM_RUNS_MINUS_ONE} | parallel  --progress --joblog parallel.log --keep-
 Rscript ../../R/plotALAAMEEResults.R theta_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000 dzA_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000
 
 
-Rscript ../../R/computeALAMEEcovariance.R  theta_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000 dzA_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000
+Rscript ../../R/computeALAMEEcovariance.R  theta_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000 dzA_values_n500_kstar_simulate12750000_waves${num_waves}_seeds${num_seeds}_num6700000 | tee ${ESTIMATION_OUT}
+
+../.././scripts/EEEstimation2textableSingleModel.sh ${ESTIMATION_OUT} > estimated_model.tex
 
 times
 echo -n "ended at: "; date
