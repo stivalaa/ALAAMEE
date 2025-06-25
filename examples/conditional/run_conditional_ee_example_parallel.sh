@@ -12,7 +12,7 @@ echo -n "started at: "; date
 
 num_waves=3
 num_seeds=5
-NUM_RUNS=6
+NUM_RUNS=100
 
 echo NUM_RUNS = $NUM_RUNS
 NUM_RUNS_MINUS_ONE=`expr ${NUM_RUNS} - 1`
