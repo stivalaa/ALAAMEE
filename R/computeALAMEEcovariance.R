@@ -341,3 +341,9 @@ cat("TotalRuns", totalruns, "\n")
 cat("ConvergedRuns", keptcount, "\n")
 ##cat("alphaPooled", alphaPooled, "\n")
 
+if (length(intersect(c("GWActivity", "GWSender", "GWReceiver"),
+                     sapply(strsplit(paramnames, ".", fixed=TRUE),
+                            function(s) s[1]))) > 0) {
+    cat('\nNote: model contains one or more of the GWActivity, GWSender or GWReceiver\nparameters, which are not straightforward to interpret. Please read (and cite)\nthis paper for guidance:\n')
+    cat('  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic actor\n  attribute model. arXiv preprint arXiv:2309.07338.\n  https://arxiv.org/abs/2309.07338\n')
+}
