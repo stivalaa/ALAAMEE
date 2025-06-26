@@ -122,6 +122,7 @@ do
             # bc cannot handle scientific notation so use sed to convert it 
             estimnet_lower=`echo "${estimnet_point} - ${zSigma} * ${estimnet_stderr}" | sed -e 's/[eE]+*/*10^/' | bc -l`
             estimnet_upper=`echo "${estimnet_point} + ${zSigma} * ${estimnet_stderr}" | sed -e 's/[eE]+*/*10^/' | bc -l`
+            estimnet_point_unformat="${estimnet_point}"
             estimnet_point=`echo "${estimnet_point}" | sed -e 's/[eE]+*/*10^/'`
             estimnet_tratio=`echo "${estimnet_tratio}" | sed -e 's/[eE]+*/*10^/'`
             estimnet_stderr=`echo "${estimnet_stderr}" | sed -e 's/[eE]+*/*10^/'`
@@ -137,9 +138,13 @@ do
             ##echo EEE `echo "${estimnet_stderr}" | awk '{printf("%d", sprintf("%g", $0) < 0.001)}'` >&2
             format_stderr=`echo "${estimnet_stderr}" | awk '{printf("%s", (sprintf("%g", $0) < 0.001 ? "< 0.001" : sprintf("%.3f", $0)))}'`
             if [ $plaintext -eq 0 ]; then
-                printf ' & %.3f & %s & ' ${estimnet_point} "${format_stderr} "
+                #if [ "${estimnet_point_unformat}" = "${estimnet_point}" ]; then
+                  printf ' & %.3f & %s & ' ${estimnet_point_unformat} "${format_stderr} "
+                #else
+                #  printf ' & %s & %s & ' ${estimnet_point} "${format_stderr} "
+                #fi
             else
-                printf ' % 7.3f     %s     ' ${estimnet_point} "${format_stderr} "
+                printf ' % 7.3f     %.3f     ' ${estimnet_point_unformat} ${estimnet_stderr}
             fi
             if [ ${signif} -ne 0 ]; then
                 echo -n '*'
