@@ -316,6 +316,10 @@ def run_sa(G, outcome_vector, param_func_list, labels,
         for j in range(len(theta)):
             sys.stdout.write('%40.40s % 7.3f   % 7.3f   % 7.3f %c\n' % (labels[j], theta[j], std_error[j], t_ratio[j], ('*' if significant[j] else ' ')))
         print()
+        if any([changestat_is_gwactivity(f) for f in param_func_list]):
+            print('Note: model contains one or more of the GWActivity, GWSender or GWReceiver\nparameters, which are not straightforward to interpret. Please read (and cite)\nthis paper for guidance:\n')
+            print('  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic actor\n  attribute model. arXiv preprint arXiv:2309.07338.\n  https://arxiv.org/abs/2309.07338')
+            print()
 
         # Do goodness-of-fit test
         if add_gof_param_func_list is not None:

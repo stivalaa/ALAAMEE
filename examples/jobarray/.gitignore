@@ -24,3 +24,6 @@ obs_stats_sim_n500.txt
 stats_sim_gof_n500-plots.eps
 stats_sim_gof_n500.txt
 slurm-*.out
+estimation_karateclub.txt
+estimation_simple.txt
+estimation_simple_N1000.txt

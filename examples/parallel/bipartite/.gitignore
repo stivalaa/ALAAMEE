@@ -8,3 +8,4 @@ gof_alaam_sim_bipartite_example-*.out
 sim_outcome_*.txt
 sim_outcome.pdf
 sim_outcome_vs_random.pdf
+estimation.txt
