@@ -272,10 +272,10 @@ def changeTriangleT2(G, A, i):
      / \
     *---o
 
-    Fast version using cached two-paths function
+    Fast version using two-paths count sparse matrix
     """
     return (0 if G.degree(i) < 2 else
-            sum([G.twoPaths(i, v) for
+            sum([G.twoPathsMatrix.getValue(i, v) for
                  v in G.neighbourIterator(i) if A[v] == 1]))
         
 
@@ -921,6 +921,21 @@ def changeTriangleT2_OLD(G, A, i):
                     if v != i and G.isEdge(i, v):
                         delta += 1
     return delta
+
+
+def changeTriangleT2_CACHE(G, A, i):
+    r"""
+    Change statistic for partner attribute triangle (T2)
+
+      *
+     / \
+    *---o
+
+    Fast version using cached two-paths function
+    """
+    return (0 if G.degree(i) < 2 else
+            sum([G.twoPaths(i, v) for
+                 v in G.neighbourIterator(i) if A[v] == 1]))
 
 
 def changeContagion_LISTCOMP(G, A, i):
