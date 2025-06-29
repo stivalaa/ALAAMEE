@@ -137,16 +137,16 @@ do
             ##echo ZZZ ${signif} >&2
             ##echo WWWW `echo "${estimnet_stderr}" | awk '{printf("%g", $0)}'` >&2
             ##echo EEE `echo "${estimnet_stderr}" | awk '{printf("%d", sprintf("%g", $0)+0.0 < 0.001)}'` >&2
-            format_stderr=`echo "${estimnet_stderr_unformat}" | awk '{printf("%s", (sprintf("%g", $0)+0.0 < 0.001 ? "< 0.001" : sprintf("%.3f", $0)))}'`
+            format_stderr=`echo "${estimnet_stderr_unformat}" | awk '{printf("%s", (sprintf("%g", $0)+0.0 < 0.001 ? "< 0.001" : sprintf("%.4f", $0)))}'`
             #echo XXX ${estimnet_stderr_unformat} ${estimnet_stderr} ${format_stderr} >&2
             if [ $plaintext -eq 0 ]; then
                 #if [ "${estimnet_point_unformat}" = "${estimnet_point}" ]; then
-                  printf ' & %.3f & %s & ' ${estimnet_point_unformat} "${format_stderr} "
+                  printf ' & %.4f & %s & ' ${estimnet_point_unformat} "${format_stderr} "
                 #else
                 #  printf ' & %s & %s & ' ${estimnet_point} "${format_stderr} "
                 #fi
             else
-                printf ' % 7.3f     %.3f     ' ${estimnet_point_unformat} ${estimnet_stderr_unformat}
+                printf ' % 8.4f     %.4f     ' ${estimnet_point_unformat} ${estimnet_stderr_unformat}
             fi
             if [ ${signif} -ne 0 ]; then
                 echo -n '*'
