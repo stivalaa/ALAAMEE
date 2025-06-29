@@ -125,6 +125,7 @@ do
             estimnet_point_unformat="${estimnet_point}"
             estimnet_point=`echo "${estimnet_point}" | sed -e 's/[eE]+*/*10^/'`
             estimnet_tratio=`echo "${estimnet_tratio}" | sed -e 's/[eE]+*/*10^/'`
+            estimnet_stderr_unformat="${estimnet_stderr}"
             estimnet_stderr=`echo "${estimnet_stderr}" | sed -e 's/[eE]+*/*10^/'`
             ##echo AAA "${estimnet_point}">&2
             abs_estimate=`echo "if (${estimnet_point} < 0) -(${estimnet_point}) else ${estimnet_point}" | bc -l`
@@ -135,8 +136,9 @@ do
             signif=`echo "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" | bc -l`
             ##echo ZZZ ${signif} >&2
             ##echo WWWW `echo "${estimnet_stderr}" | awk '{printf("%g", $0)}'` >&2
-            ##echo EEE `echo "${estimnet_stderr}" | awk '{printf("%d", sprintf("%g", $0) < 0.001)}'` >&2
-            format_stderr=`echo "${estimnet_stderr}" | awk '{printf("%s", (sprintf("%g", $0) < 0.001 ? "< 0.001" : sprintf("%.3f", $0)))}'`
+            ##echo EEE `echo "${estimnet_stderr}" | awk '{printf("%d", sprintf("%g", $0)+0.0 < 0.001)}'` >&2
+            format_stderr=`echo "${estimnet_stderr_unformat}" | awk '{printf("%s", (sprintf("%g", $0)+0.0 < 0.001 ? "< 0.001" : sprintf("%.3f", $0)))}'`
+            #echo XXX ${estimnet_stderr_unformat} ${estimnet_stderr} ${format_stderr} >&2
             if [ $plaintext -eq 0 ]; then
                 #if [ "${estimnet_point_unformat}" = "${estimnet_point}" ]; then
                   printf ' & %.3f & %s & ' ${estimnet_point_unformat} "${format_stderr} "
@@ -144,7 +146,7 @@ do
                 #  printf ' & %s & %s & ' ${estimnet_point} "${format_stderr} "
                 #fi
             else
-                printf ' % 7.3f     %.3f     ' ${estimnet_point_unformat} ${estimnet_stderr}
+                printf ' % 7.3f     %.3f     ' ${estimnet_point_unformat} ${estimnet_stderr_unformat}
             fi
             if [ ${signif} -ne 0 ]; then
                 echo -n '*'
