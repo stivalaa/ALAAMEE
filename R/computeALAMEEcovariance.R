@@ -351,7 +351,7 @@ cat("ConvergedRuns", keptcount, "\n")
 if (any_bad_t_ratio) {
     cat('\nWARNING: One or more parameters had an EE algorithm t-ratio value\n')
     cat('greater than', t_ratio_threshold,
-        'in magnitude. Probably the estimation did not converge\n')
+        'in magnitude. Possibly the estimation did not converge\n')
     cat('(check diagnostic plots) or the model is degenerate.\n')
 }
 
