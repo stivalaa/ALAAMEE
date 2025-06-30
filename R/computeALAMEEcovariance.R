@@ -310,6 +310,7 @@ alphaPooled <- alpha
 zSigma <- qnorm(alphaPooled/2, lower.tail=FALSE)
 
 cat('\nPooled\n')
+any_bad_t_ratio <- FALSE
 if (keptcount > 0) {
   for (paramname in paramnames) {
       pooled_est <- inverse_variance_wm(theta_estimates[, paramname],
@@ -321,8 +322,13 @@ if (keptcount > 0) {
   
       ## output pooled estimate for this parameter
       signif <- ''
-      if (!is.na(est_t_ratio) &&
-          abs(est_t_ratio) <= t_ratio_threshold &&
+      bad_t_ratio <- FALSE
+      if (is.na(est_t_ratio) ||
+          abs(est_t_ratio) > t_ratio_threshold) {
+          bad_t_ratio <- TRUE
+          any_bad_t_ratio <- TRUE
+      }
+      if (!bad_t_ratio &&
           abs(pooled_est$estimate) > zSigma*pooled_est$se) {
           signif <- '*'
       }
@@ -340,6 +346,14 @@ if (keptcount > 0) {
 cat("TotalRuns", totalruns, "\n")
 cat("ConvergedRuns", keptcount, "\n")
 ##cat("alphaPooled", alphaPooled, "\n")
+
+
+if (any_bad_t_ratio) {
+    cat('\nWARNING: One or more parameters had an EE algorithm t-ratio value\n')
+    cat('greater than', t_ratio_threshold,
+        'in magnitude. Probably the estimation did not converge\n')
+    cat('(check diagnostic plots) or the model is degenerate.\n')
+}
 
 if (length(intersect(c("GWActivity", "GWSender", "GWReceiver"),
                      sapply(strsplit(paramnames, ".", fixed=TRUE),
