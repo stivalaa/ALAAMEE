@@ -87,6 +87,7 @@ cat ${estimationresults} | sed -n -e '/^Pooled/,/^$/{//!p}'  | tr -d '*' | fgrep
 
 effectlist=`cat ${estimnet_tmpfile} | grep -wv ConvergedRuns | grep -wv TotalRuns |  awk '{print $1}' | sort | uniq`
 
+any_bad_tratio=0
 for effect in ${effectlist} ConvergedRuns TotalRuns
 do
   if [ ${effect} = "ConvergedRuns" ]; then
@@ -133,6 +134,10 @@ do
             ##echo YYY ${abs_estimate} >&2
             ##echo QQQ ${abs_tratio} >&2
             ##echo XXX "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" >&2
+            bad_tratio=`echo "${abs_tratio} > ${tratioThreshold}" | bc -l`
+            if [ ${bad_tratio} -ne 0 ]; then
+                any_bad_tratio=1
+            fi
             signif=`echo "${abs_tratio} <= ${tratioThreshold} && ${abs_estimate} > ${zSigma} * ${estimnet_stderr}" | bc -l`
             ##echo ZZZ ${signif} >&2
             ##echo WWWW `echo "${estimnet_stderr}" | awk '{printf("%g", $0)}'` >&2
@@ -167,6 +172,12 @@ if [ $plaintext -eq 0 ]; then
 fi
 
 if [ $plaintext -eq 1 ]; then
+    if [ ${any_bad_tratio} -ne 0 ]; then
+        echo
+        echo  "WARNING: One or more parameters had an EE algorithm t-ratio value"
+        echo  "greater than ${tratioThreshold} in magnitude. Possibly the estimation did not converge"
+        echo  "(check diagnostic plots) or the model is degenerate."
+    fi
     echo "${effectlist}" | grep -q 'GWActivity\|GWSender\|GWReceiver'
     if [ $? -eq 0 ] ; then
         printf '\nNote: model contains one or more of the GWActivity, GWSender or GWReceiver\nparameters, which are not straightforward to interpret. Please read (and cite)\nthis paper for guidance:\n\n'
