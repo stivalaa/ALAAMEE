@@ -271,5 +271,5 @@ def run_ee(G, outcome_vector, basename, param_func_list, labels,
         print('  Stivala, A. (2023). Overcoming near-degeneracy in the autologistic actor\n  attribute model. arXiv preprint arXiv:2309.07338.\n  https://arxiv.org/abs/2309.07338')
         print()
 
-    if isinstance(G, BipartiteGraph):
+    if isinstance(G, Graph):
         print("twoPaths cache info: ", G.twoPaths.cache_info())
