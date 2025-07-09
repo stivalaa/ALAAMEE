@@ -273,6 +273,9 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
     p <- p + guides(x = guide_axis(check.overlap = TRUE))
 
     if (!is.null(sim2_graphs)) {
+      cat('meandeg_sim = ', meandeg_sim, '(', model_names[1], ')\n')
+      cat('meandeg_sim2 = ', meandeg_sim2, '(', model_names[2],')\n')
+      cat('meandeg_obs = ', meandeg_obs, '\n')
       p <- p + geom_vline(xintercept = meandeg_sim, linetype = "dashed", color = myColors[1])
       p <- p + geom_vline(xintercept = meandeg_sim2, linetype = "dashed",color = myColors[2])
       p <- p + geom_vline(xintercept = meandeg_obs, linetype = "solid",color = palette[1])
