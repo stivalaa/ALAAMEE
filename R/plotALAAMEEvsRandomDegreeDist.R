@@ -22,6 +22,8 @@
 ##
 ##  -o : outdegree only - only do out-degree not in-degree plots for directed
 ##       network.
+##  -m maxdegree : truncate the degree distribution plots at maxdegree
+##                 Only applies to undirected graphs
 ##
 ## Output file is simfitPrefix_vs_random.pdf (where Prefix is the simOutcomefilePrefix).
 ## WARNING: output file is overwritten
@@ -74,7 +76,9 @@ args <- commandArgs(trailingOnly=TRUE)
 
 option_list <- list(
   make_option(c("-o", "--outdegree_only"), action="store_true", default=FALSE,
-                 help="only plot out-degree not in-degree for directed networks")
+                 help="only plot out-degree not in-degree for directed networks"),
+  make_option(c("-m", "--maxdegree"), type="integer", default = NULL,
+                 help = "maximum degree, truncate plots after this")
   )
 parser <- OptionParser(usage = "%prog [options] netfilename obsOutcomefilename simOutcomeFilePrefix",
                        option_list = option_list)
@@ -83,6 +87,7 @@ opt <- arguments$options
 args <- arguments$args
 
 outdegree_only <- opt$outdegree_only
+maxdeg <- opt$maxdegree
 
 netfilename <- args[1]
 obsoutcomefilename <- args[2]
@@ -154,7 +159,8 @@ if (is.bipartite(g_obs)) {
 plotlist <- build_sim_fit_plots(g_obs, obs_outcomevec, sim_outcomevecs,
                                 random_outcomevecs, 
                                 c("ALAAM", "Random"),
-                                outdegree_only = outdegree_only)
+                                outdegree_only = outdegree_only,
+                                maxdeg = maxdeg)
 
 
 ###

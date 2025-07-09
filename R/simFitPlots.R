@@ -65,12 +65,15 @@ my_scientific_10 <- function(x) {
 ##                  same plot  for comparison  (default NULL)
 ##    model_names - two-element vector of model names, corresponding to
 ##                  sim_graphs and sim2_graphs (default c("Model 1", "Model 2"))
+##    umaxdeg - if not NULL then maximum degree, degree distribution plot
+##             truncated at this degree (only plot nodes with degree <= umaxdeg)
+##             Only applies to undirected graphs
 ##
 ## Return value:
 ##    ggplot2 object to add to plot list
 ##
 ##
-deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL, model_names = c("Model 1", "Model 2")) {
+deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL, model_names = c("Model 1", "Model 2"), umaxdeg=NULL) {
   
     num_sim <- length(sim_graphs)
     if (!is.null(sim2_graphs)) {
@@ -117,6 +120,10 @@ deg_distr_plot <- function(g_obs, sim_graphs, mode, btype=NULL, sim2_graphs=NULL
       }
     }
     cat("Max ", mode, " degree is ", maxdeg, "\n")
+    if (!is_directed(g_obs) && !is.null(umaxdeg)) {
+      maxdeg <- min(maxdeg, umaxdeg)
+      cat("Max ", mode, " degree for plotting is ", maxdeg, "\n")
+    }
     deg_df <- data.frame(sim = rep(1:num_sim, each=(maxdeg+1)),
                            degree = rep(0:maxdeg, num_sim),
                            count = NA)
@@ -389,6 +396,9 @@ deg_hist_plot <- function(g_obs, sim_graphs, mode, use_log, btype=NULL) {
 ##                       (default FALSE)
 ##    do_eiindex - if TRUE then do E-I index on outcome attribute
 ##                       (default FALSE)
+##    maxdeg - if not NULL then maximum degree, degree distribution plot
+##             truncated at this degree (only plot nodes with degree <= maxdeg)
+##             Only applies to undirected graphs
 ##
 ## Return value:
 ##    list of ggplot2 objects
@@ -399,7 +409,8 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
                                 model_names = c("Model 1", "Model 2"),
                                 outdegree_only = FALSE,
                                 do_assortativity = FALSE,
-                                do_eiindex = FALSE) {
+                                do_eiindex = FALSE,
+                                maxdeg = NULL) {
 
   num_sim <- length(sim_outcomevecs)
   plotlist <- list()
@@ -492,13 +503,13 @@ build_sim_fit_plots <- function(g_obs, obs_outcomevec, sim_outcomevecs,
     if (is.bipartite(g_obs)) {
       system.time(plotlist <- c(plotlist,
                                 list(deg_distr_plot(g_obs, sim_graphs,
-                                                    'all', FALSE, sim2_graphs=sim2_graphs, model_names=model_names))))
+                                                    'all', FALSE, sim2_graphs=sim2_graphs, model_names=model_names, umaxdeg=maxdeg))))
       system.time(plotlist <- c(plotlist,
                                 list(deg_distr_plot(g_obs, sim_graphs,
-                                                    'all', TRUE, sim2_graphs=sim2_graphs, model_names=model_names))))      
+                                                    'all', TRUE, sim2_graphs=sim2_graphs, model_names=model_names, umaxdeg=maxdeg))))      
     } else {
       system.time(plotlist <- c(plotlist,
-                                list(deg_distr_plot(g_obs, sim_graphs, 'all', sim2_graphs=sim2_graphs, model_names=model_names))))
+                                list(deg_distr_plot(g_obs, sim_graphs, 'all', sim2_graphs=sim2_graphs, model_names=model_names, umaxdeg=maxdeg))))
     }
 
     if (is.null(sim2_graphs)) {
