@@ -25,7 +25,8 @@
 ##  -m maxdegree : truncate the degree distribution plots at maxdegree
 ##                 Only applies to undirected graphs
 ##
-## Output file is simfitPrefix_vs_random.pdf (where Prefix is the simOutcomefilePrefix).
+## Output file is simfitPrefix_vs_random.pdf (where Prefix is the simOutcomefilePrefix), or simfitPrefix_vs_random_maxdeg<n>.pdf when -m (--maxdegree)
+## is specified e.g. simfitPrefix_rs_random_maxdeg20.pdf
 ## WARNING: output file is overwritten
 ##
 ## Example:
@@ -94,7 +95,12 @@ obsoutcomefilename <- args[2]
 simoutcomefileprefix <- args[3]
 
 simvec_glob <- paste(simoutcomefileprefix, "_[0-9]*[.]txt", sep='')
-outfilename <- paste(simoutcomefileprefix, "_vs_random.pdf", sep='')
+if (!is.null(maxdeg)) {
+  outfilename <- paste(simoutcomefileprefix, "_vs_random_maxdeg", maxdeg,
+                       ".pdf", sep='')
+} else {
+  outfilename <- paste(simoutcomefileprefix, "_vs_random.pdf", sep='')
+}
 
 g_obs <- read.graph(netfilename, format="pajek")
 ## Single column table with header, just get the first (only) column
