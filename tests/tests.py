@@ -610,6 +610,9 @@ def test_regression_undirected_change_stats(netfilename, outcomefilename,
     print("changeTriangleT2")
     compare_changestats_implementations(g, outcome_binvar, changeTriangleT2_OLD, changeTriangleT2, num_tests)
 
+    print("changeTriangleT3")
+    compare_changestats_implementations(g, outcome_binvar, changeTriangleT3_OLD, changeTriangleT3, num_tests)
+
     print("changeContagion")
     assert Contagion(g, outcome_binvar) == Contagion_nodeiter(g, outcome_binvar)
     compare_statistic_sum_changestatistic(g, outcome_binvar, Contagion, changeContagion)

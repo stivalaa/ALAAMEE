@@ -290,14 +290,10 @@ def changeTriangleT3(G, A, i):
     if G.degree(i) < 2:
         return 0
     else:
-        for u in G.neighbourIterator(i):
-            if A[u] == 1:
-                for v in G.neighbourIterator(u):
-                    if v != i and A[v] == 1 and G.isEdge(i, v):
-                        delta += 1
-    assert delta % 2 == 0
-    return delta / 2.0
-        
+        return len([(u, v) for u in G.neighbourIterator(i)
+                    for v in G.neighbourIterator(i)
+                    if u < v and A[u] == 1 and A[v] == 1 and G.isEdge(u, v)])
+
 
 
 def changeoOb(attrname, G, A, i):
@@ -825,6 +821,27 @@ def changePowerContagion(beta, G, A, i):
 
 
 # ================== old versions for regression testing ======================
+
+def changeTriangleT3_OLD(G, A, i):
+    r"""
+    Change statistic for partner-partner attribute triangle (T3)
+
+      *
+     / \
+    *---*
+    """
+    delta = 0
+    if G.degree(i) < 2:
+        return 0
+    else:
+        for u in G.neighbourIterator(i):
+            if A[u] == 1:
+                for v in G.neighbourIterator(u):
+                    if v != i and A[v] == 1 and G.isEdge(i, v):
+                        delta += 1
+    assert delta % 2 == 0
+    return delta / 2.0
+
 
 def changePartnerPartnerAttribute_OLD(G, A, i):
     r"""
