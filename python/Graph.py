@@ -207,6 +207,12 @@ class Graph:
         """
         return iter(self.G[i].keys())
 
+    def neighbourList(self, i):
+        """
+        Return list of neighbours of i
+        """
+        return list(self.G[i])
+
     def insertEdge(self, i, j):
         """
         Insert edge i -- j in place

@@ -285,15 +285,23 @@ def changeTriangleT3(G, A, i):
       *
      / \
     *---*
+
+    Implemented with only (ugly and more code) loops, as it is faster
+    than more elegant implementation using list comprehensions.
     """
     delta = 0
     if G.degree(i) < 2:
         return 0
     else:
-        return len([(u, v) for u in G.neighbourIterator(i)
-                    for v in G.neighbourIterator(i)
-                    if u < v and A[u] == 1 and A[v] == 1 and G.isEdge(u, v)])
-
+        neighbourlist = G.neighbourList(i)
+        for ui in range(len(neighbourlist)):
+            u = neighbourlist[ui]
+            if A[u] == 1:
+                for vi in range(ui):
+                    v = neighbourlist[vi]
+                    if A[v] == 1 and G.isEdge(u, v):
+                        delta += 1
+        return delta
 
 
 def changeoOb(attrname, G, A, i):
@@ -821,6 +829,24 @@ def changePowerContagion(beta, G, A, i):
 
 
 # ================== old versions for regression testing ======================
+
+def changeTriangleT3_OLD2(G, A, i):
+    r"""
+    Change statistic for partner-partner attribute triangle (T3)
+
+      *
+     / \
+    *---*
+
+    Theoretically better, but apparantly slightly slower, version,
+    that only iterates over i, using list comprehension.
+    """
+    if G.degree(i) < 2:
+        return 0
+    else:
+        return len([(u, v) for u in G.neighbourIterator(i)
+                    for v in G.neighbourIterator(i)
+                    if u < v and A[u] == 1 and A[v] == 1 and G.isEdge(u, v)])
 
 def changeTriangleT3_OLD(G, A, i):
     r"""
